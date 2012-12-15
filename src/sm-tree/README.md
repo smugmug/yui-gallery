@@ -7,8 +7,9 @@ A tree has a root node, which may contain any number of child nodes, which may
 themselves contain child nodes, ad infinitum.
 
 The `Y.Tree` class doesn't expose any UI, but is extended by the [SmugMug
-TreeView component](https://github.com/smugmug/yui-gallery/src/treeview/),
-which does.
+TreeView component][sm-treeview], which does.
+
+[sm-treeview]: https://github.com/smugmug/yui-gallery/src/sm-treeview/
 
 Usage
 -----
@@ -24,17 +25,18 @@ Modules
 
 ### gallery-sm-tree
 
-Provides the `Tree` class.
+Provides the `Y.Tree` class.
 
 ### gallery-sm-tree-node
 
-Provides the `Tree.Node` class, which represents a tree node contained in a
-`Tree` data structure.
+Provides the `Y.Tree.Node` class, which represents a tree node contained in a
+`Y.Tree` data structure.
 
 ### gallery-sm-tree-lazy
 
-Provides `Plugin.Tree.Lazy`, a plugin for `Tree` that makes it easy to lazily
-load and populate the contents of tree nodes the first time they're opened.
+Provides `Y.Plugin.Tree.Lazy`, a plugin for `Y.Tree` that makes it easy to
+lazily load and populate the contents of tree nodes the first time they're
+opened.
 
 License
 -------
