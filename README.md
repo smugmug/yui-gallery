@@ -8,11 +8,11 @@ This repo contains open source YUI components that have been contributed to the
 Modules
 -------
 
-### [gallery-sm-tree](https://github.com/smugmug/yui-gallery/src/sm-tree/)
+### [gallery-sm-tree](https://github.com/smugmug/yui-gallery/tree/master/src/sm-tree)
 
 Provides a generic tree data structure.
 
-### [gallery-sm-treeview](https://github.com/smugmug/yui-gallery/src/sm-treeview/)
+### [gallery-sm-treeview](https://github.com/smugmug/yui-gallery/tree/master/src/sm-treeview)
 
 A powerful, easy to use, and extremely fast TreeView widget.
 
