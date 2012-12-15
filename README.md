@@ -2,7 +2,19 @@ SmugMug YUI Gallery Modules
 ===========================
 
 This repo contains open source YUI components that have been contributed to the
-[YUI Gallery](http://yuilibrary.com/gallery/) by [SmugMug](http://www.smugmug.com).
+[YUI Gallery](http://yuilibrary.com/gallery/) by
+[SmugMug](http://www.smugmug.com).
+
+Modules
+-------
+
+### [gallery-sm-tree](https://github.com/smugmug/yui-gallery/src/sm-tree/)
+
+Provides a generic tree data structure.
+
+### [gallery-sm-treeview](https://github.com/smugmug/yui-gallery/src/sm-treeview/)
+
+A powerful, easy to use, and extremely fast TreeView widget.
 
 License
 -------
