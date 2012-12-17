@@ -4,8 +4,8 @@ YUI.add('gallery-sm-tree-node', function (Y, NAME) {
 Provides the `Tree.Node` class, which represents a tree node contained in a
 `Tree` data structure.
 
-@module tree
-@submodule tree-node
+@module gallery-sm-tree
+@submodule gallery-sm-tree-node
 **/
 
 /**

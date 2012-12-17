@@ -4,8 +4,8 @@ YUI.add('gallery-sm-tree-lazy', function (Y, NAME) {
 Provides `Plugin.Tree.Lazy`, a plugin for `Tree` that makes it easy to lazily
 load and populate the contents of tree nodes the first time they're opened.
 
-@module tree
-@submodule tree-lazy
+@module gallery-sm-tree
+@submodule gallery-sm-tree-lazy
 **/
 
 /**

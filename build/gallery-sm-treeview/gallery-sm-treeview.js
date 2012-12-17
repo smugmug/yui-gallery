@@ -3,8 +3,8 @@ YUI.add('gallery-sm-treeview', function (Y, NAME) {
 /**
 Provides the `Y.TreeView` widget.
 
-@module treeview
-@main treeview
+@module gallery-sm-treeview
+@main gallery-sm-treeview
 **/
 
 /**

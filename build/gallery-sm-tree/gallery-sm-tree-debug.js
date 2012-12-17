@@ -3,7 +3,7 @@ YUI.add('gallery-sm-tree', function (Y, NAME) {
 /**
 Provides the `Tree` class.
 
-@module tree
+@module gallery-sm-tree
 **/
 
 /**
