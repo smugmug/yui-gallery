@@ -1,8 +1,8 @@
 /**
 Provides the `Y.TreeView` widget.
 
-@module treeview
-@main treeview
+@module gallery-sm-treeview
+@main gallery-sm-treeview
 **/
 
 /**

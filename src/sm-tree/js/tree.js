@@ -1,7 +1,7 @@
 /**
 Provides the `Tree` class.
 
-@module tree
+@module gallery-sm-tree
 **/
 
 /**
