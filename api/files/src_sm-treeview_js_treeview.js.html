@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js - SmugMug YUI Gallery</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title="SmugMug YUI Gallery"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.8.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/Plugin.Tree.Lazy.html">Plugin.Tree.Lazy</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.html">Tree</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Node.html">Tree.Node</a></li>
+            
+                <li><a href="..&#x2F;classes/TreeView.html">TreeView</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree.html">gallery-sm-tree</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree-lazy.html">gallery-sm-tree-lazy</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree-node.html">gallery-sm-tree-node</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x2F;**
+Provides the &#x60;Y.TreeView&#x60; widget.
+
+@module gallery-sm-treeview
+@main gallery-sm-treeview
+**&#x2F;
+
+&#x2F;**
+TreeView widget.
+
+@class TreeView
+@constructor
+@extends View
+@uses Tree
+**&#x2F;
+
+var getClassName = Y.ClassNameManager.getClassName,
+
+TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [Y.Tree], {
+    &#x2F;&#x2F; -- Public Properties ----------------------------------------------------
+
+    &#x2F;**
+    CSS class names used by this treeview.
+
+    @property {Object} classNames
+    @param {String} canHaveChildren Class name indicating that a tree node can
+        contain child nodes (whether or not it actually does).
+    @param {String} children Class name for a list of child nodes.
+    @param {String} hasChildren Class name indicating that a tree node has one
+        or more child nodes.
+    @param {String} indicator Class name for an open&#x2F;closed indicator.
+    @param {String} label Class name for a tree node&#x27;s user-visible label.
+    @param {String} node Class name for a tree node item.
+    @param {String} noTouch Class name added to the TreeView container when not
+        using a touchscreen device.
+    @param {String} open Class name indicating that a tree node is open.
+    @param {String} row Class name for a row container encompassing the
+        indicator and label within a tree node.
+    @param {String} selected Class name for a tree node that&#x27;s selected.
+    @param {String} touch Class name added to the TreeView container when using
+        a touchscreen device.
+    @param {String} treeview Class name for the TreeView container.
+    **&#x2F;
+    classNames: {
+        canHaveChildren: getClassName(&#x27;treeview-can-have-children&#x27;),
+        children       : getClassName(&#x27;treeview-children&#x27;),
+        hasChildren    : getClassName(&#x27;treeview-has-children&#x27;),
+        indicator      : getClassName(&#x27;treeview-indicator&#x27;),
+        label          : getClassName(&#x27;treeview-label&#x27;),
+        node           : getClassName(&#x27;treeview-node&#x27;),
+        noTouch        : getClassName(&#x27;treeview-notouch&#x27;),
+        open           : getClassName(&#x27;treeview-open&#x27;),
+        row            : getClassName(&#x27;treeview-row&#x27;),
+        selected       : getClassName(&#x27;treeview-selected&#x27;),
+        touch          : getClassName(&#x27;treeview-touch&#x27;),
+        treeview       : getClassName(&#x27;treeview&#x27;)
+    },
+
+    &#x2F;**
+    Whether or not this TreeView has been rendered.
+
+    @property {Boolean} rendered
+    @default false
+    **&#x2F;
+    rendered: false,
+
+    &#x2F;&#x2F; -- Protected Properties -------------------------------------------------
+
+    &#x2F;**
+    Simple way to type-check that this is a TreeView instance.
+
+    @property {Boolean} _isYUITreeView
+    @default true
+    @protected
+    **&#x2F;
+    _isYUITreeView: true,
+
+    &#x2F;**
+    Cached value of the &#x60;lazyRender&#x60; attribute.
+
+    @property {Boolean} _lazyRender
+    @protected
+    **&#x2F;
+
+    &#x2F;&#x2F; -- Lifecycle Methods ----------------------------------------------------
+
+    initializer: function () {
+        this._attachTreeViewEvents();
+    },
+
+    destructor: function () {
+        this._detachTreeViewEvents();
+    },
+
+    &#x2F;&#x2F; -- Public Methods -------------------------------------------------------
+
+    &#x2F;**
+    Returns the HTML node (as a &#x60;Y.Node&#x60; instance) associated with the specified
+    &#x60;Tree.Node&#x60; instance, if any.
+
+    @method getHTMLNode
+    @param {Tree.Node} treeNode Tree node.
+    @return {Node} &#x60;Y.Node&#x60; instance associated with the given tree node, or
+        &#x60;undefined&#x60; if one was not found.
+    **&#x2F;
+    getHTMLNode: function (treeNode) {
+        if (!treeNode._htmlNode) {
+            treeNode._htmlNode = this.get(&#x27;container&#x27;).one(&#x27;#&#x27; + treeNode.id);
+        }
+
+        return treeNode._htmlNode;
+    },
+
+    &#x2F;**
+    Renders this TreeView into its container.
+
+    If the container hasn&#x27;t already been added to the current document, it will
+    be appended to the &#x60;&lt;body&gt;&#x60; element.
+
+    @method render
+    @chainable
+    **&#x2F;
+    render: function () {
+        var container     = this.get(&#x27;container&#x27;),
+            isTouchDevice = &#x27;ontouchstart&#x27; in Y.config.win;
+
+        container.addClass(this.classNames.treeview);
+        container.addClass(this.classNames[isTouchDevice ? &#x27;touch&#x27; : &#x27;noTouch&#x27;]);
+
+        this._childrenNode = this.renderChildren(this.rootNode, {
+            container: container
+        });
+
+        if (!container.inDoc()) {
+            Y.one(&#x27;body&#x27;).append(container);
+        }
+
+        this.rendered = true;
+
+        return this;
+    },
+
+    &#x2F;**
+    Renders the children of the specified tree node.
+
+    If a container is specified, it will be assumed to be an existing rendered
+    tree node, and the children will be rendered (or re-rendered) inside it.
+
+    @method renderChildren
+    @param {Tree.Node} treeNode Tree node whose children should be rendered.
+    @param {Object} [options] Options.
+        @param {Node} [options.container] &#x60;Y.Node&#x60; instance of a container into
+            which the children should be rendered. If the container already
+            contains rendered children, they will be re-rendered in place.
+    @return {Node} &#x60;Y.Node&#x60; instance containing the rendered children.
+    **&#x2F;
+    renderChildren: function (treeNode, options) {
+        options || (options = {});
+
+        var container    = options.container,
+            childrenNode = container &amp;&amp; container.one(&#x27;.&#x27; + this.classNames.children),
+            lazyRender   = this._lazyRender;
+
+        if (!childrenNode) {
+            childrenNode = Y.Node.create(TreeView.Templates.children({
+                classNames: this.classNames,
+                node      : treeNode,
+                treeview  : this
+            }));
+        }
+
+        if (treeNode.isRoot()) {
+            childrenNode.set(&#x27;tabIndex&#x27;, 0); &#x2F;&#x2F; Add the root list to the tab order.
+            childrenNode.set(&#x27;role&#x27;, &#x27;tree&#x27;);
+        } else {
+            childrenNode.set(&#x27;role&#x27;, &#x27;group&#x27;);
+        }
+
+        if (treeNode.hasChildren()) {
+            childrenNode.set(&#x27;aria-expanded&#x27;, treeNode.isOpen());
+
+            for (var i = 0, len = treeNode.children.length; i &lt; len; i++) {
+                var child = treeNode.children[i];
+
+                this.renderNode(child, {
+                    container     : childrenNode,
+                    renderChildren: !lazyRender || child.isOpen()
+                });
+            }
+        }
+
+        &#x2F;&#x2F; Keep track of whether or not this node&#x27;s children have been rendered
+        &#x2F;&#x2F; so we&#x27;ll know whether we need to render them later if the node is
+        &#x2F;&#x2F; opened.
+        treeNode.state.renderedChildren = true;
+
+        if (container) {
+            container.append(childrenNode);
+        }
+
+        return childrenNode;
+    },
+
+    &#x2F;**
+    Renders the specified tree node and its children (if any).
+
+    If a container is specified, the rendered node will be appended to it.
+
+    @method renderNode
+    @param {Tree.Node} treeNode Tree node to render.
+    @param {Object} [options] Options.
+        @param {Node} [options.container] &#x60;Y.Node&#x60; instance of a container to
+            which the rendered tree node should be appended.
+        @param {Boolean} [options.renderChildren=false] Whether or not to render
+            this node&#x27;s children.
+    @return {Node} &#x60;Y.Node&#x60; instance of the rendered tree node.
+    **&#x2F;
+    renderNode: function (treeNode, options) {
+        options || (options = {});
+
+        var classNames  = this.classNames,
+            hasChildren = treeNode.hasChildren(),
+            htmlNode    = treeNode._htmlNode;
+
+        if (!htmlNode) {
+            htmlNode = treeNode._htmlNode = Y.Node.create(TreeView.Templates.node({
+                classNames: classNames,
+                node      : treeNode,
+                treeview  : this
+            }));
+        }
+
+        var labelNode = htmlNode.one(&#x27;.&#x27; + classNames.label),
+            labelId   = labelNode.get(&#x27;id&#x27;);
+
+        labelNode.setHTML(treeNode.label);
+
+        if (!labelId) {
+            labelId = Y.guid();
+            labelNode.set(&#x27;id&#x27;, labelId);
+        }
+
+        htmlNode.set(&#x27;aria-labelledby&#x27;, labelId);
+        htmlNode.set(&#x27;role&#x27;, &#x27;treeitem&#x27;);
+
+        htmlNode.toggleClass(classNames.canHaveChildren, !!treeNode.canHaveChildren);
+        htmlNode.toggleClass(classNames.open, treeNode.isOpen());
+        htmlNode.toggleClass(classNames.hasChildren, hasChildren);
+
+        if (hasChildren &amp;&amp; options.renderChildren) {
+            this.renderChildren(treeNode, {
+                container: htmlNode
+            });
+        }
+
+        treeNode.state.rendered = true;
+
+        if (options.container) {
+            options.container.append(htmlNode);
+        }
+
+        return htmlNode;
+    },
+
+    &#x2F;&#x2F; -- Protected Methods ----------------------------------------------------
+
+    _attachTreeViewEvents: function () {
+        this._treeViewEvents || (this._treeViewEvents = []);
+
+        var classNames = this.classNames,
+            container  = this.get(&#x27;container&#x27;);
+
+        this._treeViewEvents.push(
+            &#x2F;&#x2F; Custom events.
+            this.after({
+                add              : this._afterAdd,
+                close            : this._afterClose,
+                multiSelectChange: this._afterTreeViewMultiSelectChange, &#x2F;&#x2F; sheesh
+                open             : this._afterOpen,
+                remove           : this._afterRemove,
+                select           : this._afterSelect,
+                unselect         : this._afterUnselect
+            }),
+
+            &#x2F;&#x2F; DOM events.
+            container.on(&#x27;mousedown&#x27;, this._onMouseDown, this),
+
+            container.delegate(&#x27;click&#x27;, this._onIndicatorClick, &#x27;.&#x27; + classNames.indicator, this),
+            container.delegate(&#x27;click&#x27;, this._onRowClick, &#x27;.&#x27; + classNames.row, this),
+            container.delegate(&#x27;dblclick&#x27;, this._onRowDoubleClick, &#x27;.&#x27; + classNames.canHaveChildren + &#x27; &gt; .&#x27; + classNames.row, this)
+        );
+    },
+
+    _detachTreeViewEvents: function () {
+        (new Y.EventHandle(this._treeViewEvents)).detach();
+    },
+
+    &#x2F;**
+    Setter for the &#x60;lazyRender&#x60; attribute.
+
+    Just caches the value in a property for faster lookups.
+
+    @method _setLazyRender
+    @return {Boolean} Value.
+    @protected
+    **&#x2F;
+    _setLazyRender: function (value) {
+        return this._lazyRender = value;
+    },
+
+    &#x2F;&#x2F; -- Protected Event Handlers ---------------------------------------------
+
+    _afterAdd: function (e) {
+        &#x2F;&#x2F; Nothing to do if the treeview hasn&#x27;t been rendered yet.
+        if (!this.rendered) {
+            return;
+        }
+
+        var parent = e.parent,
+            htmlChildrenNode,
+            htmlNode;
+
+        if (parent === this.rootNode) {
+            htmlChildrenNode = this._childrenNode;
+        } else {
+            htmlNode         = this.getHTMLNode(parent);
+            htmlChildrenNode = htmlNode &amp;&amp; htmlNode.one(&#x27;.&#x27; + this.classNames.children);
+
+            if (!htmlChildrenNode) {
+                &#x2F;&#x2F; Parent node hasn&#x27;t been rendered yet, or hasn&#x27;t yet been
+                &#x2F;&#x2F; rendered with children. Render it.
+                htmlNode = this.renderNode(parent);
+
+                this.renderChildren(parent, {
+                    container: htmlNode
+                });
+
+                return;
+            }
+        }
+
+        htmlChildrenNode.insert(this.renderNode(e.node, {
+            renderChildren: true
+        }), e.index);
+    },
+
+    _afterClear: function () {
+        &#x2F;&#x2F; Nothing to do if the treeview hasn&#x27;t been rendered yet.
+        if (!this.rendered) {
+            return;
+        }
+
+        delete this._childrenNode;
+        this.rendered = false;
+
+        this.get(&#x27;container&#x27;).empty();
+        this.render();
+    },
+
+    _afterClose: function (e) {
+        if (!this.rendered) {
+            return;
+        }
+
+        var htmlNode = this.getHTMLNode(e.node);
+
+        htmlNode.removeClass(this.classNames.open);
+        htmlNode.set(&#x27;aria-expanded&#x27;, false);
+    },
+
+    _afterOpen: function (e) {
+        if (!this.rendered) {
+            return;
+        }
+
+        var treeNode = e.node,
+            htmlNode = this.getHTMLNode(treeNode);
+
+        &#x2F;&#x2F; If this node&#x27;s children haven&#x27;t been rendered yet, render them.
+        if (!treeNode.state.renderedChildren) {
+            this.renderChildren(treeNode, {
+                container: htmlNode
+            });
+        }
+
+        htmlNode.addClass(this.classNames.open);
+        htmlNode.set(&#x27;aria-expanded&#x27;, true);
+    },
+
+    _afterRemove: function (e) {
+        if (!this.rendered) {
+            return;
+        }
+
+        var htmlNode = this.getHTMLNode(e.node);
+
+        if (htmlNode) {
+            htmlNode.remove(true);
+            delete e.node._htmlNode;
+        }
+    },
+
+    _afterSelect: function (e) {
+        if (!this.rendered) {
+            return;
+        }
+
+        var htmlNode = this.getHTMLNode(e.node);
+
+        htmlNode.addClass(this.classNames.selected);
+
+        if (this.multiSelect) {
+            &#x2F;&#x2F; It&#x27;s only necessary to set aria-selected when multi-selection is
+            &#x2F;&#x2F; enabled and focus can&#x27;t be used to track the selection state.
+            htmlNode.set(&#x27;aria-selected&#x27;, true);
+        } else {
+            htmlNode.set(&#x27;tabIndex&#x27;, 0).focus();
+        }
+    },
+
+    _afterTreeViewMultiSelectChange: function (e) {
+        if (!this.rendered) {
+            return;
+        }
+
+        var container = this.get(&#x27;container&#x27;),
+            rootList  = container.one(&#x27;&gt; .&#x27; + this.classNames.children),
+            htmlNodes = container.all(&#x27;.&#x27; + this.classNames.node);
+
+        if (e.newVal) {
+            rootList.set(&#x27;aria-multiselectable&#x27;, true);
+            htmlNodes.set(&#x27;aria-selected&#x27;, false);
+        } else {
+            &#x2F;&#x2F; When multiselect is disabled, aria-selected must not be set on
+            &#x2F;&#x2F; any nodes, since focus is used to indicate selection.
+            rootList.removeAttribute(&#x27;aria-multiselectable&#x27;);
+            htmlNodes.removeAttribute(&#x27;aria-selected&#x27;);
+        }
+    },
+
+    _afterUnselect: function (e) {
+        if (!this.rendered) {
+            return;
+        }
+
+        var htmlNode = this.getHTMLNode(e.node);
+
+        htmlNode.removeClass(this.classNames.selected);
+
+        if (this.multiSelect) {
+            htmlNode.set(&#x27;aria-selected&#x27;, false);
+        }
+
+        htmlNode.removeAttribute(&#x27;tabIndex&#x27;);
+    },
+
+    _onIndicatorClick: function (e) {
+        var rowNode = e.currentTarget.ancestor(&#x27;.&#x27; + this.classNames.row);
+
+        &#x2F;&#x2F; Indicator clicks shouldn&#x27;t toggle selection state, so don&#x27;t allow
+        &#x2F;&#x2F; this event to propagate to the _onRowClick() handler.
+        e.stopImmediatePropagation();
+
+        this.getNodeById(rowNode.getData(&#x27;node-id&#x27;)).toggle();
+    },
+
+    _onMouseDown: function (e) {
+        &#x2F;&#x2F; This prevents the tree from momentarily grabbing focus before focus
+        &#x2F;&#x2F; is set on a node.
+        e.preventDefault();
+    },
+
+    _onRowClick: function (e) {
+        var node = this.getNodeById(e.currentTarget.getData(&#x27;node-id&#x27;));
+
+        if (this.multiSelect) {
+            node[node.isSelected() ? &#x27;unselect&#x27; : &#x27;select&#x27;]();
+        } else {
+            node.select();
+        }
+    },
+
+    _onRowDoubleClick: function (e) {
+        this.getNodeById(e.currentTarget.getData(&#x27;node-id&#x27;)).toggle();
+    }
+}, {
+    ATTRS: {
+        &#x2F;**
+        When &#x60;true&#x60;, a node&#x27;s children won&#x27;t be rendered until the first time
+        that node is opened.
+
+        This can significantly speed up the time it takes to render a large
+        tree, but might not make sense if you&#x27;re using CSS that doesn&#x27;t hide the
+        contents of closed nodes.
+
+        @attribute {Boolean} lazyRender
+        @default true
+        **&#x2F;
+        lazyRender: {
+            lazyAdd: false, &#x2F;&#x2F; to ensure that the setter runs on init
+            setter : &#x27;_setLazyRender&#x27;,
+            value  : true
+        }
+    }
+});
+
+Y.TreeView = Y.mix(TreeView, Y.TreeView);
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

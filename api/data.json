@@ -1,0 +1,2085 @@
+{
+    "project": {
+        "name": "SmugMug YUI Gallery",
+        "description": "Kickass gallery modules courtesy of your pals at SmugMug.",
+        "version": "3.8.0",
+        "url": "https://github.com/smugmug/yui-gallery"
+    },
+    "files": {
+        "src/sm-tree/js/plugins/tree-lazy.js": {
+            "name": "src/sm-tree/js/plugins/tree-lazy.js",
+            "modules": {
+                "gallery-sm-tree-lazy": 1
+            },
+            "classes": {
+                "Plugin.Tree.Lazy": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-tree/js/tree-node.js": {
+            "name": "src/sm-tree/js/tree-node.js",
+            "modules": {
+                "gallery-sm-tree-node": 1
+            },
+            "classes": {
+                "Tree.Node": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-tree/js/tree.js": {
+            "name": "src/sm-tree/js/tree.js",
+            "modules": {
+                "gallery-sm-tree": 1
+            },
+            "classes": {
+                "Tree": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-treeview/js/treeview.js": {
+            "name": "src/sm-treeview/js/treeview.js",
+            "modules": {
+                "gallery-sm-treeview": 1
+            },
+            "classes": {
+                "TreeView": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "gallery-sm-tree": {
+            "name": "gallery-sm-tree",
+            "submodules": {
+                "gallery-sm-tree-lazy": 1,
+                "gallery-sm-tree-node": 1
+            },
+            "classes": {
+                "Plugin.Tree.Lazy": 1,
+                "Tree.Node": 1,
+                "Tree": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/sm-tree/js/tree.js",
+            "line": 7,
+            "description": "Provides the `Tree` class."
+        },
+        "gallery-sm-tree-lazy": {
+            "name": "gallery-sm-tree-lazy",
+            "submodules": {},
+            "classes": {
+                "Plugin.Tree.Lazy": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-tree",
+            "namespace": "",
+            "file": "src/sm-tree/js/plugins/tree-lazy.js",
+            "line": 9,
+            "description": "Provides `Plugin.Tree.Lazy`, a plugin for `Tree` that makes it easy to lazily\nload and populate the contents of tree nodes the first time they're opened."
+        },
+        "gallery-sm-tree-node": {
+            "name": "gallery-sm-tree-node",
+            "submodules": {},
+            "classes": {
+                "Tree.Node": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-tree",
+            "namespace": "",
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 9,
+            "description": "Provides the `Tree.Node` class, which represents a tree node contained in a\n`Tree` data structure."
+        },
+        "gallery-sm-treeview": {
+            "name": "gallery-sm-treeview",
+            "submodules": {},
+            "classes": {
+                "TreeView": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 8,
+            "description": "Provides the `Y.TreeView` widget.",
+            "itemtype": "main"
+        }
+    },
+    "classes": {
+        "Plugin.Tree.Lazy": {
+            "name": "Plugin.Tree.Lazy",
+            "shortname": "Plugin.Tree.Lazy",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-lazy",
+            "namespace": "",
+            "file": "src/sm-tree/js/plugins/tree-lazy.js",
+            "line": 9,
+            "description": "A plugin for `Tree` that makes it easy to lazily load and populate the contents\nof tree nodes the first time they're opened.\n\n### Example\n\n    YUI().use('jsonp', 'tree', 'tree-lazy', function (Y) {\n        var tree = new Y.Tree();\n\n        tree.plug(Y.Plugin.Tree.Lazy, {\n\n            // Custom function that Plugin.Tree.Lazy will call when it needs to\n            // load the children for a node.\n            load: function (node, callback) {\n                // Request the data for this node's children via JSONP.\n                Y.jsonp('http://example.com/api/data?callback={callback}', function (data) {\n                    // If we didn't get any data back, treat this as an error.\n                    if (!data) {\n                        callback(new Error('No data!'));\n                        return;\n                    }\n\n                    // Append the children to the node (assume `data.children` is\n                    // an array of child node data for the sake of this example).\n                    node.append(data.children);\n\n                    // Call the callback function to tell Plugin.Tree.Lazy that\n                    // we're done loading data.\n                    callback();\n                });\n            }\n\n        });\n    });",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "Config object.",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "load",
+                            "description": "Custom `load()` function that will be called\n        when a node's children need to be loaded. This function must call the\n        provided callback to indicate completion.",
+                            "type": "Function",
+                            "props": [
+                                {
+                                    "name": "callback",
+                                    "description": "Callback function. The custom\n            `load()` function must call this callback to indicate completion.",
+                                    "type": "Function"
+                                },
+                                {
+                                    "name": "callback.err",
+                                    "description": "Error object. If provided,\n                the load action will be considered a failure, and an `error`\n                event will be fired. Omit this argument (or set it to `null`) to\n                indicate success.",
+                                    "type": "Error",
+                                    "optional": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "extends": "Plugin.Base",
+            "is_constructor": 1
+        },
+        "Tree.Node": {
+            "name": "Tree.Node",
+            "shortname": "Tree.Node",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node",
+            "namespace": "",
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 9,
+            "description": "Represents a tree node in a `Tree` data structure.",
+            "params": [
+                {
+                    "name": "tree",
+                    "description": "`Tree` instance with which this node should be associated.",
+                    "type": "Tree"
+                },
+                {
+                    "name": "config",
+                    "description": "Configuration hash for this node.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "canHaveChildren",
+                            "description": "Whether or not this node can\n        contain child nodes. Will be automatically set to `true` if not\n        specified and `config.children` contains one or more children.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "children",
+                            "description": "Array of `Tree.Node` instances\n        for child nodes of this node.",
+                            "type": "Tree.Node[]",
+                            "optional": true
+                        },
+                        {
+                            "name": "data",
+                            "description": "Implementation-specific data related to this\n        node. You may add arbitrary properties to this hash for your own use.",
+                            "type": "Object",
+                            "optional": true
+                        },
+                        {
+                            "name": "id",
+                            "description": "Unique id for this node. This id must be unique\n        among all tree nodes on the entire page, and will also be used as this\n        node's DOM id when it's rendered by a TreeView. A unique id will be\n        automatically generated unless you specify a custom value.",
+                            "type": "String",
+                            "optional": true
+                        },
+                        {
+                            "name": "label",
+                            "description": "User-visible HTML label for this node.",
+                            "type": "HTML",
+                            "optional": true,
+                            "optdefault": "''"
+                        },
+                        {
+                            "name": "state",
+                            "description": "State hash for this node. You may add\n        arbitrary state properties to this hash for your own use. See the\n        docs for `Tree.Node`'s `state` property for details on state values used\n        internally by `Tree.Node`.",
+                            "type": "Object",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "is_constructor": 1
+        },
+        "Tree": {
+            "name": "Tree",
+            "shortname": "Tree",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [
+                "TreeView"
+            ],
+            "module": "gallery-sm-tree",
+            "namespace": "",
+            "file": "src/sm-tree/js/tree.js",
+            "line": 7,
+            "description": "The `Tree` class represents a generic tree data structure. A tree has a root\nnode, which may contain any number of child nodes, which may themselves contain\nchild nodes, ad infinitum.\n\nThis class doesn't expose any UI, but is extended by the `TreeView` class, which\ndoes.",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "Config options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "nodes",
+                            "description": "Array of tree node config\n        objects or `Tree.Node` instances to add to this tree at initialization\n        time.",
+                            "type": "Object[]|Tree.Node[]",
+                            "optional": true
+                        },
+                        {
+                            "name": "rootNode",
+                            "description": "Node to use as the root node of\n        this tree.",
+                            "type": "Object|Tree.Node",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "is_constructor": 1,
+            "extends": "Base"
+        },
+        "TreeView": {
+            "name": "TreeView",
+            "shortname": "TreeView",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-treeview",
+            "namespace": "",
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 8,
+            "description": "TreeView widget.",
+            "is_constructor": 1,
+            "extends": "View",
+            "uses": [
+                "Tree"
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/sm-tree/js/plugins/tree-lazy.js",
+            "line": 63,
+            "description": "Fired when the `load()` method indicates there was an error loading child nodes.",
+            "itemtype": "event",
+            "name": "error",
+            "params": [
+                {
+                    "name": "error",
+                    "description": "Error provided by the `load()` method.",
+                    "type": "Error"
+                },
+                {
+                    "name": "src",
+                    "description": "Source of the error (defaults to \"load\").",
+                    "type": "String"
+                }
+            ],
+            "class": "Plugin.Tree.Lazy",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-lazy"
+        },
+        {
+            "file": "src/sm-tree/js/plugins/tree-lazy.js",
+            "line": 72,
+            "description": "Fired after child nodes have finished loading and have been added to the tree.",
+            "itemtype": "event",
+            "name": "loaded",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Tree node whose children have been loaded.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "class": "Plugin.Tree.Lazy",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-lazy"
+        },
+        {
+            "file": "src/sm-tree/js/plugins/tree-lazy.js",
+            "line": 80,
+            "description": "Fired just before the custom `load()` method is called to load child nodes for a\nnode.\n\nCalling `preventDefault()` on this event's facade will cancel the load action\nand prevent the `load()` method from being called.",
+            "itemtype": "event",
+            "name": "loading",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Tree node whose children will be loaded.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "preventable": "_defLoadingFn",
+            "class": "Plugin.Tree.Lazy",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-lazy"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 71,
+            "description": "Whether or not this node can contain child nodes.\n\nThis value is falsy by default unless child nodes are added at instantiation\ntime, in which case it will be automatically set to `true`. You can also\nmanually set it to `true` to indicate that a node can have children even if\nit doesn't currently have any children.\n\nNote that regardless of the value of this property, appending, prepending,\nor inserting a node into this node will cause `canHaveChildren` to be set to\ntrue automatically.",
+            "itemtype": "property",
+            "name": "canHaveChildren",
+            "type": "Boolean",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 86,
+            "description": "Child nodes contained within this node.",
+            "itemtype": "property",
+            "name": "children",
+            "type": "Tree.Node[]",
+            "default": "[]",
+            "readonly": "",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 94,
+            "description": "Arbitrary implementation-specific data related to this node.\n\nThis property is created by setting a `data` property in the config object\npassed to Tree.Node's constructor. It may contain any serializable data\nyou want to store on this node instance.",
+            "itemtype": "property",
+            "name": "data",
+            "type": "Object",
+            "default": "{}",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 105,
+            "description": "Unique id for this node.",
+            "itemtype": "property",
+            "name": "id",
+            "type": "String",
+            "readonly": "",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 112,
+            "description": "User-visible HTML label for this node.\n\nThis value may be rendered as HTML without sanitization, so *do not* put\nuntrusted user input here without escaping it first using `Y.Escape.html()`.",
+            "itemtype": "property",
+            "name": "label",
+            "type": "HTML",
+            "default": "''",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 123,
+            "description": "Parent node of this node, or `undefined` if this is an unattached node or\nthe root node.",
+            "itemtype": "property",
+            "name": "parent",
+            "type": "Tree.Node",
+            "readonly": "",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 131,
+            "description": "Current state of this node.",
+            "itemtype": "property",
+            "name": "state",
+            "type": "Object",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node",
+            "subprops": [
+                {
+                    "name": "open",
+                    "description": "Whether or not this node is open (expanded).",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                },
+                {
+                    "name": "selected",
+                    "description": "Whether or not this node is selected.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ]
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 139,
+            "description": "The Tree instance with which this node is associated.",
+            "itemtype": "property",
+            "name": "tree",
+            "type": "Tree",
+            "readonly": "",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 148,
+            "description": "Mapping of child node ids to indices.",
+            "itemtype": "property",
+            "name": "_indexMap",
+            "type": "Object",
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 155,
+            "description": "Flag indicating whether the `_indexMap` is stale and needs to be rebuilt.",
+            "itemtype": "property",
+            "name": "_isIndexStale",
+            "type": "Boolean",
+            "default": "true",
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 164,
+            "description": "Simple way to type-check that this is an instance of Tree.Node.",
+            "itemtype": "property",
+            "name": "_isYUITreeNode",
+            "type": "Boolean",
+            "default": "true",
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 173,
+            "description": "Array of property names on this node that should be serialized to JSON when\n`toJSON()` is called.\n\nNote that the `children` and `state` properties are special cases that are\nmanaged outside of this list.",
+            "itemtype": "property",
+            "name": "_serializable",
+            "type": "String[]",
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 187,
+            "description": "Appends the given tree node or array of nodes to the end of this node's\nchildren.",
+            "itemtype": "method",
+            "name": "append",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Child node, node config\n    object, array of child nodes, or array of node config objects to append\n    to the given parent. Node config objects will automatically be converted\n    into node instances.",
+                    "type": "Object|Object[]|Tree.Node|Tree.Node[]"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `add` event will\n        be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "Node or array of nodes that were appended.",
+                "type": "Tree.Node|Tree.Node[]"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 207,
+            "description": "Closes this node if it's currently open.",
+            "itemtype": "method",
+            "name": "close",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `close` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 221,
+            "description": "Removes all children from this node. The removed children will still be\nreusable unless the `destroy` option is truthy.",
+            "itemtype": "method",
+            "name": "empty",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "destroy",
+                            "description": "If `true`, the children will\n        also be destroyed, which makes them available for garbage collection\n        and means they can't be reused.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "silent",
+                            "description": "If `true`, `remove` events will\n        be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "Array of removed child nodes.",
+                "type": "Tree.Node[]"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 238,
+            "description": "Returns `true` if this node has one or more child nodes.",
+            "itemtype": "method",
+            "name": "hasChildren",
+            "return": {
+                "description": "`true` if this node has one or more child nodes, `false`\n    otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 249,
+            "description": "Returns the numerical index of this node within its parent node, or `-1` if\nthis node doesn't have a parent node.",
+            "itemtype": "method",
+            "name": "index",
+            "return": {
+                "description": "Index of this node within its parent node, or `-1` if this\n    node doesn't have a parent node.",
+                "type": "Number"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 261,
+            "description": "Returns the numerical index of the given child node, or `-1` if the node is\nnot a child of this node.",
+            "itemtype": "method",
+            "name": "indexOf",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Child node.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "return": {
+                "description": "Index of the child, or `-1` if the node is not a child of\n    this node.",
+                "type": "Number"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 282,
+            "description": "Inserts a node or array of nodes at the specified index under this node, or\nappends them to this node if no index is specified.\n\nIf a node being inserted is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
+            "itemtype": "method",
+            "name": "insert",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Child node, node config\n    object, array of child nodes, or array of node config objects to insert\n    under the given parent. Node config objects will automatically be\n    converted into node instances.",
+                    "type": "Object|Object[]|Tree.Node|Tree.Node[]"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "index",
+                            "description": "Index at which to insert the child node.\n        If not specified, the node will be appended as the last child of the\n        parent.",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `add` event will\n        be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "Node or array of nodes that were inserted.",
+                "type": "Tree.Node[]"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 308,
+            "description": "Returns `true` if this node has been inserted into a tree, `false` if it is\nmerely associated with a tree and has not yet been inserted.",
+            "itemtype": "method",
+            "name": "isInTree",
+            "return": {
+                "description": "`true` if this node has been inserted into a tree, `false`\n    otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 324,
+            "description": "Returns `true` if this node is currently open.",
+            "itemtype": "method",
+            "name": "isOpen",
+            "return": {
+                "description": "`true` if this node is currently open, `false` otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 334,
+            "description": "Returns `true` if this node is the root of the tree.",
+            "itemtype": "method",
+            "name": "isRoot",
+            "return": {
+                "description": "`true` if this node is the root of the tree, `false`\n    otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 345,
+            "description": "Returns `true` if this node is currently selected.",
+            "itemtype": "method",
+            "name": "isSelected",
+            "return": {
+                "description": "`true` if this node is currently selected, `false`\n    otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 356,
+            "description": "Opens this node if it's currently closed.",
+            "itemtype": "method",
+            "name": "open",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `open` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 370,
+            "description": "Prepends a node or array of nodes at the beginning of this node's children.\n\nIf a node being prepended is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
+            "itemtype": "method",
+            "name": "prepend",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Child node, node config\n    object, array of child nodes, or array of node config objects to prepend\n    to this node. Node config objects will automatically be converted into\n    node instances.",
+                    "type": "Object|Object[]|Tree.Node|Tree.Node[]"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `add` event will\n        be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "Node or array of nodes that were prepended.",
+                "type": "Tree.Node|Tree.Node[]"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 390,
+            "description": "Removes this node from its parent node.",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "destroy",
+                            "description": "If `true`, this node and all\n        its children will also be destroyed, which makes them available for\n        garbage collection and means they can't be reused.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `remove` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 406,
+            "description": "Selects this node.",
+            "itemtype": "method",
+            "name": "select",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `select` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 420,
+            "description": "Returns the total number of nodes contained within this node, including all\ndescendants of this node's children.",
+            "itemtype": "method",
+            "name": "size",
+            "return": {
+                "description": "Total number of nodes contained within this node, including\n    all descendants.",
+                "type": "Number"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 440,
+            "description": "Toggles the open/closed state of this node.",
+            "itemtype": "method",
+            "name": "toggle",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, events will be\n        suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 454,
+            "description": "Serializes this node to an object suitable for use in JSON.",
+            "itemtype": "method",
+            "name": "toJSON",
+            "return": {
+                "description": "Serialized node object.",
+                "type": "Object"
+            },
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree-node.js",
+            "line": 502,
+            "description": "Unselects this node.",
+            "itemtype": "method",
+            "name": "unselect",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `unselect` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Node",
+            "module": "gallery-sm-tree",
+            "submodule": "gallery-sm-tree-node"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 28,
+            "description": "Fired when a node is added to this Tree. The `src` property will indicate\nhow the node was added (\"append\", \"insert\", \"prepend\", etc.).",
+            "itemtype": "event",
+            "name": "add",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "Index at which the node will be added.",
+                    "type": "Number"
+                },
+                {
+                    "name": "node",
+                    "description": "Node being added.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "parent",
+                    "description": "Parent node to which the node will be added.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "src",
+                    "description": "Source of the event (\"append\", \"insert\", \"prepend\",\n    etc.).",
+                    "type": "String"
+                }
+            ],
+            "preventable": "_defAddFn",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 42,
+            "description": "Fired when this Tree is cleared.",
+            "itemtype": "event",
+            "name": "clear",
+            "params": [
+                {
+                    "name": "rootNode",
+                    "description": "New root node of this tree (the old root node is\n    always destroyed when a tree is cleared).",
+                    "type": "Tree.Node"
+                }
+            ],
+            "preventable": "_defClearFn",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 52,
+            "description": "Fired when a node is closed.",
+            "itemtype": "event",
+            "name": "close",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node being closed.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "preventable": "_defCloseFn",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 61,
+            "description": "Fired when a node is opened.",
+            "itemtype": "event",
+            "name": "open",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node being opened.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "preventable": "_defOpenFn",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 70,
+            "description": "Fired when a node is removed from this Tree.",
+            "itemtype": "event",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "destroy",
+                    "description": "Whether or not the node will be destroyed after\n    being removed from this tree.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "node",
+                    "description": "Node being removed.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "parent",
+                    "description": "Parent node from which the node will be removed.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "preventable": "_defRemoveFn",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 82,
+            "description": "Fired when a node is selected.",
+            "itemtype": "event",
+            "name": "select",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node being selected.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "preventable": "_defSelectFn",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 91,
+            "description": "Fired when a node is unselected.",
+            "itemtype": "event",
+            "name": "unselect",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node being unselected.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "preventable": "_defUnselectFn",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 103,
+            "description": "Root node of this Tree.",
+            "itemtype": "property",
+            "name": "rootNode",
+            "type": "Tree.Node",
+            "readonly": "",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 110,
+            "description": "The `Tree.Node` class or subclass that should be used for nodes created by\nthis tree.\n\nYou may specific an actual class reference or a string that resolves to a\nclass reference at runtime.",
+            "itemtype": "property",
+            "name": "nodeClass",
+            "type": "String|Tree.Node",
+            "default": "Y.Tree.Node",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 124,
+            "description": "Simple way to type-check that this is a Tree instance.",
+            "itemtype": "property",
+            "name": "_isYUITree",
+            "type": "Boolean",
+            "default": "true",
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 133,
+            "description": "Mapping of node ids to node instances for nodes in this tree.",
+            "itemtype": "property",
+            "name": "_nodeMap",
+            "type": "Object",
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 140,
+            "description": "Default config object for the root node.",
+            "itemtype": "property",
+            "name": "_rootNodeConfig",
+            "type": "Object",
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 148,
+            "description": "Mapping of node ids to node instances for nodes in this tree that are\ncurrently selected.",
+            "itemtype": "property",
+            "name": "_selectedMap",
+            "type": "Object",
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 160,
+            "description": "Hash of published custom events.",
+            "itemtype": "property",
+            "name": "_published",
+            "type": "Object",
+            "default": "{}",
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 201,
+            "description": "Appends a node or array of nodes as the last child of the specified parent\nnode.\n\nIf a node being appended is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
+            "itemtype": "method",
+            "name": "appendNode",
+            "params": [
+                {
+                    "name": "parent",
+                    "description": "Parent node.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "node",
+                    "description": "Child node, node config\n    object, array of child nodes, or array of node config objects to append\n    to the given parent. Node config objects will automatically be converted\n    into node instances.",
+                    "type": "Object|Object[]|Tree.Node|Tree.Node[]"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `add` event will\n        be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "Node or array of nodes that were\n    appended.",
+                "type": "Tree.Node|Tree.Node[]"
+            },
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 227,
+            "description": "Clears this tree by destroying the root node and all its children. If a\n`rootNode` argument is provided, that node will become the root node of this\ntree; otherwise, a new root node will be created.",
+            "itemtype": "method",
+            "name": "clear",
+            "params": [
+                {
+                    "name": "rootNode",
+                    "description": "If specified, this node will be used as\n    the new root node.",
+                    "type": "Object|Tree.Node",
+                    "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `clear` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 249,
+            "description": "Closes the specified node if it isn't already closed.",
+            "itemtype": "method",
+            "name": "closeNode",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `close` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 269,
+            "description": "Creates and returns a new `Tree.Node` instance associated with (but not\nyet appended to) this tree.",
+            "itemtype": "method",
+            "name": "createNode",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "Node configuration. If a `Tree.Node`\n    instance is specified instead of a config object, that node will be\n    adopted into this tree (if it doesn't already belong to this tree) and\n    removed from any other tree to which it belongs.",
+                    "type": "Object|Tree.Node",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "New node.",
+                "type": "Tree.Node"
+            },
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 305,
+            "description": "Removes and destroys a node and all its child nodes. Once destroyed, a node\nis eligible for garbage collection and cannot be reused or re-added to the\ntree.",
+            "itemtype": "method",
+            "name": "destroyNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node to destroy.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, `remove` events will\n        be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 352,
+            "description": "Removes all children from the specified node. The removed children will\nstill be reusable unless the `destroy` option is truthy.",
+            "itemtype": "method",
+            "name": "emptyNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node to empty.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "destroy",
+                            "description": "If `true`, the children will\n        also be destroyed, which makes them available for garbage collection\n        and means they can't be reused.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "silent",
+                            "description": "If `true`, `remove` events will\n        be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "Array of removed child nodes.",
+                "type": "Tree.Node[]"
+            },
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 376,
+            "description": "Returns the tree node with the specified id, or `undefined` if the node\ndoesn't exist in this tree.",
+            "itemtype": "method",
+            "name": "getNodeById",
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Node id.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Node, or `undefined` if not found.",
+                "type": "Tree.Node"
+            },
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 388,
+            "description": "Returns an array of nodes that are currently selected.",
+            "itemtype": "method",
+            "name": "getSelectedNodes",
+            "return": {
+                "description": "Array of selected nodes.",
+                "type": "Tree.Node[]"
+            },
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 398,
+            "description": "Inserts a node or array of nodes at the specified index under the given\nparent node, or appends them to the parent if no index is specified.\n\nIf a node being inserted is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
+            "itemtype": "method",
+            "name": "insertNode",
+            "params": [
+                {
+                    "name": "parent",
+                    "description": "Parent node.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "node",
+                    "description": "Child node, node config\n    object, array of child nodes, or array of node config objects to insert\n    under the given parent. Node config objects will automatically be\n    converted into node instances.",
+                    "type": "Object|Object[]|Tree.Node|Tree.Node[]"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "index",
+                            "description": "Index at which to insert the child node.\n        If not specified, the node will be appended as the last child of the\n        parent.",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `add` event will\n        be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "Node or array of nodes that were inserted.",
+                "type": "Tree.Node[]"
+            },
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 463,
+            "description": "Opens the specified node if it isn't already open.",
+            "itemtype": "method",
+            "name": "openNode",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `open` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 483,
+            "description": "Prepends a node or array of nodes at the beginning of the specified parent\nnode.\n\nIf a node being prepended is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
+            "itemtype": "method",
+            "name": "prependNode",
+            "params": [
+                {
+                    "name": "parent",
+                    "description": "Parent node.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "node",
+                    "description": "Child node,\n    node config object, array of child nodes, or array of node config\n    objects to prepend to the given parent. Node config objects will\n    automatically be converted into node instances.",
+                    "type": "Object|Object[]|Tree.Node|Tree.Node[]"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `add` event will\n        be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "Node or array of nodes that were\n    prepended.",
+                "type": "Tree.Node|Tree.Node[]"
+            },
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 509,
+            "description": "Removes the specified node from its parent node. The removed node will still\nbe reusable unless the `destroy` option is truthy.",
+            "itemtype": "method",
+            "name": "removeNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node to remove.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "destroy",
+                            "description": "If `true`, the node and all its\n        children will also be destroyed, which makes them available for\n        garbage collection and means they can't be reused.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `remove` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "Node that was removed.",
+                "type": "Tree.Node"
+            },
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 539,
+            "description": "Selects the specified node.",
+            "itemtype": "method",
+            "name": "selectNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node to select.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `select` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 564,
+            "description": "Returns the total number of nodes in this tree, at all levels.\n\nUse `rootNode.children.length` to get only the number of top-level nodes.",
+            "itemtype": "method",
+            "name": "size",
+            "return": {
+                "description": "Total number of nodes in this tree.",
+                "type": "Number"
+            },
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 576,
+            "description": "Toggles the open/closed state of the specified node.",
+            "itemtype": "method",
+            "name": "toggleNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node to toggle.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, events will be\n        suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 591,
+            "description": "Serializes this tree to an object suitable for use in JSON.",
+            "itemtype": "method",
+            "name": "toJSON",
+            "return": {
+                "description": "Serialized tree object.",
+                "type": "Object"
+            },
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 601,
+            "description": "Unselects all selected nodes.",
+            "itemtype": "method",
+            "name": "unselect",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `unselect` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 620,
+            "description": "Unselects the specified node.",
+            "itemtype": "method",
+            "name": "unselectNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node to unselect.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `unselect` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 643,
+            "description": "Moves the specified node and all its children from another tree to this\ntree.",
+            "itemtype": "method",
+            "name": "_adoptNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node to adopt.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "options",
+                    "description": "Options to pass along to `removeNode()`.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 684,
+            "description": "Utility method for lazily publishing and firing events.",
+            "itemtype": "method",
+            "name": "_fire",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Event name to fire.",
+                    "type": "String"
+                },
+                {
+                    "name": "facade",
+                    "description": "Event facade.",
+                    "type": "Object"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "defaultFn",
+                            "description": "Default handler for this event.",
+                            "type": "Function",
+                            "optional": true
+                        },
+                        {
+                            "name": "silent",
+                            "description": "Whether the default handler\n        should be executed directly without actually firing the event.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 715,
+            "description": "Removes the specified node from its parent node if it has one.",
+            "itemtype": "method",
+            "name": "_removeNodeFromParent",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node to remove.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 818,
+            "description": "Whether or not to allow multiple nodes to be selected at once.",
+            "itemtype": "attribute",
+            "name": "multiSelect",
+            "type": "Boolean",
+            "default": "false",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 828,
+            "description": "Root node of this treeview.",
+            "itemtype": "attribute",
+            "name": "rootNode",
+            "type": "Tree.Node",
+            "readonly": "",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 22,
+            "description": "CSS class names used by this treeview.",
+            "itemtype": "property",
+            "name": "classNames",
+            "type": "Object",
+            "class": "TreeView",
+            "module": "gallery-sm-treeview",
+            "subprops": [
+                {
+                    "name": "canHaveChildren",
+                    "description": "Class name indicating that a tree node can\n    contain child nodes (whether or not it actually does).",
+                    "type": "String"
+                },
+                {
+                    "name": "children",
+                    "description": "Class name for a list of child nodes.",
+                    "type": "String"
+                },
+                {
+                    "name": "hasChildren",
+                    "description": "Class name indicating that a tree node has one\n    or more child nodes.",
+                    "type": "String"
+                },
+                {
+                    "name": "indicator",
+                    "description": "Class name for an open/closed indicator.",
+                    "type": "String"
+                },
+                {
+                    "name": "label",
+                    "description": "Class name for a tree node's user-visible label.",
+                    "type": "String"
+                },
+                {
+                    "name": "node",
+                    "description": "Class name for a tree node item.",
+                    "type": "String"
+                },
+                {
+                    "name": "noTouch",
+                    "description": "Class name added to the TreeView container when not\n    using a touchscreen device.",
+                    "type": "String"
+                },
+                {
+                    "name": "open",
+                    "description": "Class name indicating that a tree node is open.",
+                    "type": "String"
+                },
+                {
+                    "name": "row",
+                    "description": "Class name for a row container encompassing the\n    indicator and label within a tree node.",
+                    "type": "String"
+                },
+                {
+                    "name": "selected",
+                    "description": "Class name for a tree node that's selected.",
+                    "type": "String"
+                },
+                {
+                    "name": "touch",
+                    "description": "Class name added to the TreeView container when using\n    a touchscreen device.",
+                    "type": "String"
+                },
+                {
+                    "name": "treeview",
+                    "description": "Class name for the TreeView container.",
+                    "type": "String"
+                }
+            ]
+        },
+        {
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 59,
+            "description": "Whether or not this TreeView has been rendered.",
+            "itemtype": "property",
+            "name": "rendered",
+            "type": "Boolean",
+            "default": "false",
+            "class": "TreeView",
+            "module": "gallery-sm-treeview"
+        },
+        {
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 69,
+            "description": "Simple way to type-check that this is a TreeView instance.",
+            "itemtype": "property",
+            "name": "_isYUITreeView",
+            "type": "Boolean",
+            "default": "true",
+            "access": "protected",
+            "tagname": "",
+            "class": "TreeView",
+            "module": "gallery-sm-treeview"
+        },
+        {
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 78,
+            "description": "Cached value of the `lazyRender` attribute.",
+            "itemtype": "property",
+            "name": "_lazyRender",
+            "type": "Boolean",
+            "access": "protected",
+            "tagname": "",
+            "class": "TreeView",
+            "module": "gallery-sm-treeview"
+        },
+        {
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 97,
+            "description": "Returns the HTML node (as a `Y.Node` instance) associated with the specified\n`Tree.Node` instance, if any.",
+            "itemtype": "method",
+            "name": "getHTMLNode",
+            "params": [
+                {
+                    "name": "treeNode",
+                    "description": "Tree node.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "return": {
+                "description": "`Y.Node` instance associated with the given tree node, or\n    `undefined` if one was not found.",
+                "type": "Node"
+            },
+            "class": "TreeView",
+            "module": "gallery-sm-treeview"
+        },
+        {
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 114,
+            "description": "Renders this TreeView into its container.\n\nIf the container hasn't already been added to the current document, it will\nbe appended to the `<body>` element.",
+            "itemtype": "method",
+            "name": "render",
+            "chainable": 1,
+            "class": "TreeView",
+            "module": "gallery-sm-treeview"
+        },
+        {
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 143,
+            "description": "Renders the children of the specified tree node.\n\nIf a container is specified, it will be assumed to be an existing rendered\ntree node, and the children will be rendered (or re-rendered) inside it.",
+            "itemtype": "method",
+            "name": "renderChildren",
+            "params": [
+                {
+                    "name": "treeNode",
+                    "description": "Tree node whose children should be rendered.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "container",
+                            "description": "`Y.Node` instance of a container into\n        which the children should be rendered. If the container already\n        contains rendered children, they will be re-rendered in place.",
+                            "type": "Node",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "`Y.Node` instance containing the rendered children.",
+                "type": "Node"
+            },
+            "class": "TreeView",
+            "module": "gallery-sm-treeview"
+        },
+        {
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 204,
+            "description": "Renders the specified tree node and its children (if any).\n\nIf a container is specified, the rendered node will be appended to it.",
+            "itemtype": "method",
+            "name": "renderNode",
+            "params": [
+                {
+                    "name": "treeNode",
+                    "description": "Tree node to render.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "container",
+                            "description": "`Y.Node` instance of a container to\n        which the rendered tree node should be appended.",
+                            "type": "Node",
+                            "optional": true
+                        },
+                        {
+                            "name": "renderChildren",
+                            "description": "Whether or not to render\n        this node's children.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "`Y.Node` instance of the rendered tree node.",
+                "type": "Node"
+            },
+            "class": "TreeView",
+            "module": "gallery-sm-treeview"
+        },
+        {
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 298,
+            "description": "Setter for the `lazyRender` attribute.\n\nJust caches the value in a property for faster lookups.",
+            "itemtype": "method",
+            "name": "_setLazyRender",
+            "return": {
+                "description": "Value.",
+                "type": "Boolean"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "TreeView",
+            "module": "gallery-sm-treeview"
+        },
+        {
+            "file": "src/sm-treeview/js/treeview.js",
+            "line": 488,
+            "description": "When `true`, a node's children won't be rendered until the first time\nthat node is opened.\n\nThis can significantly speed up the time it takes to render a large\ntree, but might not make sense if you're using CSS that doesn't hide the\ncontents of closed nodes.",
+            "itemtype": "attribute",
+            "name": "lazyRender",
+            "type": "Boolean",
+            "default": "true",
+            "class": "TreeView",
+            "module": "gallery-sm-treeview"
+        }
+    ],
+    "warnings": []
+}
