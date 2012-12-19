@@ -1,6 +1,6 @@
 {
     "project": {
-        "name": "SmugMug YUI Gallery",
+        "name": "SmugMug YUI Gallery API docs",
         "description": "Kickass gallery modules courtesy of your pals at SmugMug.",
         "version": "3.8.0",
         "url": "https://github.com/smugmug/yui-gallery"
@@ -128,26 +128,7 @@
             "file": "src/sm-menu/js/menu.js",
             "line": 8,
             "description": "Provides the `Y.Menu` widget.",
-            "itemtype": "main",
-            "extra": {
-                "selleck": {
-                    "name": "menu",
-                    "displayName": "Menu",
-                    "description": "Menu widget.",
-                    "author": [
-                        "rgrove"
-                    ],
-                    "tags": [
-                        "menu",
-                        "widget",
-                        "dropdown",
-                        "popup"
-                    ],
-                    "use": [
-                        "menu"
-                    ]
-                }
-            }
+            "itemtype": "main"
         },
         "gallery-sm-menu-plugin": {
             "name": "gallery-sm-menu-plugin",
@@ -177,26 +158,7 @@
             "namespace": "",
             "file": "src/sm-menu/js/menu-base.js",
             "line": 8,
-            "description": "Provides `Menu.Base`.",
-            "extra": {
-                "selleck": {
-                    "name": "menu",
-                    "displayName": "Menu",
-                    "description": "Menu widget.",
-                    "author": [
-                        "rgrove"
-                    ],
-                    "tags": [
-                        "menu",
-                        "widget",
-                        "dropdown",
-                        "popup"
-                    ],
-                    "use": [
-                        "menu"
-                    ]
-                }
-            }
+            "description": "Provides `Menu.Base`."
         },
         "gallery-sm-menu-item": {
             "name": "gallery-sm-menu-item",
@@ -211,26 +173,7 @@
             "namespace": "",
             "file": "src/sm-menu/js/menu-item.js",
             "line": 8,
-            "description": "Provides the `Menu.Item` class.",
-            "extra": {
-                "selleck": {
-                    "name": "menu",
-                    "displayName": "Menu",
-                    "description": "Menu widget.",
-                    "author": [
-                        "rgrove"
-                    ],
-                    "tags": [
-                        "menu",
-                        "widget",
-                        "dropdown",
-                        "popup"
-                    ],
-                    "use": [
-                        "menu"
-                    ]
-                }
-            }
+            "description": "Provides the `Menu.Item` class."
         },
         "gallery-sm-menu-templates": {
             "name": "gallery-sm-menu-templates",
@@ -245,26 +188,7 @@
             "namespace": "",
             "file": "src/sm-menu/js/menu-templates.js",
             "line": 8,
-            "description": "Provides templates for `Menu`.",
-            "extra": {
-                "selleck": {
-                    "name": "menu",
-                    "displayName": "Menu",
-                    "description": "Menu widget.",
-                    "author": [
-                        "rgrove"
-                    ],
-                    "tags": [
-                        "menu",
-                        "widget",
-                        "dropdown",
-                        "popup"
-                    ],
-                    "use": [
-                        "menu"
-                    ]
-                }
-            }
+            "description": "Provides templates for `Menu`."
         },
         "gallery-sm-tree": {
             "name": "gallery-sm-tree",
