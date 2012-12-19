@@ -32,17 +32,10 @@ YUI().use('gallery-sm-treeview', function (Y) {
 });
 ```
 
-Modules
--------
+Documentation
+--------------
 
-### gallery-sm-treeview
-
-Provides the `Y.TreeView` component.
-
-### gallery-sm-treeview-templates
-
-Provides the static `Y.TreeView.Templates` namespace, which contains
-micro-templates used by `Y.TreeView`.
+* [API Docs](http://smugmug.github.com/yui-gallery/api/modules/gallery-sm-treeview.html)
 
 License
 -------

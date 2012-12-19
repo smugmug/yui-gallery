@@ -20,23 +20,10 @@ YUI().use('gallery-sm-tree', function (Y) {
 });
 ```
 
-Modules
--------
+Documentation
+--------------
 
-### gallery-sm-tree
-
-Provides the `Y.Tree` class.
-
-### gallery-sm-tree-node
-
-Provides the `Y.Tree.Node` class, which represents a tree node contained in a
-`Y.Tree` data structure.
-
-### gallery-sm-tree-lazy
-
-Provides `Y.Plugin.Tree.Lazy`, a plugin for `Y.Tree` that makes it easy to
-lazily load and populate the contents of tree nodes the first time they're
-opened.
+* [API Docs](http://smugmug.github.com/yui-gallery/api/modules/gallery-sm-tree.html)
 
 License
 -------

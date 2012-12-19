@@ -8,13 +8,24 @@ This repo contains open source YUI components that have been contributed to the
 Modules
 -------
 
+### [gallery-sm-menu](https://github.com/smugmug/yui-gallery/tree/master/src/sm-menu)
+
+An awesome menu widget that makes it easy to create standalone menus, dropdown
+menus, and context menus.
+
 ### [gallery-sm-tree](https://github.com/smugmug/yui-gallery/tree/master/src/sm-tree)
 
-Provides a generic tree data structure.
+A generic tree data structure. This component powers the gallery-sm-menu and
+gallery-sm-treeview components under the hood.
 
 ### [gallery-sm-treeview](https://github.com/smugmug/yui-gallery/tree/master/src/sm-treeview)
 
 A powerful, easy to use, and extremely fast TreeView widget.
+
+Documentation
+--------------
+
+* [API Docs](http://smugmug.github.com/yui-gallery/api/)
 
 License
 -------
