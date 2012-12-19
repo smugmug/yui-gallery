@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Tree.Node - SmugMug YUI Gallery</title>
+    <title>Menu.Item - SmugMug YUI Gallery</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -116,22 +116,26 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Tree.Node Class</h1>
+                        <h1>Menu.Item Class</h1>
 <div class="box meta">
     
 
     
+        <div class="extends">
+            Extends <a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a>
+        </div>
+    
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l9"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:9</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-item.js.html#l8"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-item.js:8</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/gallery-sm-tree-node.html">gallery-sm-tree-node</a><br>
-            Parent Module: <a href="../modules/gallery-sm-tree.html">gallery-sm-tree</a>
+            Module: <a href="../modules/gallery-sm-menu-item.html">gallery-sm-menu-item</a><br>
+            Parent Module: <a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a>
         
     
 
@@ -141,14 +145,14 @@
 
 
 <div class="box intro">
-    <p>Represents a tree node in a <code>Tree</code> data structure.</p>
+    <p>Represents a single menu item in a <code>Menu</code>.</p>
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_Tree.Node" class="method item">
-    <h3 class="name"><code>Tree.Node</code></h3>
+        <div id="method_Menu.Item" class="method item">
+    <h3 class="name"><code>Menu.Item</code></h3>
 
     
         <div class="args">
@@ -156,7 +160,7 @@
             
                 <li class="arg">
                     
-                        <code>tree</code>
+                        <code>menu</code>
                     
                 </li>
             
@@ -195,7 +199,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l9"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:9</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-item.js.html#l8"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-item.js:8</code></a>
         
         </p>
 
@@ -217,14 +221,14 @@
             
                 <li class="param">
                     
-                        <code class="param-name">tree</code>
-                        <span class="type"><a href="../classes/Tree.html" class="crosslink">Tree</a></span>
+                        <code class="param-name">menu</code>
+                        <span class="type"><a href="../classes/Menu.html" class="crosslink">Menu</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p><code>Tree</code> instance with which this node should be associated.</p>
+                        <p><code>Menu</code> instance with which this node should be associated.</p>
                     </div>
 
                     
@@ -240,88 +244,12 @@
                     
 
                     <div class="param-description">
-                        <p>Configuration hash for this node.</p>
+                        <p>Configuration hash for this menu item. Supports all the
+    config properties of <code>Tree.Node</code> in addition to the following.</p>
                     </div>
 
                     
                         <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[canHaveChildren=false]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>Whether or not this node can
-        contain child nodes. Will be automatically set to <code>true</code> if not
-        specified and <code>config.children</code> contains one or more children.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[children]</code>
-                                    <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node[]</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>Array of <code>Tree.Node</code> instances
-        for child nodes of this node.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[data]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>Implementation-specific data related to this
-        node. You may add arbitrary properties to this hash for your own use.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[id]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>Unique id for this node. This id must be unique
-        among all tree nodes on the entire page, and will also be used as this
-        node's DOM id when it's rendered by a TreeView. A unique id will be
-        automatically generated unless you specify a custom value.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[label=&#x27;&#x27;]</code>
-                                    <span class="type">HTML</span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>User-visible HTML label for this node.</p>
-                                </div>
-
-                                
-                            </li>
                             
                             <li class="param">
                                 
@@ -331,10 +259,67 @@
                                 
 
                                 <div class="param-description">
-                                    <p>State hash for this node. You may add
-        arbitrary state properties to this hash for your own use. See the
-        docs for <code>Tree.Node</code>'s <code>state</code> property for details on state values used
-        internally by <code>Tree.Node</code>.</p>
+                                    <p>State hash for this menu item.</p>
+                                </div>
+
+                                
+                                    <ul class="params-list">
+                                        
+                                        <li class="param">
+                                            
+                                                <code class="param-name optional">[disabled=false]</code>
+                                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                                <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+
+                                            <div class="param-description">
+                                                If <code>true</code>, this menu item
+            will be disabled, and will not be clickable or selectable.
+                                            </div>
+                                        </li>
+                                        
+                                        <li class="param">
+                                            
+                                                <code class="param-name optional">[hidden=false]</code>
+                                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                                <span class="flag optional" title="This parameter is optional.">optional</span>
+                                            
+
+                                            <div class="param-description">
+                                                If <code>true</code>, this menu item
+            will be hidden.
+                                            </div>
+                                        </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[type=&#x27;item&#x27;]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Type of this menu item. May be 'item',
+        'heading', or 'separator'.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[url=&#x27;#&#x27;]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>URL associated with this item. If this item
+        is of type 'item', clicking on the item will navigate to this URL.</p>
                                 </div>
 
                                 
@@ -378,16 +363,16 @@
                 <div class="index-section methods">
                     <h3>Methods</h3>
 
-                    <ul class="index-list methods">
+                    <ul class="index-list methods extends">
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_append">append</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_close">close</a>
 
                                 
@@ -395,6 +380,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_disable">disable</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
                                 <a href="#method_empty">empty</a>
 
                                 
@@ -402,6 +394,13 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_enable">enable</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
                                 <a href="#method_hasChildren">hasChildren</a>
 
                                 
@@ -409,20 +408,27 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_hide">hide</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
                                 <a href="#method_index">index</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_indexOf">indexOf</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_insert">insert</a>
 
                                 
@@ -430,55 +436,69 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_isDisabled">isDisabled</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_isHidden">isHidden</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
                                 <a href="#method_isInTree">isInTree</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_isOpen">isOpen</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_isRoot">isRoot</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_isSelected">isSelected</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_open">open</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_prepend">prepend</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_remove">remove</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_select">select</a>
 
                                 
@@ -486,27 +506,34 @@
                             </li>
                         
                             <li class="index-item method">
+                                <a href="#method_show">show</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
                                 <a href="#method_size">size</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_toggle">toggle</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_toJSON">toJSON</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method">
+                            <li class="index-item method inherited">
                                 <a href="#method_unselect">unselect</a>
 
                                 
@@ -521,86 +548,86 @@
                 <div class="index-section properties">
                     <h3>Properties</h3>
 
-                    <ul class="index-list properties">
+                    <ul class="index-list properties extends">
                         
-                            <li class="index-item property protected">
+                            <li class="index-item property protected inherited">
                                 <a href="#property__indexMap">_indexMap</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property protected">
+                            <li class="index-item property protected inherited">
                                 <a href="#property__isIndexStale">_isIndexStale</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property protected">
+                            <li class="index-item property protected inherited">
                                 <a href="#property__isYUITreeNode">_isYUITreeNode</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property protected">
+                            <li class="index-item property protected inherited">
                                 <a href="#property__serializable">_serializable</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_canHaveChildren">canHaveChildren</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_children">children</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_data">data</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_id">id</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_label">label</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_parent">parent</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_state">state</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item property">
+                            <li class="index-item property inherited">
                                 <a href="#property_tree">tree</a>
 
                                 
@@ -621,7 +648,7 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_append" class="method item">
+                    <div id="method_append" class="method item inherited">
     <h3 class="name"><code>append</code></h3>
 
     
@@ -665,11 +692,8 @@
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_append">Tree.Node</a>:
             
         
         
@@ -770,7 +794,7 @@ children.</p>
 </div>
 
                 
-                    <div id="method_close" class="method item">
+                    <div id="method_close" class="method item inherited">
     <h3 class="name"><code>close</code></h3>
 
     
@@ -806,11 +830,8 @@ children.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_close">Tree.Node</a>:
             
         
         
@@ -879,7 +900,116 @@ children.</p>
 </div>
 
                 
-                    <div id="method_empty" class="method item">
+                    <div id="method_disable" class="method item">
+    <h3 class="name"><code>disable</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-item.js.html#l47"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-item.js:47</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Disables this menu item. Disabled items are not clickable or selectable.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Options.</p>
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[silent=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If <code>true</code>, the <code>disable</code> event
+        will be suppressed.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_empty" class="method item inherited">
     <h3 class="name"><code>empty</code></h3>
 
     
@@ -917,11 +1047,8 @@ children.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_empty">Tree.Node</a>:
             
         
         
@@ -1020,7 +1147,116 @@ reusable unless the <code>destroy</code> option is truthy.</p>
 </div>
 
                 
-                    <div id="method_hasChildren" class="method item">
+                    <div id="method_enable" class="method item">
+    <h3 class="name"><code>enable</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-item.js.html#l61"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-item.js:61</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Enables this menu item.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Options.</p>
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[silent=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If <code>true</code>, the <code>enable</code> event
+        will be suppressed.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_hasChildren" class="method item inherited">
     <h3 class="name"><code>hasChildren</code></h3>
 
     
@@ -1048,11 +1284,8 @@ reusable unless the <code>destroy</code> option is truthy.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_hasChildren">Tree.Node</a>:
             
         
         
@@ -1092,7 +1325,116 @@ reusable unless the <code>destroy</code> option is truthy.</p>
 </div>
 
                 
-                    <div id="method_index" class="method item">
+                    <div id="method_hide" class="method item">
+    <h3 class="name"><code>hide</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-item.js.html#l75"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-item.js:75</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Hides this menu item.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Options.</p>
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[silent=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If <code>true</code>, the <code>hide</code> event
+        will be suppressed.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_index" class="method item inherited">
     <h3 class="name"><code>index</code></h3>
 
     
@@ -1120,11 +1462,8 @@ reusable unless the <code>destroy</code> option is truthy.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_index">Tree.Node</a>:
             
         
         
@@ -1165,7 +1504,7 @@ this node doesn't have a parent node.</p>
 </div>
 
                 
-                    <div id="method_indexOf" class="method item">
+                    <div id="method_indexOf" class="method item inherited">
     <h3 class="name"><code>indexOf</code></h3>
 
     
@@ -1203,11 +1542,8 @@ this node doesn't have a parent node.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_indexOf">Tree.Node</a>:
             
         
         
@@ -1271,7 +1607,7 @@ not a child of this node.</p>
 </div>
 
                 
-                    <div id="method_insert" class="method item">
+                    <div id="method_insert" class="method item inherited">
     <h3 class="name"><code>insert</code></h3>
 
     
@@ -1315,11 +1651,8 @@ not a child of this node.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_insert">Tree.Node</a>:
             
         
         
@@ -1439,8 +1772,8 @@ be removed from that tree and moved to this one.</p>
 </div>
 
                 
-                    <div id="method_isInTree" class="method item">
-    <h3 class="name"><code>isInTree</code></h3>
+                    <div id="method_isDisabled" class="method item">
+    <h3 class="name"><code>isDisabled</code></h3>
 
     
         <span class="paren">()</span>
@@ -1472,6 +1805,147 @@ be removed from that tree and moved to this one.</p>
                 
                 Defined in
                 
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-item.js.html#l89"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-item.js:89</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns <code>true</code> if this menu item is currently disabled.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <code>true</code> if this menu item is currently disabled, <code>false</code>
+    otherwise.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_isHidden" class="method item">
+    <h3 class="name"><code>isHidden</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-item.js.html#l100"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-item.js:100</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns <code>true</code> if this menu item is currently hidden.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <code>true</code> if this menu item is currently hidden, <code>false</code>
+    otherwise.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_isInTree" class="method item inherited">
+    <h3 class="name"><code>isInTree</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_isInTree">Tree.Node</a>:
             
         
         
@@ -1512,7 +1986,7 @@ merely associated with a tree and has not yet been inserted.</p>
 </div>
 
                 
-                    <div id="method_isOpen" class="method item">
+                    <div id="method_isOpen" class="method item inherited">
     <h3 class="name"><code>isOpen</code></h3>
 
     
@@ -1540,11 +2014,8 @@ merely associated with a tree and has not yet been inserted.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_isOpen">Tree.Node</a>:
             
         
         
@@ -1583,7 +2054,7 @@ merely associated with a tree and has not yet been inserted.</p>
 </div>
 
                 
-                    <div id="method_isRoot" class="method item">
+                    <div id="method_isRoot" class="method item inherited">
     <h3 class="name"><code>isRoot</code></h3>
 
     
@@ -1611,11 +2082,8 @@ merely associated with a tree and has not yet been inserted.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_isRoot">Tree.Node</a>:
             
         
         
@@ -1655,7 +2123,7 @@ merely associated with a tree and has not yet been inserted.</p>
 </div>
 
                 
-                    <div id="method_isSelected" class="method item">
+                    <div id="method_isSelected" class="method item inherited">
     <h3 class="name"><code>isSelected</code></h3>
 
     
@@ -1683,11 +2151,8 @@ merely associated with a tree and has not yet been inserted.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_isSelected">Tree.Node</a>:
             
         
         
@@ -1727,7 +2192,7 @@ merely associated with a tree and has not yet been inserted.</p>
 </div>
 
                 
-                    <div id="method_open" class="method item">
+                    <div id="method_open" class="method item inherited">
     <h3 class="name"><code>open</code></h3>
 
     
@@ -1763,11 +2228,8 @@ merely associated with a tree and has not yet been inserted.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_open">Tree.Node</a>:
             
         
         
@@ -1836,7 +2298,7 @@ merely associated with a tree and has not yet been inserted.</p>
 </div>
 
                 
-                    <div id="method_prepend" class="method item">
+                    <div id="method_prepend" class="method item inherited">
     <h3 class="name"><code>prepend</code></h3>
 
     
@@ -1880,11 +2342,8 @@ merely associated with a tree and has not yet been inserted.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_prepend">Tree.Node</a>:
             
         
         
@@ -1987,7 +2446,7 @@ be removed from that tree and moved to this one.</p>
 </div>
 
                 
-                    <div id="method_remove" class="method item">
+                    <div id="method_remove" class="method item inherited">
     <h3 class="name"><code>remove</code></h3>
 
     
@@ -2023,11 +2482,8 @@ be removed from that tree and moved to this one.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_remove">Tree.Node</a>:
             
         
         
@@ -2112,7 +2568,7 @@ be removed from that tree and moved to this one.</p>
 </div>
 
                 
-                    <div id="method_select" class="method item">
+                    <div id="method_select" class="method item inherited">
     <h3 class="name"><code>select</code></h3>
 
     
@@ -2148,11 +2604,8 @@ be removed from that tree and moved to this one.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_select">Tree.Node</a>:
             
         
         
@@ -2221,7 +2674,116 @@ be removed from that tree and moved to this one.</p>
 </div>
 
                 
-                    <div id="method_size" class="method item">
+                    <div id="method_show" class="method item">
+    <h3 class="name"><code>show</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-item.js.html#l111"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-item.js:111</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Shows this menu item.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Options.</p>
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[silent=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If <code>true</code>, the <code>show</code> event
+        will be suppressed.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_size" class="method item inherited">
     <h3 class="name"><code>size</code></h3>
 
     
@@ -2249,11 +2811,8 @@ be removed from that tree and moved to this one.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_size">Tree.Node</a>:
             
         
         
@@ -2294,7 +2853,7 @@ descendants of this node's children.</p>
 </div>
 
                 
-                    <div id="method_toggle" class="method item">
+                    <div id="method_toggle" class="method item inherited">
     <h3 class="name"><code>toggle</code></h3>
 
     
@@ -2330,11 +2889,8 @@ descendants of this node's children.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_toggle">Tree.Node</a>:
             
         
         
@@ -2403,7 +2959,7 @@ descendants of this node's children.</p>
 </div>
 
                 
-                    <div id="method_toJSON" class="method item">
+                    <div id="method_toJSON" class="method item inherited">
     <h3 class="name"><code>toJSON</code></h3>
 
     
@@ -2431,11 +2987,8 @@ descendants of this node's children.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_toJSON">Tree.Node</a>:
             
         
         
@@ -2474,7 +3027,7 @@ descendants of this node's children.</p>
 </div>
 
                 
-                    <div id="method_unselect" class="method item">
+                    <div id="method_unselect" class="method item inherited">
     <h3 class="name"><code>unselect</code></h3>
 
     
@@ -2510,11 +3063,8 @@ descendants of this node's children.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#method_unselect">Tree.Node</a>:
             
         
         
@@ -2591,7 +3141,7 @@ descendants of this node's children.</p>
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property__indexMap" class="property item protected">
+                    <div id="property__indexMap" class="property item protected inherited">
     <h3 class="name"><code>_indexMap</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
@@ -2608,11 +3158,8 @@ descendants of this node's children.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property__indexMap">Tree.Node</a>:
             
         
         
@@ -2637,7 +3184,7 @@ descendants of this node's children.</p>
 </div>
 
                 
-                    <div id="property__isIndexStale" class="property item protected">
+                    <div id="property__isIndexStale" class="property item protected inherited">
     <h3 class="name"><code>_isIndexStale</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
@@ -2654,11 +3201,8 @@ descendants of this node's children.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property__isIndexStale">Tree.Node</a>:
             
         
         
@@ -2685,7 +3229,7 @@ descendants of this node's children.</p>
 </div>
 
                 
-                    <div id="property__isYUITreeNode" class="property item protected">
+                    <div id="property__isYUITreeNode" class="property item protected inherited">
     <h3 class="name"><code>_isYUITreeNode</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
@@ -2702,11 +3246,8 @@ descendants of this node's children.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property__isYUITreeNode">Tree.Node</a>:
             
         
         
@@ -2733,7 +3274,7 @@ descendants of this node's children.</p>
 </div>
 
                 
-                    <div id="property__serializable" class="property item protected">
+                    <div id="property__serializable" class="property item protected inherited">
     <h3 class="name"><code>_serializable</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String[]</a></span>
 
@@ -2750,11 +3291,8 @@ descendants of this node's children.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property__serializable">Tree.Node</a>:
             
         
         
@@ -2783,7 +3321,7 @@ managed outside of this list.</p>
 </div>
 
                 
-                    <div id="property_canHaveChildren" class="property item">
+                    <div id="property_canHaveChildren" class="property item inherited">
     <h3 class="name"><code>canHaveChildren</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
 
@@ -2798,11 +3336,8 @@ managed outside of this list.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property_canHaveChildren">Tree.Node</a>:
             
         
         
@@ -2836,7 +3371,7 @@ true automatically.</p>
 </div>
 
                 
-                    <div id="property_children" class="property item">
+                    <div id="property_children" class="property item inherited">
     <h3 class="name"><code>children</code></h3>
     <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node[]</a></span>
 
@@ -2851,11 +3386,8 @@ true automatically.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property_children">Tree.Node</a>:
             
         
         
@@ -2882,7 +3414,7 @@ true automatically.</p>
 </div>
 
                 
-                    <div id="property_data" class="property item">
+                    <div id="property_data" class="property item inherited">
     <h3 class="name"><code>data</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
@@ -2897,11 +3429,8 @@ true automatically.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property_data">Tree.Node</a>:
             
         
         
@@ -2932,7 +3461,7 @@ you want to store on this node instance.</p>
 </div>
 
                 
-                    <div id="property_id" class="property item">
+                    <div id="property_id" class="property item inherited">
     <h3 class="name"><code>id</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
 
@@ -2947,11 +3476,8 @@ you want to store on this node instance.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property_id">Tree.Node</a>:
             
         
         
@@ -2976,7 +3502,7 @@ you want to store on this node instance.</p>
 </div>
 
                 
-                    <div id="property_label" class="property item">
+                    <div id="property_label" class="property item inherited">
     <h3 class="name"><code>label</code></h3>
     <span class="type">HTML</span>
 
@@ -2991,11 +3517,8 @@ you want to store on this node instance.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property_label">Tree.Node</a>:
             
         
         
@@ -3025,7 +3548,7 @@ untrusted user input here without escaping it first using <code>Y.Escape.html()<
 </div>
 
                 
-                    <div id="property_parent" class="property item">
+                    <div id="property_parent" class="property item inherited">
     <h3 class="name"><code>parent</code></h3>
     <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a></span>
 
@@ -3040,11 +3563,8 @@ untrusted user input here without escaping it first using <code>Y.Escape.html()<
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property_parent">Tree.Node</a>:
             
         
         
@@ -3070,7 +3590,7 @@ the root node.</p>
 </div>
 
                 
-                    <div id="property_state" class="property item">
+                    <div id="property_state" class="property item inherited">
     <h3 class="name"><code>state</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
 
@@ -3085,11 +3605,8 @@ the root node.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property_state">Tree.Node</a>:
             
         
         
@@ -3148,7 +3665,7 @@ the root node.</p>
 </div>
 
                 
-                    <div id="property_tree" class="property item">
+                    <div id="property_tree" class="property item inherited">
     <h3 class="name"><code>tree</code></h3>
     <span class="type"><a href="../classes/Tree.html" class="crosslink">Tree</a></span>
 
@@ -3163,11 +3680,8 @@ the root node.</p>
     <div class="meta">
         
             
-                
-                <p>
-                
-                Defined in
-                
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Node.html#property_tree">Tree.Node</a>:
             
         
         

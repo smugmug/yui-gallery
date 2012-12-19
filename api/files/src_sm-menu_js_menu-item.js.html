@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>gallery-sm-tree-lazy - SmugMug YUI Gallery</title>
+    <title>src&#x2F;sm-menu&#x2F;js&#x2F;menu-item.js - SmugMug YUI Gallery</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -116,50 +116,138 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>gallery-sm-tree-lazy Module</h1>
-<div class="box clearfix meta">
-    
+                        <h1 class="file-heading">File: src&#x2F;sm-menu&#x2F;js&#x2F;menu-item.js</h1>
 
-    
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x2F;**
+Provides the &#x60;Menu.Item&#x60; class.
 
-    
-        <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_sm-tree_js_plugins_tree-lazy.js.html#l9"><code>src&#x2F;sm-tree&#x2F;js&#x2F;plugins&#x2F;tree-lazy.js:9</code></a>
-        </div>
-    
+@module gallery-sm-menu
+@submodule gallery-sm-menu-item
+**&#x2F;
 
-    
-</div>
+&#x2F;**
+Represents a single menu item in a &#x60;Menu&#x60;.
 
+@class Menu.Item
+@constructor
+@param {Menu} menu &#x60;Menu&#x60; instance with which this node should be associated.
+@param {Object} [config] Configuration hash for this menu item. Supports all the
+    config properties of &#x60;Tree.Node&#x60; in addition to the following.
 
+    @param {Object} [config.state] State hash for this menu item.
 
-<div class="box intro">
-    <p>Provides <code>Plugin.Tree.Lazy</code>, a plugin for <code>Tree</code> that makes it easy to lazily
-load and populate the contents of tree nodes the first time they're opened.</p>
-</div>
+        @param {Boolean} [config.state.disabled=false] If &#x60;true&#x60;, this menu item
+            will be disabled, and will not be clickable or selectable.
 
+        @param {Boolean} [config.state.hidden=false] If &#x60;true&#x60;, this menu item
+            will be hidden.
 
+    @param {String} [config.type=&#x27;item&#x27;] Type of this menu item. May be &#x27;item&#x27;,
+        &#x27;heading&#x27;, or &#x27;separator&#x27;.
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
+    @param {String} [config.url=&#x27;#&#x27;] URL associated with this item. If this item
+        is of type &#x27;item&#x27;, clicking on the item will navigate to this URL.
 
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="..&#x2F;classes/Plugin.Tree.Lazy.html">
-                        Plugin.Tree.Lazy
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
+@extends Tree.Node
+**&#x2F;
 
-    <div class="yui3-u-1-2">
-        
-    </div>
+function MenuItem(menu, config) {
+    config || (config = {});
+
+    this.id   = this._yuid = config.id || Y.guid(&#x27;menuItem-&#x27;);
+    this.type = config.type || &#x27;item&#x27;;
+    this.url  = config.url || &#x27;#&#x27;;
+
+    MenuItem.superclass.constructor.call(this, menu, config);
+}
+
+Y.extend(MenuItem, Y.Tree.Node, {
+    _serializable: Y.Tree.Node.prototype._serializable.concat(&#x27;type&#x27;, &#x27;url&#x27;),
+
+    &#x2F;**
+    Disables this menu item. Disabled items are not clickable or selectable.
+
+    @method disable
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;disable&#x60; event
+            will be suppressed.
+    @chainable
+    **&#x2F;
+    disable: function (options) {
+        this.tree.disableItem(this, options);
+        return this;
+    },
+
+    &#x2F;**
+    Enables this menu item.
+
+    @method enable
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;enable&#x60; event
+            will be suppressed.
+    @chainable
+    **&#x2F;
+    enable: function (options) {
+        this.tree.enableItem(this, options);
+        return this;
+    },
+
+    &#x2F;**
+    Hides this menu item.
+
+    @method hide
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;hide&#x60; event
+            will be suppressed.
+    @chainable
+    **&#x2F;
+    hide: function (options) {
+        this.tree.hideItem(this, options);
+        return this;
+    },
+
+    &#x2F;**
+    Returns &#x60;true&#x60; if this menu item is currently disabled.
+
+    @method isDisabled
+    @return {Boolean} &#x60;true&#x60; if this menu item is currently disabled, &#x60;false&#x60;
+        otherwise.
+    **&#x2F;
+    isDisabled: function () {
+        return !!this.state.disabled;
+    },
+
+    &#x2F;**
+    Returns &#x60;true&#x60; if this menu item is currently hidden.
+
+    @method isHidden
+    @return {Boolean} &#x60;true&#x60; if this menu item is currently hidden, &#x60;false&#x60;
+        otherwise.
+    **&#x2F;
+    isHidden: function () {
+        return !!this.state.hidden;
+    },
+
+    &#x2F;**
+    Shows this menu item.
+
+    @method show
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;show&#x60; event
+            will be suppressed.
+    @chainable
+    **&#x2F;
+    show: function (options) {
+        this.tree.showItem(this, options);
+        return this;
+    }
+});
+
+Y.namespace(&#x27;Menu&#x27;).Item = MenuItem;
+
+    </pre>
 </div>
 
                     </div>

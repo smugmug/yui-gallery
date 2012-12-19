@@ -6,6 +6,61 @@
         "url": "https://github.com/smugmug/yui-gallery"
     },
     "files": {
+        "src/sm-menu/js/plugins/menu-plugin.js": {
+            "name": "src/sm-menu/js/plugins/menu-plugin.js",
+            "modules": {
+                "gallery-sm-menu-plugin": 1
+            },
+            "classes": {
+                "Plugin.Menu": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-menu/js/menu-base.js": {
+            "name": "src/sm-menu/js/menu-base.js",
+            "modules": {
+                "gallery-sm-menu-base": 1
+            },
+            "classes": {
+                "Menu.Base": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-menu/js/menu-item.js": {
+            "name": "src/sm-menu/js/menu-item.js",
+            "modules": {
+                "gallery-sm-menu-item": 1
+            },
+            "classes": {
+                "Menu.Item": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-menu/js/menu-templates.js": {
+            "name": "src/sm-menu/js/menu-templates.js",
+            "modules": {
+                "gallery-sm-menu-templates": 1
+            },
+            "classes": {
+                "Menu.Templates": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-menu/js/menu.js": {
+            "name": "src/sm-menu/js/menu.js",
+            "modules": {
+                "gallery-sm-menu": 1
+            },
+            "classes": {
+                "Menu": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/sm-tree/js/plugins/tree-lazy.js": {
             "name": "src/sm-tree/js/plugins/tree-lazy.js",
             "modules": {
@@ -52,6 +107,165 @@
         }
     },
     "modules": {
+        "gallery-sm-menu": {
+            "name": "gallery-sm-menu",
+            "submodules": {
+                "gallery-sm-menu-plugin": 1,
+                "gallery-sm-menu-base": 1,
+                "gallery-sm-menu-item": 1,
+                "gallery-sm-menu-templates": 1
+            },
+            "classes": {
+                "Plugin.Menu": 1,
+                "Menu.Base": 1,
+                "Menu.Item": 1,
+                "Menu.Templates": 1,
+                "Menu": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "src/sm-menu/js/menu.js",
+            "line": 8,
+            "description": "Provides the `Y.Menu` widget.",
+            "itemtype": "main",
+            "extra": {
+                "selleck": {
+                    "name": "menu",
+                    "displayName": "Menu",
+                    "description": "Menu widget.",
+                    "author": [
+                        "rgrove"
+                    ],
+                    "tags": [
+                        "menu",
+                        "widget",
+                        "dropdown",
+                        "popup"
+                    ],
+                    "use": [
+                        "menu"
+                    ]
+                }
+            }
+        },
+        "gallery-sm-menu-plugin": {
+            "name": "gallery-sm-menu-plugin",
+            "submodules": {},
+            "classes": {
+                "Plugin.Menu": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-menu",
+            "namespace": "",
+            "file": "src/sm-menu/js/plugins/menu-plugin.js",
+            "line": 8,
+            "description": "Provides the `Y.Plugin.Menu` Node plugin."
+        },
+        "gallery-sm-menu-base": {
+            "name": "gallery-sm-menu-base",
+            "submodules": {},
+            "classes": {
+                "Menu.Base": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-menu",
+            "namespace": "",
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 8,
+            "description": "Provides `Menu.Base`.",
+            "extra": {
+                "selleck": {
+                    "name": "menu",
+                    "displayName": "Menu",
+                    "description": "Menu widget.",
+                    "author": [
+                        "rgrove"
+                    ],
+                    "tags": [
+                        "menu",
+                        "widget",
+                        "dropdown",
+                        "popup"
+                    ],
+                    "use": [
+                        "menu"
+                    ]
+                }
+            }
+        },
+        "gallery-sm-menu-item": {
+            "name": "gallery-sm-menu-item",
+            "submodules": {},
+            "classes": {
+                "Menu.Item": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-menu",
+            "namespace": "",
+            "file": "src/sm-menu/js/menu-item.js",
+            "line": 8,
+            "description": "Provides the `Menu.Item` class.",
+            "extra": {
+                "selleck": {
+                    "name": "menu",
+                    "displayName": "Menu",
+                    "description": "Menu widget.",
+                    "author": [
+                        "rgrove"
+                    ],
+                    "tags": [
+                        "menu",
+                        "widget",
+                        "dropdown",
+                        "popup"
+                    ],
+                    "use": [
+                        "menu"
+                    ]
+                }
+            }
+        },
+        "gallery-sm-menu-templates": {
+            "name": "gallery-sm-menu-templates",
+            "submodules": {},
+            "classes": {
+                "Menu.Templates": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-menu",
+            "namespace": "",
+            "file": "src/sm-menu/js/menu-templates.js",
+            "line": 8,
+            "description": "Provides templates for `Menu`.",
+            "extra": {
+                "selleck": {
+                    "name": "menu",
+                    "displayName": "Menu",
+                    "description": "Menu widget.",
+                    "author": [
+                        "rgrove"
+                    ],
+                    "tags": [
+                        "menu",
+                        "widget",
+                        "dropdown",
+                        "popup"
+                    ],
+                    "use": [
+                        "menu"
+                    ]
+                }
+            }
+        },
         "gallery-sm-tree": {
             "name": "gallery-sm-tree",
             "submodules": {
@@ -116,6 +330,161 @@
         }
     },
     "classes": {
+        "Plugin.Menu": {
+            "name": "Plugin.Menu",
+            "shortname": "Plugin.Menu",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-plugin",
+            "namespace": "",
+            "file": "src/sm-menu/js/plugins/menu-plugin.js",
+            "line": 8,
+            "description": "Node plugin that toggles a dropdown menu when the host node is clicked.\n\n### Example\n\n    YUI().use('menu-plugin', function (Y) {\n        var button = Y.one('#button');\n\n        // Plug a dropdown menu into the button.\n        button.plug(Y.Plugin.Menu, {\n            items: [\n                {label: 'Item One'},\n                {label: 'Item Two'},\n                {label: 'Item Three'}\n            ]\n        });\n\n        // The menu will automatically be displayed whenever the button is\n        // clicked, but you can also toggle it manually.\n        button.menu.toggle();\n    });",
+            "is_constructor": 1,
+            "extends": "Menu",
+            "uses": [
+                "Plugin.Base"
+            ]
+        },
+        "Menu.Base": {
+            "name": "Menu.Base",
+            "shortname": "Menu.Base",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base",
+            "namespace": "",
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 8,
+            "description": "Base menu functionality.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "config",
+                    "description": "Config options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "items",
+                            "description": "Array of `Menu.Item` instances\n        or menu item config objects to add to this menu.",
+                            "type": "Menu.Item[]|Object[]",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "extends": "Tree"
+        },
+        "Menu.Item": {
+            "name": "Menu.Item",
+            "shortname": "Menu.Item",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-item",
+            "namespace": "",
+            "file": "src/sm-menu/js/menu-item.js",
+            "line": 8,
+            "description": "Represents a single menu item in a `Menu`.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "menu",
+                    "description": "`Menu` instance with which this node should be associated.",
+                    "type": "Menu"
+                },
+                {
+                    "name": "config",
+                    "description": "Configuration hash for this menu item. Supports all the\n    config properties of `Tree.Node` in addition to the following.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "state",
+                            "description": "State hash for this menu item.",
+                            "type": "Object",
+                            "optional": true,
+                            "props": [
+                                {
+                                    "name": "disabled",
+                                    "description": "If `true`, this menu item\n            will be disabled, and will not be clickable or selectable.",
+                                    "type": "Boolean",
+                                    "optional": true,
+                                    "optdefault": "false"
+                                },
+                                {
+                                    "name": "hidden",
+                                    "description": "If `true`, this menu item\n            will be hidden.",
+                                    "type": "Boolean",
+                                    "optional": true,
+                                    "optdefault": "false"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "type",
+                            "description": "Type of this menu item. May be 'item',\n        'heading', or 'separator'.",
+                            "type": "String",
+                            "optional": true,
+                            "optdefault": "'item'"
+                        },
+                        {
+                            "name": "url",
+                            "description": "URL associated with this item. If this item\n        is of type 'item', clicking on the item will navigate to this URL.",
+                            "type": "String",
+                            "optional": true,
+                            "optdefault": "'#'"
+                        }
+                    ]
+                }
+            ],
+            "extends": "Tree.Node"
+        },
+        "Menu.Templates": {
+            "name": "Menu.Templates",
+            "shortname": "Menu.Templates",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-templates",
+            "namespace": "",
+            "file": "src/sm-menu/js/menu-templates.js",
+            "line": 8,
+            "description": "Templates for `Menu`."
+        },
+        "Menu": {
+            "name": "Menu",
+            "shortname": "Menu",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-menu",
+            "namespace": "",
+            "file": "src/sm-menu/js/menu.js",
+            "line": 8,
+            "description": "Menu widget.",
+            "is_constructor": 1,
+            "extends": "Menu.Base",
+            "uses": [
+                "View"
+            ]
+        },
         "Plugin.Tree.Lazy": {
             "name": "Plugin.Tree.Lazy",
             "shortname": "Plugin.Tree.Lazy",
@@ -290,6 +659,1254 @@
         }
     },
     "classitems": [
+        {
+            "file": "src/sm-menu/js/plugins/menu-plugin.js",
+            "line": 51,
+            "description": "Repositions this menu so that it is anchored to a specified node, region, or\nset of pixel coordinates.\n\nThe menu will be displayed at the most advantageous position relative to the\nanchor point to ensure that as much of the menu as possible is visible\nwithin the viewport.\n\nIf no anchor point is specified, the menu will be positioned relative to its\nhost node.",
+            "itemtype": "method",
+            "name": "reposition",
+            "params": [
+                {
+                    "name": "anchorPoint",
+                    "description": "Anchor point at which this menu\n    should be positioned. The point may be specified as a `Y.Node`\n    reference, a region object, or an array of X and Y pixel coordinates.",
+                    "type": "Node|Number[]|Object",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "class": "Plugin.Menu",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-plugin"
+        },
+        {
+            "file": "src/sm-menu/js/plugins/menu-plugin.js",
+            "line": 100,
+            "description": "Returns an efficient test function that can be passed to `Y.Node#ancestor()`\nto test whether a node is this menu's container or its plugin host.\n\nThis is broken out to make overriding easier in subclasses.",
+            "itemtype": "method",
+            "name": "_getAncestorTestFn",
+            "return": {
+                "description": "Test function.",
+                "type": "Function"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.Menu",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-plugin"
+        },
+        {
+            "file": "src/sm-menu/js/plugins/menu-plugin.js",
+            "line": 173,
+            "description": "If `true`, this menu will be shown when the host node is clicked with\nthe left mouse button or (in the case of `<button>`, `<input>`, and\n`<a>` elements) activated with the Return key.",
+            "itemtype": "attribute",
+            "name": "showOnClick",
+            "type": "Boolean",
+            "default": "true",
+            "initonly": "",
+            "class": "Plugin.Menu",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-plugin"
+        },
+        {
+            "file": "src/sm-menu/js/plugins/menu-plugin.js",
+            "line": 187,
+            "description": "If `true`, this menu will be shown when the host node's `contextmenu`\nevent occurs, which happens when the user takes an action that would\nnormally display the browser's context menu (such as right-clicking).\n\nWhen `true`, the browser's default context menu will be prevented from\nappearing.",
+            "itemtype": "attribute",
+            "name": "showOnContext",
+            "type": "Boolean",
+            "default": "false",
+            "initonly": "",
+            "class": "Plugin.Menu",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-plugin"
+        },
+        {
+            "file": "src/sm-menu/js/plugins/menu-plugin.js",
+            "line": 204,
+            "description": "If `true`, this menu will be shown when the host node is hovered or\nreceives focus instead of only being shown when it's clicked.",
+            "itemtype": "attribute",
+            "name": "showOnHover",
+            "type": "Boolean",
+            "default": "false",
+            "initonly": "",
+            "class": "Plugin.Menu",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-plugin"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 19,
+            "description": "Fired when a menu item is disabled.",
+            "itemtype": "event",
+            "name": "disable",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item that was disabled.",
+                    "type": "Menu.Item"
+                }
+            ],
+            "preventable": "_defDisableFn",
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 28,
+            "description": "Fired when a menu item is enabled.",
+            "itemtype": "event",
+            "name": "enable",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item that was enabled.",
+                    "type": "Menu.Item"
+                }
+            ],
+            "preventable": "_defEnableFn",
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 37,
+            "description": "Fired when a menu item is hidden.",
+            "itemtype": "event",
+            "name": "hide",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item that was hidden.",
+                    "type": "Menu.Item"
+                }
+            ],
+            "preventable": "_defHideFn",
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 46,
+            "description": "Fired when a menu item is shown.",
+            "itemtype": "event",
+            "name": "show",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item that was shown.",
+                    "type": "Menu.Item"
+                }
+            ],
+            "preventable": "_defShowFn",
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 69,
+            "description": "Closes all open submenus of this menu.",
+            "itemtype": "method",
+            "name": "closeSubMenus",
+            "chainable": 1,
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 84,
+            "description": "Disables the specified menu item.",
+            "itemtype": "method",
+            "name": "disableItem",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item to disable.",
+                    "type": "Menu.Item"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `disable` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 105,
+            "description": "Enables the specified menu item.",
+            "itemtype": "method",
+            "name": "enableItem",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item to enable.",
+                    "type": "Menu.Item"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `enable` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 126,
+            "description": "Hides the specified menu item.",
+            "itemtype": "method",
+            "name": "hideItem",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item to hide.",
+                    "type": "Menu.Item"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `hide` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 147,
+            "description": "Shows the specified menu item.",
+            "itemtype": "method",
+            "name": "showItem",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item to show.",
+                    "type": "Menu.Item"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `show` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 170,
+            "description": "Default handler for the `disable` event.",
+            "itemtype": "method",
+            "name": "_defDisableFn",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 181,
+            "description": "Default handler for the `enable` event.",
+            "itemtype": "method",
+            "name": "_defEnableFn",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 192,
+            "description": "Default handler for the `hide` event.",
+            "itemtype": "method",
+            "name": "_defHideFn",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-base.js",
+            "line": 203,
+            "description": "Default handler for the `show` event.",
+            "itemtype": "method",
+            "name": "_defShowFn",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu.Base",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-base"
+        },
+        {
+            "file": "src/sm-menu/js/menu-item.js",
+            "line": 47,
+            "description": "Disables this menu item. Disabled items are not clickable or selectable.",
+            "itemtype": "method",
+            "name": "disable",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `disable` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Menu.Item",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-item"
+        },
+        {
+            "file": "src/sm-menu/js/menu-item.js",
+            "line": 61,
+            "description": "Enables this menu item.",
+            "itemtype": "method",
+            "name": "enable",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `enable` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Menu.Item",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-item"
+        },
+        {
+            "file": "src/sm-menu/js/menu-item.js",
+            "line": 75,
+            "description": "Hides this menu item.",
+            "itemtype": "method",
+            "name": "hide",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `hide` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Menu.Item",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-item"
+        },
+        {
+            "file": "src/sm-menu/js/menu-item.js",
+            "line": 89,
+            "description": "Returns `true` if this menu item is currently disabled.",
+            "itemtype": "method",
+            "name": "isDisabled",
+            "return": {
+                "description": "`true` if this menu item is currently disabled, `false`\n    otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Menu.Item",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-item"
+        },
+        {
+            "file": "src/sm-menu/js/menu-item.js",
+            "line": 100,
+            "description": "Returns `true` if this menu item is currently hidden.",
+            "itemtype": "method",
+            "name": "isHidden",
+            "return": {
+                "description": "`true` if this menu item is currently hidden, `false`\n    otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Menu.Item",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-item"
+        },
+        {
+            "file": "src/sm-menu/js/menu-item.js",
+            "line": 111,
+            "description": "Shows this menu item.",
+            "itemtype": "method",
+            "name": "show",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `show` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Menu.Item",
+            "module": "gallery-sm-menu",
+            "submodule": "gallery-sm-menu-item"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 19,
+            "description": "Fired when any clickable menu item is clicked.\n\nYou can subscribe to clicks on a specific menu item by subscribing to\n\"itemClick#id\", where \"id\" is the item id of the item you want to subscribe to.",
+            "itemtype": "event",
+            "name": "itemClick",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item that was clicked.",
+                    "type": "Menu.Item"
+                },
+                {
+                    "name": "originEvent",
+                    "description": "Original click event.",
+                    "type": "EventFacade"
+                }
+            ],
+            "preventable": "_defItemClickFn",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 34,
+            "description": "CSS class names used by this menu.",
+            "itemtype": "property",
+            "name": "classNames",
+            "type": "Object",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 56,
+            "description": "Whether or not this menu has been rendered.",
+            "itemtype": "property",
+            "name": "rendered",
+            "type": "Boolean",
+            "default": "false",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 89,
+            "description": "Returns the HTML node (as a `Y.Node` instance) associated with the specified\nmenu item, if any.",
+            "itemtype": "method",
+            "name": "getHTMLNode",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item.",
+                    "type": "Menu.Item"
+                }
+            ],
+            "return": {
+                "description": "`Y.Node` instance associated with the given tree node, or\n    `undefined` if one was not found.",
+                "type": "Node"
+            },
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 106,
+            "description": "Hides this menu.",
+            "itemtype": "method",
+            "name": "hide",
+            "chainable": 1,
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 117,
+            "description": "Renders this menu into its container.\n\nIf the container hasn't already been added to the current document, it will\nbe appended to the `<body>` element.",
+            "itemtype": "method",
+            "name": "render",
+            "chainable": 1,
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 151,
+            "description": "Renders the children of the specified menu item.\n\nIf a container is specified, it will be assumed to be an existing rendered\nmenu item, and the children will be rendered (or re-rendered) inside it.",
+            "itemtype": "method",
+            "name": "renderChildren",
+            "params": [
+                {
+                    "name": "menuItem",
+                    "description": "Menu item whose children should be rendered.",
+                    "type": "Menu.Item"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "container",
+                            "description": "`Y.Node` instance of a container into\n        which the children should be rendered. If the container already\n        contains rendered children, they will be re-rendered in place.",
+                            "type": "Node",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "`Y.Node` instance containing the rendered children.",
+                "type": "Node"
+            },
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 202,
+            "description": "Renders the specified menu item and its children (if any).\n\nIf a container is specified, the rendered node will be appended to it.",
+            "itemtype": "method",
+            "name": "renderNode",
+            "params": [
+                {
+                    "name": "menuItem",
+                    "description": "Tree node to render.",
+                    "type": "Menu.Item"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "container",
+                            "description": "`Y.Node` instance of a container to\n        which the rendered tree node should be appended.",
+                            "type": "Node",
+                            "optional": true
+                        },
+                        {
+                            "name": "renderChildren",
+                            "description": "Whether or not to render\n        this node's children.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "`Y.Node` instance of the rendered menu item.",
+                "type": "Node"
+            },
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 287,
+            "description": "Repositions this menu so that it is anchored to a specified node, region, or\nset of pixel coordinates.\n\nThe menu will be displayed at the most advantageous position relative to the\nanchor point to ensure that as much of the menu as possible is visible\nwithin the viewport.",
+            "itemtype": "method",
+            "name": "reposition",
+            "params": [
+                {
+                    "name": "anchorPoint",
+                    "description": "Anchor point at which this menu\n    should be positioned. The point may be specified as a `Y.Node`\n    reference, a region object, or an array of X and Y pixel coordinates.",
+                    "type": "Node|Number[]|Object"
+                }
+            ],
+            "chainable": 1,
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 329,
+            "description": "Shows this menu.",
+            "itemtype": "method",
+            "name": "show",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "anchorPoint",
+                            "description": "Anchor point at\n        which this menu should be positioned when shown. The point may be\n        specified as a `Y.Node` reference, a region object, or an array of X\n        and Y pixel coordinates.",
+                            "type": "Node|Number[]|Object",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 349,
+            "description": "Toggles the visibility of this menu, showing it if it's currently hidden or\nhiding it if it's currently visible.",
+            "itemtype": "method",
+            "name": "toggle",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "anchorPoint",
+                            "description": "Anchor point at\n        which this menu should be positioned when shown. The point may be\n        specified as a `Y.Node` reference, a region object, or an array of X\n        and Y pixel coordinates.",
+                            "type": "Node|Number[]|Object",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 367,
+            "description": "Attaches menu events.",
+            "itemtype": "method",
+            "name": "_attachMenuEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 402,
+            "description": "Detaches menu events.",
+            "itemtype": "method",
+            "name": "_detachMenuEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 412,
+            "description": "Returns an efficient test function that can be passed to `Y.Node#ancestor()`\nto test whether a node is this menu's container.\n\nThis is broken out to make overriding easier in subclasses.",
+            "itemtype": "method",
+            "name": "_getAncestorTestFn",
+            "return": {
+                "description": "Test function.",
+                "type": "Function"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 430,
+            "description": "Given an anchor point and the regions currently occupied by a child node\n(the node being anchored) and a parent node (the node being anchored to),\nreturns a region object representing the coordinates the anchored node will\noccupy when anchored to the given point on the parent.\n\nAn anchor point is a string like \"tl-bl\", which means \"anchor the top left\npoint of _nodeRegion_ to the bottom left point of _parentRegion_\".\n\nAny combination of top/bottom/left/right anchor points may be used as long\nas they follow this format. Here are a few examples:\n\n  * `'bl-br'`: Anchor the bottom left of _nodeRegion_ to the bottom right of\n    _parentRegion_.\n  * `'br-bl'`: Anchor the bottom right of _nodeRegion_ to the bottom left of\n    _parentRegion_.\n  * `'tl-tr'`: Anchor the top left of _nodeRegion_ to the top right of\n    _parentRegion_.\n  * `'tr-tl'`: Anchor the top right of _nodeRegion_ to the top left of\n    _parentRegion_.",
+            "itemtype": "method",
+            "name": "_getAnchorRegion",
+            "params": [
+                {
+                    "name": "anchor",
+                    "description": "Anchor point. See above for details.",
+                    "type": "String"
+                },
+                {
+                    "name": "nodeRegion",
+                    "description": "Region object for the node to be anchored (that\n    is, the node that will be repositioned).",
+                    "type": "Object"
+                },
+                {
+                    "name": "parentRegion",
+                    "description": "Region object for the node that will be\n    anchored to (that is, the node that will not move).",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Region that will be occupied by the anchored node.",
+                "type": "Object"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 527,
+            "description": "Hides the specified menu container by moving its htmlNode offscreen.",
+            "itemtype": "method",
+            "name": "_hideMenu",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item.",
+                    "type": "Menu.Item"
+                },
+                {
+                    "name": "htmlNode",
+                    "description": "HTML node for the menu item.",
+                    "type": "Node",
+                    "optional": true
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 544,
+            "description": "Returns `true` if the given _inner_ region is contained entirely within the\ngiven _outer_ region. If it's not a perfect fit, returns a numerical score\nindicating how much of the _inner_ region fits within the _outer_ region.\nA higher score indicates a better fit.",
+            "itemtype": "method",
+            "name": "_inRegion",
+            "params": [
+                {
+                    "name": "inner",
+                    "description": "Inner region.",
+                    "type": "Object"
+                },
+                {
+                    "name": "outer",
+                    "description": "Outer region.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "`true` if the _inner_ region fits entirely within\n    the _outer_ region or, if not, a numerical score indicating how much of\n    the inner region fits.",
+                "type": "Boolean|Number"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 579,
+            "description": "Intelligently positions the _htmlNode_ of the given submenu _item_ relative\nto its parent so that as much as possible of the submenu will be visible\nwithin the viewport.",
+            "itemtype": "method",
+            "name": "_positionMenu",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "Menu item to position.",
+                    "type": "Menu.Item"
+                },
+                {
+                    "name": "htmlNode",
+                    "description": "HTML node for the menu item.",
+                    "type": "Node",
+                    "optional": true
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 611,
+            "description": "Handles `add` events for this menu.",
+            "itemtype": "method",
+            "name": "_afterAdd",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 652,
+            "description": "Handles `clear` events for this menu.",
+            "itemtype": "method",
+            "name": "_afterClear",
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 673,
+            "description": "Handles `mousedown` events on the document.",
+            "itemtype": "method",
+            "name": "_afterDocMouseDown",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 694,
+            "description": "Handles `close` events for this menu.",
+            "itemtype": "method",
+            "name": "_afterClose",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 719,
+            "description": "Handles `disable` events for this menu.",
+            "itemtype": "method",
+            "name": "_afterDisable",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 734,
+            "description": "Handles `enable` events for this menu.",
+            "itemtype": "method",
+            "name": "_afterEnable",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 749,
+            "description": "Handles `hide` events for this menu.",
+            "itemtype": "method",
+            "name": "_afterHide",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 765,
+            "description": "Handles `open` events for this menu.",
+            "itemtype": "method",
+            "name": "_afterOpen",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 804,
+            "description": "Handles `remove` events for this menu.",
+            "itemtype": "method",
+            "name": "_afterRemove",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 826,
+            "description": "Handles `show` events for this menu.",
+            "itemtype": "method",
+            "name": "_afterShow",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 842,
+            "description": "Handles `visibleChange` events for this menu.",
+            "itemtype": "method",
+            "name": "_afterVisibleChange",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 853,
+            "description": "Handles click events on menu items.",
+            "itemtype": "method",
+            "name": "_onItemClick",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 893,
+            "description": "Handles delegated `mouseenter` events on menu items.",
+            "itemtype": "method",
+            "name": "_onItemMouseEnter",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 914,
+            "description": "Handles delegated `mouseleave` events on menu items.",
+            "itemtype": "method",
+            "name": "_onItemMouseLeave",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 935,
+            "description": "Handles `mouseenter` events on this menu.",
+            "itemtype": "method",
+            "name": "_onMenuMouseEnter",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 946,
+            "description": "Handles `mouseleave` events on this menu.",
+            "itemtype": "method",
+            "name": "_onMenuMouseLeave",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 969,
+            "description": "Default handler for the generic `itemClick` event.",
+            "itemtype": "method",
+            "name": "_defItemClickFn",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 990,
+            "description": "Default handler for item-specific `itemClick#<id>` events.",
+            "itemtype": "method",
+            "name": "_defSpecificItemClickFn",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 1005,
+            "description": "Preferred alignment positions at which this menu should be displayed\nrelative to the anchor point when one is provided to the `show()`,\n`toggle()`, or `reposition()` methods.\n\nThe most optimal alignment position will be chosen automatically based\non which one allows the most of this menu to be visible within the\nbrowser's viewport. If multiple positions are equally visible, then the\noptimal position will be chosen based on its order in this array.\n\nAn alignment position is a string like \"tl-bl\", which means \"align the\ntop left of this menu to the bottom left of its anchor point\".\n\nAny combination of top/bottom/left/right alignment positions may be used\nas long as they follow this format. Here are a few examples:\n\n  * `'bl-br'`: Align the bottom left of this menu with the bottom right\n    of the anchor point.\n  * `'br-bl'`: Align the bottom right of this menu with the bottom left\n    of the anchor point.\n  * `'tl-tr'`: Align the top left of this menu with the top right of\n    the anchor point.\n  * `'tr-tl'`: Align the top right of this menu to the top left of this\n    anchor point.",
+            "itemtype": "attribute",
+            "name": "alignments",
+            "type": "String[]",
+            "default": "['tl-bl', 'tr-br', 'bl-tl', 'br-tr']",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 1039,
+            "description": "If `true`, this menu will be hidden when the user moves the mouse\noutside the menu.",
+            "itemtype": "attribute",
+            "name": "hideOnMouseLeave",
+            "type": "Boolean",
+            "default": "false",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 1050,
+            "description": "If `true`, this menu will be hidden when the user clicks somewhere\noutside the menu.",
+            "itemtype": "attribute",
+            "name": "hideOnOutsideClick",
+            "type": "Boolean",
+            "default": "true",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 1061,
+            "description": "Just like `alignments`, but for submenus of this menu. See the\n`alignments` attribute for details on how alignment positions work.",
+            "itemtype": "attribute",
+            "name": "subMenuAlignments",
+            "type": "String[]",
+            "default": "['tl-tr', 'bl-br', 'tr-tl', 'br-bl']",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-menu/js/menu.js",
+            "line": 1074,
+            "description": "Whether or not this menu is visible. Changing this attribute's value\nwill also change the visibility of this menu.",
+            "itemtype": "attribute",
+            "name": "visible",
+            "type": "Boolean",
+            "default": "false",
+            "class": "Menu",
+            "module": "gallery-sm-menu"
+        },
         {
             "file": "src/sm-tree/js/plugins/tree-lazy.js",
             "line": 63,

@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src&#x2F;sm-menu&#x2F;js&#x2F;menu.js - SmugMug YUI Gallery</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title="SmugMug YUI Gallery"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.8.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/Menu.html">Menu</a></li>
+            
+                <li><a href="..&#x2F;classes/Menu.Base.html">Menu.Base</a></li>
+            
+                <li><a href="..&#x2F;classes/Menu.Item.html">Menu.Item</a></li>
+            
+                <li><a href="..&#x2F;classes/Menu.Templates.html">Menu.Templates</a></li>
+            
+                <li><a href="..&#x2F;classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="..&#x2F;classes/Plugin.Tree.Lazy.html">Plugin.Tree.Lazy</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.html">Tree</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Node.html">Tree.Node</a></li>
+            
+                <li><a href="..&#x2F;classes/TreeView.html">TreeView</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-base.html">gallery-sm-menu-base</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-item.html">gallery-sm-menu-item</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree.html">gallery-sm-tree</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree-lazy.html">gallery-sm-tree-lazy</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree-node.html">gallery-sm-tree-node</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src&#x2F;sm-menu&#x2F;js&#x2F;menu.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x2F;**
+Provides the &#x60;Y.Menu&#x60; widget.
+
+@module gallery-sm-menu
+@main gallery-sm-menu
+**&#x2F;
+
+&#x2F;**
+Menu widget.
+
+@class Menu
+@constructor
+@extends Menu.Base
+@uses View
+**&#x2F;
+
+var getClassName = Y.ClassNameManager.getClassName,
+
+&#x2F;**
+Fired when any clickable menu item is clicked.
+
+You can subscribe to clicks on a specific menu item by subscribing to
+&quot;itemClick#id&quot;, where &quot;id&quot; is the item id of the item you want to subscribe to.
+
+@event itemClick
+@param {Menu.Item} item Menu item that was clicked.
+@param {EventFacade} originEvent Original click event.
+@preventable _defItemClickFn
+**&#x2F;
+EVT_ITEM_CLICK = &#x27;itemClick&#x27;,
+
+Menu = Y.Base.create(&#x27;menu&#x27;, Y.Menu.Base, [Y.View], {
+
+    &#x2F;**
+    CSS class names used by this menu.
+
+    @property {Object} classNames
+    **&#x2F;
+    classNames: {
+        canHaveChildren: getClassName(&#x27;menu-can-have-children&#x27;),
+        children       : getClassName(&#x27;menu-children&#x27;),
+        disabled       : getClassName(&#x27;menu-disabled&#x27;),
+        hasChildren    : getClassName(&#x27;menu-has-children&#x27;),
+        heading        : getClassName(&#x27;menu-heading&#x27;),
+        hidden         : getClassName(&#x27;menu-hidden&#x27;),
+        item           : getClassName(&#x27;menu-item&#x27;),
+        label          : getClassName(&#x27;menu-label&#x27;),
+        menu           : getClassName(&#x27;menu&#x27;),
+        noTouch        : getClassName(&#x27;menu-notouch&#x27;),
+        open           : getClassName(&#x27;menu-open&#x27;),
+        selected       : getClassName(&#x27;menu-selected&#x27;),
+        separator      : getClassName(&#x27;menu-separator&#x27;),
+        touch          : getClassName(&#x27;menu-touch&#x27;)
+    },
+
+    &#x2F;**
+    Whether or not this menu has been rendered.
+
+    @property {Boolean} rendered
+    @default false
+    **&#x2F;
+    rendered: false,
+
+    &#x2F;&#x2F; -- Lifecycle Methods ----------------------------------------------------
+
+    initializer: function () {
+        this._openMenus = {};
+        this._published = {};
+        this._timeouts  = {};
+
+        this._attachMenuEvents();
+    },
+
+    destructor: function () {
+        this._detachMenuEvents();
+
+        delete this._openMenus;
+        delete this._published;
+
+        Y.Object.each(this._timeouts, function (timeout) {
+            clearTimeout(timeout);
+        }, this);
+
+        delete this._timeouts;
+    },
+
+    &#x2F;&#x2F; -- Public Methods -------------------------------------------------------
+
+    &#x2F;**
+    Returns the HTML node (as a &#x60;Y.Node&#x60; instance) associated with the specified
+    menu item, if any.
+
+    @method getHTMLNode
+    @param {Menu.Item} item Menu item.
+    @return {Node} &#x60;Y.Node&#x60; instance associated with the given tree node, or
+        &#x60;undefined&#x60; if one was not found.
+    **&#x2F;
+    getHTMLNode: function (item) {
+        if (!item._htmlNode) {
+            item._htmlNode = this.get(&#x27;container&#x27;).one(&#x27;#&#x27; + item.id);
+        }
+
+        return item._htmlNode;
+    },
+
+    &#x2F;**
+    Hides this menu.
+
+    @method hide
+    @chainable
+    **&#x2F;
+    hide: function () {
+        this.set(&#x27;visible&#x27;, false);
+        return this;
+    },
+
+    &#x2F;**
+    Renders this menu into its container.
+
+    If the container hasn&#x27;t already been added to the current document, it will
+    be appended to the &#x60;&lt;body&gt;&#x60; element.
+
+    @method render
+    @chainable
+    **&#x2F;
+    render: function () {
+        var container = this.get(&#x27;container&#x27;);
+
+        container.addClass(this.classNames.menu);
+
+        &#x2F;&#x2F; Detect touchscreen devices.
+        if (&#x27;ontouchstart&#x27; in Y.config.win) {
+            container.addClass(this.classNames.touch);
+        } else {
+            container.addClass(this.classNames.noTouch);
+        }
+
+        this._childrenNode = this.renderChildren(this.rootNode, {
+            container: container
+        });
+
+        if (!container.inDoc()) {
+            Y.one(&#x27;body&#x27;).append(container);
+        }
+
+        this.rendered = true;
+
+        return this;
+    },
+
+    &#x2F;**
+    Renders the children of the specified menu item.
+
+    If a container is specified, it will be assumed to be an existing rendered
+    menu item, and the children will be rendered (or re-rendered) inside it.
+
+    @method renderChildren
+    @param {Menu.Item} menuItem Menu item whose children should be rendered.
+    @param {Object} [options] Options.
+        @param {Node} [options.container] &#x60;Y.Node&#x60; instance of a container into
+            which the children should be rendered. If the container already
+            contains rendered children, they will be re-rendered in place.
+    @return {Node} &#x60;Y.Node&#x60; instance containing the rendered children.
+    **&#x2F;
+    renderChildren: function (treeNode, options) {
+        options || (options = {});
+
+        var container    = options.container,
+            childrenNode = container &amp;&amp; container.one(&#x27;.&#x27; + this.classNames.children);
+
+        if (!childrenNode) {
+            childrenNode = Y.Node.create(Menu.Templates.children({
+                classNames: this.classNames,
+                menu      : this,
+                item      : treeNode
+            }));
+        }
+
+        if (treeNode.isRoot()) {
+            childrenNode.set(&#x27;tabIndex&#x27;, 0); &#x2F;&#x2F; Add the root list to the tab order.
+            childrenNode.set(&#x27;role&#x27;, &#x27;menu&#x27;);
+        }
+
+        if (treeNode.hasChildren()) {
+            childrenNode.set(&#x27;aria-expanded&#x27;, treeNode.isOpen());
+        }
+
+        for (var i = 0, len = treeNode.children.length; i &lt; len; i++) {
+            this.renderNode(treeNode.children[i], {
+                container     : childrenNode,
+                renderChildren: true
+            });
+        }
+
+        if (container) {
+            container.append(childrenNode);
+        }
+
+        return childrenNode;
+    },
+
+    &#x2F;**
+    Renders the specified menu item and its children (if any).
+
+    If a container is specified, the rendered node will be appended to it.
+
+    @method renderNode
+    @param {Menu.Item} menuItem Tree node to render.
+    @param {Object} [options] Options.
+        @param {Node} [options.container] &#x60;Y.Node&#x60; instance of a container to
+            which the rendered tree node should be appended.
+        @param {Boolean} [options.renderChildren=false] Whether or not to render
+            this node&#x27;s children.
+    @return {Node} &#x60;Y.Node&#x60; instance of the rendered menu item.
+    **&#x2F;
+    renderNode: function (item, options) {
+        options || (options = {});
+
+        var classNames = this.classNames,
+            htmlNode   = item._htmlNode,
+            isHidden   = item.isHidden();
+
+        &#x2F;&#x2F; Create an HTML node for this menu item if one doesn&#x27;t already exist.
+        if (!htmlNode) {
+            htmlNode = item._htmlNode = Y.Node.create(Menu.Templates.item({
+                classNames: classNames,
+                item      : item,
+                menu      : this
+            }));
+        }
+
+        &#x2F;&#x2F; Mark the HTML node as hidden if the item is hidden.
+        htmlNode.set(&#x27;aria-hidden&#x27;, isHidden);
+        htmlNode.toggleClass(classNames.hidden, isHidden);
+
+        switch (item.type) {
+            case &#x27;separator&#x27;:
+                htmlNode.set(&#x27;role&#x27;, &#x27;separator&#x27;);
+                break;
+
+            case &#x27;item&#x27;:
+            case &#x27;heading&#x27;:
+                var labelNode = htmlNode.one(&#x27;.&#x27; + classNames.label),
+                    labelId   = labelNode.get(&#x27;id&#x27;);
+
+                labelNode.setHTML(item.label);
+
+                if (!labelId) {
+                    labelId = Y.guid();
+                    labelNode.set(&#x27;id&#x27;, labelId);
+                }
+
+                htmlNode.set(&#x27;aria-labelledby&#x27;, labelId);
+
+                if (item.type === &#x27;heading&#x27;) {
+                    htmlNode.set(&#x27;role&#x27;, &#x27;heading&#x27;);
+                } else {
+                    htmlNode.set(&#x27;role&#x27;, &#x27;menuitem&#x27;);
+
+                    htmlNode.toggleClass(classNames.disabled, item.isDisabled());
+
+                    if (item.canHaveChildren) {
+                        htmlNode.addClass(classNames.canHaveChildren);
+                        htmlNode.toggleClass(classNames.open, item.isOpen());
+
+                        if (item.hasChildren()) {
+                            htmlNode.addClass(classNames.hasChildren);
+
+                            if (options.renderChildren) {
+                                this.renderChildren(item, {
+                                    container: htmlNode
+                                });
+                            }
+                        }
+                    }
+                }
+                break;
+        }
+
+        if (options.container) {
+            options.container.append(htmlNode);
+        }
+
+        return htmlNode;
+    },
+
+    &#x2F;**
+    Repositions this menu so that it is anchored to a specified node, region, or
+    set of pixel coordinates.
+
+    The menu will be displayed at the most advantageous position relative to the
+    anchor point to ensure that as much of the menu as possible is visible
+    within the viewport.
+
+    @method reposition
+    @param {Node|Number[]|Object} anchorPoint Anchor point at which this menu
+        should be positioned. The point may be specified as a &#x60;Y.Node&#x60;
+        reference, a region object, or an array of X and Y pixel coordinates.
+    @chainable
+    **&#x2F;
+    reposition: function (anchorPoint) {
+        var container = this.get(&#x27;container&#x27;),
+            anchorRegion, menuRegion;
+
+        if (Y.Lang.isArray(anchorPoint)) {
+            anchorRegion = {
+                bottom: anchorPoint[1],
+                left  : anchorPoint[0],
+                right : anchorPoint[0],
+                top   : anchorPoint[1]
+            };
+        } else if (anchorPoint._node) {
+            anchorRegion = anchorPoint.get(&#x27;region&#x27;);
+        } else {
+            anchorRegion = anchorPoint;
+        }
+
+        menuRegion = this._getSortedAnchorRegions(
+            this.get(&#x27;alignments&#x27;),
+            container.get(&#x27;region&#x27;),
+            anchorRegion
+        )[0].region;
+
+        container.setXY([menuRegion.left, menuRegion.top]);
+
+        return this;
+    },
+
+    &#x2F;**
+    Shows this menu.
+
+    @method show
+    @param {Object} [options] Options.
+        @param {Node|Number[]|Object} [options.anchorPoint] Anchor point at
+            which this menu should be positioned when shown. The point may be
+            specified as a &#x60;Y.Node&#x60; reference, a region object, or an array of X
+            and Y pixel coordinates.
+    @chainable
+    **&#x2F;
+    show: function (options) {
+        if (options &amp;&amp; options.anchorPoint) {
+            this.reposition(options.anchorPoint);
+        }
+
+        this.set(&#x27;visible&#x27;, true);
+        return this;
+    },
+
+    &#x2F;**
+    Toggles the visibility of this menu, showing it if it&#x27;s currently hidden or
+    hiding it if it&#x27;s currently visible.
+
+    @method toggle
+    @param {Object} [options] Options.
+        @param {Node|Number[]|Object} [options.anchorPoint] Anchor point at
+            which this menu should be positioned when shown. The point may be
+            specified as a &#x60;Y.Node&#x60; reference, a region object, or an array of X
+            and Y pixel coordinates.
+    @chainable
+    **&#x2F;
+    toggle: function (options) {
+        return this[this.get(&#x27;visible&#x27;) ? &#x27;hide&#x27; : &#x27;show&#x27;](options);
+    },
+
+    &#x2F;&#x2F; -- Protected Methods ----------------------------------------------------
+
+    &#x2F;**
+    Attaches menu events.
+
+    @method _attachMenuEvents
+    @protected
+    **&#x2F;
+    _attachMenuEvents: function () {
+        this._menuEvents || (this._menuEvents = []);
+
+        var classNames = this.classNames,
+            container  = this.get(&#x27;container&#x27;);
+
+        this._menuEvents.push(
+            this.after({
+                add          : this._afterAdd,
+                clear        : this._afterClear,
+                close        : this._afterClose,
+                disable      : this._afterDisable,
+                enable       : this._afterEnable,
+                hide         : this._afterHide,
+                open         : this._afterOpen,
+                remove       : this._afterRemove,
+                show         : this._afterShow,
+                visibleChange: this._afterVisibleChange
+            }),
+
+            container.on(&#x27;hover&#x27;, this._onMenuMouseEnter, this._onMenuMouseLeave, this),
+
+            container.delegate(&#x27;click&#x27;, this._onItemClick, &#x27;.&#x27; + classNames.item + &#x27;&gt;.&#x27; + classNames.label, this),
+            container.delegate(&#x27;hover&#x27;, this._onItemMouseEnter, this._onItemMouseLeave, &#x27;.&#x27; + classNames.canHaveChildren, this),
+
+            Y.one(&#x27;doc&#x27;).after(&#x27;mousedown&#x27;, this._afterDocMouseDown, this)
+        );
+    },
+
+    &#x2F;**
+    Detaches menu events.
+
+    @method _detachMenuEvents
+    @protected
+    **&#x2F;
+    _detachMenuEvents: function () {
+        (new Y.EventHandle(this._menuEvents)).detach();
+    },
+
+    &#x2F;**
+    Returns an efficient test function that can be passed to &#x60;Y.Node#ancestor()&#x60;
+    to test whether a node is this menu&#x27;s container.
+
+    This is broken out to make overriding easier in subclasses.
+
+    @method _getAncestorTestFn
+    @return {Function} Test function.
+    @protected
+    **&#x2F;
+    _getAncestorTestFn: function () {
+        var container = this.get(&#x27;container&#x27;);
+
+        return (function (node) {
+            return node === container;
+        });
+    },
+
+    &#x2F;**
+    Given an anchor point and the regions currently occupied by a child node
+    (the node being anchored) and a parent node (the node being anchored to),
+    returns a region object representing the coordinates the anchored node will
+    occupy when anchored to the given point on the parent.
+
+    An anchor point is a string like &quot;tl-bl&quot;, which means &quot;anchor the top left
+    point of _nodeRegion_ to the bottom left point of _parentRegion_&quot;.
+
+    Any combination of top&#x2F;bottom&#x2F;left&#x2F;right anchor points may be used as long
+    as they follow this format. Here are a few examples:
+
+      * &#x60;&#x27;bl-br&#x27;&#x60;: Anchor the bottom left of _nodeRegion_ to the bottom right of
+        _parentRegion_.
+      * &#x60;&#x27;br-bl&#x27;&#x60;: Anchor the bottom right of _nodeRegion_ to the bottom left of
+        _parentRegion_.
+      * &#x60;&#x27;tl-tr&#x27;&#x60;: Anchor the top left of _nodeRegion_ to the top right of
+        _parentRegion_.
+      * &#x60;&#x27;tr-tl&#x27;&#x60;: Anchor the top right of _nodeRegion_ to the top left of
+        _parentRegion_.
+
+    @method _getAnchorRegion
+    @param {String} anchor Anchor point. See above for details.
+    @param {Object} nodeRegion Region object for the node to be anchored (that
+        is, the node that will be repositioned).
+    @param {Object} parentRegion Region object for the node that will be
+        anchored to (that is, the node that will not move).
+    @return {Object} Region that will be occupied by the anchored node.
+    @protected
+    **&#x2F;
+    _getAnchorRegion: function (anchor, nodeRegion, parentRegion) {
+        var region = {};
+
+        anchor.replace(&#x2F;^([bt])([lr])-([bt])([lr])&#x2F;i, function (match, p1, p2, p3, p4) {
+            var lookup = {
+                    b: &#x27;bottom&#x27;,
+                    l: &#x27;left&#x27;,
+                    r: &#x27;right&#x27;,
+                    t: &#x27;top&#x27;
+                };
+
+            region[lookup[p1]] = parentRegion[lookup[p3]];
+            region[lookup[p2]] = parentRegion[lookup[p4]];
+        });
+
+        &#x27;bottom&#x27; in region || (region.bottom = region.top + nodeRegion.height);
+        &#x27;left&#x27; in region   || (region.left = region.right - nodeRegion.width);
+        &#x27;right&#x27; in region  || (region.right = region.left + nodeRegion.width);
+        &#x27;top&#x27; in region    || (region.top = region.bottom - nodeRegion.height);
+
+        return region;
+    },
+
+    _getSortedAnchorRegions: function (points, nodeRegion, parentRegion, containerRegion) {
+        containerRegion || (containerRegion = Y.DOM.viewportRegion());
+
+        &#x2F;&#x2F; Run through each possible anchor point and test whether it would
+        &#x2F;&#x2F; allow the submenu to be displayed fully within the viewport. Stop at
+        &#x2F;&#x2F; the first anchor point that works.
+        var anchors = [],
+            i, len, point, region;
+
+        for (i = 0, len = points.length; i &lt; len; i++) {
+            point = points[i];
+
+            &#x2F;&#x2F; Allow arrays of strings or arrays of objects like {point: &#x27;...&#x27;}.
+            if (point.point) {
+                point = point.point;
+            }
+
+            region = this._getAnchorRegion(point, nodeRegion, parentRegion);
+
+            anchors.push({
+                point : point,
+                region: region,
+                score : this._inRegion(region, containerRegion)
+            });
+        }
+
+        &#x2F;&#x2F; Sort the anchors in descending order by score (higher score is
+        &#x2F;&#x2F; better).
+        anchors.sort(function (a, b) {
+            if (a.score === b.score) {
+                return 0;
+            } else if (a.score === true) {
+                return -1;
+            } else if (b.score === true) {
+                return 1;
+            } else {
+                return b.score - a.score;
+            }
+        });
+
+        &#x2F;&#x2F; Return the sorted anchors.
+        return anchors;
+    },
+
+    &#x2F;**
+    Hides the specified menu container by moving its htmlNode offscreen.
+
+    @method _hideMenu
+    @param {Menu.Item} item Menu item.
+    @param {Node} [htmlNode] HTML node for the menu item.
+    @protected
+    **&#x2F;
+    _hideMenu: function (item, htmlNode) {
+        htmlNode || (htmlNode = this.getHTMLNode(item));
+
+        var childrenNode = htmlNode.one(&#x27;.&#x27; + this.classNames.children);
+
+        childrenNode.setXY([-10000, -10000]);
+        delete item.data.menuAnchor;
+    },
+
+    &#x2F;**
+    Returns &#x60;true&#x60; if the given _inner_ region is contained entirely within the
+    given _outer_ region. If it&#x27;s not a perfect fit, returns a numerical score
+    indicating how much of the _inner_ region fits within the _outer_ region.
+    A higher score indicates a better fit.
+
+    @method _inRegion
+    @param {Object} inner Inner region.
+    @param {Object} outer Outer region.
+    @return {Boolean|Number} &#x60;true&#x60; if the _inner_ region fits entirely within
+        the _outer_ region or, if not, a numerical score indicating how much of
+        the inner region fits.
+    @protected
+    **&#x2F;
+    _inRegion: function (inner, outer) {
+        if (inner.bottom &lt;= outer.bottom
+                &amp;&amp; inner.left &gt;= outer.left
+                &amp;&amp; inner.right &lt;= outer.right
+                &amp;&amp; inner.top &gt;= outer.top) {
+
+            &#x2F;&#x2F; Perfect fit!
+            return true;
+        }
+
+        &#x2F;&#x2F; Not a perfect fit, so return the overall score of this region so we
+        &#x2F;&#x2F; can compare it with the scores of other regions to determine the best
+        &#x2F;&#x2F; possible fit.
+        return (
+            Math.min(outer.bottom - inner.bottom, 0) +
+            Math.min(inner.left - outer.left, 0) +
+            Math.min(outer.right - inner.right, 0) +
+            Math.min(inner.top - outer.top, 0)
+        );
+    },
+
+    &#x2F;**
+    Intelligently positions the _htmlNode_ of the given submenu _item_ relative
+    to its parent so that as much as possible of the submenu will be visible
+    within the viewport.
+
+    @method _positionMenu
+    @param {Menu.Item} item Menu item to position.
+    @param {Node} [htmlNode] HTML node for the menu item.
+    @protected
+    **&#x2F;
+    _positionMenu: function (item, htmlNode) {
+        htmlNode || (htmlNode = this.getHTMLNode(item));
+
+        var childrenNode = htmlNode.one(&#x27;.&#x27; + this.classNames.children),
+
+            anchors = this._getSortedAnchorRegions(
+                (item.parent &amp;&amp; item.parent.data.menuAnchors) || this.get(&#x27;subMenuAlignments&#x27;),
+                childrenNode.get(&#x27;region&#x27;),
+                htmlNode.get(&#x27;region&#x27;)
+            );
+
+        &#x2F;&#x2F; Remember which anchors we used for this item so that we can default
+        &#x2F;&#x2F; that anchor for submenus of this item if necessary.
+        item.data.menuAnchors = anchors;
+
+        &#x2F;&#x2F; Position the submenu.
+        var anchorRegion = anchors[0].region;
+        childrenNode.setXY([anchorRegion.left, anchorRegion.top]);
+    },
+
+    &#x2F;&#x2F; -- Protected Event Handlers ---------------------------------------------
+
+    &#x2F;**
+    Handles &#x60;add&#x60; events for this menu.
+
+    @method _afterAdd
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterAdd: function (e) {
+        &#x2F;&#x2F; Nothing to do if the menu hasn&#x27;t been rendered yet.
+        if (!this.rendered) {
+            return;
+        }
+
+        var parent = e.parent,
+            htmlChildrenNode,
+            htmlNode;
+
+        if (parent === this.rootNode) {
+            htmlChildrenNode = this._childrenNode;
+        } else {
+            htmlNode = this.getHTMLNode(parent);
+            htmlChildrenNode = htmlNode &amp;&amp; htmlNode.one(&#x27;.&#x27; + this.classNames.children);
+
+            if (!htmlChildrenNode) {
+                &#x2F;&#x2F; Parent node hasn&#x27;t been rendered yet, or hasn&#x27;t yet been
+                &#x2F;&#x2F; rendered with children. Render it.
+                htmlNode || (htmlNode = this.renderNode(parent));
+
+                this.renderChildren(parent, {
+                    container: htmlNode
+                });
+
+                return;
+            }
+        }
+
+        htmlChildrenNode.insert(this.renderNode(e.node, {
+            renderChildren: true
+        }), e.index);
+    },
+
+    &#x2F;**
+    Handles &#x60;clear&#x60; events for this menu.
+
+    @method _afterClear
+    @protected
+    **&#x2F;
+    _afterClear: function () {
+        this._openMenus = {};
+
+        &#x2F;&#x2F; Nothing to do if the menu hasn&#x27;t been rendered yet.
+        if (!this.rendered) {
+            return;
+        }
+
+        delete this._childrenNode;
+        this.rendered = false;
+
+        this.get(&#x27;container&#x27;).empty();
+        this.render();
+    },
+
+    &#x2F;**
+    Handles &#x60;mousedown&#x60; events on the document.
+
+    @method _afterDocMouseDown
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterDocMouseDown: function (e) {
+        if (!this.get(&#x27;visible&#x27;)) {
+            return;
+        }
+
+        if (!e.target.ancestor(this._getAncestorTestFn(), true)) {
+            this.closeSubMenus();
+
+            if (this.get(&#x27;hideOnOutsideClick&#x27;)) {
+                this.hide();
+            }
+        }
+    },
+
+    &#x2F;**
+    Handles &#x60;close&#x60; events for this menu.
+
+    @method _afterClose
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterClose: function (e) {
+        var item     = e.node,
+            htmlNode = this.getHTMLNode(item);
+
+        &#x2F;&#x2F; Ensure that all this item&#x27;s children are closed first.
+        for (var i = 0, len = item.children.length; i &lt; len; i++) {
+            item.children[i].close();
+        }
+
+        item.close();
+        delete this._openMenus[item.id];
+
+        if (htmlNode) {
+            this._hideMenu(item, htmlNode);
+            htmlNode.removeClass(this.classNames.open);
+        }
+    },
+
+    &#x2F;**
+    Handles &#x60;disable&#x60; events for this menu.
+
+    @method _afterDisable
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterDisable: function (e) {
+        var htmlNode = this.getHTMLNode(e.item);
+
+        if (htmlNode) {
+            htmlNode.addClass(this.classNames.disabled);
+        }
+    },
+
+    &#x2F;**
+    Handles &#x60;enable&#x60; events for this menu.
+
+    @method _afterEnable
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterEnable: function (e) {
+        var htmlNode = this.getHTMLNode(e.item);
+
+        if (htmlNode) {
+            htmlNode.removeClass(this.classNames.disabled);
+        }
+    },
+
+    &#x2F;**
+    Handles &#x60;hide&#x60; events for this menu.
+
+    @method _afterHide
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterHide: function (e) {
+        var htmlNode = this.getHTMLNode(e.item);
+
+        if (htmlNode) {
+            htmlNode.addClass(this.classNames.hidden);
+            htmlNode.set(&#x27;aria-hidden&#x27;, true);
+        }
+    },
+
+    &#x2F;**
+    Handles &#x60;open&#x60; events for this menu.
+
+    @method _afterOpen
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterOpen: function (e) {
+        var item     = e.node,
+            htmlNode = this.getHTMLNode(item),
+            parent   = item.parent,
+            child;
+
+        if (parent) {
+            &#x2F;&#x2F; Close all the parent&#x27;s children except this one. This is
+            &#x2F;&#x2F; necessary when mouse events don&#x27;t fire to indicate that a submenu
+            &#x2F;&#x2F; should be closed, such as on touch devices.
+            if (parent.isOpen()) {
+                for (var i = 0, len = parent.children.length; i &lt; len; i++) {
+                    child = parent.children[i];
+
+                    if (child !== item) {
+                        child.close();
+                    }
+                }
+            } else {
+                &#x2F;&#x2F; Ensure that the parent is open before we open the submenu.
+                parent.open();
+            }
+        }
+
+        this._openMenus[item.id] = item;
+
+        if (htmlNode) {
+            this._positionMenu(item, htmlNode);
+            htmlNode.addClass(this.classNames.open);
+        }
+    },
+
+    &#x2F;**
+    Handles &#x60;remove&#x60; events for this menu.
+
+    @method _afterRemove
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterRemove: function (e) {
+        delete this._openMenus[e.node.id];
+
+        if (!this.rendered) {
+            return;
+        }
+
+        var htmlNode = this.getHTMLNode(e.node);
+
+        if (htmlNode) {
+            htmlNode.remove(true);
+            delete e.node._htmlNode;
+        }
+    },
+
+    &#x2F;**
+    Handles &#x60;show&#x60; events for this menu.
+
+    @method _afterShow
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterShow: function (e) {
+        var htmlNode = this.getHTMLNode(e.item);
+
+        if (htmlNode) {
+            htmlNode.removeClass(this.classNames.hidden);
+            htmlNode.set(&#x27;aria-hidden&#x27;, false);
+        }
+    },
+
+    &#x2F;**
+    Handles &#x60;visibleChange&#x60; events for this menu.
+
+    @method _afterVisibleChange
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterVisibleChange: function (e) {
+        this.get(&#x27;container&#x27;).toggleClass(this.classNames.open, e.newVal);
+    },
+
+    &#x2F;**
+    Handles click events on menu items.
+
+    @method _onItemClick
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _onItemClick: function (e) {
+        var item       = this.getNodeById(e.currentTarget.getData(&#x27;item-id&#x27;)),
+            eventName  = EVT_ITEM_CLICK + &#x27;#&#x27; + item.id,
+            isDisabled = item.isDisabled() || item.isHidden();
+
+        &#x2F;&#x2F; Avoid navigating to &#x27;#&#x27; if this item is disabled or doesn&#x27;t have a
+        &#x2F;&#x2F; custom URL.
+        if (isDisabled || item.url === &#x27;#&#x27;) {
+            e.preventDefault();
+        }
+
+        if (isDisabled) {
+            return;
+        }
+
+        if (!this._published[eventName]) {
+            this._published[eventName] = this.publish(eventName, {
+                defaultFn: this._defSpecificItemClickFn
+            }) ;
+        }
+
+        if (!this._published[EVT_ITEM_CLICK]) {
+            this._published[EVT_ITEM_CLICK] = this.publish(EVT_ITEM_CLICK, {
+                defaultFn: this._defItemClickFn
+            });
+        }
+
+        this.fire(eventName, {
+            originEvent: e,
+            item       : item
+        });
+    },
+
+    &#x2F;**
+    Handles delegated &#x60;mouseenter&#x60; events on menu items.
+
+    @method _onItemMouseEnter
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _onItemMouseEnter: function (e) {
+        var item = this.getNodeById(e.currentTarget.get(&#x27;id&#x27;));
+
+        clearTimeout(this._timeouts.item);
+
+        if (item.isOpen() || item.isDisabled()) {
+            return;
+        }
+
+        this._timeouts.item = setTimeout(function () {
+            item.open();
+        }, 200); &#x2F;&#x2F; TODO: make timeouts configurable
+    },
+
+    &#x2F;**
+    Handles delegated &#x60;mouseleave&#x60; events on menu items.
+
+    @method _onItemMouseLeave
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _onItemMouseLeave: function (e) {
+        var item = this.getNodeById(e.currentTarget.get(&#x27;id&#x27;));
+
+        clearTimeout(this._timeouts.item);
+
+        if (!item.isOpen()) {
+            return;
+        }
+
+        this._timeouts.item = setTimeout(function () {
+            item.close();
+        }, 300);
+    },
+
+    &#x2F;**
+    Handles &#x60;mouseenter&#x60; events on this menu.
+
+    @method _onMenuMouseEnter
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _onMenuMouseEnter: function () {
+        clearTimeout(this._timeouts.menu);
+    },
+
+    &#x2F;**
+    Handles &#x60;mouseleave&#x60; events on this menu.
+
+    @method _onMenuMouseLeave
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _onMenuMouseLeave: function () {
+        var self = this;
+
+        clearTimeout(this._timeouts.menu);
+
+        this._timeouts.menu = setTimeout(function () {
+            self.closeSubMenus();
+
+            if (self.get(&#x27;hideOnMouseLeave&#x27;)) {
+                self.hide();
+            }
+        }, 500);
+    },
+
+    &#x2F;&#x2F; -- Default Event Handlers -----------------------------------------------
+
+    &#x2F;**
+    Default handler for the generic &#x60;itemClick&#x60; event.
+
+    @method _defItemClickFn
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _defItemClickFn: function (e) {
+        var item = e.item;
+
+        if (item.canHaveChildren) {
+            clearTimeout(this._timeouts.item);
+            clearTimeout(this._timeouts.menu);
+
+            e.item.toggle();
+        } else {
+            this.closeSubMenus();
+            this.hide();
+        }
+    },
+
+    &#x2F;**
+    Default handler for item-specific &#x60;itemClick#&lt;id&gt;&#x60; events.
+
+    @method _defSpecificItemClickFn
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _defSpecificItemClickFn: function (e) {
+        this.fire(EVT_ITEM_CLICK, {
+            originEvent: e.originEvent,
+            item       : e.item
+        });
+    }
+}, {
+    ATTRS: {
+        &#x2F;**
+        Preferred alignment positions at which this menu should be displayed
+        relative to the anchor point when one is provided to the &#x60;show()&#x60;,
+        &#x60;toggle()&#x60;, or &#x60;reposition()&#x60; methods.
+
+        The most optimal alignment position will be chosen automatically based
+        on which one allows the most of this menu to be visible within the
+        browser&#x27;s viewport. If multiple positions are equally visible, then the
+        optimal position will be chosen based on its order in this array.
+
+        An alignment position is a string like &quot;tl-bl&quot;, which means &quot;align the
+        top left of this menu to the bottom left of its anchor point&quot;.
+
+        Any combination of top&#x2F;bottom&#x2F;left&#x2F;right alignment positions may be used
+        as long as they follow this format. Here are a few examples:
+
+          * &#x60;&#x27;bl-br&#x27;&#x60;: Align the bottom left of this menu with the bottom right
+            of the anchor point.
+          * &#x60;&#x27;br-bl&#x27;&#x60;: Align the bottom right of this menu with the bottom left
+            of the anchor point.
+          * &#x60;&#x27;tl-tr&#x27;&#x60;: Align the top left of this menu with the top right of
+            the anchor point.
+          * &#x60;&#x27;tr-tl&#x27;&#x60;: Align the top right of this menu to the top left of this
+            anchor point.
+
+        @attribute {String[]} alignments
+        @default [&#x27;tl-bl&#x27;, &#x27;tr-br&#x27;, &#x27;bl-tl&#x27;, &#x27;br-tr&#x27;]
+        **&#x2F;
+        alignments: {
+            valueFn: function () {
+                return [&#x27;tl-bl&#x27;, &#x27;tr-br&#x27;, &#x27;bl-tl&#x27;, &#x27;br-tr&#x27;];
+            }
+        },
+
+        &#x2F;**
+        If &#x60;true&#x60;, this menu will be hidden when the user moves the mouse
+        outside the menu.
+
+        @attribute {Boolean} hideOnMouseLeave
+        @default false
+        **&#x2F;
+        hideOnMouseLeave: {
+            value: false
+        },
+
+        &#x2F;**
+        If &#x60;true&#x60;, this menu will be hidden when the user clicks somewhere
+        outside the menu.
+
+        @attribute {Boolean} hideOnOutsideClick
+        @default true
+        **&#x2F;
+        hideOnOutsideClick: {
+            value: true
+        },
+
+        &#x2F;**
+        Just like &#x60;alignments&#x60;, but for submenus of this menu. See the
+        &#x60;alignments&#x60; attribute for details on how alignment positions work.
+
+        @attribute {String[]} subMenuAlignments
+        @default [&#x27;tl-tr&#x27;, &#x27;bl-br&#x27;, &#x27;tr-tl&#x27;, &#x27;br-bl&#x27;]
+        **&#x2F;
+        subMenuAlignments: {
+            valueFn: function () {
+                return [&#x27;tl-tr&#x27;, &#x27;bl-br&#x27;, &#x27;tr-tl&#x27;, &#x27;br-bl&#x27;];
+            }
+        },
+
+        &#x2F;**
+        Whether or not this menu is visible. Changing this attribute&#x27;s value
+        will also change the visibility of this menu.
+
+        @attribute {Boolean} visible
+        @default false
+        **&#x2F;
+        visible: {
+            value: false
+        }
+    }
+});
+
+Y.Menu = Y.mix(Menu, Y.Menu);
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

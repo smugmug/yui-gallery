@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TreeView - SmugMug YUI Gallery</title>
+    <title>Menu.Base - SmugMug YUI Gallery</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -116,34 +116,26 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>TreeView Class</h1>
+                        <h1>Menu.Base Class</h1>
 <div class="box meta">
-    
-        <div class="uses">
-            Uses
-            <ul class="inline commas">
-                
-                    <li><a href="Tree.html">Tree</a></li>
-                
-            </ul>
-        </div>
     
 
     
         <div class="extends">
-            Extends View
+            Extends <a href="../classes/Tree.html" class="crosslink">Tree</a>
         </div>
     
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l8"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:8</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l8"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:8</code></a>
         </div>
     
 
     
         
-            Module: <a href="../modules/gallery-sm-treeview.html">gallery-sm-treeview</a>
+            Module: <a href="../modules/gallery-sm-menu-base.html">gallery-sm-menu-base</a><br>
+            Parent Module: <a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a>
         
     
 
@@ -153,17 +145,27 @@
 
 
 <div class="box intro">
-    <p>TreeView widget.</p>
+    <p>Base menu functionality.</p>
 </div>
 
 
     <div class="constructor">
         <h2>Constructor</h2>
-        <div id="method_TreeView" class="method item">
-    <h3 class="name"><code>TreeView</code></h3>
+        <div id="method_Menu.Base" class="method item">
+    <h3 class="name"><code>Menu.Base</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[config]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -191,7 +193,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l8"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:8</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l8"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:8</code></a>
         
         </p>
 
@@ -205,6 +207,49 @@
         
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[config]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Config options.</p>
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[items]</code>
+                                    <span class="type"><a href="../classes/Menu.Item.html" class="crosslink">Menu.Item[]</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object[]</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Array of <code>Menu.Item</code> instances
+        or menu item config objects to add to this menu.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -250,6 +295,34 @@
                                 
                             </li>
                         
+                            <li class="index-item method protected">
+                                <a href="#method__defDisableFn">_defDisableFn</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected">
+                                <a href="#method__defEnableFn">_defEnableFn</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected">
+                                <a href="#method__defHideFn">_defHideFn</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected">
+                                <a href="#method__defShowFn">_defShowFn</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method protected inherited">
                                 <a href="#method__fire">_fire</a>
 
@@ -259,13 +332,6 @@
                         
                             <li class="index-item method protected inherited">
                                 <a href="#method__removeNodeFromParent">_removeNodeFromParent</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method protected">
-                                <a href="#method__setLazyRender">_setLazyRender</a>
 
                                 
                                 
@@ -292,6 +358,13 @@
                                 
                             </li>
                         
+                            <li class="index-item method">
+                                <a href="#method_closeSubMenus">closeSubMenus</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method inherited">
                                 <a href="#method_createNode">createNode</a>
 
@@ -306,6 +379,13 @@
                                 
                             </li>
                         
+                            <li class="index-item method">
+                                <a href="#method_disableItem">disableItem</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method inherited">
                                 <a href="#method_emptyNode">emptyNode</a>
 
@@ -314,7 +394,7 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_getHTMLNode">getHTMLNode</a>
+                                <a href="#method_enableItem">enableItem</a>
 
                                 
                                 
@@ -329,6 +409,13 @@
                         
                             <li class="index-item method inherited">
                                 <a href="#method_getSelectedNodes">getSelectedNodes</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_hideItem">hideItem</a>
 
                                 
                                 
@@ -362,29 +449,15 @@
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_render">render</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_renderChildren">renderChildren</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_renderNode">renderNode</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method inherited">
                                 <a href="#method_selectNode">selectNode</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_showItem">showItem</a>
 
                                 
                                 
@@ -442,20 +515,6 @@
                                 
                             </li>
                         
-                            <li class="index-item property protected">
-                                <a href="#property__isYUITreeView">_isYUITreeView</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property protected">
-                                <a href="#property__lazyRender">_lazyRender</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item property protected inherited">
                                 <a href="#property__nodeMap">_nodeMap</a>
 
@@ -484,22 +543,8 @@
                                 
                             </li>
                         
-                            <li class="index-item property">
-                                <a href="#property_classNames">classNames</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item property inherited">
                                 <a href="#property_nodeClass">nodeClass</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_rendered">rendered</a>
 
                                 
                                 
@@ -521,10 +566,6 @@
                     <h3>Attributes</h3>
 
                     <ul class="index-list attrs extends">
-                        
-                            <li class="index-item attr">
-                                <a href="#attr_lazyRender">lazyRender</a>
-                            </li>
                         
                             <li class="index-item attr inherited">
                                 <a href="#attr_multiSelect">multiSelect</a>
@@ -565,6 +606,27 @@
                                 
                             </li>
                         
+                            <li class="index-item event">
+                                <a href="#event_disable">disable</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item event">
+                                <a href="#event_enable">enable</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item event">
+                                <a href="#event_hide">hide</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item event inherited">
                                 <a href="#event_open">open</a>
 
@@ -581,6 +643,13 @@
                         
                             <li class="index-item event inherited">
                                 <a href="#event_select">select</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item event">
+                                <a href="#event_show">show</a>
 
                                 
                                 
@@ -697,6 +766,362 @@ tree.</p>
 
                     <div class="param-description">
                         <p>Options to pass along to <code>removeNode()</code>.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__defDisableFn" class="method item protected">
+    <h3 class="name"><code>_defDisableFn</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l170"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:170</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Default handler for the <code>disable</code> event.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">e</code>
+                        <span class="type">EventFacade</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__defEnableFn" class="method item protected">
+    <h3 class="name"><code>_defEnableFn</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l181"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:181</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Default handler for the <code>enable</code> event.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">e</code>
+                        <span class="type">EventFacade</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__defHideFn" class="method item protected">
+    <h3 class="name"><code>_defHideFn</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l192"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:192</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Default handler for the <code>hide</code> event.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">e</code>
+                        <span class="type">EventFacade</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__defShowFn" class="method item protected">
+    <h3 class="name"><code>_defShowFn</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l203"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:203</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Default handler for the <code>show</code> event.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">e</code>
+                        <span class="type">EventFacade</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
                     </div>
 
                     
@@ -956,81 +1381,6 @@ tree.</p>
         </div>
     
 
-    
-
-    
-</div>
-
-                
-                    <div id="method__setLazyRender" class="method item protected">
-    <h3 class="name"><code>_setLazyRender</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l298"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:298</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Setter for the <code>lazyRender</code> attribute.</p>
-
-<p>Just caches the value in a property for faster lookups.</p>
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
-                    
-                    Value.
-                
-            </div>
-        </div>
     
 
     
@@ -1445,6 +1795,62 @@ tree; otherwise, a new root node will be created.</p>
 </div>
 
                 
+                    <div id="method_closeSubMenus" class="method item">
+    <h3 class="name"><code>closeSubMenus</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l69"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:69</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Closes all open submenus of this menu.</p>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method_createNode" class="method item inherited">
     <h3 class="name"><code>createNode</code></h3>
 
@@ -1680,6 +2086,136 @@ tree.</p>
 </div>
 
                 
+                    <div id="method_disableItem" class="method item">
+    <h3 class="name"><code>disableItem</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>item</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l84"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:84</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Disables the specified menu item.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">item</code>
+                        <span class="type"><a href="../classes/Menu.Item.html" class="crosslink">Menu.Item</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Menu item to disable.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Options.</p>
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[silent=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If <code>true</code>, the <code>disable</code> event
+        will be suppressed.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method_emptyNode" class="method item inherited">
     <h3 class="name"><code>emptyNode</code></h3>
 
@@ -1839,8 +2375,8 @@ still be reusable unless the <code>destroy</code> option is truthy.</p>
 </div>
 
                 
-                    <div id="method_getHTMLNode" class="method item">
-    <h3 class="name"><code>getHTMLNode</code></h3>
+                    <div id="method_enableItem" class="method item">
+    <h3 class="name"><code>enableItem</code></h3>
 
     
         <div class="args">
@@ -1848,7 +2384,13 @@ still be reusable unless the <code>destroy</code> option is truthy.</p>
             
                 <li class="arg">
                     
-                        <code>treeNode</code>
+                        <code>item</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
                     
                 </li>
             
@@ -1857,10 +2399,6 @@ still be reusable unless the <code>destroy</code> option is truthy.</p>
     
 
     
-        <span class="returns-inline">
-            <span class="type">Node</span>
-        </span>
-    
 
     
 
@@ -1870,6 +2408,8 @@ still be reusable unless the <code>destroy</code> option is truthy.</p>
 
     
 
+    
+        <span class="flag chainable">chainable</span>
     
 
     
@@ -1885,7 +2425,7 @@ still be reusable unless the <code>destroy</code> option is truthy.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l97"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:97</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l105"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:105</code></a>
         
         </p>
 
@@ -1896,8 +2436,7 @@ still be reusable unless the <code>destroy</code> option is truthy.</p>
     </div>
 
     <div class="description">
-        <p>Returns the HTML node (as a <code>Y.Node</code> instance) associated with the specified
-<code>Tree.Node</code> instance, if any.</p>
+        <p>Enables the specified menu item.</p>
     </div>
 
     
@@ -1908,16 +2447,51 @@ still be reusable unless the <code>destroy</code> option is truthy.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">treeNode</code>
-                        <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a></span>
+                        <code class="param-name">item</code>
+                        <span class="type"><a href="../classes/Menu.Item.html" class="crosslink">Menu.Item</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Tree node.</p>
+                        <p>Menu item to enable.</p>
                     </div>
 
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Options.</p>
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[silent=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If <code>true</code>, the <code>enable</code> event
+        will be suppressed.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -1925,20 +2499,6 @@ still be reusable unless the <code>destroy</code> option is truthy.</p>
         </div>
     
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Node</span>:
-                    
-                    <code>Y.Node</code> instance associated with the given tree node, or
-    <code>undefined</code> if one was not found.
-                
-            </div>
-        </div>
     
 
     
@@ -2109,6 +2669,136 @@ doesn't exist in this tree.</p>
                 
             </div>
         </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_hideItem" class="method item">
+    <h3 class="name"><code>hideItem</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>item</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l126"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:126</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Hides the specified menu item.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">item</code>
+                        <span class="type"><a href="../classes/Menu.Item.html" class="crosslink">Menu.Item</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Menu item to hide.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Options.</p>
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[silent=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If <code>true</code>, the <code>hide</code> event
+        will be suppressed.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
     
 
     
@@ -2737,376 +3427,6 @@ be reusable unless the <code>destroy</code> option is truthy.</p>
 </div>
 
                 
-                    <div id="method_render" class="method item">
-    <h3 class="name"><code>render</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l114"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:114</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Renders this TreeView into its container.</p>
-
-<p>If the container hasn't already been added to the current document, it will
-be appended to the <code>&lt;body&gt;</code> element.</p>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_renderChildren" class="method item">
-    <h3 class="name"><code>renderChildren</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>treeNode</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[options]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Node</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l143"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:143</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Renders the children of the specified tree node.</p>
-
-<p>If a container is specified, it will be assumed to be an existing rendered
-tree node, and the children will be rendered (or re-rendered) inside it.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">treeNode</code>
-                        <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Tree node whose children should be rendered.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[options]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Options.</p>
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[container]</code>
-                                    <span class="type">Node</span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p><code>Y.Node</code> instance of a container into
-        which the children should be rendered. If the container already
-        contains rendered children, they will be re-rendered in place.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Node</span>:
-                    
-                    <code>Y.Node</code> instance containing the rendered children.
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_renderNode" class="method item">
-    <h3 class="name"><code>renderNode</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>treeNode</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[options]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Node</span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l204"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:204</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Renders the specified tree node and its children (if any).</p>
-
-<p>If a container is specified, the rendered node will be appended to it.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">treeNode</code>
-                        <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Tree node to render.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[options]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Options.</p>
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[container]</code>
-                                    <span class="type">Node</span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p><code>Y.Node</code> instance of a container to
-        which the rendered tree node should be appended.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[renderChildren=false]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>Whether or not to render
-        this node's children.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">Node</span>:
-                    
-                    <code>Y.Node</code> instance of the rendered tree node.
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
                     <div id="method_selectNode" class="method item inherited">
     <h3 class="name"><code>selectNode</code></h3>
 
@@ -3214,6 +3534,136 @@ tree node, and the children will be rendered (or re-rendered) inside it.</p>
 
                                 <div class="param-description">
                                     <p>If <code>true</code>, the <code>select</code> event
+        will be suppressed.</p>
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_showItem" class="method item">
+    <h3 class="name"><code>showItem</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>item</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l147"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:147</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Shows the specified menu item.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">item</code>
+                        <span class="type"><a href="../classes/Menu.Item.html" class="crosslink">Menu.Item</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Menu item to show.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Options.</p>
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[silent=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If <code>true</code>, the <code>show</code> event
         will be suppressed.</p>
                                 </div>
 
@@ -3785,100 +4235,6 @@ tree node, and the children will be rendered (or re-rendered) inside it.</p>
 </div>
 
                 
-                    <div id="property__isYUITreeView" class="property item protected">
-    <h3 class="name"><code>_isYUITreeView</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l69"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:69</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Simple way to type-check that this is a TreeView instance.</p>
-    </div>
-
-    
-        <p><strong>Default:</strong> true</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property__lazyRender" class="property item protected">
-    <h3 class="name"><code>_lazyRender</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l78"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:78</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Cached value of the <code>lazyRender</code> attribute.</p>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="property__nodeMap" class="property item protected inherited">
     <h3 class="name"><code>_nodeMap</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
@@ -4054,217 +4410,6 @@ currently selected.</p>
 </div>
 
                 
-                    <div id="property_classNames" class="property item">
-    <h3 class="name"><code>classNames</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l22"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:22</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>CSS class names used by this treeview.</p>
-    </div>
-
-    
-
-    
-
-    
-        <h4>Sub-properties:</h4>
-
-        <ul class="params-list">
-            
-            <li class="param">
-                
-                    <code class="param-name">canHaveChildren</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name indicating that a tree node can
-    contain child nodes (whether or not it actually does).</p>
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name">children</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name for a list of child nodes.</p>
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name">hasChildren</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name indicating that a tree node has one
-    or more child nodes.</p>
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name">indicator</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name for an open/closed indicator.</p>
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name">label</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name for a tree node's user-visible label.</p>
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name">node</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name for a tree node item.</p>
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name">noTouch</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name added to the TreeView container when not
-    using a touchscreen device.</p>
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name">open</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name indicating that a tree node is open.</p>
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name">row</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name for a row container encompassing the
-    indicator and label within a tree node.</p>
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name">selected</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name for a tree node that's selected.</p>
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name">touch</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name added to the TreeView container when using
-    a touchscreen device.</p>
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name">treeview</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                
-
-                <div class="param-description">
-                    <p>Class name for the TreeView container.</p>
-                </div>
-
-                
-            </li>
-            
-        </ul>
-    
-</div>
-
-                
                     <div id="property_nodeClass" class="property item inherited">
     <h3 class="name"><code>nodeClass</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a></span>
@@ -4304,52 +4449,6 @@ class reference at runtime.</p>
 
     
         <p><strong>Default:</strong> Y.Tree.Node</p>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_rendered" class="property item">
-    <h3 class="name"><code>rendered</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l59"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:59</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Whether or not this TreeView has been rendered.</p>
-    </div>
-
-    
-        <p><strong>Default:</strong> false</p>
     
 
     
@@ -4405,115 +4504,6 @@ class reference at runtime.</p>
         
             <div id="attrs" class="api-class-tabpanel">
                 <h2 class="off-left">Attributes</h2>
-
-                
-                    <div id="attr_lazyRender" class="attr item">
-    <a name="config_lazyRender"></a> 
-    <h3 class="name"><code>lazyRender</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l488"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:488</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>When <code>true</code>, a node's children won't be rendered until the first time
-that node is opened.</p>
-
-<p>This can significantly speed up the time it takes to render a large
-tree, but might not make sense if you're using CSS that doesn't hide the
-contents of closed nodes.</p>
-    </div>
-
-    
-        <p><strong>Default:</strong> true</p>
-    
-
-    
-        <div class="emits box">
-            <h4>Fires event <code>lazyRenderChange</code></h4>
-
-            <p>
-            Fires when the value for the configuration attribute <code>lazyRender</code> is
-            changed. You can listen for the event using the <code>on</code> method if you
-            wish to be notified before the attribute's value has changed, or
-            using the <code>after</code> method if you wish to be notified after the
-            attribute's value has changed.
-            </p>
-
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                    <li class="param">
-                        <code class="param-name">e</code>
-                        <span class="type">EventFacade</span>
-
-                        <div class="param-description">
-                            An Event Facade object with the following
-                            attribute-specific properties added:
-                        </div>
-
-                        <ul class="params-list">
-                            <li class="param">
-                                <code class="param-name">prevVal</code>
-                                <span class="type">Any</span>
-                                <div class="param-description">The value of the attribute, prior to it being set.</div>
-                            </li>
-                            <li class="param">
-                                <code class="param-name">newVal</code>
-                                <span class="type">Any</span>
-                                <div class="param-description">The value the attribute is to be set to.</div>
-                            </li>
-                            <li class="param">
-                                <code class="param-name">attrName</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                <div class="param-description">The name of the attribute being set.</div>
-                            </li>
-                            <li class="param">
-                                <code class="param-name">subAttrName</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                <div class="param-description">If setting a property within the attribute's value, the name of the sub-attribute property being set.</div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    
-
-    
-</div>
 
                 
                     <div id="attr_multiSelect" class="attr item inherited">
@@ -4963,6 +4953,204 @@ how the node was added ("append", "insert", "prepend", etc.).</p>
 </div>
 
                 
+                    <div id="event_disable" class="events item">
+    <h3 class="name"><code>disable</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l19"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:19</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when a menu item is disabled.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Event Payload:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">item</code>
+                        <span class="type"><a href="../classes/Menu.Item.html" class="crosslink">Menu.Item</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Menu item that was disabled.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+
+    
+</div>
+
+                
+                    <div id="event_enable" class="events item">
+    <h3 class="name"><code>enable</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l28"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:28</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when a menu item is enabled.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Event Payload:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">item</code>
+                        <span class="type"><a href="../classes/Menu.Item.html" class="crosslink">Menu.Item</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Menu item that was enabled.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+
+    
+</div>
+
+                
+                    <div id="event_hide" class="events item">
+    <h3 class="name"><code>hide</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l37"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:37</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when a menu item is hidden.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Event Payload:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">item</code>
+                        <span class="type"><a href="../classes/Menu.Item.html" class="crosslink">Menu.Item</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Menu item that was hidden.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+
+    
+</div>
+
+                
                     <div id="event_open" class="events item inherited">
     <h3 class="name"><code>open</code></h3>
     <span class="type"></span>
@@ -5169,6 +5357,72 @@ how the node was added ("append", "insert", "prepend", etc.).</p>
 
                     <div class="param-description">
                         <p>Node being selected.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+
+    
+</div>
+
+                
+                    <div id="event_show" class="events item">
+    <h3 class="name"><code>show</code></h3>
+    <span class="type"></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-menu_js_menu-base.js.html#l46"><code>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js:46</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Fired when a menu item is shown.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Event Payload:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">item</code>
+                        <span class="type"><a href="../classes/Menu.Item.html" class="crosslink">Menu.Item</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Menu item that was shown.</p>
                     </div>
 
                     

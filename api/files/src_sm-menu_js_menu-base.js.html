@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src&#x2F;sm-tree&#x2F;js&#x2F;plugins&#x2F;tree-lazy.js - SmugMug YUI Gallery</title>
+    <title>src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js - SmugMug YUI Gallery</title>
     <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
@@ -116,174 +116,225 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src&#x2F;sm-tree&#x2F;js&#x2F;plugins&#x2F;tree-lazy.js</h1>
+                        <h1 class="file-heading">File: src&#x2F;sm-menu&#x2F;js&#x2F;menu-base.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
 &#x2F;**
-Provides &#x60;Plugin.Tree.Lazy&#x60;, a plugin for &#x60;Tree&#x60; that makes it easy to lazily
-load and populate the contents of tree nodes the first time they&#x27;re opened.
+Provides &#x60;Menu.Base&#x60;.
 
-@module gallery-sm-tree
-@submodule gallery-sm-tree-lazy
+@module gallery-sm-menu
+@submodule gallery-sm-menu-base
 **&#x2F;
 
 &#x2F;**
-A plugin for &#x60;Tree&#x60; that makes it easy to lazily load and populate the contents
-of tree nodes the first time they&#x27;re opened.
+Base menu functionality.
 
-### Example
-
-    YUI().use(&#x27;jsonp&#x27;, &#x27;tree&#x27;, &#x27;tree-lazy&#x27;, function (Y) {
-        var tree = new Y.Tree();
-
-        tree.plug(Y.Plugin.Tree.Lazy, {
-
-            &#x2F;&#x2F; Custom function that Plugin.Tree.Lazy will call when it needs to
-            &#x2F;&#x2F; load the children for a node.
-            load: function (node, callback) {
-                &#x2F;&#x2F; Request the data for this node&#x27;s children via JSONP.
-                Y.jsonp(&#x27;http:&#x2F;&#x2F;example.com&#x2F;api&#x2F;data?callback={callback}&#x27;, function (data) {
-                    &#x2F;&#x2F; If we didn&#x27;t get any data back, treat this as an error.
-                    if (!data) {
-                        callback(new Error(&#x27;No data!&#x27;));
-                        return;
-                    }
-
-                    &#x2F;&#x2F; Append the children to the node (assume &#x60;data.children&#x60; is
-                    &#x2F;&#x2F; an array of child node data for the sake of this example).
-                    node.append(data.children);
-
-                    &#x2F;&#x2F; Call the callback function to tell Plugin.Tree.Lazy that
-                    &#x2F;&#x2F; we&#x27;re done loading data.
-                    callback();
-                });
-            }
-
-        });
-    });
-
-@class Plugin.Tree.Lazy
-@param {Object} config Config object.
-
-    @param {Function} config.load Custom &#x60;load()&#x60; function that will be called
-        when a node&#x27;s children need to be loaded. This function must call the
-        provided callback to indicate completion.
-
-        @param {Function} config.load.callback Callback function. The custom
-            &#x60;load()&#x60; function must call this callback to indicate completion.
-
-            @param {Error} [config.load.callback.err] Error object. If provided,
-                the load action will be considered a failure, and an &#x60;error&#x60;
-                event will be fired. Omit this argument (or set it to &#x60;null&#x60;) to
-                indicate success.
-
-@extends Plugin.Base
+@class Menu.Base
 @constructor
+@param {Object} [config] Config options.
+    @param {Menu.Item[]|Object[]} [config.items] Array of &#x60;Menu.Item&#x60; instances
+        or menu item config objects to add to this menu.
+@extends Tree
 **&#x2F;
 
 &#x2F;**
-Fired when the &#x60;load()&#x60; method indicates there was an error loading child nodes.
+Fired when a menu item is disabled.
 
-@event error
-@param {Error} error Error provided by the &#x60;load()&#x60; method.
-@param {String} src Source of the error (defaults to &quot;load&quot;).
+@event disable
+@param {Menu.Item} item Menu item that was disabled.
+@preventable _defDisableFn
 **&#x2F;
-var EVT_ERROR = &#x27;error&#x27;;
+var EVT_DISABLE = &#x27;disable&#x27;;
 
 &#x2F;**
-Fired after child nodes have finished loading and have been added to the tree.
+Fired when a menu item is enabled.
 
-@event loaded
-@param {Tree.Node} node Tree node whose children have been loaded.
+@event enable
+@param {Menu.Item} item Menu item that was enabled.
+@preventable _defEnableFn
 **&#x2F;
-var EVT_LOADED  = &#x27;loaded&#x27;;
+var EVT_ENABLE = &#x27;enable&#x27;;
 
 &#x2F;**
-Fired just before the custom &#x60;load()&#x60; method is called to load child nodes for a
-node.
+Fired when a menu item is hidden.
 
-Calling &#x60;preventDefault()&#x60; on this event&#x27;s facade will cancel the load action
-and prevent the &#x60;load()&#x60; method from being called.
-
-@event loading
-@param {Tree.Node} node Tree node whose children will be loaded.
-@preventable _defLoadingFn
+@event hide
+@param {Menu.Item} item Menu item that was hidden.
+@preventable _defHideFn
 **&#x2F;
-var EVT_LOADING = &#x27;loading&#x27;;
+var EVT_HIDE = &#x27;hide&#x27;;
 
-Y.namespace(&#x27;Plugin.Tree&#x27;).Lazy = Y.Base.create(&#x27;lazyTreePlugin&#x27;, Y.Plugin.Base, [], {
-    &#x2F;&#x2F; -- Lifecycle Methods ----------------------------------------------------
+&#x2F;**
+Fired when a menu item is shown.
+
+@event show
+@param {Menu.Item} item Menu item that was shown.
+@preventable _defShowFn
+**&#x2F;
+var EVT_SHOW = &#x27;show&#x27;;
+
+var MenuBase = Y.Base.create(&#x27;menuBase&#x27;, Y.Tree, [], {
+    nodeClass: Y.Menu.Item,
+
+    &#x2F;&#x2F; -- Lifecycle ------------------------------------------------------------
     initializer: function (config) {
-        this._host = config.host;
+        config || (config = {});
 
-        if (config.load) {
-            this.load = config.load;
+        if (config.items) {
+            this.appendNode(this.rootNode, config.items, {silent: true});
         }
-
-        this._published = {};
-        this._attachEvents();
     },
 
     &#x2F;&#x2F; -- Public Methods -------------------------------------------------------
-    load: function (node, callback) {
-        callback(new Error(&#x27;Plugin.Tree.Lazy: Please provide a custom &#x60;load&#x60; method when instantiating this plugin.&#x27;));
+
+    &#x2F;**
+    Closes all open submenus of this menu.
+
+    @method closeSubMenus
+    @chainable
+    **&#x2F;
+    closeSubMenus: function () {
+        &#x2F;&#x2F; Close all open submenus.
+        Y.Object.each(this._openMenus, function (item) {
+            item.close();
+        }, this);
+
+        return this;
     },
 
-    &#x2F;&#x2F; -- Protected Methods ----------------------------------------------------
+    &#x2F;**
+    Disables the specified menu item.
 
-    _attachEvents: function () {
-        this.onHostEvent(&#x27;open&#x27;, this._onOpen);
-    },
-
-    &#x2F;&#x2F; -- Protected Event Handlers ---------------------------------------------
-
-    _onOpen: function (e) {
-        var node = e.node;
-
-        &#x2F;&#x2F; Nothing to do if this node can&#x27;t have children or if its children
-        &#x2F;&#x2F; have already been (or are already being) loaded.
-        if (!node.canHaveChildren || node.state.loaded || node.state.loading) {
-            return;
-        }
-
-        if (!this._published[EVT_LOADING]) {
-            this._published[EVT_LOADING] = this.publish(EVT_LOADING, {
-                defaultFn: this._defLoadingFn
+    @method disableItem
+    @param {Menu.Item} item Menu item to disable.
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;disable&#x60; event
+            will be suppressed.
+    @chainable
+    **&#x2F;
+    disableItem: function (item, options) {
+        if (!item.isDisabled()) {
+            this._fire(EVT_DISABLE, {item: item}, {
+                defaultFn: this._defDisableFn,
+                silent   : options &amp;&amp; options.silent
             });
         }
 
-        this.fire(EVT_LOADING, {node: node});
+        return this;
+    },
+
+    &#x2F;**
+    Enables the specified menu item.
+
+    @method enableItem
+    @param {Menu.Item} item Menu item to enable.
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;enable&#x60; event
+            will be suppressed.
+    @chainable
+    **&#x2F;
+    enableItem: function (item, options) {
+        if (item.isDisabled()) {
+            this._fire(EVT_ENABLE, {item: item}, {
+                defaultFn: this._defEnableFn,
+                silent   : options &amp;&amp; options.silent
+            });
+        }
+
+        return this;
+    },
+
+    &#x2F;**
+    Hides the specified menu item.
+
+    @method hideItem
+    @param {Menu.Item} item Menu item to hide.
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;hide&#x60; event
+            will be suppressed.
+    @chainable
+    **&#x2F;
+    hideItem: function (item, options) {
+        if (!item.isHidden()) {
+            this._fire(EVT_HIDE, {item: item}, {
+                defaultFn: this._defHideFn,
+                silent   : options &amp;&amp; options.silent
+            });
+        }
+
+        return this;
+    },
+
+    &#x2F;**
+    Shows the specified menu item.
+
+    @method showItem
+    @param {Menu.Item} item Menu item to show.
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;show&#x60; event
+            will be suppressed.
+    @chainable
+    **&#x2F;
+    showItem: function (item, options) {
+        if (item.isHidden()) {
+            this._fire(EVT_SHOW, {item: item}, {
+                defaultFn: this._defShowFn,
+                silent   : options &amp;&amp; options.silent
+            });
+        }
+
+        return this;
     },
 
     &#x2F;&#x2F; -- Default Event Handlers -----------------------------------------------
 
-    _defLoadingFn: function (e) {
-        var node = e.node,
-            self = this;
+    &#x2F;**
+    Default handler for the &#x60;disable&#x60; event.
 
-        node.state.loading = true;
+    @method _defDisableFn
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _defDisableFn: function (e) {
+        e.item.state.disabled = true;
+    },
 
-        this.load(node, function (err) {
-            delete node.state.loading;
+    &#x2F;**
+    Default handler for the &#x60;enable&#x60; event.
 
-            if (err) {
-                self.fire(EVT_ERROR, {
-                    error: err,
-                    src  : &#x27;load&#x27;
-                });
+    @method _defEnableFn
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _defEnableFn: function (e) {
+        delete e.item.state.disabled;
+    },
 
-                return;
-            }
+    &#x2F;**
+    Default handler for the &#x60;hide&#x60; event.
 
-            node.state.loaded = true;
+    @method _defHideFn
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _defHideFn: function (e) {
+        e.item.state.hidden = true;
+    },
 
-            self.fire(EVT_LOADED, {node: node});
-        });
+    &#x2F;**
+    Default handler for the &#x60;show&#x60; event.
+
+    @method _defShowFn
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _defShowFn: function (e) {
+        delete e.item.state.hidden;
     }
-}, {
-    NS: &#x27;lazy&#x27;
 });
+
+Y.namespace(&#x27;Menu&#x27;).Base = MenuBase;
 
     </pre>
 </div>
