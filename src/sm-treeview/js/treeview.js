@@ -28,6 +28,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
     @param {String} children Class name for a list of child nodes.
     @param {String} hasChildren Class name indicating that a tree node has one
         or more child nodes.
+    @param {String} icon Class name for a tree node's icon.
     @param {String} indicator Class name for an open/closed indicator.
     @param {String} label Class name for a tree node's user-visible label.
     @param {String} node Class name for a tree node item.
@@ -45,6 +46,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
         canHaveChildren: getClassName('treeview-can-have-children'),
         children       : getClassName('treeview-children'),
         hasChildren    : getClassName('treeview-has-children'),
+        icon           : getClassName('treeview-icon'),
         indicator      : getClassName('treeview-indicator'),
         label          : getClassName('treeview-label'),
         node           : getClassName('treeview-node'),

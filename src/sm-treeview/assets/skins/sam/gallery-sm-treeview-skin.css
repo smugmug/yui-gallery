@@ -16,11 +16,15 @@ Licensed under a Creative Commons Attribution 3.0 License.
 }
 
 /* Page icon for all nodes by default. */
-.yui3-skin-sam .yui3-treeview-label {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABUUlEQVQ4jY2Sv2rDMBDGT3JKl/oB2kdI3sJ7lwx9hvYZQkkIDXQuhWYOeCvdS6DP4D3dstsUZArWH/dOsRQnlk0F8onT3U/fJ2tU1zXQuFssbjFcw/D4MsZ8G63hY7WyiZHbwY2bzXy+rnBT0jQGNMLdAVmWwWa7vcclw7lzfUeA1sxQk5SgEVBhrJQChTmCCCHgfblcT2ezh6ZldwLAJkZojt+LKDqKbiB5nsNrmkIyHr+9pOkj7jydK+DUzC0GOpAkSaySOI7hM8uKjgVFClqAEISUuNoOQCvlLbTHOYQOodoQ4GCBc/olvZDoAOBdC5j0CgYgEUbVA7B3YO+BEj2QCPMqaEFKr4Da+iDWAtaGLZAC/FVDENbUhi04BQMQygct/JalXbs76IOwVu0J4KcoLr3M5kHRy2NNtFCEMJztWg8ohdhfTSbP8I+BkL1b/wF76M1c9BEbZwAAAABJRU5ErkJggg==);
-    background-position: left center;
-    padding-left: 22px;
+.yui3-skin-sam .yui3-treeview-icon {
+    background: left center no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABUUlEQVQ4jY2Sv2rDMBDGT3JKl/oB2kdI3sJ7lwx9hvYZQkkIDXQuhWYOeCvdS6DP4D3dstsUZArWH/dOsRQnlk0F8onT3U/fJ2tU1zXQuFssbjFcw/D4MsZ8G63hY7WyiZHbwY2bzXy+rnBT0jQGNMLdAVmWwWa7vcclw7lzfUeA1sxQk5SgEVBhrJQChTmCCCHgfblcT2ezh6ZldwLAJkZojt+LKDqKbiB5nsNrmkIyHr+9pOkj7jydK+DUzC0GOpAkSaySOI7hM8uKjgVFClqAEISUuNoOQCvlLbTHOYQOodoQ4GCBc/olvZDoAOBdC5j0CgYgEUbVA7B3YO+BEj2QCPMqaEFKr4Da+iDWAtaGLZAC/FVDENbUhi04BQMQygct/JalXbs76IOwVu0J4KcoLr3M5kHRy2NNtFCEMJztWg8ohdhfTSbP8I+BkL1b/wF76M1c9BEbZwAAAABJRU5ErkJggg==);
+    float: left;
+    height: 1.7em; /* should match the line-height of the row and label */
+    min-height: 16px; /* to prevent the icon from being clipped */
+    width: 16px;
 }
+
+.yui3-skin-sam .yui3-treeview-label { padding-left: 6px; }
 
 .yui3-skin-sam .yui3-treeview-node { outline: none; }
 .yui3-skin-sam .yui3-treeview-node .yui3-treeview-children { margin-left: 20px; }
@@ -33,6 +37,7 @@ Licensed under a Creative Commons Attribution 3.0 License.
     background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
     border: 1px solid transparent;
     border-radius: 2px;
+    _border: none;
 }
 
 /* -- Node states ----------------------------------------------------------- */
@@ -44,7 +49,7 @@ Licensed under a Creative Commons Attribution 3.0 License.
 }
 
 /* Use a folder icon for nodes that can have children. */
-.yui3-skin-sam .yui3-treeview-can-have-children > .yui3-treeview-row > .yui3-treeview-label {
+.yui3-skin-sam .yui3-treeview-can-have-children > .yui3-treeview-row > .yui3-treeview-icon {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABD0lEQVQ4T63TsUrDUBTG8Y+TUhfnIhQR6tC8i4uC+BBFKVGETiLUoUPQRfENXARRfApfwCVLRSlFsMTSapsmOd6vuLRJoLEOvyU3/8PhwhVVxTLE2m4g007DNpwMNv8RAHvGUSrF1v1Z/TwNz9iK2WPjsXXo3jUPZvDbVW3Xbbdf0Ov1E25P9122HCDj8QTD4fcM3++jXF6HiKDb7SR4nge2ZgCsKIqRxvc/USqtoVLZTKhWbbCdbhCGMbIMBl+pRqPgd4NYrfloUWy5QSEMFX/B9h82iLUwf3mLYrv8AJ1EqyIWisWVXNhMW3y8vtVOLm7qzctc2LAVfX5o6dO1Yxzn5LAV8yQD493o5MQm+AEX3F8P8w0R8QAAAABJRU5ErkJggg==);
 }
 
