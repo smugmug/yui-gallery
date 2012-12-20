@@ -30,6 +30,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
     @param {String} children Class name for a list of child nodes.
     @param {String} hasChildren Class name indicating that a tree node has one
         or more child nodes.
+    @param {String} icon Class name for a tree node's icon.
     @param {String} indicator Class name for an open/closed indicator.
     @param {String} label Class name for a tree node's user-visible label.
     @param {String} node Class name for a tree node item.
@@ -47,6 +48,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
         canHaveChildren: getClassName('treeview-can-have-children'),
         children       : getClassName('treeview-children'),
         hasChildren    : getClassName('treeview-has-children'),
+        icon           : getClassName('treeview-icon'),
         indicator      : getClassName('treeview-indicator'),
         label          : getClassName('treeview-label'),
         node           : getClassName('treeview-node'),
@@ -167,15 +169,8 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
             childrenNode = Y.Node.create(TreeView.Templates.children({
                 classNames: this.classNames,
                 node      : treeNode,
-                treeview  : this
+                treeview  : this // not currently used, but may be useful for custom templates
             }));
-        }
-
-        if (treeNode.isRoot()) {
-            childrenNode.set('tabIndex', 0); // Add the root list to the tab order.
-            childrenNode.set('role', 'tree');
-        } else {
-            childrenNode.set('role', 'group');
         }
 
         if (treeNode.hasChildren()) {
@@ -220,34 +215,44 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
     renderNode: function (treeNode, options) {
         options || (options = {});
 
-        var classNames  = this.classNames,
-            hasChildren = treeNode.hasChildren(),
-            htmlNode    = treeNode._htmlNode;
+        var classNames     = this.classNames,
+            hasChildren    = treeNode.hasChildren(),
+            htmlNode       = treeNode._htmlNode,
+            nodeClassNames = {};
 
-        if (!htmlNode) {
+        // Build the hash of CSS classes for this node.
+        nodeClassNames[classNames.node]            = true;
+        nodeClassNames[classNames.canHaveChildren] = treeNode.canHaveChildren;
+        nodeClassNames[classNames.hasChildren]     = hasChildren;
+        nodeClassNames[classNames.open]            = treeNode.isOpen();
+
+        if (htmlNode) {
+            // This node has already been rendered, so we just need to update
+            // the DOM instead of re-rendering it from scratch.
+            htmlNode.one('.' + classNames.label).setHTML(treeNode.label);
+
+            for (var className in nodeClassNames) {
+                if (nodeClassNames.hasOwnProperty(className)) {
+                    htmlNode.toggleClass(className, nodeClassNames[className]);
+                }
+            }
+        } else {
+            // This node hasn't been rendered yet, so render it from scratch.
+            var enabledClassNames = [];
+
+            for (var className in nodeClassNames) {
+                if (nodeClassNames.hasOwnProperty(className) && nodeClassNames[className]) {
+                    enabledClassNames.push(className);
+                }
+            }
+
             htmlNode = treeNode._htmlNode = Y.Node.create(TreeView.Templates.node({
-                classNames: classNames,
-                node      : treeNode,
-                treeview  : this
+                classNames    : classNames,
+                nodeClassNames: enabledClassNames,
+                node          : treeNode,
+                treeview      : this // not currently used, but may be useful for custom templates
             }));
         }
-
-        var labelNode = htmlNode.one('.' + classNames.label),
-            labelId   = labelNode.get('id');
-
-        labelNode.setHTML(treeNode.label);
-
-        if (!labelId) {
-            labelId = Y.guid();
-            labelNode.set('id', labelId);
-        }
-
-        htmlNode.set('aria-labelledby', labelId);
-        htmlNode.set('role', 'treeitem');
-
-        htmlNode.toggleClass(classNames.canHaveChildren, !!treeNode.canHaveChildren);
-        htmlNode.toggleClass(classNames.open, treeNode.isOpen());
-        htmlNode.toggleClass(classNames.hasChildren, hasChildren);
 
         if (hasChildren && options.renderChildren) {
             this.renderChildren(treeNode, {
