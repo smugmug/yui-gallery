@@ -46,6 +46,17 @@ Load YUI onto the page if you haven't already.
 <script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js"></script>
 ```
 
+At the moment you'll also need to manually load the TreeView JS and CSS as well, since it's not yet available on the Yahoo! CDN (it'll be there soon though, we promise).
+
+```html
+<link rel="stylesheet" href="http://smugmug.github.com/yui-gallery/build/gallery-sm-treeview/assets/skins/sam/gallery-sm-treeview.css">
+
+<script src="http://smugmug.github.com/yui-gallery/build/gallery-sm-tree/gallery-sm-tree-min.js"></script>
+<script src="http://smugmug.github.com/yui-gallery/build/gallery-sm-tree-node/gallery-sm-tree-node-min.js"></script>
+<script src="http://smugmug.github.com/yui-gallery/build/gallery-sm-treeview/gallery-sm-treeview-min.js"></script>
+<script src="http://smugmug.github.com/yui-gallery/build/gallery-sm-treeview-templates/gallery-sm-treeview-templates-min.js"></script>
+```
+
 Next, in your JS, create an instance of `Y.TreeView`, specify some nodes to add to the tree, then render the view into a container node.
 
 ```js
