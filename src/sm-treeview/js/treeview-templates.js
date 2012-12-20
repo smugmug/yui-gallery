@@ -2,7 +2,15 @@ var Micro = Y.Template.Micro;
 
 Y.namespace('TreeView').Templates = {
     children: Micro.compile(
-        '<ul class="<%= data.classNames.children %>"></ul>'
+        '<ul class="<%= data.classNames.children %>" ' +
+
+            '<% if (data.node.isRoot()) { %>' +
+                'role="tree" tabindex="0"' +
+            '<% } else { %>' +
+                'role="group"' +
+            '<% } %>' +
+
+        '></ul>'
     ),
 
     node: Micro.compile(

@@ -167,15 +167,8 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
             childrenNode = Y.Node.create(TreeView.Templates.children({
                 classNames: this.classNames,
                 node      : treeNode,
-                treeview  : this
+                treeview  : this // not currently used, but may be useful for custom templates
             }));
-        }
-
-        if (treeNode.isRoot()) {
-            childrenNode.set('tabIndex', 0); // Add the root list to the tab order.
-            childrenNode.set('role', 'tree');
-        } else {
-            childrenNode.set('role', 'group');
         }
 
         if (treeNode.hasChildren()) {
