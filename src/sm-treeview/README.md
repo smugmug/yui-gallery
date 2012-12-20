@@ -1,12 +1,12 @@
 SmugMug TreeView
 =================
 
-<img src="http://f.cl.ly/items/3L3m2n1e1d073y3M2N2X/Image%202012.12.20%2012:26:30%20PM.png" alt="Screenshot of the gorgeous SmugMug TreeView widget" style="border: 1px solid #efefef; float: right; margin: 0 15px; height: 461px; width: 309px;">
-
 A powerful and easy to use TreeView widget for YUI.
 
 Features
 --------
+
+<img src="http://f.cl.ly/items/3L3m2n1e1d073y3M2N2X/Image%202012.12.20%2012:26:30%20PM.png" alt="Screenshot of the gorgeous SmugMug TreeView widget" align="right">
 
 * Comes with an attractive default skin that won't make you claw your eyes out, and is easy to customize via simple CSS.
 
