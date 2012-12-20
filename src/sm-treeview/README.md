@@ -8,21 +8,21 @@ Features
 
 <img src="http://f.cl.ly/items/3L3m2n1e1d073y3M2N2X/Image%202012.12.20%2012:26:30%20PM.png" alt="Screenshot of the gorgeous SmugMug TreeView widget" align="right">
 
-* Comes with an attractive default skin that won't make you claw your eyes out, and is easy to customize via simple CSS.
+* Crazy fast, [as demonstrated in this comparison](http://jsperf.com/yui-treeview) with a few other YUI TreeView widgets. The SmugMug TreeView can easily handle thousands and thousands of nodes with lightning fast rendering times, even in mobile browsers and IE.
 
-* Fast as hell, [as demonstrated in this comparison](http://jsperf.com/yui-treeview) with a few other YUI TreeView widgets. The SmugMug TreeView can easily handle thousands and thousands of nodes with lightning fast rendering times, even in mobile browsers and IE.
+* Memory-efficient. A tree containing over 10,000 nodes consumes less than 8MB of RAM when rendered.
 
-* Memory-efficient. A tree containing over 10,000 nodes consumes less than 8MB of RAM.
+* Comes with an attractive default skin that won't make you claw your eyes out, and is easy to customize via CSS.
 
-* Intuitive interaction design. Behaves just like the native TreeViews users are used to (full keyboard support coming soon).
+* Default skin includes high-res icons that look fantastic on retina displays and other high-dpi devices.
 
-* Accessible to users of screen readers and other assistive tools (not yet fully accessible to keyboard users though -- that's coming soon).
+* Behaves just like the native TreeViews users are used to (full keyboard support coming soon).
 
-* Super easy lazy loading of node children. Just add the [`Y.Plugin.Tree.Lazy`](http://smugmug.github.com/yui-gallery/api/classes/Plugin.Tree.Lazy.html) plugin to your TreeView and define an async function that loads and adds child nodes the first time the parent node is opened.
+* Accessible markup for users of screen readers and other assistive tools (not yet fully accessible to keyboard users though -- that's coming soon).
 
-* Full support for all modern desktop and mobile browsers, as well as IE8+. Looks like crap in IE6 and IE7, but still works.
+* Supports lazy loading of node children. Just add the [`Y.Plugin.Tree.Lazy`](http://smugmug.github.com/yui-gallery/api/classes/Plugin.Tree.Lazy.html) plugin to your TreeView and define an async function that loads and adds child nodes the first time the parent node is opened.
 
-This documentation is a work in progress. At the moment, the [API docs][api-docs] are the most comprehensive source for detailed information about the API of the TreeView widget.
+* Supports all modern desktop and mobile browsers, as well as IE8+. Looks like crap in IE6 and IE7, but still works.
 
 Useful Links
 ------------
