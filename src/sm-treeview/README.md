@@ -1,30 +1,40 @@
 SmugMug TreeView
 =================
 
+<img src="http://f.cl.ly/items/3L3m2n1e1d073y3M2N2X/Image%202012.12.20%2012:26:30%20PM.png" alt="Screenshot of the gorgeous SmugMug TreeView widget" style="border: 1px solid #efefef; float: right; margin: 0 15px; height: 461px; width: 309px;">
+
 A powerful and easy to use TreeView widget for YUI.
 
-It's also very, very fast, [as demonstrated in this
-comparison](http://jsperf.com/yui-treeview) with a few other YUI TreeView
-widgets. The SmugMug TreeView can easily handle thousands and thousands of nodes
-with lightning fast rendering times and minimal memory usage, even in mobile
-browsers and IE.
+Features
+--------
 
-This documentation is a work in progress. At the moment, the API docs (linked
-below) are the most comprehensive source for detailed information about the
-API of the TreeView widget.
+* Comes with an attractive default skin that won't make you claw your eyes out, and is easy to customize via simple CSS.
+
+* Fast as hell, [as demonstrated in this comparison](http://jsperf.com/yui-treeview) with a few other YUI TreeView widgets. The SmugMug TreeView can easily handle thousands and thousands of nodes with lightning fast rendering times, even in mobile browsers and IE.
+
+* Memory-efficient. A tree containing over 10,000 nodes consumes less than 8MB of RAM.
+
+* Intuitive interaction design. Behaves just like the native TreeViews users are used to (full keyboard support coming soon).
+
+* Accessible to users of screen readers and other assistive tools (not yet fully accessible to keyboard users though -- that's coming soon).
+
+* Super easy lazy loading of node children. Just add the [`Y.Plugin.Tree.Lazy`](http://smugmug.github.com/yui-gallery/api/classes/Plugin.Tree.Lazy.html) plugin to your TreeView and define an async function that loads and adds child nodes the first time the parent node is opened.
+
+This documentation is a work in progress. At the moment, the [API docs][api-docs] are the most comprehensive source for detailed information about the API of the TreeView widget.
 
 Useful Links
 ------------
 
-* [API Docs](http://smugmug.github.com/yui-gallery/api/modules/gallery-sm-treeview.html)
+* [API Docs][api-docs]
 * [Performance Stress Test](http://jsbin.com/udayaz/latest)
 * [YUI TreeView Shootout](http://jsperf.com/yui-treeview)
+
+[api-docs]:http://smugmug.github.com/yui-gallery/api/modules/gallery-sm-treeview.html
 
 Usage
 -----
 
-In your HTML, create a container element for the TreeView. Be sure to add the
-`yui3-skin-sam` class if you want to use the TreeView's default skin.
+In your HTML, create a container element for the TreeView. Be sure to add the `yui3-skin-sam` class if you want to use the TreeView's default skin.
 
 ```html
 <div id="treeview" class="yui3-skin-sam"></div>
@@ -36,8 +46,7 @@ Load YUI onto the page if you haven't already.
 <script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js"></script>
 ```
 
-Next, in your JS, create an instance of `Y.TreeView`, specify some nodes to add
-to the tree, then render the view into a container node.
+Next, in your JS, create an instance of `Y.TreeView`, specify some nodes to add to the tree, then render the view into a container node.
 
 ```js
 YUI().use('gallery-sm-treeview', function (Y) {
@@ -70,15 +79,11 @@ The result will look something like this:
 Working with Tree Nodes
 -----------------------
 
-All [`Y.TreeView`][api-treeview] instances extend [`Y.Tree`][api-tree], and
-every node in a TreeView extends [`Y.Tree.Node`][api-treenode].
+All [`Y.TreeView`][api-treeview] instances extend [`Y.Tree`][api-tree], and every node in a TreeView extends [`Y.Tree.Node`][api-treenode].
 
-A Tree has one `rootNode`, which may have any number of `children`. Each of its
-children may also have any number of children, and so on.
+A Tree has one `rootNode`, which may have any number of `children`. Each of its children may also have any number of their own children, and so on.
 
-In the same way that HTML elements in the DOM are always associated with a
-document, tree nodes are always associated with a tree, even if they haven't
-yet been added to that tree.
+In the same way that HTML elements in the DOM are always associated with a document, tree nodes are always associated with a tree, even if they haven't yet been added to that tree.
 
 [api-tree]:http://smugmug.github.com/yui-gallery/api/classes/Tree.html
 [api-treenode]:http://smugmug.github.com/yui-gallery/api/classes/Tree.Node.html
@@ -86,24 +91,17 @@ yet been added to that tree.
 
 ### Useful `Y.Tree.Node`Properties
 
-Tree nodes have a variety of properties and methods, the most important of which
-is probably the `label` property, which specifies an HTML string that will be
-rendered as the label for the node.
+Tree nodes have a variety of properties and methods, the most important of which is probably the `label` property, which specifies an HTML string that will be rendered as the label for the node.
 
-The `children` property is an array that contains zero or more `Y.Tree.Node`
-instances that are children of the parent node.
+The `children` property is an array that contains zero or more `Y.Tree.Node` instances that are children of the parent node.
 
-The `parent` property always contains a reference to the node's parent node, or
-`undefined` if the node is the root node of a tree and has no parent.
+The `parent` property always contains a reference to the node's parent node, or `undefined` if the node is the root node of a tree and has no parent.
 
-Consult the API docs for details on all available `Y.Tree.Node` properties.
+Consult the API docs for details on all available [`Y.Tree.Node`][api-treenode] properties.
 
 ### Adding Nodes
 
-Use the [`append()`][api-append], [`insert()`][api-insert], and
-[`prepend()`][api-prepend] methods to add nodes to other nodes as children. Each
-method accepts either a `Y.Tree.Node` instance or a configuration object that
-will be turned into a `Y.Tree.Node` instance.
+Use the [`append()`][api-append], [`insert()`][api-insert], and [`prepend()`][api-prepend] methods to add nodes to other nodes as children. Each method accepts either a `Y.Tree.Node` instance or a configuration object that will be turned into a `Y.Tree.Node` instance.
 
 After adding the node, each method returns the node that was added.
 
@@ -131,6 +129,19 @@ var node = treeview.createNode({label: 'New node'});
 treeview.rootNode.append(node);
 ```
 
+The `append()`, `insert()` and `prepend()` methods also accept arrays, which makes it easy to add multiple nodes at once.
+
+```js
+// Add multiple nodes at once.
+parent.append([
+    {label: 'one'},
+    {label: 'two'},
+    {label: 'three'}
+]);
+```
+
+If the node being added already exists as a child of another node, it will be removed from its old parent before being added to its new parent. This is also true for nodes that exist in another tree. A node instance may only exist in one tree at a time, and may only have one parent node (or zero parent nodes if it's a root node).
+
 [api-append]:http://smugmug.github.com/yui-gallery/api/classes/Tree.Node.html#method_append
 [api-insert]:http://smugmug.github.com/yui-gallery/api/classes/Tree.Node.html#method_insert
 [api-prepend]:http://smugmug.github.com/yui-gallery/api/classes/Tree.Node.html#method_prepend
@@ -148,13 +159,9 @@ node.empty();
 node.remove();
 ```
 
-The `empty()` method returns an array containing all the nodes that were removed
-(if any), while the `remove()` method is chainable, meaning it always returns
-the node it's called on.
+The `empty()` method returns an array containing all the nodes that were removed (if any), while the `remove()` method is chainable, meaning it always returns the node it's called on.
 
-A node can still be re-added to a tree after it's removed. If you want to both
-remove a node and ensure that it can't be reused (freeing up memory in the
-process), set the `destroy` option to `true` when emptying or removing nodes.
+A node can still be re-added to a tree after it's removed. If you want to both remove a node and ensure that it can't be reused (freeing up memory in the process), set the `destroy` option to `true` when emptying or removing nodes.
 
 ```js
 // Remove and destroy all of this node's children.
@@ -167,6 +174,30 @@ node.remove({destroy: true});
 [api-empty]:http://smugmug.github.com/yui-gallery/api/classes/Tree.Node.html#method_empty
 [api-remove]:http://smugmug.github.com/yui-gallery/api/classes/Tree.Node.html#method_remove
 
+TreeView Events
+---------------
+
+The TreeView component exposes the following events. Note that all events are
+fired on the `Y.TreeView` instance itself, not on `Y.Tree.Node` instances. This
+helps keep the nodes light and efficient, since there can be a lot of them.
+
+Event | Fired When
+------| ----------
+[`add`][api-event-add] | A node is added to the tree.
+[`clear`][api-event-clear] | The tree is cleared.
+[`close`][api-event-close] | A node is closed.
+[`open`][api-event-open] | A node is opened.
+[`remove`][api-event-remove] | A node is removed from the tree.
+[`select`][api-event-select] | A node is selected.
+[`unselect`][api-event-unselect] | A node is unselected.
+
+[api-event-add]:http://smugmug.github.com/yui-gallery/api/classes/Tree.html#event_add
+[api-event-clear]:http://smugmug.github.com/yui-gallery/api/classes/Tree.html#event_clear
+[api-event-close]:http://smugmug.github.com/yui-gallery/api/classes/Tree.html#event_close
+[api-event-open]:http://smugmug.github.com/yui-gallery/api/classes/Tree.html#event_open
+[api-event-remove]:http://smugmug.github.com/yui-gallery/api/classes/Tree.html#event_remove
+[api-event-select]:http://smugmug.github.com/yui-gallery/api/classes/Tree.html#event_select
+[api-event-unselect]:http://smugmug.github.com/yui-gallery/api/classes/Tree.html#event_unselect
 
 License
 -------
