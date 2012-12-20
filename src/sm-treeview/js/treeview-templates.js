@@ -6,10 +6,11 @@ Y.namespace('TreeView').Templates = {
     ),
 
     node: Micro.compile(
-        '<li id="<%= data.node.id %>" class="<%= data.classNames.node %>">' +
+        '<li id="<%= data.node.id %>" class="<%= data.nodeClassNames.join(" ") %>" role="treeitem" aria-labelled-by="<%= data.node.id %>-label">' +
             '<div class="<%= data.classNames.row %>" data-node-id="<%= data.node.id %>">' +
                 '<span class="<%= data.classNames.indicator %>"><s></s></span>' +
                 '<span class="<%= data.classNames.label %>"></span>' +
+                '<span id="<%= data.node.id %>-label" class="<%= data.classNames.label %>"><%== data.node.label %></span>' +
             '</div>' +
         '</li>'
     )

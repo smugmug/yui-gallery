@@ -218,34 +218,44 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
     renderNode: function (treeNode, options) {
         options || (options = {});
 
-        var classNames  = this.classNames,
-            hasChildren = treeNode.hasChildren(),
-            htmlNode    = treeNode._htmlNode;
+        var classNames     = this.classNames,
+            hasChildren    = treeNode.hasChildren(),
+            htmlNode       = treeNode._htmlNode,
+            nodeClassNames = {};
 
-        if (!htmlNode) {
+        // Build the hash of CSS classes for this node.
+        nodeClassNames[classNames.node]            = true;
+        nodeClassNames[classNames.canHaveChildren] = treeNode.canHaveChildren;
+        nodeClassNames[classNames.hasChildren]     = hasChildren;
+        nodeClassNames[classNames.open]            = treeNode.isOpen();
+
+        if (htmlNode) {
+            // This node has already been rendered, so we just need to update
+            // the DOM instead of re-rendering it from scratch.
+            htmlNode.one('.' + classNames.label).setHTML(treeNode.label);
+
+            for (var className in nodeClassNames) {
+                if (nodeClassNames.hasOwnProperty(className)) {
+                    htmlNode.toggleClass(className, nodeClassNames[className]);
+                }
+            }
+        } else {
+            // This node hasn't been rendered yet, so render it from scratch.
+            var enabledClassNames = [];
+
+            for (var className in nodeClassNames) {
+                if (nodeClassNames.hasOwnProperty(className) && nodeClassNames[className]) {
+                    enabledClassNames.push(className);
+                }
+            }
+
             htmlNode = treeNode._htmlNode = Y.Node.create(TreeView.Templates.node({
-                classNames: classNames,
-                node      : treeNode,
-                treeview  : this
+                classNames    : classNames,
+                nodeClassNames: enabledClassNames,
+                node          : treeNode,
+                treeview      : this // not currently used, but may be useful for custom templates
             }));
         }
-
-        var labelNode = htmlNode.one('.' + classNames.label),
-            labelId   = labelNode.get('id');
-
-        labelNode.setHTML(treeNode.label);
-
-        if (!labelId) {
-            labelId = Y.guid();
-            labelNode.set('id', labelId);
-        }
-
-        htmlNode.set('aria-labelledby', labelId);
-        htmlNode.set('role', 'treeitem');
-
-        htmlNode.toggleClass(classNames.canHaveChildren, !!treeNode.canHaveChildren);
-        htmlNode.toggleClass(classNames.open, treeNode.isOpen());
-        htmlNode.toggleClass(classNames.hasChildren, hasChildren);
 
         if (hasChildren && options.renderChildren) {
             this.renderChildren(treeNode, {
