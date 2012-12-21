@@ -35,7 +35,7 @@
     height: 5px;
     left: 6px;
     position: relative;
-    top: -2px;
+    top: -1px;
     vertical-align: middle;
     width: 5px;
 }
@@ -59,7 +59,7 @@
     border-left-color: transparent;
     border-top-color: #afafaf;
     left: 4px;
-    top: 1px;
+    top: 2px;
 }
 
 .yui3-treeview-open > .yui3-treeview-children { display: block; }
