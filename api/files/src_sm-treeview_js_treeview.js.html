@@ -150,6 +150,7 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [Y.Tree], {
     @param {String} children Class name for a list of child nodes.
     @param {String} hasChildren Class name indicating that a tree node has one
         or more child nodes.
+    @param {String} icon Class name for a tree node&#x27;s icon.
     @param {String} indicator Class name for an open&#x2F;closed indicator.
     @param {String} label Class name for a tree node&#x27;s user-visible label.
     @param {String} node Class name for a tree node item.
@@ -167,6 +168,7 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [Y.Tree], {
         canHaveChildren: getClassName(&#x27;treeview-can-have-children&#x27;),
         children       : getClassName(&#x27;treeview-children&#x27;),
         hasChildren    : getClassName(&#x27;treeview-has-children&#x27;),
+        icon           : getClassName(&#x27;treeview-icon&#x27;),
         indicator      : getClassName(&#x27;treeview-indicator&#x27;),
         label          : getClassName(&#x27;treeview-label&#x27;),
         node           : getClassName(&#x27;treeview-node&#x27;),
@@ -287,15 +289,8 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [Y.Tree], {
             childrenNode = Y.Node.create(TreeView.Templates.children({
                 classNames: this.classNames,
                 node      : treeNode,
-                treeview  : this
+                treeview  : this &#x2F;&#x2F; not currently used, but may be useful for custom templates
             }));
-        }
-
-        if (treeNode.isRoot()) {
-            childrenNode.set(&#x27;tabIndex&#x27;, 0); &#x2F;&#x2F; Add the root list to the tab order.
-            childrenNode.set(&#x27;role&#x27;, &#x27;tree&#x27;);
-        } else {
-            childrenNode.set(&#x27;role&#x27;, &#x27;group&#x27;);
         }
 
         if (treeNode.hasChildren()) {
@@ -340,34 +335,44 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [Y.Tree], {
     renderNode: function (treeNode, options) {
         options || (options = {});
 
-        var classNames  = this.classNames,
-            hasChildren = treeNode.hasChildren(),
-            htmlNode    = treeNode._htmlNode;
+        var classNames     = this.classNames,
+            hasChildren    = treeNode.hasChildren(),
+            htmlNode       = treeNode._htmlNode,
+            nodeClassNames = {};
 
-        if (!htmlNode) {
+        &#x2F;&#x2F; Build the hash of CSS classes for this node.
+        nodeClassNames[classNames.node]            = true;
+        nodeClassNames[classNames.canHaveChildren] = treeNode.canHaveChildren;
+        nodeClassNames[classNames.hasChildren]     = hasChildren;
+        nodeClassNames[classNames.open]            = treeNode.isOpen();
+
+        if (htmlNode) {
+            &#x2F;&#x2F; This node has already been rendered, so we just need to update
+            &#x2F;&#x2F; the DOM instead of re-rendering it from scratch.
+            htmlNode.one(&#x27;.&#x27; + classNames.label).setHTML(treeNode.label);
+
+            for (var className in nodeClassNames) {
+                if (nodeClassNames.hasOwnProperty(className)) {
+                    htmlNode.toggleClass(className, nodeClassNames[className]);
+                }
+            }
+        } else {
+            &#x2F;&#x2F; This node hasn&#x27;t been rendered yet, so render it from scratch.
+            var enabledClassNames = [];
+
+            for (var className in nodeClassNames) {
+                if (nodeClassNames.hasOwnProperty(className) &amp;&amp; nodeClassNames[className]) {
+                    enabledClassNames.push(className);
+                }
+            }
+
             htmlNode = treeNode._htmlNode = Y.Node.create(TreeView.Templates.node({
-                classNames: classNames,
-                node      : treeNode,
-                treeview  : this
+                classNames    : classNames,
+                nodeClassNames: enabledClassNames,
+                node          : treeNode,
+                treeview      : this &#x2F;&#x2F; not currently used, but may be useful for custom templates
             }));
         }
-
-        var labelNode = htmlNode.one(&#x27;.&#x27; + classNames.label),
-            labelId   = labelNode.get(&#x27;id&#x27;);
-
-        labelNode.setHTML(treeNode.label);
-
-        if (!labelId) {
-            labelId = Y.guid();
-            labelNode.set(&#x27;id&#x27;, labelId);
-        }
-
-        htmlNode.set(&#x27;aria-labelledby&#x27;, labelId);
-        htmlNode.set(&#x27;role&#x27;, &#x27;treeitem&#x27;);
-
-        htmlNode.toggleClass(classNames.canHaveChildren, !!treeNode.canHaveChildren);
-        htmlNode.toggleClass(classNames.open, treeNode.isOpen());
-        htmlNode.toggleClass(classNames.hasChildren, hasChildren);
 
         if (hasChildren &amp;&amp; options.renderChildren) {
             this.renderChildren(treeNode, {

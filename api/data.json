@@ -3408,6 +3408,11 @@
                     "type": "String"
                 },
                 {
+                    "name": "icon",
+                    "description": "Class name for a tree node's icon.",
+                    "type": "String"
+                },
+                {
                     "name": "indicator",
                     "description": "Class name for an open/closed indicator.",
                     "type": "String"
@@ -3456,7 +3461,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 59,
+            "line": 61,
             "description": "Whether or not this TreeView has been rendered.",
             "itemtype": "property",
             "name": "rendered",
@@ -3467,7 +3472,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 69,
+            "line": 71,
             "description": "Simple way to type-check that this is a TreeView instance.",
             "itemtype": "property",
             "name": "_isYUITreeView",
@@ -3480,7 +3485,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 78,
+            "line": 80,
             "description": "Cached value of the `lazyRender` attribute.",
             "itemtype": "property",
             "name": "_lazyRender",
@@ -3492,7 +3497,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 97,
+            "line": 99,
             "description": "Returns the HTML node (as a `Y.Node` instance) associated with the specified\n`Tree.Node` instance, if any.",
             "itemtype": "method",
             "name": "getHTMLNode",
@@ -3512,7 +3517,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 114,
+            "line": 116,
             "description": "Renders this TreeView into its container.\n\nIf the container hasn't already been added to the current document, it will\nbe appended to the `<body>` element.",
             "itemtype": "method",
             "name": "render",
@@ -3522,7 +3527,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 143,
+            "line": 145,
             "description": "Renders the children of the specified tree node.\n\nIf a container is specified, it will be assumed to be an existing rendered\ntree node, and the children will be rendered (or re-rendered) inside it.",
             "itemtype": "method",
             "name": "renderChildren",
@@ -3556,7 +3561,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 204,
+            "line": 199,
             "description": "Renders the specified tree node and its children (if any).\n\nIf a container is specified, the rendered node will be appended to it.",
             "itemtype": "method",
             "name": "renderNode",
@@ -3597,7 +3602,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 298,
+            "line": 303,
             "description": "Setter for the `lazyRender` attribute.\n\nJust caches the value in a property for faster lookups.",
             "itemtype": "method",
             "name": "_setLazyRender",
@@ -3612,7 +3617,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 488,
+            "line": 493,
             "description": "When `true`, a node's children won't be rendered until the first time\nthat node is opened.\n\nThis can significantly speed up the time it takes to render a large\ntree, but might not make sense if you're using CSS that doesn't hide the\ncontents of closed nodes.",
             "itemtype": "attribute",
             "name": "lazyRender",
