@@ -133,7 +133,6 @@ TreeNode.prototype = {
 
     @property {Object} state
     @param {Boolean} [open=false] Whether or not this node is open (expanded).
-    @param {Boolean} [selected=false] Whether or not this node is selected.
     **/
 
     /**
@@ -174,13 +173,13 @@ TreeNode.prototype = {
     Array of property names on this node that should be serialized to JSON when
     `toJSON()` is called.
 
-    Note that the `children` and `state` properties are special cases that are
-    managed outside of this list.
+    Note that the `children` property is a special case that is managed
+    separately.
 
     @property {String[]} _serializable
     @protected
     **/
-    _serializable: ['canHaveChildren', 'data', 'id', 'label'],
+    _serializable: ['canHaveChildren', 'data', 'id', 'label', 'state'],
 
     // -- Public Methods -------------------------------------------------------
 
@@ -343,17 +342,6 @@ TreeNode.prototype = {
     },
 
     /**
-    Returns `true` if this node is currently selected.
-
-    @method isSelected
-    @return {Boolean} `true` if this node is currently selected, `false`
-        otherwise.
-    **/
-    isSelected: function () {
-        return !!this.state.selected;
-    },
-
-    /**
     Opens this node if it's currently closed.
 
     @method open
@@ -401,20 +389,6 @@ TreeNode.prototype = {
     **/
     remove: function (options) {
         return this.tree.removeNode(this, options);
-    },
-
-    /**
-    Selects this node.
-
-    @method select
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If `true`, the `select` event
-            will be suppressed.
-    @chainable
-    **/
-    select: function (options) {
-        this.tree.selectNode(this, options);
-        return this;
     },
 
     /**
@@ -476,17 +450,6 @@ TreeNode.prototype = {
             }
         }
 
-        // Serialize state values.
-        obj.state = {};
-
-        if (state.open) {
-            obj.state.open = true;
-        }
-
-        if (state.selected) {
-            obj.state.selected = true;
-        }
-
         // Serialize child nodes.
         if (this.canHaveChildren) {
             obj.children = [];
@@ -497,20 +460,6 @@ TreeNode.prototype = {
         }
 
         return obj;
-    },
-
-    /**
-    Unselects this node.
-
-    @method unselect
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If `true`, the `unselect` event
-            will be suppressed.
-    @chainable
-    **/
-    unselect: function (options) {
-        this.tree.unselectNode(this, options);
-        return this;
     },
 
     // -- Protected Methods ----------------------------------------------------

@@ -1,4 +1,4 @@
-YUI.add('gallery-sm-tree-test', function (Y) {
+YUI.add('tree-test', function (Y) {
 
 var Assert      = Y.Assert,
     ArrayAssert = Y.ArrayAssert,
@@ -95,14 +95,6 @@ treeSuite.add(new Y.Test.Case({
         Assert.isNull(tree.rootNode, 'rootNode should be null');
     },
 
-    'destructor should detach all tree events': function () {
-        var tree = new Tree();
-
-        Assert.isTrue(tree._treeEvents.length > 0);
-        tree.destroy();
-        Assert.areSame(0, tree._treeEvents.length);
-    },
-
     'destructor should free references to allow garbage collection': function () {
         var tree = new Tree();
         tree.destroy();
@@ -110,7 +102,6 @@ treeSuite.add(new Y.Test.Case({
         Assert.isNull(tree.rootNode, 'rootNode should be null');
         Assert.isNull(tree._nodeMap, '_nodeMap should be null');
         Assert.isNull(tree._published, '_published should be null');
-        Assert.isNull(tree._selectedMap, '_selectedMap should be null');
     }
 }));
 
@@ -137,39 +128,6 @@ treeSuite.add(new Y.Test.Case({
 
     'children property should be a reference to the rootNode\'s children property': function () {
         Assert.areSame(this.tree.children, this.tree.rootNode.children);
-    },
-
-    'multiSelect attribute should be false by default': function () {
-        Assert.isFalse(this.tree.get('multiSelect'));
-    },
-
-    'multiSelect property should mirror the multiSelect attribute for faster lookups': function () {
-        Assert.isUndefined(this.tree.multiSelect, 'multiSelect property should be undefined by default');
-        this.tree.set('multiSelect', true);
-        Assert.isTrue(this.tree.multiSelect, 'multiSelect property should get updated');
-    },
-
-    'enabling multiSelect should allow selecting multiple nodes': function () {
-        ArrayAssert.isEmpty(this.tree.getSelectedNodes(), 'zero nodes should be selected by default');
-
-        this.tree.children[0].select();
-        this.tree.children[1].select();
-        Assert.areSame(1, this.tree.getSelectedNodes().length, 'one node should be selected when multiSelect is false');
-
-        this.tree.set('multiSelect', true);
-        this.tree.children[0].select();
-        this.tree.children[1].select();
-        Assert.areSame(2, this.tree.getSelectedNodes().length, 'two nodes should be selected after multiSelect is true');
-    },
-
-    'all selected nodes should be unselected when the multiSelect attribute is changed': function () {
-        ArrayAssert.isEmpty(this.tree.getSelectedNodes(), 'zero nodes should be selected by default');
-
-        this.tree.children[0].select();
-        Assert.areSame(1, this.tree.getSelectedNodes().length, 'one node should be selected');
-
-        this.tree.set('multiSelect', true);
-        ArrayAssert.isEmpty(this.tree.getSelectedNodes(), 'zero nodes should be selected after changing multiSelect');
     },
 
     'nodeClass property should allow the use of a custom node class': function () {
@@ -379,18 +337,6 @@ treeSuite.add(new Y.Test.Case({
         Assert.isUndefined(this.tree.getNodeById('bogus'));
     },
 
-    'getSelectedNodes() should return an array of selected nodes': function () {
-        this.tree.set('multiSelect', true);
-        this.tree.children[0].select();
-        this.tree.children[0].children[1].select();
-
-        var selected = this.tree.getSelectedNodes();
-
-        Assert.isArray(selected, 'return value should be an array');
-        Assert.areSame('one', selected[0].label, 'node "one" should be selected');
-        Assert.areSame('one-two', selected[1].label, 'node "one-two" should be selected');
-    },
-
     'insertNode() should insert a node at the specified index': function () {
         var node = this.tree.insertNode(this.tree.rootNode, {label: 'inserted'}, {index: 1});
 
@@ -520,19 +466,6 @@ treeSuite.add(new Y.Test.Case({
         Assert.isTrue(node.state.destroyed, 'node should be destroyed');
     },
 
-    'selectNode() should select the specified node': function () {
-        var node = this.tree.children[0];
-
-        Assert.isFalse(node.isSelected(), 'sanity check');
-
-        this.tree.selectNode(node);
-        Assert.isTrue(node.isSelected(), 'node should be selected');
-    },
-
-    'selectNode() should be chainable': function () {
-        Assert.areSame(this.tree, this.tree.selectNode(this.tree.children[0]));
-    },
-
     'size() should return the total number of nodes in the tree': function () {
         Assert.areSame(6, this.tree.size());
     },
@@ -587,37 +520,6 @@ treeSuite.add(new Y.Test.Case({
         }
 
         verifyNode(this.tree.rootNode, obj);
-    },
-
-    'unselect() should unselect all selected nodes in the tree': function () {
-        this.tree.set('multiSelect', true);
-
-        this.tree.children[0].select();
-        this.tree.children[1].select();
-        this.tree.children[0].children[1].select();
-
-        Assert.areSame(3, this.tree.getSelectedNodes().length, 'sanity check');
-
-        this.tree.unselect();
-        Assert.areSame(0, this.tree.getSelectedNodes().length, 'zero nodes should be selected');
-    },
-
-    'unselect() should be chainable': function () {
-        Assert.areSame(this.tree, this.tree.unselect());
-    },
-
-    'unselectNode() should unselect the specified node': function () {
-        var node = this.tree.children[0];
-
-        this.tree.selectNode(node);
-        Assert.isTrue(node.isSelected(), 'sanity check');
-
-        this.tree.unselectNode(node);
-        Assert.isFalse(node.isSelected(), 'node should not be selected');
-    },
-
-    'unselectNode() should be chainable': function () {
-        Assert.areSame(this.tree, this.tree.unselectNode(this.tree.children[0]));
     }
 }));
 
@@ -901,41 +803,6 @@ treeSuite.add(new Y.Test.Case({
         this.tree.removeNode(this.tree.children[1], {silent: true});
     },
 
-    'selectNode() should fire a `select` event': function () {
-        var node = this.tree.children[0],
-            fired;
-
-        this.tree.once('select', function (e) {
-            fired = true;
-            Assert.areSame(node, e.node, 'node should be the selected node');
-        });
-
-        this.tree.selectNode(node);
-        Assert.isTrue(fired, 'event should fire');
-    },
-
-    'selectNode() should not fire a `select` event if the specified node is already selected': function () {
-        var node = this.tree.children[0];
-
-        this.tree.selectNode(node);
-
-        this.tree.once('select', function (e) {
-            Assert.fail('event should not fire');
-        });
-
-        this.tree.selectNode(node);
-    },
-
-    'selectNode() should not fire a `select` event if options.silent is truthy': function () {
-        var node = this.tree.children[0];
-
-        this.tree.once('select', function () {
-            Assert.fail('event should not fire');
-        });
-
-        this.tree.selectNode(node, {silent: true});
-    },
-
     'toggleNode() should not fire any events if options.silent is truthy': function () {
         var node = this.tree.children[0];
 
@@ -949,43 +816,6 @@ treeSuite.add(new Y.Test.Case({
 
         this.tree.toggleNode(node, {silent: true});
         this.tree.toggleNode(node, {silent: true});
-    },
-
-    'unselectNode() should fire an `unselect` event': function () {
-        var node = this.tree.children[0],
-            fired;
-
-        this.tree.selectNode(node);
-
-        this.tree.once('unselect', function (e) {
-            fired = true;
-            Assert.areSame(node, e.node, 'node should be the unselected node');
-        });
-
-        this.tree.unselectNode(node);
-        Assert.isTrue(fired, 'event should fire');
-    },
-
-    'unselectNode() should not fire an `unselect` event if the specified node is not selected': function () {
-        var node = this.tree.children[0];
-
-        this.tree.once('unselect', function () {
-            Assert.fail('event should not fire');
-        });
-
-        this.tree.unselectNode(node);
-    },
-
-    'unselectNode() should not fire an `unselect` event if options.silent is truthy': function () {
-        var node = this.tree.children[0];
-
-        this.tree.selectNode(node);
-
-        this.tree.once('unselect', function () {
-            Assert.fail('event should not fire');
-        });
-
-        this.tree.unselectNode(node, {silent: true});
     },
 
     '`add` event should be preventable': function () {
@@ -1039,30 +869,6 @@ treeSuite.add(new Y.Test.Case({
 
         this.tree.removeNode(this.tree.children[0]);
         Assert.areSame(6, this.tree.size(), 'node should not have been removed');
-    },
-
-    '`select` event should be preventable': function () {
-        var node = this.tree.children[0];
-
-        this.tree.once('select', function (e) {
-            e.preventDefault();
-        });
-
-        this.tree.selectNode(node);
-        Assert.isFalse(node.isSelected(), 'node should not be selected');
-    },
-
-    '`unselect` event should be preventable': function () {
-        var node = this.tree.children[0];
-
-        this.tree.selectNode(node);
-
-        this.tree.once('unselect', function (e) {
-            e.preventDefault();
-        });
-
-        this.tree.unselectNode(node);
-        Assert.isTrue(node.isSelected(), 'node should be selected');
     }
 }));
 
@@ -1327,12 +1133,6 @@ nodeSuite.add(new Y.Test.Case({
         Assert.isFalse(this.unattachedNode.isRoot(), 'should be false for an unattached node');
     },
 
-    'isSelected() should return `true` if this node is selected, `false` otherwise': function () {
-        Assert.isFalse(this.node.isSelected(), 'should be false if not selected');
-        this.node.select();
-        Assert.isTrue(this.node.isSelected(), 'should be true if selected');
-    },
-
     'open() should wrap Tree#openNode()': function () {
         var mock    = Mock(),
             options = {};
@@ -1388,26 +1188,6 @@ nodeSuite.add(new Y.Test.Case({
 
     'remove() should be chainable': function () {
         Assert.areSame(this.node, this.node.remove());
-    },
-
-    'select() should wrap Tree#selectNode()': function () {
-        var mock    = Mock(),
-            options = {};
-
-        Mock.expect(mock, {
-            method : 'selectNode',
-            args   : [this.node, options],
-            run    : Y.bind(this.tree.selectNode, this.tree)
-        });
-
-        this.node.tree = mock;
-        this.node.select(options);
-
-        Mock.verify(mock);
-    },
-
-    'select() should be chainable': function () {
-        Assert.areSame(this.node, this.node.select());
     },
 
     'size() should return the total number of descendants contained within this node': function () {
@@ -1469,26 +1249,6 @@ nodeSuite.add(new Y.Test.Case({
         }
 
         verifyNode(this.node, obj);
-    },
-
-    'unselect() should wrap Tree#unselectNode()': function () {
-        var mock    = Mock(),
-            options = {};
-
-        Mock.expect(mock, {
-            method : 'unselectNode',
-            args   : [this.node, options],
-            run    : Y.bind(this.tree.unselectNode, this.tree)
-        });
-
-        this.node.tree = mock;
-        this.node.unselect(options);
-
-        Mock.verify(mock);
-    },
-
-    'unselect() should be chainable': function () {
-        Assert.areSame(this.node, this.node.unselect());
     }
 }));
 
@@ -1739,5 +1499,5 @@ lazySuite.add(new Y.Test.Case({
 }));
 
 }, '@VERSION@', {
-    requires: ['json', 'gallery-sm-tree', 'gallery-sm-tree-lazy', 'test']
+    requires: ['gallery-sm-tree', 'gallery-sm-tree-lazy', 'json', 'test']
 });

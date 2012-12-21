@@ -3,24 +3,30 @@
         "requires": [
             "base-build",
             "gallery-sm-tree-node"
-        ],
+        ]
+    },
 
-        "plugins": {
-            "gallery-sm-tree-lazy": {
-                "requires": [
-                    "base-pluginhost",
-                    "plugin",
-                    "gallery-sm-tree"
-                ]
-            }
-        },
+    "gallery-sm-tree-lazy": {
+        "requires": [
+            "base-pluginhost",
+            "plugin",
+            "gallery-sm-tree"
+        ]
+    },
 
-        "submodules": {
-            "gallery-sm-tree-node": {
-                "requires": [
-                    "yui-base"
-                ]
-            }
-        }
+    "gallery-sm-tree-node": {},
+
+    "gallery-sm-tree-node-selectable": {
+        "requires": [
+            "gallery-sm-tree-node",
+            "oop"
+        ]
+    },
+
+    "gallery-sm-tree-selectable": {
+        "requires": [
+            "gallery-sm-tree",
+            "gallery-sm-tree-node-selectable"
+        ]
     }
 }

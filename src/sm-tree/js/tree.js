@@ -77,25 +77,7 @@ var Lang = Y.Lang,
     @param {Tree.Node} parent Parent node from which the node will be removed.
     @preventable _defRemoveFn
     **/
-    EVT_REMOVE = 'remove',
-
-    /**
-    Fired when a node is selected.
-
-    @event select
-    @param {Tree.Node} node Node being selected.
-    @preventable _defSelectFn
-    **/
-    EVT_SELECT = 'select',
-
-    /**
-    Fired when a node is unselected.
-
-    @event unselect
-    @param {Tree.Node} node Node being unselected.
-    @preventable _defUnselectFn
-    **/
-    EVT_UNSELECT = 'unselect';
+    EVT_REMOVE = 'remove';
 
 var Tree = Y.Base.create('tree', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
@@ -155,14 +137,6 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
     **/
     _rootNodeConfig: {canHaveChildren: true},
 
-    /**
-    Mapping of node ids to node instances for nodes in this tree that are
-    currently selected.
-
-    @property {Object} _selectedMap
-    @protected
-    **/
-
     // -- Lifecycle ------------------------------------------------------------
     initializer: function (config) {
         config || (config = {});
@@ -188,7 +162,6 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
         }
 
         this.clear(config.rootNode, {silent: true});
-        this._attachTreeEvents();
 
         if (config.nodes) {
             this.insertNode(this.rootNode, config.nodes, {silent: true});
@@ -198,13 +171,10 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
     destructor: function () {
         this.destroyNode(this.rootNode, {silent: true});
 
-        this._detachTreeEvents();
-
         this.children     = null;
         this.rootNode     = null;
         this._nodeMap     = null;
         this._published   = null;
-        this._selectedMap = null;
     },
 
     // -- Public Methods -------------------------------------------------------
@@ -395,16 +365,6 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
     },
 
     /**
-    Returns an array of nodes that are currently selected.
-
-    @method getSelectedNodes
-    @return {Tree.Node[]} Array of selected nodes.
-    **/
-    getSelectedNodes: function () {
-        return Y.Object.values(this._selectedMap);
-    },
-
-    /**
     Inserts a node or array of nodes at the specified index under the given
     parent node, or appends them to the parent if no index is specified.
 
@@ -555,31 +515,6 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
     },
 
     /**
-    Selects the specified node.
-
-    @method selectNode
-    @param {Tree.Node} node Node to select.
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If `true`, the `select` event
-            will be suppressed.
-    @chainable
-    **/
-    selectNode: function (node, options) {
-        // Instead of calling node.isSelected(), we look for the node in this
-        // tree's selectedMap, which ensures that the `select` event will fire
-        // in cases such as a node being added to this tree with its selected
-        // state already set to true.
-        if (!this._selectedMap[node.id]) {
-            this._fire(EVT_SELECT, {node: node}, {
-                defaultFn: this._defSelectFn,
-                silent   : options && options.silent
-            });
-        }
-
-        return this;
-    },
-
-    /**
     Returns the total number of nodes in this tree, at all levels.
 
     Use `rootNode.children.length` to get only the number of top-level nodes.
@@ -616,46 +551,6 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
         return this.rootNode.toJSON();
     },
 
-    /**
-    Unselects all selected nodes.
-
-    @method unselect
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If `true`, the `unselect` event
-            will be suppressed.
-    @chainable
-    **/
-    unselect: function (options) {
-        for (var id in this._selectedMap) {
-            if (this._selectedMap.hasOwnProperty(id)) {
-                this.unselectNode(this._selectedMap[id], options);
-            }
-        }
-
-        return this;
-    },
-
-    /**
-    Unselects the specified node.
-
-    @method unselectNode
-    @param {Tree.Node} node Node to unselect.
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If `true`, the `unselect` event
-            will be suppressed.
-    @chainable
-    **/
-    unselectNode: function (node, options) {
-        if (node.isSelected() || this._selectedMap[node.id]) {
-            this._fire(EVT_UNSELECT, {node: node}, {
-                defaultFn: this._defUnselectFn,
-                silent   : options && options.silent
-            });
-        }
-
-        return this;
-    },
-
     // -- Protected Methods ----------------------------------------------------
 
     /**
@@ -684,19 +579,6 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
         delete oldTree._nodeMap[node.id];
         this._nodeMap[node.id] = node;
         node.tree = this;
-    },
-
-    _attachTreeEvents: function () {
-        this._treeEvents || (this._treeEvents = []);
-
-        this._treeEvents.push(
-            this.after('multiSelectChange', this._afterMultiSelectChange)
-        );
-    },
-
-    _detachTreeEvents: function () {
-        (new Y.EventHandle(this._treeEvents)).detach();
-        this._treeEvents = [];
     },
 
     /**
@@ -752,19 +634,15 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
         }
     },
 
-    // -- Protected Event Handlers ---------------------------------------------
-    _afterMultiSelectChange: function (e) {
-        this.multiSelect = e.newVal; // for faster lookups
-        this.unselect();
-    },
-
     // -- Default Event Handlers -----------------------------------------------
     _defAddFn: function (e) {
         var node   = e.node,
             parent = e.parent;
 
         // Remove the node from its existing parent if it has one.
-        this._removeNodeFromParent(node);
+        if (node.parent) {
+            this._removeNodeFromParent(node);
+        }
 
         // Add the node to its new parent at the desired index.
         node.parent = parent;
@@ -772,12 +650,6 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
 
         parent.canHaveChildren = true;
         parent._isIndexStale   = true;
-
-        // If the node is marked as selected, we need go through the select
-        // flow.
-        if (node.isSelected()) {
-            this.selectNode(node);
-        }
     },
 
     _defClearFn: function (e) {
@@ -787,10 +659,9 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
             this.destroyNode(this.rootNode, {silent: true});
         }
 
-        this._nodeMap     = {};
-        this._selectedMap = {};
-
+        this._nodeMap = {};
         this._nodeMap[newRootNode.id] = newRootNode;
+
         this.rootNode = newRootNode;
         this.children = newRootNode.children;
     },
@@ -806,9 +677,6 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
     _defRemoveFn: function (e) {
         var node = e.node;
 
-        delete node.state.selected;
-        delete this._selectedMap[node.id];
-
         if (e.destroy) {
             this.destroyNode(node, {silent: true});
         } else if (e.parent) {
@@ -817,32 +685,6 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
             // Guess we'll need a new root node!
             this.rootNode = this.createNode(this._rootNodeConfig);
             this.children = this.rootNode.children;
-        }
-    },
-
-    _defSelectFn: function (e) {
-        if (!this.get('multiSelect')) {
-            this.unselect();
-        }
-
-        e.node.state.selected = true;
-        this._selectedMap[e.node.id] = e.node;
-    },
-
-    _defUnselectFn: function (e) {
-        delete e.node.state.selected;
-        delete this._selectedMap[e.node.id];
-    }
-}, {
-    ATTRS: {
-        /**
-        Whether or not to allow multiple nodes to be selected at once.
-
-        @attribute {Boolean} multiSelect
-        @default false
-        **/
-        multiSelect: {
-            value: false
         }
     }
 });

@@ -18,6 +18,18 @@
             "jsfiles": [
                 "js/tree-node.js"
             ]
+        },
+
+        "gallery-sm-tree-node-selectable": {
+            "jsfiles": [
+                "js/extensions/tree-node-selectable.js"
+            ]
+        },
+
+        "gallery-sm-tree-selectable": {
+            "jsfiles": [
+                "js/extensions/tree-selectable.js"
+            ]
         }
     }
 }
