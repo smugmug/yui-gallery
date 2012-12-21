@@ -112,7 +112,7 @@ TreeNode.prototype = {
     /**
     User-visible HTML label for this node.
 
-    This value may be rendered as HTML without sanitization, so *do not* put
+    This value may be rendered as HTML without sanitization, so **do not** put
     untrusted user input here without escaping it first using `Y.Escape.html()`.
 
     @property {HTML} label
