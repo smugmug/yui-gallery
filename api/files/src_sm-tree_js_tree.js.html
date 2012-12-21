@@ -223,6 +223,16 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
     &#x2F;&#x2F; -- Public Properties ----------------------------------------------------
 
     &#x2F;**
+    Reference to the &#x60;children&#x60; array of this Tree&#x27;s &#x60;rootNode&#x60;.
+
+    This is a convenience property to allow you to type &#x60;tree.children&#x60; instead
+    of &#x60;tree.rootNode.children&#x60;.
+
+    @property {Tree.Node[]} children
+    @readOnly
+    **&#x2F;
+
+    &#x2F;**
     Root node of this Tree.
 
     @property {Tree.Node} rootNode
@@ -303,7 +313,7 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
         this._attachTreeEvents();
 
         if (config.nodes) {
-            this.appendNode(this.rootNode, config.nodes, {silent: true});
+            this.insertNode(this.rootNode, config.nodes, {silent: true});
         }
     },
 
@@ -312,10 +322,11 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
 
         this._detachTreeEvents();
 
-        delete this.rootNode;
-        delete this._nodeMap;
-        delete this._published;
-        delete this._selectedMap;
+        this.children     = null;
+        this.rootNode     = null;
+        this._nodeMap     = null;
+        this._published   = null;
+        this._selectedMap = null;
     },
 
     &#x2F;&#x2F; -- Public Methods -------------------------------------------------------
@@ -447,7 +458,7 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
             &#x2F;&#x2F; Manually remove the child from its parent; this makes destroying
             &#x2F;&#x2F; all children of the parent much faster since there&#x27;s no splicing
             &#x2F;&#x2F; involved.
-            delete child.parent;
+            child.parent = null;
 
             &#x2F;&#x2F; Destroy the child.
             this.destroyNode(child, options);
@@ -457,16 +468,14 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
             this.removeNode(node, options);
         }
 
-        delete node.children;
-        delete node.data;
-        delete node.state;
-        delete node.tree;
-        delete node._htmlNode;
-        delete node._indexMap;
+        node.children  = null;
+        node.data      = null;
+        node.state     = {destroyed: true};
+        node.tree      = null;
+        node._htmlNode = null;
+        node._indexMap = null;
 
         delete this._nodeMap[node.id];
-
-        node.state = {destroyed: true};
 
         return this;
     },
@@ -547,14 +556,23 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
         var index = options.index;
 
         if (typeof index === &#x27;undefined&#x27;) {
-            index = this.rootNode.children.length;
+            index = parent.children.length;
         }
 
         &#x2F;&#x2F; If &#x60;node&#x60; is an array, recurse to insert each node it contains.
-        if (Lang.isArray(node)) {
+        &#x2F;&#x2F;
+        &#x2F;&#x2F; Note: If you&#x27;re getting an exception here because &#x60;node&#x60; is null when
+        &#x2F;&#x2F; you&#x27;ve passed in a reference to some other node&#x27;s &#x60;children&#x60; array,
+        &#x2F;&#x2F; that&#x27;s happening because nodes must be removed from their current
+        &#x2F;&#x2F; parent before being added to the new one, and the &#x60;children&#x60; array is
+        &#x2F;&#x2F; being modified while the nodes are inserted.
+        &#x2F;&#x2F;
+        &#x2F;&#x2F; Solution: pass a copy of the other node&#x27;s &#x60;children&#x60; array instead of
+        &#x2F;&#x2F; the original. Doing the copy operation here would have a negative
+        &#x2F;&#x2F; impact on performance, so you&#x27;re on your own since this is such a
+        &#x2F;&#x2F; rare edge case.
+        if (&#x27;length&#x27; in node &amp;&amp; Lang.isArray(node)) {
             var inserted = [];
-
-            node = node.concat(); &#x2F;&#x2F; avoid modifying the passed array
 
             for (var i = 0, len = node.length; i &lt; len; i++) {
                 inserted.push(this.insertNode(parent, node[i], options));
@@ -851,7 +869,7 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
             if (index &gt; -1) {
                 parent.children.splice(index, 1);
                 parent._isIndexStale = true;
-                delete node.parent;
+                node.parent = null;
             }
         }
     },
@@ -896,6 +914,7 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
 
         this._nodeMap[newRootNode.id] = newRootNode;
         this.rootNode = newRootNode;
+        this.children = newRootNode.children;
     },
 
     _defCloseFn: function (e) {
@@ -919,6 +938,7 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
         } else if (this.rootNode === node) {
             &#x2F;&#x2F; Guess we&#x27;ll need a new root node!
             this.rootNode = this.createNode(this._rootNodeConfig);
+            this.children = this.rootNode.children;
         }
     },
 
@@ -945,20 +965,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
         **&#x2F;
         multiSelect: {
             value: false
-        },
-
-        &#x2F;**
-        Root node of this treeview.
-
-        @attribute {Tree.Node} rootNode
-        @readOnly
-        **&#x2F;
-        rootNode: {
-            getter: function () {
-                return this.rootNode;
-            },
-
-            readOnly: true
         }
     }
 });

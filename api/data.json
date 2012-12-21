@@ -1939,7 +1939,7 @@
         {
             "file": "src/sm-tree/js/tree-node.js",
             "line": 112,
-            "description": "User-visible HTML label for this node.\n\nThis value may be rendered as HTML without sanitization, so *do not* put\nuntrusted user input here without escaping it first using `Y.Escape.html()`.",
+            "description": "User-visible HTML label for this node.\n\nThis value may be rendered as HTML without sanitization, so **do not** put\nuntrusted user input here without escaping it first using `Y.Escape.html()`.",
             "itemtype": "property",
             "name": "label",
             "type": "HTML",
@@ -2660,6 +2660,17 @@
         {
             "file": "src/sm-tree/js/tree.js",
             "line": 103,
+            "description": "Reference to the `children` array of this Tree's `rootNode`.\n\nThis is a convenience property to allow you to type `tree.children` instead\nof `tree.rootNode.children`.",
+            "itemtype": "property",
+            "name": "children",
+            "type": "Tree.Node[]",
+            "readonly": "",
+            "class": "Tree",
+            "module": "gallery-sm-tree"
+        },
+        {
+            "file": "src/sm-tree/js/tree.js",
+            "line": 113,
             "description": "Root node of this Tree.",
             "itemtype": "property",
             "name": "rootNode",
@@ -2670,7 +2681,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 110,
+            "line": 120,
             "description": "The `Tree.Node` class or subclass that should be used for nodes created by\nthis tree.\n\nYou may specific an actual class reference or a string that resolves to a\nclass reference at runtime.",
             "itemtype": "property",
             "name": "nodeClass",
@@ -2681,7 +2692,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 124,
+            "line": 134,
             "description": "Simple way to type-check that this is a Tree instance.",
             "itemtype": "property",
             "name": "_isYUITree",
@@ -2694,7 +2705,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 133,
+            "line": 143,
             "description": "Mapping of node ids to node instances for nodes in this tree.",
             "itemtype": "property",
             "name": "_nodeMap",
@@ -2706,7 +2717,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 140,
+            "line": 150,
             "description": "Default config object for the root node.",
             "itemtype": "property",
             "name": "_rootNodeConfig",
@@ -2718,7 +2729,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 148,
+            "line": 158,
             "description": "Mapping of node ids to node instances for nodes in this tree that are\ncurrently selected.",
             "itemtype": "property",
             "name": "_selectedMap",
@@ -2730,7 +2741,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 160,
+            "line": 170,
             "description": "Hash of published custom events.",
             "itemtype": "property",
             "name": "_published",
@@ -2743,7 +2754,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 201,
+            "line": 212,
             "description": "Appends a node or array of nodes as the last child of the specified parent\nnode.\n\nIf a node being appended is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
             "itemtype": "method",
             "name": "appendNode",
@@ -2783,7 +2794,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 227,
+            "line": 238,
             "description": "Clears this tree by destroying the root node and all its children. If a\n`rootNode` argument is provided, that node will become the root node of this\ntree; otherwise, a new root node will be created.",
             "itemtype": "method",
             "name": "clear",
@@ -2816,7 +2827,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 249,
+            "line": 260,
             "description": "Closes the specified node if it isn't already closed.",
             "itemtype": "method",
             "name": "closeNode",
@@ -2843,7 +2854,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 269,
+            "line": 280,
             "description": "Creates and returns a new `Tree.Node` instance associated with (but not\nyet appended to) this tree.",
             "itemtype": "method",
             "name": "createNode",
@@ -2864,7 +2875,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 305,
+            "line": 316,
             "description": "Removes and destroys a node and all its child nodes. Once destroyed, a node\nis eligible for garbage collection and cannot be reused or re-added to the\ntree.",
             "itemtype": "method",
             "name": "destroyNode",
@@ -2896,7 +2907,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 352,
+            "line": 361,
             "description": "Removes all children from the specified node. The removed children will\nstill be reusable unless the `destroy` option is truthy.",
             "itemtype": "method",
             "name": "emptyNode",
@@ -2938,7 +2949,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 376,
+            "line": 385,
             "description": "Returns the tree node with the specified id, or `undefined` if the node\ndoesn't exist in this tree.",
             "itemtype": "method",
             "name": "getNodeById",
@@ -2958,7 +2969,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 388,
+            "line": 397,
             "description": "Returns an array of nodes that are currently selected.",
             "itemtype": "method",
             "name": "getSelectedNodes",
@@ -2971,7 +2982,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 398,
+            "line": 407,
             "description": "Inserts a node or array of nodes at the specified index under the given\nparent node, or appends them to the parent if no index is specified.\n\nIf a node being inserted is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
             "itemtype": "method",
             "name": "insertNode",
@@ -3017,7 +3028,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 463,
+            "line": 481,
             "description": "Opens the specified node if it isn't already open.",
             "itemtype": "method",
             "name": "openNode",
@@ -3044,7 +3055,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 483,
+            "line": 501,
             "description": "Prepends a node or array of nodes at the beginning of the specified parent\nnode.\n\nIf a node being prepended is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
             "itemtype": "method",
             "name": "prependNode",
@@ -3084,7 +3095,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 509,
+            "line": 527,
             "description": "Removes the specified node from its parent node. The removed node will still\nbe reusable unless the `destroy` option is truthy.",
             "itemtype": "method",
             "name": "removeNode",
@@ -3126,7 +3137,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 539,
+            "line": 557,
             "description": "Selects the specified node.",
             "itemtype": "method",
             "name": "selectNode",
@@ -3158,7 +3169,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 564,
+            "line": 582,
             "description": "Returns the total number of nodes in this tree, at all levels.\n\nUse `rootNode.children.length` to get only the number of top-level nodes.",
             "itemtype": "method",
             "name": "size",
@@ -3171,7 +3182,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 576,
+            "line": 594,
             "description": "Toggles the open/closed state of the specified node.",
             "itemtype": "method",
             "name": "toggleNode",
@@ -3203,7 +3214,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 591,
+            "line": 609,
             "description": "Serializes this tree to an object suitable for use in JSON.",
             "itemtype": "method",
             "name": "toJSON",
@@ -3216,7 +3227,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 601,
+            "line": 619,
             "description": "Unselects all selected nodes.",
             "itemtype": "method",
             "name": "unselect",
@@ -3243,7 +3254,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 620,
+            "line": 638,
             "description": "Unselects the specified node.",
             "itemtype": "method",
             "name": "unselectNode",
@@ -3275,7 +3286,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 643,
+            "line": 661,
             "description": "Moves the specified node and all its children from another tree to this\ntree.",
             "itemtype": "method",
             "name": "_adoptNode",
@@ -3299,7 +3310,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 684,
+            "line": 702,
             "description": "Utility method for lazily publishing and firing events.",
             "itemtype": "method",
             "name": "_fire",
@@ -3344,7 +3355,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 715,
+            "line": 733,
             "description": "Removes the specified node from its parent node if it has one.",
             "itemtype": "method",
             "name": "_removeNodeFromParent",
@@ -3362,23 +3373,12 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 818,
+            "line": 838,
             "description": "Whether or not to allow multiple nodes to be selected at once.",
             "itemtype": "attribute",
             "name": "multiSelect",
             "type": "Boolean",
             "default": "false",
-            "class": "Tree",
-            "module": "gallery-sm-tree"
-        },
-        {
-            "file": "src/sm-tree/js/tree.js",
-            "line": 828,
-            "description": "Root node of this treeview.",
-            "itemtype": "attribute",
-            "name": "rootNode",
-            "type": "Tree.Node",
-            "readonly": "",
             "class": "Tree",
             "module": "gallery-sm-tree"
         },
