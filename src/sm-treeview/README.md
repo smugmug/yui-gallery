@@ -8,7 +8,7 @@ Features
 
 <img src="http://f.cl.ly/items/3L3m2n1e1d073y3M2N2X/Image%202012.12.20%2012:26:30%20PM.png" alt="Screenshot of the gorgeous SmugMug TreeView widget" align="right">
 
-* Crazy fast, [as demonstrated in this comparison](http://jsperf.com/yui-treeview) with a few other YUI TreeView widgets. The SmugMug TreeView can easily handle thousands and thousands of nodes with lightning fast rendering times, even in mobile browsers and IE.
+* Crazy fast, [as demonstrated in this comparison][jsperf] with a few other YUI TreeView widgets. The SmugMug TreeView can easily handle thousands and thousands of nodes with lightning fast rendering times, even in mobile browsers and IE.
 
 * Memory-efficient. A tree containing over 10,000 nodes consumes less than 8MB of RAM when rendered.
 
@@ -29,9 +29,10 @@ Useful Links
 
 * [API Docs][api-docs]
 * [Performance Stress Test](http://jsbin.com/udayaz/49)
-* [YUI TreeView Shootout](http://jsperf.com/yui-treeview)
+* [YUI TreeView Shootout][jsperf]
 
 [api-docs]:http://smugmug.github.com/yui-gallery/api/modules/gallery-sm-treeview.html
+[jsperf]:http://jsperf.com/yui-treeview/3
 
 Usage
 -----
