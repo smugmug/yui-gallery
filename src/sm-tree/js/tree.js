@@ -190,10 +190,11 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
 
         this._detachTreeEvents();
 
-        delete this.rootNode;
-        delete this._nodeMap;
-        delete this._published;
-        delete this._selectedMap;
+        this.children     = null;
+        this.rootNode     = null;
+        this._nodeMap     = null;
+        this._published   = null;
+        this._selectedMap = null;
     },
 
     // -- Public Methods -------------------------------------------------------
@@ -325,7 +326,7 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
             // Manually remove the child from its parent; this makes destroying
             // all children of the parent much faster since there's no splicing
             // involved.
-            delete child.parent;
+            child.parent = null;
 
             // Destroy the child.
             this.destroyNode(child, options);
@@ -335,16 +336,14 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
             this.removeNode(node, options);
         }
 
-        delete node.children;
-        delete node.data;
-        delete node.state;
-        delete node.tree;
-        delete node._htmlNode;
-        delete node._indexMap;
+        node.children  = null;
+        node.data      = null;
+        node.state     = {destroyed: true};
+        node.tree      = null;
+        node._htmlNode = null;
+        node._indexMap = null;
 
         delete this._nodeMap[node.id];
-
-        node.state = {destroyed: true};
 
         return this;
     },
@@ -729,7 +728,7 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
             if (index > -1) {
                 parent.children.splice(index, 1);
                 parent._isIndexStale = true;
-                delete node.parent;
+                node.parent = null;
             }
         }
     },

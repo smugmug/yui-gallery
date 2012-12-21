@@ -92,7 +92,7 @@ treeSuite.add(new Y.Test.Case({
         var tree = new Tree();
         tree.destroy();
 
-        Assert.isUndefined(tree.rootNode, 'rootNode should be undefined');
+        Assert.isNull(tree.rootNode, 'rootNode should be null');
     },
 
     'destructor should detach all tree events': function () {
@@ -107,10 +107,10 @@ treeSuite.add(new Y.Test.Case({
         var tree = new Tree();
         tree.destroy();
 
-        Assert.isUndefined(tree.rootNode, 'rootNode should be undefined');
-        Assert.isUndefined(tree._nodeMap, '_nodeMap should be undefined');
-        Assert.isUndefined(tree._published, '_published should be undefined');
-        Assert.isUndefined(tree._selectedMap, '_selectedMap should be undefined');
+        Assert.isNull(tree.rootNode, 'rootNode should be null');
+        Assert.isNull(tree._nodeMap, '_nodeMap should be null');
+        Assert.isNull(tree._published, '_published should be null');
+        Assert.isNull(tree._selectedMap, '_selectedMap should be null');
     }
 }));
 
@@ -337,12 +337,12 @@ treeSuite.add(new Y.Test.Case({
 
         this.tree.destroyNode(node);
 
-        Assert.isUndefined(node.children, 'node.children should be deleted');
-        Assert.isUndefined(node.data, 'node.data should be deleted');
-        Assert.isUndefined(node.parent, 'node.parent should be deleted');
-        Assert.isUndefined(node.tree, 'node.tree should be deleted');
-        Assert.isUndefined(node._htmlNode, 'node._htmlNode should be deleted');
-        Assert.isUndefined(node._indexMap, 'node._indexMap should be deleted');
+        Assert.isNull(node.children, 'node.children should be null');
+        Assert.isNull(node.data, 'node.data should be null');
+        Assert.isNull(node.parent, 'node.parent should be null');
+        Assert.isNull(node.tree, 'node.tree should be null');
+        Assert.isNull(node._htmlNode, 'node._htmlNode should be null');
+        Assert.isNull(node._indexMap, 'node._indexMap should be null');
 
         Assert.isUndefined(this.tree.getNodeById(node.id), 'node should be removed from the id map');
 
@@ -512,8 +512,8 @@ treeSuite.add(new Y.Test.Case({
 
         Assert.areSame(node, removed, 'removed node should be returned');
         Assert.isFalse(node.isInTree(), 'node should no longer be in the tree');
-        Assert.isUndefined(node.parent, 'node should no longer have a parent');
         Assert.areNotSame(node, this.tree.rootNode.children[0], 'node should no longer be a child of the root node');
+        Assert.isNull(node.parent, 'node should no longer have a parent');
         Assert.isUndefined(node.state.destroyed, 'node should not be destroyed');
     },
 
