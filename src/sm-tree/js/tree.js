@@ -822,20 +822,6 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
         **/
         multiSelect: {
             value: false
-        },
-
-        /**
-        Root node of this treeview.
-
-        @attribute {Tree.Node} rootNode
-        @readOnly
-        **/
-        rootNode: {
-            getter: function () {
-                return this.rootNode;
-            },
-
-            readOnly: true
         }
     }
 });

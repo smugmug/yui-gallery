@@ -193,17 +193,6 @@ treeSuite.add(new Y.Test.Case({
         var node = tree.createNode({label: 'foo'});
 
         Assert.isTrue(node._isMyNode);
-    },
-
-    'rootNode attribute should be an alias for the rootNode property': function () {
-        Assert.areSame(this.tree.rootNode, this.tree.get('rootNode'));
-    },
-
-    'rootNode attribute should be read-only': function () {
-        var rootNode = this.tree.rootNode;
-
-        this.tree.set('rootNode', this.tree.createNode());
-        Assert.areSame(rootNode, this.tree.get('rootNode'));
     }
 }));
 
