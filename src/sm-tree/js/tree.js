@@ -101,6 +101,16 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
 
     /**
+    Reference to the `children` array of this Tree's `rootNode`.
+
+    This is a convenience property to allow you to type `tree.children` instead
+    of `tree.rootNode.children`.
+
+    @property {Tree.Node[]} children
+    @readOnly
+    **/
+
+    /**
     Root node of this Tree.
 
     @property {Tree.Node} rootNode
@@ -181,7 +191,7 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
         this._attachTreeEvents();
 
         if (config.nodes) {
-            this.appendNode(this.rootNode, config.nodes, {silent: true});
+            this.insertNode(this.rootNode, config.nodes, {silent: true});
         }
     },
 
@@ -424,14 +434,23 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
         var index = options.index;
 
         if (typeof index === 'undefined') {
-            index = this.rootNode.children.length;
+            index = parent.children.length;
         }
 
         // If `node` is an array, recurse to insert each node it contains.
-        if (Lang.isArray(node)) {
+        //
+        // Note: If you're getting an exception here because `node` is null when
+        // you've passed in a reference to some other node's `children` array,
+        // that's happening because nodes must be removed from their current
+        // parent before being added to the new one, and the `children` array is
+        // being modified while the nodes are inserted.
+        //
+        // Solution: pass a copy of the other node's `children` array instead of
+        // the original. Doing the copy operation here would have a negative
+        // impact on performance, so you're on your own since this is such a
+        // rare edge case.
+        if ('length' in node && Lang.isArray(node)) {
             var inserted = [];
-
-            node = node.concat(); // avoid modifying the passed array
 
             for (var i = 0, len = node.length; i < len; i++) {
                 inserted.push(this.insertNode(parent, node[i], options));
@@ -773,6 +792,7 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
 
         this._nodeMap[newRootNode.id] = newRootNode;
         this.rootNode = newRootNode;
+        this.children = newRootNode.children;
     },
 
     _defCloseFn: function (e) {
@@ -796,6 +816,7 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
         } else if (this.rootNode === node) {
             // Guess we'll need a new root node!
             this.rootNode = this.createNode(this._rootNodeConfig);
+            this.children = this.rootNode.children;
         }
     },
 
