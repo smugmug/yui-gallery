@@ -57,6 +57,10 @@
             
                 <li><a href="..&#x2F;classes/Tree.Node.html">Tree.Node</a></li>
             
+                <li><a href="..&#x2F;classes/Tree.Node.Selectable.html">Tree.Node.Selectable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Selectable.html">Tree.Selectable</a></li>
+            
                 <li><a href="..&#x2F;classes/TreeView.html">TreeView</a></li>
             
             </ul>
@@ -80,6 +84,12 @@
                 <li><a href="..&#x2F;modules/gallery-sm-tree-node.html">gallery-sm-tree-node</a></li>
             
                 <li><a href="..&#x2F;modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="..&#x2F;modules/tree.html">tree</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-node-selectable.html">tree-node-selectable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-selectable.html">tree-selectable</a></li>
             
             </ul>
         </div>
@@ -199,25 +209,7 @@ var Lang = Y.Lang,
     @param {Tree.Node} parent Parent node from which the node will be removed.
     @preventable _defRemoveFn
     **&#x2F;
-    EVT_REMOVE = &#x27;remove&#x27;,
-
-    &#x2F;**
-    Fired when a node is selected.
-
-    @event select
-    @param {Tree.Node} node Node being selected.
-    @preventable _defSelectFn
-    **&#x2F;
-    EVT_SELECT = &#x27;select&#x27;,
-
-    &#x2F;**
-    Fired when a node is unselected.
-
-    @event unselect
-    @param {Tree.Node} node Node being unselected.
-    @preventable _defUnselectFn
-    **&#x2F;
-    EVT_UNSELECT = &#x27;unselect&#x27;;
+    EVT_REMOVE = &#x27;remove&#x27;;
 
 var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
     &#x2F;&#x2F; -- Public Properties ----------------------------------------------------
@@ -233,13 +225,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
     **&#x2F;
 
     &#x2F;**
-    Root node of this Tree.
-
-    @property {Tree.Node} rootNode
-    @readOnly
-    **&#x2F;
-
-    &#x2F;**
     The &#x60;Tree.Node&#x60; class or subclass that should be used for nodes created by
     this tree.
 
@@ -251,6 +236,28 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
     **&#x2F;
     nodeClass: Y.Tree.Node,
 
+    &#x2F;**
+    Optional array containing one or more extension classes that should be mixed
+    into the &#x60;nodeClass&#x60; when this Tree is instantiated. The resulting composed
+    node class will be unique to this Tree instance and will not affect any
+    other instances, nor will it modify the defined &#x60;nodeClass&#x60; itself.
+
+    This provides a late-binding extension mechanism for nodes that doesn&#x27;t
+    require them to extend &#x60;Y.Base&#x60;, which would incur a significant performance
+    hit.
+
+    @property {Array} nodeExtensions
+    @default []
+    **&#x2F;
+    nodeExtensions: [],
+
+    &#x2F;**
+    Root node of this Tree.
+
+    @property {Tree.Node} rootNode
+    @readOnly
+    **&#x2F;
+
     &#x2F;&#x2F; -- Protected Properties -------------------------------------------------
 
     &#x2F;**
@@ -261,6 +268,15 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
     @protected
     **&#x2F;
     _isYUITree: true,
+
+    &#x2F;**
+    Composed node class based on &#x60;nodeClass&#x60; that mixes in any extensions
+    specified in &#x60;nodeExtensions&#x60;. If there are no extensions, this will just be
+    a reference to &#x60;nodeClass&#x60;.
+
+    @property {Tree.Node} _nodeClass
+    @protected
+    **&#x2F;
 
     &#x2F;**
     Mapping of node ids to node instances for nodes in this tree.
@@ -277,17 +293,17 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
     **&#x2F;
     _rootNodeConfig: {canHaveChildren: true},
 
-    &#x2F;**
-    Mapping of node ids to node instances for nodes in this tree that are
-    currently selected.
-
-    @property {Object} _selectedMap
-    @protected
-    **&#x2F;
-
     &#x2F;&#x2F; -- Lifecycle ------------------------------------------------------------
     initializer: function (config) {
         config || (config = {});
+
+        if (config.nodeClass) {
+            this.nodeClass = config.nodeClass;
+        }
+
+        if (config.nodeExtensions) {
+            this.nodeExtensions = this.nodeExtensions.concat(config.nodeExtensions);
+        }
 
         &#x2F;**
         Hash of published custom events.
@@ -297,36 +313,28 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
         @protected
         **&#x2F;
         this._published || (this._published = {});
-
         this._nodeMap = {};
 
-        if (typeof this.nodeClass === &#x27;string&#x27;) {
-            &#x2F;&#x2F; Look for a namespaced node class on &#x60;Y&#x60;.
-            this.nodeClass = Y.Object.getValue(Y, this.nodeClass.split(&#x27;.&#x27;));
+        &#x2F;&#x2F; Allow all extensions to initialize, then finish up.
+        this.onceAfter(&#x27;initializedChange&#x27;, function () {
+            this._composeNodeClass();
 
-            if (!this.nodeClass) {
-                Y.error(&#x27;Tree: Node class not found: &#x27; + this.nodeClass);
+            this.clear(config.rootNode, {silent: true});
+
+            if (config.nodes) {
+                this.insertNode(this.rootNode, config.nodes, {silent: true});
             }
-        }
-
-        this.clear(config.rootNode, {silent: true});
-        this._attachTreeEvents();
-
-        if (config.nodes) {
-            this.insertNode(this.rootNode, config.nodes, {silent: true});
-        }
+        });
     },
 
     destructor: function () {
         this.destroyNode(this.rootNode, {silent: true});
 
-        this._detachTreeEvents();
-
-        this.children     = null;
-        this.rootNode     = null;
-        this._nodeMap     = null;
-        this._published   = null;
-        this._selectedMap = null;
+        this.children   = null;
+        this.rootNode   = null;
+        this._nodeClass = null;
+        this._nodeMap   = null;
+        this._published = null;
     },
 
     &#x2F;&#x2F; -- Public Methods -------------------------------------------------------
@@ -431,7 +439,8 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
             config = Y.merge(config, {children: children});
         }
 
-        var node = new this.nodeClass(this, config);
+        var node = new this._nodeClass(this, config);
+
         return this._nodeMap[node.id] = node;
     },
 
@@ -514,16 +523,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
     **&#x2F;
     getNodeById: function (id) {
         return this._nodeMap[id];
-    },
-
-    &#x2F;**
-    Returns an array of nodes that are currently selected.
-
-    @method getSelectedNodes
-    @return {Tree.Node[]} Array of selected nodes.
-    **&#x2F;
-    getSelectedNodes: function () {
-        return Y.Object.values(this._selectedMap);
     },
 
     &#x2F;**
@@ -677,31 +676,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
     },
 
     &#x2F;**
-    Selects the specified node.
-
-    @method selectNode
-    @param {Tree.Node} node Node to select.
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;select&#x60; event
-            will be suppressed.
-    @chainable
-    **&#x2F;
-    selectNode: function (node, options) {
-        &#x2F;&#x2F; Instead of calling node.isSelected(), we look for the node in this
-        &#x2F;&#x2F; tree&#x27;s selectedMap, which ensures that the &#x60;select&#x60; event will fire
-        &#x2F;&#x2F; in cases such as a node being added to this tree with its selected
-        &#x2F;&#x2F; state already set to true.
-        if (!this._selectedMap[node.id]) {
-            this._fire(EVT_SELECT, {node: node}, {
-                defaultFn: this._defSelectFn,
-                silent   : options &amp;&amp; options.silent
-            });
-        }
-
-        return this;
-    },
-
-    &#x2F;**
     Returns the total number of nodes in this tree, at all levels.
 
     Use &#x60;rootNode.children.length&#x60; to get only the number of top-level nodes.
@@ -738,46 +712,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
         return this.rootNode.toJSON();
     },
 
-    &#x2F;**
-    Unselects all selected nodes.
-
-    @method unselect
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;unselect&#x60; event
-            will be suppressed.
-    @chainable
-    **&#x2F;
-    unselect: function (options) {
-        for (var id in this._selectedMap) {
-            if (this._selectedMap.hasOwnProperty(id)) {
-                this.unselectNode(this._selectedMap[id], options);
-            }
-        }
-
-        return this;
-    },
-
-    &#x2F;**
-    Unselects the specified node.
-
-    @method unselectNode
-    @param {Tree.Node} node Node to unselect.
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;unselect&#x60; event
-            will be suppressed.
-    @chainable
-    **&#x2F;
-    unselectNode: function (node, options) {
-        if (node.isSelected() || this._selectedMap[node.id]) {
-            this._fire(EVT_UNSELECT, {node: node}, {
-                defaultFn: this._defUnselectFn,
-                silent   : options &amp;&amp; options.silent
-            });
-        }
-
-        return this;
-    },
-
     &#x2F;&#x2F; -- Protected Methods ----------------------------------------------------
 
     &#x2F;**
@@ -801,24 +735,74 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
         }
 
         oldTree.removeNode(node, options);
-
-        &#x2F;&#x2F; TODO: update selectedMap?
         delete oldTree._nodeMap[node.id];
-        this._nodeMap[node.id] = node;
+
+        &#x2F;&#x2F; If this node isn&#x27;t an instance of this tree&#x27;s composed _nodeClass,
+        &#x2F;&#x2F; then we need to recreate it to avoid potentially breaking things in
+        &#x2F;&#x2F; really weird ways.
+        if (!(node instanceof this._nodeClass)
+                || oldTree._nodeClass !== this._nodeClass) {
+
+            node = this.createNode(node.toJSON());
+        }
+
         node.tree = this;
+        this._nodeMap[node.id] = node;
     },
 
-    _attachTreeEvents: function () {
-        this._treeEvents || (this._treeEvents = []);
+    &#x2F;**
+    Composes a custom late-bound tree node class (if necessary) based on the
+    classes specified in this Tree&#x27;s &#x60;nodeClass&#x60; and &#x60;nodeExtensions&#x60;
+    properties.
 
-        this._treeEvents.push(
-            this.after(&#x27;multiSelectChange&#x27;, this._afterMultiSelectChange)
-        );
-    },
+    The composed class is stored in this Tree&#x27;s &#x60;_nodeClass&#x60; property. If
+    composition wasn&#x27;t necessary, then &#x60;_nodeClass&#x60; will just be a reference to
+    &#x60;nodeClass&#x60;.
 
-    _detachTreeEvents: function () {
-        (new Y.EventHandle(this._treeEvents)).detach();
-        this._treeEvents = [];
+    @method _composeNodeClass
+    @protected
+    **&#x2F;
+    _composeNodeClass: function () {
+        var nodeClass      = this.nodeClass,
+            nodeExtensions = this.nodeExtensions,
+            composedClass;
+
+        if (typeof nodeClass === &#x27;string&#x27;) {
+            &#x2F;&#x2F; Look for a namespaced node class on &#x60;Y&#x60;.
+            nodeClass = Y.Object.getValue(Y, nodeClass.split(&#x27;.&#x27;));
+
+            if (nodeClass) {
+                this.nodeClass = nodeClass;
+            } else {
+                Y.error(&#x27;Tree: Node class not found: &#x27; + nodeClass);
+                return;
+            }
+        }
+
+        if (!nodeExtensions.length) {
+            this._nodeClass = nodeClass;
+            return;
+        }
+
+        &#x2F;&#x2F; Compose a new class by mixing extensions into nodeClass.
+        composedClass = function () {
+            var extensions = composedClass._nodeExtensions;
+
+            nodeClass.apply(this, arguments);
+
+            for (var i = 0, len = extensions.length; i &lt; len; i++) {
+                extensions[i].apply(this, arguments);
+            }
+        };
+
+        Y.extend(composedClass, nodeClass);
+
+        for (var i = 0, len = nodeExtensions.length; i &lt; len; i++) {
+            Y.mix(composedClass.prototype, nodeExtensions[i].prototype, true);
+        }
+
+        composedClass._nodeExtensions = nodeExtensions;
+        this._nodeClass = composedClass;
     },
 
     &#x2F;**
@@ -874,19 +858,15 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
         }
     },
 
-    &#x2F;&#x2F; -- Protected Event Handlers ---------------------------------------------
-    _afterMultiSelectChange: function (e) {
-        this.multiSelect = e.newVal; &#x2F;&#x2F; for faster lookups
-        this.unselect();
-    },
-
     &#x2F;&#x2F; -- Default Event Handlers -----------------------------------------------
     _defAddFn: function (e) {
         var node   = e.node,
             parent = e.parent;
 
         &#x2F;&#x2F; Remove the node from its existing parent if it has one.
-        this._removeNodeFromParent(node);
+        if (node.parent) {
+            this._removeNodeFromParent(node);
+        }
 
         &#x2F;&#x2F; Add the node to its new parent at the desired index.
         node.parent = parent;
@@ -894,12 +874,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
 
         parent.canHaveChildren = true;
         parent._isIndexStale   = true;
-
-        &#x2F;&#x2F; If the node is marked as selected, we need go through the select
-        &#x2F;&#x2F; flow.
-        if (node.isSelected()) {
-            this.selectNode(node);
-        }
     },
 
     _defClearFn: function (e) {
@@ -909,10 +883,9 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
             this.destroyNode(this.rootNode, {silent: true});
         }
 
-        this._nodeMap     = {};
-        this._selectedMap = {};
-
+        this._nodeMap = {};
         this._nodeMap[newRootNode.id] = newRootNode;
+
         this.rootNode = newRootNode;
         this.children = newRootNode.children;
     },
@@ -928,9 +901,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
     _defRemoveFn: function (e) {
         var node = e.node;
 
-        delete node.state.selected;
-        delete this._selectedMap[node.id];
-
         if (e.destroy) {
             this.destroyNode(node, {silent: true});
         } else if (e.parent) {
@@ -939,32 +909,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
             &#x2F;&#x2F; Guess we&#x27;ll need a new root node!
             this.rootNode = this.createNode(this._rootNodeConfig);
             this.children = this.rootNode.children;
-        }
-    },
-
-    _defSelectFn: function (e) {
-        if (!this.get(&#x27;multiSelect&#x27;)) {
-            this.unselect();
-        }
-
-        e.node.state.selected = true;
-        this._selectedMap[e.node.id] = e.node;
-    },
-
-    _defUnselectFn: function (e) {
-        delete e.node.state.selected;
-        delete this._selectedMap[e.node.id];
-    }
-}, {
-    ATTRS: {
-        &#x2F;**
-        Whether or not to allow multiple nodes to be selected at once.
-
-        @attribute {Boolean} multiSelect
-        @default false
-        **&#x2F;
-        multiSelect: {
-            value: false
         }
     }
 });

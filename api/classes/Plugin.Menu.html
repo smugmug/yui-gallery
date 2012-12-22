@@ -57,6 +57,10 @@
             
                 <li><a href="..&#x2F;classes/Tree.Node.html">Tree.Node</a></li>
             
+                <li><a href="..&#x2F;classes/Tree.Node.Selectable.html">Tree.Node.Selectable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Selectable.html">Tree.Selectable</a></li>
+            
                 <li><a href="..&#x2F;classes/TreeView.html">TreeView</a></li>
             
             </ul>
@@ -80,6 +84,12 @@
                 <li><a href="..&#x2F;modules/gallery-sm-tree-node.html">gallery-sm-tree-node</a></li>
             
                 <li><a href="..&#x2F;modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="..&#x2F;modules/tree.html">tree</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-node-selectable.html">tree-node-selectable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-selectable.html">tree-selectable</a></li>
             
             </ul>
         </div>
@@ -356,6 +366,13 @@
                             </li>
                         
                             <li class="index-item method protected inherited">
+                                <a href="#method__composeNodeClass">_composeNodeClass</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
                                 <a href="#method__defDisableFn">_defDisableFn</a>
 
                                 
@@ -566,13 +583,6 @@
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_getSelectedNodes">getSelectedNodes</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
                                 <a href="#method_hide">hide</a>
 
                                 
@@ -643,13 +653,6 @@
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_selectNode">selectNode</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
                                 <a href="#method_show">show</a>
 
                                 
@@ -691,20 +694,6 @@
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method_unselect">unselect</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_unselectNode">unselectNode</a>
-
-                                
-                                
-                            </li>
-                        
                     </ul>
                 </div>
             
@@ -717,6 +706,13 @@
                         
                             <li class="index-item property protected inherited">
                                 <a href="#property__isYUITree">_isYUITree</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property protected inherited">
+                                <a href="#property__nodeClass">_nodeClass</a>
 
                                 
                                 
@@ -743,13 +739,6 @@
                                 
                             </li>
                         
-                            <li class="index-item property protected inherited">
-                                <a href="#property__selectedMap">_selectedMap</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item property inherited">
                                 <a href="#property_children">children</a>
 
@@ -766,6 +755,13 @@
                         
                             <li class="index-item property inherited">
                                 <a href="#property_nodeClass">nodeClass</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property inherited">
+                                <a href="#property_nodeExtensions">nodeExtensions</a>
 
                                 
                                 
@@ -805,10 +801,6 @@
                         
                             <li class="index-item attr inherited">
                                 <a href="#attr_hideOnOutsideClick">hideOnOutsideClick</a>
-                            </li>
-                        
-                            <li class="index-item attr inherited">
-                                <a href="#attr_multiSelect">multiSelect</a>
                             </li>
                         
                             <li class="index-item attr">
@@ -905,21 +897,7 @@
                             </li>
                         
                             <li class="index-item event inherited">
-                                <a href="#event_select">select</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item event inherited">
                                 <a href="#event_show">show</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item event inherited">
-                                <a href="#event_unselect">unselect</a>
 
                                 
                                 
@@ -982,7 +960,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l661"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:661</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l585"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:585</code></a>
         
         </p>
 
@@ -2010,6 +1988,65 @@ tree.</p>
 </div>
 
                 
+                    <div id="method__composeNodeClass" class="method item protected inherited">
+    <h3 class="name"><code>_composeNodeClass</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.html#method__composeNodeClass">Tree</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l621"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:621</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Composes a custom late-bound tree node class (if necessary) based on the
+classes specified in this Tree's <code>nodeClass</code> and <code>nodeExtensions</code>
+properties.</p>
+
+<p>The composed class is stored in this Tree's <code>_nodeClass</code> property. If
+composition wasn't necessary, then <code>_nodeClass</code> will just be a reference to
+<code>nodeClass</code>.</p>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method__defDisableFn" class="method item protected inherited">
     <h3 class="name"><code>_defDisableFn</code></h3>
 
@@ -2634,7 +2671,7 @@ tree.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l702"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:702</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l676"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:676</code></a>
         
         </p>
 
@@ -3804,7 +3841,7 @@ within the viewport.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l733"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:733</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l707"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:707</code></a>
         
         </p>
 
@@ -3904,7 +3941,7 @@ within the viewport.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l212"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:212</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l210"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:210</code></a>
         
         </p>
 
@@ -4067,7 +4104,7 @@ be removed from that tree and moved to this one.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l238"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:238</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l236"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:236</code></a>
         
         </p>
 
@@ -4192,7 +4229,7 @@ tree; otherwise, a new root node will be created.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l260"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:260</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l258"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:258</code></a>
         
         </p>
 
@@ -4353,7 +4390,7 @@ tree; otherwise, a new root node will be created.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l280"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:280</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l278"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:278</code></a>
         
         </p>
 
@@ -4463,7 +4500,7 @@ yet appended to) this tree.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l316"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:316</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l315"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:315</code></a>
         
         </p>
 
@@ -4721,7 +4758,7 @@ tree.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l361"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:361</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l360"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:360</code></a>
         
         </p>
 
@@ -5104,7 +5141,7 @@ menu item, if any.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l385"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:385</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l384"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:384</code></a>
         
         </p>
 
@@ -5154,74 +5191,6 @@ doesn't exist in this tree.</p>
                         <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a></span>:
                     
                     Node, or <code>undefined</code> if not found.
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_getSelectedNodes" class="method item inherited">
-    <h3 class="name"><code>getSelectedNodes</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node[]</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#method_getSelectedNodes">Tree</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l397"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:397</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns an array of nodes that are currently selected.</p>
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node[]</a></span>:
-                    
-                    Array of selected nodes.
                 
             </div>
         </div>
@@ -5466,7 +5435,7 @@ doesn't exist in this tree.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l407"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:407</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l396"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:396</code></a>
         
         </p>
 
@@ -5638,7 +5607,7 @@ be removed from that tree and moved to this one.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l481"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:481</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l470"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:470</code></a>
         
         </p>
 
@@ -5758,7 +5727,7 @@ be removed from that tree and moved to this one.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l501"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:501</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l490"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:490</code></a>
         
         </p>
 
@@ -5923,7 +5892,7 @@ be removed from that tree and moved to this one.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l527"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:527</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l516"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:516</code></a>
         
         </p>
 
@@ -6494,133 +6463,6 @@ host node.</p>
 </div>
 
                 
-                    <div id="method_selectNode" class="method item inherited">
-    <h3 class="name"><code>selectNode</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>node</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[options]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#method_selectNode">Tree</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l557"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:557</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Selects the specified node.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">node</code>
-                        <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Node to select.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[options]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Options.</p>
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[silent=false]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>If <code>true</code>, the <code>select</code> event
-        will be suppressed.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="method_show" class="method item inherited">
     <h3 class="name"><code>show</code></h3>
 
@@ -6889,7 +6731,7 @@ host node.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l582"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:582</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l546"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:546</code></a>
         
         </p>
 
@@ -7082,7 +6924,7 @@ hiding it if it's currently visible.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l594"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:594</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l558"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:558</code></a>
         
         </p>
 
@@ -7195,7 +7037,7 @@ hiding it if it's currently visible.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l609"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:609</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l573"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:573</code></a>
         
         </p>
 
@@ -7224,239 +7066,6 @@ hiding it if it's currently visible.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_unselect" class="method item inherited">
-    <h3 class="name"><code>unselect</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code class="optional">[options]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#method_unselect">Tree</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l619"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:619</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Unselects all selected nodes.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[options]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Options.</p>
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[silent=false]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>If <code>true</code>, the <code>unselect</code> event
-        will be suppressed.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_unselectNode" class="method item inherited">
-    <h3 class="name"><code>unselectNode</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>node</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[options]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#method_unselectNode">Tree</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l638"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:638</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Unselects the specified node.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">node</code>
-                        <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Node to unselect.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[options]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Options.</p>
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[silent=false]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>If <code>true</code>, the <code>unselect</code> event
-        will be suppressed.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
     
 
     
@@ -7493,7 +7102,7 @@ hiding it if it's currently visible.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l134"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:134</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l131"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:131</code></a>
         
         </p>
 
@@ -7508,6 +7117,51 @@ hiding it if it's currently visible.</p>
 
     
         <p><strong>Default:</strong> true</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property__nodeClass" class="property item protected inherited">
+    <h3 class="name"><code>_nodeClass</code></h3>
+    <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a></span>
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.html#property__nodeClass">Tree</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l140"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:140</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Composed node class based on <code>nodeClass</code> that mixes in any extensions
+specified in <code>nodeExtensions</code>. If there are no extensions, this will just be
+a reference to <code>nodeClass</code>.</p>
+    </div>
+
     
 
     
@@ -7538,7 +7192,7 @@ hiding it if it's currently visible.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l143"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:143</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l149"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:149</code></a>
         
         </p>
 
@@ -7581,7 +7235,7 @@ hiding it if it's currently visible.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l170"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:170</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l176"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:176</code></a>
         
         </p>
 
@@ -7626,7 +7280,7 @@ hiding it if it's currently visible.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l150"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:150</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l156"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:156</code></a>
         
         </p>
 
@@ -7637,50 +7291,6 @@ hiding it if it's currently visible.</p>
 
     <div class="description">
         <p>Default config object for the root node.</p>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property__selectedMap" class="property item protected inherited">
-    <h3 class="name"><code>_selectedMap</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#property__selectedMap">Tree</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l158"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:158</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Mapping of node ids to node instances for nodes in this tree that are
-currently selected.</p>
     </div>
 
     
@@ -7711,7 +7321,7 @@ currently selected.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l103"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:103</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l85"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:85</code></a>
         
         </p>
 
@@ -7796,7 +7406,7 @@ of <code>tree.rootNode.children</code>.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l120"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:120</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l95"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:95</code></a>
         
         </p>
 
@@ -7815,6 +7425,56 @@ class reference at runtime.</p>
 
     
         <p><strong>Default:</strong> Y.Tree.Node</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_nodeExtensions" class="property item inherited">
+    <h3 class="name"><code>nodeExtensions</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.html#property_nodeExtensions">Tree</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l107"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:107</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Optional array containing one or more extension classes that should be mixed
+into the <code>nodeClass</code> when this Tree is instantiated. The resulting composed
+node class will be unique to this Tree instance and will not affect any
+other instances, nor will it modify the defined <code>nodeClass</code> itself.</p>
+
+<p>This provides a late-binding extension mechanism for nodes that doesn't
+require them to extend <code>Y.Base</code>, which would incur a significant performance
+hit.</p>
+    </div>
+
+    
+        <p><strong>Default:</strong> []</p>
     
 
     
@@ -7886,7 +7546,7 @@ class reference at runtime.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l113"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:113</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l122"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:122</code></a>
         
         </p>
 
@@ -8193,107 +7853,6 @@ outside the menu.</p>
 
             <p>
             Fires when the value for the configuration attribute <code>hideOnOutsideClick</code> is
-            changed. You can listen for the event using the <code>on</code> method if you
-            wish to be notified before the attribute's value has changed, or
-            using the <code>after</code> method if you wish to be notified after the
-            attribute's value has changed.
-            </p>
-
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                    <li class="param">
-                        <code class="param-name">e</code>
-                        <span class="type">EventFacade</span>
-
-                        <div class="param-description">
-                            An Event Facade object with the following
-                            attribute-specific properties added:
-                        </div>
-
-                        <ul class="params-list">
-                            <li class="param">
-                                <code class="param-name">prevVal</code>
-                                <span class="type">Any</span>
-                                <div class="param-description">The value of the attribute, prior to it being set.</div>
-                            </li>
-                            <li class="param">
-                                <code class="param-name">newVal</code>
-                                <span class="type">Any</span>
-                                <div class="param-description">The value the attribute is to be set to.</div>
-                            </li>
-                            <li class="param">
-                                <code class="param-name">attrName</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                <div class="param-description">The name of the attribute being set.</div>
-                            </li>
-                            <li class="param">
-                                <code class="param-name">subAttrName</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                <div class="param-description">If setting a property within the attribute's value, the name of the sub-attribute property being set.</div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="attr_multiSelect" class="attr item inherited">
-    <a name="config_multiSelect"></a> 
-    <h3 class="name"><code>multiSelect</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#attr_multiSelect">Tree</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l838"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:838</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Whether or not to allow multiple nodes to be selected at once.</p>
-    </div>
-
-    
-        <p><strong>Default:</strong> false</p>
-    
-
-    
-        <div class="emits box">
-            <h4>Fires event <code>multiSelectChange</code></h4>
-
-            <p>
-            Fires when the value for the configuration attribute <code>multiSelect</code> is
             changed. You can listen for the event using the <code>on</code> method if you
             wish to be notified before the attribute's value has changed, or
             using the <code>after</code> method if you wish to be notified after the
@@ -9541,69 +9100,6 @@ how the node was added ("append", "insert", "prepend", etc.).</p>
 </div>
 
                 
-                    <div id="event_select" class="events item inherited">
-    <h3 class="name"><code>select</code></h3>
-    <span class="type"></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#event_select">Tree</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l82"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:82</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Fired when a node is selected.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Event Payload:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">node</code>
-                        <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Node being selected.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-
-    
-</div>
-
-                
                     <div id="event_show" class="events item inherited">
     <h3 class="name"><code>show</code></h3>
     <span class="type"></span>
@@ -9653,69 +9149,6 @@ how the node was added ("append", "insert", "prepend", etc.).</p>
 
                     <div class="param-description">
                         <p>Menu item that was shown.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-
-    
-</div>
-
-                
-                    <div id="event_unselect" class="events item inherited">
-    <h3 class="name"><code>unselect</code></h3>
-    <span class="type"></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#event_unselect">Tree</a>:
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l91"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:91</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Fired when a node is unselected.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Event Payload:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">node</code>
-                        <span class="type"><a href="../classes/Tree.Node.html" class="crosslink">Tree.Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Node being unselected.</p>
                     </div>
 
                     

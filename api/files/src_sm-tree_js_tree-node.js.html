@@ -57,6 +57,10 @@
             
                 <li><a href="..&#x2F;classes/Tree.Node.html">Tree.Node</a></li>
             
+                <li><a href="..&#x2F;classes/Tree.Node.Selectable.html">Tree.Node.Selectable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Selectable.html">Tree.Selectable</a></li>
+            
                 <li><a href="..&#x2F;classes/TreeView.html">TreeView</a></li>
             
             </ul>
@@ -80,6 +84,12 @@
                 <li><a href="..&#x2F;modules/gallery-sm-tree-node.html">gallery-sm-tree-node</a></li>
             
                 <li><a href="..&#x2F;modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="..&#x2F;modules/tree.html">tree</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-node-selectable.html">tree-node-selectable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-selectable.html">tree-selectable</a></li>
             
             </ul>
         </div>
@@ -255,7 +265,6 @@ TreeNode.prototype = {
 
     @property {Object} state
     @param {Boolean} [open=false] Whether or not this node is open (expanded).
-    @param {Boolean} [selected=false] Whether or not this node is selected.
     **&#x2F;
 
     &#x2F;**
@@ -296,13 +305,13 @@ TreeNode.prototype = {
     Array of property names on this node that should be serialized to JSON when
     &#x60;toJSON()&#x60; is called.
 
-    Note that the &#x60;children&#x60; and &#x60;state&#x60; properties are special cases that are
-    managed outside of this list.
+    Note that the &#x60;children&#x60; property is a special case that is managed
+    separately.
 
     @property {String[]} _serializable
     @protected
     **&#x2F;
-    _serializable: [&#x27;canHaveChildren&#x27;, &#x27;data&#x27;, &#x27;id&#x27;, &#x27;label&#x27;],
+    _serializable: [&#x27;canHaveChildren&#x27;, &#x27;data&#x27;, &#x27;id&#x27;, &#x27;label&#x27;, &#x27;state&#x27;],
 
     &#x2F;&#x2F; -- Public Methods -------------------------------------------------------
 
@@ -465,17 +474,6 @@ TreeNode.prototype = {
     },
 
     &#x2F;**
-    Returns &#x60;true&#x60; if this node is currently selected.
-
-    @method isSelected
-    @return {Boolean} &#x60;true&#x60; if this node is currently selected, &#x60;false&#x60;
-        otherwise.
-    **&#x2F;
-    isSelected: function () {
-        return !!this.state.selected;
-    },
-
-    &#x2F;**
     Opens this node if it&#x27;s currently closed.
 
     @method open
@@ -523,20 +521,6 @@ TreeNode.prototype = {
     **&#x2F;
     remove: function (options) {
         return this.tree.removeNode(this, options);
-    },
-
-    &#x2F;**
-    Selects this node.
-
-    @method select
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;select&#x60; event
-            will be suppressed.
-    @chainable
-    **&#x2F;
-    select: function (options) {
-        this.tree.selectNode(this, options);
-        return this;
     },
 
     &#x2F;**
@@ -598,17 +582,6 @@ TreeNode.prototype = {
             }
         }
 
-        &#x2F;&#x2F; Serialize state values.
-        obj.state = {};
-
-        if (state.open) {
-            obj.state.open = true;
-        }
-
-        if (state.selected) {
-            obj.state.selected = true;
-        }
-
         &#x2F;&#x2F; Serialize child nodes.
         if (this.canHaveChildren) {
             obj.children = [];
@@ -619,20 +592,6 @@ TreeNode.prototype = {
         }
 
         return obj;
-    },
-
-    &#x2F;**
-    Unselects this node.
-
-    @method unselect
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;unselect&#x60; event
-            will be suppressed.
-    @chainable
-    **&#x2F;
-    unselect: function (options) {
-        this.tree.unselectNode(this, options);
-        return this;
     },
 
     &#x2F;&#x2F; -- Protected Methods ----------------------------------------------------

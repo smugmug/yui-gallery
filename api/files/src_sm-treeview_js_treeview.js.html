@@ -57,6 +57,10 @@
             
                 <li><a href="..&#x2F;classes/Tree.Node.html">Tree.Node</a></li>
             
+                <li><a href="..&#x2F;classes/Tree.Node.Selectable.html">Tree.Node.Selectable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Selectable.html">Tree.Selectable</a></li>
+            
                 <li><a href="..&#x2F;classes/TreeView.html">TreeView</a></li>
             
             </ul>
@@ -80,6 +84,12 @@
                 <li><a href="..&#x2F;modules/gallery-sm-tree-node.html">gallery-sm-tree-node</a></li>
             
                 <li><a href="..&#x2F;modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="..&#x2F;modules/tree.html">tree</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-node-selectable.html">tree-node-selectable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-selectable.html">tree-selectable</a></li>
             
             </ul>
         </div>
@@ -134,11 +144,12 @@ TreeView widget.
 @constructor
 @extends View
 @uses Tree
+@uses Tree.Selectable
 **&#x2F;
 
 var getClassName = Y.ClassNameManager.getClassName,
 
-TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [Y.Tree], {
+TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [Y.Tree, Y.Tree.Selectable], {
     &#x2F;&#x2F; -- Public Properties ----------------------------------------------------
 
     &#x2F;**
@@ -536,7 +547,7 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [Y.Tree], {
 
         htmlNode.addClass(this.classNames.selected);
 
-        if (this.multiSelect) {
+        if (this.get(&#x27;multiSelect&#x27;)) {
             &#x2F;&#x2F; It&#x27;s only necessary to set aria-selected when multi-selection is
             &#x2F;&#x2F; enabled and focus can&#x27;t be used to track the selection state.
             htmlNode.set(&#x27;aria-selected&#x27;, true);
@@ -574,7 +585,7 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [Y.Tree], {
 
         htmlNode.removeClass(this.classNames.selected);
 
-        if (this.multiSelect) {
+        if (this.get(&#x27;multiSelect&#x27;)) {
             htmlNode.set(&#x27;aria-selected&#x27;, false);
         }
 
@@ -600,7 +611,7 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [Y.Tree], {
     _onRowClick: function (e) {
         var node = this.getNodeById(e.currentTarget.getData(&#x27;node-id&#x27;));
 
-        if (this.multiSelect) {
+        if (this.get(&#x27;multiSelect&#x27;)) {
             node[node.isSelected() ? &#x27;unselect&#x27; : &#x27;select&#x27;]();
         } else {
             node.select();

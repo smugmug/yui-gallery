@@ -9,6 +9,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "Plugin.Tree.Lazy",
         "Tree",
         "Tree.Node",
+        "Tree.Node.Selectable",
+        "Tree.Selectable",
         "TreeView"
     ],
     "modules": [
@@ -20,7 +22,10 @@ YUI.add("yuidoc-meta", function(Y) {
         "gallery-sm-tree",
         "gallery-sm-tree-lazy",
         "gallery-sm-tree-node",
-        "gallery-sm-treeview"
+        "gallery-sm-treeview",
+        "tree",
+        "tree-node-selectable",
+        "tree-selectable"
     ],
     "allModules": [
         {
@@ -67,6 +72,20 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "gallery-sm-treeview",
             "name": "gallery-sm-treeview",
             "description": "Provides the `Y.TreeView` widget."
+        },
+        {
+            "displayName": "tree",
+            "name": "tree"
+        },
+        {
+            "displayName": "tree-node-selectable",
+            "name": "tree-node-selectable",
+            "description": "Provides the `Tree.Node.Selectable` class, an extension for `Tree.Node` that\nadds methods useful for nodes in trees that use the `Tree.Selectable` extension."
+        },
+        {
+            "displayName": "tree-selectable",
+            "name": "tree-selectable",
+            "description": "Extension for `Tree` that adds the concept of selection state for nodes."
         }
     ]
 } };
