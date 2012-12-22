@@ -415,7 +415,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Selectable], {
 
         htmlNode.addClass(this.classNames.selected);
 
-        if (this.multiSelect) {
+        if (this.get('multiSelect')) {
             // It's only necessary to set aria-selected when multi-selection is
             // enabled and focus can't be used to track the selection state.
             htmlNode.set('aria-selected', true);
@@ -453,7 +453,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Selectable], {
 
         htmlNode.removeClass(this.classNames.selected);
 
-        if (this.multiSelect) {
+        if (this.get('multiSelect')) {
             htmlNode.set('aria-selected', false);
         }
 
@@ -479,7 +479,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Selectable], {
     _onRowClick: function (e) {
         var node = this.getNodeById(e.currentTarget.getData('node-id'));
 
-        if (this.multiSelect) {
+        if (this.get('multiSelect')) {
             node[node.isSelected() ? 'unselect' : 'select']();
         } else {
             node.select();
