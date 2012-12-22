@@ -28,7 +28,7 @@ Useful Links
 ------------
 
 * [API Docs][api-docs]
-* [Performance Stress Test](http://jsbin.com/udayaz/49)
+* [Performance Stress Test](http://jsbin.com/udayaz/52/)
 * [YUI TreeView Shootout][jsperf]
 
 [api-docs]:http://smugmug.github.com/yui-gallery/api/modules/gallery-sm-treeview.html
