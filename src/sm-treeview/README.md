@@ -55,7 +55,9 @@ At the moment you'll also need to manually load the TreeView JS and CSS as well,
 <link rel="stylesheet" href="http://smugmug.github.com/yui-gallery/build/gallery-sm-treeview/assets/skins/sam/gallery-sm-treeview.css">
 
 <script src="http://smugmug.github.com/yui-gallery/build/gallery-sm-tree/gallery-sm-tree-min.js"></script>
+<script src="http://smugmug.github.com/yui-gallery/build/gallery-sm-tree-selectable/gallery-sm-tree-selectable-min.js"></script>
 <script src="http://smugmug.github.com/yui-gallery/build/gallery-sm-tree-node/gallery-sm-tree-node-min.js"></script>
+<script src="http://smugmug.github.com/yui-gallery/build/gallery-sm-tree-node-selectable/gallery-sm-tree-node-selectable-min.js"></script>
 <script src="http://smugmug.github.com/yui-gallery/build/gallery-sm-treeview/gallery-sm-treeview-min.js"></script>
 <script src="http://smugmug.github.com/yui-gallery/build/gallery-sm-treeview-templates/gallery-sm-treeview-templates-min.js"></script>
 ```
