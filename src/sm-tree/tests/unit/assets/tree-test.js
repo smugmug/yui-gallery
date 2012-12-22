@@ -100,6 +100,7 @@ treeSuite.add(new Y.Test.Case({
         tree.destroy();
 
         Assert.isNull(tree.rootNode, 'rootNode should be null');
+        Assert.isNull(tree._nodeClass, '_nodeClass should be null');
         Assert.isNull(tree._nodeMap, '_nodeMap should be null');
         Assert.isNull(tree._published, '_published should be null');
     }
@@ -135,26 +136,62 @@ treeSuite.add(new Y.Test.Case({
             _isMyNode: true
         });
 
-        this.tree.nodeClass = MyNode;
-
-        var node = this.tree.createNode({label: 'foo'});
+        var tree = new Tree({nodeClass: MyNode});
+        var node = tree.createNode({label: 'foo'});
 
         Assert.isTrue(node._isMyNode);
     },
 
-    'nodeClass property should allow specifying a class as a string before init': function () {
-        var MyTree = Y.Base.create('myTree', Tree, [], {
-            nodeClass: 'Foo.Bar.MyNode'
-        });
-
+    'nodeClass property should allow specifying a class as a string': function () {
         Y.namespace('Foo.Bar').MyNode = Y.Base.create('myNode', Tree.Node, [], {
             _isMyNode: true
         });
 
-        var tree = new MyTree();
+        var tree = new Tree({
+            nodeClass: 'Foo.Bar.MyNode'
+        });
+
         var node = tree.createNode({label: 'foo'});
 
         Assert.isTrue(node._isMyNode);
+    },
+
+    'nodeExtensions property should mix extensions into the nodeClass at instantiation': function () {
+        var extensionOneCalled, extensionTwoCalled, tree;
+
+        function ExtensionOne(innerTree, config) {
+            extensionOneCalled = true;
+
+            Assert.isTrue(innerTree._isYUITree, 'tree should be passed to the extension constructor');
+            Assert.isObject(config, 'node config should be passed to the extension constructor');
+        }
+
+        ExtensionOne.prototype = {
+            extensionOneProp: 'foo',
+            overWriteMe: 'hello'
+        };
+
+        function ExtensionTwo() {
+            extensionTwoCalled = true;
+        }
+
+        ExtensionTwo.prototype = {
+            extensionTwoProp: 'bar',
+            overWriteMe: 'goodbye'
+        };
+
+        tree = new Tree({
+            nodeExtensions: [ExtensionOne, ExtensionTwo]
+        });
+
+        var node = tree.rootNode.append({label: 'Hello!'});
+
+        Assert.areSame('Hello!', node.label, 'label should be set');
+        Assert.isTrue(extensionOneCalled, "extension one's constructor should be called");
+        Assert.isTrue(extensionTwoCalled, "extension two's constructor should be called");
+        Assert.areSame('foo', node.extensionOneProp, 'node should have mixed in prototype properties from extension one');
+        Assert.areSame('bar', node.extensionTwoProp, 'node should have mixed in prototype properties from extension two');
+        Assert.areSame('goodbye', node.overWriteMe, "extension two should be able to overwrite extension one's properties");
     }
 }));
 

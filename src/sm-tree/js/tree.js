@@ -93,13 +93,6 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
     **/
 
     /**
-    Root node of this Tree.
-
-    @property {Tree.Node} rootNode
-    @readOnly
-    **/
-
-    /**
     The `Tree.Node` class or subclass that should be used for nodes created by
     this tree.
 
@@ -111,6 +104,28 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
     **/
     nodeClass: Y.Tree.Node,
 
+    /**
+    Optional array containing one or more extension classes that should be mixed
+    into the `nodeClass` when this Tree is instantiated. The resulting composed
+    node class will be unique to this Tree instance and will not affect any
+    other instances, nor will it modify the defined `nodeClass` itself.
+
+    This provides a late-binding extension mechanism for nodes that doesn't
+    require them to extend `Y.Base`, which would incur a significant performance
+    hit.
+
+    @property {Array} nodeExtensions
+    @default []
+    **/
+    nodeExtensions: [],
+
+    /**
+    Root node of this Tree.
+
+    @property {Tree.Node} rootNode
+    @readOnly
+    **/
+
     // -- Protected Properties -------------------------------------------------
 
     /**
@@ -121,6 +136,15 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
     @protected
     **/
     _isYUITree: true,
+
+    /**
+    Composed node class based on `nodeClass` that mixes in any extensions
+    specified in `nodeExtensions`. If there are no extensions, this will just be
+    a reference to `nodeClass`.
+
+    @property {Tree.Node} _nodeClass
+    @protected
+    **/
 
     /**
     Mapping of node ids to node instances for nodes in this tree.
@@ -141,6 +165,14 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
     initializer: function (config) {
         config || (config = {});
 
+        if (config.nodeClass) {
+            this.nodeClass = config.nodeClass;
+        }
+
+        if (config.nodeExtensions) {
+            this.nodeExtensions = this.nodeExtensions.concat(config.nodeExtensions);
+        }
+
         /**
         Hash of published custom events.
 
@@ -149,32 +181,28 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
         @protected
         **/
         this._published || (this._published = {});
-
         this._nodeMap = {};
 
-        if (typeof this.nodeClass === 'string') {
-            // Look for a namespaced node class on `Y`.
-            this.nodeClass = Y.Object.getValue(Y, this.nodeClass.split('.'));
+        // Allow all extensions to initialize, then finish up.
+        this.onceAfter('initializedChange', function () {
+            this._composeNodeClass();
 
-            if (!this.nodeClass) {
-                Y.error('Tree: Node class not found: ' + this.nodeClass);
+            this.clear(config.rootNode, {silent: true});
+
+            if (config.nodes) {
+                this.insertNode(this.rootNode, config.nodes, {silent: true});
             }
-        }
-
-        this.clear(config.rootNode, {silent: true});
-
-        if (config.nodes) {
-            this.insertNode(this.rootNode, config.nodes, {silent: true});
-        }
+        });
     },
 
     destructor: function () {
         this.destroyNode(this.rootNode, {silent: true});
 
-        this.children     = null;
-        this.rootNode     = null;
-        this._nodeMap     = null;
-        this._published   = null;
+        this.children   = null;
+        this.rootNode   = null;
+        this._nodeClass = null;
+        this._nodeMap   = null;
+        this._published = null;
     },
 
     // -- Public Methods -------------------------------------------------------
@@ -279,7 +307,8 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
             config = Y.merge(config, {children: children});
         }
 
-        var node = new this.nodeClass(this, config);
+        var node = new this._nodeClass(this, config);
+
         return this._nodeMap[node.id] = node;
     },
 
@@ -574,11 +603,74 @@ var Tree = Y.Base.create('tree', Y.Base, [], {
         }
 
         oldTree.removeNode(node, options);
-
-        // TODO: update selectedMap?
         delete oldTree._nodeMap[node.id];
-        this._nodeMap[node.id] = node;
+
+        // If this node isn't an instance of this tree's composed _nodeClass,
+        // then we need to recreate it to avoid potentially breaking things in
+        // really weird ways.
+        if (!(node instanceof this._nodeClass)
+                || oldTree._nodeClass !== this._nodeClass) {
+
+            node = this.createNode(node.toJSON());
+        }
+
         node.tree = this;
+        this._nodeMap[node.id] = node;
+    },
+
+    /**
+    Composes a custom late-bound tree node class (if necessary) based on the
+    classes specified in this Tree's `nodeClass` and `nodeExtensions`
+    properties.
+
+    The composed class is stored in this Tree's `_nodeClass` property. If
+    composition wasn't necessary, then `_nodeClass` will just be a reference to
+    `nodeClass`.
+
+    @method _composeNodeClass
+    @protected
+    **/
+    _composeNodeClass: function () {
+        var nodeClass      = this.nodeClass,
+            nodeExtensions = this.nodeExtensions,
+            composedClass;
+
+        if (typeof nodeClass === 'string') {
+            // Look for a namespaced node class on `Y`.
+            nodeClass = Y.Object.getValue(Y, nodeClass.split('.'));
+
+            if (nodeClass) {
+                this.nodeClass = nodeClass;
+            } else {
+                Y.error('Tree: Node class not found: ' + nodeClass);
+                return;
+            }
+        }
+
+        if (!nodeExtensions.length) {
+            this._nodeClass = nodeClass;
+            return;
+        }
+
+        // Compose a new class by mixing extensions into nodeClass.
+        composedClass = function () {
+            var extensions = composedClass._nodeExtensions;
+
+            nodeClass.apply(this, arguments);
+
+            for (var i = 0, len = extensions.length; i < len; i++) {
+                extensions[i].apply(this, arguments);
+            }
+        };
+
+        Y.extend(composedClass, nodeClass);
+
+        for (var i = 0, len = nodeExtensions.length; i < len; i++) {
+            Y.mix(composedClass.prototype, nodeExtensions[i].prototype, true);
+        }
+
+        composedClass._nodeExtensions = nodeExtensions;
+        this._nodeClass = composedClass;
     },
 
     /**

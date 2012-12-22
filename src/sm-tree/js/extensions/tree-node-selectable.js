@@ -1,26 +1,23 @@
 /**
-Provides the `Tree.Node.Selectable` class, which extends `Tree.Node` and adds
-methods that are useful for nodes in trees that use the `Tree.Selectable`
-extension.
+Provides the `Tree.Node.Selectable` class, an extension for `Tree.Node` that
+adds methods useful for nodes in trees that use the `Tree.Selectable` extension.
 
 @module tree-selectable
 @submodule tree-node-selectable
 **/
 
 /**
-Extends `Tree.Node` and adds methods that are useful for nodes in trees that use
-the `Tree.Selectable` extension.
+`Tree.Node` extension that adds methods useful for nodes in trees that use the
+`Tree.Selectable` extension.
 
 @class Tree.Node.Selectable
 @constructor
-@extends Tree.Node
+@extensionfor Tree.Node
 **/
 
-function NodeSelectable () {
-    Y.Tree.Node.apply(this, arguments);
-}
+function NodeSelectable() {}
 
-Y.Tree.Node.Selectable = Y.extend(NodeSelectable, Y.Tree.Node, {
+NodeSelectable.prototype = {
     /**
     Returns `true` if this node is currently selected.
 
@@ -59,4 +56,6 @@ Y.Tree.Node.Selectable = Y.extend(NodeSelectable, Y.Tree.Node, {
         this.tree.unselectNode(this, options);
         return this;
     }
-});
+};
+
+Y.Tree.Node.Selectable = NodeSelectable;

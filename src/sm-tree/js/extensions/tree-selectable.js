@@ -41,14 +41,6 @@ function Selectable() {
 }
 
 Selectable.prototype = {
-    // -- Public Properties ----------------------------------------------------
-
-    /**
-    @property {String|Tree.Node} nodeClass
-    @default Y.Tree.Node.Selectable
-    **/
-    nodeClass: Y.Tree.Node.Selectable,
-
     // -- Protected Properties -------------------------------------------------
 
     /**
@@ -62,7 +54,8 @@ Selectable.prototype = {
     // -- Lifecycle ------------------------------------------------------------
 
     initializer: function () {
-        this._selectedMap = {};
+        this.nodeExtensions = this.nodeExtensions.concat(Y.Tree.Node.Selectable);
+        this._selectedMap   = {};
 
         this._selectableEvents = [
             this.after('multiSelectChange', this._afterMultiSelectChange)
