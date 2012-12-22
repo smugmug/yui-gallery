@@ -14,11 +14,12 @@ TreeView widget.
 @constructor
 @extends View
 @uses Tree
+@uses Tree.Selectable
 **/
 
 var getClassName = Y.ClassNameManager.getClassName,
 
-TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
+TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Selectable], {
     // -- Public Properties ----------------------------------------------------
 
     /**
@@ -416,7 +417,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
 
         htmlNode.addClass(this.classNames.selected);
 
-        if (this.multiSelect) {
+        if (this.get('multiSelect')) {
             // It's only necessary to set aria-selected when multi-selection is
             // enabled and focus can't be used to track the selection state.
             htmlNode.set('aria-selected', true);
@@ -454,7 +455,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
 
         htmlNode.removeClass(this.classNames.selected);
 
-        if (this.multiSelect) {
+        if (this.get('multiSelect')) {
             htmlNode.set('aria-selected', false);
         }
 
@@ -480,7 +481,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree], {
     _onRowClick: function (e) {
         var node = this.getNodeById(e.currentTarget.getData('node-id'));
 
-        if (this.multiSelect) {
+        if (this.get('multiSelect')) {
             node[node.isSelected() ? 'unselect' : 'select']();
         } else {
             node.select();
@@ -519,6 +520,7 @@ Y.TreeView = Y.mix(TreeView, Y.TreeView);
         "base-build",
         "classnamemanager",
         "gallery-sm-tree",
+        "gallery-sm-tree-selectable",
         "gallery-sm-treeview-templates",
         "view"
     ],
