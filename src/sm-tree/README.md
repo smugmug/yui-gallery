@@ -15,7 +15,9 @@ Usage
 -----
 
 ```js
-YUI().use('gallery-sm-tree', function (Y) {
+YUI({
+    gallery: 'gallery-2012.12.26-20-48'
+}).use('gallery-sm-tree', function (Y) {
     // Y.Tree is available and ready to use.
 });
 ```

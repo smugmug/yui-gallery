@@ -1,4 +1,6 @@
 SmugMug Tree History
 ====================
 
-Nothing yet!
+## 2012-12-26
+
+* Initial gallery release.
