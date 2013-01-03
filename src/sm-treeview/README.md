@@ -207,7 +207,7 @@ Event | Fired When
 License
 -------
 
-Copyright (c) 2012 SmugMug, Inc.
+Copyright (c) 2013 SmugMug, Inc.
 
 Redistribution and use of this software in source and binary forms, with or
 without modification, are permitted provided that the following conditions are
