@@ -16,10 +16,23 @@
 
     "gallery-sm-tree-node": {},
 
+    "gallery-sm-tree-node-openable": {
+        "requires": [
+            "gallery-sm-tree-node"
+        ]
+    },
+
     "gallery-sm-tree-node-selectable": {
         "requires": [
             "gallery-sm-tree-node",
             "oop"
+        ]
+    },
+
+    "gallery-sm-tree-openable": {
+        "requires": [
+            "gallery-sm-tree",
+            "gallery-sm-tree-node-openable"
         ]
     },
 
