@@ -111,9 +111,9 @@ Y.namespace('Plugin').Menu = Y.Base.create('menuPlugin', Y.Menu, [Y.Plugin.Base]
         var container = this.get('container'),
             host      = this._host;
 
-        return (function (node) {
+        return function (node) {
             return node === container || node === host;
-        });
+        };
     },
 
     // -- Protected Event Handlers ---------------------------------------------

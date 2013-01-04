@@ -1,3 +1,5 @@
+/*jshint expr:true, onevar:false */
+
 /**
 Provides the `Y.Menu` widget.
 
@@ -422,9 +424,9 @@ Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
     _getAncestorTestFn: function () {
         var container = this.get('container');
 
-        return (function (node) {
+        return function (node) {
             return node === container;
-        });
+        };
     },
 
     /**

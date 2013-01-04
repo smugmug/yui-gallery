@@ -1,3 +1,5 @@
+/*jshint expr:true, onevar:false */
+
 /**
 Provides the `Menu.Item` class.
 
