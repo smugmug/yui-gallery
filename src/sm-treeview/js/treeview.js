@@ -12,12 +12,13 @@ TreeView widget.
 @constructor
 @extends View
 @uses Tree
+@uses Tree.Openable
 @uses Tree.Selectable
 **/
 
 var getClassName = Y.ClassNameManager.getClassName,
 
-TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Selectable], {
+TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Openable, Y.Tree.Selectable], {
     // -- Public Properties ----------------------------------------------------
 
     /**
