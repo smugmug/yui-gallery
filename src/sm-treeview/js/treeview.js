@@ -222,7 +222,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Openable, Y.Tree.Se
 
         // Build the hash of CSS classes for this node.
         nodeClassNames[classNames.node]            = true;
-        nodeClassNames[classNames.canHaveChildren] = treeNode.canHaveChildren;
+        nodeClassNames[classNames.canHaveChildren] = !!treeNode.canHaveChildren;
         nodeClassNames[classNames.hasChildren]     = hasChildren;
         nodeClassNames[classNames.open]            = treeNode.isOpen();
 
