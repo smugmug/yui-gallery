@@ -1,7 +1,7 @@
 SmugMug Tree History
 ====================
 
-## git
+## 2013-01-09
 
 * Moved the open/close/toggle functionality into a new
   `gallery-sm-tree-openable` extension.

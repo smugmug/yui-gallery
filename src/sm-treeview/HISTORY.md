@@ -1,7 +1,7 @@
 SmugMug TreeView History
 ========================
 
-## git
+## 2013-01-09
 
 * TreeView now mixes in the new `Tree.Openable` extension.
 
