@@ -1,5 +1,7 @@
 YUI.add('gallery-sm-treeview', function (Y, NAME) {
 
+/*jshint expr:true, onevar:false */
+
 /**
 Provides the `Y.TreeView` widget.
 
@@ -220,7 +222,8 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Openable, Y.Tree.Se
         var classNames     = this.classNames,
             hasChildren    = treeNode.hasChildren(),
             htmlNode       = treeNode._htmlNode,
-            nodeClassNames = {};
+            nodeClassNames = {},
+            className;
 
         // Build the hash of CSS classes for this node.
         nodeClassNames[classNames.node]            = true;
@@ -233,7 +236,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Openable, Y.Tree.Se
             // the DOM instead of re-rendering it from scratch.
             htmlNode.one('.' + classNames.label).setHTML(treeNode.label);
 
-            for (var className in nodeClassNames) {
+            for (className in nodeClassNames) {
                 if (nodeClassNames.hasOwnProperty(className)) {
                     htmlNode.toggleClass(className, nodeClassNames[className]);
                 }
@@ -242,7 +245,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Openable, Y.Tree.Se
             // This node hasn't been rendered yet, so render it from scratch.
             var enabledClassNames = [];
 
-            for (var className in nodeClassNames) {
+            for (className in nodeClassNames) {
                 if (nodeClassNames.hasOwnProperty(className) && nodeClassNames[className]) {
                     enabledClassNames.push(className);
                 }
