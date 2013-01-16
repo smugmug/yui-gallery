@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SmugMug Editor test</title>
+    <style>
+    html {
+        background: #fff;
+        color: #444;
+        font-family: Helvetica, sans-serif;
+    }
+
+    #editor {
+        font: 20px Georgia;
+        height: 300px;
+        float: left;
+        width: 500px;
+    }
+
+    #info {
+        border: 1px solid #efefef;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        float: left;
+        font-size: 13px;
+        height: 300px;
+        margin: 0 0 0 5px;
+        overflow: auto;
+        padding: 5px;
+        width: 300px;
+    }
+
+    #info table { width: 100%; }
+
+    #info td,
+    #info th { vertical-align: top; }
+
+    #info th {
+        padding-right: 5px;
+        text-align: right;
+    }
+
+    #info td { width: 100%; }
+
+    #info-formatting { white-space: pre-wrap; }
+    </style>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="editor"></div>
+
+<div id="info">
+    <table>
+        <tr>
+            <th scope="row">Selection</th>
+            <td><span id="info-selected">0</span> chars</td>
+        </tr>
+
+        <tr>
+            <th scope="row">Formatting</th>
+            <td id="info-formatting">none</td>
+        </tr>
+    </table>
+</div>
+
+<script src="/build/yui/yui.js"></script>
+<script>
+Y = YUI({filter: 'raw'}).use('gallery-sm-editor', 'json-stringify', function (Y) {
+
+var editor = window.editor = new Y.Editor({
+    container: '#editor',
+    html     : 'lorem ipsum <b>dolor <i>sit</i></b> amet'
+});
+
+editor.after('selectionChange', function (e) {
+    Y.one('#info-selected').set('text', e.selection.toString().length);
+    Y.one('#info-formatting').set('text', Y.JSON.stringify(editor.styles(), null, 2));
+});
+
+editor.render().focus();
+
+});
+</script>
+
+</body>
+</html>

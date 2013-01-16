@@ -1,0 +1,11 @@
+{
+    "name": "gallery-sm-editor",
+
+    "builds": {
+        "gallery-sm-editor": {
+            "jsfiles": [
+                "js/editor.js"
+            ]
+        }
+    }
+}

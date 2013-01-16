@@ -1,0 +1,13 @@
+{
+    "gallery-sm-editor": {
+        "requires": [
+            "base-build",
+            "classnamemanager",
+            "event-focus",
+            "gallery-sm-selection",
+            "view"
+        ],
+
+        "skinnable": true
+    }
+}

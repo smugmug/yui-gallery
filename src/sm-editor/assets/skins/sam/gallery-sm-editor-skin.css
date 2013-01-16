@@ -1,0 +1,14 @@
+.yui3-skin-sam .sm-editor-input {
+    border: 1px solid #efefef;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0.5em;
+    width: 100%;
+}
+
+.yui3-skin-sam .sm-editor-input:focus {
+    border-color: #afafaf;
+    outline: none;
+}
