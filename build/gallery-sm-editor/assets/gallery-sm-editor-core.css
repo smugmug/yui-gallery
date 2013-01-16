@@ -1,0 +1,6 @@
+.sm-editor-input {
+    overflow: auto;
+    white-space: pre-wrap;
+}
+
+.sm-editor-output { display: none; }
