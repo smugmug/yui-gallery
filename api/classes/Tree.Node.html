@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>Tree.Node - SmugMug YUI Gallery API docs</title>
-    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
-    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
 
@@ -57,7 +57,11 @@
             
                 <li><a href="..&#x2F;classes/Tree.Node.html">Tree.Node</a></li>
             
+                <li><a href="..&#x2F;classes/Tree.Node.Openable.html">Tree.Node.Openable</a></li>
+            
                 <li><a href="..&#x2F;classes/Tree.Node.Selectable.html">Tree.Node.Selectable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Openable.html">Tree.Openable</a></li>
             
                 <li><a href="..&#x2F;classes/Tree.Selectable.html">Tree.Selectable</a></li>
             
@@ -87,7 +91,11 @@
             
                 <li><a href="..&#x2F;modules/tree.html">tree</a></li>
             
+                <li><a href="..&#x2F;modules/tree-node-openable.html">tree-node-openable</a></li>
+            
                 <li><a href="..&#x2F;modules/tree-node-selectable.html">tree-node-selectable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-openable.html">tree-openable</a></li>
             
                 <li><a href="..&#x2F;modules/tree-selectable.html">tree-selectable</a></li>
             
@@ -134,7 +142,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l9"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:9</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l11"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:11</code></a>
         </div>
     
 
@@ -205,7 +213,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l9"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:9</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l11"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:11</code></a>
         
         </p>
 
@@ -398,13 +406,6 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_close">close</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
                                 <a href="#method_empty">empty</a>
 
                                 
@@ -447,21 +448,7 @@
                             </li>
                         
                             <li class="index-item method">
-                                <a href="#method_isOpen">isOpen</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
                                 <a href="#method_isRoot">isRoot</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_open">open</a>
 
                                 
                                 
@@ -483,13 +470,6 @@
                         
                             <li class="index-item method">
                                 <a href="#method_size">size</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_toggle">toggle</a>
 
                                 
                                 
@@ -662,7 +642,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l186"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:186</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l191"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:191</code></a>
         
         </p>
 
@@ -759,115 +739,6 @@ children.</p>
 </div>
 
                 
-                    <div id="method_close" class="method item">
-    <h3 class="name"><code>close</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code class="optional">[options]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l206"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:206</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Closes this node if it's currently open.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[options]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Options.</p>
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[silent=false]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>If <code>true</code>, the <code>close</code> event
-        will be suppressed.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="method_empty" class="method item">
     <h3 class="name"><code>empty</code></h3>
 
@@ -914,7 +785,7 @@ children.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l220"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:220</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l211"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:211</code></a>
         
         </p>
 
@@ -1045,7 +916,7 @@ reusable unless the <code>destroy</code> option is truthy.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l237"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:237</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l228"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:228</code></a>
         
         </p>
 
@@ -1117,7 +988,7 @@ reusable unless the <code>destroy</code> option is truthy.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l248"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:248</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l239"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:239</code></a>
         
         </p>
 
@@ -1200,7 +1071,7 @@ this node doesn't have a parent node.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l260"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:260</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l251"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:251</code></a>
         
         </p>
 
@@ -1312,7 +1183,7 @@ not a child of this node.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l281"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:281</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l272"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:272</code></a>
         
         </p>
 
@@ -1464,7 +1335,7 @@ be removed from that tree and moved to this one.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l307"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:307</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l298"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:298</code></a>
         
         </p>
 
@@ -1492,77 +1363,6 @@ merely associated with a tree and has not yet been inserted.</p>
                     
                     <code>true</code> if this node has been inserted into a tree, <code>false</code>
     otherwise.
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_isOpen" class="method item">
-    <h3 class="name"><code>isOpen</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l323"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:323</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns <code>true</code> if this node is currently open.</p>
-    </div>
-
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
-                    
-                    <code>true</code> if this node is currently open, <code>false</code> otherwise.
                 
             </div>
         </div>
@@ -1608,7 +1408,7 @@ merely associated with a tree and has not yet been inserted.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l333"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:333</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l314"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:314</code></a>
         
         </p>
 
@@ -1638,115 +1438,6 @@ merely associated with a tree and has not yet been inserted.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_open" class="method item">
-    <h3 class="name"><code>open</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code class="optional">[options]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l344"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:344</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Opens this node if it's currently closed.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[options]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Options.</p>
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[silent=false]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>If <code>true</code>, the <code>open</code> event
-        will be suppressed.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
     
 
     
@@ -1805,7 +1496,7 @@ merely associated with a tree and has not yet been inserted.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l358"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:358</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l325"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:325</code></a>
         
         </p>
 
@@ -1948,7 +1639,7 @@ be removed from that tree and moved to this one.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l378"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:378</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l345"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:345</code></a>
         
         </p>
 
@@ -2065,7 +1756,7 @@ be removed from that tree and moved to this one.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l394"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:394</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l361"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:361</code></a>
         
         </p>
 
@@ -2096,115 +1787,6 @@ descendants of this node's children.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_toggle" class="method item">
-    <h3 class="name"><code>toggle</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code class="optional">[options]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l414"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:414</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Toggles the open/closed state of this node.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[options]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Options.</p>
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[silent=false]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    <p>If <code>true</code>, events will be
-        suppressed.</p>
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
     
 
     
@@ -2247,7 +1829,7 @@ descendants of this node's children.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l428"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:428</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l381"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:381</code></a>
         
         </p>
 
@@ -2315,7 +1897,7 @@ descendants of this node's children.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l147"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:147</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l152"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:152</code></a>
         
         </p>
 
@@ -2361,7 +1943,7 @@ descendants of this node's children.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l154"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:154</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l159"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:159</code></a>
         
         </p>
 
@@ -2409,7 +1991,7 @@ descendants of this node's children.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l163"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:163</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l168"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:168</code></a>
         
         </p>
 
@@ -2457,7 +2039,7 @@ descendants of this node's children.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l172"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:172</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l177"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:177</code></a>
         
         </p>
 
@@ -2505,7 +2087,7 @@ separately.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l71"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:71</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l77"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:77</code></a>
         
         </p>
 
@@ -2558,7 +2140,7 @@ true automatically.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l86"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:86</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l92"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:92</code></a>
         
         </p>
 
@@ -2604,7 +2186,7 @@ true automatically.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l94"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:94</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l100"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:100</code></a>
         
         </p>
 
@@ -2654,7 +2236,7 @@ you want to store on this node instance.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l105"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:105</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l111"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:111</code></a>
         
         </p>
 
@@ -2698,7 +2280,7 @@ you want to store on this node instance.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l112"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:112</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l118"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:118</code></a>
         
         </p>
 
@@ -2747,7 +2329,7 @@ untrusted user input here without escaping it first using <code>Y.Escape.html()<
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l123"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:123</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l129"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:129</code></a>
         
         </p>
 
@@ -2792,7 +2374,7 @@ the root node.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l131"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:131</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l137"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:137</code></a>
         
         </p>
 
@@ -2809,26 +2391,6 @@ the root node.</p>
 
     
 
-    
-        <h4>Sub-properties:</h4>
-
-        <ul class="params-list">
-            
-            <li class="param">
-                
-                    <code class="param-name optional">[open=false]</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                    <span class="flag optional" title="This property is optional.">optional</span>
-                
-
-                <div class="param-description">
-                    <p>Whether or not this node is open (expanded).</p>
-                </div>
-
-                
-            </li>
-            
-        </ul>
     
 </div>
 
@@ -2856,7 +2418,7 @@ the root node.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l138"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:138</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree-node.js.html#l143"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree-node.js:143</code></a>
         
         </p>
 

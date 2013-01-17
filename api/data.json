@@ -61,6 +61,17 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/sm-tree/js/extensions/tree-node-openable.js": {
+            "name": "src/sm-tree/js/extensions/tree-node-openable.js",
+            "modules": {
+                "tree-node-openable": 1
+            },
+            "classes": {
+                "Tree.Node.Openable": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/sm-tree/js/extensions/tree-node-selectable.js": {
             "name": "src/sm-tree/js/extensions/tree-node-selectable.js",
             "modules": {
@@ -68,6 +79,17 @@
             },
             "classes": {
                 "Tree.Node.Selectable": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-tree/js/extensions/tree-openable.js": {
+            "name": "src/sm-tree/js/extensions/tree-openable.js",
+            "modules": {
+                "tree-openable": 1
+            },
+            "classes": {
+                "Tree.Openable": 1
             },
             "fors": {},
             "namespaces": {}
@@ -148,7 +170,7 @@
             "namespaces": {},
             "tag": "main",
             "file": "src/sm-menu/js/menu.js",
-            "line": 8,
+            "line": 10,
             "description": "Provides the `Y.Menu` widget.",
             "itemtype": "main"
         },
@@ -179,7 +201,7 @@
             "module": "gallery-sm-menu",
             "namespace": "",
             "file": "src/sm-menu/js/menu-base.js",
-            "line": 8,
+            "line": 10,
             "description": "Provides `Menu.Base`."
         },
         "gallery-sm-menu-item": {
@@ -194,7 +216,7 @@
             "module": "gallery-sm-menu",
             "namespace": "",
             "file": "src/sm-menu/js/menu-item.js",
-            "line": 8,
+            "line": 10,
             "description": "Provides the `Menu.Item` class."
         },
         "gallery-sm-menu-templates": {
@@ -211,6 +233,39 @@
             "file": "src/sm-menu/js/menu-templates.js",
             "line": 8,
             "description": "Provides templates for `Menu`."
+        },
+        "tree-openable": {
+            "name": "tree-openable",
+            "submodules": {
+                "tree-node-openable": 1
+            },
+            "classes": {
+                "Tree.Node.Openable": 1,
+                "Tree.Openable": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "module": "tree",
+            "file": "src/sm-tree/js/extensions/tree-openable.js",
+            "line": 11,
+            "description": "Extension for `Tree` that adds the concept of open/closed state for nodes.",
+            "tag": "main",
+            "itemtype": "main"
+        },
+        "tree-node-openable": {
+            "name": "tree-node-openable",
+            "submodules": {},
+            "classes": {
+                "Tree.Node.Openable": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "tree-openable",
+            "namespace": "",
+            "file": "src/sm-tree/js/extensions/tree-node-openable.js",
+            "line": 9,
+            "description": "Provides the `Tree.Node.Openable` class, an extension for `Tree.Node` that\nadds methods useful for nodes in trees that use the `Tree.Openable` extension."
         },
         "tree-selectable": {
             "name": "tree-selectable",
@@ -249,6 +304,7 @@
             "name": "tree",
             "submodules": {},
             "classes": {
+                "Tree.Openable": 1,
                 "Tree.Selectable": 1
             },
             "fors": {},
@@ -271,7 +327,7 @@
             "namespaces": {},
             "tag": "module",
             "file": "src/sm-tree/js/tree.js",
-            "line": 7,
+            "line": 9,
             "description": "Provides the `Tree` class."
         },
         "gallery-sm-tree-lazy": {
@@ -286,8 +342,8 @@
             "module": "gallery-sm-tree",
             "namespace": "",
             "file": "src/sm-tree/js/plugins/tree-lazy.js",
-            "line": 9,
-            "description": "Provides `Plugin.Tree.Lazy`, a plugin for `Tree` that makes it easy to lazily\nload and populate the contents of tree nodes the first time they're opened."
+            "line": 12,
+            "description": "Provides `Plugin.Tree.Lazy`, a plugin for `Tree.Openable` that makes it easy to\nlazily load and populate the contents of tree nodes the first time they're\nopened."
         },
         "gallery-sm-tree-node": {
             "name": "gallery-sm-tree-node",
@@ -301,7 +357,7 @@
             "module": "gallery-sm-tree",
             "namespace": "",
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 9,
+            "line": 11,
             "description": "Provides the `Tree.Node` class, which represents a tree node contained in a\n`Tree` data structure."
         },
         "gallery-sm-treeview": {
@@ -314,7 +370,7 @@
             "namespaces": {},
             "tag": "main",
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 8,
+            "line": 10,
             "description": "Provides the `Y.TreeView` widget.",
             "itemtype": "main"
         }
@@ -352,7 +408,7 @@
             "submodule": "gallery-sm-menu-base",
             "namespace": "",
             "file": "src/sm-menu/js/menu-base.js",
-            "line": 8,
+            "line": 10,
             "description": "Base menu functionality.",
             "is_constructor": 1,
             "params": [
@@ -385,7 +441,7 @@
             "submodule": "gallery-sm-menu-item",
             "namespace": "",
             "file": "src/sm-menu/js/menu-item.js",
-            "line": 8,
+            "line": 10,
             "description": "Represents a single menu item in a `Menu`.",
             "is_constructor": 1,
             "params": [
@@ -467,13 +523,31 @@
             "module": "gallery-sm-menu",
             "namespace": "",
             "file": "src/sm-menu/js/menu.js",
-            "line": 8,
+            "line": 10,
             "description": "Menu widget.",
             "is_constructor": 1,
             "extends": "Menu.Base",
             "uses": [
                 "View"
             ]
+        },
+        "Tree.Node.Openable": {
+            "name": "Tree.Node.Openable",
+            "shortname": "Tree.Node.Openable",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [
+                "Tree.Node"
+            ],
+            "module": "tree-openable",
+            "submodule": "tree-node-openable",
+            "namespace": "",
+            "file": "src/sm-tree/js/extensions/tree-node-openable.js",
+            "line": 9,
+            "description": "`Tree.Node` extension that adds methods useful for nodes in trees that use the\n`Tree.Openable` extension.",
+            "is_constructor": 1
         },
         "Tree.Node.Selectable": {
             "name": "Tree.Node.Selectable",
@@ -491,6 +565,25 @@
             "file": "src/sm-tree/js/extensions/tree-node-selectable.js",
             "line": 9,
             "description": "`Tree.Node` extension that adds methods useful for nodes in trees that use the\n`Tree.Selectable` extension.",
+            "is_constructor": 1
+        },
+        "Tree.Openable": {
+            "name": "Tree.Openable",
+            "shortname": "Tree.Openable",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [
+                "Tree",
+                "TreeView"
+            ],
+            "module": "tree",
+            "submodule": "tree-openable",
+            "namespace": "",
+            "file": "src/sm-tree/js/extensions/tree-openable.js",
+            "line": 11,
+            "description": "Extension for `Tree` that adds the concept of open/closed state for nodes.",
             "is_constructor": 1
         },
         "Tree.Selectable": {
@@ -524,8 +617,8 @@
             "submodule": "gallery-sm-tree-lazy",
             "namespace": "",
             "file": "src/sm-tree/js/plugins/tree-lazy.js",
-            "line": 9,
-            "description": "A plugin for `Tree` that makes it easy to lazily load and populate the contents\nof tree nodes the first time they're opened.\n\n### Example\n\n    YUI().use('jsonp', 'tree', 'tree-lazy', function (Y) {\n        var tree = new Y.Tree();\n\n        tree.plug(Y.Plugin.Tree.Lazy, {\n\n            // Custom function that Plugin.Tree.Lazy will call when it needs to\n            // load the children for a node.\n            load: function (node, callback) {\n                // Request the data for this node's children via JSONP.\n                Y.jsonp('http://example.com/api/data?callback={callback}', function (data) {\n                    // If we didn't get any data back, treat this as an error.\n                    if (!data) {\n                        callback(new Error('No data!'));\n                        return;\n                    }\n\n                    // Append the children to the node (assume `data.children` is\n                    // an array of child node data for the sake of this example).\n                    node.append(data.children);\n\n                    // Call the callback function to tell Plugin.Tree.Lazy that\n                    // we're done loading data.\n                    callback();\n                });\n            }\n\n        });\n    });",
+            "line": 12,
+            "description": "A plugin for `Tree.Openable` that makes it easy to lazily load and populate the\ncontents of tree nodes the first time they're opened.\n\n### Example\n\n    YUI().use('jsonp', 'gallery-sm-tree-openable', 'gallery-sm-tree-lazy', function (Y) {\n        var Tree = Y.Base.create('openableTree', Y.Tree, [Y.Tree.Openable]),\n            tree = new Tree();\n\n        tree.plug(Y.Plugin.Tree.Lazy, {\n\n            // Custom function that Plugin.Tree.Lazy will call when it needs to\n            // load the children for a node.\n            load: function (node, callback) {\n                // Request the data for this node's children via JSONP.\n                Y.jsonp('http://example.com/api/data?callback={callback}', function (data) {\n                    // If we didn't get any data back, treat this as an error.\n                    if (!data) {\n                        callback(new Error('No data!'));\n                        return;\n                    }\n\n                    // Append the children to the node (assume `data.children` is\n                    // an array of child node data for the sake of this example).\n                    node.append(data.children);\n\n                    // Call the callback function to tell Plugin.Tree.Lazy that\n                    // we're done loading data.\n                    callback();\n                });\n            }\n\n        });\n    });",
             "params": [
                 {
                     "name": "config",
@@ -568,7 +661,7 @@
             "submodule": "gallery-sm-tree-node",
             "namespace": "",
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 9,
+            "line": 11,
             "description": "Represents a tree node in a `Tree` data structure.",
             "params": [
                 {
@@ -638,7 +731,7 @@
             "module": "gallery-sm-tree",
             "namespace": "",
             "file": "src/sm-tree/js/tree.js",
-            "line": 7,
+            "line": 9,
             "description": "The `Tree` class represents a generic tree data structure. A tree has a root\nnode, which may contain any number of child nodes, which may themselves contain\nchild nodes, ad infinitum.\n\nThis class doesn't expose any UI, but is extended by the `TreeView` class, which\ndoes.",
             "params": [
                 {
@@ -676,12 +769,13 @@
             "module": "gallery-sm-treeview",
             "namespace": "",
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 8,
+            "line": 10,
             "description": "TreeView widget.",
             "is_constructor": 1,
             "extends": "View",
             "uses": [
                 "Tree",
+                "Tree.Openable",
                 "Tree.Selectable"
             ]
         }
@@ -763,7 +857,7 @@
         },
         {
             "file": "src/sm-menu/js/menu-base.js",
-            "line": 19,
+            "line": 21,
             "description": "Fired when a menu item is disabled.",
             "itemtype": "event",
             "name": "disable",
@@ -781,7 +875,7 @@
         },
         {
             "file": "src/sm-menu/js/menu-base.js",
-            "line": 28,
+            "line": 30,
             "description": "Fired when a menu item is enabled.",
             "itemtype": "event",
             "name": "enable",
@@ -799,7 +893,7 @@
         },
         {
             "file": "src/sm-menu/js/menu-base.js",
-            "line": 37,
+            "line": 39,
             "description": "Fired when a menu item is hidden.",
             "itemtype": "event",
             "name": "hide",
@@ -817,7 +911,7 @@
         },
         {
             "file": "src/sm-menu/js/menu-base.js",
-            "line": 46,
+            "line": 48,
             "description": "Fired when a menu item is shown.",
             "itemtype": "event",
             "name": "show",
@@ -1054,7 +1148,7 @@
         },
         {
             "file": "src/sm-menu/js/menu-item.js",
-            "line": 47,
+            "line": 49,
             "description": "Disables this menu item. Disabled items are not clickable or selectable.",
             "itemtype": "method",
             "name": "disable",
@@ -1082,7 +1176,7 @@
         },
         {
             "file": "src/sm-menu/js/menu-item.js",
-            "line": 61,
+            "line": 63,
             "description": "Enables this menu item.",
             "itemtype": "method",
             "name": "enable",
@@ -1110,7 +1204,7 @@
         },
         {
             "file": "src/sm-menu/js/menu-item.js",
-            "line": 75,
+            "line": 77,
             "description": "Hides this menu item.",
             "itemtype": "method",
             "name": "hide",
@@ -1138,7 +1232,7 @@
         },
         {
             "file": "src/sm-menu/js/menu-item.js",
-            "line": 89,
+            "line": 91,
             "description": "Returns `true` if this menu item is currently disabled.",
             "itemtype": "method",
             "name": "isDisabled",
@@ -1152,7 +1246,7 @@
         },
         {
             "file": "src/sm-menu/js/menu-item.js",
-            "line": 100,
+            "line": 102,
             "description": "Returns `true` if this menu item is currently hidden.",
             "itemtype": "method",
             "name": "isHidden",
@@ -1166,7 +1260,7 @@
         },
         {
             "file": "src/sm-menu/js/menu-item.js",
-            "line": 111,
+            "line": 113,
             "description": "Shows this menu item.",
             "itemtype": "method",
             "name": "show",
@@ -1194,7 +1288,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 19,
+            "line": 21,
             "description": "Fired when any clickable menu item is clicked.\n\nYou can subscribe to clicks on a specific menu item by subscribing to\n\"itemClick#id\", where \"id\" is the item id of the item you want to subscribe to.",
             "itemtype": "event",
             "name": "itemClick",
@@ -1216,7 +1310,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 34,
+            "line": 36,
             "description": "CSS class names used by this menu.",
             "itemtype": "property",
             "name": "classNames",
@@ -1226,7 +1320,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 56,
+            "line": 58,
             "description": "Whether or not this menu has been rendered.",
             "itemtype": "property",
             "name": "rendered",
@@ -1237,7 +1331,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 89,
+            "line": 91,
             "description": "Returns the HTML node (as a `Y.Node` instance) associated with the specified\nmenu item, if any.",
             "itemtype": "method",
             "name": "getHTMLNode",
@@ -1257,7 +1351,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 106,
+            "line": 108,
             "description": "Hides this menu.",
             "itemtype": "method",
             "name": "hide",
@@ -1267,7 +1361,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 117,
+            "line": 119,
             "description": "Renders this menu into its container.\n\nIf the container hasn't already been added to the current document, it will\nbe appended to the `<body>` element.",
             "itemtype": "method",
             "name": "render",
@@ -1277,7 +1371,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 151,
+            "line": 153,
             "description": "Renders the children of the specified menu item.\n\nIf a container is specified, it will be assumed to be an existing rendered\nmenu item, and the children will be rendered (or re-rendered) inside it.",
             "itemtype": "method",
             "name": "renderChildren",
@@ -1311,7 +1405,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 202,
+            "line": 204,
             "description": "Renders the specified menu item and its children (if any).\n\nIf a container is specified, the rendered node will be appended to it.",
             "itemtype": "method",
             "name": "renderNode",
@@ -1352,7 +1446,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 287,
+            "line": 289,
             "description": "Repositions this menu so that it is anchored to a specified node, region, or\nset of pixel coordinates.\n\nThe menu will be displayed at the most advantageous position relative to the\nanchor point to ensure that as much of the menu as possible is visible\nwithin the viewport.",
             "itemtype": "method",
             "name": "reposition",
@@ -1369,7 +1463,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 329,
+            "line": 331,
             "description": "Shows this menu.",
             "itemtype": "method",
             "name": "show",
@@ -1395,7 +1489,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 349,
+            "line": 351,
             "description": "Toggles the visibility of this menu, showing it if it's currently hidden or\nhiding it if it's currently visible.",
             "itemtype": "method",
             "name": "toggle",
@@ -1421,7 +1515,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 367,
+            "line": 369,
             "description": "Attaches menu events.",
             "itemtype": "method",
             "name": "_attachMenuEvents",
@@ -1432,7 +1526,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 402,
+            "line": 404,
             "description": "Detaches menu events.",
             "itemtype": "method",
             "name": "_detachMenuEvents",
@@ -1443,7 +1537,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 412,
+            "line": 414,
             "description": "Returns an efficient test function that can be passed to `Y.Node#ancestor()`\nto test whether a node is this menu's container.\n\nThis is broken out to make overriding easier in subclasses.",
             "itemtype": "method",
             "name": "_getAncestorTestFn",
@@ -1458,7 +1552,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 430,
+            "line": 432,
             "description": "Given an anchor point and the regions currently occupied by a child node\n(the node being anchored) and a parent node (the node being anchored to),\nreturns a region object representing the coordinates the anchored node will\noccupy when anchored to the given point on the parent.\n\nAn anchor point is a string like \"tl-bl\", which means \"anchor the top left\npoint of _nodeRegion_ to the bottom left point of _parentRegion_\".\n\nAny combination of top/bottom/left/right anchor points may be used as long\nas they follow this format. Here are a few examples:\n\n  * `'bl-br'`: Anchor the bottom left of _nodeRegion_ to the bottom right of\n    _parentRegion_.\n  * `'br-bl'`: Anchor the bottom right of _nodeRegion_ to the bottom left of\n    _parentRegion_.\n  * `'tl-tr'`: Anchor the top left of _nodeRegion_ to the top right of\n    _parentRegion_.\n  * `'tr-tl'`: Anchor the top right of _nodeRegion_ to the top left of\n    _parentRegion_.",
             "itemtype": "method",
             "name": "_getAnchorRegion",
@@ -1490,7 +1584,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 527,
+            "line": 529,
             "description": "Hides the specified menu container by moving its htmlNode offscreen.",
             "itemtype": "method",
             "name": "_hideMenu",
@@ -1514,7 +1608,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 544,
+            "line": 546,
             "description": "Returns `true` if the given _inner_ region is contained entirely within the\ngiven _outer_ region. If it's not a perfect fit, returns a numerical score\nindicating how much of the _inner_ region fits within the _outer_ region.\nA higher score indicates a better fit.",
             "itemtype": "method",
             "name": "_inRegion",
@@ -1541,7 +1635,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 579,
+            "line": 581,
             "description": "Intelligently positions the _htmlNode_ of the given submenu _item_ relative\nto its parent so that as much as possible of the submenu will be visible\nwithin the viewport.",
             "itemtype": "method",
             "name": "_positionMenu",
@@ -1565,7 +1659,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 611,
+            "line": 613,
             "description": "Handles `add` events for this menu.",
             "itemtype": "method",
             "name": "_afterAdd",
@@ -1583,7 +1677,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 652,
+            "line": 654,
             "description": "Handles `clear` events for this menu.",
             "itemtype": "method",
             "name": "_afterClear",
@@ -1594,7 +1688,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 673,
+            "line": 675,
             "description": "Handles `mousedown` events on the document.",
             "itemtype": "method",
             "name": "_afterDocMouseDown",
@@ -1612,7 +1706,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 694,
+            "line": 696,
             "description": "Handles `close` events for this menu.",
             "itemtype": "method",
             "name": "_afterClose",
@@ -1630,7 +1724,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 719,
+            "line": 721,
             "description": "Handles `disable` events for this menu.",
             "itemtype": "method",
             "name": "_afterDisable",
@@ -1648,7 +1742,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 734,
+            "line": 736,
             "description": "Handles `enable` events for this menu.",
             "itemtype": "method",
             "name": "_afterEnable",
@@ -1666,7 +1760,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 749,
+            "line": 751,
             "description": "Handles `hide` events for this menu.",
             "itemtype": "method",
             "name": "_afterHide",
@@ -1684,7 +1778,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 765,
+            "line": 767,
             "description": "Handles `open` events for this menu.",
             "itemtype": "method",
             "name": "_afterOpen",
@@ -1702,7 +1796,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 804,
+            "line": 806,
             "description": "Handles `remove` events for this menu.",
             "itemtype": "method",
             "name": "_afterRemove",
@@ -1720,7 +1814,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 826,
+            "line": 828,
             "description": "Handles `show` events for this menu.",
             "itemtype": "method",
             "name": "_afterShow",
@@ -1738,7 +1832,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 842,
+            "line": 844,
             "description": "Handles `visibleChange` events for this menu.",
             "itemtype": "method",
             "name": "_afterVisibleChange",
@@ -1756,7 +1850,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 853,
+            "line": 855,
             "description": "Handles click events on menu items.",
             "itemtype": "method",
             "name": "_onItemClick",
@@ -1774,7 +1868,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 893,
+            "line": 895,
             "description": "Handles delegated `mouseenter` events on menu items.",
             "itemtype": "method",
             "name": "_onItemMouseEnter",
@@ -1792,7 +1886,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 914,
+            "line": 916,
             "description": "Handles delegated `mouseleave` events on menu items.",
             "itemtype": "method",
             "name": "_onItemMouseLeave",
@@ -1810,7 +1904,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 935,
+            "line": 937,
             "description": "Handles `mouseenter` events on this menu.",
             "itemtype": "method",
             "name": "_onMenuMouseEnter",
@@ -1828,7 +1922,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 946,
+            "line": 948,
             "description": "Handles `mouseleave` events on this menu.",
             "itemtype": "method",
             "name": "_onMenuMouseLeave",
@@ -1846,7 +1940,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 969,
+            "line": 971,
             "description": "Default handler for the generic `itemClick` event.",
             "itemtype": "method",
             "name": "_defItemClickFn",
@@ -1864,7 +1958,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 990,
+            "line": 992,
             "description": "Default handler for item-specific `itemClick#<id>` events.",
             "itemtype": "method",
             "name": "_defSpecificItemClickFn",
@@ -1882,7 +1976,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1005,
+            "line": 1007,
             "description": "Preferred alignment positions at which this menu should be displayed\nrelative to the anchor point when one is provided to the `show()`,\n`toggle()`, or `reposition()` methods.\n\nThe most optimal alignment position will be chosen automatically based\non which one allows the most of this menu to be visible within the\nbrowser's viewport. If multiple positions are equally visible, then the\noptimal position will be chosen based on its order in this array.\n\nAn alignment position is a string like \"tl-bl\", which means \"align the\ntop left of this menu to the bottom left of its anchor point\".\n\nAny combination of top/bottom/left/right alignment positions may be used\nas long as they follow this format. Here are a few examples:\n\n  * `'bl-br'`: Align the bottom left of this menu with the bottom right\n    of the anchor point.\n  * `'br-bl'`: Align the bottom right of this menu with the bottom left\n    of the anchor point.\n  * `'tl-tr'`: Align the top left of this menu with the top right of\n    the anchor point.\n  * `'tr-tl'`: Align the top right of this menu to the top left of this\n    anchor point.",
             "itemtype": "attribute",
             "name": "alignments",
@@ -1893,7 +1987,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1039,
+            "line": 1041,
             "description": "If `true`, this menu will be hidden when the user moves the mouse\noutside the menu.",
             "itemtype": "attribute",
             "name": "hideOnMouseLeave",
@@ -1904,7 +1998,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1050,
+            "line": 1052,
             "description": "If `true`, this menu will be hidden when the user clicks somewhere\noutside the menu.",
             "itemtype": "attribute",
             "name": "hideOnOutsideClick",
@@ -1915,7 +2009,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1061,
+            "line": 1063,
             "description": "Just like `alignments`, but for submenus of this menu. See the\n`alignments` attribute for details on how alignment positions work.",
             "itemtype": "attribute",
             "name": "subMenuAlignments",
@@ -1926,7 +2020,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1074,
+            "line": 1076,
             "description": "Whether or not this menu is visible. Changing this attribute's value\nwill also change the visibility of this menu.",
             "itemtype": "attribute",
             "name": "visible",
@@ -1934,6 +2028,104 @@
             "default": "false",
             "class": "Menu",
             "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-tree/js/extensions/tree-node-openable.js",
+            "line": 21,
+            "description": "Closes this node if it's currently open.",
+            "itemtype": "method",
+            "name": "close",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `close` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Node.Openable",
+            "module": "tree-openable",
+            "submodule": "tree-node-openable"
+        },
+        {
+            "file": "src/sm-tree/js/extensions/tree-node-openable.js",
+            "line": 35,
+            "description": "Returns `true` if this node is currently open.\n\nNote: the root node of a tree is always considered to be open.",
+            "itemtype": "method",
+            "name": "isOpen",
+            "return": {
+                "description": "`true` if this node is currently open, `false` otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Tree.Node.Openable",
+            "module": "tree-openable",
+            "submodule": "tree-node-openable"
+        },
+        {
+            "file": "src/sm-tree/js/extensions/tree-node-openable.js",
+            "line": 47,
+            "description": "Opens this node if it's currently closed.",
+            "itemtype": "method",
+            "name": "open",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `open` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Node.Openable",
+            "module": "tree-openable",
+            "submodule": "tree-node-openable"
+        },
+        {
+            "file": "src/sm-tree/js/extensions/tree-node-openable.js",
+            "line": 61,
+            "description": "Toggles the open/closed state of this node, closing it if it's currently\nopen or opening it if it's currently closed.",
+            "itemtype": "method",
+            "name": "toggle",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, events will be\n        suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Node.Openable",
+            "module": "tree-openable",
+            "submodule": "tree-node-openable"
         },
         {
             "file": "src/sm-tree/js/extensions/tree-node-selectable.js",
@@ -2004,6 +2196,169 @@
             "class": "Tree.Node.Selectable",
             "module": "tree-selectable",
             "submodule": "tree-node-selectable"
+        },
+        {
+            "file": "src/sm-tree/js/extensions/tree-openable.js",
+            "line": 19,
+            "description": "Fired when a node is closed.",
+            "itemtype": "event",
+            "name": "close",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node being closed.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "preventable": "_defCloseFn",
+            "class": "Tree.Openable",
+            "module": "tree",
+            "submodule": "tree-openable"
+        },
+        {
+            "file": "src/sm-tree/js/extensions/tree-openable.js",
+            "line": 28,
+            "description": "Fired when a node is opened.",
+            "itemtype": "event",
+            "name": "open",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node being opened.",
+                    "type": "Tree.Node"
+                }
+            ],
+            "preventable": "_defOpenFn",
+            "class": "Tree.Openable",
+            "module": "tree",
+            "submodule": "tree-openable"
+        },
+        {
+            "file": "src/sm-tree/js/extensions/tree-openable.js",
+            "line": 47,
+            "description": "Closes the specified node if it isn't already closed.",
+            "itemtype": "method",
+            "name": "closeNode",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `close` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Openable",
+            "module": "tree",
+            "submodule": "tree-openable"
+        },
+        {
+            "file": "src/sm-tree/js/extensions/tree-openable.js",
+            "line": 67,
+            "description": "Opens the specified node if it isn't already open.",
+            "itemtype": "method",
+            "name": "openNode",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `open` event\n        will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Openable",
+            "module": "tree",
+            "submodule": "tree-openable"
+        },
+        {
+            "file": "src/sm-tree/js/extensions/tree-openable.js",
+            "line": 87,
+            "description": "Toggles the open/closed state of the specified node, closing it if it's\ncurrently open or opening it if it's currently closed.",
+            "itemtype": "method",
+            "name": "toggleNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node to toggle.",
+                    "type": "Tree.Node"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, events will be\n        suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Tree.Openable",
+            "module": "tree",
+            "submodule": "tree-openable"
+        },
+        {
+            "file": "src/sm-tree/js/extensions/tree-openable.js",
+            "line": 105,
+            "description": "Default handler for the `close` event.",
+            "itemtype": "method",
+            "name": "_defCloseFn",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree.Openable",
+            "module": "tree",
+            "submodule": "tree-openable"
+        },
+        {
+            "file": "src/sm-tree/js/extensions/tree-openable.js",
+            "line": 116,
+            "description": "Default handler for the `open` event.",
+            "itemtype": "method",
+            "name": "_defOpenFn",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Tree.Openable",
+            "module": "tree",
+            "submodule": "tree-openable"
         },
         {
             "file": "src/sm-tree/js/extensions/tree-selectable.js",
@@ -2176,7 +2531,7 @@
         },
         {
             "file": "src/sm-tree/js/plugins/tree-lazy.js",
-            "line": 63,
+            "line": 67,
             "description": "Fired when the `load()` method indicates there was an error loading child nodes.",
             "itemtype": "event",
             "name": "error",
@@ -2198,7 +2553,7 @@
         },
         {
             "file": "src/sm-tree/js/plugins/tree-lazy.js",
-            "line": 72,
+            "line": 76,
             "description": "Fired after child nodes have finished loading and have been added to the tree.",
             "itemtype": "event",
             "name": "loaded",
@@ -2215,7 +2570,7 @@
         },
         {
             "file": "src/sm-tree/js/plugins/tree-lazy.js",
-            "line": 80,
+            "line": 84,
             "description": "Fired just before the custom `load()` method is called to load child nodes for a\nnode.\n\nCalling `preventDefault()` on this event's facade will cancel the load action\nand prevent the `load()` method from being called.",
             "itemtype": "event",
             "name": "loading",
@@ -2233,7 +2588,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 71,
+            "line": 77,
             "description": "Whether or not this node can contain child nodes.\n\nThis value is falsy by default unless child nodes are added at instantiation\ntime, in which case it will be automatically set to `true`. You can also\nmanually set it to `true` to indicate that a node can have children even if\nit doesn't currently have any children.\n\nNote that regardless of the value of this property, appending, prepending,\nor inserting a node into this node will cause `canHaveChildren` to be set to\ntrue automatically.",
             "itemtype": "property",
             "name": "canHaveChildren",
@@ -2244,7 +2599,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 86,
+            "line": 92,
             "description": "Child nodes contained within this node.",
             "itemtype": "property",
             "name": "children",
@@ -2257,7 +2612,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 94,
+            "line": 100,
             "description": "Arbitrary implementation-specific data related to this node.\n\nThis property is created by setting a `data` property in the config object\npassed to Tree.Node's constructor. It may contain any serializable data\nyou want to store on this node instance.",
             "itemtype": "property",
             "name": "data",
@@ -2269,7 +2624,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 105,
+            "line": 111,
             "description": "Unique id for this node.",
             "itemtype": "property",
             "name": "id",
@@ -2281,7 +2636,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 112,
+            "line": 118,
             "description": "User-visible HTML label for this node.\n\nThis value may be rendered as HTML without sanitization, so **do not** put\nuntrusted user input here without escaping it first using `Y.Escape.html()`.",
             "itemtype": "property",
             "name": "label",
@@ -2293,7 +2648,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 123,
+            "line": 129,
             "description": "Parent node of this node, or `undefined` if this is an unattached node or\nthe root node.",
             "itemtype": "property",
             "name": "parent",
@@ -2305,27 +2660,18 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 131,
+            "line": 137,
             "description": "Current state of this node.",
             "itemtype": "property",
             "name": "state",
             "type": "Object",
             "class": "Tree.Node",
             "module": "gallery-sm-tree",
-            "submodule": "gallery-sm-tree-node",
-            "subprops": [
-                {
-                    "name": "open",
-                    "description": "Whether or not this node is open (expanded).",
-                    "type": "Boolean",
-                    "optional": true,
-                    "optdefault": "false"
-                }
-            ]
+            "submodule": "gallery-sm-tree-node"
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 138,
+            "line": 143,
             "description": "The Tree instance with which this node is associated.",
             "itemtype": "property",
             "name": "tree",
@@ -2337,7 +2683,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 147,
+            "line": 152,
             "description": "Mapping of child node ids to indices.",
             "itemtype": "property",
             "name": "_indexMap",
@@ -2350,7 +2696,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 154,
+            "line": 159,
             "description": "Flag indicating whether the `_indexMap` is stale and needs to be rebuilt.",
             "itemtype": "property",
             "name": "_isIndexStale",
@@ -2364,7 +2710,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 163,
+            "line": 168,
             "description": "Simple way to type-check that this is an instance of Tree.Node.",
             "itemtype": "property",
             "name": "_isYUITreeNode",
@@ -2378,7 +2724,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 172,
+            "line": 177,
             "description": "Array of property names on this node that should be serialized to JSON when\n`toJSON()` is called.\n\nNote that the `children` property is a special case that is managed\nseparately.",
             "itemtype": "property",
             "name": "_serializable",
@@ -2391,7 +2737,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 186,
+            "line": 191,
             "description": "Appends the given tree node or array of nodes to the end of this node's\nchildren.",
             "itemtype": "method",
             "name": "append",
@@ -2427,35 +2773,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 206,
-            "description": "Closes this node if it's currently open.",
-            "itemtype": "method",
-            "name": "close",
-            "params": [
-                {
-                    "name": "options",
-                    "description": "Options.",
-                    "type": "Object",
-                    "optional": true,
-                    "props": [
-                        {
-                            "name": "silent",
-                            "description": "If `true`, the `close` event\n        will be suppressed.",
-                            "type": "Boolean",
-                            "optional": true,
-                            "optdefault": "false"
-                        }
-                    ]
-                }
-            ],
-            "chainable": 1,
-            "class": "Tree.Node",
-            "module": "gallery-sm-tree",
-            "submodule": "gallery-sm-tree-node"
-        },
-        {
-            "file": "src/sm-tree/js/tree-node.js",
-            "line": 220,
+            "line": 211,
             "description": "Removes all children from this node. The removed children will still be\nreusable unless the `destroy` option is truthy.",
             "itemtype": "method",
             "name": "empty",
@@ -2493,7 +2811,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 237,
+            "line": 228,
             "description": "Returns `true` if this node has one or more child nodes.",
             "itemtype": "method",
             "name": "hasChildren",
@@ -2507,7 +2825,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 248,
+            "line": 239,
             "description": "Returns the numerical index of this node within its parent node, or `-1` if\nthis node doesn't have a parent node.",
             "itemtype": "method",
             "name": "index",
@@ -2521,7 +2839,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 260,
+            "line": 251,
             "description": "Returns the numerical index of the given child node, or `-1` if the node is\nnot a child of this node.",
             "itemtype": "method",
             "name": "indexOf",
@@ -2542,7 +2860,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 281,
+            "line": 272,
             "description": "Inserts a node or array of nodes at the specified index under this node, or\nappends them to this node if no index is specified.\n\nIf a node being inserted is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
             "itemtype": "method",
             "name": "insert",
@@ -2584,7 +2902,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 307,
+            "line": 298,
             "description": "Returns `true` if this node has been inserted into a tree, `false` if it is\nmerely associated with a tree and has not yet been inserted.",
             "itemtype": "method",
             "name": "isInTree",
@@ -2598,21 +2916,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 323,
-            "description": "Returns `true` if this node is currently open.",
-            "itemtype": "method",
-            "name": "isOpen",
-            "return": {
-                "description": "`true` if this node is currently open, `false` otherwise.",
-                "type": "Boolean"
-            },
-            "class": "Tree.Node",
-            "module": "gallery-sm-tree",
-            "submodule": "gallery-sm-tree-node"
-        },
-        {
-            "file": "src/sm-tree/js/tree-node.js",
-            "line": 333,
+            "line": 314,
             "description": "Returns `true` if this node is the root of the tree.",
             "itemtype": "method",
             "name": "isRoot",
@@ -2626,35 +2930,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 344,
-            "description": "Opens this node if it's currently closed.",
-            "itemtype": "method",
-            "name": "open",
-            "params": [
-                {
-                    "name": "options",
-                    "description": "Options.",
-                    "type": "Object",
-                    "optional": true,
-                    "props": [
-                        {
-                            "name": "silent",
-                            "description": "If `true`, the `open` event\n        will be suppressed.",
-                            "type": "Boolean",
-                            "optional": true,
-                            "optdefault": "false"
-                        }
-                    ]
-                }
-            ],
-            "chainable": 1,
-            "class": "Tree.Node",
-            "module": "gallery-sm-tree",
-            "submodule": "gallery-sm-tree-node"
-        },
-        {
-            "file": "src/sm-tree/js/tree-node.js",
-            "line": 358,
+            "line": 325,
             "description": "Prepends a node or array of nodes at the beginning of this node's children.\n\nIf a node being prepended is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
             "itemtype": "method",
             "name": "prepend",
@@ -2690,7 +2966,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 378,
+            "line": 345,
             "description": "Removes this node from its parent node.",
             "itemtype": "method",
             "name": "remove",
@@ -2725,7 +3001,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 394,
+            "line": 361,
             "description": "Returns the total number of nodes contained within this node, including all\ndescendants of this node's children.",
             "itemtype": "method",
             "name": "size",
@@ -2739,35 +3015,7 @@
         },
         {
             "file": "src/sm-tree/js/tree-node.js",
-            "line": 414,
-            "description": "Toggles the open/closed state of this node.",
-            "itemtype": "method",
-            "name": "toggle",
-            "params": [
-                {
-                    "name": "options",
-                    "description": "Options.",
-                    "type": "Object",
-                    "optional": true,
-                    "props": [
-                        {
-                            "name": "silent",
-                            "description": "If `true`, events will be\n        suppressed.",
-                            "type": "Boolean",
-                            "optional": true,
-                            "optdefault": "false"
-                        }
-                    ]
-                }
-            ],
-            "chainable": 1,
-            "class": "Tree.Node",
-            "module": "gallery-sm-tree",
-            "submodule": "gallery-sm-tree-node"
-        },
-        {
-            "file": "src/sm-tree/js/tree-node.js",
-            "line": 428,
+            "line": 381,
             "description": "Serializes this node to an object suitable for use in JSON.",
             "itemtype": "method",
             "name": "toJSON",
@@ -2781,7 +3029,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 28,
+            "line": 30,
             "description": "Fired when a node is added to this Tree. The `src` property will indicate\nhow the node was added (\"append\", \"insert\", \"prepend\", etc.).",
             "itemtype": "event",
             "name": "add",
@@ -2813,7 +3061,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 42,
+            "line": 44,
             "description": "Fired when this Tree is cleared.",
             "itemtype": "event",
             "name": "clear",
@@ -2830,41 +3078,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 52,
-            "description": "Fired when a node is closed.",
-            "itemtype": "event",
-            "name": "close",
-            "params": [
-                {
-                    "name": "node",
-                    "description": "Node being closed.",
-                    "type": "Tree.Node"
-                }
-            ],
-            "preventable": "_defCloseFn",
-            "class": "Tree",
-            "module": "gallery-sm-tree"
-        },
-        {
-            "file": "src/sm-tree/js/tree.js",
-            "line": 61,
-            "description": "Fired when a node is opened.",
-            "itemtype": "event",
-            "name": "open",
-            "params": [
-                {
-                    "name": "node",
-                    "description": "Node being opened.",
-                    "type": "Tree.Node"
-                }
-            ],
-            "preventable": "_defOpenFn",
-            "class": "Tree",
-            "module": "gallery-sm-tree"
-        },
-        {
-            "file": "src/sm-tree/js/tree.js",
-            "line": 70,
+            "line": 54,
             "description": "Fired when a node is removed from this Tree.",
             "itemtype": "event",
             "name": "remove",
@@ -2891,7 +3105,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 85,
+            "line": 69,
             "description": "Reference to the `children` array of this Tree's `rootNode`.\n\nThis is a convenience property to allow you to type `tree.children` instead\nof `tree.rootNode.children`.",
             "itemtype": "property",
             "name": "children",
@@ -2902,7 +3116,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 95,
+            "line": 79,
             "description": "The `Tree.Node` class or subclass that should be used for nodes created by\nthis tree.\n\nYou may specific an actual class reference or a string that resolves to a\nclass reference at runtime.",
             "itemtype": "property",
             "name": "nodeClass",
@@ -2913,7 +3127,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 107,
+            "line": 91,
             "description": "Optional array containing one or more extension classes that should be mixed\ninto the `nodeClass` when this Tree is instantiated. The resulting composed\nnode class will be unique to this Tree instance and will not affect any\nother instances, nor will it modify the defined `nodeClass` itself.\n\nThis provides a late-binding extension mechanism for nodes that doesn't\nrequire them to extend `Y.Base`, which would incur a significant performance\nhit.",
             "itemtype": "property",
             "name": "nodeExtensions",
@@ -2924,7 +3138,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 122,
+            "line": 106,
             "description": "Root node of this Tree.",
             "itemtype": "property",
             "name": "rootNode",
@@ -2935,7 +3149,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 131,
+            "line": 115,
             "description": "Simple way to type-check that this is a Tree instance.",
             "itemtype": "property",
             "name": "_isYUITree",
@@ -2948,7 +3162,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 140,
+            "line": 124,
             "description": "Composed node class based on `nodeClass` that mixes in any extensions\nspecified in `nodeExtensions`. If there are no extensions, this will just be\na reference to `nodeClass`.",
             "itemtype": "property",
             "name": "_nodeClass",
@@ -2960,7 +3174,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 149,
+            "line": 133,
             "description": "Mapping of node ids to node instances for nodes in this tree.",
             "itemtype": "property",
             "name": "_nodeMap",
@@ -2972,7 +3186,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 156,
+            "line": 140,
             "description": "Default config object for the root node.",
             "itemtype": "property",
             "name": "_rootNodeConfig",
@@ -2984,7 +3198,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 176,
+            "line": 160,
             "description": "Hash of published custom events.",
             "itemtype": "property",
             "name": "_published",
@@ -2997,7 +3211,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 210,
+            "line": 194,
             "description": "Appends a node or array of nodes as the last child of the specified parent\nnode.\n\nIf a node being appended is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
             "itemtype": "method",
             "name": "appendNode",
@@ -3037,7 +3251,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 236,
+            "line": 220,
             "description": "Clears this tree by destroying the root node and all its children. If a\n`rootNode` argument is provided, that node will become the root node of this\ntree; otherwise, a new root node will be created.",
             "itemtype": "method",
             "name": "clear",
@@ -3070,34 +3284,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 258,
-            "description": "Closes the specified node if it isn't already closed.",
-            "itemtype": "method",
-            "name": "closeNode",
-            "params": [
-                {
-                    "name": "options",
-                    "description": "Options.",
-                    "type": "Object",
-                    "optional": true,
-                    "props": [
-                        {
-                            "name": "silent",
-                            "description": "If `true`, the `close` event\n        will be suppressed.",
-                            "type": "Boolean",
-                            "optional": true,
-                            "optdefault": "false"
-                        }
-                    ]
-                }
-            ],
-            "chainable": 1,
-            "class": "Tree",
-            "module": "gallery-sm-tree"
-        },
-        {
-            "file": "src/sm-tree/js/tree.js",
-            "line": 278,
+            "line": 242,
             "description": "Creates and returns a new `Tree.Node` instance associated with (but not\nyet appended to) this tree.",
             "itemtype": "method",
             "name": "createNode",
@@ -3118,7 +3305,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 315,
+            "line": 279,
             "description": "Removes and destroys a node and all its child nodes. Once destroyed, a node\nis eligible for garbage collection and cannot be reused or re-added to the\ntree.",
             "itemtype": "method",
             "name": "destroyNode",
@@ -3150,7 +3337,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 360,
+            "line": 324,
             "description": "Removes all children from the specified node. The removed children will\nstill be reusable unless the `destroy` option is truthy.",
             "itemtype": "method",
             "name": "emptyNode",
@@ -3192,7 +3379,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 384,
+            "line": 348,
             "description": "Returns the tree node with the specified id, or `undefined` if the node\ndoesn't exist in this tree.",
             "itemtype": "method",
             "name": "getNodeById",
@@ -3212,7 +3399,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 396,
+            "line": 360,
             "description": "Inserts a node or array of nodes at the specified index under the given\nparent node, or appends them to the parent if no index is specified.\n\nIf a node being inserted is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
             "itemtype": "method",
             "name": "insertNode",
@@ -3258,34 +3445,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 470,
-            "description": "Opens the specified node if it isn't already open.",
-            "itemtype": "method",
-            "name": "openNode",
-            "params": [
-                {
-                    "name": "options",
-                    "description": "Options.",
-                    "type": "Object",
-                    "optional": true,
-                    "props": [
-                        {
-                            "name": "silent",
-                            "description": "If `true`, the `open` event\n        will be suppressed.",
-                            "type": "Boolean",
-                            "optional": true,
-                            "optdefault": "false"
-                        }
-                    ]
-                }
-            ],
-            "chainable": 1,
-            "class": "Tree",
-            "module": "gallery-sm-tree"
-        },
-        {
-            "file": "src/sm-tree/js/tree.js",
-            "line": 490,
+            "line": 434,
             "description": "Prepends a node or array of nodes at the beginning of the specified parent\nnode.\n\nIf a node being prepended is from another tree, it and all its children will\nbe removed from that tree and moved to this one.",
             "itemtype": "method",
             "name": "prependNode",
@@ -3325,7 +3485,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 516,
+            "line": 460,
             "description": "Removes the specified node from its parent node. The removed node will still\nbe reusable unless the `destroy` option is truthy.",
             "itemtype": "method",
             "name": "removeNode",
@@ -3367,7 +3527,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 546,
+            "line": 490,
             "description": "Returns the total number of nodes in this tree, at all levels.\n\nUse `rootNode.children.length` to get only the number of top-level nodes.",
             "itemtype": "method",
             "name": "size",
@@ -3380,39 +3540,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 558,
-            "description": "Toggles the open/closed state of the specified node.",
-            "itemtype": "method",
-            "name": "toggleNode",
-            "params": [
-                {
-                    "name": "node",
-                    "description": "Node to toggle.",
-                    "type": "Tree.Node"
-                },
-                {
-                    "name": "options",
-                    "description": "Options.",
-                    "type": "Object",
-                    "optional": true,
-                    "props": [
-                        {
-                            "name": "silent",
-                            "description": "If `true`, events will be\n        suppressed.",
-                            "type": "Boolean",
-                            "optional": true,
-                            "optdefault": "false"
-                        }
-                    ]
-                }
-            ],
-            "chainable": 1,
-            "class": "Tree",
-            "module": "gallery-sm-tree"
-        },
-        {
-            "file": "src/sm-tree/js/tree.js",
-            "line": 573,
+            "line": 502,
             "description": "Serializes this tree to an object suitable for use in JSON.",
             "itemtype": "method",
             "name": "toJSON",
@@ -3425,7 +3553,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 585,
+            "line": 514,
             "description": "Moves the specified node and all its children from another tree to this\ntree.",
             "itemtype": "method",
             "name": "_adoptNode",
@@ -3449,7 +3577,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 621,
+            "line": 550,
             "description": "Composes a custom late-bound tree node class (if necessary) based on the\nclasses specified in this Tree's `nodeClass` and `nodeExtensions`\nproperties.\n\nThe composed class is stored in this Tree's `_nodeClass` property. If\ncomposition wasn't necessary, then `_nodeClass` will just be a reference to\n`nodeClass`.",
             "itemtype": "method",
             "name": "_composeNodeClass",
@@ -3460,7 +3588,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 676,
+            "line": 605,
             "description": "Utility method for lazily publishing and firing events.",
             "itemtype": "method",
             "name": "_fire",
@@ -3505,7 +3633,7 @@
         },
         {
             "file": "src/sm-tree/js/tree.js",
-            "line": 707,
+            "line": 636,
             "description": "Removes the specified node from its parent node if it has one.",
             "itemtype": "method",
             "name": "_removeNodeFromParent",
@@ -3523,7 +3651,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 23,
+            "line": 26,
             "description": "CSS class names used by this treeview.",
             "itemtype": "property",
             "name": "classNames",
@@ -3600,7 +3728,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 62,
+            "line": 65,
             "description": "Whether or not this TreeView has been rendered.",
             "itemtype": "property",
             "name": "rendered",
@@ -3611,7 +3739,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 72,
+            "line": 75,
             "description": "Simple way to type-check that this is a TreeView instance.",
             "itemtype": "property",
             "name": "_isYUITreeView",
@@ -3624,7 +3752,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 81,
+            "line": 84,
             "description": "Cached value of the `lazyRender` attribute.",
             "itemtype": "property",
             "name": "_lazyRender",
@@ -3636,7 +3764,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 100,
+            "line": 103,
             "description": "Returns the HTML node (as a `Y.Node` instance) associated with the specified\n`Tree.Node` instance, if any.",
             "itemtype": "method",
             "name": "getHTMLNode",
@@ -3656,7 +3784,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 117,
+            "line": 120,
             "description": "Renders this TreeView into its container.\n\nIf the container hasn't already been added to the current document, it will\nbe appended to the `<body>` element.",
             "itemtype": "method",
             "name": "render",
@@ -3666,7 +3794,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 146,
+            "line": 149,
             "description": "Renders the children of the specified tree node.\n\nIf a container is specified, it will be assumed to be an existing rendered\ntree node, and the children will be rendered (or re-rendered) inside it.",
             "itemtype": "method",
             "name": "renderChildren",
@@ -3700,7 +3828,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 200,
+            "line": 203,
             "description": "Renders the specified tree node and its children (if any).\n\nIf a container is specified, the rendered node will be appended to it.",
             "itemtype": "method",
             "name": "renderNode",
@@ -3741,7 +3869,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 304,
+            "line": 308,
             "description": "Setter for the `lazyRender` attribute.\n\nJust caches the value in a property for faster lookups.",
             "itemtype": "method",
             "name": "_setLazyRender",
@@ -3756,7 +3884,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 494,
+            "line": 505,
             "description": "When `true`, a node's children won't be rendered until the first time\nthat node is opened.\n\nThis can significantly speed up the time it takes to render a large\ntree, but might not make sense if you're using CSS that doesn't hide the\ncontents of closed nodes.",
             "itemtype": "attribute",
             "name": "lazyRender",

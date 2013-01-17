@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src&#x2F;sm-tree&#x2F;js&#x2F;extensions&#x2F;tree-openable.js - SmugMug YUI Gallery API docs</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title="SmugMug YUI Gallery API docs"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.8.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/Menu.html">Menu</a></li>
+            
+                <li><a href="..&#x2F;classes/Menu.Base.html">Menu.Base</a></li>
+            
+                <li><a href="..&#x2F;classes/Menu.Item.html">Menu.Item</a></li>
+            
+                <li><a href="..&#x2F;classes/Menu.Templates.html">Menu.Templates</a></li>
+            
+                <li><a href="..&#x2F;classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="..&#x2F;classes/Plugin.Tree.Lazy.html">Plugin.Tree.Lazy</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.html">Tree</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Node.html">Tree.Node</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Node.Openable.html">Tree.Node.Openable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Node.Selectable.html">Tree.Node.Selectable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Openable.html">Tree.Openable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Selectable.html">Tree.Selectable</a></li>
+            
+                <li><a href="..&#x2F;classes/TreeView.html">TreeView</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-base.html">gallery-sm-menu-base</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-item.html">gallery-sm-menu-item</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree.html">gallery-sm-tree</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree-lazy.html">gallery-sm-tree-lazy</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree-node.html">gallery-sm-tree-node</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="..&#x2F;modules/tree.html">tree</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-node-openable.html">tree-node-openable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-node-selectable.html">tree-node-selectable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-openable.html">tree-openable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-selectable.html">tree-selectable</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src&#x2F;sm-tree&#x2F;js&#x2F;extensions&#x2F;tree-openable.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x2F;*jshint expr:true, onevar:false *&#x2F;
+
+&#x2F;**
+Extension for &#x60;Tree&#x60; that adds the concept of open&#x2F;closed state for nodes.
+
+@module tree
+@submodule tree-openable
+@main tree-openable
+**&#x2F;
+
+&#x2F;**
+Extension for &#x60;Tree&#x60; that adds the concept of open&#x2F;closed state for nodes.
+
+@class Tree.Openable
+@constructor
+@extensionfor Tree
+**&#x2F;
+
+&#x2F;**
+Fired when a node is closed.
+
+@event close
+@param {Tree.Node} node Node being closed.
+@preventable _defCloseFn
+**&#x2F;
+var EVT_CLOSE = &#x27;close&#x27;;
+
+&#x2F;**
+Fired when a node is opened.
+
+@event open
+@param {Tree.Node} node Node being opened.
+@preventable _defOpenFn
+**&#x2F;
+var EVT_OPEN = &#x27;open&#x27;;
+
+function Openable() {}
+
+Openable.prototype = {
+    &#x2F;&#x2F; -- Lifecycle ------------------------------------------------------------
+    initializer: function () {
+        this.nodeExtensions = this.nodeExtensions.concat(Y.Tree.Node.Openable);
+    },
+
+    &#x2F;&#x2F; -- Public Methods -------------------------------------------------------
+
+    &#x2F;**
+    Closes the specified node if it isn&#x27;t already closed.
+
+    @method closeNode
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;close&#x60; event
+            will be suppressed.
+    @chainable
+    **&#x2F;
+    closeNode: function (node, options) {
+        if (node.canHaveChildren &amp;&amp; node.isOpen()) {
+            this._fire(EVT_CLOSE, {node: node}, {
+                defaultFn: this._defCloseFn,
+                silent   : options &amp;&amp; options.silent
+            });
+        }
+
+        return this;
+    },
+
+    &#x2F;**
+    Opens the specified node if it isn&#x27;t already open.
+
+    @method openNode
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;open&#x60; event
+            will be suppressed.
+    @chainable
+    **&#x2F;
+    openNode: function (node, options) {
+        if (node.canHaveChildren &amp;&amp; !node.isOpen()) {
+            this._fire(EVT_OPEN, {node: node}, {
+                defaultFn: this._defOpenFn,
+                silent   : options &amp;&amp; options.silent
+            });
+        }
+
+        return this;
+    },
+
+    &#x2F;**
+    Toggles the open&#x2F;closed state of the specified node, closing it if it&#x27;s
+    currently open or opening it if it&#x27;s currently closed.
+
+    @method toggleNode
+    @param {Tree.Node} node Node to toggle.
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, events will be
+            suppressed.
+    @chainable
+    **&#x2F;
+    toggleNode: function (node, options) {
+        return node.isOpen() ? this.closeNode(node, options) :
+            this.openNode(node, options);
+    },
+
+    &#x2F;&#x2F; -- Default Event Handlers -----------------------------------------------
+
+    &#x2F;**
+    Default handler for the &#x60;close&#x60; event.
+
+    @method _defCloseFn
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _defCloseFn: function (e) {
+        delete e.node.state.open;
+    },
+
+    &#x2F;**
+    Default handler for the &#x60;open&#x60; event.
+
+    @method _defOpenFn
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _defOpenFn: function (e) {
+        e.node.state.open = true;
+    }
+};
+
+Y.Tree.Openable = Openable;
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

@@ -9,7 +9,9 @@ YUI.add("yuidoc-meta", function(Y) {
         "Plugin.Tree.Lazy",
         "Tree",
         "Tree.Node",
+        "Tree.Node.Openable",
         "Tree.Node.Selectable",
+        "Tree.Openable",
         "Tree.Selectable",
         "TreeView"
     ],
@@ -24,7 +26,9 @@ YUI.add("yuidoc-meta", function(Y) {
         "gallery-sm-tree-node",
         "gallery-sm-treeview",
         "tree",
+        "tree-node-openable",
         "tree-node-selectable",
+        "tree-openable",
         "tree-selectable"
     ],
     "allModules": [
@@ -61,7 +65,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "gallery-sm-tree-lazy",
             "name": "gallery-sm-tree-lazy",
-            "description": "Provides `Plugin.Tree.Lazy`, a plugin for `Tree` that makes it easy to lazily\nload and populate the contents of tree nodes the first time they're opened."
+            "description": "Provides `Plugin.Tree.Lazy`, a plugin for `Tree.Openable` that makes it easy to\nlazily load and populate the contents of tree nodes the first time they're\nopened."
         },
         {
             "displayName": "gallery-sm-tree-node",
@@ -78,9 +82,19 @@ YUI.add("yuidoc-meta", function(Y) {
             "name": "tree"
         },
         {
+            "displayName": "tree-node-openable",
+            "name": "tree-node-openable",
+            "description": "Provides the `Tree.Node.Openable` class, an extension for `Tree.Node` that\nadds methods useful for nodes in trees that use the `Tree.Openable` extension."
+        },
+        {
             "displayName": "tree-node-selectable",
             "name": "tree-node-selectable",
             "description": "Provides the `Tree.Node.Selectable` class, an extension for `Tree.Node` that\nadds methods useful for nodes in trees that use the `Tree.Selectable` extension."
+        },
+        {
+            "displayName": "tree-openable",
+            "name": "tree-openable",
+            "description": "Extension for `Tree` that adds the concept of open/closed state for nodes."
         },
         {
             "displayName": "tree-selectable",

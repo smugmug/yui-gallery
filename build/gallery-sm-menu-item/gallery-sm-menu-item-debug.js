@@ -1,5 +1,7 @@
 YUI.add('gallery-sm-menu-item', function (Y, NAME) {
 
+/*jshint expr:true, onevar:false */
+
 /**
 Provides the `Menu.Item` class.
 
@@ -128,4 +130,4 @@ Y.extend(MenuItem, Y.Tree.Node, {
 Y.namespace('Menu').Item = MenuItem;
 
 
-}, '@VERSION@', {"requires": ["oop", "gallery-sm-tree-node"]});
+}, '@VERSION@', {"requires": ["gallery-sm-tree-node", "oop"]});

@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js - SmugMug YUI Gallery API docs</title>
-    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
-    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
 
@@ -57,7 +57,11 @@
             
                 <li><a href="..&#x2F;classes/Tree.Node.html">Tree.Node</a></li>
             
+                <li><a href="..&#x2F;classes/Tree.Node.Openable.html">Tree.Node.Openable</a></li>
+            
                 <li><a href="..&#x2F;classes/Tree.Node.Selectable.html">Tree.Node.Selectable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Openable.html">Tree.Openable</a></li>
             
                 <li><a href="..&#x2F;classes/Tree.Selectable.html">Tree.Selectable</a></li>
             
@@ -87,7 +91,11 @@
             
                 <li><a href="..&#x2F;modules/tree.html">tree</a></li>
             
+                <li><a href="..&#x2F;modules/tree-node-openable.html">tree-node-openable</a></li>
+            
                 <li><a href="..&#x2F;modules/tree-node-selectable.html">tree-node-selectable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-openable.html">tree-openable</a></li>
             
                 <li><a href="..&#x2F;modules/tree-selectable.html">tree-selectable</a></li>
             
@@ -130,6 +138,8 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
+&#x2F;*jshint expr:true, onevar:false *&#x2F;
+
 &#x2F;**
 Provides the &#x60;Tree&#x60; class.
 
@@ -180,24 +190,6 @@ var Lang = Y.Lang,
     @preventable _defClearFn
     **&#x2F;
     EVT_CLEAR = &#x27;clear&#x27;,
-
-    &#x2F;**
-    Fired when a node is closed.
-
-    @event close
-    @param {Tree.Node} node Node being closed.
-    @preventable _defCloseFn
-    **&#x2F;
-    EVT_CLOSE = &#x27;close&#x27;,
-
-    &#x2F;**
-    Fired when a node is opened.
-
-    @event open
-    @param {Tree.Node} node Node being opened.
-    @preventable _defOpenFn
-    **&#x2F;
-    EVT_OPEN = &#x27;open&#x27;,
 
     &#x2F;**
     Fired when a node is removed from this Tree.
@@ -385,26 +377,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
             defaultFn: this._defClearFn,
             silent   : options &amp;&amp; options.silent
         });
-    },
-
-    &#x2F;**
-    Closes the specified node if it isn&#x27;t already closed.
-
-    @method closeNode
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;close&#x60; event
-            will be suppressed.
-    @chainable
-    **&#x2F;
-    closeNode: function (node, options) {
-        if (node.canHaveChildren &amp;&amp; node.isOpen()) {
-            this._fire(EVT_CLOSE, {node: node}, {
-                defaultFn: this._defCloseFn,
-                silent   : options &amp;&amp; options.silent
-            });
-        }
-
-        return this;
     },
 
     &#x2F;**
@@ -600,26 +572,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
     },
 
     &#x2F;**
-    Opens the specified node if it isn&#x27;t already open.
-
-    @method openNode
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;open&#x60; event
-            will be suppressed.
-    @chainable
-    **&#x2F;
-    openNode: function (node, options) {
-        if (node.canHaveChildren &amp;&amp; !node.isOpen()) {
-            this._fire(EVT_OPEN, {node: node}, {
-                defaultFn: this._defOpenFn,
-                silent   : options &amp;&amp; options.silent
-            });
-        }
-
-        return this;
-    },
-
-    &#x2F;**
     Prepends a node or array of nodes at the beginning of the specified parent
     node.
 
@@ -685,21 +637,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
     **&#x2F;
     size: function () {
         return this.rootNode.size();
-    },
-
-    &#x2F;**
-    Toggles the open&#x2F;closed state of the specified node.
-
-    @method toggleNode
-    @param {Tree.Node} node Node to toggle.
-    @param {Object} [options] Options.
-        @param {Boolean} [options.silent=false] If &#x60;true&#x60;, events will be
-            suppressed.
-    @chainable
-    **&#x2F;
-    toggleNode: function (node, options) {
-        return node.isOpen() ? this.closeNode(node, options) :
-            this.openNode(node, options);
     },
 
     &#x2F;**
@@ -888,14 +825,6 @@ var Tree = Y.Base.create(&#x27;tree&#x27;, Y.Base, [], {
 
         this.rootNode = newRootNode;
         this.children = newRootNode.children;
-    },
-
-    _defCloseFn: function (e) {
-        delete e.node.state.open;
-    },
-
-    _defOpenFn: function (e) {
-        e.node.state.open = true;
     },
 
     _defRemoveFn: function (e) {

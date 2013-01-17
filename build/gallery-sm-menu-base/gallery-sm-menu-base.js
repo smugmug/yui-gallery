@@ -1,5 +1,7 @@
 YUI.add('gallery-sm-menu-base', function (Y, NAME) {
 
+/*jshint expr:true, onevar:false */
+
 /**
 Provides `Menu.Base`.
 
@@ -54,15 +56,13 @@ Fired when a menu item is shown.
 **/
 var EVT_SHOW = 'show';
 
-var MenuBase = Y.Base.create('menuBase', Y.Tree, [], {
+var MenuBase = Y.Base.create('menuBase', Y.Tree, [Y.Tree.Openable], {
     nodeClass: Y.Menu.Item,
 
     // -- Lifecycle ------------------------------------------------------------
     initializer: function (config) {
-        config || (config = {});
-
-        if (config.items) {
-            this.appendNode(this.rootNode, config.items, {silent: true});
+        if (config) {
+            config.nodes = config.items;
         }
     },
 
@@ -217,4 +217,4 @@ var MenuBase = Y.Base.create('menuBase', Y.Tree, [], {
 Y.namespace('Menu').Base = MenuBase;
 
 
-}, '@VERSION@', {"requires": ["gallery-sm-menu-item", "gallery-sm-tree"]});
+}, '@VERSION@', {"requires": ["gallery-sm-menu-item", "gallery-sm-tree-openable"]});

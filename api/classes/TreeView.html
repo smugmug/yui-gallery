@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>TreeView - SmugMug YUI Gallery API docs</title>
-    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
     <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
-    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
 
@@ -57,7 +57,11 @@
             
                 <li><a href="..&#x2F;classes/Tree.Node.html">Tree.Node</a></li>
             
+                <li><a href="..&#x2F;classes/Tree.Node.Openable.html">Tree.Node.Openable</a></li>
+            
                 <li><a href="..&#x2F;classes/Tree.Node.Selectable.html">Tree.Node.Selectable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Openable.html">Tree.Openable</a></li>
             
                 <li><a href="..&#x2F;classes/Tree.Selectable.html">Tree.Selectable</a></li>
             
@@ -87,7 +91,11 @@
             
                 <li><a href="..&#x2F;modules/tree.html">tree</a></li>
             
+                <li><a href="..&#x2F;modules/tree-node-openable.html">tree-node-openable</a></li>
+            
                 <li><a href="..&#x2F;modules/tree-node-selectable.html">tree-node-selectable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-openable.html">tree-openable</a></li>
             
                 <li><a href="..&#x2F;modules/tree-selectable.html">tree-selectable</a></li>
             
@@ -135,6 +143,8 @@
                 
                     <li><a href="Tree.html">Tree</a></li>
                 
+                    <li><a href="Tree.Openable.html">Tree.Openable</a></li>
+                
                     <li><a href="Tree.Selectable.html">Tree.Selectable</a></li>
                 
             </ul>
@@ -149,7 +159,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l8"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:8</code></a>
+            Defined in: <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l10"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:10</code></a>
         </div>
     
 
@@ -203,7 +213,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l8"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:8</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l10"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:10</code></a>
         
         </p>
 
@@ -264,6 +274,20 @@
                         
                             <li class="index-item method protected inherited">
                                 <a href="#method__composeNodeClass">_composeNodeClass</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__defCloseFn">_defCloseFn</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__defOpenFn">_defOpenFn</a>
 
                                 
                                 
@@ -686,7 +710,7 @@
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l585"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:585</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l514"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:514</code></a>
         
         </p>
 
@@ -779,7 +803,7 @@ tree.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l621"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:621</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l550"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:550</code></a>
         
         </p>
 
@@ -799,6 +823,178 @@ composition wasn't necessary, then <code>_nodeClass</code> will just be a refere
 <code>nodeClass</code>.</p>
     </div>
 
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__defCloseFn" class="method item protected inherited">
+    <h3 class="name"><code>_defCloseFn</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Openable.html#method__defCloseFn">Tree.Openable</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_extensions_tree-openable.js.html#l105"><code>src&#x2F;sm-tree&#x2F;js&#x2F;extensions&#x2F;tree-openable.js:105</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Default handler for the <code>close</code> event.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">e</code>
+                        <span class="type">EventFacade</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__defOpenFn" class="method item protected inherited">
+    <h3 class="name"><code>_defOpenFn</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Tree.Openable.html#method__defOpenFn">Tree.Openable</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_extensions_tree-openable.js.html#l116"><code>src&#x2F;sm-tree&#x2F;js&#x2F;extensions&#x2F;tree-openable.js:116</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Default handler for the <code>open</code> event.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">e</code>
+                        <span class="type">EventFacade</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -862,7 +1058,7 @@ composition wasn't necessary, then <code>_nodeClass</code> will just be a refere
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l676"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:676</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l605"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:605</code></a>
         
         </p>
 
@@ -1012,7 +1208,7 @@ composition wasn't necessary, then <code>_nodeClass</code> will just be a refere
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l707"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:707</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l636"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:636</code></a>
         
         </p>
 
@@ -1095,7 +1291,7 @@ composition wasn't necessary, then <code>_nodeClass</code> will just be a refere
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l304"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:304</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l308"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:308</code></a>
         
         </p>
 
@@ -1187,7 +1383,7 @@ composition wasn't necessary, then <code>_nodeClass</code> will just be a refere
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l210"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:210</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l194"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:194</code></a>
         
         </p>
 
@@ -1350,7 +1546,7 @@ be removed from that tree and moved to this one.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l236"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:236</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l220"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:220</code></a>
         
         </p>
 
@@ -1471,11 +1667,11 @@ tree; otherwise, a new root node will be created.</p>
         
             
                 <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#method_closeNode">Tree</a>:
+                <a href="..&#x2F;classes&#x2F;Tree.Openable.html#method_closeNode">Tree.Openable</a>:
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l258"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:258</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_extensions_tree-openable.js.html#l47"><code>src&#x2F;sm-tree&#x2F;js&#x2F;extensions&#x2F;tree-openable.js:47</code></a>
         
         </p>
 
@@ -1583,7 +1779,7 @@ tree; otherwise, a new root node will be created.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l278"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:278</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l242"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:242</code></a>
         
         </p>
 
@@ -1693,7 +1889,7 @@ yet appended to) this tree.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l315"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:315</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l279"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:279</code></a>
         
         </p>
 
@@ -1824,7 +2020,7 @@ tree.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l360"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:360</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l324"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:324</code></a>
         
         </p>
 
@@ -1980,7 +2176,7 @@ still be reusable unless the <code>destroy</code> option is truthy.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l100"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:100</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l103"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:103</code></a>
         
         </p>
 
@@ -2083,7 +2279,7 @@ still be reusable unless the <code>destroy</code> option is truthy.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l384"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:384</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l348"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:348</code></a>
         
         </p>
 
@@ -2265,7 +2461,7 @@ doesn't exist in this tree.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l396"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:396</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l360"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:360</code></a>
         
         </p>
 
@@ -2433,11 +2629,11 @@ be removed from that tree and moved to this one.</p>
         
             
                 <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#method_openNode">Tree</a>:
+                <a href="..&#x2F;classes&#x2F;Tree.Openable.html#method_openNode">Tree.Openable</a>:
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l470"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:470</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_extensions_tree-openable.js.html#l67"><code>src&#x2F;sm-tree&#x2F;js&#x2F;extensions&#x2F;tree-openable.js:67</code></a>
         
         </p>
 
@@ -2557,7 +2753,7 @@ be removed from that tree and moved to this one.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l490"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:490</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l434"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:434</code></a>
         
         </p>
 
@@ -2722,7 +2918,7 @@ be removed from that tree and moved to this one.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l516"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:516</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l460"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:460</code></a>
         
         </p>
 
@@ -2866,7 +3062,7 @@ be reusable unless the <code>destroy</code> option is truthy.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l117"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:117</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l120"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:120</code></a>
         
         </p>
 
@@ -2943,7 +3139,7 @@ be appended to the <code>&lt;body&gt;</code> element.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l146"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:146</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l149"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:149</code></a>
         
         </p>
 
@@ -3092,7 +3288,7 @@ tree node, and the children will be rendered (or re-rendered) inside it.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l200"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:200</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l203"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:203</code></a>
         
         </p>
 
@@ -3362,7 +3558,7 @@ tree node, and the children will be rendered (or re-rendered) inside it.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l546"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:546</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l490"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:490</code></a>
         
         </p>
 
@@ -3442,11 +3638,11 @@ tree node, and the children will be rendered (or re-rendered) inside it.</p>
         
             
                 <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#method_toggleNode">Tree</a>:
+                <a href="..&#x2F;classes&#x2F;Tree.Openable.html#method_toggleNode">Tree.Openable</a>:
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l558"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:558</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_extensions_tree-openable.js.html#l87"><code>src&#x2F;sm-tree&#x2F;js&#x2F;extensions&#x2F;tree-openable.js:87</code></a>
         
         </p>
 
@@ -3457,7 +3653,8 @@ tree node, and the children will be rendered (or re-rendered) inside it.</p>
     </div>
 
     <div class="description">
-        <p>Toggles the open/closed state of the specified node.</p>
+        <p>Toggles the open/closed state of the specified node, closing it if it's
+currently open or opening it if it's currently closed.</p>
     </div>
 
     
@@ -3559,7 +3756,7 @@ tree node, and the children will be rendered (or re-rendered) inside it.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l573"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:573</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l502"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:502</code></a>
         
         </p>
 
@@ -3857,7 +4054,7 @@ tree node, and the children will be rendered (or re-rendered) inside it.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l131"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:131</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l115"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:115</code></a>
         
         </p>
 
@@ -3905,7 +4102,7 @@ tree node, and the children will be rendered (or re-rendered) inside it.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l72"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:72</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l75"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:75</code></a>
         
         </p>
 
@@ -3953,7 +4150,7 @@ tree node, and the children will be rendered (or re-rendered) inside it.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l81"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:81</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l84"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:84</code></a>
         
         </p>
 
@@ -3996,7 +4193,7 @@ tree node, and the children will be rendered (or re-rendered) inside it.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l140"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:140</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l124"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:124</code></a>
         
         </p>
 
@@ -4041,7 +4238,7 @@ a reference to <code>nodeClass</code>.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l149"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:149</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l133"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:133</code></a>
         
         </p>
 
@@ -4084,7 +4281,7 @@ a reference to <code>nodeClass</code>.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l176"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:176</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l160"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:160</code></a>
         
         </p>
 
@@ -4129,7 +4326,7 @@ a reference to <code>nodeClass</code>.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l156"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:156</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l140"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:140</code></a>
         
         </p>
 
@@ -4214,7 +4411,7 @@ currently selected.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l85"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:85</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l69"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:69</code></a>
         
         </p>
 
@@ -4261,7 +4458,7 @@ of <code>tree.rootNode.children</code>.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l23"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:23</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l26"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:26</code></a>
         
         </p>
 
@@ -4482,7 +4679,7 @@ of <code>tree.rootNode.children</code>.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l95"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:95</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l79"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:79</code></a>
         
         </p>
 
@@ -4529,7 +4726,7 @@ class reference at runtime.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l107"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:107</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l91"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:91</code></a>
         
         </p>
 
@@ -4582,7 +4779,7 @@ hit.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l62"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:62</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l65"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:65</code></a>
         
         </p>
 
@@ -4625,7 +4822,7 @@ hit.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l122"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:122</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l106"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:106</code></a>
         
         </p>
 
@@ -4684,7 +4881,7 @@ hit.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l494"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:494</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-treeview_js_treeview.js.html#l505"><code>src&#x2F;sm-treeview&#x2F;js&#x2F;treeview.js:505</code></a>
         
         </p>
 
@@ -4892,7 +5089,7 @@ contents of closed nodes.</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l28"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:28</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l30"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:30</code></a>
         
         </p>
 
@@ -5002,7 +5199,7 @@ how the node was added ("append", "insert", "prepend", etc.).</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l42"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:42</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l44"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:44</code></a>
         
         </p>
 
@@ -5062,11 +5259,11 @@ how the node was added ("append", "insert", "prepend", etc.).</p>
         
             
                 <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#event_close">Tree</a>:
+                <a href="..&#x2F;classes&#x2F;Tree.Openable.html#event_close">Tree.Openable</a>:
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l52"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:52</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_extensions_tree-openable.js.html#l19"><code>src&#x2F;sm-tree&#x2F;js&#x2F;extensions&#x2F;tree-openable.js:19</code></a>
         
         </p>
 
@@ -5125,11 +5322,11 @@ how the node was added ("append", "insert", "prepend", etc.).</p>
         
             
                 <p>Inherited from
-                <a href="..&#x2F;classes&#x2F;Tree.html#event_open">Tree</a>:
+                <a href="..&#x2F;classes&#x2F;Tree.Openable.html#event_open">Tree.Openable</a>:
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l61"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:61</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_extensions_tree-openable.js.html#l28"><code>src&#x2F;sm-tree&#x2F;js&#x2F;extensions&#x2F;tree-openable.js:28</code></a>
         
         </p>
 
@@ -5192,7 +5389,7 @@ how the node was added ("append", "insert", "prepend", etc.).</p>
             
         
         
-        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l70"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:70</code></a>
+        <a href="..&#x2F;files&#x2F;src_sm-tree_js_tree.js.html#l54"><code>src&#x2F;sm-tree&#x2F;js&#x2F;tree.js:54</code></a>
         
         </p>
 
