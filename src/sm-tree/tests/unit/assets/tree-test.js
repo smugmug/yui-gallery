@@ -765,6 +765,13 @@ nodeSuite.add(new Y.Test.Case({
         Assert.areSame('mynode', node.id, 'custom id should be set');
         Assert.areSame('pants', node.label, 'custom label should be set');
         Assert.isTrue(node.state.tested, 'custom state should be set');
+    },
+
+    'constructor should mix arbitrary config properties into the instance': function () {
+        var node = new Tree.Node(this.tree, {foo: 'bar', _isYUITreeNode: 'moo'});
+
+        Assert.areSame('bar', node.foo, 'node should have a `foo` property');
+        Assert.isTrue(node._isYUITreeNode, '`_isYUITreeNode` property should not be overwritten');
     }
 }));
 

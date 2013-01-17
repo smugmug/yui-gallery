@@ -60,6 +60,10 @@ function TreeNode(tree, config) {
         this.canHaveChildren = true;
     }
 
+    // Mix in arbitrary properties on the config object, but don't overwrite any
+    // existing properties of this node.
+    Y.mix(this, config);
+
     // If this node has children, loop through them and ensure their parent
     // references are all set to this node.
     for (var i = 0, len = this.children.length; i < len; i++) {
