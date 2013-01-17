@@ -28,7 +28,7 @@ Useful Links
 ------------
 
 * [API Docs][api-docs]
-* [Performance Stress Test](http://jsbin.com/udayaz/53/)
+* [Performance Stress Test](http://jsbin.com/udayaz/54/)
 * [YUI TreeView Shootout][jsperf]
 
 [api-docs]:http://smugmug.github.com/yui-gallery/api/modules/gallery-sm-treeview.html
@@ -53,7 +53,7 @@ Next, in your JS, create an instance of `Y.TreeView`, specify some nodes to add 
 
 ```js
 YUI({
-    gallery: 'gallery-2012.12.26-20-48'
+    gallery: 'gallery-2013.01.09-23-24'
 }).use('gallery-sm-treeview', function (Y) {
     // Create a new TreeView with a few nodes.
     var treeview = new Y.TreeView({
