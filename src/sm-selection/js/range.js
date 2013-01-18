@@ -45,7 +45,7 @@ Range.prototype = {
         range.
     **/
     clone: isHTML5 ? function () {
-        return this._range.cloneRange();
+        return new Y.Range(this._range.cloneRange());
     } : function () {
         throw new Error('Not yet implemented.');
     },
@@ -278,7 +278,6 @@ Range.prototype = {
     } : function () {
         throw new Error('Not yet implemented.');
     },
-
 
     /**
     Returns `true` if this range has the same boundaries as _otherRange_,

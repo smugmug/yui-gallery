@@ -29,8 +29,6 @@ var Selection = isHTML5 ? function () {
 Selection.prototype = {
     // -- Public Methods -------------------------------------------------------
 
-    // addRange
-
     anchorNode: isHTML5 ? function () {
         return this._selection.anchorNode;
     } : function () {
@@ -60,14 +58,18 @@ Selection.prototype = {
 
     /**
     Returns the `Range` instance at the specified _index_, or the first range in
-    this selection if no index is specified.
+    this selection if no index is specified. If no ranges are selected, returns
+    `null`.
 
     @method range
     @param {Number} [index=0] Range index.
-    @return {Range} Range instance at the specified _index_.
+    @return {Range} Range instance at the specified _index_, or the first range
+        in this selection if no index is specified. If no ranges are selected,
+        returns `null`.
     **/
     range: isHTML5 ? function (index) {
-        return new Y.Range(this._selection.getRangeAt(index || 0));
+        return this.rangeCount() ?
+            new Y.Range(this._selection.getRangeAt(index || 0)) : null;
     } : function () {
         throw new Error('Not yet implemented.');
     },
@@ -88,8 +90,52 @@ Selection.prototype = {
         return ranges;
     },
 
-    // removeRange
-    // removeAllRanges
+    /**
+    Selects the specified _range_.
+
+    By default, this will result in only this range being selected. If
+    `options.multi` is truthy, then the _range_ will be added to the current
+    selection without first unselecting any other selected ranges.
+
+    @method select
+    @param {Range} range Range to select.
+    @param {Object} [options] Options.
+        @param {Boolean} [options.multi=false] If `true`, the specified _range_
+            will be added to the current list of selected ranges instead of
+            replacing the current selection.
+    @chainable
+    **/
+    select: isHTML5 ? function (range, options) {
+        if (!options || !options.multi) {
+            this.unselect();
+        }
+
+        this._selection.addRange(range._range);
+        return this;
+    } : function () {
+        throw new Error('Not yet implemented.');
+    },
+
+    /**
+    Removes the specified _range_ from this selection, or unselects all ranges
+    if no _range_ is specified.
+
+    @method unselect
+    @param {Range} [range] Range to unselect.
+    @chainable
+    **/
+    unselect: isHTML5 ? function (range) {
+        if (range) {
+            this._selection.removeRange(range._range);
+        } else {
+            this._selection.removeAllRanges();
+        }
+
+        return this;
+    } : function () {
+        throw new Error('Not yet implemented.');
+    },
+
     // selectAllChildren
     // selectionLanguageChange?
 
