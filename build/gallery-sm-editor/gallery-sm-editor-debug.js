@@ -26,9 +26,8 @@ Y.Node.DOM_EVENTS.paste = 1;
 Fires when this editor's selection changes.
 
 @event selectionChange
-@param {Range[]} newRanges Array of ranges that are now selected.
-@param {Range[]} oldRanges Array of ranges that were selected before the
-    selection changed.
+@param {Range} newRange Range that's now selected, or `null`.
+@param {Range} oldRange Range that was previously selected, or `null`.
 @param {Selection} selection Reference to this editor's Selection instance.
 **/
 var EVT_SELECTION_CHANGE = 'selectionChange';
@@ -40,14 +39,113 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
     CSS class names used by this editor.
 
     @property {Object} classNames
+    @param {String} cursor Class name used for a placeholder node that
+        represents the cursor position.
     @param {String} editor Class name used for the editor's container.
     @param {String} input Class name used for the WYSIWYG YUI Editor frame that
         will receive user input.
     **/
     classNames: {
+        cursor: getClassName('sm-editor-cursor', true),
         editor: getClassName('sm-editor', true),
         input : getClassName('sm-editor-input', true)
     },
+
+    /**
+    Hash of keyCode values that should be ignored when processing keyboard
+    events.
+
+    This is used to avoid double-handling of modifier keys, since other event
+    properties are used to detect whether modifier keys are pressed.
+
+    @property {Object} ignoreKeyCodes
+    **/
+    ignoreKeyCodes: {
+        16 : 'shift',
+        17 : 'ctrl',      // Opera uses this keyCode for meta, which is fine
+        18 : 'alt',
+        91 : 'leftmeta',  // WebKit
+        93 : 'rightmeta', // WebKit
+        224: 'meta'       // Gecko
+    },
+
+    /**
+    Mapping of keyCode values to friendly names for special keys.
+
+    @property {Object} keyCodeMap
+    **/
+    keyCodeMap: {
+        8  : 'backspace',
+        9  : 'tab',
+        13 : 'enter',
+        27 : 'esc',
+        32 : 'space',
+        33 : 'pgup',
+        34 : 'pgdown',
+        35 : 'end',
+        36 : 'home',
+        37 : 'left',
+        38 : 'up',
+        39 : 'right',
+        40 : 'down',
+        46 : 'delete',
+        49 : '!',
+        61 : '=', // Gecko
+        173: '-', // Gecko
+        187: '=', // WebKit, IE
+        189: '-', // WebKit, IE
+        190: '.',
+        191: '?',
+        219: '[',
+        221: ']'
+    },
+
+    /**
+    Mapping of shortcut keys to function handlers.
+
+    @property {Object} keyCommands
+    **/
+    keyCommands: {
+        // The Ctrl key and the Cmd (meta) key are synonymous.
+
+        // Formatting.
+        'ctrl+-': 'decreaseFontSize',
+        'ctrl+=': 'increaseFontSize', // unshifted + key
+        'ctrl+b': 'bold',
+        // TODO: 'ctrl+d': 'selectWord',
+        'ctrl+i': 'italic',
+        'ctrl+u': 'underline',
+
+        // Undo/redo.
+        'ctrl+z'      : 'undo',
+        'ctrl+shift+z': 'redo',
+
+        // Undo/redo state triggers.
+        'backspace': {fn: '_addUndo', allowDefault: true},
+        'ctrl+x'   : {fn: '_addUndo', allowDefault: true},
+        'ctrl+v'   : {fn: '_addUndo', allowDefault: true},
+        'delete'   : {fn: '_addUndo', allowDefault: true},
+        'enter'    : {fn: '_addUndo', allowDefault: true, async: true},
+        '.'        : {fn: '_addUndo', allowDefault: true, async: true},
+        'shift+!'  : {fn: '_addUndo', allowDefault: true, async: true},
+        'shift+?'  : {fn: '_addUndo', allowDefault: true, async: true},
+
+        // Special cases.
+        'tab': '_insertTab'
+    },
+
+    /**
+    `Y.Selection` instance representing the current document selection.
+
+    The selection object's state always reflects the current selection, so it
+    will update when the selection changes. If you need to retain the state of a
+    past selection, hold onto a Range instance representing that selection.
+
+    Also, beware: this selection object reflects the current selection in the
+    entire browser document, not just within this editor.
+
+    @property {Selection} selection
+    **/
 
     /**
     Hash of style commands supported by this editor.
@@ -72,12 +170,28 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
 
     // -- Protected Properties -------------------------------------------------
 
+    /**
+    Array of redoable changes that have previously been undone.
+
+    @property {Array} _redoStack
+    @protected
+    **/
+
+    /**
+    Array of undoable changes that have been made to this editor.
+
+    @property {Array} _undoStack
+    @protected
+    **/
+
     // -- Lifecycle ------------------------------------------------------------
     initializer: function () {
-        this._updateSelection({silent: true});
+        this.selection  = new Y.Selection();
+        this.selectors  = {};
 
-        // Generate selectors based on configured class names.
-        this.selectors = {};
+        this._redoStack  = [];
+        this._undoStack  = [];
+        this._cursorHTML = '<span class="' + this.classNames.cursor + '"></span>';
 
         Y.Object.each(this.classNames, function (name, key) {
             this.selectors[key] = '.' + name;
@@ -88,6 +202,10 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
 
     destructor: function () {
         this._detachEvents();
+
+        this.selection  = null;
+        this._redoStack = null;
+        this._undoStack = null;
     },
 
     // -- Public Methods -------------------------------------------------------
@@ -107,6 +225,17 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
     },
 
     /**
+    Bolds or unbolds the current selection.
+
+    @method bold
+    @chainable
+    **/
+    bold: function () {
+        this.style('bold', 'toggle');
+        return this;
+    },
+
+    /**
     Gets and/or sets the value of the specified editor command.
 
     See <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>
@@ -114,17 +243,33 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
 
     @method command
     @param {String} name Command name.
-    @param {Boolean|String} [value] Command value. Use the special value
+    @param {Boolean|String|null} [value] Command value. Use the special value
         'toggle' to toggle a boolean command (like 'bold') to the opposite of
         its current state.
     @return {Boolean|String} Value of the specified command.
     **/
     command: function (name, value) {
-        if (value) {
+        if (typeof value !== 'undefined') {
             this._execCommand(name, value);
         }
 
         return this._queryCommandValue(name);
+    },
+
+    /**
+    Decreases the font size of the current selection (if possible).
+
+    @method decreaseFontSize
+    @chainable
+    **/
+    decreaseFontSize: function () {
+        var newSize = parseInt(this.style('fontSize'), 10) - 1;
+
+        if (newSize > 0) {
+            this.style('fontSize', '' + newSize);
+        }
+
+        return this;
     },
 
     /**
@@ -136,6 +281,110 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
     focus: function () {
         if (this._inputNode) {
             this._inputNode.focus();
+        }
+
+        return this;
+    },
+
+    /**
+    Increases the font size of the current selection (if possible).
+
+    @method increaseFontSize
+    @chainable
+    **/
+    increaseFontSize: function () {
+        var newSize = parseInt(this.style('fontSize'), 10) + 1;
+
+        if (newSize < 8) {
+            this.style('fontSize', '' + newSize);
+        }
+
+        return this;
+    },
+
+    /**
+    Inserts the specified _html_ at the current selection point, deleting the
+    current selection if there is one.
+
+    @method insertHTML
+    @param {HTML|HTMLElement|Node} html HTML to insert, in the form of an HTML
+        string, HTMLElement, or Node instance.
+    @return {Node} Node instance representing the inserted HTML.
+    **/
+    insertHTML: function (html) {
+        var node      = typeof html === 'string' ? Y.Node.create(html) : html,
+            selection = this.selection,
+            range     = selection.range();
+
+        if (!range) {
+            return;
+        }
+
+        this._addUndo();
+
+        node = range.deleteContents().insertNode(node);
+        range.collapse();
+
+        selection.select(range);
+
+        return node;
+    },
+
+    /**
+    Inserts the specified plain _text_ at the current selection point, deleting
+    the current selection if there is one.
+
+    @method insertText
+    @param {String} text Text to insert.
+    @return {Node} Node instance representing the inserted text node.
+    **/
+    insertText: function (text) {
+        return this.insertHTML(doc.createTextNode(text));
+    },
+
+    /**
+    Italicizes or unitalicizes the current selection.
+
+    @method italic
+    @chainable
+    **/
+    italic: function () {
+        this.style('italic', 'toggle');
+        return this;
+    },
+
+    /**
+    Redoes the last change that was undone in this editor.
+
+    @method redo
+    @chainable
+    **/
+    redo: function () {
+        var html = this._redoStack.pop();
+
+        if (typeof html !== 'string') {
+            return this;
+        }
+
+        // If the HTML on the stack is the same as what we've currently got,
+        // recurse to pop the previous item off the stack.
+        if (html.replace(this._cursorHTML, '') === this._inputNode.getHTML()) {
+            return this.redo();
+        }
+
+        this._addUndo();
+        this._inputNode.setHTML(html);
+
+        // Restore the cursor position.
+        var cursor = this._inputNode.one(this.selectors.cursor);
+
+        if (cursor) {
+            var range = new Y.Range();
+            range.startNode(cursor, 'after');
+
+            this.selection.select(range);
+
+            cursor.remove(true);
         }
 
         return this;
@@ -177,6 +426,9 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
 
         this._inputNode = inputNode;
         this._rendered  = true;
+
+        this._updateSelection({silent: true});
+        this._addUndo();
 
         return this;
     },
@@ -240,7 +492,115 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
         return results;
     },
 
+    /**
+    Toggles underline on the current selection.
+
+    @method underline
+    @chainable
+    **/
+    underline: function () {
+        this.style('underline', 'toggle');
+        return this;
+    },
+
+    /**
+    Undoes the last change made in this editor.
+
+    @method undo
+    @chainable
+    **/
+    undo: function () {
+        var html = this._undoStack.pop();
+
+        if (typeof html !== 'string') {
+            return this;
+        }
+
+        // If the HTML on the stack is the same as what we've currently got,
+        // recurse to pop the previous item off the stack.
+        if (html.replace(this._cursorHTML, '') === this._inputNode.getHTML()) {
+            return this.undo();
+        }
+
+        this._addRedo();
+        this._inputNode.setHTML(html);
+
+        // Restore the cursor position.
+        var cursor = this._inputNode.one(this.selectors.cursor);
+
+        if (cursor) {
+            var range = new Y.Range();
+            range.startNode(cursor, 'after');
+
+            this.selection.select(range);
+
+            cursor.remove(true);
+        }
+
+        return this;
+    },
+
     // -- Protected Methods ----------------------------------------------------
+
+    /**
+    Adds an entry to the undo stack representing the current state of the
+    editor.
+
+    @method _addUndo
+    @protected
+    **/
+    _addUndo: function () {
+        var range = this.selection.range(),
+            stack = this._undoStack,
+            cursor;
+
+        if (range) {
+            // Insert a cursor marker at the beginning of the range so we can
+            // restore the cursor position on undo.
+            cursor = range.insertNode(Y.Node.create(this._cursorHTML));
+            this.selection.select(range);
+        }
+
+        var html = this._inputNode.getHTML();
+
+        if (cursor) {
+            cursor.remove(true);
+        }
+
+        if (stack.push(html) > this.get('undoLevels')) {
+            stack.shift();
+        }
+    },
+
+    /**
+    Adds an entry to the redo stack representing the current state of the
+    editor.
+
+    @method _addRedo
+    @protected
+    **/
+    _addRedo: function () {
+        var range = this.selection.range(),
+            stack = this._redoStack,
+            cursor;
+
+        if (range) {
+            // Insert a cursor marker at the beginning of the range so we can
+            // restore the cursor position on redo.
+            cursor = range.insertNode(Y.Node.create(this._cursorHTML));
+            this.selection.select(range);
+        }
+
+        var html = this._inputNode.getHTML();
+
+        if (cursor) {
+            cursor.remove(true);
+        }
+
+        if (stack.push(html) > this.get('undoLevels')) {
+            stack.shift();
+        }
+    },
 
     /**
     Attaches editor events.
@@ -257,8 +617,8 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
             selectors = this.selectors;
 
         this._events = [
-            container.delegate('blur',    this._onBlur,    selectors.input, this),
-            container.delegate('focus',   this._onFocus,   selectors.input, this),
+            container.delegate('blur', this._onBlur, selectors.input, this),
+            container.delegate('focus', this._onFocus, selectors.input, this),
             container.delegate('keydown', this._onKeyDown, selectors.input, this)
         ];
     },
@@ -298,9 +658,14 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
             // current state, or the desired state is 'toggle', indicating that
             // the command should be toggled regardless of its current state.
             if (value === 'toggle' || value !== this._queryCommandValue(name)) {
+                this._addUndo();
                 doc.execCommand(name, false, null);
             }
         } else {
+            if (!/^(?:redo|undo)$/i.test(name)) {
+                this._addUndo();
+            }
+
             doc.execCommand(name, false, value);
         }
     },
@@ -327,6 +692,17 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
     **/
     _getText: function (value) {
         return this._rendered ? this._inputNode.get('text') : value;
+    },
+
+    /**
+    Inserts a `<span>` at the current selection point containing a preformatted
+    tab character.
+
+    @method _insertTab
+    @protected
+    **/
+    _insertTab: function () {
+        this.insertHTML('<span style="white-space:pre;">\t</span>');
     },
 
     /**
@@ -387,40 +763,26 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
     @protected
     **/
     _updateSelection:  function (options) {
-        var selection  = this._selection || (this._selection = new Y.Selection()),
-            oldRanges  = this._selectedRanges,
-            newRanges  = selection.ranges(),
-            isInEditor = true;
+        var selection = this.selection,
+            oldRange  = this._selectedRange,
+            newRange  = selection.range(),
+            changed;
 
-        var changed, i, len;
-
-        if (oldRanges && oldRanges.length === newRanges.length) {
-            for (i = 0, len = oldRanges.length; i < len; i++) {
-                if (!oldRanges[i].isEquivalent(newRanges[i])) {
-                    changed = true;
-                    break;
-                }
-            }
-        } else {
+        if (oldRange) {
+            changed = !newRange || oldRange.isEquivalent(newRange);
+        } else if (newRange) {
             changed = true;
         }
 
         if (changed) {
-            // Are all the selected ranges inside the editor?
-            for (i = 0, len = newRanges.length; i < len; i++) {
-                if (!newRanges[i].isInsideNode(this._inputNode)) {
-                    isInEditor = false;
-                    break;
-                }
-            }
-
-            this._selectedRanges = isInEditor ? newRanges : [];
+            this._selectedRange = newRange.isInsideNode(this._inputNode) ?
+                newRange : null;
 
             if (!(options && options.silent)) {
                 this.fire(EVT_SELECTION_CHANGE, {
-                    newRanges: this._selectedRanges,
-                    oldRanges: oldRanges,
-                    selection: this._selection
+                    newRange : this._selectedRange,
+                    oldRange : oldRange,
+                    selection: this.selection
                 });
             }
         }
@@ -435,6 +797,10 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
     @protected
     **/
     _onBlur: function () {
+        if (!this._rendered) {
+            return;
+        }
+
         clearInterval(this._selectionMonitor);
         this._updateSelection();
     },
@@ -447,6 +813,10 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
     **/
     _onFocus: function () {
         var self = this;
+
+        if (!this._rendered) {
+            return;
+        }
 
         this._updateSelection();
 
@@ -465,28 +835,45 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
     @protected
     **/
     _onKeyDown: function (e) {
-        if (e.shiftKey || e.altKey || !(e.ctrlKey || e.metaKey)) {
+        var keyCode = e.keyCode;
+
+        // Ignore individual modifier keys, since we don't care about them until
+        // another key is also depressed.
+        if (this.ignoreKeyCodes[keyCode]) {
             return;
         }
 
-        switch (e.charCode) {
-        case 66: // b
-            this.style('bold', 'toggle');
-            break;
+        var combo = [];
 
-        case 73: // i
-            this.style('italic', 'toggle');
-            break;
+        if (e.altKey)               { combo.push('alt'); }
+        if (e.ctrlKey || e.metaKey) { combo.push('ctrl'); }
+        if (e.shiftKey)             { combo.push('shift'); }
 
-        case 85: // u
-            this.style('underline', 'toggle');
-            break;
+        combo.push(this.keyCodeMap[keyCode] ||
+                String.fromCharCode(keyCode).toLowerCase());
 
-        default:
-            return;
+        var handler = this.keyCommands[combo.join('+')];
+
+        if (handler) {
+            var fn   = handler.fn || handler,
+                self = this;
+
+            if (typeof fn === 'string') {
+                fn = this[fn];
+            }
+
+            if (!handler.allowDefault) {
+                e.preventDefault();
+            }
+
+            if (handler.async) {
+                setTimeout(function () {
+                    fn.call(self, e, combo);
+                }, 0);
+            } else {
+                fn.call(this, e, combo);
+            }
         }
-
-        e.preventDefault();
     }
 }, {
     ATTRS: {
@@ -530,6 +917,17 @@ Y.Editor = Y.Base.create('editor', Y.View, [], {
             getter: '_getText',
             setter: '_setText',
             value : ''
+        },
+
+        /**
+        Number of undo/redo levels to maintain. Lowering this number may reduce
+        memory usage, especially when editing very large documents.
+
+        @attribute {Number} undoLevels
+        @default 20
+        **/
+        undoLevels: {
+            value: 20
         }
     }
 });
