@@ -6,6 +6,24 @@
             "jsfiles": [
                 "js/editor.js"
             ]
+        },
+
+        "gallery-sm-editor-base": {
+            "jsfiles": [
+                "js/editor-base.js"
+            ]
+        },
+
+        "gallery-sm-editor-keys": {
+            "jsfiles": [
+                "js/extensions/editor-keys.js"
+            ]
+        },
+
+        "gallery-sm-editor-undo": {
+            "jsfiles": [
+                "js/extensions/editor-undo.js"
+            ]
         }
     }
 }

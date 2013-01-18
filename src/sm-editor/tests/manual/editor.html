@@ -60,6 +60,16 @@
             <th scope="row">Formatting</th>
             <td id="info-formatting">none</td>
         </tr>
+
+        <tr>
+            <th scope="row">Undo stack</th>
+            <td><span id="info-undo">0</span> entries</td>
+        </tr>
+
+        <tr>
+            <th scope="row">Redo stack</th>
+            <td><span id="info-redo">0</span> entries</td>
+        </tr>
     </table>
 </div>
 
@@ -72,9 +82,16 @@ var editor = window.editor = new Y.Editor({
     html     : 'lorem ipsum <b>dolor <i>sit</i></b> amet'
 });
 
+var infoFormatting = Y.one('#info-formatting'),
+    infoRedo       = Y.one('#info-redo'),
+    infoSelected   = Y.one('#info-selected'),
+    infoUndo       = Y.one('#info-undo');
+
 editor.after('selectionChange', function (e) {
-    Y.one('#info-selected').set('text', e.selection.toString().length);
-    Y.one('#info-formatting').set('text', Y.JSON.stringify(editor.styles(), null, 2));
+    infoFormatting.set('text', Y.JSON.stringify(editor.styles(), null, 4));
+    infoRedo.set('text', editor._redoStack.length);
+    infoSelected.set('text', e.selection.toString().length);
+    infoUndo.set('text', editor._undoStack.length);
 });
 
 editor.render().focus();
