@@ -8,6 +8,10 @@ This repo contains open source YUI components that have been contributed to the
 Modules
 -------
 
+### [gallery-sm-editor](https://github.com/smugmug/yui-gallery/tree/master/src/sm-editor)
+
+A simple but powerful contentEditable-based WYSIWYG editor.
+
 ### [gallery-sm-menu](https://github.com/smugmug/yui-gallery/tree/master/src/sm-menu)
 
 An awesome menu widget that makes it easy to create standalone menus, dropdown

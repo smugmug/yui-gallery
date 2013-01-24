@@ -46,7 +46,7 @@ In your HTML, create a container element for the TreeView. Be sure to add the `y
 Load YUI onto the page if you haven't already.
 
 ```html
-<script src="http://yui.yahooapis.com/3.8.0/build/yui/yui-min.js"></script>
+<script src="http://yui.yahooapis.com/3.8.1/build/yui/yui-min.js"></script>
 ```
 
 Next, in your JS, create an instance of `Y.TreeView`, specify some nodes to add to the tree, then render the view into a container element.

@@ -10,6 +10,11 @@
         font-family: Helvetica, sans-serif;
     }
 
+    #doc {
+        margin: 0 auto;
+        width: 820px;
+    }
+
     #editor {
         font: 20px Georgia;
         height: 300px;
@@ -38,6 +43,7 @@
     #info th {
         padding-right: 5px;
         text-align: right;
+        white-space: nowrap;
     }
 
     #info td { width: 100%; }
@@ -45,32 +51,39 @@
     #info-formatting { white-space: pre-wrap; }
     </style>
 </head>
-<body class="yui3-skin-sam">
+<body>
 
-<div id="editor"></div>
+<div id="doc">
+    <p class="keys">
+        No toolbar yet, but standard editor shortcuts like <kbd>Cmd+B</kbd>,
+        <kbd>Cmd+I</kbd>, <kbd>Cmd+Z</kbd>, etc. all work.
+    </p>
 
-<div id="info">
-    <table>
-        <tr>
-            <th scope="row">Selection</th>
-            <td><span id="info-selected">0</span> chars</td>
-        </tr>
+    <div id="editor" class="yui3-skin-sam"></div>
 
-        <tr>
-            <th scope="row">Formatting</th>
-            <td id="info-formatting">none</td>
-        </tr>
+    <div id="info">
+        <table>
+            <tr>
+                <th scope="row">Selection</th>
+                <td><span id="info-selected">0</span> chars</td>
+            </tr>
 
-        <tr>
-            <th scope="row">Undo stack</th>
-            <td><span id="info-undo">0</span> entries</td>
-        </tr>
+            <tr>
+                <th scope="row">Formatting</th>
+                <td id="info-formatting">none</td>
+            </tr>
 
-        <tr>
-            <th scope="row">Redo stack</th>
-            <td><span id="info-redo">0</span> entries</td>
-        </tr>
-    </table>
+            <tr>
+                <th scope="row">Undo stack</th>
+                <td><span id="info-undo">0</span> entries</td>
+            </tr>
+
+            <tr>
+                <th scope="row">Redo stack</th>
+                <td><span id="info-redo">0</span> entries</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 <script src="/build/yui/yui.js"></script>
