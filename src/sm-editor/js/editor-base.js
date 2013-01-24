@@ -1,5 +1,7 @@
 /*jshint expr:true, onevar:false */
 
+Y.Node.DOM_EVENTS.paste = 1;
+
 /**
 Provides `Y.Editor.Base`, the core implementation of the SmugMug editor.
 
@@ -20,7 +22,14 @@ var doc          = Y.config.doc,
     getClassName = Y.ClassNameManager.getClassName;
 
 /**
-Fires when this editor's selection changes.
+Fired after this editor is rendered.
+
+@event render
+**/
+var EVT_RENDER = 'render';
+
+/**
+Fired when this editor's selection changes.
 
 @event selectionChange
 @param {Range} prevRange Range that was previously selected, or `null` if there
@@ -277,6 +286,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         }
 
         inputNode.set('contentEditable', true);
+        doc.execCommand('styleWithCSS', false, 'true');
 
         // Append the container to the body if it's not already in the document.
         if (!container.inDoc()) {
@@ -287,6 +297,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         this._rendered  = true;
 
         this._updateSelection({silent: true});
+
+        this.fire(EVT_RENDER);
 
         return this;
     },
@@ -378,8 +390,9 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
             selectors = this.selectors;
 
         this._events = [
-            container.delegate('blur', this._onBlur, selectors.input, this),
-            container.delegate('focus', this._onFocus, selectors.input, this)
+            container.delegate('blur',  this._onBlur,  selectors.input, this),
+            container.delegate('focus', this._onFocus, selectors.input, this),
+            container.delegate('paste', this._onPaste, selectors.input, this)
         ];
     },
 
@@ -576,6 +589,16 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         this._selectionMonitor = setInterval(function () {
             self._updateSelection();
         }, 200);
+    },
+
+    /**
+    Handles `paste` events on the editor.
+
+    @method _onPaste
+    @protected
+    **/
+    _onPaste: function () {
+        // TODO: handle paste events!
     }
 }, {
     ATTRS: {
