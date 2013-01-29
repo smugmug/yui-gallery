@@ -1,12 +1,18 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
+        "Editor",
+        "Editor.Base",
+        "Editor.Keys",
+        "Editor.Undo",
         "Menu",
         "Menu.Base",
         "Menu.Item",
         "Menu.Templates",
         "Plugin.Menu",
         "Plugin.Tree.Lazy",
+        "Range",
+        "Selection",
         "Tree",
         "Tree.Node",
         "Tree.Node.Openable",
@@ -16,11 +22,17 @@ YUI.add("yuidoc-meta", function(Y) {
         "TreeView"
     ],
     "modules": [
+        "gallery-sm-editor",
+        "gallery-sm-editor-base",
+        "gallery-sm-editor-keys",
+        "gallery-sm-editor-undo",
         "gallery-sm-menu",
         "gallery-sm-menu-base",
         "gallery-sm-menu-item",
         "gallery-sm-menu-plugin",
         "gallery-sm-menu-templates",
+        "gallery-sm-range",
+        "gallery-sm-selection",
         "gallery-sm-tree",
         "gallery-sm-tree-lazy",
         "gallery-sm-tree-node",
@@ -32,6 +44,26 @@ YUI.add("yuidoc-meta", function(Y) {
         "tree-selectable"
     ],
     "allModules": [
+        {
+            "displayName": "gallery-sm-editor",
+            "name": "gallery-sm-editor",
+            "description": "Provides `Y.Editor`, a simple but powerful WYSIWYG editor."
+        },
+        {
+            "displayName": "gallery-sm-editor-base",
+            "name": "gallery-sm-editor-base",
+            "description": "Provides `Y.Editor.Base`, the core implementation of the SmugMug editor."
+        },
+        {
+            "displayName": "gallery-sm-editor-keys",
+            "name": "gallery-sm-editor-keys",
+            "description": "Provides the `Editor.Keys` extension."
+        },
+        {
+            "displayName": "gallery-sm-editor-undo",
+            "name": "gallery-sm-editor-undo",
+            "description": "Provides the `Editor.Undo` extension."
+        },
         {
             "displayName": "gallery-sm-menu",
             "name": "gallery-sm-menu",
@@ -56,6 +88,16 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "gallery-sm-menu-templates",
             "name": "gallery-sm-menu-templates",
             "description": "Provides templates for `Menu`."
+        },
+        {
+            "displayName": "gallery-sm-range",
+            "name": "gallery-sm-range",
+            "description": "Provides the `Range` class, which normalizes Range behavior across browsers."
+        },
+        {
+            "displayName": "gallery-sm-selection",
+            "name": "gallery-sm-selection",
+            "description": "Provides the `Selection` class, which normalizes text selection functionality\nacross browsers."
         },
         {
             "displayName": "gallery-sm-tree",

@@ -6,6 +6,50 @@
         "url": "https://github.com/smugmug/yui-gallery"
     },
     "files": {
+        "src/sm-editor/js/extensions/editor-keys.js": {
+            "name": "src/sm-editor/js/extensions/editor-keys.js",
+            "modules": {
+                "gallery-sm-editor-keys": 1
+            },
+            "classes": {
+                "Editor.Keys": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-editor/js/extensions/editor-undo.js": {
+            "name": "src/sm-editor/js/extensions/editor-undo.js",
+            "modules": {
+                "gallery-sm-editor-undo": 1
+            },
+            "classes": {
+                "Editor.Undo": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-editor/js/editor-base.js": {
+            "name": "src/sm-editor/js/editor-base.js",
+            "modules": {
+                "gallery-sm-editor-base": 1
+            },
+            "classes": {
+                "Editor.Base": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-editor/js/editor.js": {
+            "name": "src/sm-editor/js/editor.js",
+            "modules": {
+                "gallery-sm-editor": 1
+            },
+            "classes": {
+                "Editor": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/sm-menu/js/plugins/menu-plugin.js": {
             "name": "src/sm-menu/js/plugins/menu-plugin.js",
             "modules": {
@@ -57,6 +101,28 @@
             },
             "classes": {
                 "Menu": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-selection/js/range.js": {
+            "name": "src/sm-selection/js/range.js",
+            "modules": {
+                "gallery-sm-range": 1
+            },
+            "classes": {
+                "Range": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-selection/js/selection.js": {
+            "name": "src/sm-selection/js/selection.js",
+            "modules": {
+                "gallery-sm-selection": 1
+            },
+            "classes": {
+                "Selection": 1
             },
             "fors": {},
             "namespaces": {}
@@ -151,6 +217,72 @@
         }
     },
     "modules": {
+        "gallery-sm-editor": {
+            "name": "gallery-sm-editor",
+            "submodules": {
+                "gallery-sm-editor-keys": 1,
+                "gallery-sm-editor-undo": 1,
+                "gallery-sm-editor-base": 1
+            },
+            "classes": {
+                "Editor.Keys": 1,
+                "Editor.Undo": 1,
+                "Editor.Base": 1,
+                "Editor": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "src/sm-editor/js/editor.js",
+            "line": 10,
+            "description": "Provides `Y.Editor`, a simple but powerful WYSIWYG editor.",
+            "itemtype": "main"
+        },
+        "gallery-sm-editor-keys": {
+            "name": "gallery-sm-editor-keys",
+            "submodules": {},
+            "classes": {
+                "Editor.Keys": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-editor",
+            "namespace": "",
+            "file": "src/sm-editor/js/extensions/editor-keys.js",
+            "line": 10,
+            "description": "Provides the `Editor.Keys` extension."
+        },
+        "gallery-sm-editor-undo": {
+            "name": "gallery-sm-editor-undo",
+            "submodules": {},
+            "classes": {
+                "Editor.Undo": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-editor",
+            "namespace": "",
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 10,
+            "description": "Provides the `Editor.Undo` extension."
+        },
+        "gallery-sm-editor-base": {
+            "name": "gallery-sm-editor-base",
+            "submodules": {},
+            "classes": {
+                "Editor.Base": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-editor",
+            "namespace": "",
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 12,
+            "description": "Provides `Y.Editor.Base`, the core implementation of the SmugMug editor."
+        },
         "gallery-sm-menu": {
             "name": "gallery-sm-menu",
             "submodules": {
@@ -233,6 +365,38 @@
             "file": "src/sm-menu/js/menu-templates.js",
             "line": 8,
             "description": "Provides templates for `Menu`."
+        },
+        "gallery-sm-selection": {
+            "name": "gallery-sm-selection",
+            "submodules": {
+                "gallery-sm-range": 1
+            },
+            "classes": {
+                "Range": 1,
+                "Selection": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "src/sm-selection/js/selection.js",
+            "line": 11,
+            "description": "Provides the `Selection` class, which normalizes text selection functionality\nacross browsers.",
+            "itemtype": "main"
+        },
+        "gallery-sm-range": {
+            "name": "gallery-sm-range",
+            "submodules": {},
+            "classes": {
+                "Range": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-selection",
+            "namespace": "",
+            "file": "src/sm-selection/js/range.js",
+            "line": 15,
+            "description": "Provides the `Range` class, which normalizes Range behavior across browsers."
         },
         "tree-openable": {
             "name": "tree-openable",
@@ -376,6 +540,83 @@
         }
     },
     "classes": {
+        "Editor.Keys": {
+            "name": "Editor.Keys",
+            "shortname": "Editor.Keys",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [
+                "Editor.Base",
+                "Editor"
+            ],
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-keys",
+            "namespace": "",
+            "file": "src/sm-editor/js/extensions/editor-keys.js",
+            "line": 10,
+            "description": "Extension for `Editor.Base` that adds support for configurable keyboard\nshortcuts, including a set of default shortcuts.",
+            "is_constructor": 1,
+            "extends": "Base"
+        },
+        "Editor.Undo": {
+            "name": "Editor.Undo",
+            "shortname": "Editor.Undo",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [
+                "Editor.Base",
+                "Editor"
+            ],
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo",
+            "namespace": "",
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 10,
+            "description": "Extension for `Editor.Base` that adds a cross-browser undo/redo stack.\n\nWhen mixed into an editor that also mixes in the `Editor.Keys` extension, handy\nundo/redo keyboard shortcuts and triggers will be added as well.",
+            "is_constructor": 1,
+            "extends": "Base"
+        },
+        "Editor.Base": {
+            "name": "Editor.Base",
+            "shortname": "Editor.Base",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base",
+            "namespace": "",
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 12,
+            "description": "Base implementation of the SmugMug editor. Provides core editor functionality,\nbut no undo stack, keyboard shortcuts, etc.",
+            "is_constructor": 1,
+            "extends": "View"
+        },
+        "Editor": {
+            "name": "Editor",
+            "shortname": "Editor",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-editor",
+            "namespace": "",
+            "file": "src/sm-editor/js/editor.js",
+            "line": 10,
+            "description": "A simple but powerful WYSIWYG editor.",
+            "is_constructor": 1,
+            "extends": "Editor.Base",
+            "uses": [
+                "Editor.Keys",
+                "Editor.Undo"
+            ]
+        },
         "Plugin.Menu": {
             "name": "Plugin.Menu",
             "shortname": "Plugin.Menu",
@@ -530,6 +771,45 @@
             "uses": [
                 "View"
             ]
+        },
+        "Range": {
+            "name": "Range",
+            "shortname": "Range",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range",
+            "namespace": "",
+            "file": "src/sm-selection/js/range.js",
+            "line": 15,
+            "description": "Provides a friendly cross-browser Range API similar to the API defined in the\nDOM Range specification.",
+            "params": [
+                {
+                    "name": "range",
+                    "description": "Native Range object to wrap. If not provided, a\n    new Range will be created.",
+                    "type": "window.Range",
+                    "optional": true
+                }
+            ],
+            "is_constructor": 1
+        },
+        "Selection": {
+            "name": "Selection",
+            "shortname": "Selection",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-selection",
+            "namespace": "",
+            "file": "src/sm-selection/js/selection.js",
+            "line": 11,
+            "description": "Normalizes text selection functionality across browsers.",
+            "is_constructor": 1
         },
         "Tree.Node.Openable": {
             "name": "Tree.Node.Openable",
@@ -781,6 +1061,839 @@
         }
     },
     "classitems": [
+        {
+            "file": "src/sm-editor/js/extensions/editor-keys.js",
+            "line": 23,
+            "description": "Hash of keyCode values that should be ignored when processing keyboard\nevents.\n\nThis is used to avoid double-handling of modifier keys, since other event\nproperties are used to detect whether modifier keys are pressed.",
+            "itemtype": "property",
+            "name": "ignoreKeyCodes",
+            "type": "Object",
+            "class": "Editor.Keys",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-keys"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-keys.js",
+            "line": 41,
+            "description": "Mapping of keyCode values to friendly names for special keys.",
+            "itemtype": "property",
+            "name": "keyCodeMap",
+            "type": "Object",
+            "class": "Editor.Keys",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-keys"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-keys.js",
+            "line": 72,
+            "description": "Mapping of shortcut keys to function handlers.",
+            "itemtype": "property",
+            "name": "keyCommands",
+            "type": "Object",
+            "class": "Editor.Keys",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-keys"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-keys.js",
+            "line": 103,
+            "description": "Attaches keyboard events.",
+            "itemtype": "method",
+            "name": "_attachKeyEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Keys",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-keys"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-keys.js",
+            "line": 121,
+            "description": "Detaches keyboard events.",
+            "itemtype": "method",
+            "name": "_detachKeyEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Keys",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-keys"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-keys.js",
+            "line": 136,
+            "description": "Handles `keydown` events on this editor.",
+            "itemtype": "method",
+            "name": "_onKeyDown",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Keys",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-keys"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 25,
+            "description": "Key commands related to undo/redo functionality.",
+            "itemtype": "property",
+            "name": "undoKeyCommands",
+            "type": "Object",
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 48,
+            "description": "Array of redoable changes that have previously been undone.",
+            "itemtype": "property",
+            "name": "_redoStack",
+            "type": "Array",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 55,
+            "description": "Array of undoable changes that have been made to this editor.",
+            "itemtype": "property",
+            "name": "_undoStack",
+            "type": "Array",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 86,
+            "description": "Redoes the last change that was undone in this editor.",
+            "itemtype": "method",
+            "name": "redo",
+            "chainable": 1,
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 123,
+            "description": "Undoes the last change made in this editor.",
+            "itemtype": "method",
+            "name": "undo",
+            "chainable": 1,
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 162,
+            "description": "Adds an entry to the undo stack representing the current state of the\neditor.",
+            "itemtype": "method",
+            "name": "_addUndo",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 192,
+            "description": "Adds an entry to the redo stack representing the current state of the\neditor.",
+            "itemtype": "method",
+            "name": "_addRedo",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 222,
+            "description": "Attaches undo events.",
+            "itemtype": "method",
+            "name": "_attachUndoEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 238,
+            "description": "Wrapper for `Editor.Base#_execCommand()`.",
+            "itemtype": "method",
+            "name": "_beforeExecCommand",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Command name.",
+                    "type": "String"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 251,
+            "description": "Detaches undo events.",
+            "itemtype": "method",
+            "name": "_detachUndoEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 266,
+            "description": "Handles editor `render` events.",
+            "itemtype": "method",
+            "name": "_afterRender",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-undo.js",
+            "line": 277,
+            "description": "Number of undo/redo levels to maintain. Lowering this number may reduce\nmemory usage, especially when editing very large documents.",
+            "itemtype": "attribute",
+            "name": "undoLevels",
+            "type": "Number",
+            "default": "20",
+            "class": "Editor.Undo",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-undo"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 24,
+            "description": "Fired after this editor is rendered.",
+            "itemtype": "event",
+            "name": "render",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 31,
+            "description": "Fired when this editor's selection changes.",
+            "itemtype": "event",
+            "name": "selectionChange",
+            "params": [
+                {
+                    "name": "prevRange",
+                    "description": "Range that was previously selected, or `null` if there\n    was no previous selection.",
+                    "type": "Range"
+                },
+                {
+                    "name": "range",
+                    "description": "Range that's now selected, or `null` if the current\n    selection is empty or outside the editor.",
+                    "type": "Range"
+                },
+                {
+                    "name": "selection",
+                    "description": "Reference to this editor's Selection instance.",
+                    "type": "Selection"
+                }
+            ],
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 46,
+            "description": "CSS class names used by this editor.",
+            "itemtype": "property",
+            "name": "classNames",
+            "type": "Object",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base",
+            "subprops": [
+                {
+                    "name": "cursor",
+                    "description": "Class name used for a placeholder node that\n    represents the cursor position.",
+                    "type": "String"
+                },
+                {
+                    "name": "editor",
+                    "description": "Class name used for the editor's container.",
+                    "type": "String"
+                },
+                {
+                    "name": "input",
+                    "description": "Class name used for the WYSIWYG YUI Editor frame that\n    will receive user input.",
+                    "type": "String"
+                }
+            ]
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 62,
+            "description": "`Y.Selection` instance representing the current document selection.\n\nThe selection object's state always reflects the current selection, so it\nwill update when the selection changes. If you need to retain the state of a\npast selection, hold onto a Range instance representing that selection.\n\nAlso, beware: this selection object reflects the current selection in the\nentire browser document, not just within this editor.",
+            "itemtype": "property",
+            "name": "selection",
+            "type": "Selection",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 75,
+            "description": "Hash of style commands supported by this editor.\n\nNames should correspond with valid `execCommand()` command names. Values\nshould be strings specifying the style's type: either 'boolean' or 'string'.",
+            "itemtype": "property",
+            "name": "styleCommands",
+            "type": "Object",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base",
+            "subprops": [
+                {
+                    "name": "bold",
+                    "description": "",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "'boolean'"
+                },
+                {
+                    "name": "italic",
+                    "description": "",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "'boolean'"
+                },
+                {
+                    "name": "fontName",
+                    "description": "",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "'string'"
+                },
+                {
+                    "name": "fontSize",
+                    "description": "",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "'string'"
+                },
+                {
+                    "name": "underline",
+                    "description": "",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "'string'"
+                }
+            ]
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 120,
+            "description": "Removes focus from this editor.",
+            "itemtype": "method",
+            "name": "blur",
+            "chainable": 1,
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 134,
+            "description": "Bolds or unbolds the current selection.",
+            "itemtype": "method",
+            "name": "bold",
+            "chainable": 1,
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 145,
+            "description": "Gets and/or sets the value of the specified editor command.\n\nSee <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>\nfor a list of possible commands.",
+            "itemtype": "method",
+            "name": "command",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Command name.",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "Command value. Use the special value\n    'toggle' to toggle a boolean command (like 'bold') to the opposite of\n    its current state.",
+                    "type": "Boolean|String|null",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Value of the specified command.",
+                "type": "Boolean|String"
+            },
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 166,
+            "description": "Decreases the font size of the current selection (if possible).",
+            "itemtype": "method",
+            "name": "decreaseFontSize",
+            "chainable": 1,
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 182,
+            "description": "Focuses this editor.",
+            "itemtype": "method",
+            "name": "focus",
+            "chainable": 1,
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 196,
+            "description": "Increases the font size of the current selection (if possible).",
+            "itemtype": "method",
+            "name": "increaseFontSize",
+            "chainable": 1,
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 212,
+            "description": "Inserts the specified _html_ at the current selection point, deleting the\ncurrent selection if there is one.",
+            "itemtype": "method",
+            "name": "insertHTML",
+            "params": [
+                {
+                    "name": "html",
+                    "description": "HTML to insert, in the form of an HTML\n    string, HTMLElement, or Node instance.",
+                    "type": "HTML|HTMLElement|Node"
+                }
+            ],
+            "return": {
+                "description": "Node instance representing the inserted HTML.",
+                "type": "Node"
+            },
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 238,
+            "description": "Inserts the specified plain _text_ at the current selection point, deleting\nthe current selection if there is one.",
+            "itemtype": "method",
+            "name": "insertText",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "Text to insert.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Node instance representing the inserted text node.",
+                "type": "Node"
+            },
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 250,
+            "description": "Italicizes or unitalicizes the current selection.",
+            "itemtype": "method",
+            "name": "italic",
+            "chainable": 1,
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 261,
+            "description": "Renders this editor into its container and appends the container to the\ndocument if necessary.",
+            "itemtype": "method",
+            "name": "render",
+            "chainable": 1,
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 306,
+            "description": "Gets and/or sets the value of the specified editor style command. This\nmethod is similar to `command()`, but only supports a subset of\nstyle-related commands.\n\nSee the `styleCommands` property for a list of supported style commands.",
+            "itemtype": "method",
+            "name": "style",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Command name.",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "Command value. Use the special value\n    'toggle' to toggle a boolean command (like 'bold') to the opposite of\n    its current state.",
+                    "type": "Boolean|String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Value of the specified command.",
+                "type": "Boolean|String"
+            },
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 329,
+            "description": "Gets and/or sets the values of multiple editor style commands.\n\nWhen called without an argument, the current values of all supported style\ncommands will be returned. When called with a _styles_ object, the specified\nstyle commands will be set to their given values, and the resulting new\nvalues will be returned.",
+            "itemtype": "method",
+            "name": "styles",
+            "params": [
+                {
+                    "name": "styles",
+                    "description": "Hash of style names and values to set.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Hash of style names and values that were set, or all styles\n    if no _styles_ parameter was specified.",
+                "type": "Object"
+            },
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 365,
+            "description": "Toggles underline on the current selection.",
+            "itemtype": "method",
+            "name": "underline",
+            "chainable": 1,
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 378,
+            "description": "Attaches editor events.",
+            "itemtype": "method",
+            "name": "_attachEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 399,
+            "description": "Detaches editor events.",
+            "itemtype": "method",
+            "name": "_detachEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 412,
+            "description": "Wrapper for native the native `execCommand()` that verifies that the command\nis valid in the current state and normalizes boolean/toggleable values.",
+            "itemtype": "method",
+            "name": "_execCommand",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Command name.",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "Command value.",
+                    "type": "Boolean|String"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 441,
+            "description": "Getter for the `html` attribute.",
+            "itemtype": "method",
+            "name": "_getHTML",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "Internal value.",
+                    "type": "HTML"
+                }
+            ],
+            "return": {
+                "description": "HTML.",
+                "type": "HTML"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 453,
+            "description": "Getter for the `text` attribute.",
+            "itemtype": "method",
+            "name": "_getText",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "Internal value.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Text.",
+                "type": "String"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 465,
+            "description": "Inserts a `<span>` at the current selection point containing a preformatted\ntab character.",
+            "itemtype": "method",
+            "name": "_insertTab",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 476,
+            "description": "Wrapper for the native `queryCommandState()` and `queryCommandValue()`\nmethods that uses the appropriate method for the given command type.",
+            "itemtype": "method",
+            "name": "_queryCommandValue",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Command name.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Command value.",
+                "type": "Boolean|String"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 490,
+            "description": "Setter for the `html` attribute.",
+            "itemtype": "method",
+            "name": "_setHTML",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "HTML.",
+                    "type": "HTML"
+                }
+            ],
+            "return": {
+                "description": "HTML.",
+                "type": "HTML"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 506,
+            "description": "Setter for the `text` attribute.",
+            "itemtype": "method",
+            "name": "_setText",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "Text.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Text.",
+                "type": "String"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 522,
+            "description": "Refreshes the editor's internal knowledge of the current document selection\nstate and fires a `selectionChange` event if the selection has changed since\nit was last refreshed.",
+            "itemtype": "method",
+            "name": "_updateSelection",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the `selectionChange`\n        event will be suppressed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 557,
+            "description": "Handles `blur` events on the editor.",
+            "itemtype": "method",
+            "name": "_onBlur",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 572,
+            "description": "Handles `focus` events on the editor.",
+            "itemtype": "method",
+            "name": "_onFocus",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 594,
+            "description": "Handles `paste` events on the editor.",
+            "itemtype": "method",
+            "name": "_onPaste",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 605,
+            "description": "HTML content of this editor.",
+            "itemtype": "attribute",
+            "name": "html",
+            "type": "HTML",
+            "default": "''",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 617,
+            "description": "Form field name to use for the hidden `<textarea>` that contains the raw\noutput of the editor in the configured output format. This name will\nonly be used if the output node doesn't already have a name when the\neditor is rendered.\n\nYou may need to customize this if you plan to use the editor in a form\nthat will be submitted to a server.",
+            "itemtype": "attribute",
+            "name": "outputName",
+            "type": "String",
+            "default": "'editor'",
+            "initonly": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 635,
+            "description": "Text content of this editor, with no HTML.",
+            "itemtype": "attribute",
+            "name": "text",
+            "type": "String",
+            "default": "''",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
         {
             "file": "src/sm-menu/js/plugins/menu-plugin.js",
             "line": 51,
@@ -2028,6 +3141,516 @@
             "default": "false",
             "class": "Menu",
             "module": "gallery-sm-menu"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 39,
+            "description": "Returns a new Range object with the same boundary points as this range.\n\nThe returned Range is a copy, not a reference, so modifying it will not\naffect this range (and vice versa).",
+            "itemtype": "method",
+            "name": "clone",
+            "return": {
+                "description": "New Range object with the same boundary points as this\n    range.",
+                "type": "Range"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 55,
+            "description": "Returns a Node instance containing a document fragment with a copy of this\nrange's contents.\n\nEvent listeners are not copied.\n\nElement ids _are_ copied. This could lead to duplicate ids, so be careful.\n\nPartially selected nodes will include parent tags to ensure that the\nfragment is valid.",
+            "itemtype": "method",
+            "name": "cloneContents",
+            "return": {
+                "description": "Node instance containing a document fragment with a copy of\n    this range's contents.",
+                "type": "Node"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 76,
+            "description": "Collapses this range by setting the start and end points to the same\nposition, thus resulting in an empty range.",
+            "itemtype": "method",
+            "name": "collapse",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "toStart",
+                            "description": "If `true`, this range will be\n        collapsed by moving the end point to the start point. Otherwise, the\n        start point will be moved to the end point.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 92,
+            "description": "Compares the start or end boundary of this range with the start or end\nboundary of another range.",
+            "itemtype": "method",
+            "name": "compare",
+            "params": [
+                {
+                    "name": "otherRange",
+                    "description": "Range to compare to.",
+                    "type": "Range"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "myPoint",
+                            "description": "Specifies which boundary point\n        on this range should be used for the comparison. Valid values are\n        'start' to use this range's start point for the comparison, or 'end'\n        to use this range's end point.",
+                            "type": "String",
+                            "optional": true,
+                            "optdefault": "'start'"
+                        },
+                        {
+                            "name": "otherPoint",
+                            "description": "Specifies which boundary\n        point on _otherRange_ should be used for the comparison. Valid\n        values are 'start' to use _otherRange_'s start point for the\n        comparison, or 'end' to use _otherRange_'s end point.",
+                            "type": "String",
+                            "optional": true,
+                            "optdefault": "'start'"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "-1, 0, or 1, indicating whether this range's boundary is\n    respectively before, equal to, or after the other range's boundary.",
+                "type": "Number"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 130,
+            "description": "Removes the contents of this range from the DOM.",
+            "itemtype": "method",
+            "name": "deleteContents",
+            "chainable": 1,
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 143,
+            "description": "Gets or sets the node that contains the end point of this range.\n\nWhen specifying an _offset_, you may specify either a number or the string\n\"before\" or \"after\".\n\nA numerical offset will position the end point at that offset inside the\n_node_. If _node_ is a text node, the offset will represent a character\nposition. If _node_ can contain child nodes, then the offset will represent\na child index.\n\nThe offset \"before\" will cause the end point to be placed immediately before\n_node_ (not inside it).\n\nThe offset \"after\" will cause the end point to be placed immediately after\n_node_ (not inside it).",
+            "itemtype": "method",
+            "name": "endNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node to set the end point to. May be\n    specified as a Node instance, HTMLElement, or selector string. If not\n    specified, the current end point will be returned.",
+                    "type": "HTMLElement|Node|String",
+                    "optional": true
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset position of the new end point\n    relative to the _node_. If this is a number, it will be used as an\n    offset position inside _node_. To specify a position immediately before\n    _node_, use the string \"before\". To specify a position immediately after\n    _node_, use the string \"after\".",
+                    "type": "Number|String",
+                    "optional": true,
+                    "optdefault": "0"
+                }
+            ],
+            "return": {
+                "description": "Node that contains the end point of this range.",
+                "type": "Node"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 191,
+            "description": "Gets or sets the offset of this selection's end position inside the end\nnode.\n\nIf the end node is a text node, the offset represents a character position.\nIf the end node can contain child nodes, then the offset represents a child\nindex.\n\nWhen setting an offset, you may use a numerical offset (which behaves as\ndescribed above) or the string \"before\" or \"after\".\n\nThe offset \"before\" will cause the end point to be placed immediately before\nthe current end node (not inside it).\n\nThe offset \"after\" will cause the end point to be placed immediately after\nthe current end node (not inside it).\n\nNote that setting a \"before\" or \"after\" offset will change the end node. To\nget the new end node, call `endNode()`.",
+            "itemtype": "method",
+            "name": "endOffset",
+            "params": [
+                {
+                    "name": "offset",
+                    "description": "Offset position of the new end point\n    relative to the current end node. If this is a number, it will be used\n    as an offset position inside the node. To specify a position immediately\n    before the node, use the string \"before\". To specify a position\n    immediately after the node, use the string \"after\".",
+                    "type": "Number|String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Offset of this selection's end position inside the end\n    node.",
+                "type": "Number"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 230,
+            "description": "Moves this range's contents into a document fragment and returns a Node\ninstance containing that fragment.\n\nEvent listeners are not retained.\n\nIf this range splits a non-text element, the resulting fragment will include\na clone of that element, including its id (if it has one). This could lead\nto duplicate ids, so be careful.",
+            "itemtype": "method",
+            "name": "extractContents",
+            "return": {
+                "description": "Node instance containing a document fragment with this\n    range's contents.",
+                "type": "Node"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 250,
+            "description": "Inserts a node at the start of this range.",
+            "itemtype": "method",
+            "name": "insertNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node instance, HTMLElement, or\n    selector string of a node to insert.",
+                    "type": "HTMLElement|Node|String"
+                }
+            ],
+            "return": {
+                "description": "Inserted node.",
+                "type": "Node"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 266,
+            "description": "Returns `true` if this range is collapsed, `false` otherwise.\n\nA `true` value means that the start and end points are the same and the\nrange is empty, whereas a `false` value means that the start and end points\nare different and the range is not empty.",
+            "itemtype": "method",
+            "name": "isCollapsed",
+            "return": {
+                "description": "`true` if this range is collapsed, `false` otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 282,
+            "description": "Returns `true` if this range has the same boundaries as _otherRange_,\n`false` otherwise.",
+            "itemtype": "method",
+            "name": "isEquivalent",
+            "params": [
+                {
+                    "name": "otherRange",
+                    "description": "Range to compare this range to.",
+                    "type": "Range"
+                }
+            ],
+            "return": {
+                "description": "`true` if this range has the same boundaries as\n    _otherRange_, `false` otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 296,
+            "description": "Returns `true` if this range is entirely contained within the given _node_.",
+            "itemtype": "method",
+            "name": "isInsideNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node instance, HTML element, or\n    selector string of the container.",
+                    "type": "HTMLElement|Node|String"
+                }
+            ],
+            "return": {
+                "description": "`true` if this range is entirely contained within the\n    given _node_, `false` otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 322,
+            "description": "Returns the nearest common ancestor node that fully contains all nodes\nwithin this range.",
+            "itemtype": "method",
+            "name": "parentNode",
+            "return": {
+                "description": "Nearest common ancestor node that fully contains all nodes\n    within this range.",
+                "type": "Node"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 336,
+            "description": "Gets or sets the node that contains the start point of this range.\n\nWhen specifying an _offset_, you may specify either a number or the string\n\"before\" or \"after\".\n\nA numerical offset will position the start point at that offset inside the\n_node_. If _node_ is a text node, the offset will represent a character\nposition. If _node_ can contain child nodes, then the offset will represent\na child index.\n\nThe offset \"before\" will cause the start point to be placed immediately\nbefore _node_ (not inside it).\n\nThe offset \"after\" will cause the start point to be placed immediately after\n_node_ (not inside it).",
+            "itemtype": "method",
+            "name": "startNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node to set the start point to. May\n    be specified as a Node instance, HTMLElement, or selector string. If not\n    specified, the current start point will be returned.",
+                    "type": "HTMLElement|Node|String",
+                    "optional": true
+                },
+                {
+                    "name": "offset",
+                    "description": "Offset position of the new start point\n    relative to the _node_. If this is a number, it will be used as an\n    offset position inside _node_. To specify a position immediately before\n    _node_, use the string \"before\". To specify a position immediately after\n    _node_, use the string \"after\".",
+                    "type": "Number|String",
+                    "optional": true,
+                    "optdefault": "0"
+                }
+            ],
+            "return": {
+                "description": "Node that contains the start point of this range.",
+                "type": "Node"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 384,
+            "description": "Gets or sets the offset of this range's start position inside the start\nnode.\n\nIf the start node is a text node, the offset represents a character\nposition. If the start node can contain child nodes, then the offset\nrepresents a child index.\n\nWhen setting an offset, you may use a numerical offset (which behaves as\ndescribed above) or the string \"before\" or \"after\".\n\nThe offset \"before\" will cause the start point to be placed immediately\nbefore the current start node (not inside it).\n\nThe offset \"after\" will cause the start point to be placed immediately after\nthe current start node (not inside it).\n\nNote that setting a \"before\" or \"after\" offset will change the start node.\nTo get the new start node, call `startNode()`.",
+            "itemtype": "method",
+            "name": "startOffset",
+            "params": [
+                {
+                    "name": "offset",
+                    "description": "Offset position of the new start point\n    relative to the current start node. If this is a number, it will be used\n    as an offset position inside the node. To specify a position immediately\n    before the node, use the string \"before\". To specify a position\n    immediately after the node, use the string \"after\".",
+                    "type": "Number|String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Offset of this range's start position inside the start\n    node.",
+                "type": "Number"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 423,
+            "description": "Returns the HTML content of this range.",
+            "itemtype": "method",
+            "name": "toHTML",
+            "return": {
+                "description": "HTML content of this range.",
+                "type": "HTML"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 438,
+            "description": "Returns the plain text content of this range.",
+            "itemtype": "method",
+            "name": "toString",
+            "return": {
+                "description": "Plain text content of this range.",
+                "type": "String"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 450,
+            "description": "Traverses the contents of the range, passing each node and its children to\nthe supplied callback in document order.\n\nFor example, if the range includes the following HTML...\n\n    lorem ipsum <b>dolor <i>sit</i></b> amet\n\n...then this `traverse()` call...\n\n    range.traverse(function (node) {\n        console.log(Y.Node.getDOMNode(node));\n    });\n\n...would result in the following console output:\n\n    \"lorem ipsum \"\n    <b> element\n    \"dolor \"\n    <i> element\n    \"sit\"\n    \" amet\"\n\nThe entire start and end node will be included even if the range only\nincludes a portion of them. Use the `startOffset()` and `endOffset()`\nmethods to determine where the precise boundaries are if necessary.",
+            "itemtype": "method",
+            "name": "traverse",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "Callback function.",
+                    "type": "Function",
+                    "props": [
+                        {
+                            "name": "node",
+                            "description": "Node instance.",
+                            "type": "Node"
+                        }
+                    ]
+                },
+                {
+                    "name": "thisObj",
+                    "description": "`this` object to use when calling the callback\n    function.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 528,
+            "description": "Wraps this range in the specified HTML and returns the new wrapper node.",
+            "itemtype": "method",
+            "name": "wrap",
+            "params": [
+                {
+                    "name": "html",
+                    "description": "HTML string.",
+                    "type": "HTML"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "includeWrapper",
+                            "description": "If `true`, this range\n        will be updated to include the new wrapper node.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "New wrapper node.",
+                "type": "Node"
+            },
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/selection.js",
+            "line": 59,
+            "description": "Returns the `Range` instance at the specified _index_, or the first range in\nthis selection if no index is specified. If no ranges are selected, returns\n`null`.",
+            "itemtype": "method",
+            "name": "range",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "Range index.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "0"
+                }
+            ],
+            "return": {
+                "description": "Range instance at the specified _index_, or the first range\n    in this selection if no index is specified. If no ranges are selected,\n    returns `null`.",
+                "type": "Range"
+            },
+            "class": "Selection",
+            "module": "gallery-sm-selection"
+        },
+        {
+            "file": "src/sm-selection/js/selection.js",
+            "line": 77,
+            "description": "Returns an array containing all the ranges in this selection.",
+            "itemtype": "method",
+            "name": "ranges",
+            "return": {
+                "description": "Array containing all the ranges in this selection.",
+                "type": "Range[]"
+            },
+            "class": "Selection",
+            "module": "gallery-sm-selection"
+        },
+        {
+            "file": "src/sm-selection/js/selection.js",
+            "line": 93,
+            "description": "Selects the specified _range_.\n\nBy default, this will result in only this range being selected. If\n`options.multi` is truthy, then the _range_ will be added to the current\nselection without first unselecting any other selected ranges.",
+            "itemtype": "method",
+            "name": "select",
+            "params": [
+                {
+                    "name": "range",
+                    "description": "Range to select.",
+                    "type": "Range"
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "multi",
+                            "description": "If `true`, the specified _range_\n        will be added to the current list of selected ranges instead of\n        replacing the current selection.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Selection",
+            "module": "gallery-sm-selection"
+        },
+        {
+            "file": "src/sm-selection/js/selection.js",
+            "line": 119,
+            "description": "Removes the specified _range_ from this selection, or unselects all ranges\nif no _range_ is specified.",
+            "itemtype": "method",
+            "name": "unselect",
+            "params": [
+                {
+                    "name": "range",
+                    "description": "Range to unselect.",
+                    "type": "Range",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "class": "Selection",
+            "module": "gallery-sm-selection"
+        },
+        {
+            "file": "src/sm-selection/js/selection.js",
+            "line": 142,
+            "description": "Returns a string representation of the combined text content of all the\nranges in this selection.",
+            "itemtype": "method",
+            "name": "toString",
+            "return": {
+                "description": "String representation of the combined text content of all\n    the ranges in this selection.",
+                "type": "String"
+            },
+            "class": "Selection",
+            "module": "gallery-sm-selection"
         },
         {
             "file": "src/sm-tree/js/extensions/tree-node-openable.js",
