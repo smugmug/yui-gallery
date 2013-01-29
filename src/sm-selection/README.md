@@ -1,39 +1,17 @@
-SmugMug YUI Gallery Modules
-===========================
+SmugMug Selection Utility
+=========================
 
-This repo contains open source YUI components that have been contributed to the
-[YUI Gallery](http://yuilibrary.com/gallery/) by
-[SmugMug](http://www.smugmug.com).
+Normalizes Selection/Range behavior across browsers.
 
-Modules
--------
+Usage
+-----
 
-### [gallery-sm-editor](https://github.com/smugmug/yui-gallery/tree/master/src/sm-editor)
-
-_Work in progress_. A simple but powerful contentEditable-based WYSIWYG editor.
-
-### [gallery-sm-menu](https://github.com/smugmug/yui-gallery/tree/master/src/sm-menu)
-
-An awesome menu widget that makes it easy to create standalone menus, dropdown
-menus, and context menus.
-
-### [gallery-sm-selection](https://github.com/smugmug/yui-gallery/tree/master/src/sm-selection)
-
-_Work in progress_. Cross-browser Selection and Range APIs.
-
-### [gallery-sm-tree](https://github.com/smugmug/yui-gallery/tree/master/src/sm-tree)
-
-A generic tree data structure. This component powers the gallery-sm-menu and
-gallery-sm-treeview components under the hood.
-
-### [gallery-sm-treeview](https://github.com/smugmug/yui-gallery/tree/master/src/sm-treeview)
-
-A powerful, easy to use, and extremely fast TreeView widget.
+You can't use it yet. It's not finished!
 
 Documentation
 --------------
 
-* [API Docs](http://smugmug.github.com/yui-gallery/api/)
+* [API Docs](http://smugmug.github.com/yui-gallery/api/modules/gallery-sm-selection.html)
 
 License
 -------

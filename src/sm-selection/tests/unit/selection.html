@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test Page</title>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="log"></div>
+<div id="test" style="margin-top: 1em;"></div>
+
+
+<script src="/build/yui/yui.js"></script>
+<script>
+var Y = YUI({
+    filter: (window.location.search.match(/[?&]filter=([^&]+)/) || [])[1] || 'raw',
+
+    coverage: [
+        'gallery-sm-range',
+        'gallery-sm-selection'
+    ],
+
+    modules: {
+        'range-test': {
+            fullpath: 'assets/range-test.js',
+            requires: ['gallery-sm-range', 'node', 'test']
+        },
+
+        'selection-test': {
+            fullpath: 'assets/selection-test.js',
+            requires: ['gallery-sm-selection', 'test']
+        }
+    },
+
+    useBrowserConsole: false
+}).use('range-test', 'selection-test', 'test-console', function (Y) {
+    new Y.Test.Console().render('#log');
+
+    Y.Test.Runner.add(Y.RangeTestSuite);
+    // Y.Test.Runner.add(Y.SelectionTestSuite);
+
+    Y.Test.Runner.run();
+});
+</script>
+
+</body>
+</html>

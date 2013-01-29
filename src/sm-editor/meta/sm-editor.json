@@ -1,0 +1,33 @@
+{
+    "gallery-sm-editor": {
+        "requires": [
+            "gallery-sm-editor-base",
+            "gallery-sm-editor-keys",
+            "gallery-sm-editor-undo"
+        ],
+
+        "skinnable": true
+    },
+
+    "gallery-sm-editor-base": {
+        "requires": [
+            "base-build",
+            "classnamemanager",
+            "event-focus",
+            "gallery-sm-selection",
+            "view"
+        ]
+    },
+
+    "gallery-sm-editor-keys": {
+        "requires": [
+            "gallery-sm-editor-base"
+        ]
+    },
+
+    "gallery-sm-editor-undo": {
+        "requires": [
+            "gallery-sm-editor-base"
+        ]
+    }
+}

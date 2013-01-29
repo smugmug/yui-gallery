@@ -1,0 +1,17 @@
+{
+    "name": "gallery-sm-selection",
+
+    "builds": {
+        "gallery-sm-range": {
+            "jsfiles": [
+                "js/range.js"
+            ]
+        },
+
+        "gallery-sm-selection": {
+            "jsfiles": [
+                "js/selection.js"
+            ]
+        }
+    }
+}

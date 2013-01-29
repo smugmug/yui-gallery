@@ -1,0 +1,13 @@
+{
+    "gallery-sm-range": {
+        "requires": [
+            "node-base"
+        ]
+    },
+
+    "gallery-sm-selection": {
+        "requires": [
+            "gallery-sm-range"
+        ]
+    }
+}
