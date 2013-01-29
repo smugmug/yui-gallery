@@ -37,18 +37,18 @@ Selection.prototype = {
         throw new Error('Not yet implemented.');
     },
 
-    anchorOffset: function () {},
+    // anchorOffset: function () {},
 
     // collapse (toStart/toEnd)
     // containsNode
     // deleteFromDocument
     // extend
 
-    focusNode: function () {},
+    // focusNode: function () {},
 
-    focusOffset: function () {},
+    // focusOffset: function () {},
 
-    isCollapsed: function () {},
+    // isCollapsed: function () {},
 
     // modify
 

@@ -19,6 +19,8 @@ Provides a friendly cross-browser Range API similar to the API defined in the
 DOM Range specification.
 
 @class Range
+@param {window.Range} [range] Native Range object to wrap. If not provided, a
+    new Range will be created.
 @constructor
 **/
 
@@ -107,8 +109,8 @@ Range.prototype = {
             values are 'start' to use _otherRange_'s start point for the
             comparison, or 'end' to use _otherRange_'s end point.
 
-    @return {Number} -1, 0, or 1, indicating whether the other range's boundary
-        is respectively before, equal to, or after this range's boundary.
+    @return {Number} -1, 0, or 1, indicating whether this range's boundary is
+        respectively before, equal to, or after the other range's boundary.
     **/
     compare: isHTML5 ? function (otherRange, options) {
         // Make sure we're working with a native range, not a YUI range.
@@ -116,13 +118,11 @@ Range.prototype = {
             otherRange = otherRange._range;
         }
 
-        options = Y.merge({
-            myPoint   : 'start',
-            otherPoint: 'start'
-        }, options);
+        var myPoint    = (options && options.myPoint) || 'start',
+            otherPoint = (options && options.otherPoint) || 'start';
 
-        var how = win.Range[options.myPoint.toUpperCase() + '_TO_' +
-                    options.otherPoint.toUpperCase()];
+        var how = win.Range[otherPoint.toUpperCase() + '_TO_' +
+                    myPoint.toUpperCase()];
 
         return this._range.compareBoundaryPoints(how, otherRange);
     } : function () {
@@ -176,7 +176,7 @@ Range.prototype = {
 
             offset || (offset = 0);
 
-            if (typeof offset === Number) {
+            if (typeof offset === 'number') {
                 this._range.setEnd(el, offset);
             } else if (offset === 'before') {
                 this._range.setEndBefore(el);
@@ -369,7 +369,7 @@ Range.prototype = {
 
             offset || (offset = 0);
 
-            if (typeof offset === Number) {
+            if (typeof offset === 'number') {
                 this._range.setStart(el, offset);
             } else if (offset === 'before') {
                 this._range.setStartBefore(el);
@@ -559,7 +559,7 @@ Range.prototype = {
             this._range.selectNodeContents(container);
         }
 
-        return container;
+        return Y.one(container);
     } : function (html) {
         throw new Error('Not yet implemented.');
     }
