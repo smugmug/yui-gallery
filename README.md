@@ -10,12 +10,16 @@ Modules
 
 ### [gallery-sm-editor](https://github.com/smugmug/yui-gallery/tree/master/src/sm-editor)
 
-A simple but powerful contentEditable-based WYSIWYG editor.
+_Work in progress_. A simple but powerful contentEditable-based WYSIWYG editor.
 
 ### [gallery-sm-menu](https://github.com/smugmug/yui-gallery/tree/master/src/sm-menu)
 
 An awesome menu widget that makes it easy to create standalone menus, dropdown
 menus, and context menus.
+
+### [gallery-sm-selection](https://github.com/smugmug/yui-gallery/tree/master/src/sm-selection)
+
+_Work in progress_. Cross-browser Selection and Range APIs.
 
 ### [gallery-sm-tree](https://github.com/smugmug/yui-gallery/tree/master/src/sm-tree)
 
