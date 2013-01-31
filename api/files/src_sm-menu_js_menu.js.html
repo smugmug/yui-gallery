@@ -176,10 +176,11 @@ Menu widget.
 
 @class Menu
 @constructor
-@param {HTMLElement|Node|String} [sourceNode] Node instance, HTML element, or
-    selector string for a node (usually a &#x60;&lt;ul&gt;&#x60; or &#x60;&lt;ol&gt;&#x60;) whose structure
-    should be parsed and used to generate this menu&#x27;s contents. This node will
-    be removed from the DOM after being parsed.
+@param {Object} [config] Config options.
+@param {HTMLElement|Node|String} [config.sourceNode] Node instance, HTML
+    element, or selector string for a node (usually a &#x60;&lt;ul&gt;&#x60; or &#x60;&lt;ol&gt;&#x60;) whose
+    structure should be parsed and used to generate this menu&#x27;s contents. This
+    node will be removed from the DOM after being parsed.
 @extends Menu.Base
 @uses View
 **&#x2F;
