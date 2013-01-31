@@ -1090,7 +1090,7 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
             clearTimeout(this._timeouts.menu);
 
             e.item.toggle();
-        } else {
+        } else if (this.get('hideOnClick')) {
             this.closeSubMenus();
             this.hide();
         }
@@ -1143,6 +1143,17 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
             valueFn: function () {
                 return ['tl-bl', 'tr-br', 'bl-tl', 'br-tr'];
             }
+        },
+
+        /**
+        If `true`, this menu will be hidden when the user clicks on a menu item
+        that doesn't contain a submenu.
+
+        @attribute {Boolean} hideOnClick
+        @default true
+        **/
+        hideOnClick: {
+            value: true
         },
 
         /**
