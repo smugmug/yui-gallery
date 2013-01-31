@@ -14,10 +14,11 @@ Menu widget.
 
 @class Menu
 @constructor
-@param {HTMLElement|Node|String} [sourceNode] Node instance, HTML element, or
-    selector string for a node (usually a `<ul>` or `<ol>`) whose structure
-    should be parsed and used to generate this menu's contents. This node will
-    be removed from the DOM after being parsed.
+@param {Object} [config] Config options.
+@param {HTMLElement|Node|String} [config.sourceNode] Node instance, HTML
+    element, or selector string for a node (usually a `<ul>` or `<ol>`) whose
+    structure should be parsed and used to generate this menu's contents. This
+    node will be removed from the DOM after being parsed.
 @extends Menu.Base
 @uses View
 **/
@@ -345,47 +346,47 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
         htmlNode.toggleClass(classNames.hidden, isHidden);
 
         switch (item.type) {
-            case 'separator':
-                htmlNode.set('role', 'separator');
-                break;
+        case 'separator':
+            htmlNode.set('role', 'separator');
+            break;
 
-            case 'item':
-            case 'heading':
-                var labelNode = htmlNode.one('.' + classNames.label),
-                    labelId   = labelNode.get('id');
+        case 'item':
+        case 'heading':
+            var labelNode = htmlNode.one('.' + classNames.label),
+                labelId   = labelNode.get('id');
 
-                labelNode.setHTML(item.label);
+            labelNode.setHTML(item.label);
 
-                if (!labelId) {
-                    labelId = Y.guid();
-                    labelNode.set('id', labelId);
-                }
+            if (!labelId) {
+                labelId = Y.guid();
+                labelNode.set('id', labelId);
+            }
 
-                htmlNode.set('aria-labelledby', labelId);
+            htmlNode.set('aria-labelledby', labelId);
 
-                if (item.type === 'heading') {
-                    htmlNode.set('role', 'heading');
-                } else {
-                    htmlNode.set('role', 'menuitem');
+            if (item.type === 'heading') {
+                htmlNode.set('role', 'heading');
+            } else {
+                htmlNode.set('role', 'menuitem');
 
-                    htmlNode.toggleClass(classNames.disabled, item.isDisabled());
+                htmlNode.toggleClass(classNames.disabled, item.isDisabled());
 
-                    if (item.canHaveChildren) {
-                        htmlNode.addClass(classNames.canHaveChildren);
-                        htmlNode.toggleClass(classNames.open, item.isOpen());
+                if (item.canHaveChildren) {
+                    htmlNode.addClass(classNames.canHaveChildren);
+                    htmlNode.toggleClass(classNames.open, item.isOpen());
 
-                        if (item.hasChildren()) {
-                            htmlNode.addClass(classNames.hasChildren);
+                    if (item.hasChildren()) {
+                        htmlNode.addClass(classNames.hasChildren);
 
-                            if (options.renderChildren) {
-                                this.renderChildren(item, {
-                                    container: htmlNode
-                                });
-                            }
+                        if (options.renderChildren) {
+                            this.renderChildren(item, {
+                                container: htmlNode
+                            });
                         }
                     }
                 }
-                break;
+            }
+            break;
         }
 
         if (options.container) {
@@ -1212,6 +1213,7 @@ Y.Menu = Y.mix(Menu, Y.Menu);
 }, '@VERSION@', {
     "requires": [
         "classnamemanager",
+        "escape",
         "event-hover",
         "gallery-sm-menu-base",
         "gallery-sm-menu-templates",
