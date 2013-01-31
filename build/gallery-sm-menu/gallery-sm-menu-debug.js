@@ -14,10 +14,11 @@ Menu widget.
 
 @class Menu
 @constructor
-@param {HTMLElement|Node|String} [sourceNode] Node instance, HTML element, or
-    selector string for a node (usually a `<ul>` or `<ol>`) whose structure
-    should be parsed and used to generate this menu's contents. This node will
-    be removed from the DOM after being parsed.
+@param {Object} [config] Config options.
+@param {HTMLElement|Node|String} [config.sourceNode] Node instance, HTML
+    element, or selector string for a node (usually a `<ul>` or `<ol>`) whose
+    structure should be parsed and used to generate this menu's contents. This
+    node will be removed from the DOM after being parsed.
 @extends Menu.Base
 @uses View
 **/
@@ -52,6 +53,7 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
         hasChildren    : getClassName('menu-has-children'),
         heading        : getClassName('menu-heading'),
         hidden         : getClassName('menu-hidden'),
+        horizontal     : getClassName('menu-horizontal'),
         item           : getClassName('menu-item'),
         label          : getClassName('menu-label'),
         menu           : getClassName('menu'),
@@ -59,7 +61,8 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
         open           : getClassName('menu-open'),
         selected       : getClassName('menu-selected'),
         separator      : getClassName('menu-separator'),
-        touch          : getClassName('menu-touch')
+        touch          : getClassName('menu-touch'),
+        vertical       : getClassName('menu-vertical')
     },
 
     /**
@@ -235,15 +238,17 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
     @chainable
     **/
     render: function () {
-        var container = this.get('container');
+        var classNames = this.classNames,
+            container  = this.get('container');
 
-        container.addClass(this.classNames.menu);
+        container.addClass(classNames.menu);
+        container.addClass(classNames[this.get('orientation')]);
 
         // Detect touchscreen devices.
         if ('ontouchstart' in Y.config.win) {
-            container.addClass(this.classNames.touch);
+            container.addClass(classNames.touch);
         } else {
-            container.addClass(this.classNames.noTouch);
+            container.addClass(classNames.noTouch);
         }
 
         this._childrenNode = this.renderChildren(this.rootNode, {
@@ -345,47 +350,47 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
         htmlNode.toggleClass(classNames.hidden, isHidden);
 
         switch (item.type) {
-            case 'separator':
-                htmlNode.set('role', 'separator');
-                break;
+        case 'separator':
+            htmlNode.set('role', 'separator');
+            break;
 
-            case 'item':
-            case 'heading':
-                var labelNode = htmlNode.one('.' + classNames.label),
-                    labelId   = labelNode.get('id');
+        case 'item':
+        case 'heading':
+            var labelNode = htmlNode.one('.' + classNames.label),
+                labelId   = labelNode.get('id');
 
-                labelNode.setHTML(item.label);
+            labelNode.setHTML(item.label);
 
-                if (!labelId) {
-                    labelId = Y.guid();
-                    labelNode.set('id', labelId);
-                }
+            if (!labelId) {
+                labelId = Y.guid();
+                labelNode.set('id', labelId);
+            }
 
-                htmlNode.set('aria-labelledby', labelId);
+            htmlNode.set('aria-labelledby', labelId);
 
-                if (item.type === 'heading') {
-                    htmlNode.set('role', 'heading');
-                } else {
-                    htmlNode.set('role', 'menuitem');
+            if (item.type === 'heading') {
+                htmlNode.set('role', 'heading');
+            } else {
+                htmlNode.set('role', 'menuitem');
 
-                    htmlNode.toggleClass(classNames.disabled, item.isDisabled());
+                htmlNode.toggleClass(classNames.disabled, item.isDisabled());
 
-                    if (item.canHaveChildren) {
-                        htmlNode.addClass(classNames.canHaveChildren);
-                        htmlNode.toggleClass(classNames.open, item.isOpen());
+                if (item.canHaveChildren) {
+                    htmlNode.addClass(classNames.canHaveChildren);
+                    htmlNode.toggleClass(classNames.open, item.isOpen());
 
-                        if (item.hasChildren()) {
-                            htmlNode.addClass(classNames.hasChildren);
+                    if (item.hasChildren()) {
+                        htmlNode.addClass(classNames.hasChildren);
 
-                            if (options.renderChildren) {
-                                this.renderChildren(item, {
-                                    container: htmlNode
-                                });
-                            }
+                        if (options.renderChildren) {
+                            this.renderChildren(item, {
+                                container: htmlNode
+                            });
                         }
                     }
                 }
-                break;
+            }
+            break;
         }
 
         if (options.container) {
@@ -489,16 +494,17 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
 
         this._menuEvents.push(
             this.after({
-                add          : this._afterAdd,
-                clear        : this._afterClear,
-                close        : this._afterClose,
-                disable      : this._afterDisable,
-                enable       : this._afterEnable,
-                hide         : this._afterHide,
-                open         : this._afterOpen,
-                remove       : this._afterRemove,
-                show         : this._afterShow,
-                visibleChange: this._afterVisibleChange
+                add              : this._afterAdd,
+                clear            : this._afterClear,
+                close            : this._afterClose,
+                disable          : this._afterDisable,
+                enable           : this._afterEnable,
+                hide             : this._afterHide,
+                open             : this._afterOpen,
+                orientationChange: this._afterOrientationChange,
+                remove           : this._afterRemove,
+                show             : this._afterShow,
+                visibleChange    : this._afterVisibleChange
             }),
 
             container.on('hover', this._onMenuMouseEnter, this._onMenuMouseLeave, this),
@@ -701,16 +707,28 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
         htmlNode || (htmlNode = this.getHTMLNode(item));
 
         var childrenNode = htmlNode.one('.' + this.classNames.children),
+            orientation  = this.get('orientation'),
+            alignments, anchors;
 
-            anchors = this._getSortedAnchorRegions(
-                (item.parent && item.parent.data.menuAnchors) || this.get('subMenuAlignments'),
-                childrenNode.get('region'),
-                htmlNode.get('region')
-            );
+        // If this is a top-level submenu and this menu is horizontally
+        // aligned, use `alignments`.
+        if (item.parent.isRoot() && orientation === 'horizontal') {
+            alignments = this.get('alignments');
+        } else {
+            // If this menu has a parent and the parent has stored alignment
+            // anchors, use those. Otherwise, use `subMenuAlignments`.
+            alignments = (item.parent && item.parent.data.menuAnchors) ||
+                this.get('subMenuAlignments');
+        }
 
-        // Remember which anchors we used for this item so that we can default
-        // that anchor for submenus of this item if necessary.
-        item.data.menuAnchors = anchors;
+        anchors = this._getSortedAnchorRegions(alignments,
+            childrenNode.get('region'), htmlNode.get('region'));
+
+        if (orientation === 'vertical' || !item.parent.isRoot()) {
+            // Remember which anchors we used for this item so that we can
+            // default that anchor for submenus of this item if necessary.
+            item.data.menuAnchors = anchors;
+        }
 
         // Position the submenu.
         var anchorRegion = anchors[0].region;
@@ -909,6 +927,22 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
         if (htmlNode) {
             this._positionMenu(item, htmlNode);
             htmlNode.addClass(this.classNames.open);
+        }
+    },
+
+    /**
+    Handles `orientationChange` events for this menu.
+
+    @method _afterOrientationChange
+    @param {EventFacade} e
+    @protected
+    **/
+    _afterOrientationChange: function (e) {
+        if (this.rendered) {
+            this.get('container')
+                .removeClass(this.classNames.horizontal)
+                .removeClass(this.classNames.vertical)
+                .addClass(this.classNames[e.newVal]);
         }
     },
 
@@ -1181,6 +1215,16 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
         },
 
         /**
+        Orientation of this menu. May be either `'vertical'` or `'horizontal'`.
+
+        @attribute {String} orientation
+        @default 'vertical'
+        **/
+        orientation: {
+            value: 'vertical'
+        },
+
+        /**
         Just like `alignments`, but for submenus of this menu. See the
         `alignments` attribute for details on how alignment positions work.
 
@@ -1212,6 +1256,7 @@ Y.Menu = Y.mix(Menu, Y.Menu);
 }, '@VERSION@', {
     "requires": [
         "classnamemanager",
+        "escape",
         "event-hover",
         "gallery-sm-menu-base",
         "gallery-sm-menu-templates",
