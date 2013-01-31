@@ -2,10 +2,31 @@ SmugMug Menu
 ============
 
 An awesome menu widget that makes it easy to create standalone menus, dropdown
-menus, and context menus.
+menus, and context menus either from JavaScript or from existing markup.
+
+Useful Links
+------------
+
+* [API Docs][api-docs]
+
+[api-docs]:http://smugmug.github.com/yui-gallery/api/modules/gallery-sm-menu.html
 
 Usage
 -----
+
+In your HTML, create a container element for the menu. Be sure to add the `yui3-skin-sam` class if you want to use the menu's default skin.
+
+```html
+<div id="menu" class="yui3-skin-sam"></div>
+```
+
+Load YUI onto the page if you haven't already.
+
+```html
+<script src="http://yui.yahooapis.com/3.8.1/build/yui/yui-min.js"></script>
+```
+
+Next, in your JS, create an instance of `Y.Menu`, specify some menu items, then render the menu into its container element.
 
 ```js
 YUI().use('gallery-sm-menu', function (Y) {
@@ -29,6 +50,48 @@ YUI().use('gallery-sm-menu', function (Y) {
 
     menu.render();
 }
+```
+
+### Creating a menu from markup
+
+Alternatively, you can parse existing list markup to generate the contents of
+the menu. Note that the existing markup is consumed and re-rendered in this
+process.
+
+#### HTML
+
+```html
+<div id="menu" class="yui3-skin-sam">
+    <ul id="menu-data">
+        <li><a href="http://www.example.com/">First Item</a></li>
+
+        <li>
+            Second Item
+
+            <ul>
+                <li>Submenu Item</li>
+                <li>Another Submenu Item</li>
+            </ul>
+        </li>
+
+        <li class="yui3-menu-separator"></li>
+        <li class="yui3-menu-heading">Group Heading</li>
+        <li>Another Item</li>
+    </ul>
+</div>
+```
+
+#### JS
+
+```js
+YUI().use('gallery-sm-menu', function (Y) {
+    var menu = new Y.Menu({
+        container : '#menu',
+        sourceNode: '#menu-data'
+    });
+
+    menu.render();
+});
 ```
 
 Documentation
