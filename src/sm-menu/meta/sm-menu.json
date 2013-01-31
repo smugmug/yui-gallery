@@ -2,6 +2,7 @@
     "gallery-sm-menu": {
         "requires": [
             "classnamemanager",
+            "escape",
             "event-hover",
             "gallery-sm-menu-base",
             "gallery-sm-menu-templates",
