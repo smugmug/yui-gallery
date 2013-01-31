@@ -12,11 +12,16 @@ Menu widget.
 
 @class Menu
 @constructor
+@param {HTMLElement|Node|String} [sourceNode] Node instance, HTML element, or
+    selector string for a node (usually a `<ul>` or `<ol>`) whose structure
+    should be parsed and used to generate this menu's contents. This node will
+    be removed from the DOM after being parsed.
 @extends Menu.Base
 @uses View
 **/
 
-var getClassName = Y.ClassNameManager.getClassName,
+var doc          = Y.config.doc,
+    getClassName = Y.ClassNameManager.getClassName;
 
 /**
 Fired when any clickable menu item is clicked.
@@ -29,9 +34,9 @@ You can subscribe to clicks on a specific menu item by subscribing to
 @param {EventFacade} originEvent Original click event.
 @preventable _defItemClickFn
 **/
-EVT_ITEM_CLICK = 'itemClick',
+var EVT_ITEM_CLICK = 'itemClick';
 
-Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
+var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
 
     /**
     CSS class names used by this menu.
@@ -63,12 +68,31 @@ Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
     **/
     rendered: false,
 
+    /**
+    Selectors to use when parsing a menu structure from a DOM structure via
+    `parseHTML()`.
+
+    @property {Object} sourceSelectors
+    **/
+    sourceSelectors: {
+        item   : '> li',
+        label  : '> a, > span',
+        subtree: '> ul, > ol'
+    },
+
     // -- Lifecycle Methods ----------------------------------------------------
 
-    initializer: function () {
+    initializer: function (config) {
         this._openMenus = {};
         this._published = {};
         this._timeouts  = {};
+
+        if (config && config.sourceNode) {
+            config.nodes = (config.nodes || []).concat(
+                this.parseHTML(config.sourceNode));
+
+            Y.one(config.sourceNode).remove(true);
+        }
 
         this._attachMenuEvents();
     },
@@ -114,6 +138,89 @@ Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
     hide: function () {
         this.set('visible', false);
         return this;
+    },
+
+    /**
+    Parses the specified HTML _sourceNode_ as a menu structure and returns an
+    array of menu item objects that can be used to generate a menu with that
+    structure.
+
+    By default, _sourceNode_ is expected to contain one `<li>` element per
+    menu item, and submenus are expected to be represented by `<ul>` or `<ol>`
+    elements.
+
+    The selector queries used to parse the menu structure are contained in the
+    `sourceSelectors` property, and may be customized. Class names specified in
+    the `classNames` property are used to determine whether a menu item should
+    be disabled, hidden, or treated as a heading or separator.
+
+    @method parseHTML
+    @param {HTMLElement|Node|String} sourceNode Node instance, HTML element, or
+        selector string for the node (usually a `<ul> or `<ol>` element) to
+        parse.
+    @return {Object[]} Array of menu item objects.
+    **/
+    parseHTML: function (sourceNode) {
+        sourceNode = Y.one(sourceNode);
+
+        var classNames = this.classNames,
+            items      = [],
+            sel        = this.sourceSelectors,
+            self       = this;
+
+        sourceNode.all(sel.item).each(function (itemNode) {
+            var item        = {},
+                itemEl      = itemNode._node,
+                labelNode   = itemNode.one(sel.label),
+                subTreeNode = itemNode.one(sel.subtree);
+
+            if (itemNode.hasClass(classNames.heading)) {
+                item.type = 'heading';
+            } else if (itemNode.hasClass(classNames.separator)) {
+                item.type = 'separator';
+            }
+
+            if (itemNode.hasClass(classNames.disabled)) {
+                item.state || (item.state = {});
+                item.state.disabled = true;
+            }
+
+            if (itemNode.hasClass(classNames.hidden)) {
+                item.state || (item.state = {});
+                item.state.hidden = true;
+            }
+
+            if (labelNode) {
+                var href = labelNode.getAttribute('href');
+
+                item.label = labelNode.getHTML();
+
+                if (href && href !== '#') {
+                    item.url = href;
+                }
+            } else {
+                // The selector didn't find a label node, so look for the first
+                // text child of the item element.
+                var childEl;
+
+                for (var i = 0, len = itemEl.childNodes.length; i < len; i++) {
+                    childEl = itemEl.childNodes[i];
+
+                    if (childEl.nodeType === doc.TEXT_NODE) {
+                        item.label = Y.Escape.html(childEl.nodeValue);
+                        break;
+                    }
+                }
+            }
+
+            if (subTreeNode) {
+                item.children = self.parseHTML(subTreeNode);
+            }
+
+            items.push(item);
+        });
+
+        return items;
     },
 
     /**
@@ -877,7 +984,7 @@ Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
         if (!this._published[eventName]) {
             this._published[eventName] = this.publish(eventName, {
                 defaultFn: this._defSpecificItemClickFn
-            }) ;
+            });
         }
 
         if (!this._published[EVT_ITEM_CLICK]) {

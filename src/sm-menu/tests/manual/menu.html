@@ -35,7 +35,7 @@ var Y = YUI({
     filter: 'raw'
 }).use('gallery-sm-menu', function (Y) {
 
-var menu = new Y.Menu({
+var menu = window.menu = new Y.Menu({
     container: '#menu',
     hideOnOutsideClick: false,
 
