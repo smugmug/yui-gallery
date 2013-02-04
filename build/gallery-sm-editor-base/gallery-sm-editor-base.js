@@ -290,11 +290,6 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         inputNode.set('contentEditable', true);
         doc.execCommand('styleWithCSS', false, 'true');
 
-        // Append the container to the body if it's not already in the document.
-        if (!container.inDoc()) {
-            Y.one('body').append(container);
-        }
-
         this._inputNode = inputNode;
         this._rendered  = true;
 
