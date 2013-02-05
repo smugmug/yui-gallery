@@ -24,6 +24,20 @@ var doc          = Y.config.doc,
     getClassName = Y.ClassNameManager.getClassName;
 
 /**
+Fired after this editor loses focus.
+
+@event blur
+**/
+var EVT_BLUR = 'blur';
+
+/**
+Fired after this editor receives focus.
+
+@event focus
+**/
+var EVT_FOCUS = 'focus';
+
+/**
 Fired after this editor is rendered.
 
 @event render
@@ -563,6 +577,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         clearInterval(this._selectionMonitor);
         this._updateSelection();
+
+        this.fire(EVT_BLUR);
     },
 
     /**
@@ -585,6 +601,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         this._selectionMonitor = setInterval(function () {
             self._updateSelection();
         }, 200);
+
+        this.fire(EVT_FOCUS);
     },
 
     /**
