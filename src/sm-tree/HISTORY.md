@@ -1,7 +1,7 @@
 SmugMug Tree History
 ====================
 
-## git
+## 2013-02-07
 
 * Arbitrary properties in the `config` object passed to `Tree.Node`'s
   constructor are now mixed into the instance, allowing you to attach your own

@@ -1,4 +1,6 @@
 SmugMug Menu History
 ====================
 
-Nothing yet!
+## 2012-02-07
+
+* Initial release.
