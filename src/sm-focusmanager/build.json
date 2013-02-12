@@ -1,0 +1,11 @@
+{
+    "name": "gallery-sm-focusmanager",
+
+    "builds": {
+        "gallery-sm-focusmanager": {
+            "jsfiles": [
+                "js/focusmanager.js"
+            ]
+        }
+    }
+}

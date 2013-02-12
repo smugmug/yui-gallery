@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FocusManager manual test</title>
+    <style>
+    html {
+        background: #fff;
+        color: #333;
+        font: 14px Helvetica, sans-serif;
+    }
+
+    body {
+        margin: 1em 2em;
+    }
+
+    li[aria-disabled="true"] { color: #bbb; }
+
+    .yui3-sm-focus { font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h1>FocusManager test</h1>
+
+<p>
+    Click or tab to an item in the list, then use the up and down arrow keys to
+    move focus. When focus is on an item that contains sub-items, use the right
+    arrow key to descend to the sub-items, and the left-arrow key to ascend
+    back to the parent item.
+</p>
+
+<ul id="list">
+    <li>Item 1</li>
+    <li>
+        Item 2
+        <ul>
+            <li>Item 2.1</li>
+            <li>Item 2.2</li>
+            <li>
+                Item 2.3
+                <ul>
+                    <li>Item 2.3.1</li>
+                    <li>Item 2.3.2</li>
+                    <li>Item 2.3.3</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li aria-disabled="true">Item 5</li>
+    <li>Item 6</li>
+</ul>
+
+<script src="/build/yui/yui.js"></script>
+<script>
+var Y = YUI({
+    filter: 'raw'
+}).use('gallery-sm-focusmanager', function (Y) {
+
+var list = Y.one('#list');
+
+list.plug(Y.Plugin.FocusManager, {
+    containerSelector: 'ul'
+});
+
+window.fm = list.focusManager;
+
+});
+</script>
+
+</body>
+</html>

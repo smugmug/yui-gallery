@@ -1,0 +1,10 @@
+{
+    "gallery-sm-focusmanager": {
+        "requires": [
+            "event-focus",
+            "node-pluginhost",
+            "plugin",
+            "selector-css3"
+        ]
+    }
+}
