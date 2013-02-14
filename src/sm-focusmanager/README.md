@@ -1,8 +1,71 @@
 SmugMug Focus Manager
 =====================
 
-Work in progress.
+A `Y.Node` plugin that makes it easy to manage keyboard focus among the
+descendants of a node.
 
+Useful Links
+------------
+
+* [Example][example]
+* [API Docs][api-docs]
+
+[api-docs]:http://smugmug.github.com/yui-gallery/api/modules/gallery-sm-focusmanager.html
+[example]:http://jsbin.com/odizof/2
+
+
+Usage
+-----
+
+## Simple flat list
+
+```html
+<ul id="list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+
+<script>
+YUI().use('gallery-sm-focusmanager', function (Y) {
+    // Make the list items in #list keyboard-focusable using the arrow keys.
+    Y.one('#list').plug(Y.Plugin.FocusManager);
+});
+</script>
+```
+
+## Hierarchical list
+
+```html
+<ul id="list">
+    <li>
+        Item 1
+        <ul>
+            <li>Item 1.1</li>
+            <li>
+                Item 1.2
+                <ul>
+                    <li>Item 1.2.1</li>
+                    <li>Item 1.2.2</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+
+<script>
+YUI().use('gallery-sm-focusmanager', function (Y) {
+    // Make the list items in #list keyboard-focusable and allow
+    // descending/ascending into and out of nested lists using the right and
+    // left arrow keys.
+    Y.one('#list').plug(Y.Plugin.FocusManager, {
+        containerSelector: 'ul'
+    });
+});
+</script>
+```
 
 License
 -------
