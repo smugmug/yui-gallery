@@ -8,7 +8,7 @@ This repo contains open source YUI components that have been contributed to the
 Modules
 -------
 
-### [gallery-sm-editor](https://github.com/smugmug/yui-gallery/tree/master/src/sm-editor)
+### [gallery-sm-editor](src/sm-editor)
 
 _Work in progress_. A simple but powerful contentEditable-based WYSIWYG editor.
 
@@ -18,26 +18,26 @@ _Work in progress_. A Y.Node plugin that makes it easy to manage keyboard focus
 among the descendants of a node. This is a replacement for the
 soon-to-be-deprecated core Y.Plugin.NodeFocusManager component in YUI.
 
-### [gallery-sm-menu](https://github.com/smugmug/yui-gallery/tree/master/src/sm-menu)
+### [gallery-sm-menu](src/sm-menu)
 
 An awesome menu widget that makes it easy to create standalone menus, dropdown
 menus, and context menus.
 
-### [gallery-sm-selection](https://github.com/smugmug/yui-gallery/tree/master/src/sm-selection)
+### [gallery-sm-selection](src/sm-selection)
 
 _Work in progress_. Cross-browser Selection and Range APIs.
 
-### [gallery-sm-tree](https://github.com/smugmug/yui-gallery/tree/master/src/sm-tree)
+### [gallery-sm-tree](src/sm-tree)
 
 A generic tree data structure. This component powers the gallery-sm-menu and
 gallery-sm-treeview components under the hood.
 
-### [gallery-sm-treeview](https://github.com/smugmug/yui-gallery/tree/master/src/sm-treeview)
+### [gallery-sm-treeview](src/sm-treeview)
 
 A powerful, easy to use, and extremely fast TreeView widget.
 
-Documentation
---------------
+Useful Links
+------------
 
 * [API Docs](http://smugmug.github.com/yui-gallery/api/)
 
