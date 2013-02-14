@@ -584,7 +584,8 @@ Y.extend(FocusManager, Y.Plugin.Base, {
         current container when the selection moves past the end or beginning of
         the focusable items, respectively.
 
-        @attribute {Boolean} circular=true
+        @attribute {Boolean} circular
+        @default true
         **/
         circular: {
             value: true
@@ -601,7 +602,7 @@ Y.extend(FocusManager, Y.Plugin.Base, {
         To prevent hierarchical selection, set `containerSelector` to `null`
         (the default).
 
-        @attribute {String|null} containerSelector=null
+        @attribute {String|null} containerSelector
         **/
         containerSelector: {},
 
@@ -623,7 +624,8 @@ Y.extend(FocusManager, Y.Plugin.Base, {
         `true` if the host node or one of its focusable items is currently
         focused, `false` otherwise.
 
-        @attribute {Boolean} focused=false
+        @attribute {Boolean} focused
+        @default false
         @readOnly
         **/
         focused: {
@@ -635,7 +637,8 @@ Y.extend(FocusManager, Y.Plugin.Base, {
         Non-anchored CSS selector that matches item nodes that should be
         focusable.
 
-        @attribute {String} itemSelector='*'
+        @attribute {String} itemSelector
+        @default '*'
         **/
         itemSelector: {
             value: '*'
