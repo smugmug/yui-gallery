@@ -12,6 +12,12 @@ Modules
 
 _Work in progress_. A simple but powerful contentEditable-based WYSIWYG editor.
 
+### [gallery-sm-focusmanager](src/sm-focusmanager)
+
+_Work in progress_. A Y.Node plugin that makes it easy to manage keyboard focus
+among the descendants of a node. This is a replacement for the
+soon-to-be-deprecated core Y.Plugin.NodeFocusManager component in YUI.
+
 ### [gallery-sm-menu](https://github.com/smugmug/yui-gallery/tree/master/src/sm-menu)
 
 An awesome menu widget that makes it easy to create standalone menus, dropdown
