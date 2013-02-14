@@ -57,6 +57,8 @@
             
                 <li><a href="..&#x2F;classes/Menu.Templates.html">Menu.Templates</a></li>
             
+                <li><a href="..&#x2F;classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
+            
                 <li><a href="..&#x2F;classes/Plugin.Menu.html">Plugin.Menu</a></li>
             
                 <li><a href="..&#x2F;classes/Plugin.Tree.Lazy.html">Plugin.Tree.Lazy</a></li>
@@ -90,6 +92,8 @@
                 <li><a href="..&#x2F;modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
             
                 <li><a href="..&#x2F;modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
             
                 <li><a href="..&#x2F;modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
             
@@ -184,6 +188,20 @@ but no undo stack, keyboard shortcuts, etc.
 
 var doc          = Y.config.doc,
     getClassName = Y.ClassNameManager.getClassName;
+
+&#x2F;**
+Fired after this editor loses focus.
+
+@event blur
+**&#x2F;
+var EVT_BLUR = &#x27;blur&#x27;;
+
+&#x2F;**
+Fired after this editor receives focus.
+
+@event focus
+**&#x2F;
+var EVT_FOCUS = &#x27;focus&#x27;;
 
 &#x2F;**
 Fired after this editor is rendered.
@@ -451,11 +469,6 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
 
         inputNode.set(&#x27;contentEditable&#x27;, true);
         doc.execCommand(&#x27;styleWithCSS&#x27;, false, &#x27;true&#x27;);
-
-        &#x2F;&#x2F; Append the container to the body if it&#x27;s not already in the document.
-        if (!container.inDoc()) {
-            Y.one(&#x27;body&#x27;).append(container);
-        }
 
         this._inputNode = inputNode;
         this._rendered  = true;
@@ -731,6 +744,8 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
 
         clearInterval(this._selectionMonitor);
         this._updateSelection();
+
+        this.fire(EVT_BLUR);
     },
 
     &#x2F;**
@@ -753,6 +768,8 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
         this._selectionMonitor = setInterval(function () {
             self._updateSelection();
         }, 200);
+
+        this.fire(EVT_FOCUS);
     },
 
     &#x2F;**

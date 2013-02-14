@@ -50,6 +50,17 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/sm-focusmanager/js/focusmanager.js": {
+            "name": "src/sm-focusmanager/js/focusmanager.js",
+            "modules": {
+                "gallery-sm-focusmanager": 1
+            },
+            "classes": {
+                "Plugin.FocusManager": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/sm-menu/js/plugins/menu-plugin.js": {
             "name": "src/sm-menu/js/plugins/menu-plugin.js",
             "modules": {
@@ -282,6 +293,20 @@
             "file": "src/sm-editor/js/editor-base.js",
             "line": 12,
             "description": "Provides `Y.Editor.Base`, the core implementation of the SmugMug editor."
+        },
+        "gallery-sm-focusmanager": {
+            "name": "gallery-sm-focusmanager",
+            "submodules": {},
+            "classes": {
+                "Plugin.FocusManager": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 11,
+            "description": "Provides the FocusManager Node plugin, which makes it easy to manage keyboard\nfocus among the descendants of a node.",
+            "itemtype": "main"
         },
         "gallery-sm-menu": {
             "name": "gallery-sm-menu",
@@ -616,6 +641,22 @@
                 "Editor.Keys",
                 "Editor.Undo"
             ]
+        },
+        "Plugin.FocusManager": {
+            "name": "Plugin.FocusManager",
+            "shortname": "Plugin.FocusManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-focusmanager",
+            "namespace": "",
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 11,
+            "description": "Node plugin that makes it easy to manage keyboard focus among the descendants of\na node.\n\n### Example: Simple flat list\n\n    <ul id=\"list\">\n        <li>Item 1</li>\n        <li>Item 2</li>\n        <li>Item 3</li>\n    </ul>\n\n    <script>\n    YUI().use('gallery-sm-focusmanager', function (Y) {\n        // Make the list items in #list keyboard-focusable using the arrow keys.\n        Y.one('#list').plug(Y.Plugin.FocusManager);\n    });\n    </script>\n\n### Example: Hierarchical list\n\n    <ul id=\"list\">\n        <li>\n            Item 1\n            <ul>\n                <li>Item 1.1</li>\n                <li>\n                    Item 1.2\n                    <ul>\n                        <li>Item 1.2.1</li>\n                        <li>Item 1.2.2</li>\n                    </ul>\n                </li>\n            </ul>\n        </li>\n        <li>Item 2</li>\n        <li>Item 3</li>\n    </ul>\n\n    <script>\n    YUI().use('gallery-sm-focusmanager', function (Y) {\n        // Make the list items in #list keyboard-focusable and allow\n        // descending/ascending into and out of nested lists using the right and\n        // left arrow keys.\n        Y.one('#list').plug(Y.Plugin.FocusManager, {\n            containerSelector: 'ul'\n        });\n    });\n    </script>",
+            "extends": "Plugin.Base",
+            "is_constructor": 1
         },
         "Plugin.Menu": {
             "name": "Plugin.Menu",
@@ -1306,6 +1347,26 @@
         {
             "file": "src/sm-editor/js/editor-base.js",
             "line": 24,
+            "description": "Fired after this editor loses focus.",
+            "itemtype": "event",
+            "name": "blur",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 31,
+            "description": "Fired after this editor receives focus.",
+            "itemtype": "event",
+            "name": "focus",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 38,
             "description": "Fired after this editor is rendered.",
             "itemtype": "event",
             "name": "render",
@@ -1315,7 +1376,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 31,
+            "line": 45,
             "description": "Fired when this editor's selection changes.",
             "itemtype": "event",
             "name": "selectionChange",
@@ -1342,7 +1403,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 46,
+            "line": 60,
             "description": "CSS class names used by this editor.",
             "itemtype": "property",
             "name": "classNames",
@@ -1370,7 +1431,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 62,
+            "line": 76,
             "description": "`Y.Selection` instance representing the current document selection.\n\nThe selection object's state always reflects the current selection, so it\nwill update when the selection changes. If you need to retain the state of a\npast selection, hold onto a Range instance representing that selection.\n\nAlso, beware: this selection object reflects the current selection in the\nentire browser document, not just within this editor.",
             "itemtype": "property",
             "name": "selection",
@@ -1381,7 +1442,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 75,
+            "line": 89,
             "description": "Hash of style commands supported by this editor.\n\nNames should correspond with valid `execCommand()` command names. Values\nshould be strings specifying the style's type: either 'boolean' or 'string'.",
             "itemtype": "property",
             "name": "styleCommands",
@@ -1429,7 +1490,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 120,
+            "line": 134,
             "description": "Removes focus from this editor.",
             "itemtype": "method",
             "name": "blur",
@@ -1440,7 +1501,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 134,
+            "line": 148,
             "description": "Bolds or unbolds the current selection.",
             "itemtype": "method",
             "name": "bold",
@@ -1451,7 +1512,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 145,
+            "line": 159,
             "description": "Gets and/or sets the value of the specified editor command.\n\nSee <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>\nfor a list of possible commands.",
             "itemtype": "method",
             "name": "command",
@@ -1478,7 +1539,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 166,
+            "line": 180,
             "description": "Decreases the font size of the current selection (if possible).",
             "itemtype": "method",
             "name": "decreaseFontSize",
@@ -1489,7 +1550,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 182,
+            "line": 196,
             "description": "Focuses this editor.",
             "itemtype": "method",
             "name": "focus",
@@ -1500,7 +1561,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 196,
+            "line": 210,
             "description": "Increases the font size of the current selection (if possible).",
             "itemtype": "method",
             "name": "increaseFontSize",
@@ -1511,7 +1572,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 212,
+            "line": 226,
             "description": "Inserts the specified _html_ at the current selection point, deleting the\ncurrent selection if there is one.",
             "itemtype": "method",
             "name": "insertHTML",
@@ -1532,7 +1593,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 238,
+            "line": 252,
             "description": "Inserts the specified plain _text_ at the current selection point, deleting\nthe current selection if there is one.",
             "itemtype": "method",
             "name": "insertText",
@@ -1553,7 +1614,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 250,
+            "line": 264,
             "description": "Italicizes or unitalicizes the current selection.",
             "itemtype": "method",
             "name": "italic",
@@ -1564,7 +1625,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 261,
+            "line": 275,
             "description": "Renders this editor into its container and appends the container to the\ndocument if necessary.",
             "itemtype": "method",
             "name": "render",
@@ -1575,7 +1636,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 306,
+            "line": 315,
             "description": "Gets and/or sets the value of the specified editor style command. This\nmethod is similar to `command()`, but only supports a subset of\nstyle-related commands.\n\nSee the `styleCommands` property for a list of supported style commands.",
             "itemtype": "method",
             "name": "style",
@@ -1602,7 +1663,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 329,
+            "line": 338,
             "description": "Gets and/or sets the values of multiple editor style commands.\n\nWhen called without an argument, the current values of all supported style\ncommands will be returned. When called with a _styles_ object, the specified\nstyle commands will be set to their given values, and the resulting new\nvalues will be returned.",
             "itemtype": "method",
             "name": "styles",
@@ -1624,7 +1685,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 365,
+            "line": 374,
             "description": "Toggles underline on the current selection.",
             "itemtype": "method",
             "name": "underline",
@@ -1635,7 +1696,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 378,
+            "line": 387,
             "description": "Attaches editor events.",
             "itemtype": "method",
             "name": "_attachEvents",
@@ -1647,7 +1708,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 399,
+            "line": 408,
             "description": "Detaches editor events.",
             "itemtype": "method",
             "name": "_detachEvents",
@@ -1659,7 +1720,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 412,
+            "line": 421,
             "description": "Wrapper for native the native `execCommand()` that verifies that the command\nis valid in the current state and normalizes boolean/toggleable values.",
             "itemtype": "method",
             "name": "_execCommand",
@@ -1683,7 +1744,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 441,
+            "line": 450,
             "description": "Getter for the `html` attribute.",
             "itemtype": "method",
             "name": "_getHTML",
@@ -1706,7 +1767,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 453,
+            "line": 462,
             "description": "Getter for the `text` attribute.",
             "itemtype": "method",
             "name": "_getText",
@@ -1729,7 +1790,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 465,
+            "line": 474,
             "description": "Inserts a `<span>` at the current selection point containing a preformatted\ntab character.",
             "itemtype": "method",
             "name": "_insertTab",
@@ -1741,7 +1802,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 476,
+            "line": 485,
             "description": "Wrapper for the native `queryCommandState()` and `queryCommandValue()`\nmethods that uses the appropriate method for the given command type.",
             "itemtype": "method",
             "name": "_queryCommandValue",
@@ -1764,7 +1825,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 490,
+            "line": 499,
             "description": "Setter for the `html` attribute.",
             "itemtype": "method",
             "name": "_setHTML",
@@ -1787,7 +1848,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 506,
+            "line": 515,
             "description": "Setter for the `text` attribute.",
             "itemtype": "method",
             "name": "_setText",
@@ -1810,7 +1871,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 522,
+            "line": 531,
             "description": "Refreshes the editor's internal knowledge of the current document selection\nstate and fires a `selectionChange` event if the selection has changed since\nit was last refreshed.",
             "itemtype": "method",
             "name": "_updateSelection",
@@ -1839,7 +1900,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 557,
+            "line": 566,
             "description": "Handles `blur` events on the editor.",
             "itemtype": "method",
             "name": "_onBlur",
@@ -1851,7 +1912,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 572,
+            "line": 583,
             "description": "Handles `focus` events on the editor.",
             "itemtype": "method",
             "name": "_onFocus",
@@ -1863,7 +1924,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 594,
+            "line": 607,
             "description": "Handles `paste` events on the editor.",
             "itemtype": "method",
             "name": "_onPaste",
@@ -1875,7 +1936,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 605,
+            "line": 618,
             "description": "HTML content of this editor.",
             "itemtype": "attribute",
             "name": "html",
@@ -1887,7 +1948,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 617,
+            "line": 630,
             "description": "Form field name to use for the hidden `<textarea>` that contains the raw\noutput of the editor in the configured output format. This name will\nonly be used if the output node doesn't already have a name when the\neditor is rendered.\n\nYou may need to customize this if you plan to use the editor in a form\nthat will be submitted to a server.",
             "itemtype": "attribute",
             "name": "outputName",
@@ -1900,7 +1961,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 635,
+            "line": 648,
             "description": "Text content of this editor, with no HTML.",
             "itemtype": "attribute",
             "name": "text",
@@ -1909,6 +1970,431 @@
             "class": "Editor.Base",
             "module": "gallery-sm-editor",
             "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 73,
+            "description": "Mapping of key codes to friendly key names that can be used in the `keys`\nattribute and the `preventDefaultMap` property.",
+            "itemtype": "property",
+            "name": "keyCodeMap",
+            "type": "Object",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 91,
+            "description": "Mapping of keys whose default actions should be prevented when they trigger\na FocusManager action.",
+            "itemtype": "property",
+            "name": "preventDefaultMap",
+            "type": "Object",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 123,
+            "description": "Focuses and returns the nearest ancestor item that contains the current\n`activeItem`, if any.",
+            "itemtype": "method",
+            "name": "ascend",
+            "return": {
+                "description": "Focused node, or `null` if there is no ancestor item.",
+                "type": "Node|null"
+            },
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 149,
+            "description": "Focuses and returns the first descendant item within the current\n`activeItem`, if any. In order for this to have any effect, a\n`containerSelector` must be set.",
+            "itemtype": "method",
+            "name": "descend",
+            "return": {
+                "description": "Focused node, or `null` if there is no descendant item.",
+                "type": "Node|null"
+            },
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 170,
+            "description": "Focuses and returns the first focusable item.",
+            "itemtype": "method",
+            "name": "first",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "container",
+                    "description": "Descendant container to restrict the search\n        to. Defaults to the host node.",
+                    "type": "Node",
+                    "optional": true
+                },
+                {
+                    "name": "silent",
+                    "description": "If `true`, the item will be returned,\n        but will not become the active item.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Focused node, or `null` if there are no focusable items.",
+                "type": "Node|null"
+            },
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 201,
+            "description": "Focuses and returns the last focusable item.",
+            "itemtype": "method",
+            "name": "last",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "container",
+                    "description": "Descendant container to restrict the search\n        to. Defaults to the host node.",
+                    "type": "Node",
+                    "optional": true
+                },
+                {
+                    "name": "silent",
+                    "description": "If `true`, the item will be returned,\n        but will not become the active item.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Focused node, or `null` if there are no focusable items.",
+                "type": "Node|null"
+            },
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 231,
+            "description": "Focuses and returns the next focusable sibling of the current `activeItem`.\n\nIf there is no focusable next sibling and the `circular` attribute is\n`false`, the current `activeItem` will be returned.",
+            "itemtype": "method",
+            "name": "next",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "silent",
+                    "description": "If `true`, the item will be returned,\n        but will not become the active item.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Focused node, or `null` if there is no `activeItem`.",
+                "type": "Node|null"
+            },
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 279,
+            "description": "Focuses and returns the previous focusable sibling of the current\n`activeItem`.\n\nIf there is no focusable previous sibling and the `circular` attribute is\n`false`, the current `activeItem` will be returned.",
+            "itemtype": "method",
+            "name": "previous",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "silent",
+                    "description": "If `true`, the item will be returned,\n        but will not become the active item.",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Focused node, or `null` if there is no `activeItem`.",
+                "type": "Node|null"
+            },
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 326,
+            "description": "Refreshes the `tabIndex` state of this FocusManager's items to ensure that\nitems are focusable but only the currently active item is in the tab flow.\n\nCall this method after adding, disabling, or enabling elements to ensure\nthat they're managed correctly.",
+            "itemtype": "method",
+            "name": "refresh",
+            "params": [
+                {
+                    "name": "container",
+                    "description": "If specified, only items that are direct\n    descendants of this container will be refreshed.",
+                    "type": "Node",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 356,
+            "description": "Attaches event handlers.",
+            "itemtype": "method",
+            "name": "_attachEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 376,
+            "description": "Detaches event handlers.",
+            "itemtype": "method",
+            "name": "_detachEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 386,
+            "description": "Returns the container node for the current `activeItem`.",
+            "itemtype": "method",
+            "name": "_getActiveContainer",
+            "return": {
+                "description": "Container node for the current `activeItem`.",
+                "type": "Node"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 416,
+            "description": "Getter for the `anchoredContainerSelector` attribute.",
+            "itemtype": "method",
+            "name": "_getAnchoredContainerSelector",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String|null"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String|null"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 438,
+            "description": "Getter for the `anchoredItemSelector` attribute.",
+            "itemtype": "method",
+            "name": "_getAnchoredItemSelector",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "",
+                    "type": "String|null"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 456,
+            "description": "Handles `activeItemChange` events.",
+            "itemtype": "method",
+            "name": "_afterActiveItemChange",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 480,
+            "description": "Handles `blur` events on the host node.",
+            "itemtype": "method",
+            "name": "_afterBlur",
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 490,
+            "description": "Handles `focus` events on the host node.",
+            "itemtype": "method",
+            "name": "_afterFocus",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 507,
+            "description": "Handles `keydown` events on the host node.",
+            "itemtype": "method",
+            "name": "_onKeyDown",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 539,
+            "description": "Node that's currently either focused or focusable as part of the\ndocument's tab flow.",
+            "itemtype": "attribute",
+            "name": "activeItem",
+            "type": "Node|null",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 554,
+            "description": "Anchored version of `containerSelector`.\n\nFor example, if `containerSelector` is set to \"ul\", then\n`anchoredContainerSelector` will default to \">ul\". You can override the\ndefault by specifying your own anchored selector if desired.",
+            "itemtype": "attribute",
+            "name": "anchoredContainerSelector",
+            "type": "String|null",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 567,
+            "description": "Anchored version of `itemSelector`.\n\nFor example, if `itemSelector` is set to \"li\", then\n`anchoredItemSelector` will default to \">li\". You can override the\ndefault by specifying your own anchored selector if desired.",
+            "itemtype": "attribute",
+            "name": "anchoredItemSelector",
+            "type": "String|null",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 580,
+            "description": "If `true`, focus will wrap around to the first or last item in the\ncurrent container when the selection moves past the end or beginning of\nthe focusable items, respectively.",
+            "itemtype": "attribute",
+            "name": "circular=true",
+            "type": "Boolean",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 591,
+            "description": "Non-anchored CSS selector that matches a hierarchical descendant\ncontainer into which focus can descend.\n\nFor example, if the host node is a `<ul>` and item nodes are `<li>`s,\nsetting `containerSelector` to \"ul\" would allow the user to descend into\na nested `<ul>` contained inside an `<li>`.\n\nTo prevent hierarchical selection, set `containerSelector` to `null`\n(the default).",
+            "itemtype": "attribute",
+            "name": "containerSelector=null",
+            "type": "String|null",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 606,
+            "description": "Non-anchored CSS selector that matches nodes that should be considered\ndisabled. Disabled nodes will not be considered focusable.\n\nBy default, a node is considered disabled if it has a `disabled`\nattribute or an `aria-disabled` or `aria-hidden` attribute set to\n\"true\".",
+            "itemtype": "attribute",
+            "name": "disabledSelector",
+            "type": "String|null",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 620,
+            "description": "`true` if the host node or one of its focusable items is currently\nfocused, `false` otherwise.",
+            "itemtype": "attribute",
+            "name": "focused=false",
+            "type": "Boolean",
+            "readonly": "",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 632,
+            "description": "Non-anchored CSS selector that matches item nodes that should be\nfocusable.",
+            "itemtype": "attribute",
+            "name": "itemSelector='*'",
+            "type": "String",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-focusmanager/js/focusmanager.js",
+            "line": 642,
+            "description": "Mapping of keyboard codes to functions or function names that should\nexecute when those keys are pressed.\n\nBy default, the following keys are mapped:\n\n* down arrow: `next()`\n* left arrow: `ascend()`\n* right arrow: `descend()`\n* up arrow: `previous()`\n\nTo customize the mapping, either modify or replace the `keys` object.\n\nValues should be functions or strings representing named functions on\nthis FocusManager instance. All functions will be executed with this\nFocusManager as the `this` object.\n\nProperties should be numerical key codes or one of the following\nstrings representing a key on the keyboard:\n\n* down\n* end\n* home\n* left\n* pgdown\n* pgup\n* right\n* space\n* up",
+            "itemtype": "attribute",
+            "name": "keys",
+            "type": "Object",
+            "class": "Plugin.FocusManager",
+            "module": "gallery-sm-focusmanager"
         },
         {
             "file": "src/sm-menu/js/plugins/menu-plugin.js",

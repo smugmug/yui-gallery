@@ -9,6 +9,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "Menu.Base",
         "Menu.Item",
         "Menu.Templates",
+        "Plugin.FocusManager",
         "Plugin.Menu",
         "Plugin.Tree.Lazy",
         "Range",
@@ -26,6 +27,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "gallery-sm-editor-base",
         "gallery-sm-editor-keys",
         "gallery-sm-editor-undo",
+        "gallery-sm-focusmanager",
         "gallery-sm-menu",
         "gallery-sm-menu-base",
         "gallery-sm-menu-item",
@@ -63,6 +65,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "gallery-sm-editor-undo",
             "name": "gallery-sm-editor-undo",
             "description": "Provides the `Editor.Undo` extension."
+        },
+        {
+            "displayName": "gallery-sm-focusmanager",
+            "name": "gallery-sm-focusmanager",
+            "description": "Provides the FocusManager Node plugin, which makes it easy to manage keyboard\nfocus among the descendants of a node."
         },
         {
             "displayName": "gallery-sm-menu",

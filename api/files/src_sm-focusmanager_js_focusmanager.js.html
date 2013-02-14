@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src&#x2F;sm-focusmanager&#x2F;js&#x2F;focusmanager.js - SmugMug YUI Gallery API docs</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.8.0pr2&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.8.0pr2&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title="SmugMug YUI Gallery API docs"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.8.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/Editor.html">Editor</a></li>
+            
+                <li><a href="..&#x2F;classes/Editor.Base.html">Editor.Base</a></li>
+            
+                <li><a href="..&#x2F;classes/Editor.Keys.html">Editor.Keys</a></li>
+            
+                <li><a href="..&#x2F;classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="..&#x2F;classes/Menu.html">Menu</a></li>
+            
+                <li><a href="..&#x2F;classes/Menu.Base.html">Menu.Base</a></li>
+            
+                <li><a href="..&#x2F;classes/Menu.Item.html">Menu.Item</a></li>
+            
+                <li><a href="..&#x2F;classes/Menu.Templates.html">Menu.Templates</a></li>
+            
+                <li><a href="..&#x2F;classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
+            
+                <li><a href="..&#x2F;classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="..&#x2F;classes/Plugin.Tree.Lazy.html">Plugin.Tree.Lazy</a></li>
+            
+                <li><a href="..&#x2F;classes/Range.html">Range</a></li>
+            
+                <li><a href="..&#x2F;classes/Selection.html">Selection</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.html">Tree</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Node.html">Tree.Node</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Node.Openable.html">Tree.Node.Openable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Node.Selectable.html">Tree.Node.Selectable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Openable.html">Tree.Openable</a></li>
+            
+                <li><a href="..&#x2F;classes/Tree.Selectable.html">Tree.Selectable</a></li>
+            
+                <li><a href="..&#x2F;classes/TreeView.html">TreeView</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/gallery-sm-editor.html">gallery-sm-editor</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-base.html">gallery-sm-menu-base</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-item.html">gallery-sm-menu-item</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-range.html">gallery-sm-range</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-selection.html">gallery-sm-selection</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree.html">gallery-sm-tree</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree-lazy.html">gallery-sm-tree-lazy</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-tree-node.html">gallery-sm-tree-node</a></li>
+            
+                <li><a href="..&#x2F;modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="..&#x2F;modules/tree.html">tree</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-node-openable.html">tree-node-openable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-node-selectable.html">tree-node-selectable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-openable.html">tree-openable</a></li>
+            
+                <li><a href="..&#x2F;modules/tree-selectable.html">tree-selectable</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src&#x2F;sm-focusmanager&#x2F;js&#x2F;focusmanager.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x2F;*jshint expr:true, maxlen:200, onevar:false *&#x2F;
+
+&#x2F;**
+Provides the FocusManager Node plugin, which makes it easy to manage keyboard
+focus among the descendants of a node.
+
+@module gallery-sm-focusmanager
+@main gallery-sm-focusmanager
+**&#x2F;
+
+&#x2F;**
+Node plugin that makes it easy to manage keyboard focus among the descendants of
+a node.
+
+### Example: Simple flat list
+
+    &lt;ul id=&quot;list&quot;&gt;
+        &lt;li&gt;Item 1&lt;&#x2F;li&gt;
+        &lt;li&gt;Item 2&lt;&#x2F;li&gt;
+        &lt;li&gt;Item 3&lt;&#x2F;li&gt;
+    &lt;&#x2F;ul&gt;
+
+    &lt;script&gt;
+    YUI().use(&#x27;gallery-sm-focusmanager&#x27;, function (Y) {
+        &#x2F;&#x2F; Make the list items in #list keyboard-focusable using the arrow keys.
+        Y.one(&#x27;#list&#x27;).plug(Y.Plugin.FocusManager);
+    });
+    &lt;&#x2F;script&gt;
+
+### Example: Hierarchical list
+
+    &lt;ul id=&quot;list&quot;&gt;
+        &lt;li&gt;
+            Item 1
+            &lt;ul&gt;
+                &lt;li&gt;Item 1.1&lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    Item 1.2
+                    &lt;ul&gt;
+                        &lt;li&gt;Item 1.2.1&lt;&#x2F;li&gt;
+                        &lt;li&gt;Item 1.2.2&lt;&#x2F;li&gt;
+                    &lt;&#x2F;ul&gt;
+                &lt;&#x2F;li&gt;
+            &lt;&#x2F;ul&gt;
+        &lt;&#x2F;li&gt;
+        &lt;li&gt;Item 2&lt;&#x2F;li&gt;
+        &lt;li&gt;Item 3&lt;&#x2F;li&gt;
+    &lt;&#x2F;ul&gt;
+
+    &lt;script&gt;
+    YUI().use(&#x27;gallery-sm-focusmanager&#x27;, function (Y) {
+        &#x2F;&#x2F; Make the list items in #list keyboard-focusable and allow
+        &#x2F;&#x2F; descending&#x2F;ascending into and out of nested lists using the right and
+        &#x2F;&#x2F; left arrow keys.
+        Y.one(&#x27;#list&#x27;).plug(Y.Plugin.FocusManager, {
+            containerSelector: &#x27;ul&#x27;
+        });
+    });
+    &lt;&#x2F;script&gt;
+
+@class Plugin.FocusManager
+@extends Plugin.Base
+@constructor
+**&#x2F;
+
+function FocusManager() {
+    FocusManager.superclass.constructor.apply(this, arguments);
+}
+
+Y.extend(FocusManager, Y.Plugin.Base, {
+    &#x2F;&#x2F; -- Public Properties ----------------------------------------------------
+
+    &#x2F;**
+    Mapping of key codes to friendly key names that can be used in the &#x60;keys&#x60;
+    attribute and the &#x60;preventDefaultMap&#x60; property.
+
+    @property {Object} keyCodeMap
+    **&#x2F;
+    keyCodeMap: {
+        32: &#x27;space&#x27;,
+        33: &#x27;pgup&#x27;,
+        34: &#x27;pgdown&#x27;,
+        35: &#x27;end&#x27;,
+        36: &#x27;home&#x27;,
+        37: &#x27;left&#x27;,
+        38: &#x27;up&#x27;,
+        39: &#x27;right&#x27;,
+        40: &#x27;down&#x27;
+    },
+
+    &#x2F;**
+    Mapping of keys whose default actions should be prevented when they trigger
+    a FocusManager action.
+
+    @property {Object} preventDefaultMap
+    **&#x2F;
+    preventDefaultMap: {
+        down  : 1,
+        end   : 1,
+        home  : 1,
+        left  : 1,
+        pgdown: 1,
+        pgup  : 1,
+        right : 1,
+        space : 1,
+        up    : 1
+    },
+
+    &#x2F;&#x2F; -- Lifecycle ------------------------------------------------------------
+    initializer: function (config) {
+        this._host = config.host;
+
+        this._attachEvents();
+        this.refresh();
+    },
+
+    destructor: function () {
+        this._detachEvents();
+    },
+
+    &#x2F;&#x2F; -- Public Methods -------------------------------------------------------
+
+    &#x2F;**
+    Focuses and returns the nearest ancestor item that contains the current
+    &#x60;activeItem&#x60;, if any.
+
+    @method ascend
+    @return {Node|null} Focused node, or &#x60;null&#x60; if there is no ancestor item.
+    **&#x2F;
+    ascend: function () {
+        var container = this._getActiveContainer(),
+            host      = this._host,
+            parentItem;
+
+        if (container === host) {
+            return null;
+        }
+
+        parentItem = container.ancestor(this.get(&#x27;itemSelector&#x27;), false, function (node) {
+            &#x2F;&#x2F; Stop ascending if we reach the host.
+            return node === host;
+        });
+
+        this.set(&#x27;activeItem&#x27;, parentItem, {src: &#x27;ascend&#x27;});
+
+        return parentItem;
+    },
+
+    &#x2F;**
+    Focuses and returns the first descendant item within the current
+    &#x60;activeItem&#x60;, if any. In order for this to have any effect, a
+    &#x60;containerSelector&#x60; must be set.
+
+    @method descend
+    @return {Node|null} Focused node, or &#x60;null&#x60; if there is no descendant item.
+    **&#x2F;
+    descend: function () {
+        var activeItem                = this.get(&#x27;activeItem&#x27;),
+            anchoredContainerSelector = this.get(&#x27;anchoredContainerSelector&#x27;);
+
+        if (!anchoredContainerSelector || !activeItem) {
+            return null;
+        }
+
+        var container = activeItem.one(anchoredContainerSelector);
+
+        return container ? this.first({container: container}) : null;
+    },
+
+    &#x2F;**
+    Focuses and returns the first focusable item.
+
+    @method first
+    @param {Object} [options] Options.
+        @param {Node} [container] Descendant container to restrict the search
+            to. Defaults to the host node.
+        @param {Boolean} [silent=false] If &#x60;true&#x60;, the item will be returned,
+            but will not become the active item.
+    @return {Node|null} Focused node, or &#x60;null&#x60; if there are no focusable items.
+    **&#x2F;
+    first: function (options) {
+        options || (options = {});
+
+        &#x2F;&#x2F; Get the first item that isn&#x27;t disabled.
+        var container        = options.container || this.get(&#x27;host&#x27;),
+            disabledSelector = this.get(&#x27;disabledSelector&#x27;),
+            itemSelector     = this.get(&#x27;itemSelector&#x27;),
+            item             = container.one(this.get(&#x27;anchoredItemSelector&#x27;));
+
+        while (item &amp;&amp; disabledSelector &amp;&amp; item.test(disabledSelector)) {
+            item = item.next(itemSelector);
+        }
+
+        if (!options.silent) {
+            this.set(&#x27;activeItem&#x27;, item, {src: &#x27;first&#x27;});
+        }
+
+        return item;
+    },
+
+    &#x2F;**
+    Focuses and returns the last focusable item.
+
+    @method last
+    @param {Object} [options] Options.
+        @param {Node} [container] Descendant container to restrict the search
+            to. Defaults to the host node.
+        @param {Boolean} [silent=false] If &#x60;true&#x60;, the item will be returned,
+            but will not become the active item.
+    @return {Node|null} Focused node, or &#x60;null&#x60; if there are no focusable items.
+    **&#x2F;
+    last: function (options) {
+        options || (options = {});
+
+        var container        = options.container || this._host,
+            disabledSelector = this.get(&#x27;disabledSelector&#x27;),
+            items            = container.all(this.get(&#x27;anchoredItemSelector&#x27;)),
+            item             = items.pop();
+
+        while (item &amp;&amp; disabledSelector &amp;&amp; item.test(disabledSelector)) {
+            item = items.pop();
+        }
+
+        if (!options.silent) {
+            this.set(&#x27;activeItem&#x27;, item, {src: &#x27;last&#x27;});
+        }
+
+        return item;
+    },
+
+    &#x2F;**
+    Focuses and returns the next focusable sibling of the current &#x60;activeItem&#x60;.
+
+    If there is no focusable next sibling and the &#x60;circular&#x60; attribute is
+    &#x60;false&#x60;, the current &#x60;activeItem&#x60; will be returned.
+
+    @method next
+    @param {Object} [options] Options.
+        @param {Boolean} [silent=false] If &#x60;true&#x60;, the item will be returned,
+            but will not become the active item.
+    @return {Node|null} Focused node, or &#x60;null&#x60; if there is no &#x60;activeItem&#x60;.
+    **&#x2F;
+    next: function (options) {
+        options || (options = {});
+
+        var activeItem = this.get(&#x27;activeItem&#x27;);
+
+        if (!activeItem) {
+            return null;
+        }
+
+        var disabledSelector = this.get(&#x27;disabledSelector&#x27;),
+            itemSelector     = this.get(&#x27;itemSelector&#x27;),
+            nextItem         = activeItem.next(itemSelector);
+
+        &#x2F;&#x2F; Get the next sibling that matches the itemSelector and isn&#x27;t
+        &#x2F;&#x2F; disabled.
+        while (nextItem &amp;&amp; disabledSelector &amp;&amp; nextItem.test(disabledSelector)) {
+            nextItem = nextItem.next(itemSelector);
+        }
+
+        if (nextItem) {
+            if (!options.silent) {
+                this.set(&#x27;activeItem&#x27;, nextItem, {src: &#x27;next&#x27;});
+            }
+        } else {
+            &#x2F;&#x2F; If there is no next sibling and the &#x60;circular&#x60; attribute is
+            &#x2F;&#x2F; truthy, then focus the first item in this container.
+            if (this.get(&#x27;circular&#x27;)) {
+                nextItem = this.first(Y.merge(options, {
+                    container: this._getActiveContainer(activeItem)
+                }));
+            }
+        }
+
+        return nextItem || activeItem;
+    },
+
+    &#x2F;**
+    Focuses and returns the previous focusable sibling of the current
+    &#x60;activeItem&#x60;.
+
+    If there is no focusable previous sibling and the &#x60;circular&#x60; attribute is
+    &#x60;false&#x60;, the current &#x60;activeItem&#x60; will be returned.
+
+    @method previous
+    @param {Object} [options] Options.
+        @param {Boolean} [silent=false] If &#x60;true&#x60;, the item will be returned,
+            but will not become the active item.
+    @return {Node|null} Focused node, or &#x60;null&#x60; if there is no &#x60;activeItem&#x60;.
+    **&#x2F;
+    previous: function (options) {
+        options || (options = {});
+
+        var activeItem = this.get(&#x27;activeItem&#x27;);
+
+        if (!activeItem) {
+            return null;
+        }
+
+        var disabledSelector = this.get(&#x27;disabledSelector&#x27;),
+            itemSelector     = this.get(&#x27;itemSelector&#x27;),
+            prevItem         = activeItem.previous(itemSelector);
+
+        &#x2F;&#x2F; Get the previous sibling that matches the itemSelector and isn&#x27;t
+        &#x2F;&#x2F; disabled.
+        while (prevItem &amp;&amp; disabledSelector &amp;&amp; prevItem.test(disabledSelector)) {
+            prevItem = prevItem.previous(itemSelector);
+        }
+
+        if (prevItem) {
+            if (!options.silent) {
+                this.set(&#x27;activeItem&#x27;, prevItem, {src: &#x27;previous&#x27;});
+            }
+        } else {
+            &#x2F;&#x2F; If there is no previous sibling and the &#x60;circular&#x60; attribute is
+            &#x2F;&#x2F; truthy, then focus the last item in this container.
+            prevItem = this.last(Y.merge(options, {
+                container: this._getActiveContainer(activeItem)
+            }));
+        }
+
+        return prevItem || activeItem;
+    },
+
+    &#x2F;**
+    Refreshes the &#x60;tabIndex&#x60; state of this FocusManager&#x27;s items to ensure that
+    items are focusable but only the currently active item is in the tab flow.
+
+    Call this method after adding, disabling, or enabling elements to ensure
+    that they&#x27;re managed correctly.
+
+    @method refresh
+    @param {Node} [container] If specified, only items that are direct
+        descendants of this container will be refreshed.
+    @chainable
+    **&#x2F;
+    refresh: function (container) {
+        var activeItem       = this.get(&#x27;activeItem&#x27;),
+            disabledSelector = this.get(&#x27;disabledSelector&#x27;),
+            itemSelector     = this.get(container ? &#x27;anchoredItemSelector&#x27; : &#x27;itemSelector&#x27;);
+
+        (container || this._host).all(itemSelector).each(function (node) {
+            if (disabledSelector &amp;&amp; node.test(disabledSelector)) {
+                node.removeAttribute(&#x27;tabIndex&#x27;);
+            } else {
+                node.set(&#x27;tabIndex&#x27;, node === activeItem ? 0 : -1);
+            }
+        });
+
+        return this;
+    },
+
+    &#x2F;&#x2F; -- Protected Methods ----------------------------------------------------
+
+    &#x2F;**
+    Attaches event handlers.
+
+    @method _attachEvents
+    @protected
+    **&#x2F;
+    _attachEvents: function () {
+        var host = this._host;
+
+        this._events = [
+            host.on(&#x27;keydown&#x27;, this._onKeyDown, this),
+            host.after(&#x27;blur&#x27;, this._afterBlur, this),
+            host.after(&#x27;focus&#x27;, this._afterFocus, this),
+
+            this.after({
+                activeItemChange: this._afterActiveItemChange
+            })
+        ];
+    },
+
+    &#x2F;**
+    Detaches event handlers.
+
+    @method _detachEvents
+    @protected
+    **&#x2F;
+    _detachEvents: function () {
+        new Y.EventHandle(this._events).detach();
+    },
+
+    &#x2F;**
+    Returns the container node for the current &#x60;activeItem&#x60;.
+
+    @method _getActiveContainer
+    @return {Node} Container node for the current &#x60;activeItem&#x60;.
+    @protected
+    **&#x2F;
+    _getActiveContainer: function (activeItem) {
+        var containerSelector = this.get(&#x27;containerSelector&#x27;),
+            host              = this._host,
+            container;
+
+        if (!containerSelector) {
+            return host;
+        }
+
+        activeItem || (activeItem = this.get(&#x27;activeItem&#x27;));
+
+        if (!activeItem) {
+            return host;
+        }
+
+        container = activeItem.ancestor(containerSelector, false, function (node) {
+            &#x2F;&#x2F; Stop the search if we reach the host node.
+            return node === host;
+        });
+
+        return container || host;
+    },
+
+    &#x2F;**
+    Getter for the &#x60;anchoredContainerSelector&#x60; attribute.
+
+    @method _getAnchoredContainerSelector
+    @param {String|null} value
+    @return {String|null}
+    @protected
+    **&#x2F;
+    _getAnchoredContainerSelector: function (value) {
+        if (value) {
+            return value;
+        }
+
+        var containerSelector = this.get(&#x27;containerSelector&#x27;);
+
+        if (containerSelector) {
+            return &#x27;&gt;&#x27; + containerSelector;
+        }
+
+        return null;
+    },
+
+    &#x2F;**
+    Getter for the &#x60;anchoredItemSelector&#x60; attribute.
+
+    @method _getAnchoredItemSelector
+    @param {String|null} value
+    @return {String}
+    @protected
+    **&#x2F;
+    _getAnchoredItemSelector: function (value) {
+        if (value) {
+            return value;
+        }
+
+        return &#x27;&gt;&#x27; + this.get(&#x27;itemSelector&#x27;);
+    },
+
+    &#x2F;&#x2F; -- Protected Event Handlers ---------------------------------------------
+
+    &#x2F;**
+    Handles &#x60;activeItemChange&#x60; events.
+
+    @method _afterActiveItemChange
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterActiveItemChange: function (e) {
+        var newVal  = e.newVal,
+            prevVal = e.prevVal;
+
+        if (prevVal) {
+            prevVal.set(&#x27;tabIndex&#x27;, -1);
+        }
+
+        if (newVal) {
+            newVal.set(&#x27;tabIndex&#x27;, 0);
+
+            if (this.get(&#x27;focused&#x27;)) {
+                newVal.focus();
+            }
+        }
+    },
+
+    &#x2F;**
+    Handles &#x60;blur&#x60; events on the host node.
+
+    @method _afterBlur
+    @protected
+    **&#x2F;
+    _afterBlur: function () {
+        this._set(&#x27;focused&#x27;, false);
+    },
+
+    &#x2F;**
+    Handles &#x60;focus&#x60; events on the host node.
+
+    @method _afterFocus
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _afterFocus: function (e) {
+        var target = e.target;
+
+        this._set(&#x27;focused&#x27;, true);
+
+        if (target !== this._host &amp;&amp; target.test(this.get(&#x27;itemSelector&#x27;))) {
+            this.set(&#x27;activeItem&#x27;, target, {src: &#x27;focus&#x27;});
+        }
+    },
+
+    &#x2F;**
+    Handles &#x60;keydown&#x60; events on the host node.
+
+    @method _onKeyDown
+    @param {EventFacade} e
+    @protected
+    **&#x2F;
+    _onKeyDown: function (e) {
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+            return;
+        }
+
+        var key    = this.keyCodeMap[e.keyCode] || e.keyCode,
+            action = this.get(&#x27;keys&#x27;)[key];
+
+        if (action) {
+            if (this.preventDefaultMap[key]) {
+                e.preventDefault();
+            }
+
+            if (typeof action === &#x27;string&#x27;) {
+                this[action].call(this);
+            } else {
+                action.call(this);
+            }
+        }
+    }
+}, {
+    NAME: &#x27;focusManager&#x27;,
+    NS  : &#x27;focusManager&#x27;,
+
+    ATTRS: {
+        &#x2F;**
+        Node that&#x27;s currently either focused or focusable as part of the
+        document&#x27;s tab flow.
+
+        @attribute {Node|null} activeItem
+        **&#x2F;
+        activeItem: {
+            valueFn: function () {
+                &#x2F;&#x2F; TODO: Need to be smarter about choosing the default
+                &#x2F;&#x2F; activeItem. Old FocusManager defaults to the first item with
+                &#x2F;&#x2F; tabIndex === 0, if there is one.
+                return this.first();
+            }
+        },
+
+        &#x2F;**
+        Anchored version of &#x60;containerSelector&#x60;.
+
+        For example, if &#x60;containerSelector&#x60; is set to &quot;ul&quot;, then
+        &#x60;anchoredContainerSelector&#x60; will default to &quot;&gt;ul&quot;. You can override the
+        default by specifying your own anchored selector if desired.
+
+        @attribute {String|null} anchoredContainerSelector
+        **&#x2F;
+        anchoredContainerSelector: {
+            getter: &#x27;_getAnchoredContainerSelector&#x27;
+        },
+
+        &#x2F;**
+        Anchored version of &#x60;itemSelector&#x60;.
+
+        For example, if &#x60;itemSelector&#x60; is set to &quot;li&quot;, then
+        &#x60;anchoredItemSelector&#x60; will default to &quot;&gt;li&quot;. You can override the
+        default by specifying your own anchored selector if desired.
+
+        @attribute {String|null} anchoredItemSelector
+        **&#x2F;
+        anchoredItemSelector: {
+            getter: &#x27;_getAnchoredItemSelector&#x27;
+        },
+
+        &#x2F;**
+        If &#x60;true&#x60;, focus will wrap around to the first or last item in the
+        current container when the selection moves past the end or beginning of
+        the focusable items, respectively.
+
+        @attribute {Boolean} circular=true
+        **&#x2F;
+        circular: {
+            value: true
+        },
+
+        &#x2F;**
+        Non-anchored CSS selector that matches a hierarchical descendant
+        container into which focus can descend.
+
+        For example, if the host node is a &#x60;&lt;ul&gt;&#x60; and item nodes are &#x60;&lt;li&gt;&#x60;s,
+        setting &#x60;containerSelector&#x60; to &quot;ul&quot; would allow the user to descend into
+        a nested &#x60;&lt;ul&gt;&#x60; contained inside an &#x60;&lt;li&gt;&#x60;.
+
+        To prevent hierarchical selection, set &#x60;containerSelector&#x60; to &#x60;null&#x60;
+        (the default).
+
+        @attribute {String|null} containerSelector=null
+        **&#x2F;
+        containerSelector: {},
+
+        &#x2F;**
+        Non-anchored CSS selector that matches nodes that should be considered
+        disabled. Disabled nodes will not be considered focusable.
+
+        By default, a node is considered disabled if it has a &#x60;disabled&#x60;
+        attribute or an &#x60;aria-disabled&#x60; or &#x60;aria-hidden&#x60; attribute set to
+        &quot;true&quot;.
+
+        @attribute {String|null} disabledSelector
+        **&#x2F;
+        disabledSelector: {
+            value: &#x27;[aria-disabled=&quot;true&quot;], [aria-hidden=&quot;true&quot;], [disabled]&#x27;
+        },
+
+        &#x2F;**
+        &#x60;true&#x60; if the host node or one of its focusable items is currently
+        focused, &#x60;false&#x60; otherwise.
+
+        @attribute {Boolean} focused=false
+        @readOnly
+        **&#x2F;
+        focused: {
+            readOnly: true,
+            value   : false
+        },
+
+        &#x2F;**
+        Non-anchored CSS selector that matches item nodes that should be
+        focusable.
+
+        @attribute {String} itemSelector=&#x27;*&#x27;
+        **&#x2F;
+        itemSelector: {
+            value: &#x27;*&#x27;
+        },
+
+        &#x2F;**
+        Mapping of keyboard codes to functions or function names that should
+        execute when those keys are pressed.
+
+        By default, the following keys are mapped:
+
+        * down arrow: &#x60;next()&#x60;
+        * left arrow: &#x60;ascend()&#x60;
+        * right arrow: &#x60;descend()&#x60;
+        * up arrow: &#x60;previous()&#x60;
+
+        To customize the mapping, either modify or replace the &#x60;keys&#x60; object.
+
+        Values should be functions or strings representing named functions on
+        this FocusManager instance. All functions will be executed with this
+        FocusManager as the &#x60;this&#x60; object.
+
+        Properties should be numerical key codes or one of the following
+        strings representing a key on the keyboard:
+
+        * down
+        * end
+        * home
+        * left
+        * pgdown
+        * pgup
+        * right
+        * space
+        * up
+
+        @attribute {Object} keys
+        **&#x2F;
+        keys: {
+            cloneDefaultValue: &#x27;shallow&#x27;,
+
+            value: {
+                down : &#x27;next&#x27;,
+                left : &#x27;ascend&#x27;,
+                right: &#x27;descend&#x27;,
+                up   : &#x27;previous&#x27;
+            }
+        }
+    }
+});
+
+Y.namespace(&#x27;Plugin&#x27;).FocusManager = FocusManager;
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

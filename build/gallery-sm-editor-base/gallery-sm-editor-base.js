@@ -24,6 +24,20 @@ var doc          = Y.config.doc,
     getClassName = Y.ClassNameManager.getClassName;
 
 /**
+Fired after this editor loses focus.
+
+@event blur
+**/
+var EVT_BLUR = 'blur';
+
+/**
+Fired after this editor receives focus.
+
+@event focus
+**/
+var EVT_FOCUS = 'focus';
+
+/**
 Fired after this editor is rendered.
 
 @event render
@@ -289,11 +303,6 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         inputNode.set('contentEditable', true);
         doc.execCommand('styleWithCSS', false, 'true');
-
-        // Append the container to the body if it's not already in the document.
-        if (!container.inDoc()) {
-            Y.one('body').append(container);
-        }
 
         this._inputNode = inputNode;
         this._rendered  = true;
@@ -568,6 +577,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         clearInterval(this._selectionMonitor);
         this._updateSelection();
+
+        this.fire(EVT_BLUR);
     },
 
     /**
@@ -590,6 +601,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         this._selectionMonitor = setInterval(function () {
             self._updateSelection();
         }, 200);
+
+        this.fire(EVT_FOCUS);
     },
 
     /**
