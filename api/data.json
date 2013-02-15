@@ -2028,20 +2028,22 @@
                     "name": "options",
                     "description": "Options.",
                     "type": "Object",
-                    "optional": true
-                },
-                {
-                    "name": "container",
-                    "description": "Descendant container to restrict the search\n        to. Defaults to the host node.",
-                    "type": "Node",
-                    "optional": true
-                },
-                {
-                    "name": "silent",
-                    "description": "If `true`, the item will be returned,\n        but will not become the active item.",
-                    "type": "Boolean",
                     "optional": true,
-                    "optdefault": "false"
+                    "props": [
+                        {
+                            "name": "container",
+                            "description": "Descendant container to restrict the\n        search to. Defaults to the host node.",
+                            "type": "Node",
+                            "optional": true
+                        },
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the item will be\n        returned, but will not become the active item.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
                 }
             ],
             "return": {
@@ -2062,20 +2064,22 @@
                     "name": "options",
                     "description": "Options.",
                     "type": "Object",
-                    "optional": true
-                },
-                {
-                    "name": "container",
-                    "description": "Descendant container to restrict the search\n        to. Defaults to the host node.",
-                    "type": "Node",
-                    "optional": true
-                },
-                {
-                    "name": "silent",
-                    "description": "If `true`, the item will be returned,\n        but will not become the active item.",
-                    "type": "Boolean",
                     "optional": true,
-                    "optdefault": "false"
+                    "props": [
+                        {
+                            "name": "container",
+                            "description": "Descendant container to restrict the\n        search to. Defaults to the host node.",
+                            "type": "Node",
+                            "optional": true
+                        },
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the item will be\n        returned, but will not become the active item.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
                 }
             ],
             "return": {
@@ -2096,14 +2100,16 @@
                     "name": "options",
                     "description": "Options.",
                     "type": "Object",
-                    "optional": true
-                },
-                {
-                    "name": "silent",
-                    "description": "If `true`, the item will be returned,\n        but will not become the active item.",
-                    "type": "Boolean",
                     "optional": true,
-                    "optdefault": "false"
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the item will be\n        returned, but will not become the active item.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
                 }
             ],
             "return": {
@@ -2124,14 +2130,16 @@
                     "name": "options",
                     "description": "Options.",
                     "type": "Object",
-                    "optional": true
-                },
-                {
-                    "name": "silent",
-                    "description": "If `true`, the item will be returned,\n        but will not become the active item.",
-                    "type": "Boolean",
                     "optional": true,
-                    "optdefault": "false"
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "If `true`, the item will be\n        returned, but will not become the active item.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
                 }
             ],
             "return": {
