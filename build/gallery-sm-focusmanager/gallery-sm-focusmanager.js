@@ -174,10 +174,10 @@ Y.extend(FocusManager, Y.Plugin.Base, {
 
     @method first
     @param {Object} [options] Options.
-        @param {Node} [container] Descendant container to restrict the search
-            to. Defaults to the host node.
-        @param {Boolean} [silent=false] If `true`, the item will be returned,
-            but will not become the active item.
+        @param {Node} [options.container] Descendant container to restrict the
+            search to. Defaults to the host node.
+        @param {Boolean} [options.silent=false] If `true`, the item will be
+            returned, but will not become the active item.
     @return {Node|null} Focused node, or `null` if there are no focusable items.
     **/
     first: function (options) {
@@ -205,10 +205,10 @@ Y.extend(FocusManager, Y.Plugin.Base, {
 
     @method last
     @param {Object} [options] Options.
-        @param {Node} [container] Descendant container to restrict the search
-            to. Defaults to the host node.
-        @param {Boolean} [silent=false] If `true`, the item will be returned,
-            but will not become the active item.
+        @param {Node} [options.container] Descendant container to restrict the
+            search to. Defaults to the host node.
+        @param {Boolean} [options.silent=false] If `true`, the item will be
+            returned, but will not become the active item.
     @return {Node|null} Focused node, or `null` if there are no focusable items.
     **/
     last: function (options) {
@@ -238,8 +238,8 @@ Y.extend(FocusManager, Y.Plugin.Base, {
 
     @method next
     @param {Object} [options] Options.
-        @param {Boolean} [silent=false] If `true`, the item will be returned,
-            but will not become the active item.
+        @param {Boolean} [options.silent=false] If `true`, the item will be
+            returned, but will not become the active item.
     @return {Node|null} Focused node, or `null` if there is no `activeItem`.
     **/
     next: function (options) {
@@ -287,8 +287,8 @@ Y.extend(FocusManager, Y.Plugin.Base, {
 
     @method previous
     @param {Object} [options] Options.
-        @param {Boolean} [silent=false] If `true`, the item will be returned,
-            but will not become the active item.
+        @param {Boolean} [options.silent=false] If `true`, the item will be
+            returned, but will not become the active item.
     @return {Node|null} Focused node, or `null` if there is no `activeItem`.
     **/
     previous: function (options) {
