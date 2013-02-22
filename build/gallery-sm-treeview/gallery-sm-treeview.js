@@ -286,6 +286,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Openable, Y.Tree.Se
             // Custom events.
             this.after({
                 add              : this._afterAdd,
+                clear            : this._afterClear,
                 close            : this._afterClose,
                 multiSelectChange: this._afterTreeViewMultiSelectChange, // sheesh
                 open             : this._afterOpen,
