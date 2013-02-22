@@ -1,6 +1,10 @@
 SmugMug TreeView History
 ========================
 
+## git
+
+* Fixed: `clear()` didn't re-render the tree after clearing it.
+
 ## 2013-01-09
 
 * TreeView now mixes in the new `Tree.Openable` extension.
