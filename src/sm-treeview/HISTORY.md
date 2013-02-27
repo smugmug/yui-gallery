@@ -1,7 +1,7 @@
 SmugMug TreeView History
 ========================
 
-## git
+## 2013-02-27
 
 * Fixed: `clear()` didn't re-render the tree after clearing it.
 

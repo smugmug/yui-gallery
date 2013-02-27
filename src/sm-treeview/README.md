@@ -53,7 +53,7 @@ Next, in your JS, create an instance of `Y.TreeView`, specify some nodes to add 
 
 ```js
 YUI({
-    gallery: 'gallery-2013.01.09-23-24'
+    gallery: 'gallery-2013.02.27-21-03'
 }).use('gallery-sm-treeview', function (Y) {
     // Create a new TreeView with a few nodes.
     var treeview = new Y.TreeView({
