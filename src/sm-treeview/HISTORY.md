@@ -1,6 +1,12 @@
 SmugMug TreeView History
 ========================
 
+## git
+
+* TreeView templates can now be more easilly overridden by passing a
+  `config.templates` object to the constructor. Read the source for spicy
+  details.
+
 ## 2013-02-27
 
 * Fixed: `clear()` didn't re-render the tree after clearing it.
