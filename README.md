@@ -27,11 +27,6 @@ menus, and context menus.
 
 _Work in progress_. Cross-browser Selection and Range APIs.
 
-### [gallery-sm-tree](src/sm-tree)
-
-A generic tree data structure. This component powers the gallery-sm-menu and
-gallery-sm-treeview components under the hood.
-
 ### [gallery-sm-treeview](src/sm-treeview)
 
 A powerful, easy to use, and extremely fast TreeView widget.

@@ -54,7 +54,7 @@ Fired when a menu item is shown.
 **/
 var EVT_SHOW = 'show';
 
-var MenuBase = Y.Base.create('menuBase', Y.Tree, [Y.Tree.Openable], {
+var MenuBase = Y.Base.create('menuBase', Y.Tree, [Y.Tree.Labelable, Y.Tree.Openable], {
     nodeClass: Y.Menu.Item,
 
     // -- Lifecycle ------------------------------------------------------------
