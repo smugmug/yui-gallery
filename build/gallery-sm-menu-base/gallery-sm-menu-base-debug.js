@@ -95,7 +95,7 @@ var MenuBase = Y.Base.create('menuBase', Y.Tree, [Y.Tree.Labelable, Y.Tree.Opena
     **/
     disableItem: function (item, options) {
         if (!item.isDisabled()) {
-            this._fire(EVT_DISABLE, {item: item}, {
+            this._fireTreeEvent(EVT_DISABLE, {item: item}, {
                 defaultFn: this._defDisableFn,
                 silent   : options && options.silent
             });
@@ -116,7 +116,7 @@ var MenuBase = Y.Base.create('menuBase', Y.Tree, [Y.Tree.Labelable, Y.Tree.Opena
     **/
     enableItem: function (item, options) {
         if (item.isDisabled()) {
-            this._fire(EVT_ENABLE, {item: item}, {
+            this._fireTreeEvent(EVT_ENABLE, {item: item}, {
                 defaultFn: this._defEnableFn,
                 silent   : options && options.silent
             });
@@ -137,7 +137,7 @@ var MenuBase = Y.Base.create('menuBase', Y.Tree, [Y.Tree.Labelable, Y.Tree.Opena
     **/
     hideItem: function (item, options) {
         if (!item.isHidden()) {
-            this._fire(EVT_HIDE, {item: item}, {
+            this._fireTreeEvent(EVT_HIDE, {item: item}, {
                 defaultFn: this._defHideFn,
                 silent   : options && options.silent
             });
@@ -158,7 +158,7 @@ var MenuBase = Y.Base.create('menuBase', Y.Tree, [Y.Tree.Labelable, Y.Tree.Opena
     **/
     showItem: function (item, options) {
         if (item.isHidden()) {
-            this._fire(EVT_SHOW, {item: item}, {
+            this._fireTreeEvent(EVT_SHOW, {item: item}, {
                 defaultFn: this._defShowFn,
                 silent   : options && options.silent
             });
