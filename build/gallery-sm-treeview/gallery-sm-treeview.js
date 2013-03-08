@@ -492,7 +492,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Openable, Y.Tree.Se
         // this event to propagate to the _onRowClick() handler.
         e.stopImmediatePropagation();
 
-        this.getNodeById(rowNode.getData('node-id')).toggle();
+        this.getNodeById(rowNode.getData('node-id')).toggleOpen();
     },
 
     _onMouseDown: function (e) {
@@ -512,7 +512,7 @@ TreeView = Y.Base.create('treeView', Y.View, [Y.Tree, Y.Tree.Openable, Y.Tree.Se
     },
 
     _onRowDoubleClick: function (e) {
-        this.getNodeById(e.currentTarget.getData('node-id')).toggle();
+        this.getNodeById(e.currentTarget.getData('node-id')).toggleOpen();
     }
 }, {
     ATTRS: {
