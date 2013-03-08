@@ -1,7 +1,7 @@
 {
     "name": "SmugMug YUI Gallery API docs",
     "description": "Kickass gallery modules courtesy of your pals at SmugMug.",
-    "version": "3.8.0",
+    "version": "3.9.0-git",
     "url": "https://github.com/smugmug/yui-gallery",
     "options": {
         "linkNatives": true,

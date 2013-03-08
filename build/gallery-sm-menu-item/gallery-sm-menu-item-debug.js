@@ -130,4 +130,4 @@ Y.extend(MenuItem, Y.Tree.Node, {
 Y.namespace('Menu').Item = MenuItem;
 
 
-}, '@VERSION@', {"requires": ["gallery-sm-tree-node", "oop"]});
+}, '@VERSION@', {"requires": ["tree-node", "oop"]});
