@@ -542,10 +542,11 @@ Y.TreeView = Y.mix(TreeView, Y.TreeView);
     "requires": [
         "base-build",
         "classnamemanager",
-        "gallery-sm-tree",
-        "gallery-sm-tree-openable",
-        "gallery-sm-tree-selectable",
         "gallery-sm-treeview-templates",
+        "tree",
+        "tree-labelable",
+        "tree-openable",
+        "tree-selectable",
         "view"
     ],
     "skinnable": true
