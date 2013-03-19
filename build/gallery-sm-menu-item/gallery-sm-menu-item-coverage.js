@@ -26,9 +26,9 @@ _yuitest_coverage["build/gallery-sm-menu-item/gallery-sm-menu-item.js"] = {
     path: "build/gallery-sm-menu-item/gallery-sm-menu-item.js",
     code: []
 };
-_yuitest_coverage["build/gallery-sm-menu-item/gallery-sm-menu-item.js"].code=["YUI.add('gallery-sm-menu-item', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Menu.Item` class.","","@module gallery-sm-menu","@submodule gallery-sm-menu-item","**/","","/**","Represents a single menu item in a `Menu`.","","@class Menu.Item","@constructor","@param {Menu} menu `Menu` instance with which this node should be associated.","@param {Object} [config] Configuration hash for this menu item. Supports all the","    config properties of `Tree.Node` in addition to the following.","","    @param {Object} [config.state] State hash for this menu item.","","        @param {Boolean} [config.state.disabled=false] If `true`, this menu item","            will be disabled, and will not be clickable or selectable.","","        @param {Boolean} [config.state.hidden=false] If `true`, this menu item","            will be hidden.","","    @param {String} [config.type='item'] Type of this menu item. May be 'item',","        'heading', or 'separator'.","","    @param {String} [config.url='#'] URL associated with this item. If this item","        is of type 'item', clicking on the item will navigate to this URL.","","@extends Tree.Node","**/","","function MenuItem(menu, config) {","    config || (config = {});","","    this.id   = this._yuid = config.id || Y.guid('menuItem-');","    this.type = config.type || 'item';","    this.url  = config.url || '#';","","    MenuItem.superclass.constructor.call(this, menu, config);","}","","Y.extend(MenuItem, Y.Tree.Node, {","    _serializable: Y.Tree.Node.prototype._serializable.concat('type', 'url'),","","    /**","    Disables this menu item. Disabled items are not clickable or selectable.","","    @method disable","    @param {Object} [options] Options.","        @param {Boolean} [options.silent=false] If `true`, the `disable` event","            will be suppressed.","    @chainable","    **/","    disable: function (options) {","        this.tree.disableItem(this, options);","        return this;","    },","","    /**","    Enables this menu item.","","    @method enable","    @param {Object} [options] Options.","        @param {Boolean} [options.silent=false] If `true`, the `enable` event","            will be suppressed.","    @chainable","    **/","    enable: function (options) {","        this.tree.enableItem(this, options);","        return this;","    },","","    /**","    Hides this menu item.","","    @method hide","    @param {Object} [options] Options.","        @param {Boolean} [options.silent=false] If `true`, the `hide` event","            will be suppressed.","    @chainable","    **/","    hide: function (options) {","        this.tree.hideItem(this, options);","        return this;","    },","","    /**","    Returns `true` if this menu item is currently disabled.","","    @method isDisabled","    @return {Boolean} `true` if this menu item is currently disabled, `false`","        otherwise.","    **/","    isDisabled: function () {","        return !!this.state.disabled;","    },","","    /**","    Returns `true` if this menu item is currently hidden.","","    @method isHidden","    @return {Boolean} `true` if this menu item is currently hidden, `false`","        otherwise.","    **/","    isHidden: function () {","        return !!this.state.hidden;","    },","","    /**","    Shows this menu item.","","    @method show","    @param {Object} [options] Options.","        @param {Boolean} [options.silent=false] If `true`, the `show` event","            will be suppressed.","    @chainable","    **/","    show: function (options) {","        this.tree.showItem(this, options);","        return this;","    }","});","","Y.namespace('Menu').Item = MenuItem;","","","}, '@VERSION@', {\"requires\": [\"tree-node\", \"oop\"]});"];
-_yuitest_coverage["build/gallery-sm-menu-item/gallery-sm-menu-item.js"].lines = {"1":0,"38":0,"39":0,"41":0,"42":0,"43":0,"45":0,"48":0,"61":0,"62":0,"75":0,"76":0,"89":0,"90":0,"101":0,"112":0,"125":0,"126":0,"130":0};
-_yuitest_coverage["build/gallery-sm-menu-item/gallery-sm-menu-item.js"].functions = {"MenuItem:38":0,"disable:60":0,"enable:74":0,"hide:88":0,"isDisabled:100":0,"isHidden:111":0,"show:124":0,"(anonymous 1):1":0};
+_yuitest_coverage["build/gallery-sm-menu-item/gallery-sm-menu-item.js"].code=["YUI.add('gallery-sm-menu-item', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Menu.Item` class.","","@module gallery-sm-menu","@submodule gallery-sm-menu-item","**/","","/**","Represents a single menu item in a `Menu`.","","@class Menu.Item","@constructor","@param {Menu} menu `Menu` instance with which this node should be associated.","@param {Object} [config] Configuration hash for this menu item. Supports all the","    config properties of `Tree.Node` in addition to the following.","","    @param {Object} [config.state] State hash for this menu item.","","        @param {Boolean} [config.state.disabled=false] If `true`, this menu item","            will be disabled, and will not be clickable or selectable.","","        @param {Boolean} [config.state.hidden=false] If `true`, this menu item","            will be hidden.","","    @param {String} [config.type='item'] Type of this menu item. May be 'item',","        'heading', or 'separator'.","","    @param {String} [config.url='#'] URL associated with this item. If this item","        is of type 'item', clicking on the item will navigate to this URL.","","@extends Tree.Node","**/","","function MenuItem(menu, config) {","    config || (config = {});","","    this.id   = this._yuid = config.id || Y.guid('menuItem-');","    this.type = config.type || 'item';","    this.url  = config.url || '#';","","    MenuItem.superclass.constructor.call(this, menu, config);","}","","Y.extend(MenuItem, Y.Tree.Node, {","    _serializable: Y.Tree.Node.prototype._serializable.concat('type', 'url'),","","    /**","    Disables this menu item. Disabled items are not clickable or selectable.","","    @method disable","    @param {Object} [options] Options.","        @param {Boolean} [options.silent=false] If `true`, the `disable` event","            will be suppressed.","    @chainable","    **/","    disable: function (options) {","        this.tree.disableItem(this, options);","        return this;","    },","","    /**","    Enables this menu item.","","    @method enable","    @param {Object} [options] Options.","        @param {Boolean} [options.silent=false] If `true`, the `enable` event","            will be suppressed.","    @chainable","    **/","    enable: function (options) {","        this.tree.enableItem(this, options);","        return this;","    },","","    /**","    Hides this menu item.","","    @method hide","    @param {Object} [options] Options.","        @param {Boolean} [options.silent=false] If `true`, the `hide` event","            will be suppressed.","    @chainable","    **/","    hide: function (options) {","        this.tree.hideItem(this, options);","        return this;","    },","","    /**","    Returns `true` if this menu item or one of its ancestors is currently","    disabled.","","    @method isDisabled","    @return {Boolean} `true` if this menu item or one of its ancestors is","        currently disabled, `false` otherwise.","    **/","    isDisabled: function () {","        return !!this.state.disabled ||","            (this.parent ? this.parent.isDisabled() : false);","    },","","    /**","    Returns `true` if this menu item or one of its ancestors is currently","    hidden.","","    @method isHidden","    @return {Boolean} `true` if this menu item or one of its ancestors is","        currently hidden, `false` otherwise.","    **/","    isHidden: function () {","        return !!this.state.hidden ||","            (this.parent ? this.parent.isHidden() : false);","    },","","    /**","    Shows this menu item.","","    @method show","    @param {Object} [options] Options.","        @param {Boolean} [options.silent=false] If `true`, the `show` event","            will be suppressed.","    @chainable","    **/","    show: function (options) {","        this.tree.showItem(this, options);","        return this;","    }","});","","Y.namespace('Menu').Item = MenuItem;","","","}, '@VERSION@', {\"requires\": [\"tree-node\", \"oop\"]});"];
+_yuitest_coverage["build/gallery-sm-menu-item/gallery-sm-menu-item.js"].lines = {"1":0,"38":0,"39":0,"41":0,"42":0,"43":0,"45":0,"48":0,"61":0,"62":0,"75":0,"76":0,"89":0,"90":0,"102":0,"115":0,"129":0,"130":0,"134":0};
+_yuitest_coverage["build/gallery-sm-menu-item/gallery-sm-menu-item.js"].functions = {"MenuItem:38":0,"disable:60":0,"enable:74":0,"hide:88":0,"isDisabled:101":0,"isHidden:114":0,"show:128":0,"(anonymous 1):1":0};
 _yuitest_coverage["build/gallery-sm-menu-item/gallery-sm-menu-item.js"].coveredLines = 19;
 _yuitest_coverage["build/gallery-sm-menu-item/gallery-sm-menu-item.js"].coveredFunctions = 8;
 _yuitest_coverline("build/gallery-sm-menu-item/gallery-sm-menu-item.js", 1);
@@ -143,29 +143,33 @@ return this;
     },
 
     /**
-    Returns `true` if this menu item is currently disabled.
+    Returns `true` if this menu item or one of its ancestors is currently
+    disabled.
 
     @method isDisabled
-    @return {Boolean} `true` if this menu item is currently disabled, `false`
-        otherwise.
+    @return {Boolean} `true` if this menu item or one of its ancestors is
+        currently disabled, `false` otherwise.
     **/
     isDisabled: function () {
-        _yuitest_coverfunc("build/gallery-sm-menu-item/gallery-sm-menu-item.js", "isDisabled", 100);
-_yuitest_coverline("build/gallery-sm-menu-item/gallery-sm-menu-item.js", 101);
-return !!this.state.disabled;
+        _yuitest_coverfunc("build/gallery-sm-menu-item/gallery-sm-menu-item.js", "isDisabled", 101);
+_yuitest_coverline("build/gallery-sm-menu-item/gallery-sm-menu-item.js", 102);
+return !!this.state.disabled ||
+            (this.parent ? this.parent.isDisabled() : false);
     },
 
     /**
-    Returns `true` if this menu item is currently hidden.
+    Returns `true` if this menu item or one of its ancestors is currently
+    hidden.
 
     @method isHidden
-    @return {Boolean} `true` if this menu item is currently hidden, `false`
-        otherwise.
+    @return {Boolean} `true` if this menu item or one of its ancestors is
+        currently hidden, `false` otherwise.
     **/
     isHidden: function () {
-        _yuitest_coverfunc("build/gallery-sm-menu-item/gallery-sm-menu-item.js", "isHidden", 111);
-_yuitest_coverline("build/gallery-sm-menu-item/gallery-sm-menu-item.js", 112);
-return !!this.state.hidden;
+        _yuitest_coverfunc("build/gallery-sm-menu-item/gallery-sm-menu-item.js", "isHidden", 114);
+_yuitest_coverline("build/gallery-sm-menu-item/gallery-sm-menu-item.js", 115);
+return !!this.state.hidden ||
+            (this.parent ? this.parent.isHidden() : false);
     },
 
     /**
@@ -178,15 +182,15 @@ return !!this.state.hidden;
     @chainable
     **/
     show: function (options) {
-        _yuitest_coverfunc("build/gallery-sm-menu-item/gallery-sm-menu-item.js", "show", 124);
-_yuitest_coverline("build/gallery-sm-menu-item/gallery-sm-menu-item.js", 125);
+        _yuitest_coverfunc("build/gallery-sm-menu-item/gallery-sm-menu-item.js", "show", 128);
+_yuitest_coverline("build/gallery-sm-menu-item/gallery-sm-menu-item.js", 129);
 this.tree.showItem(this, options);
-        _yuitest_coverline("build/gallery-sm-menu-item/gallery-sm-menu-item.js", 126);
+        _yuitest_coverline("build/gallery-sm-menu-item/gallery-sm-menu-item.js", 130);
 return this;
     }
 });
 
-_yuitest_coverline("build/gallery-sm-menu-item/gallery-sm-menu-item.js", 130);
+_yuitest_coverline("build/gallery-sm-menu-item/gallery-sm-menu-item.js", 134);
 Y.namespace('Menu').Item = MenuItem;
 
 

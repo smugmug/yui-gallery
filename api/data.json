@@ -2429,11 +2429,11 @@
         {
             "file": "src/sm-menu/js/menu-item.js",
             "line": 91,
-            "description": "Returns `true` if this menu item is currently disabled.",
+            "description": "Returns `true` if this menu item or one of its ancestors is currently\ndisabled.",
             "itemtype": "method",
             "name": "isDisabled",
             "return": {
-                "description": "`true` if this menu item is currently disabled, `false`\n    otherwise.",
+                "description": "`true` if this menu item or one of its ancestors is\n    currently disabled, `false` otherwise.",
                 "type": "Boolean"
             },
             "class": "Menu.Item",
@@ -2442,12 +2442,12 @@
         },
         {
             "file": "src/sm-menu/js/menu-item.js",
-            "line": 102,
-            "description": "Returns `true` if this menu item is currently hidden.",
+            "line": 104,
+            "description": "Returns `true` if this menu item or one of its ancestors is currently\nhidden.",
             "itemtype": "method",
             "name": "isHidden",
             "return": {
-                "description": "`true` if this menu item is currently hidden, `false`\n    otherwise.",
+                "description": "`true` if this menu item or one of its ancestors is\n    currently hidden, `false` otherwise.",
                 "type": "Boolean"
             },
             "class": "Menu.Item",
@@ -2456,7 +2456,7 @@
         },
         {
             "file": "src/sm-menu/js/menu-item.js",
-            "line": 113,
+            "line": 117,
             "description": "Shows this menu item.",
             "itemtype": "method",
             "name": "show",
