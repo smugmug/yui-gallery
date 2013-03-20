@@ -1,7 +1,7 @@
 SmugMug TreeView History
 ========================
 
-## git
+## 2013-03-20
 
 * Now using `Y.Tree` from YUI core, which means TreeView requires YUI 3.9.0+.
 
