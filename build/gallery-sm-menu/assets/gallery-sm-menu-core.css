@@ -1,6 +1,8 @@
 .yui3-menu,
 .yui3-menu-children {
+    left: -10000px;
     position: absolute;
+    top: -10000px;
     visibility: hidden;
 }
 

@@ -468,7 +468,7 @@
             "namespace": "",
             "file": "src/sm-menu/js/plugins/menu-plugin.js",
             "line": 8,
-            "description": "Node plugin that toggles a dropdown menu when the host node is clicked.\n\n### Example\n\n    YUI().use('menu-plugin', function (Y) {\n        var button = Y.one('#button');\n\n        // Plug a dropdown menu into the button.\n        button.plug(Y.Plugin.Menu, {\n            items: [\n                {label: 'Item One'},\n                {label: 'Item Two'},\n                {label: 'Item Three'}\n            ]\n        });\n\n        // The menu will automatically be displayed whenever the button is\n        // clicked, but you can also toggle it manually.\n        button.menu.toggle();\n    });",
+            "description": "Node plugin that toggles a dropdown menu when the host node is clicked.\n\n### Example\n\n    YUI().use('menu-plugin', function (Y) {\n        var button = Y.one('#button');\n\n        // Plug a dropdown menu into the button.\n        button.plug(Y.Plugin.Menu, {\n            items: [\n                {label: 'Item One'},\n                {label: 'Item Two'},\n                {label: 'Item Three'}\n            ]\n        });\n\n        // The menu will automatically be displayed whenever the button is\n        // clicked, but you can also toggle it manually.\n        button.menu.toggleVisible();\n    });",
             "is_constructor": 1,
             "extends": "Menu",
             "uses": [
@@ -2718,7 +2718,7 @@
             "line": 463,
             "description": "Toggles the visibility of this menu, showing it if it's currently hidden or\nhiding it if it's currently visible.",
             "itemtype": "method",
-            "name": "toggle",
+            "name": "toggleVisible",
             "params": [
                 {
                     "name": "options",
@@ -3094,7 +3094,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 996,
+            "line": 1005,
             "description": "Handles click events on menu items.",
             "itemtype": "method",
             "name": "_onItemClick",
@@ -3112,7 +3112,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1036,
+            "line": 1045,
             "description": "Handles delegated `mouseenter` events on menu items.",
             "itemtype": "method",
             "name": "_onItemMouseEnter",
@@ -3130,7 +3130,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1057,
+            "line": 1066,
             "description": "Handles delegated `mouseleave` events on menu items.",
             "itemtype": "method",
             "name": "_onItemMouseLeave",
@@ -3148,7 +3148,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1078,
+            "line": 1087,
             "description": "Handles `mouseenter` events on this menu.",
             "itemtype": "method",
             "name": "_onMenuMouseEnter",
@@ -3166,7 +3166,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1089,
+            "line": 1098,
             "description": "Handles `mouseleave` events on this menu.",
             "itemtype": "method",
             "name": "_onMenuMouseLeave",
@@ -3184,7 +3184,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1112,
+            "line": 1121,
             "description": "Default handler for the generic `itemClick` event.",
             "itemtype": "method",
             "name": "_defItemClickFn",
@@ -3202,7 +3202,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1133,
+            "line": 1142,
             "description": "Default handler for item-specific `itemClick#<id>` events.",
             "itemtype": "method",
             "name": "_defSpecificItemClickFn",
@@ -3220,7 +3220,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1148,
+            "line": 1157,
             "description": "Preferred alignment positions at which this menu should be displayed\nrelative to the anchor point when one is provided to the `show()`,\n`toggle()`, or `reposition()` methods.\n\nThe most optimal alignment position will be chosen automatically based\non which one allows the most of this menu to be visible within the\nbrowser's viewport. If multiple positions are equally visible, then the\noptimal position will be chosen based on its order in this array.\n\nAn alignment position is a string like \"tl-bl\", which means \"align the\ntop left of this menu to the bottom left of its anchor point\".\n\nAny combination of top/bottom/left/right alignment positions may be used\nas long as they follow this format. Here are a few examples:\n\n  * `'bl-br'`: Align the bottom left of this menu with the bottom right\n    of the anchor point.\n  * `'br-bl'`: Align the bottom right of this menu with the bottom left\n    of the anchor point.\n  * `'tl-tr'`: Align the top left of this menu with the top right of\n    the anchor point.\n  * `'tr-tl'`: Align the top right of this menu to the top left of this\n    anchor point.",
             "itemtype": "attribute",
             "name": "alignments",
@@ -3231,7 +3231,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1182,
+            "line": 1191,
             "description": "If `true`, this menu will be hidden when the user clicks on a menu item\nthat doesn't contain a submenu.",
             "itemtype": "attribute",
             "name": "hideOnClick",
@@ -3242,7 +3242,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1193,
+            "line": 1202,
             "description": "If `true`, this menu will be hidden when the user moves the mouse\noutside the menu.",
             "itemtype": "attribute",
             "name": "hideOnMouseLeave",
@@ -3253,7 +3253,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1204,
+            "line": 1213,
             "description": "If `true`, this menu will be hidden when the user clicks somewhere\noutside the menu.",
             "itemtype": "attribute",
             "name": "hideOnOutsideClick",
@@ -3264,7 +3264,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1215,
+            "line": 1224,
             "description": "Orientation of this menu. May be either `'vertical'` or `'horizontal'`.",
             "itemtype": "attribute",
             "name": "orientation",
@@ -3275,7 +3275,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1225,
+            "line": 1234,
             "description": "Just like `alignments`, but for submenus of this menu. See the\n`alignments` attribute for details on how alignment positions work.",
             "itemtype": "attribute",
             "name": "subMenuAlignments",
@@ -3286,7 +3286,7 @@
         },
         {
             "file": "src/sm-menu/js/menu.js",
-            "line": 1238,
+            "line": 1247,
             "description": "Whether or not this menu is visible. Changing this attribute's value\nwill also change the visibility of this menu.",
             "itemtype": "attribute",
             "name": "visible",
