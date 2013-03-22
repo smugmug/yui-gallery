@@ -7,6 +7,8 @@
 }
 
 .yui3-menu.yui3-menu-open {
+    left: auto;
+    top: auto;
     visibility: visible;
     z-index: 2;
 }
