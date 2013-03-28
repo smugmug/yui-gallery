@@ -1,7 +1,7 @@
 SmugMug Menu History
 ====================
 
-## git
+## 2013-03-27
 
 * Fixed: Clicking a menu item didn't open its submenu.
 

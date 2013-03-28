@@ -1,7 +1,7 @@
 SmugMug TreeView History
 ========================
 
-## git
+## 2013-03-27
 
 * `Y.TreeView` now mixes in `Y.Tree.Labelable`, which it should have been doing
   already. Oops.
