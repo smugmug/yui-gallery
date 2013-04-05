@@ -1,0 +1,11 @@
+{
+    "name": "gallery-sm-dom-form-values",
+
+    "builds": {
+        "gallery-sm-dom-form-values": {
+            "jsfiles": [
+                "js/form-values.js"
+            ]
+        }
+    }
+}

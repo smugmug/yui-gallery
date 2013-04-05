@@ -1,0 +1,7 @@
+{
+    "gallery-sm-dom-form-values": {
+        "requires": [
+            "dom-base"
+        ]
+    }
+}
