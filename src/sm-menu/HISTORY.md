@@ -1,6 +1,11 @@
 SmugMug Menu History
 ====================
 
+## git
+
+* The `show()` method will now render the menu if it hasn't already been
+  rendered.
+
 ## 2013-03-27
 
 * Fixed: Clicking a menu item didn't open its submenu.
