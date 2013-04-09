@@ -445,6 +445,8 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
     /**
     Shows this menu.
 
+    The menu will be rendered if it hasn't been rendered already.
+
     @method show
     @param {Object} [options] Options.
         @param {Node|Number[]|Object} [options.anchorPoint] Anchor point at
@@ -454,6 +456,10 @@ var Menu = Y.Base.create('menu', Y.Menu.Base, [Y.View], {
     @chainable
     **/
     show: function (options) {
+        if (!this.rendered) {
+            this.render();
+        }
+
         if (options && options.anchorPoint) {
             this.reposition(options.anchorPoint);
         }
