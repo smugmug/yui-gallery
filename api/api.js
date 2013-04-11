@@ -16,6 +16,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "TreeView"
     ],
     "modules": [
+        "dom",
+        "dom-form-values",
         "gallery-sm-editor",
         "gallery-sm-editor-base",
         "gallery-sm-editor-keys",
@@ -31,6 +33,15 @@ YUI.add("yuidoc-meta", function(Y) {
         "gallery-sm-treeview"
     ],
     "allModules": [
+        {
+            "displayName": "dom",
+            "name": "dom"
+        },
+        {
+            "displayName": "dom-form-values",
+            "name": "dom-form-values",
+            "description": "Adds a `Y.DOM.formToObject(identifier)` method to extract the values from a\n`<form>` element and return an object map of element name to value(s)."
+        },
         {
             "displayName": "gallery-sm-editor",
             "name": "gallery-sm-editor",

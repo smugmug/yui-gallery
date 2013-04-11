@@ -71,6 +71,10 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="..&#x2F;modules/dom.html">dom</a></li>
+            
+                <li><a href="..&#x2F;modules/dom-form-values.html">dom-form-values</a></li>
+            
                 <li><a href="..&#x2F;modules/gallery-sm-editor.html">gallery-sm-editor</a></li>
             
                 <li><a href="..&#x2F;modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
@@ -655,7 +659,8 @@ Y.extend(FocusManager, Y.Plugin.Base, {
         }
 
         var key    = this.keyCodeMap[e.keyCode] || e.keyCode,
-            action = this.get(&#x27;keys&#x27;)[key];
+            keys   = this.get(&#x27;keys&#x27;),
+            action = keys[key] || keys[e.keyCode];
 
         if (action) {
             if (this.preventDefaultMap[key]) {

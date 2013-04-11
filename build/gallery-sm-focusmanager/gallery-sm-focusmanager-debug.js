@@ -519,7 +519,8 @@ Y.extend(FocusManager, Y.Plugin.Base, {
         }
 
         var key    = this.keyCodeMap[e.keyCode] || e.keyCode,
-            action = this.get('keys')[key];
+            keys   = this.get('keys'),
+            action = keys[key] || keys[e.keyCode];
 
         if (action) {
             if (this.preventDefaultMap[key]) {

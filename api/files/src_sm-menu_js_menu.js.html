@@ -71,6 +71,10 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="..&#x2F;modules/dom.html">dom</a></li>
+            
+                <li><a href="..&#x2F;modules/dom-form-values.html">dom-form-values</a></li>
+            
                 <li><a href="..&#x2F;modules/gallery-sm-editor.html">gallery-sm-editor</a></li>
             
                 <li><a href="..&#x2F;modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
@@ -581,6 +585,8 @@ var Menu = Y.Base.create(&#x27;menu&#x27;, Y.Menu.Base, [Y.View], {
     &#x2F;**
     Shows this menu.
 
+    The menu will be rendered if it hasn&#x27;t been rendered already.
+
     @method show
     @param {Object} [options] Options.
         @param {Node|Number[]|Object} [options.anchorPoint] Anchor point at
@@ -590,6 +596,10 @@ var Menu = Y.Base.create(&#x27;menu&#x27;, Y.Menu.Base, [Y.View], {
     @chainable
     **&#x2F;
     show: function (options) {
+        if (!this.rendered) {
+            this.render();
+        }
+
         if (options &amp;&amp; options.anchorPoint) {
             this.reposition(options.anchorPoint);
         }

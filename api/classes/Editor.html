@@ -71,6 +71,10 @@
 
             <ul id="api-modules" class="apis modules">
             
+                <li><a href="..&#x2F;modules/dom.html">dom</a></li>
+            
+                <li><a href="..&#x2F;modules/dom-form-values.html">dom-form-values</a></li>
+            
                 <li><a href="..&#x2F;modules/gallery-sm-editor.html">gallery-sm-editor</a></li>
             
                 <li><a href="..&#x2F;modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
@@ -445,6 +449,13 @@
                         
                             <li class="index-item method inherited">
                                 <a href="#method_focus">focus</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_formToObject">formToObject</a>
 
                                 
                                 
@@ -2597,6 +2608,140 @@ for a list of possible commands.</p>
 
     
 
+    
+
+    
+</div>
+
+                
+                    <div id="method_formToObject" class="method item inherited">
+    <h3 class="name"><code>formToObject</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>identifier</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>includeDisabled</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="..&#x2F;classes&#x2F;Editor.Keys.html#method_formToObject">Editor.Keys</a>:
+            
+        
+        
+        <a href="..&#x2F;files&#x2F;src_sm-dom-form-values_js_form-values.js.html#l11"><code>src&#x2F;sm-dom-form-values&#x2F;js&#x2F;form-values.js:11</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Return an object with form values from <code>&lt;input&gt;</code>s, <code>&lt;select&gt;</code>s, and
+<code>&lt;textarea&gt;</code>s, keyed by field name. Fields with multiple values will have those
+values in an array.</p>
+
+<ul>
+<li>Disabled fields will be ignored unless the <em>includeDisabled</em> param is truthy.</li>
+<li>If no radio or checkbox is checked, the returned object will not contain a
+reference to it.</li>
+<li>If no option is selected in a single select, the first option value will be
+used.</li>
+<li>if no option is selected in a multi-select, it will be omitted from the
+returned object.</li>
+</ul>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">identifier</code>
+                        <span class="type">Element | Node | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The DOM element, Node, or selector for
+                                the <code>&lt;form&gt;</code></p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">includeDisabled</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                    
+                
+            </div>
+        </div>
     
 
     
