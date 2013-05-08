@@ -107,11 +107,15 @@ TreeView = Y.Base.create('treeView', Y.View, [
             this.templates = Y.merge(this.templates, config.templates);
         }
 
+        this._renderQueue = {};
         this._attachTreeViewEvents();
     },
 
     destructor: function () {
+        clearTimeout(this._renderTimeout);
         this._detachTreeViewEvents();
+
+        this._renderQueue = null;
     },
 
     // -- Public Methods -------------------------------------------------------
@@ -243,7 +247,6 @@ TreeView = Y.Base.create('treeView', Y.View, [
         nodeClassNames[classNames.node]            = true;
         nodeClassNames[classNames.canHaveChildren] = !!treeNode.canHaveChildren;
         nodeClassNames[classNames.hasChildren]     = hasChildren;
-        nodeClassNames[classNames.open]            = treeNode.isOpen();
 
         if (htmlNode) {
             // This node has already been rendered, so we just need to update
@@ -272,6 +275,9 @@ TreeView = Y.Base.create('treeView', Y.View, [
                 treeview      : this // not currently used, but may be useful for custom templates
             }));
         }
+
+        this._syncNodeOpenState(treeNode, htmlNode);
+        this._syncNodeSelectedState(treeNode, htmlNode);
 
         if (hasChildren && options.renderChildren) {
             this.renderChildren(treeNode, {
@@ -312,14 +318,59 @@ TreeView = Y.Base.create('treeView', Y.View, [
             // DOM events.
             container.on('mousedown', this._onMouseDown, this),
 
-            container.delegate('click', this._onIndicatorClick, '.' + classNames.indicator, this),
-            container.delegate('click', this._onRowClick, '.' + classNames.row, this),
-            container.delegate('dblclick', this._onRowDoubleClick, '.' + classNames.canHaveChildren + ' > .' + classNames.row, this)
+            container.delegate('click', this._onIndicatorClick,
+                '.' + classNames.indicator, this),
+
+            container.delegate('click', this._onRowClick,
+                '.' + classNames.row, this),
+
+            container.delegate('dblclick', this._onRowDoubleClick,
+                '.' + classNames.canHaveChildren + ' > .' + classNames.row, this)
         );
     },
 
     _detachTreeViewEvents: function () {
         (new Y.EventHandle(this._treeViewEvents)).detach();
+    },
+
+    _processRenderQueue: function () {
+        if (!this.rendered) {
+            return;
+        }
+
+        var queue = this._renderQueue,
+            node;
+
+        for (var id in queue) {
+            if (queue.hasOwnProperty(id)) {
+                node = this.getNodeById(id);
+
+                if (node) {
+                    this.renderNode(node, queue[id]);
+                }
+            }
+        }
+
+        this._renderQueue = {};
+    },
+
+    _queueRender: function (node, options) {
+        if (!this.rendered) {
+            return;
+        }
+
+        var queue = this._renderQueue,
+            self  = this;
+
+        clearTimeout(this._renderTimeout);
+
+        queue[node.id] = Y.merge(queue[node.id], options);
+
+        this._renderTimeout = setTimeout(function () {
+            self._processRenderQueue();
+        }, 15);
+
+        return this;
     },
 
     /**
@@ -332,7 +383,56 @@ TreeView = Y.Base.create('treeView', Y.View, [
     @protected
     **/
     _setLazyRender: function (value) {
+        /*jshint boss:true */
         return this._lazyRender = value;
+    },
+
+    _syncNodeOpenState: function (node, htmlNode) {
+        htmlNode || (htmlNode = this.getHTMLNode(node));
+
+        if (!htmlNode) {
+            return;
+        }
+
+        if (node.isOpen()) {
+            htmlNode
+                .addClass(this.classNames.open)
+                .set('aria-expanded', true);
+        } else {
+            htmlNode
+                .removeClass(this.classNames.open)
+                .set('aria-expanded', false);
+        }
+    },
+
+    _syncNodeSelectedState: function (node, htmlNode) {
+        htmlNode || (htmlNode = this.getHTMLNode(node));
+
+        if (!htmlNode) {
+            return;
+        }
+
+        var multiSelect = this.get('multiSelect');
+
+        if (node.isSelected()) {
+            htmlNode.addClass(this.classNames.selected);
+
+            if (multiSelect) {
+                // It's only necessary to set aria-selected when multi-select is
+                // enabled and focus can't be used to track the selection state.
+                htmlNode.set('aria-selected', true);
+            } else {
+                htmlNode.set('tabIndex', 0).focus();
+            }
+        } else {
+            htmlNode
+                .removeClass(this.classNames.selected)
+                .removeAttribute('tabIndex');
+
+            if (multiSelect) {
+                htmlNode.set('aria-selected', false);
+            }
+        }
     },
 
     // -- Protected Event Handlers ---------------------------------------------
@@ -343,33 +443,32 @@ TreeView = Y.Base.create('treeView', Y.View, [
             return;
         }
 
-        var parent = e.parent,
-            htmlChildrenNode,
-            htmlNode;
+        var parent       = e.parent,
+            treeNode     = e.node,
+            htmlParent   = this.getHTMLNode(parent),
+            htmlChildren = htmlParent && htmlParent.one('.' + this.classNames.children);
 
-        if (parent === this.rootNode) {
-            htmlChildrenNode = this._childrenNode;
+        if (htmlChildren) {
+            // Parent's children have already been rendered. Instead of
+            // re-rendering all of them, just render the new node and insert it
+            // at the correct position.
+            htmlChildren.insert(this.renderNode(treeNode, {
+                renderChildren: !this._lazyRender || treeNode.isOpen()
+            }), e.index);
+
+            // Schedule the parent node to be re-rendered in order to update its
+            // state. This is done asynchronously and throttled in order to
+            // avoid re-rendering the parent many times if multiple children are
+            // added in quick succession.
+            this._queueRender(parent);
         } else {
-            // Re-render the parent to update its state.
-            htmlNode         = this.renderNode(parent);
-            htmlChildrenNode = htmlNode.one('.' + this.classNames.children);
-
-            if (!htmlChildrenNode) {
-                // Children haven't yet been rendered. Render them.
-                this.renderChildren(parent, {
-                    container: htmlNode
-                });
-
-                return;
-            }
+            // Either the parent hasn't been rendered yet, or its children
+            // haven't been rendered yet. Schedule it to be rendered. This is
+            // done asynchronously and throttled in order to avoid re-rendering
+            // the parent many times if multiple children are added in quick
+            // succession.
+            this._queueRender(parent, {renderChildren: true});
         }
-
-        // Parent's children have already been rendered. Instead of re-rendering
-        // all of them, just render the new node and insert it at the correct
-        // position.
-        htmlChildrenNode.insert(this.renderNode(e.node, {
-            renderChildren: !this._lazyRender || e.node.isOpen()
-        }), e.index);
     },
 
     _afterClear: function () {
@@ -377,6 +476,9 @@ TreeView = Y.Base.create('treeView', Y.View, [
         if (!this.rendered) {
             return;
         }
+
+        clearTimeout(this._renderTimeout);
+        this._renderQueue = {};
 
         delete this._childrenNode;
         this.rendered = false;
@@ -386,14 +488,9 @@ TreeView = Y.Base.create('treeView', Y.View, [
     },
 
     _afterClose: function (e) {
-        if (!this.rendered) {
-            return;
+        if (this.rendered) {
+            this._syncNodeOpenState(e.node);
         }
-
-        var htmlNode = this.getHTMLNode(e.node);
-
-        htmlNode.removeClass(this.classNames.open);
-        htmlNode.set('aria-expanded', false);
     },
 
     _afterOpen: function (e) {
@@ -411,8 +508,7 @@ TreeView = Y.Base.create('treeView', Y.View, [
             });
         }
 
-        htmlNode.addClass(this.classNames.open);
-        htmlNode.set('aria-expanded', true);
+        this._syncNodeOpenState(treeNode, htmlNode);
     },
 
     _afterRemove: function (e) {
@@ -420,35 +516,28 @@ TreeView = Y.Base.create('treeView', Y.View, [
             return;
         }
 
-        var htmlNode = this.getHTMLNode(e.node);
+        var treeNode = e.node,
+            htmlNode = this.getHTMLNode(treeNode),
+            parent   = e.parent;
+
+        if (this._renderQueue[treeNode.id]) {
+            delete this._renderQueue[treeNode.id];
+        }
 
         if (htmlNode) {
             htmlNode.remove(true);
-            delete e.node._htmlNode;
+            delete treeNode._htmlNode;
         }
 
-        // Re-render the parent to update its state in case this was its last
-        // child.
-        if (e.parent) {
-            this.renderNode(e.parent);
+        // Re-render the parent to update its state if this was its last child.
+        if (parent && !parent.hasChildren()) {
+            this.renderNode(parent);
         }
     },
 
     _afterSelect: function (e) {
-        if (!this.rendered) {
-            return;
-        }
-
-        var htmlNode = this.getHTMLNode(e.node);
-
-        htmlNode.addClass(this.classNames.selected);
-
-        if (this.get('multiSelect')) {
-            // It's only necessary to set aria-selected when multi-selection is
-            // enabled and focus can't be used to track the selection state.
-            htmlNode.set('aria-selected', true);
-        } else {
-            htmlNode.set('tabIndex', 0).focus();
+        if (this.rendered) {
+            this._syncNodeSelectedState(e.node);
         }
     },
 
@@ -473,19 +562,9 @@ TreeView = Y.Base.create('treeView', Y.View, [
     },
 
     _afterUnselect: function (e) {
-        if (!this.rendered) {
-            return;
+        if (this.rendered) {
+            this._syncNodeSelectedState(e.node);
         }
-
-        var htmlNode = this.getHTMLNode(e.node);
-
-        htmlNode.removeClass(this.classNames.selected);
-
-        if (this.get('multiSelect')) {
-            htmlNode.set('aria-selected', false);
-        }
-
-        htmlNode.removeAttribute('tabIndex');
     },
 
     _onIndicatorClick: function (e) {
@@ -505,6 +584,11 @@ TreeView = Y.Base.create('treeView', Y.View, [
     },
 
     _onRowClick: function (e) {
+        // Ignore buttons other than the left button.
+        if (e.button > 1) {
+            return;
+        }
+
         var node = this.getNodeById(e.currentTarget.getData('node-id'));
 
         if (this.get('multiSelect')) {
@@ -515,6 +599,11 @@ TreeView = Y.Base.create('treeView', Y.View, [
     },
 
     _onRowDoubleClick: function (e) {
+        // Ignore buttons other than the left button.
+        if (e.button > 1) {
+            return;
+        }
+
         this.getNodeById(e.currentTarget.getData('node-id')).toggleOpen();
     }
 }, {
