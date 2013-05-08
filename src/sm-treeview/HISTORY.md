@@ -3,6 +3,9 @@ SmugMug TreeView History
 
 ## git
 
+* Fixed: Clicks and double-clicks no longer trigger actions when a button other
+  than the primary button is used (generally the left button on a mouse).
+
 * Fixed: Adding lots of children to a parent node that had already been
   rendered resulted in the parent being re-rendered once for each added child.
   Parent re-render operations are now batched asynchronously, so a parent won't
