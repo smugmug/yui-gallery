@@ -105,11 +105,15 @@ TreeView = Y.Base.create('treeView', Y.View, [
             this.templates = Y.merge(this.templates, config.templates);
         }
 
+        this._renderQueue = {};
         this._attachTreeViewEvents();
     },
 
     destructor: function () {
+        clearTimeout(this._renderTimeout);
         this._detachTreeViewEvents();
+
+        this._renderQueue = null;
     },
 
     // -- Public Methods -------------------------------------------------------
@@ -310,14 +314,51 @@ TreeView = Y.Base.create('treeView', Y.View, [
             // DOM events.
             container.on('mousedown', this._onMouseDown, this),
 
-            container.delegate('click', this._onIndicatorClick, '.' + classNames.indicator, this),
-            container.delegate('click', this._onRowClick, '.' + classNames.row, this),
-            container.delegate('dblclick', this._onRowDoubleClick, '.' + classNames.canHaveChildren + ' > .' + classNames.row, this)
+            container.delegate('click', this._onIndicatorClick,
+                '.' + classNames.indicator, this),
+
+            container.delegate('click', this._onRowClick,
+                '.' + classNames.row, this),
+
+            container.delegate('dblclick', this._onRowDoubleClick,
+                '.' + classNames.canHaveChildren + ' > .' + classNames.row, this)
         );
     },
 
     _detachTreeViewEvents: function () {
         (new Y.EventHandle(this._treeViewEvents)).detach();
+    },
+
+    _processRenderQueue: function () {
+        var queue = this._renderQueue,
+            node;
+
+        for (var id in queue) {
+            if (queue.hasOwnProperty(id)) {
+                node = this.getNodeById(id);
+
+                if (node) {
+                    this.renderNode(node, queue[id]);
+                }
+            }
+        }
+
+        this._renderQueue = {};
+    },
+
+    _queueRender: function (node, options) {
+        var queue = this._renderQueue,
+            self  = this;
+
+        clearTimeout(this._renderTimeout);
+
+        queue[node.id] = Y.merge(queue[node.id], options);
+
+        this._renderTimeout = setTimeout(function () {
+            self._processRenderQueue();
+        }, 15);
+
+        return this;
     },
 
     /**
@@ -330,6 +371,7 @@ TreeView = Y.Base.create('treeView', Y.View, [
     @protected
     **/
     _setLazyRender: function (value) {
+        /*jshint boss:true */
         return this._lazyRender = value;
     },
 
@@ -341,33 +383,32 @@ TreeView = Y.Base.create('treeView', Y.View, [
             return;
         }
 
-        var parent = e.parent,
-            htmlChildrenNode,
-            htmlNode;
+        var parent       = e.parent,
+            treeNode     = e.node,
+            htmlParent   = this.getHTMLNode(parent),
+            htmlChildren = htmlParent && htmlParent.one('.' + this.classNames.children);
 
-        if (parent === this.rootNode) {
-            htmlChildrenNode = this._childrenNode;
+        if (htmlChildren) {
+            // Parent's children have already been rendered. Instead of
+            // re-rendering all of them, just render the new node and insert it
+            // at the correct position.
+            htmlChildren.insert(this.renderNode(treeNode, {
+                renderChildren: !this._lazyRender || treeNode.isOpen()
+            }), e.index);
+
+            // Schedule the parent node to be re-rendered in order to update its
+            // state. This is done asynchronously and throttled in order to
+            // avoid re-rendering the parent many times if multiple children are
+            // added in quick succession.
+            this._queueRender(parent);
         } else {
-            // Re-render the parent to update its state.
-            htmlNode         = this.renderNode(parent);
-            htmlChildrenNode = htmlNode.one('.' + this.classNames.children);
-
-            if (!htmlChildrenNode) {
-                // Children haven't yet been rendered. Render them.
-                this.renderChildren(parent, {
-                    container: htmlNode
-                });
-
-                return;
-            }
+            // Either the parent hasn't been rendered yet, or its children
+            // haven't been rendered yet. Schedule it to be rendered. This is
+            // done asynchronously and throttled in order to avoid re-rendering
+            // the parent many times if multiple children are added in quick
+            // succession.
+            this._queueRender(parent, {renderChildren: true});
         }
-
-        // Parent's children have already been rendered. Instead of re-rendering
-        // all of them, just render the new node and insert it at the correct
-        // position.
-        htmlChildrenNode.insert(this.renderNode(e.node, {
-            renderChildren: !this._lazyRender || e.node.isOpen()
-        }), e.index);
     },
 
     _afterClear: function () {
@@ -375,6 +416,9 @@ TreeView = Y.Base.create('treeView', Y.View, [
         if (!this.rendered) {
             return;
         }
+
+        clearTimeout(this._renderTimeout);
+        this._renderQueue = {};
 
         delete this._childrenNode;
         this.rendered = false;
@@ -388,10 +432,9 @@ TreeView = Y.Base.create('treeView', Y.View, [
             return;
         }
 
-        var htmlNode = this.getHTMLNode(e.node);
-
-        htmlNode.removeClass(this.classNames.open);
-        htmlNode.set('aria-expanded', false);
+        this.getHTMLNode(e.node)
+            .removeClass(this.classNames.open)
+            .set('aria-expanded', false);
     },
 
     _afterOpen: function (e) {
@@ -409,8 +452,9 @@ TreeView = Y.Base.create('treeView', Y.View, [
             });
         }
 
-        htmlNode.addClass(this.classNames.open);
-        htmlNode.set('aria-expanded', true);
+        htmlNode
+            .addClass(this.classNames.open)
+            .set('aria-expanded', true);
     },
 
     _afterRemove: function (e) {
@@ -418,17 +462,22 @@ TreeView = Y.Base.create('treeView', Y.View, [
             return;
         }
 
-        var htmlNode = this.getHTMLNode(e.node);
+        var treeNode = e.node,
+            htmlNode = this.getHTMLNode(treeNode),
+            parent   = e.parent;
+
+        if (this._renderQueue[treeNode.id]) {
+            delete this._renderQueue[treeNode.id];
+        }
 
         if (htmlNode) {
             htmlNode.remove(true);
-            delete e.node._htmlNode;
+            delete treeNode._htmlNode;
         }
 
-        // Re-render the parent to update its state in case this was its last
-        // child.
-        if (e.parent) {
-            this.renderNode(e.parent);
+        // Re-render the parent to update its state if this was its last child.
+        if (parent && !parent.hasChildren()) {
+            this.renderNode(parent);
         }
     },
 

@@ -1,6 +1,14 @@
 SmugMug TreeView History
 ========================
 
+## git
+
+* Fixed: Adding lots of children to a parent node that had already been
+  rendered resulted in the parent being re-rendered once for each added child.
+  Parent re-render operations are now batched asynchronously, so a parent won't
+  be re-rendered more than once every 15ms regardless of how many children are
+  added.
+
 ## 2013-03-27
 
 * `Y.TreeView` now mixes in `Y.Tree.Labelable`, which it should have been doing
