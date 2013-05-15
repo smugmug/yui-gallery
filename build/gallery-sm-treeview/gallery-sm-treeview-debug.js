@@ -422,7 +422,7 @@ TreeView = Y.Base.create('treeView', Y.View, [
                 // enabled and focus can't be used to track the selection state.
                 htmlNode.set('aria-selected', true);
             } else {
-                htmlNode.set('tabIndex', 0).focus();
+                htmlNode.set('tabIndex', 0);
             }
         } else {
             htmlNode
