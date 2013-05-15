@@ -3,6 +3,8 @@ SmugMug TreeView History
 
 ## git
 
+* Nodes are no longer automatically focused when selected in single-select mode.
+
 * Fixed: Clicks and double-clicks no longer trigger actions when a button other
   than the primary button is used (generally the left button on a mouse).
 
