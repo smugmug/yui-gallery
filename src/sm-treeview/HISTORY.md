@@ -5,6 +5,9 @@ SmugMug TreeView History
 
 * Nodes are no longer automatically focused when selected in single-select mode.
 
+* When the last child is removed from a parent node, the parent node's child
+  list element is now removed from the DOM.
+
 * Fixed: Clicks and double-clicks no longer trigger actions when a button other
   than the primary button is used (generally the left button on a mouse).
 

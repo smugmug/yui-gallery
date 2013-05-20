@@ -118,6 +118,11 @@ TreeView = Y.Base.create('treeView', Y.View, [
 
     // -- Public Methods -------------------------------------------------------
 
+    destroyNode: function (node, options) {
+        node._htmlNode = null;
+        return Y.Tree.prototype.destroyNode(node, options);
+    },
+
     /**
     Returns the HTML node (as a `Y.Node` instance) associated with the specified
     `Tree.Node` instance, if any.
@@ -182,7 +187,7 @@ TreeView = Y.Base.create('treeView', Y.View, [
         options || (options = {});
 
         var container    = options.container,
-            childrenNode = container && container.one('.' + this.classNames.children),
+            childrenNode = container && container.one('>.' + this.classNames.children),
             lazyRender   = this._lazyRender;
 
         if (!childrenNode) {
@@ -277,10 +282,20 @@ TreeView = Y.Base.create('treeView', Y.View, [
         this._syncNodeOpenState(treeNode, htmlNode);
         this._syncNodeSelectedState(treeNode, htmlNode);
 
-        if (hasChildren && options.renderChildren) {
-            this.renderChildren(treeNode, {
-                container: htmlNode
-            });
+        if (hasChildren) {
+            if (options.renderChildren) {
+                this.renderChildren(treeNode, {
+                    container: htmlNode
+                });
+            }
+        } else {
+            // If children were previously rendered but this node no longer has
+            // children, remove the empty child list.
+            var childrenNode = htmlNode.one('>.' + classNames.children);
+
+            if (childrenNode) {
+                childrenNode.remove(true);
+            }
         }
 
         treeNode.state.rendered = true;
@@ -444,7 +459,7 @@ TreeView = Y.Base.create('treeView', Y.View, [
         var parent       = e.parent,
             treeNode     = e.node,
             htmlParent   = this.getHTMLNode(parent),
-            htmlChildren = htmlParent && htmlParent.one('.' + this.classNames.children);
+            htmlChildren = htmlParent && htmlParent.one('>.' + this.classNames.children);
 
         if (htmlChildren) {
             // Parent's children have already been rendered. Instead of
@@ -515,16 +530,32 @@ TreeView = Y.Base.create('treeView', Y.View, [
         }
 
         var treeNode = e.node,
-            htmlNode = this.getHTMLNode(treeNode),
             parent   = e.parent;
 
+        // If this node is in the render queue, remove it from the queue.
         if (this._renderQueue[treeNode.id]) {
             delete this._renderQueue[treeNode.id];
         }
 
+        // Remove DOM nodes associated with this node and any of its
+        // descendants, and mark all nodes as unrendered so that they'll be
+        // re-rendered if they're reinserted in the tree.
+        var htmlNode = this.getHTMLNode(treeNode);
+
         if (htmlNode) {
-            htmlNode.remove(true);
-            delete treeNode._htmlNode;
+            htmlNode
+                .empty()
+                .remove(true);
+
+            treeNode._htmlNode = null;
+        }
+
+        if (!treeNode.state.destroyed) {
+            treeNode.traverse(function (node) {
+                node._htmlNode              = null;
+                node.state.rendered         = false;
+                node.state.renderedChildren = false;
+            });
         }
 
         // Re-render the parent to update its state if this was its last child.
