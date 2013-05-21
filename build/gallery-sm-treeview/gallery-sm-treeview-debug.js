@@ -459,9 +459,18 @@ TreeView = Y.Base.create('treeView', Y.View, [
         }
 
         var parent       = e.parent,
+            parentIsRoot = parent.isRoot(),
             treeNode     = e.node,
+
+            htmlChildren,
+            htmlParent;
+
+        if (parentIsRoot) {
+            htmlChildren = this._childrenNode;
+        } else {
             htmlParent   = this.getHTMLNode(parent),
             htmlChildren = htmlParent && htmlParent.one('>.' + this.classNames.children);
+        }
 
         if (htmlChildren) {
             // Parent's children have already been rendered. Instead of
@@ -475,8 +484,10 @@ TreeView = Y.Base.create('treeView', Y.View, [
             // state. This is done asynchronously and throttled in order to
             // avoid re-rendering the parent many times if multiple children are
             // added in quick succession.
-            this._queueRender(parent);
-        } else {
+            if (!parentIsRoot) {
+                this._queueRender(parent);
+            }
+        } else if (!parentIsRoot) {
             // Either the parent hasn't been rendered yet, or its children
             // haven't been rendered yet. Schedule it to be rendered. This is
             // done asynchronously and throttled in order to avoid re-rendering
