@@ -16,8 +16,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "TreeView"
     ],
     "modules": [
-        "dom",
-        "dom-form-values",
         "gallery-sm-editor",
         "gallery-sm-editor-base",
         "gallery-sm-editor-keys",
@@ -33,10 +31,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "gallery-sm-treeview"
     ],
     "allModules": [
-        {
-            "displayName": "dom",
-            "name": "dom"
-        },
         {
             "displayName": "dom-form-values",
             "name": "dom-form-values",
