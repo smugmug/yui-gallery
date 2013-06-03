@@ -1,12 +1,17 @@
 {
     "name": "SmugMug YUI Gallery API docs",
     "description": "Kickass gallery modules courtesy of your pals at SmugMug.",
-    "version": "3.9.0-git",
+    "version": "3.11.0-git",
     "url": "https://github.com/smugmug/yui-gallery",
     "options": {
-        "linkNatives": true,
         "attributesEmit": true,
-        "selleck": false,
-        "paths": "*/js"
+
+        "external": {
+            "data": "http://yuilibrary.com/yui/docs/api/data.json"
+        },
+
+        "linkNatives": true,
+        "paths": "*/js",
+        "selleck": false
     }
 }
