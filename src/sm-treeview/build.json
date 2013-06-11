@@ -4,13 +4,8 @@
     "builds": {
         "gallery-sm-treeview": {
             "jsfiles": [
+                "js/treeview-templates.js",
                 "js/treeview.js"
-            ]
-        },
-
-        "gallery-sm-treeview-templates": {
-            "jsfiles": [
-                "js/treeview-templates.js"
             ]
         }
     }

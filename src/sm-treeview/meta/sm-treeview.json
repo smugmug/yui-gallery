@@ -3,7 +3,7 @@
         "requires": [
             "base-build",
             "classnamemanager",
-            "gallery-sm-treeview-templates",
+            "template-micro",
             "tree",
             "tree-labelable",
             "tree-openable",
@@ -12,11 +12,5 @@
         ],
 
         "skinnable": true
-    },
-
-    "gallery-sm-treeview-templates": {
-        "requires": [
-            "template-micro"
-        ]
     }
 }
