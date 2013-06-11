@@ -120,7 +120,7 @@ TreeView = Y.Base.create('treeView', Y.View, [
 
     destroyNode: function (node, options) {
         node._htmlNode = null;
-        return Y.Tree.prototype.destroyNode(node, options);
+        return Y.Tree.prototype.destroyNode.call(this, node, options);
     },
 
     /**
