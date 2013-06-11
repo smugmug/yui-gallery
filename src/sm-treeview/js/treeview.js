@@ -22,7 +22,10 @@ TreeView widget.
 var getClassName = Y.ClassNameManager.getClassName,
 
 TreeView = Y.Base.create('treeView', Y.View, [
-    Y.Tree, Y.Tree.Labelable, Y.Tree.Openable, Y.Tree.Selectable
+    Y.Tree,
+    Y.Tree.Labelable,
+    Y.Tree.Openable,
+    Y.Tree.Selectable
 ], {
     // -- Public Properties ----------------------------------------------------
 

@@ -12,5 +12,12 @@
         ],
 
         "skinnable": true
+    },
+
+    "gallery-sm-treeview-sortable": {
+        "requires": [
+            "gallery-sm-treeview",
+            "tree-sortable"
+        ]
     }
 }

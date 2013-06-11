@@ -11,6 +11,10 @@ SmugMug TreeView History
 * The `gallery-sm-treeview-templates` module has been merged into
   `gallery-sm-treeview`, since it had no benefit as a standalone module.
 
+* Added the `gallery-sm-treeview-sortable` module, which provides
+  `Y.TreeView.Sortable`, a `Y.TreeView` extension that wraps `Y.Tree.Sortable`
+  and re-renders TreeView nodes when they're re-sorted.
+
 * Fixed: Clicks and double-clicks no longer trigger actions when a button other
   than the primary button is used (generally the left button on a mouse).
 

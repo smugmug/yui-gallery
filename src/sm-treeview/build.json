@@ -7,6 +7,12 @@
                 "js/treeview-templates.js",
                 "js/treeview.js"
             ]
+        },
+
+        "gallery-sm-treeview-sortable": {
+            "jsfiles": [
+                "js/extensions/treeview-sortable.js"
+            ]
         }
     }
 }
