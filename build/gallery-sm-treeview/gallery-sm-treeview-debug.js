@@ -1,5 +1,30 @@
 YUI.add('gallery-sm-treeview', function (Y, NAME) {
 
+var Micro = Y.Template.Micro;
+
+Y.namespace('TreeView').Templates = {
+    children: Micro.compile(
+        '<ul class="<%= data.classNames.children %>" ' +
+
+            '<% if (data.node.isRoot()) { %>' +
+                'role="tree" tabindex="0"' +
+            '<% } else { %>' +
+                'role="group"' +
+            '<% } %>' +
+
+        '></ul>'
+    ),
+
+    node: Micro.compile(
+        '<li id="<%= data.node.id %>" class="<%= data.nodeClassNames.join(" ") %>" role="treeitem" aria-labelled-by="<%= data.node.id %>-label">' +
+            '<div class="<%= data.classNames.row %>" data-node-id="<%= data.node.id %>">' +
+                '<span class="<%= data.classNames.indicator %>"><s></s></span>' +
+                '<span class="<%= data.classNames.icon %>"></span>' +
+                '<span id="<%= data.node.id %>-label" class="<%= data.classNames.label %>"><%== data.node.label %></span>' +
+            '</div>' +
+        '</li>'
+    )
+};
 /*jshint expr:true, onevar:false */
 
 /**
@@ -24,7 +49,10 @@ TreeView widget.
 var getClassName = Y.ClassNameManager.getClassName,
 
 TreeView = Y.Base.create('treeView', Y.View, [
-    Y.Tree, Y.Tree.Labelable, Y.Tree.Openable, Y.Tree.Selectable
+    Y.Tree,
+    Y.Tree.Labelable,
+    Y.Tree.Openable,
+    Y.Tree.Selectable
 ], {
     // -- Public Properties ----------------------------------------------------
 
@@ -676,7 +704,7 @@ Y.TreeView = Y.mix(TreeView, Y.TreeView);
     "requires": [
         "base-build",
         "classnamemanager",
-        "gallery-sm-treeview-templates",
+        "template-micro",
         "tree",
         "tree-labelable",
         "tree-openable",
