@@ -49,8 +49,10 @@ Sortable.prototype._afterSort = function (e) {
         return;
     }
 
-    // Re-render the re-sorted children.
-    this.renderChildren(node, {
-        container: this.getHTMLNode(node)
-    });
+    // Re-render the sorted node and its children.
+    if (node.isRoot()) {
+        this.render();
+    } else {
+        this.renderNode(node, {renderChildren: true});
+    }
 };
