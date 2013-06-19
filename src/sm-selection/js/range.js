@@ -494,7 +494,7 @@ Range.prototype = {
         // to take the offset into account when traversing. Otherwise we can
         // ignore it.
         if (endOffset && end.childNodes.length) {
-            end = end.childNodes[endOffset];
+            end = end.childNodes[endOffset - 1];
         }
 
         function traverseDOMNode(domNode) {
