@@ -495,6 +495,10 @@ Range.prototype = {
         // ignore it.
         if (endOffset && end.childNodes.length) {
             end = end.childNodes[endOffset - 1];
+
+            while (end.childNodes.length) {
+                end = end.lastChild;
+            }
         }
 
         function traverseDOMNode(domNode) {
