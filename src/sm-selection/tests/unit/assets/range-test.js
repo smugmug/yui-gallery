@@ -39,13 +39,12 @@ mainSuite.add(new Y.Test.Case({
     name: 'Methods',
 
     setUp: function () {
-        this.html = '<span id="partial-container"><span id="marker-start"></span>lorem ipsum <span id="marker-dolor">dolor</span> sit</span> amet<span id="marker-end"></span>';
-
+        this.html = '<span id="partial-container"><span id="marker-start"></span>lorem ipsum <span id="marker-dolor">dolor</span> sit</span> amet<span id="marker-end">marker end text</span>';
         Y.one('#test').setHTML(this.html);
 
         this.range = new Y.Range();
         this.range.startNode('#marker-start');
-        this.range.endNode('#marker-end');
+        this.range.endNode('#marker-end', 1);
     },
 
     tearDown: function () {
@@ -182,7 +181,7 @@ mainSuite.add(new Y.Test.Case({
     'endOffset() should return the end offset': function () {
         var endNode = Y.one('#marker-dolor')._node.nextSibling;
 
-        Assert.areSame(0, this.range.endOffset());
+        Assert.areSame(1, this.range.endOffset());
         this.range.endNode(endNode, 3);
         Assert.areSame(3, this.range.endOffset());
     },
@@ -190,7 +189,7 @@ mainSuite.add(new Y.Test.Case({
     'endOffset(offset) should set the end offset': function () {
         var endNode = Y.one('#marker-dolor')._node.nextSibling;
 
-        Assert.areSame(0, this.range.endOffset());
+        Assert.areSame(1, this.range.endOffset());
         this.range.endNode(endNode);
         this.range.endOffset(4);
         Assert.areSame(4, this.range.endOffset());
@@ -285,7 +284,7 @@ mainSuite.add(new Y.Test.Case({
     },
 
     'toString() should return the plain text content of the range': function () {
-        Assert.areSame('lorem ipsum dolor sit amet', this.range.toString());
+        Assert.areSame('lorem ipsum dolor sit ametmarker end text', this.range.toString());
     },
 
     'traverse(callback) should traverse the contents of the range': function () {
@@ -303,6 +302,8 @@ mainSuite.add(new Y.Test.Case({
         Assert.areSame(' sit', nodes[4].get('text'));
         Assert.areSame(' amet', nodes[5].get('text'));
         Assert.areSame(Y.one('#marker-end'), nodes[6]);
+        Assert.areSame('marker end text', nodes[7].get('text'));
+        Assert.areSame(8, nodes.length);
     },
 
     'traverse(callback, thisObj) should execute the callback with thisObj as its `this` object': function () {
@@ -317,7 +318,7 @@ mainSuite.add(new Y.Test.Case({
             }
         }, thisObj);
 
-        Assert.areSame(7, calls);
+        Assert.areSame(8, calls);
     },
 
     'traverse() should never call the callback if the range is collapsed': function () {
@@ -343,7 +344,7 @@ mainSuite.add(new Y.Test.Case({
         Assert.areSame('foo', wrapper.get('id'));
 
         Assert.areSame(
-            '<span id="partial-container"><span id="marker-start"></span><span id="foo">lorem ipsum </span><span id="marker-dolor">dolor</span> sit</span> amet<span id="marker-end"></span>',
+            '<span id="partial-container"><span id="marker-start"></span><span id="foo">lorem ipsum </span><span id="marker-dolor">dolor</span> sit</span> amet<span id="marker-end">marker end text</span>',
             Y.one('#test').getHTML()
         );
 
