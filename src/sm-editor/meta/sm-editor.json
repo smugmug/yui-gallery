@@ -3,6 +3,7 @@
         "requires": [
             "gallery-sm-editor-base",
             "gallery-sm-editor-keys",
+            "gallery-sm-editor-style",
             "gallery-sm-editor-undo"
         ],
 
@@ -21,6 +22,13 @@
 
     "gallery-sm-editor-keys": {
         "requires": [
+            "gallery-sm-editor-base"
+        ]
+    },
+
+    "gallery-sm-editor-style": {
+        "requires": [
+            "node-style",
             "gallery-sm-editor-base"
         ]
     },
