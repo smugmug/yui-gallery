@@ -498,7 +498,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     _onDblClick: function() {
         var range = this.selection.range();
 
-        this.selection.select(range.shrink(true));
+        this.selection.select(range.shrink({trim: true}));
     },
 
     /**

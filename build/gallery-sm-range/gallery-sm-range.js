@@ -397,11 +397,15 @@ Range.prototype = {
         IE:      `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s7:e10
 
     @method shrink
-    @param {Boolean} [trim] Ignore and trim whitespace
+    @param {Object} [options]
+      @param {Boolean} [options.trim=false] If `true` whitespace will be
+        ignored when shrinking the start and end containers. Offsets will
+        be set to exclude any leading whitespace from the startContainer and
+        trailing whitespace from the endContainer.
     @chainable
     **/
-    shrink: function(trim) {
-        return this.shrinkStart(trim).shrinkEnd(trim);
+    shrink: function(options) {
+        return this.shrinkStart(options).shrinkEnd(options);
     },
 
     /**
@@ -413,12 +417,18 @@ Range.prototype = {
     containing the selected text.
 
     @method shrinkEnd
-    @param {Boolean} [trim] Ignore and trim trailing whitespace
+    @param {Object} [options]
+      @param {Boolean} [options.trim=false] If `true` whitespace will be
+        ignored when shrinking the endContainer and an offset will be set to
+        exclude any trailing whitespace from the shrunken endContainer.
     @chainable
     **/
-    shrinkEnd: function(trim) {
+    shrinkEnd: function(options) {
+        var trim = options && options.trim;
+
         if (!this.isCollapsed()) {
-            var endNode = this.endNode(),
+            var initialEndNode = this.endNode(),
+                endNode = initialEndNode,
                 endOffset = this.endOffset(),
                 endType = endNode.get('nodeType'),
                 endText, endTrim;
@@ -458,7 +468,12 @@ Range.prototype = {
                 });
             }
 
-            endText = endNode.get('text');
+            if (initialEndNode !== endNode) {
+                // a different node than we started with. reset the offset
+                endOffset = endNode.get('text').length;
+            }
+
+            endText = endNode.get('text').substring(0, endOffset);
             endOffset = (trim ? Y.Lang.trimRight(endText) : endText).length;
 
             this.endNode(endNode, endOffset);
@@ -476,12 +491,18 @@ Range.prototype = {
     containing the selected text.
 
     @method shrinkStart
-    @param {Boolean} [trim] Ignore and trim leading whitespace
+    @param {Object} [options]
+      @param {Boolean} [options.trim=false] If `true` whitespace will be
+        ignored when shrinking the startContainer and an offset will be set to
+        exclude any leading whitespace from the shrunken startContainer.
     @chainable
     **/
-    shrinkStart: function(trim) {
+    shrinkStart: function(options) {
+        var trim = options && options.trim;
+
         if (!this.isCollapsed()) {
-            var startNode = this.startNode(),
+            var initialStartNode = this.startNode(),
+                startNode = initialStartNode,
                 startOffset = this.startOffset(),
                 startType = startNode.get('nodeType'),
                 startText, startTrim;
@@ -521,8 +542,13 @@ Range.prototype = {
                 });
             }
 
-            startText = startNode.get('text');
-            startOffset = trim ? startText.indexOf(Y.Lang.trimLeft(startText)) : 0;
+            if (initialStartNode !== startNode) {
+                // a different node than we started with. reset the offset
+                startOffset = 0;
+            }
+
+            startText = startNode.get('text').substring(startOffset);
+            startOffset += trim ? startText.indexOf(Y.Lang.trimLeft(startText)) : 0;
 
             this.startNode(startNode, startOffset);
         }
