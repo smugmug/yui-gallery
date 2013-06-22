@@ -27,7 +27,10 @@ DOM Range specification.
 var doc = Y.config.doc,
     win = Y.config.win,
 
-    isHTML5 = !!(win && win.Range && doc.createRange);
+    isHTML5 = !!(win && win.Range && doc.createRange),
+
+    ELEMENT_NODE = 1,
+    TEXT_NODE = 3;
 
 var Range = isHTML5 ? function (range) {
     this._range = range || doc.createRange();
@@ -336,6 +339,224 @@ Range.prototype = {
     },
 
     /**
+    Shrinks the start and end containers of the range to just the text nodes
+    containing the selected text.
+
+    Useful for normalizing a range after double clicking to select since the
+    range start/end containers vary by browser as explained below:
+
+    Chrome and IE use the first text node that contains the selected text
+    as the startContainer with an offset to exclude any leading whitespace.
+
+    Firefox will use a text node *before* the selected text
+    as the startContainer, with a positive offset set to the end
+    of the node. If there is no previous sibling of the selected text
+    or the previous sibling is not a text node, the behavior is the
+    same as Chrome/IE.
+
+    Chrome uses the last text node that contains the selected text as the
+    endContainer, with an offset to exclude trailing whitespace.
+
+    Firefox follows the mostly the same rules for the endContainer
+    as it does for the startContainer. Any sibling text node
+    *after* the selected text will be used as the endContainer,
+    but with a 0 offset. If there is no next sibling or the next sibling
+    is not a text node, the endContainer will be the same as the
+    startContainer, with an offset to exclude any trailing whitespace.
+
+    IE will aways use a following text node as the endContainer,
+    even if it is a child of a sibling. The offset will *include all*
+    leading whitespace. If there is no following text node,
+    the endContainer will be the same as the startContainer, with an
+    offset to *include all* trailing whitespace.
+
+    Examples:
+        [] = startContainer, {} = endContainer, s:e = start/end offset
+
+    given the HTML
+        Lorem <b>Ipsum</b> Dolor Sit
+
+    dbl clicking to select the text `Lorem`
+        Chrome:  `[{Lorem }]<b>Ipsum</b> Dolor Sit`  s0:e5
+        Firefox: `[{Lorem }]<b>Ipsum</b> Dolor Sit`  s0:e5
+        IE:      `[Lorem ]<b>{Ipsum}</b> Dolor Sit`  s0:e0
+
+    dbl clicking to select the text `Ipsum`
+        Chrome:  `Lorem <b>[{Ipsum}]</b> Dolor Sit`  s0:e5
+        Firefox: `[Lorem ]<b>Ipsum</b>{ Dolor Sit}`  s6:e0
+        IE:      `Lorem <b>[Ipsum]</b>{ Dolor Sit}`  s0:e1
+
+    dbl clicking to select the text `Dolor`
+        Chrome:  `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s1:e6
+        Firefox: `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s1:e6
+        IE:      `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s1:e7
+
+    dbl clicking to select the text `Sit`
+        Chrome:  `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s7:e10
+        Firefox: `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s7:e10
+        IE:      `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s7:e10
+
+    @method shrink
+    @param {Object} [options]
+      @param {Boolean} [options.trim=false] If `true` whitespace will be
+        ignored when shrinking the start and end containers. Offsets will
+        be set to exclude any leading whitespace from the startContainer and
+        trailing whitespace from the endContainer.
+    @chainable
+    **/
+    shrink: function(options) {
+        return this.shrinkStart(options).shrinkEnd(options);
+    },
+
+    /**
+    Shrinks the endContainer of the range to just the text node containing
+    the selected text.
+
+    Browsers are inconsistent in how they define a range, sometimes using
+    offsets of sibling or parent nodes instead of the actual text node
+    containing the selected text.
+
+    @method shrinkEnd
+    @param {Object} [options]
+      @param {Boolean} [options.trim=false] If `true` whitespace will be
+        ignored when shrinking the endContainer and an offset will be set to
+        exclude any trailing whitespace from the shrunken endContainer.
+    @chainable
+    **/
+    shrinkEnd: function(options) {
+        var trim = options && options.trim;
+
+        if (!this.isCollapsed()) {
+            var initialEndNode = this.endNode(),
+                endNode = initialEndNode,
+                endOffset = this.endOffset(),
+                endType = endNode.get('nodeType'),
+                endText, endTrim;
+
+            // Note: Check for explicit node types since empty element nodes
+            // will return falsy for assertions on firstChild, lastChild etc.
+
+            if (TEXT_NODE === endType) {
+                endText = endNode.get('text');
+                endTrim = trim && '' === Y.Lang.trim(endText.substring(0, endOffset));
+
+                // If there is no endOffset, the previousSibling contains
+                // the the selected text
+                if (!endOffset || endTrim) {
+                    // IE will put the endNode in a child of a sibling node, so use the
+                    // startNode if the current endNode doesn't have a previous sibling
+                    endNode = endNode.get('previousSibling') || this.startNode();
+                } else if (!trim) {
+                    // have the correct textNode and not trimming it
+                    return this;
+                }
+            } else if (endOffset) {
+                // the endOffset references a childNode
+                endNode = endNode.get('childNodes').item(endOffset - 1);
+            }
+
+            // at this point endNode could be an element node or a text node
+            // if it is still an element node, traverse to find the
+            // last textNode child
+            if (ELEMENT_NODE === endNode.get('nodeType')) {
+                this.endNode(endNode, endNode.get('childNodes').size());
+
+                this.traverse(function(node) {
+                    if (TEXT_NODE === node.get('nodeType')) {
+                        endNode = node;
+                    }
+                });
+            }
+
+            if (initialEndNode !== endNode) {
+                // a different node than we started with. reset the offset
+                endOffset = endNode.get('text').length;
+            }
+
+            endText = endNode.get('text').substring(0, endOffset);
+            endOffset = (trim ? Y.Lang.trimRight(endText) : endText).length;
+
+            this.endNode(endNode, endOffset);
+        }
+
+        return this;
+    },
+
+    /**
+    Shrinks the startContainer of the range to just the text node containing
+    the selected text.
+
+    Browsers are inconsistent in how they define a range, sometimes using
+    offsets of sibling or parent nodes instead of the actual text node
+    containing the selected text.
+
+    @method shrinkStart
+    @param {Object} [options]
+      @param {Boolean} [options.trim=false] If `true` whitespace will be
+        ignored when shrinking the startContainer and an offset will be set to
+        exclude any leading whitespace from the shrunken startContainer.
+    @chainable
+    **/
+    shrinkStart: function(options) {
+        var trim = options && options.trim;
+
+        if (!this.isCollapsed()) {
+            var initialStartNode = this.startNode(),
+                startNode = initialStartNode,
+                startOffset = this.startOffset(),
+                startType = startNode.get('nodeType'),
+                startText, startTrim;
+
+            // Note: Check for explicit node types since empty element nodes
+            // will return falsy for assertions on firstChild, lastChild etc.
+
+            if (TEXT_NODE === startType) {
+                // text node, might be an empty selection in a sibling node
+                startText = startNode.get('text');
+                startTrim = trim && '' === Y.Lang.trim(startText.substring(startOffset));
+
+                if (startText.length === startOffset || startTrim) {
+                    // startOffset is at the end of the startContainer.
+                    // nextSibling contains the selected text
+                    startNode = startNode.get('nextSibling');
+                } else if (!trim) {
+                    // have the correct textNode and not trimming it
+                    return this;
+                }
+            } else if (startOffset) {
+                // the startOffset references a childNode
+                startNode = startNode.get('childNodes').item(startOffset - 1);
+            }
+
+            // at this point startNode could be an element node or a text node
+            // if it is still an element node, traverse to find the
+            // first textNode child, stopping traversal when found
+            if (ELEMENT_NODE === startNode.get('nodeType')) {
+                this.startNode(startNode);
+
+                this.traverse(function(node) {
+                    if (TEXT_NODE === node.get('nodeType')) {
+                        startNode = node;
+                        return true; // stops traversal
+                    }
+                });
+            }
+
+            if (initialStartNode !== startNode) {
+                // a different node than we started with. reset the offset
+                startOffset = 0;
+            }
+
+            startText = startNode.get('text').substring(startOffset);
+            startOffset += trim ? startText.indexOf(Y.Lang.trimLeft(startText)) : 0;
+
+            this.startNode(startNode, startOffset);
+        }
+
+        return this;
+    },
+
+    /**
     Gets or sets the node that contains the start point of this range.
 
     When specifying an _offset_, you may specify either a number or the string
@@ -476,6 +697,8 @@ Range.prototype = {
     includes a portion of them. Use the `startOffset()` and `endOffset()`
     methods to determine where the precise boundaries are if necessary.
 
+    Returning `true` from the callback function will stop traversal
+
     @method traverse
     @param {Function} callback Callback function.
         @param {Node} callback.node Node instance.
@@ -498,15 +721,15 @@ Range.prototype = {
         if (endOffset && end.childNodes.length) {
             end = end.childNodes[endOffset - 1];
 
-            while (end.childNodes.length) {
+            while (end.lastChild) {
                 end = end.lastChild;
             }
         }
 
         function traverseDOMNode(domNode) {
-            callback.call(thisObj, Y.one(domNode));
+            var stop = callback.call(thisObj, Y.one(domNode));
 
-            if (domNode === end) {
+            if (stop || domNode === end) {
                 return;
             }
 
