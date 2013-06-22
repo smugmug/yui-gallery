@@ -425,7 +425,8 @@ Range.prototype = {
         var trim = options && options.trim;
 
         if (!this.isCollapsed()) {
-            var endNode = this.endNode(),
+            var initialEndNode = this.endNode(),
+                endNode = initialEndNode,
                 endOffset = this.endOffset(),
                 endType = endNode.get('nodeType'),
                 endText, endTrim;
@@ -465,7 +466,12 @@ Range.prototype = {
                 });
             }
 
-            endText = endNode.get('text');
+            if (initialEndNode !== endNode) {
+                // a different node than we started with. reset the offset
+                endOffset = endNode.get('text').length;
+            }
+
+            endText = endNode.get('text').substring(0, endOffset);
             endOffset = (trim ? Y.Lang.trimRight(endText) : endText).length;
 
             this.endNode(endNode, endOffset);
@@ -493,7 +499,8 @@ Range.prototype = {
         var trim = options && options.trim;
 
         if (!this.isCollapsed()) {
-            var startNode = this.startNode(),
+            var initialStartNode = this.startNode(),
+                startNode = initialStartNode,
                 startOffset = this.startOffset(),
                 startType = startNode.get('nodeType'),
                 startText, startTrim;
@@ -533,8 +540,13 @@ Range.prototype = {
                 });
             }
 
-            startText = startNode.get('text');
-            startOffset = trim ? startText.indexOf(Y.Lang.trimLeft(startText)) : 0;
+            if (initialStartNode !== startNode) {
+                // a different node than we started with. reset the offset
+                startOffset = 0;
+            }
+
+            startText = startNode.get('text').substring(startOffset);
+            startOffset += trim ? startText.indexOf(Y.Lang.trimLeft(startText)) : 0;
 
             this.startNode(startNode, startOffset);
         }
