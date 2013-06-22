@@ -395,11 +395,15 @@ Range.prototype = {
         IE:      `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s7:e10
 
     @method shrink
-    @param {Boolean} [trim] Ignore and trim whitespace
+    @param {Object} [options]
+      @param {Boolean} [options.trim=false] If `true` whitespace will be
+        ignored when shrinking the start and end containers. Offsets will
+        be set to exclude any leading whitespace from the startContainer and
+        trailing whitespace from the endContainer.
     @chainable
     **/
-    shrink: function(trim) {
-        return this.shrinkStart(trim).shrinkEnd(trim);
+    shrink: function(options) {
+        return this.shrinkStart(options).shrinkEnd(options);
     },
 
     /**
@@ -411,10 +415,15 @@ Range.prototype = {
     containing the selected text.
 
     @method shrinkEnd
-    @param {Boolean} [trim] Ignore and trim trailing whitespace
+    @param {Object} [options]
+      @param {Boolean} [options.trim=false] If `true` whitespace will be
+        ignored when shrinking the endContainer and an offset will be set to
+        exclude any trailing whitespace from the shrunken endContainer.
     @chainable
     **/
-    shrinkEnd: function(trim) {
+    shrinkEnd: function(options) {
+        var trim = options && options.trim;
+
         if (!this.isCollapsed()) {
             var endNode = this.endNode(),
                 endOffset = this.endOffset(),
@@ -474,10 +483,15 @@ Range.prototype = {
     containing the selected text.
 
     @method shrinkStart
-    @param {Boolean} [trim] Ignore and trim leading whitespace
+    @param {Object} [options]
+      @param {Boolean} [options.trim=false] If `true` whitespace will be
+        ignored when shrinking the startContainer and an offset will be set to
+        exclude any leading whitespace from the shrunken startContainer.
     @chainable
     **/
-    shrinkStart: function(trim) {
+    shrinkStart: function(options) {
+        var trim = options && options.trim;
+
         if (!this.isCollapsed()) {
             var startNode = this.startNode(),
                 startOffset = this.startOffset(),
