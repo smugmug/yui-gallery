@@ -16,11 +16,12 @@ A simple but powerful WYSIWYG editor.
 @constructor
 @extends Editor.Base
 @uses Editor.Keys
+@uses Editor.Style
 @uses Editor.Undo
 **/
 
 Y.Editor = Y.mix(
-    Y.Base.create('editor', Y.Editor.Base, [Y.Editor.Keys, Y.Editor.Undo], {}),
+    Y.Base.create('editor', Y.Editor.Base, [Y.Editor.Keys, Y.Editor.Style, Y.Editor.Undo], {}),
     Y.Editor
 );
 
@@ -29,6 +30,7 @@ Y.Editor = Y.mix(
     "requires": [
         "gallery-sm-editor-base",
         "gallery-sm-editor-keys",
+        "gallery-sm-editor-style",
         "gallery-sm-editor-undo"
     ],
     "skinnable": true

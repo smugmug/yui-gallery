@@ -20,6 +20,12 @@
             ]
         },
 
+        "gallery-sm-editor-style": {
+            "jsfiles": [
+                "js/extensions/editor-style.js"
+            ]
+        },
+
         "gallery-sm-editor-undo": {
             "jsfiles": [
                 "js/extensions/editor-undo.js"
