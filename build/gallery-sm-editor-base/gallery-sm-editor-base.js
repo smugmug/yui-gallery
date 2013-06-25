@@ -160,6 +160,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @return {Boolean|String} Value of the specified command.
     **/
     command: function (name, value) {
+        this.focus();
+        
         if (typeof value !== 'undefined') {
             this._execCommand(name, value);
         }
