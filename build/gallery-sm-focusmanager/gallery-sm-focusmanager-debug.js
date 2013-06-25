@@ -317,9 +317,11 @@ Y.extend(FocusManager, Y.Plugin.Base, {
         } else {
             // If there is no previous sibling and the `circular` attribute is
             // truthy, then focus the last item in this container.
-            prevItem = this.last(Y.merge(options, {
-                container: this._getActiveContainer(activeItem)
-            }));
+            if (this.get('circular')) {
+                prevItem = this.last(Y.merge(options, {
+                    container: this._getActiveContainer(activeItem)
+                }));
+            }
         }
 
         return prevItem || activeItem;
