@@ -483,7 +483,6 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         }
 
         clearInterval(this._selectionMonitor);
-        this._updateSelection();
 
         this.fire(EVT_BLUR);
     },
@@ -511,6 +510,11 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         if (!this._rendered) {
             return;
+        }
+
+        // restore the previously selected range
+        if (this._selectedRange) {
+            this.selection.select(this._selectedRange);
         }
 
         this._updateSelection();
