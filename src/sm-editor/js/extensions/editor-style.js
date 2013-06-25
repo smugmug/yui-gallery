@@ -315,23 +315,34 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
 
     @method _queryCommandValue
     @param {String} name Command name.
+    @param {Object} [options]
+      @param {Boolean} [options.computed] Use computedStyle if explicit style
+        not available
     @return {Boolean|String} Command value.
     @protected
     **/
-    _queryCommandValue: function(name) {
+    _queryCommandValue: function(name, options) {
         var command = this.styleCommands[name],
             range = this.selection.range(),
-            styleNode, value;
+            property, computed, parentNode, styleNode, value;
+
+        computed = options && options.computed;
 
         if (!command) {
             return Y.Editor.Base.prototype._queryCommandValue.call(this, name);
         }
 
-        if (range) {
-            styleNode = this._getStyledAncestor(range.shrink().parentNode(), command.property, true);
+        property = command.property;
 
-            if (styleNode) {
-                value = styleNode.getStyle(command.property);
+        if (range) {
+            parentNode = range.shrink().parentNode();
+
+            if (styleNode = this._getStyledAncestor(parentNode, property, true)) {
+                value = styleNode.getStyle(property);
+            } else if (computed) {
+                value = parentNode.ancestor(function(node) {
+                    return ELEMENT_NODE === node.get('nodeType');
+                }, true).getComputedStyle(property);
             }
 
             if (this.boolCommands[name]) {
