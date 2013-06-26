@@ -438,12 +438,18 @@ Range.prototype = {
                 endText = endNode.get('text');
                 endTrim = trim && '' === Y.Lang.trim(endText.substring(0, endOffset));
 
-                // If there is no endOffset, the previousSibling contains
-                // the the selected text
                 if (!endOffset || endTrim) {
-                    // IE will put the endNode in a child of a sibling node, so use the
-                    // startNode if the current endNode doesn't have a previous sibling
-                    endNode = endNode.get('previousSibling') || this.startNode();
+                    // If there is no endOffset, the previousSibling contains
+                    // the the selected text
+                    var sibling;
+
+                    // The endNode might be a child of a sibling node, so
+                    // walk up the DOM to find the right node
+                    while (!(sibling = endNode.get('previousSibling'))) {
+                        endNode = endNode.get('parentNode');
+                    }
+
+                    endNode = sibling;
                 } else if (!trim) {
                     // have the correct textNode and not trimming it
                     return this;
@@ -509,14 +515,21 @@ Range.prototype = {
             // will return falsy for assertions on firstChild, lastChild etc.
 
             if (TEXT_NODE === startType) {
-                // text node, might be an empty selection in a sibling node
                 startText = startNode.get('text');
                 startTrim = trim && '' === Y.Lang.trim(startText.substring(startOffset));
 
                 if (startText.length === startOffset || startTrim) {
                     // startOffset is at the end of the startContainer.
                     // nextSibling contains the selected text
-                    startNode = startNode.get('nextSibling');
+                    var sibling;
+
+                    // The startNode might be a child of a sibling node, so
+                    // walk up the DOM to find the right node
+                    while (!(sibling = startNode.get('nextSibling'))) {
+                        startNode = startNode.get('parentNode');
+                    }
+
+                    startNode = sibling;
                 } else if (!trim) {
                     // have the correct textNode and not trimming it
                     return this;
