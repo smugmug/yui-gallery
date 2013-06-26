@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DragDrop - Body stress test - 1000 nodes</title>
+
+    <style>
+    .box {
+        background: #cfcfcf;
+        border: 1px solid #333;
+        float: left;
+        height: 100px;
+        margin: 5px;
+        width: 100px;
+    }
+
+    .yui3-dragging {
+        background: lightblue;
+    }
+
+    .yui3-dragover {
+        background: lightgreen;
+    }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script src="http://yui.yahooapis.com/3.10.3/build/yui/yui.js"></script>
+<script src="../../../../build/gallery-sm-dragdrop/gallery-sm-dragdrop.js"></script>
+
+<script>
+YUI().use('node', 'gallery-sm-dragdrop', function (Y) {
+
+// -- Setup --------------------------------------------------------------------
+var container = Y.one('#container'),
+    boxes     = [];
+
+for (var i = 0; i < 1000; ++i) {
+    boxes.push('<div class="box"></div>');
+}
+
+container.setHTML(boxes.join(''));
+
+// -- DragDrop -----------------------------------------------------------------
+var dd;
+
+dd = new Y.DragDrop({
+    dragSelector   : '.box',
+    dropSelector   : '.box',
+    scrollContainer: true
+});
+
+});
+</script>
+
+</body>
+</html>

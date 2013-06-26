@@ -1,3 +1,4 @@
+/*jshint onevar:false */
 /*global MutationObserver:true */
 
 /*
@@ -308,7 +309,9 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         var dragEl    = this._proxyOrDragNode()._node,
             dropEls   = Y.Selector.query(this.get('dropSelector'), this._container._node),
             dropRects = this._dropRects = [],
-            dropEl, rect;
+
+            dropEl,
+            rect;
 
         for (var i = 0, len = dropEls.length; i < len; i++) {
             dropEl = dropEls[i];
@@ -465,8 +468,10 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         var dropRects      = this._dropRects,
             state          = this._dragState,
             originalDragEl = state.dragNode._node, // original drag node, never a proxy
-            pointerX       = state.pageXY[0],
-            pointerY       = state.pageXY[1],
+            scrollOffsets  = this._getViewportScrollOffsets(), // TODO: cache this until scroll?
+            pointerX       = state.pageXY[0] - scrollOffsets[0],
+            pointerY       = state.pageXY[1] - scrollOffsets[1],
+
             dropRect;
 
         for (var i = 0, len = dropRects.length; i < len; i++) {
@@ -672,19 +677,18 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
 
     @method _getAbsoluteBoundingRect
     @param {HTMLElement} el HTML element.
+    @param {Number[]} [scrollOffsets] Viewport's current X and Y scroll offsets.
+        Provide this value to improve performance when making multiple calls.
     @return {Object} Absolute bounding rect for _el_.
     @protected
     **/
-    _getAbsoluteBoundingRect: function (el) {
-        var body = doc.body,
+    _getAbsoluteBoundingRect: function (el, scrollOffsets) {
+        scrollOffsets || (scrollOffsets = this._getViewportScrollOffsets());
 
-            // pageXOffset and pageYOffset work everywhere except IE <9.
-            offsetX = win.pageXOffset !== undefined ? win.pageXOffset :
-                (doc.documentElement || body.parentNode || body).scrollLeft,
-            offsetY = win.pageYOffset !== undefined ? win.pageYOffset :
-                (doc.documentElement || body.parentNode || body).scrollTop,
-
-            rect = el.getBoundingClientRect();
+        var body    = doc.body,
+            offsetX = scrollOffsets[0],
+            offsetY = scrollOffsets[1],
+            rect    = el.getBoundingClientRect();
 
         if (el !== body) {
             var parent = el.parentNode;
@@ -746,6 +750,25 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         return [
             Math.abs(state.startXY[0] - state.pageXY[0]),
             Math.abs(state.startXY[1] - state.pageXY[1])
+        ];
+    },
+
+    /**
+    Returns the current X and Y scroll offsets of the viewport.
+
+    @method _getViewportScrollOffsets
+    @return {Number[]} Array containing the X and Y scroll offsets of the
+        viewport.
+    @protected
+    **/
+    _getViewportScrollOffsets: function () {
+        return [
+            // pageXOffset and pageYOffset work everywhere except IE <9.
+            win.pageXOffset !== undefined ? win.pageXOffset :
+                (doc.documentElement || body.parentNode || body).scrollLeft,
+
+            win.pageYOffset !== undefined ? win.pageYOffset :
+                (doc.documentElement || body.parentNode || body).scrollTop
         ];
     },
 
