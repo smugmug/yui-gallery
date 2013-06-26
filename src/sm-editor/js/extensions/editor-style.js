@@ -171,31 +171,31 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
                 return;
             }
 
-            node.get('children').each(clean);
-
-            if ('' === node.get('text')) {
-                // the node is empty, remove it
-                node.remove(true);
-            } else {
-                if (node !== rootNode) {
+            if (node !== rootNode) {
+                if ('' === node.get('text')) {
+                    // the node is empty, remove it
+                    return node.remove(true);
+                } else {
                     // clear out the properties
                     Y.Array.each(properties, function(style) {
                         node.setStyle(style, '');
                     });
                 }
+            }
 
-                // if this node doesn't have any other valid style properties
-                // on it, we can unwrap it into a text node.
-                // chrome likes to randomly add line-height for example.
-                var hasStyles = Y.Object.some(styleCommands, function(cmd) {
-                    return '' !== node._node.style[cmd.property];
-                });
+            node.get('children').each(clean);
 
-                if (!hasStyles) {
-                    var newNode = Y.Node.create(node.getHTML());
-                    node.replace(newNode).remove(true);
-                    node = newNode;
-                }
+            // if this node doesn't have any other valid style properties
+            // on it, we can unwrap it into a text node.
+            // chrome likes to randomly add line-height for example.
+            var hasStyles = Y.Object.some(styleCommands, function(cmd) {
+                return '' !== node._node.style[cmd.property];
+            });
+
+            if (!hasStyles) {
+                var newNode = Y.Node.create(node.getHTML());
+                node.replace(newNode).remove(true);
+                node = newNode;
             }
 
             return node;
