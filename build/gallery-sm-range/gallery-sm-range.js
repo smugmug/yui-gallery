@@ -339,6 +339,41 @@ Range.prototype = {
     },
 
     /**
+    Sets the Range to contain the Node and its contents.
+
+    The parent Node of the start and end of the Range will be the same as the
+    parent of the given node.
+
+    @method selectNode
+    @param {HTMLElement|Node} node Node or HTMLElement to select
+    @chainable
+    **/
+    selectNode: isHTML5 ? function (node) {
+        this._range.selectNode(Y.one(node)._node);
+        return this;
+    } : function (node) {
+        throw new Error('Not yet implemented.');
+    },
+
+    /**
+    Sets the Range to contain the contents of a Node.
+
+    The parent Node of the start and end of the Range will be the given node.
+    The startOffset is 0, and the endOffset is the number of child Nodes or
+    number of characters contained in the reference node.
+
+    @method selectNodeContents
+    @param {HTMLElement|Node} node Node or HTMLElement to select
+    @chainable
+    **/
+    selectNodeContents: isHTML5 ? function (node) {
+        this._range.selectNodeContents(Y.one(node)._node);
+        return this;
+    } : function (node) {
+        throw new Error('Not yet implemented.');
+    },
+
+    /**
     Shrinks the start and end containers of the range to just the text nodes
     containing the selected text.
 
