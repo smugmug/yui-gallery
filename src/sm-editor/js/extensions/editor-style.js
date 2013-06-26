@@ -283,6 +283,30 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     },
 
     /**
+    Walks the ancestor tree of a given node until a node that has
+    the css property set is found
+
+    @method _getStyledAncestor
+    @param {Node} startNode
+    @param {String} property
+    @param {Boolean} [self] Whether or not to include `startNode` in the scan
+    @return {Node} The node having `property` set, or null if no node was found
+    @protected
+    **/
+    _getStyledAncestor: function(startNode, property, self) {
+        return startNode.ancestor(function(node) {
+            if (ELEMENT_NODE !== node._node.nodeType) {
+                return false;
+            }
+
+            // don't use node.getStyle() because it will return
+            // computedStyle for empty string values like `property: ""`
+            // https://github.com/yui/yui3/blob/master/src/dom/js/dom-style.js#L106
+            return !!node._node.style[property];
+        }, self, this.selectors.input);
+    },
+
+    /**
     Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes
     instead of relying on spotty browser compatibility of `styleWithCSS`
 
