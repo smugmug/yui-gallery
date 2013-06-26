@@ -20,6 +20,13 @@
         ]
     },
 
+    "gallery-sm-editor-dom": {
+        "requires": [
+            "gallery-sm-range",
+            "node"
+        ]
+    },
+
     "gallery-sm-editor-keys": {
         "requires": [
             "gallery-sm-editor-base"
@@ -28,8 +35,9 @@
 
     "gallery-sm-editor-style": {
         "requires": [
-            "node-style",
-            "gallery-sm-editor-base"
+            "gallery-sm-editor-base",
+            "gallery-sm-editor-dom",
+            "node-style"
         ]
     },
 
