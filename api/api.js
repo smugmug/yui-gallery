@@ -4,21 +4,28 @@ YUI.add("yuidoc-meta", function(Y) {
         "Editor",
         "Editor.Base",
         "Editor.Keys",
+        "Editor.Style",
         "Editor.Undo",
         "Menu",
         "Menu.Base",
         "Menu.Item",
         "Menu.Templates",
+        "Plugin.DragDrop.Reorder",
         "Plugin.FocusManager",
         "Plugin.Menu",
         "Range",
+        "SM.DragDrop",
         "Selection",
-        "TreeView"
+        "TreeView",
+        "TreeView.Sortable"
     ],
     "modules": [
+        "gallery-sm-dragdrop",
+        "gallery-sm-dragdrop-reorder",
         "gallery-sm-editor",
         "gallery-sm-editor-base",
         "gallery-sm-editor-keys",
+        "gallery-sm-editor-style",
         "gallery-sm-editor-undo",
         "gallery-sm-focusmanager",
         "gallery-sm-menu",
@@ -28,13 +35,24 @@ YUI.add("yuidoc-meta", function(Y) {
         "gallery-sm-menu-templates",
         "gallery-sm-range",
         "gallery-sm-selection",
-        "gallery-sm-treeview"
+        "gallery-sm-treeview",
+        "gallery-sm-treeview-sortable"
     ],
     "allModules": [
         {
             "displayName": "dom-form-values",
             "name": "dom-form-values",
             "description": "Adds a `Y.DOM.formToObject(identifier)` method to extract the values from a\n`<form>` element and return an object map of element name to value(s)."
+        },
+        {
+            "displayName": "gallery-sm-dragdrop",
+            "name": "gallery-sm-dragdrop",
+            "description": "Provides the `SM.DragDrop` class, a simpler and more efficient drag and drop\nimplementation than the one in YUI core."
+        },
+        {
+            "displayName": "gallery-sm-dragdrop-reorder",
+            "name": "gallery-sm-dragdrop-reorder",
+            "description": "Provides the `Plugin.DragDrop.Reorder` class, a `DragDrop` plugin that adds\ndrag-to-reorder functionality to a collection of nodes."
         },
         {
             "displayName": "gallery-sm-editor",
@@ -50,6 +68,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "gallery-sm-editor-keys",
             "name": "gallery-sm-editor-keys",
             "description": "Provides the `Editor.Keys` extension."
+        },
+        {
+            "displayName": "gallery-sm-editor-style",
+            "name": "gallery-sm-editor-style",
+            "description": "Provides the `Editor.Style` extension."
         },
         {
             "displayName": "gallery-sm-editor-undo",
@@ -100,6 +123,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "gallery-sm-treeview",
             "name": "gallery-sm-treeview",
             "description": "Provides the `Y.TreeView` widget."
+        },
+        {
+            "displayName": "gallery-sm-treeview-sortable",
+            "name": "gallery-sm-treeview-sortable",
+            "description": "Provides `Y.TreeView.Sortable`, a `Y.TreeView` extension that mixes in\n`Y.Tree.Sortable` and provides related TreeView-specific functionality."
         }
     ]
 } };

@@ -47,6 +47,8 @@
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
+                <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
+            
                 <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
             
                 <li><a href="../classes/Menu.html">Menu</a></li>
@@ -57,6 +59,8 @@
             
                 <li><a href="../classes/Menu.Templates.html">Menu.Templates</a></li>
             
+                <li><a href="../classes/Plugin.DragDrop.Reorder.html">Plugin.DragDrop.Reorder</a></li>
+            
                 <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
             
                 <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
@@ -65,7 +69,11 @@
             
                 <li><a href="../classes/Selection.html">Selection</a></li>
             
+                <li><a href="../classes/SM.DragDrop.html">SM.DragDrop</a></li>
+            
                 <li><a href="../classes/TreeView.html">TreeView</a></li>
+            
+                <li><a href="../classes/TreeView.Sortable.html">TreeView.Sortable</a></li>
             
             </ul>
 
@@ -73,11 +81,17 @@
             
                 <li><a href="../modules/dom-form-values.html">dom-form-values</a></li>
             
+                <li><a href="../modules/gallery-sm-dragdrop.html">gallery-sm-dragdrop</a></li>
+            
+                <li><a href="../modules/gallery-sm-dragdrop-reorder.html">gallery-sm-dragdrop-reorder</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor.html">gallery-sm-editor</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
@@ -98,6 +112,8 @@
                 <li><a href="../modules/gallery-sm-selection.html">gallery-sm-selection</a></li>
             
                 <li><a href="../modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="../modules/gallery-sm-treeview-sortable.html">gallery-sm-treeview-sortable</a></li>
             
             </ul>
         </div>
@@ -549,6 +565,13 @@ but no undo stack, keyboard shortcuts, etc.</p>
                             </li>
                         
                             <li class="index-item method protected">
+                                <a href="#method__onDblClick">_onDblClick</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected">
                                 <a href="#method__onFocus">_onFocus</a>
 
                                 
@@ -711,13 +734,6 @@ but no undo stack, keyboard shortcuts, etc.</p>
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_bold">bold</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method inherited">
                                 <a href="#method_bubble">bubble</a>
 
@@ -844,13 +860,6 @@ but no undo stack, keyboard shortcuts, etc.</p>
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_italic">italic</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method inherited">
                                 <a href="#method_modifyAttr">modifyAttr</a>
 
@@ -942,20 +951,6 @@ but no undo stack, keyboard shortcuts, etc.</p>
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_style">style</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_styles">styles</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method deprecated inherited">
                                 <a href="#method_subscribe">subscribe</a>
 
@@ -967,13 +962,6 @@ but no undo stack, keyboard shortcuts, etc.</p>
                         
                             <li class="index-item method inherited">
                                 <a href="#method_toString">toString</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_underline">underline</a>
 
                                 
                                 
@@ -1015,6 +1003,13 @@ but no undo stack, keyboard shortcuts, etc.</p>
                             </li>
                         
                             <li class="index-item property">
+                                <a href="#property_boolCommands">boolCommands</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
                                 <a href="#property_classNames">classNames</a>
 
                                 
@@ -1046,13 +1041,6 @@ but no undo stack, keyboard shortcuts, etc.</p>
                         
                             <li class="index-item property">
                                 <a href="#property_selection">selection</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property">
-                                <a href="#property_styleCommands">styleCommands</a>
 
                                 
                                 
@@ -1609,7 +1597,7 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l387"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:387</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l297"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:297</code></a>
         
         </p>
 
@@ -1862,7 +1850,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
                     
 
                     <div class="param-description">
-                         
+                        
                     </div>
 
                     
@@ -1919,7 +1907,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeObservable.js.html#l178"><code>attribute&#x2F;js&#x2F;AttributeObservable.js:178</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeObservable.js.html#l186"><code>attribute&#x2F;js&#x2F;AttributeObservable.js:186</code></a>
         
         </p>
 
@@ -2278,7 +2266,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l408"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:408</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l319"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:319</code></a>
         
         </p>
 
@@ -2350,7 +2338,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l421"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:421</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l332"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:332</code></a>
         
         </p>
 
@@ -3731,7 +3719,7 @@ implementations which need to fast-track publish for performance reasons.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l450"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:450</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l359"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:359</code></a>
         
         </p>
 
@@ -3964,7 +3952,7 @@ where the calling method has already obtained the config from state.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l462"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:462</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l371"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:371</code></a>
         
         </p>
 
@@ -4659,7 +4647,7 @@ across the class hierarchy for the instance.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l474"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:474</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l383"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:383</code></a>
         
         </p>
 
@@ -5062,7 +5050,7 @@ by the top level attribute name, or null, if valueHash is falsey.
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l566"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:566</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l475"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:475</code></a>
         
         </p>
 
@@ -5074,6 +5062,62 @@ by the top level attribute name, or null, if valueHash is falsey.
 
     <div class="description">
         <p>Handles <code>blur</code> events on the editor.</p>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__onDblClick" class="method item protected">
+    <h3 class="name"><code>_onDblClick</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l491"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:491</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Handles <code>dblclick</code> events on the editor.</p>
     </div>
 
     
@@ -5118,7 +5162,7 @@ by the top level attribute name, or null, if valueHash is falsey.
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l583"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:583</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l503"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:503</code></a>
         
         </p>
 
@@ -5174,7 +5218,7 @@ by the top level attribute name, or null, if valueHash is falsey.
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l607"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:607</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l532"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:532</code></a>
         
         </p>
 
@@ -5646,7 +5690,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l485"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:485</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l394"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:394</code></a>
         
         </p>
 
@@ -6418,7 +6462,7 @@ where the calling method has already obtained the config from state.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l499"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:499</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l408"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:408</code></a>
         
         </p>
 
@@ -6632,7 +6676,7 @@ internal state object, or the state proxy if it exits</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l515"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:515</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l424"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:424</code></a>
         
         </p>
 
@@ -6734,7 +6778,7 @@ internal state object, or the state proxy if it exits</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l531"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:531</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l440"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:440</code></a>
         
         </p>
 
@@ -7223,7 +7267,7 @@ See <a href="#method_addAttr">addAttr</a>.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l458"><code>event-custom&#x2F;js&#x2F;event-facade.js:458</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l455"><code>event-custom&#x2F;js&#x2F;event-facade.js:455</code></a>
         
         </p>
 
@@ -7335,7 +7379,7 @@ be specified.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l830"><code>event-custom&#x2F;js&#x2F;event-target.js:830</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l833"><code>event-custom&#x2F;js&#x2F;event-target.js:833</code></a>
         
         </p>
 
@@ -7672,7 +7716,7 @@ method is called internally to subscribe to events configured in the
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l867"><code>event-custom&#x2F;js&#x2F;event-target.js:867</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l870"><code>event-custom&#x2F;js&#x2F;event-target.js:870</code></a>
         
         </p>
 
@@ -7748,7 +7792,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l134"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:134</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l133"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:133</code></a>
         
         </p>
 
@@ -7760,62 +7804,6 @@ callback, object (method host), methodName, context, 0-n arguments</p>
 
     <div class="description">
         <p>Removes focus from this editor.</p>
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_bold" class="method item">
-    <h3 class="name"><code>bold</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l148"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:148</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Bolds or unbolds the current selection.</p>
     </div>
 
     
@@ -7869,7 +7857,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l510"><code>event-custom&#x2F;js&#x2F;event-facade.js:510</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l507"><code>event-custom&#x2F;js&#x2F;event-facade.js:507</code></a>
         
         </p>
 
@@ -7979,7 +7967,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l159"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:159</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l147"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:147</code></a>
         
         </p>
 
@@ -8202,7 +8190,7 @@ return a <code>Y.Node</code> instance.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l180"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:180</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l170"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:170</code></a>
         
         </p>
 
@@ -8803,7 +8791,7 @@ the event facade.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l196"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:196</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l186"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:186</code></a>
         
         </p>
 
@@ -9080,7 +9068,7 @@ returned. If set to true, all attributes modified from their initial values are 
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l811"><code>event-custom&#x2F;js&#x2F;event-target.js:811</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l814"><code>event-custom&#x2F;js&#x2F;event-target.js:814</code></a>
         
         </p>
 
@@ -9187,7 +9175,7 @@ falsy value otherwise</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l482"><code>event-custom&#x2F;js&#x2F;event-facade.js:482</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l479"><code>event-custom&#x2F;js&#x2F;event-facade.js:479</code></a>
         
         </p>
 
@@ -9254,7 +9242,7 @@ falsy value otherwise</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l210"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:210</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l200"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:200</code></a>
         
         </p>
 
@@ -9429,7 +9417,7 @@ and invokes initializers for the class hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l226"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:226</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l218"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:218</code></a>
         
         </p>
 
@@ -9535,7 +9523,7 @@ current selection if there is one.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l252"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:252</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l244"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:244</code></a>
         
         </p>
 
@@ -9588,62 +9576,6 @@ the current selection if there is one.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_italic" class="method item">
-    <h3 class="name"><code>italic</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l264"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:264</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Italicizes or unitalicizes the current selection.</p>
-    </div>
-
-    
-
     
 
     
@@ -10772,7 +10704,7 @@ but doesn't destroy it or any event listeners attached to it.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l492"><code>event-custom&#x2F;js&#x2F;event-facade.js:492</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l489"><code>event-custom&#x2F;js&#x2F;event-facade.js:489</code></a>
         
         </p>
 
@@ -10851,7 +10783,7 @@ but doesn't destroy it or any event listeners attached to it.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l275"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:275</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l256"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:256</code></a>
         
         </p>
 
@@ -11257,249 +11189,6 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
 </div>
 
                 
-                    <div id="method_style" class="method item">
-    <h3 class="name"><code>style</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>name</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[value]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l315"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:315</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Gets and/or sets the value of the specified editor style command. This
-method is similar to <code>command()</code>, but only supports a subset of
-style-related commands.</p>
-
-<p>See the <code>styleCommands</code> property for a list of supported style commands.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">name</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Command name.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[value]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Command value. Use the special value
-    'toggle' to toggle a boolean command (like 'bold') to the opposite of
-    its current state.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
-                    
-                    Value of the specified command.
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_styles" class="method item">
-    <h3 class="name"><code>styles</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code class="optional">[styles]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l338"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:338</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Gets and/or sets the values of multiple editor style commands.</p>
-
-<p>When called without an argument, the current values of all supported style
-commands will be returned. When called with a <em>styles</em> object, the specified
-style commands will be set to their given values, and the resulting new
-values will be returned.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[styles]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Hash of style names and values to set.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
-                    
-                    Hash of style names and values that were set, or all styles
-    if no <em>styles</em> parameter was specified.
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
                     <div id="method_subscribe" class="method item deprecated inherited">
     <h3 class="name"><code>subscribe</code></h3>
 
@@ -11618,62 +11307,6 @@ and the instance guid, if set.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_underline" class="method item">
-    <h3 class="name"><code>underline</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l374"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:374</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Toggles underline on the current selection.</p>
-    </div>
-
-    
-
     
 
     
@@ -11878,6 +11511,54 @@ instantiate a view and set a bunch of attributes without having to subclass
 
     
         <p><strong>Default:</strong> true</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_boolCommands" class="property item">
+    <h3 class="name"><code>boolCommands</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l89"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:89</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Hash of boolean commands supported by this editor. A boolean command is
+one that does not require a value. Executing this command will toggle
+the currently set value.</p>
+
+<p>Names should correspond with valid <code>execCommand()</code> command names.</p>
+    </div>
+
     
 
     
@@ -12194,129 +11875,6 @@ entire browser document, not just within this editor.</p>
 
     
 
-    
-</div>
-
-                
-                    <div id="property_styleCommands" class="property item">
-    <h3 class="name"><code>styleCommands</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l89"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:89</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Hash of style commands supported by this editor.</p>
-
-<p>Names should correspond with valid <code>execCommand()</code> command names. Values
-should be strings specifying the style's type: either 'boolean' or 'string'.</p>
-    </div>
-
-    
-
-    
-
-    
-        <h4>Sub-properties:</h4>
-
-        <ul class="params-list">
-            
-            <li class="param">
-                
-                    <code class="param-name optional">[bold=&#x27;boolean&#x27;]</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    <span class="flag optional" title="This property is optional.">optional</span>
-                
-
-                <div class="param-description">
-                     
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name optional">[italic=&#x27;boolean&#x27;]</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    <span class="flag optional" title="This property is optional.">optional</span>
-                
-
-                <div class="param-description">
-                     
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name optional">[fontName=&#x27;string&#x27;]</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    <span class="flag optional" title="This property is optional.">optional</span>
-                
-
-                <div class="param-description">
-                     
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name optional">[fontSize=&#x27;string&#x27;]</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    <span class="flag optional" title="This property is optional.">optional</span>
-                
-
-                <div class="param-description">
-                     
-                </div>
-
-                
-            </li>
-            
-            <li class="param">
-                
-                    <code class="param-name optional">[underline=&#x27;string&#x27;]</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    <span class="flag optional" title="This property is optional.">optional</span>
-                
-
-                <div class="param-description">
-                     
-                </div>
-
-                
-            </li>
-            
-        </ul>
     
 </div>
 
@@ -12638,7 +12196,7 @@ has been through the destroy lifecycle phase.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l618"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:618</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l543"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:543</code></a>
         
         </p>
 
@@ -12846,7 +12404,7 @@ has been through the init lifecycle phase.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l630"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:630</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l555"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:555</code></a>
         
         </p>
 
@@ -12956,7 +12514,7 @@ that will be submitted to a server.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l648"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:648</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l573"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:573</code></a>
         
         </p>
 

@@ -47,6 +47,8 @@
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
+                <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
+            
                 <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
             
                 <li><a href="../classes/Menu.html">Menu</a></li>
@@ -57,6 +59,8 @@
             
                 <li><a href="../classes/Menu.Templates.html">Menu.Templates</a></li>
             
+                <li><a href="../classes/Plugin.DragDrop.Reorder.html">Plugin.DragDrop.Reorder</a></li>
+            
                 <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
             
                 <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
@@ -65,7 +69,11 @@
             
                 <li><a href="../classes/Selection.html">Selection</a></li>
             
+                <li><a href="../classes/SM.DragDrop.html">SM.DragDrop</a></li>
+            
                 <li><a href="../classes/TreeView.html">TreeView</a></li>
+            
+                <li><a href="../classes/TreeView.Sortable.html">TreeView.Sortable</a></li>
             
             </ul>
 
@@ -73,11 +81,17 @@
             
                 <li><a href="../modules/dom-form-values.html">dom-form-values</a></li>
             
+                <li><a href="../modules/gallery-sm-dragdrop.html">gallery-sm-dragdrop</a></li>
+            
+                <li><a href="../modules/gallery-sm-dragdrop-reorder.html">gallery-sm-dragdrop-reorder</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor.html">gallery-sm-editor</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
@@ -98,6 +112,8 @@
                 <li><a href="../modules/gallery-sm-selection.html">gallery-sm-selection</a></li>
             
                 <li><a href="../modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="../modules/gallery-sm-treeview-sortable.html">gallery-sm-treeview-sortable</a></li>
             
             </ul>
         </div>
@@ -227,29 +243,28 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
     **/
 
     /**
-    Hash of style commands supported by this editor.
+    Hash of boolean commands supported by this editor. A boolean command is
+    one that does not require a value. Executing this command will toggle
+    the currently set value.
 
-    Names should correspond with valid &#x60;execCommand()&#x60; command names. Values
-    should be strings specifying the style&#x27;s type: either &#x27;boolean&#x27; or &#x27;string&#x27;.
+    Names should correspond with valid &#x60;execCommand()&#x60; command names.
 
-    @property {Object} styleCommands
-    @param {String} [bold=&#x27;boolean&#x27;]
-    @param {String} [italic=&#x27;boolean&#x27;]
-    @param {String} [fontName=&#x27;string&#x27;]
-    @param {String} [fontSize=&#x27;string&#x27;]
-    @param {String} [underline=&#x27;string&#x27;]
+    @property {Object} boolCommands
     **/
-    styleCommands: {
-        bold     : &#x27;boolean&#x27;,
-        italic   : &#x27;boolean&#x27;,
-        fontName : &#x27;string&#x27;,
-        fontSize : &#x27;string&#x27;,
-        underline: &#x27;boolean&#x27;
+    boolCommands: {
+        bold     : true,
+        italic   : true,
+        underline: true,
+        justifyCenter: true,
+        justifyFull: true,
+        justifyLeft: true,
+        justifyRight: true
     },
 
     // -- Protected Properties -------------------------------------------------
 
     // -- Lifecycle ------------------------------------------------------------
+
     initializer: function () {
         this.selection  = new Y.Selection();
         this.selectors  = {};
@@ -286,17 +301,6 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
     },
 
     /**
-    Bolds or unbolds the current selection.
-
-    @method bold
-    @chainable
-    **/
-    bold: function () {
-        this.style(&#x27;bold&#x27;, &#x27;toggle&#x27;);
-        return this;
-    },
-
-    /**
     Gets and/or sets the value of the specified editor command.
 
     See &lt;https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla&gt;
@@ -310,6 +314,8 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
     @return {Boolean|String} Value of the specified command.
     **/
     command: function (name, value) {
+        this.focus();
+        
         if (typeof value !== &#x27;undefined&#x27;) {
             this._execCommand(name, value);
         }
@@ -324,10 +330,10 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
     @chainable
     **/
     decreaseFontSize: function () {
-        var newSize = parseInt(this.style(&#x27;fontSize&#x27;), 10) - 1;
+        var newSize = parseInt(this.command(&#x27;fontSize&#x27;), 10) - 1;
 
         if (newSize &gt; 0) {
-            this.style(&#x27;fontSize&#x27;, &#x27;&#x27; + newSize);
+            this.command(&#x27;fontSize&#x27;, &#x27;&#x27; + newSize);
         }
 
         return this;
@@ -354,10 +360,12 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
     @chainable
     **/
     increaseFontSize: function () {
-        var newSize = parseInt(this.style(&#x27;fontSize&#x27;), 10) + 1;
+        var newSize = parseInt(this.command(&#x27;fontSize&#x27;), 10) + 1;
 
-        if (newSize &lt; 8) {
-            this.style(&#x27;fontSize&#x27;, &#x27;&#x27; + newSize);
+        // currently only webkit supports size 7 (xxx-large), so keep
+        // it under 7 for compatibility
+        if (newSize &lt; 7) {
+            this.command(&#x27;fontSize&#x27;, &#x27;&#x27; + newSize);
         }
 
         return this;
@@ -402,17 +410,6 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
     },
 
     /**
-    Italicizes or unitalicizes the current selection.
-
-    @method italic
-    @chainable
-    **/
-    italic: function () {
-        this.style(&#x27;italic&#x27;, &#x27;toggle&#x27;);
-        return this;
-    },
-
-    /**
     Renders this editor into its container and appends the container to the
     document if necessary.
 
@@ -440,7 +437,6 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
         }
 
         inputNode.set(&#x27;contentEditable&#x27;, true);
-        doc.execCommand(&#x27;styleWithCSS&#x27;, false, &#x27;true&#x27;);
 
         this._inputNode = inputNode;
         this._rendered  = true;
@@ -449,76 +445,6 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
 
         this.fire(EVT_RENDER);
 
-        return this;
-    },
-
-    /**
-    Gets and/or sets the value of the specified editor style command. This
-    method is similar to &#x60;command()&#x60;, but only supports a subset of
-    style-related commands.
-
-    See the &#x60;styleCommands&#x60; property for a list of supported style commands.
-
-    @method style
-    @param {String} name Command name.
-    @param {Boolean|String} [value] Command value. Use the special value
-        &#x27;toggle&#x27; to toggle a boolean command (like &#x27;bold&#x27;) to the opposite of
-        its current state.
-    @return {Boolean|String} Value of the specified command.
-    **/
-    style: function (name, value) {
-        if (!this.styleCommands.hasOwnProperty(name)) {
-            Y.error(&#x27;sm-editor: Unsupported style: &#x27; + name);
-            return;
-        }
-
-        return this.command(name, value);
-    },
-
-    /**
-    Gets and/or sets the values of multiple editor style commands.
-
-    When called without an argument, the current values of all supported style
-    commands will be returned. When called with a _styles_ object, the specified
-    style commands will be set to their given values, and the resulting new
-    values will be returned.
-
-    @method styles
-    @param {Object} [styles] Hash of style names and values to set.
-    @return {Object} Hash of style names and values that were set, or all styles
-        if no _styles_ parameter was specified.
-    **/
-    styles: function (styles) {
-        var results = {},
-            name;
-
-        if (styles) {
-            for (name in styles) {
-                if (styles.hasOwnProperty(name)) {
-                    results[name] = this.style(name, styles[name]);
-                }
-            }
-        } else {
-            var commands = this.styleCommands;
-
-            for (name in commands) {
-                if (commands.hasOwnProperty(name)) {
-                    results[name] = this._queryCommandValue(name);
-                }
-            }
-        }
-
-        return results;
-    },
-
-    /**
-    Toggles underline on the current selection.
-
-    @method underline
-    @chainable
-    **/
-    underline: function () {
-        this.style(&#x27;underline&#x27;, &#x27;toggle&#x27;);
         return this;
     },
 
@@ -540,6 +466,7 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
 
         this._events = [
             container.delegate(&#x27;blur&#x27;,  this._onBlur,  selectors.input, this),
+            container.delegate(&#x27;dblclick&#x27;, this._onDblClick, selectors.input, this),
             container.delegate(&#x27;focus&#x27;, this._onFocus, selectors.input, this),
             container.delegate(&#x27;paste&#x27;, this._onPaste, selectors.input, this)
         ];
@@ -568,14 +495,12 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
     @protected
     **/
     _execCommand: function (name, value) {
-        var type = this.styleCommands[name];
-
         if (!doc.queryCommandEnabled(name)) {
             Y.log(&#x27;Command is not currently allowed: &#x27; + name, &#x27;warn&#x27;, &#x27;sm-editor&#x27;);
             return;
         }
 
-        if (type === &#x27;boolean&#x27;) {
+        if (this.boolCommands[name]) {
             // Only execute the command if the desired state differs from the
             // current state, or the desired state is &#x27;toggle&#x27;, indicating that
             // the command should be toggled regardless of its current state.
@@ -632,7 +557,7 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
     @protected
     **/
     _queryCommandValue: function (name) {
-        return this.styleCommands[name] === &#x27;boolean&#x27; ?
+        return this.boolCommands[name] ?
             !!doc.queryCommandState(name) : doc.queryCommandValue(name);
     },
 
@@ -715,9 +640,20 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
         }
 
         clearInterval(this._selectionMonitor);
-        this._updateSelection();
 
         this.fire(EVT_BLUR);
+    },
+
+    /**
+    Handles &#x60;dblclick&#x60; events on the editor.
+
+    @method _onDblClick
+    @protected
+    **/
+    _onDblClick: function() {
+        var range = this.selection.range();
+
+        this.selection.select(range.shrink({trim: true}));
     },
 
     /**
@@ -731,6 +667,11 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
 
         if (!this._rendered) {
             return;
+        }
+
+        // restore the previously selected range
+        if (this._selectedRange) {
+            this.selection.select(this._selectedRange);
         }
 
         this._updateSelection();

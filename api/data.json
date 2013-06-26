@@ -15,6 +15,28 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/sm-dragdrop/js/plugins/dragdrop-reorder.js": {
+            "name": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
+            "modules": {
+                "gallery-sm-dragdrop-reorder": 1
+            },
+            "classes": {
+                "Plugin.DragDrop.Reorder": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-dragdrop/js/dragdrop.js": {
+            "name": "src/sm-dragdrop/js/dragdrop.js",
+            "modules": {
+                "gallery-sm-dragdrop": 1
+            },
+            "classes": {
+                "SM.DragDrop": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/sm-editor/js/extensions/editor-keys.js": {
             "name": "src/sm-editor/js/extensions/editor-keys.js",
             "modules": {
@@ -22,6 +44,17 @@
             },
             "classes": {
                 "Editor.Keys": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-editor/js/extensions/editor-style.js": {
+            "name": "src/sm-editor/js/extensions/editor-style.js",
+            "modules": {
+                "gallery-sm-editor-style": 1
+            },
+            "classes": {
+                "Editor.Style": 1
             },
             "fors": {},
             "namespaces": {}
@@ -147,6 +180,17 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/sm-treeview/js/extensions/treeview-sortable.js": {
+            "name": "src/sm-treeview/js/extensions/treeview-sortable.js",
+            "modules": {
+                "gallery-sm-treeview-sortable": 1
+            },
+            "classes": {
+                "TreeView.Sortable": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/sm-treeview/js/treeview.js": {
             "name": "src/sm-treeview/js/treeview.js",
             "modules": {
@@ -183,15 +227,49 @@
             "description": "Adds a `Y.DOM.formToObject(identifier)` method to extract the values from a\n`<form>` element and return an object map of element name to value(s).",
             "since": "@SINCE@"
         },
+        "gallery-sm-dragdrop": {
+            "name": "gallery-sm-dragdrop",
+            "submodules": {
+                "gallery-sm-dragdrop-reorder": 1
+            },
+            "classes": {
+                "Plugin.DragDrop.Reorder": 1,
+                "SM.DragDrop": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 19,
+            "description": "Provides the `SM.DragDrop` class, a simpler and more efficient drag and drop\nimplementation than the one in YUI core.",
+            "itemtype": "main"
+        },
+        "gallery-sm-dragdrop-reorder": {
+            "name": "gallery-sm-dragdrop-reorder",
+            "submodules": {},
+            "classes": {
+                "Plugin.DragDrop.Reorder": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-dragdrop",
+            "namespace": "",
+            "file": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
+            "line": 9,
+            "description": "Provides the `Plugin.DragDrop.Reorder` class, a `DragDrop` plugin that adds\ndrag-to-reorder functionality to a collection of nodes."
+        },
         "gallery-sm-editor": {
             "name": "gallery-sm-editor",
             "submodules": {
                 "gallery-sm-editor-keys": 1,
+                "gallery-sm-editor-style": 1,
                 "gallery-sm-editor-undo": 1,
                 "gallery-sm-editor-base": 1
             },
             "classes": {
                 "Editor.Keys": 1,
+                "Editor.Style": 1,
                 "Editor.Undo": 1,
                 "Editor.Base": 1,
                 "Editor": 1
@@ -218,6 +296,21 @@
             "file": "src/sm-editor/js/extensions/editor-keys.js",
             "line": 10,
             "description": "Provides the `Editor.Keys` extension."
+        },
+        "gallery-sm-editor-style": {
+            "name": "gallery-sm-editor-style",
+            "submodules": {},
+            "classes": {
+                "Editor.Style": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-editor",
+            "namespace": "",
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 10,
+            "description": "Provides the `Editor.Style` extension."
         },
         "gallery-sm-editor-undo": {
             "name": "gallery-sm-editor-undo",
@@ -380,8 +473,11 @@
         },
         "gallery-sm-treeview": {
             "name": "gallery-sm-treeview",
-            "submodules": {},
+            "submodules": {
+                "gallery-sm-treeview-sortable": 1
+            },
             "classes": {
+                "TreeView.Sortable": 1,
                 "TreeView": 1
             },
             "fors": {},
@@ -391,9 +487,57 @@
             "line": 10,
             "description": "Provides the `Y.TreeView` widget.",
             "itemtype": "main"
+        },
+        "gallery-sm-treeview-sortable": {
+            "name": "gallery-sm-treeview-sortable",
+            "submodules": {},
+            "classes": {
+                "TreeView.Sortable": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-treeview",
+            "namespace": "",
+            "file": "src/sm-treeview/js/extensions/treeview-sortable.js",
+            "line": 9,
+            "description": "Provides `Y.TreeView.Sortable`, a `Y.TreeView` extension that mixes in\n`Y.Tree.Sortable` and provides related TreeView-specific functionality."
         }
     },
     "classes": {
+        "Plugin.DragDrop.Reorder": {
+            "name": "Plugin.DragDrop.Reorder",
+            "shortname": "Plugin.DragDrop.Reorder",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-dragdrop",
+            "submodule": "gallery-sm-dragdrop-reorder",
+            "namespace": "",
+            "file": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
+            "line": 9,
+            "description": "A plugin for `DragDrop` that adds drag-to-reorder functionality to a collection\nof nodes.",
+            "extends": "Plugin.Base",
+            "is_constructor": 1
+        },
+        "SM.DragDrop": {
+            "name": "SM.DragDrop",
+            "shortname": "SM.DragDrop",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-dragdrop",
+            "namespace": "",
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 19,
+            "description": "A simpler and more efficient drag and drop implementation than the one in YUI\ncore. Highly optimized for delegation-based drag targets, remaining responsive\nand memory-efficient even when managing thousands of draggable nodes.",
+            "extends": "Base",
+            "is_constructor": 1
+        },
         "Editor.Keys": {
             "name": "Editor.Keys",
             "shortname": "Editor.Keys",
@@ -411,6 +555,26 @@
             "file": "src/sm-editor/js/extensions/editor-keys.js",
             "line": 10,
             "description": "Extension for `Editor.Base` that adds support for configurable keyboard\nshortcuts, including a set of default shortcuts.",
+            "is_constructor": 1,
+            "extends": "Base"
+        },
+        "Editor.Style": {
+            "name": "Editor.Style",
+            "shortname": "Editor.Style",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [
+                "Editor.Base",
+                "Editor"
+            ],
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style",
+            "namespace": "",
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 10,
+            "description": "Extension for `Editor.Base` that normalizes style commands into css properties",
             "is_constructor": 1,
             "extends": "Base"
         },
@@ -468,6 +632,7 @@
             "extends": "Editor.Base",
             "uses": [
                 "Editor.Keys",
+                "Editor.Style",
                 "Editor.Undo"
             ]
         },
@@ -697,6 +862,25 @@
             "description": "Normalizes text selection functionality across browsers.",
             "is_constructor": 1
         },
+        "TreeView.Sortable": {
+            "name": "TreeView.Sortable",
+            "shortname": "TreeView.Sortable",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [
+                "TreeView"
+            ],
+            "module": "gallery-sm-treeview",
+            "submodule": "gallery-sm-treeview-sortable",
+            "namespace": "",
+            "file": "src/sm-treeview/js/extensions/treeview-sortable.js",
+            "line": 9,
+            "description": "Extension for `Y.TreeView` that mixes in `Y.Tree.Sortable` and provides related\nTreeView-specific functionality (such as re-rendering a node after it's sorted).",
+            "is_constructor": 1,
+            "extends": "Tree.Sortable"
+        },
         "TreeView": {
             "name": "TreeView",
             "shortname": "TreeView",
@@ -743,9 +927,1237 @@
                 "description": "",
                 "type": "Object"
             },
-            "class": "Editor.Keys",
+            "class": "Plugin.DragDrop.Reorder",
             "module": "dom",
             "submodule": "dom-form-values"
+        },
+        {
+            "file": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
+            "line": 20,
+            "description": "Fired after a drop occurs that results in reorderable nodes being reordered.",
+            "itemtype": "event",
+            "name": "reorder",
+            "params": [
+                {
+                    "name": "above",
+                    "description": "`true` if _dragNode_ was dropped above the center of\n    _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "after",
+                    "description": "`true` if _dragNode_ was dropped after _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "before",
+                    "description": "`true` if _dragNode_ was dropped before _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "below",
+                    "description": "`true` if _dragNode_ was dropped below the center of\n    _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "deltaXY",
+                    "description": "Number of pixels the pointer has moved on the X and Y\n    axes since the drag operation began.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "dragNode",
+                    "description": "The node that was dropped.",
+                    "type": "Node"
+                },
+                {
+                    "name": "inside",
+                    "description": "`true` if _dragNode_ was dropped inside _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "left",
+                    "description": "`true` if _dragNode_ was dropped left of the center of\n    _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "node",
+                    "description": "The reorderable node before or after which the pointer was\n    positioned when the drop occurred.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "right",
+                    "description": "`true` if _dragNode_ was dropped right of the center of\n    _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "startXY",
+                    "description": "X and Y coordinates of the pointer when the drag\n    operation began.",
+                    "type": "Number[]"
+                }
+            ],
+            "preventable": "_defReorderFn",
+            "class": "Plugin.DragDrop.Reorder",
+            "module": "gallery-sm-dragdrop",
+            "submodule": "gallery-sm-dragdrop-reorder"
+        },
+        {
+            "file": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
+            "line": 47,
+            "description": "Fired when the pointer is positioned after a reorderable node during a drag\noperation.",
+            "itemtype": "event",
+            "name": "reorderafter",
+            "params": [
+                {
+                    "name": "above",
+                    "description": "`true` if the pointer is above the center of _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "below",
+                    "description": "`true` if the pointer is below the center of _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "deltaXY",
+                    "description": "Number of pixels the pointer has moved on the X and Y\n    axes since the drag operation began.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "dragNode",
+                    "description": "The node being dragged.",
+                    "type": "Node"
+                },
+                {
+                    "name": "inside",
+                    "description": "`true` if the pointer is inside _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "left",
+                    "description": "`true` if the pointer is left of the center of _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "node",
+                    "description": "The reorderable node after which the pointer is currently\n    positioned.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "right",
+                    "description": "`true` if the pointer is right of the center of _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "startXY",
+                    "description": "X and Y coordinates of the pointer when the drag\n    operation began.",
+                    "type": "Number[]"
+                }
+            ],
+            "preventable": "_defReorderAfterFn",
+            "class": "Plugin.DragDrop.Reorder",
+            "module": "gallery-sm-dragdrop",
+            "submodule": "gallery-sm-dragdrop-reorder"
+        },
+        {
+            "file": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
+            "line": 69,
+            "description": "Fired when the pointer is positioned before a reorderable node during a drag\noperation.",
+            "itemtype": "event",
+            "name": "reorderbefore",
+            "params": [
+                {
+                    "name": "above",
+                    "description": "`true` if the pointer is above the center of _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "below",
+                    "description": "`true` if the pointer is below the center of _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "deltaXY",
+                    "description": "Number of pixels the pointer has moved on the X and Y\n    axes since the drag operation began.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "dragNode",
+                    "description": "The node being dragged.",
+                    "type": "Node"
+                },
+                {
+                    "name": "inside",
+                    "description": "`true` if the pointer is inside _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "left",
+                    "description": "`true` if the pointer is left of the center of _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "node",
+                    "description": "The reorderable node before which the pointer is currently\n    positioned.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "right",
+                    "description": "`true` if the pointer is right of the center of _node_.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "startXY",
+                    "description": "X and Y coordinates of the pointer when the drag\n    operation began.",
+                    "type": "Number[]"
+                }
+            ],
+            "preventable": "_defReorderBeforeFn",
+            "class": "Plugin.DragDrop.Reorder",
+            "module": "gallery-sm-dragdrop",
+            "submodule": "gallery-sm-dragdrop-reorder"
+        },
+        {
+            "file": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
+            "line": 91,
+            "description": "Fired when the reorderable phase of a drag operation ends.\n\nThis could occur because the drag operation itself ended, or because the pointer\nwas dragged outside the reorderable container. If the reorderable phase ended\nwithout causing any items to be reordered, the `canceled` property on this\nevent's facade will be `true`.",
+            "itemtype": "event",
+            "name": "reorderend",
+            "params": [
+                {
+                    "name": "canceled",
+                    "description": "`true` if the reorderable phase ended without causing\n    any items to be reordered.",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "deltaXY",
+                    "description": "Number of pixels the pointer has moved on the X and Y\n    axes since the drag operation began.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "dragNode",
+                    "description": "The node being dragged.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "startXY",
+                    "description": "X and Y coordinates of the pointer when the drag\n    operation began.",
+                    "type": "Number[]"
+                }
+            ],
+            "class": "Plugin.DragDrop.Reorder",
+            "module": "gallery-sm-dragdrop",
+            "submodule": "gallery-sm-dragdrop-reorder"
+        },
+        {
+            "file": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
+            "line": 111,
+            "description": "Fired when the reorderable phase of a drag operation starts.\n\nThis could occur because the drag operation itself started, or because the\npointer was dragged back inside the reorderable container after having\npreviously left it.\n\nTo prevent reordering during the current drag operation, call `preventDefault()`\non this event's facade.",
+            "itemtype": "event",
+            "name": "reorderstart",
+            "params": [
+                {
+                    "name": "deltaXY",
+                    "description": "Number of pixels the pointer has moved on the X and Y\n    axes since the drag operation began.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "dragNode",
+                    "description": "The node being dragged.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "startXY",
+                    "description": "X and Y coordinates of the pointer when the drag\n    operation began.",
+                    "type": "Number[]"
+                }
+            ],
+            "preventable": "_defReorderStartFn",
+            "class": "Plugin.DragDrop.Reorder",
+            "module": "gallery-sm-dragdrop",
+            "submodule": "gallery-sm-dragdrop-reorder"
+        },
+        {
+            "file": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
+            "line": 206,
+            "description": "Attribute change event handler that caches the new value of the attribute in\na protected property on this class.",
+            "itemtype": "method",
+            "name": "_cacheAttrValue",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.DragDrop.Reorder",
+            "module": "gallery-sm-dragdrop",
+            "submodule": "gallery-sm-dragdrop-reorder"
+        },
+        {
+            "file": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
+            "line": 406,
+            "description": "Utility method for lazily publishing and firing events.",
+            "itemtype": "method",
+            "name": "_publishAndFire",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Event name to fire.",
+                    "type": "String"
+                },
+                {
+                    "name": "facade",
+                    "description": "Event facade.",
+                    "type": "Object"
+                },
+                {
+                    "name": "options",
+                    "description": "Event options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "Whether the default handler\n        should be executed directly without actually firing the event.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "access": "protected",
+            "tagname": "",
+            "class": "Plugin.DragDrop.Reorder",
+            "module": "gallery-sm-dragdrop",
+            "submodule": "gallery-sm-dragdrop-reorder"
+        },
+        {
+            "file": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
+            "line": 584,
+            "description": "Orientation of the reorderable items. May be one of the following\nstrings:\n\n- **column** - for items in a single vertical column\n- **grid** - for items in a grid-like pattern that may have both columns\n  and rows.\n- **row** - for items in a single horizontal row\n\nThis affects how before/after positions are calculated. The default is\n**grid**.",
+            "itemtype": "attribute",
+            "name": "orientation",
+            "type": "String",
+            "default": "'grid'",
+            "class": "Plugin.DragDrop.Reorder",
+            "module": "gallery-sm-dragdrop",
+            "submodule": "gallery-sm-dragdrop-reorder"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 39,
+            "description": "Fired whenever the pointer moves during a drag operation.\n\nCall the `preventDefault()` method on this event's facade to prevent the dragged\nnode (or its proxy) from being moved to the new location, and to prevent drop\nzone intersections from being calculated.",
+            "itemtype": "event",
+            "name": "drag",
+            "params": [
+                {
+                    "name": "deltaXY",
+                    "description": "Number of pixels the pointer has moved on the X and Y\n    axes since the drag operation began.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "dragNode",
+                    "description": "The node being dragged.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "startXY",
+                    "description": "X and Y coordinates of the pointer when the drag\n    operation began.",
+                    "type": "Number[]"
+                }
+            ],
+            "preventable": "_defDragFn",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 57,
+            "description": "Fired after a drag operation ends or is canceled.",
+            "itemtype": "event",
+            "name": "dragend",
+            "params": [
+                {
+                    "name": "deltaXY",
+                    "description": "Number of pixels the pointer has moved on the X and Y\n    axes since the drag operation began.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "dragNode",
+                    "description": "The node that was dragged.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "startXY",
+                    "description": "X and Y coordinates of the pointer when the drag\n    operation began.",
+                    "type": "Number[]"
+                }
+            ],
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 70,
+            "description": "Fired when the pointer enters a drop zone during a drag operation.\n\nTo prevent the drop zone from being treated as a valid drop target, call\n`preventDefault()` on this event's facade.",
+            "itemtype": "event",
+            "name": "dragenter",
+            "params": [
+                {
+                    "name": "deltaXY",
+                    "description": "Number of pixels the pointer has moved on the X and Y\n    axes since the drag operation began.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "dragNode",
+                    "description": "The node being dragged.",
+                    "type": "Node"
+                },
+                {
+                    "name": "dropNode",
+                    "description": "The node representing the drop zone.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "startXY",
+                    "description": "X and Y coordinates of the pointer when the drag\n    operation began.",
+                    "type": "Number[]"
+                }
+            ],
+            "preventable": "_defDragEnterFn",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 88,
+            "description": "Fired after the pointer leaves a drop zone during a drag operation.",
+            "itemtype": "event",
+            "name": "dragleave",
+            "params": [
+                {
+                    "name": "deltaXY",
+                    "description": "Number of pixels the pointer has moved on the X and Y\n    axes since the drag operation began.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "dragNode",
+                    "description": "The node being dragged.",
+                    "type": "Node"
+                },
+                {
+                    "name": "dropNode",
+                    "description": "The node representing the drop zone.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "startXY",
+                    "description": "X and Y coordinates of the pointer when the drag\n    operation began.",
+                    "type": "Number[]"
+                }
+            ],
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 102,
+            "description": "Fired when the pointer moves over a drop zone during a drag operation.",
+            "itemtype": "event",
+            "name": "dragover",
+            "params": [
+                {
+                    "name": "deltaXY",
+                    "description": "Number of pixels the pointer has moved on the X and Y\n    axes since the drag operation began.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "dragNode",
+                    "description": "The node being dragged.",
+                    "type": "Node"
+                },
+                {
+                    "name": "dropNode",
+                    "description": "The node representing the drop zone.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "startXY",
+                    "description": "X and Y coordinates of the pointer when the drag\n    operation began.",
+                    "type": "Number[]"
+                }
+            ],
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 116,
+            "description": "Fired when a drag operation begins.\n\nYou can override the pointer offset specified in the `pointerOffset` attribute\nby setting a `pointerOffset` property on the event facade during the \"on\" phase\nof this event. This custom pointer offset will then be used only for the current\ndrag operation.\n\nTo cancel the drag operation, call `preventDefault()` on this event's facade.",
+            "itemtype": "event",
+            "name": "dragstart",
+            "params": [
+                {
+                    "name": "dragNode",
+                    "description": "The node being dragged.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                }
+            ],
+            "preventable": "_defDragStartFn",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 133,
+            "description": "Fired after a draggable node is dropped onto a node marked as a drop zone.",
+            "itemtype": "event",
+            "name": "drop",
+            "params": [
+                {
+                    "name": "deltaXY",
+                    "description": "Number of pixels the pointer has moved on the X and Y\n    axes since the drag operation began.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "dragNode",
+                    "description": "The node being dragged.",
+                    "type": "Node"
+                },
+                {
+                    "name": "dropNode",
+                    "description": "The node representing the drop zone.",
+                    "type": "Node"
+                },
+                {
+                    "name": "pageXY",
+                    "description": "Current X and Y coordinates of the pointer.",
+                    "type": "Number[]"
+                },
+                {
+                    "name": "startXY",
+                    "description": "X and Y coordinates of the pointer when the drag\n    operation began.",
+                    "type": "Number[]"
+                }
+            ],
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 150,
+            "description": "CSS class names used by DragDrop.",
+            "itemtype": "property",
+            "name": "classNames",
+            "type": "Object",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop",
+            "subprops": [
+                {
+                    "name": "dragging",
+                    "description": "Class name applied to a node or proxy node that's\n    being dragged."
+                },
+                {
+                    "name": "dragover",
+                    "description": "Class name applied to a dropzone node over which\n    a draggable node is currently being dragged."
+                },
+                {
+                    "name": "droppable",
+                    "description": "Class name applied to a node or proxy node\n    that's currently being dragged and can be dropped."
+                }
+            ]
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 198,
+            "description": "Synchronizes the internal cache of dropzone node locations, which is used to\ndetermine whether a dragged node may be dropped.\n\nYou should call this method if you modify the DOM or change the position or\nmetrics of a dropzone node during a drag operation. Otherwise, dropzone\npositions may be miscalculated.\n\nCalling this method when a drag operation is not in progress will have no\neffect.",
+            "itemtype": "method",
+            "name": "sync",
+            "chainable": 1,
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 226,
+            "description": "Attaches event handlers.",
+            "itemtype": "method",
+            "name": "_attachEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 283,
+            "description": "Attribute change event handler that caches the new value of the attribute in\na protected property on this class.",
+            "itemtype": "method",
+            "name": "_cacheAttrValue",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 295,
+            "description": "Caches bounding rect information for every node in the container that\nmatches the `dropSelector`.\n\nThis is used during a drag to compute dropzone intersections with the\ndragged node, since mouse events can't be used when the dragged node\nobscures the dropzone.",
+            "itemtype": "method",
+            "name": "_cacheBoundingRects",
+            "return": {
+                "description": "Array of bounding rects.",
+                "type": "Object[]"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 330,
+            "description": "Caches bounding rect information for all scrollable elements.\n\nThis is used during a drag to figure out when we need to auto-scroll a node\nthe pointer is being dragged over.",
+            "itemtype": "method",
+            "name": "_cacheScrollRects",
+            "return": {
+                "description": "Array of bounding rects.",
+                "type": "Object[]"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 388,
+            "description": "Detaches event handlers.",
+            "itemtype": "method",
+            "name": "_detachEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 406,
+            "description": "Ends a drag operation, cleans up after it, and fires a `dragend` event.",
+            "itemtype": "method",
+            "name": "_endDrag",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 441,
+            "description": "Ends a pending drag operation and cleans up after the pending state.\n\nThis doesn't prevent a drag operation from starting; it just cleans up\ntemporary state that's only necessary when a drag is pending.",
+            "itemtype": "method",
+            "name": "_endPendingDrag",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 455,
+            "description": "Searches for a cached drop zone bounding rect that intersects with the\ncurrent pointer position, and returns the intersected element if found.",
+            "itemtype": "method",
+            "name": "_findDropIntersection",
+            "return": {
+                "description": "Intersected drop zone element, or `null` if no\n    intersection found.",
+                "type": "HTMLElement|null"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 494,
+            "description": "Searches for cached scroll zone bounding rects in which the pointer is\ncurrently within the scroll margin (the area near an element's border that\nshould cause the element to scroll).\n\nReturns an array of all intersected scroll zones.",
+            "itemtype": "method",
+            "name": "_findScrollIntersections",
+            "return": {
+                "description": "Array of intersected scroll zones.",
+                "type": "Object[]"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 569,
+            "description": "Fires a `drag` event and, if necessary, a `dragover` event.",
+            "itemtype": "method",
+            "name": "_fireDrag",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 594,
+            "description": "Fires a `dragenter` event for the specified dropzone node.",
+            "itemtype": "method",
+            "name": "_fireDragEnter",
+            "params": [
+                {
+                    "name": "dropNode",
+                    "description": "Dropzone node that was entered.",
+                    "type": "Node"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 616,
+            "description": "Fires a `dragleave` event.",
+            "itemtype": "method",
+            "name": "_fireDragLeave",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 637,
+            "description": "Fires a `dragstart` event, but only if `this._dragState.pending` is `true`.",
+            "itemtype": "method",
+            "name": "_fireDragStart",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 660,
+            "description": "Returns a bounding rect for _el_ with absolute coordinates corrected for\nscroll positions.\n\nThe native `getBoundingClientRect()` returns coordinates for an element's\nvisual position relative to the top left of the viewport, so if the element\nis part of a scrollable region that has been scrolled, its coordinates will\nbe different than if the region hadn't been scrolled.\n\nThis method corrects for scroll offsets all the way up the node tree, so the\nreturned bounding rect will represent an absolute position on a virtual\ncanvas, regardless of scrolling.",
+            "itemtype": "method",
+            "name": "_getAbsoluteBoundingRect",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "HTML element.",
+                    "type": "HTMLElement"
+                }
+            ],
+            "return": {
+                "description": "Absolute bounding rect for _el_.",
+                "type": "Object"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 712,
+            "description": "Returns a bounding rect for _el_, normalizing for older versions of IE that\ndon't provide height and width information in native bounding rects.",
+            "itemtype": "method",
+            "name": "_getBoundingRect",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "HTML element.",
+                    "type": "HTMLElement"
+                }
+            ],
+            "return": {
+                "description": "Bounding rect for _el_.",
+                "type": "Object"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 735,
+            "description": "Returns the XY delta between where the pointer was at the start of the\ncurrent drag operation and where the pointer is now.",
+            "itemtype": "method",
+            "name": "_getDelta",
+            "return": {
+                "description": "Array containing the X and Y deltas.",
+                "type": "Number[]"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 752,
+            "description": "Moves the dragged node or its proxy to the current pointer location, but\nconstrained within the container if the pointer is outside the container.",
+            "itemtype": "method",
+            "name": "_moveDragNode",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 797,
+            "description": "Prevents the WebKit long-touch callout menu from appearing on the current\ndragNode, if any.",
+            "itemtype": "method",
+            "name": "_preventTouchCallout",
+            "access": "protected",
+            "tagname": "",
+            "see": [
+                "_restoreTouchCallout"
+            ],
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 817,
+            "description": "Returns the proxy node associated with the current drag operation, or the\noriginal dragged node if node proxy node is set.",
+            "itemtype": "method",
+            "name": "_proxyOrDragNode",
+            "return": {
+                "description": "Proxy node or original dragged node.",
+                "type": "Node"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 829,
+            "description": "Utility method for lazily publishing and firing events.",
+            "itemtype": "method",
+            "name": "_publishAndFire",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Event name to fire.",
+                    "type": "String"
+                },
+                {
+                    "name": "facade",
+                    "description": "Event facade.",
+                    "type": "Object"
+                },
+                {
+                    "name": "options",
+                    "description": "Event options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "silent",
+                            "description": "Whether the default handler\n        should be executed directly without actually firing the event.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 857,
+            "description": "Detaches and reattaches event handlers.\n\nThis is necessary after the `container`, `dragSelector`, or `dropSelector`\nattributes are changed.",
+            "itemtype": "method",
+            "name": "_reinitialize",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 877,
+            "description": "Restores the original value of the current dragNode's `webkitTouchCallout`\nstyle before it was prevented by `_preventTouchCallout()`.",
+            "itemtype": "method",
+            "name": "_restoreTouchCallout",
+            "access": "protected",
+            "tagname": "",
+            "see": [
+                "_preventTouchCallout"
+            ],
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 897,
+            "description": "Begins scrolling all currently intersected scroll zones in whichever\ndirection(s) they need to be scrolled.\n\nScrolling will continue (and will accelerate in speed) until the\n`_scrollIntersections` property is empty.",
+            "itemtype": "method",
+            "name": "_scroll",
+            "params": [
+                {
+                    "name": "amount",
+                    "description": "Number of pixels to scroll. Scrolling will\n    automatically accelerate as long as the pointer remains within a scroll\n    margin.",
+                    "type": "Number",
+                    "optional": true,
+                    "optdefault": "1"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 968,
+            "description": "Default handler for the `drag` event.",
+            "itemtype": "method",
+            "name": "_defDragFn",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1016,
+            "description": "Default handler for the `dragenter` event.",
+            "itemtype": "method",
+            "name": "_defDragEnterFn",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1030,
+            "description": "Default handler for the `dragstart` event.",
+            "itemtype": "method",
+            "name": "_defDragStartFn",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1078,
+            "description": "Handler for the `gesturemove` event.",
+            "itemtype": "method",
+            "name": "_onDocMove",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1112,
+            "description": "Handler for the `gesturemoveend` event.",
+            "itemtype": "method",
+            "name": "_onDocMoveEnd",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1159,
+            "description": "Handler for the `gesturemovestart` event.",
+            "itemtype": "method",
+            "name": "_onDraggableMoveStart",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1201,
+            "description": "Handles native `dragstart` events on draggable nodes.\n\nThe default behavior of these events must be prevented in order to avoid\nconflicts.",
+            "itemtype": "method",
+            "name": "_onNativeDragStart",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1215,
+            "description": "Called when the `dragenter` event's default handler is prevented.\n\nThis will prevent the entered node from being considered a valid dropzone.",
+            "itemtype": "method",
+            "name": "_preventedDragEnterFn",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1228,
+            "description": "Called when the `dragstart` event's default handler is prevented.\n\nThis will cancel the drag operation.",
+            "itemtype": "method",
+            "name": "_preventedDragStartFn",
+            "access": "protected",
+            "tagname": "",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1241,
+            "description": "Container node to which drag operations should be constrained. All\ndraggable nodes and dropzones must be descendants of this container, and\ndraggable nodes will not be draggable or droppable outside its borders.\n\nIf not specified, the `<body>` element will be used as the container.",
+            "itemtype": "attribute",
+            "name": "container",
+            "type": "HTMLElement|Node|String",
+            "default": "'body'",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1259,
+            "description": "Distance in pixels that the mouse cursor must move after a mousedown\nbefore the movement will be considered the beginning of a drag event.\n\nThis value has no effect on touch-based interactions (see\n`maxGestureDistance`).",
+            "itemtype": "attribute",
+            "name": "distanceThreshold",
+            "type": "Number",
+            "default": "10",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1273,
+            "description": "CSS selector that matches one or more nodes within a draggable node that\nshould be treated as drag handles for that node.\n\nIf a `dragHandleSelector` is set, nodes matched by `dragSelector` will\nonly be draggable by their handles.",
+            "itemtype": "attribute",
+            "name": "dragHandleSelector",
+            "type": "String",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1284,
+            "description": "CSS selector that matches one or more nodes within the `container` that\nshould be draggable.",
+            "itemtype": "attribute",
+            "name": "dragSelector",
+            "type": "String",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1292,
+            "description": "CSS selector that matches one or more nodes within the `container` that\nshould be considered drop zones.",
+            "itemtype": "attribute",
+            "name": "dropSelector",
+            "type": "String",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1300,
+            "description": "Whether or not to enable dragging in response to touch events. There are\ncurrently some edge cases with this, which is why it might make sense to\ndisable it in certain situations.",
+            "itemtype": "attribute",
+            "name": "enableTouchDrag",
+            "type": "Boolean",
+            "default": "true",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1312,
+            "description": "Array of custom X and Y pixel offset values specifying how the dragged\nnode or proxy node should be positioned relative to the pointer\nposition, or the string \"auto\" for an automatic offset based on the\ninitial grab point.\n\nYou can override the pointer offset specified here on a per-drag basis\nby setting a `pointerOffset` property on the event facade passed to the\n\"on\" phase of the `dragstart` event.",
+            "itemtype": "attribute",
+            "name": "pointerOffset",
+            "type": "Number[]|String",
+            "default": "'auto'",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1329,
+            "description": "Whether or not to automatically scroll the container if necessary when\nthe pointer approaches an edge during a drag operation.\n\nIf it's necessary to auto-scroll nodes other than the container, select\nthose nodes using the `scrollSelector` attribute.",
+            "itemtype": "attribute",
+            "name": "scrollContainer",
+            "type": "Boolean",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1342,
+            "description": "Distance in pixels from the edge of a scrollable node at which the\npointer will cause the node to begin scrolling during a drag operation.\n\nThe smaller this number is, the closer the pointer will have to be to\nthe edge before the node will start to scroll.",
+            "itemtype": "attribute",
+            "name": "scrollMargin",
+            "type": "Number",
+            "default": "50",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1356,
+            "description": "CSS selector that matches scrollable nodes within the `container` that\nshould be automatically scrolled when the pointer is dragged near the\nnode's edges.",
+            "itemtype": "attribute",
+            "name": "scrollSelector",
+            "type": "String",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1365,
+            "description": "Amount of time in milliseconds that must pass after a mousedown or tap\nwithout a corresponding mouseup or release before we'll consider the\naction the beginning of a drag event.\n\nFor mouse-based interactions, exceeding this threshold will cause a\ndrag event to start even if the `distanceThreshold` is not met.\n\nFor touch-based interactions, a drag event will only start if this\nthreshold is exceeded *and* the touch point doesn't move more than the\nnumber of pixels specified by `maxGestureDistance`.",
+            "itemtype": "attribute",
+            "name": "timeThreshold",
+            "type": "Number",
+            "default": "800",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1384,
+            "description": "Whether or not to use a MutationObserver in capable browsers to\nautomatically detect changes to drop zone nodes during a drag operation.\n\nThis can be more convenient than manually calling `sync()` whenever a\ndrop zone changes, but it only works in very modern browsers and may\nresult in poor performance if frequent changes are made to drop zone\nnodes during a drag operation.\n\nIt should be considered experimental.",
+            "itemtype": "attribute",
+            "name": "useMutationObserver",
+            "type": "Boolean",
+            "default": "false",
+            "class": "SM.DragDrop",
+            "module": "gallery-sm-dragdrop"
         },
         {
             "file": "src/sm-editor/js/extensions/editor-keys.js",
@@ -822,6 +2234,200 @@
             "class": "Editor.Keys",
             "module": "gallery-sm-editor",
             "submodule": "gallery-sm-editor-keys"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 26,
+            "description": "Hash of style commands supported by this editor.\n\nNames should correspond with valid `execCommand()` command names. Values\nare properties in the following format:",
+            "itemtype": "property",
+            "name": "styleCommands",
+            "type": "Object",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style",
+            "subprops": [
+                {
+                    "name": "property",
+                    "description": "The name of the CSS property in camelCase form",
+                    "type": "String"
+                },
+                {
+                    "name": "valueOn",
+                    "description": "The `on` value of the property. eg. `bold`",
+                    "type": "String",
+                    "optional": true
+                },
+                {
+                    "name": "valueOff",
+                    "description": "The `off` value of the property. eg. `none`",
+                    "type": "String",
+                    "optional": true
+                }
+            ]
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 83,
+            "description": "Bolds or unbolds the current selection.",
+            "itemtype": "method",
+            "name": "bold",
+            "chainable": 1,
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 94,
+            "description": "Italicizes or unitalicizes the current selection.",
+            "itemtype": "method",
+            "name": "italic",
+            "chainable": 1,
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 105,
+            "description": "Gets and/or sets the values of multiple editor style commands.\n\nWhen called without an argument, the current values of all supported style\ncommands will be returned. When called with a _styles_ object, the specified\nstyle commands will be set to their given values, and the resulting new\nvalues will be returned.",
+            "itemtype": "method",
+            "name": "styles",
+            "params": [
+                {
+                    "name": "styles",
+                    "description": "Hash of style names and values to set.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Hash of style names and values that were set, or all styles\n    if no _styles_ parameter was specified.",
+                "type": "Object"
+            },
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 141,
+            "description": "Toggles underline on the current selection.",
+            "itemtype": "method",
+            "name": "underline",
+            "chainable": 1,
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 154,
+            "description": "Traverses the children of a given node, removing empty nodes and\nclearing out any given css properties",
+            "itemtype": "method",
+            "name": "_cleanNode",
+            "params": [
+                {
+                    "name": "rootNode",
+                    "description": "",
+                    "type": "Node"
+                },
+                {
+                    "name": "properties",
+                    "description": "",
+                    "type": "String|Array"
+                }
+            ],
+            "return": {
+                "description": "The cleaned node",
+                "type": "Node"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 208,
+            "description": "Duckpunch Editor.Base._execCommand to build css styled nodes instead of\nrelying on spotty browser compatibility of `styleWithCSS`\n\nPasses through to Editor.Base for any commands not defined\nin `this.styleCommands`",
+            "itemtype": "method",
+            "name": "_execCommand",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Command name.",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "Command value.",
+                    "type": "Boolean|String"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 285,
+            "description": "Walks the ancestor tree of a given node until a node that has\nthe css property set is found",
+            "itemtype": "method",
+            "name": "_getStyledAncestor",
+            "params": [
+                {
+                    "name": "startNode",
+                    "description": "",
+                    "type": "Node"
+                },
+                {
+                    "name": "property",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "self",
+                    "description": "Whether or not to include `startNode` in the scan",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "The node having `property` set, or null if no node was found",
+                "type": "Node"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 309,
+            "description": "Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes\ninstead of relying on spotty browser compatibility of `styleWithCSS`\n\nPasses through to Editor.Base for any commands not defined\nin `this.styleCommands`",
+            "itemtype": "method",
+            "name": "_queryCommandValue",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Command name.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Command value.",
+                "type": "Boolean|String"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
         },
         {
             "file": "src/sm-editor/js/extensions/editor-undo.js",
@@ -1072,54 +2678,17 @@
         {
             "file": "src/sm-editor/js/editor-base.js",
             "line": 89,
-            "description": "Hash of style commands supported by this editor.\n\nNames should correspond with valid `execCommand()` command names. Values\nshould be strings specifying the style's type: either 'boolean' or 'string'.",
+            "description": "Hash of boolean commands supported by this editor. A boolean command is\none that does not require a value. Executing this command will toggle\nthe currently set value.\n\nNames should correspond with valid `execCommand()` command names.",
             "itemtype": "property",
-            "name": "styleCommands",
+            "name": "boolCommands",
             "type": "Object",
             "class": "Editor.Base",
             "module": "gallery-sm-editor",
-            "submodule": "gallery-sm-editor-base",
-            "subprops": [
-                {
-                    "name": "bold",
-                    "description": "",
-                    "type": "String",
-                    "optional": true,
-                    "optdefault": "'boolean'"
-                },
-                {
-                    "name": "italic",
-                    "description": "",
-                    "type": "String",
-                    "optional": true,
-                    "optdefault": "'boolean'"
-                },
-                {
-                    "name": "fontName",
-                    "description": "",
-                    "type": "String",
-                    "optional": true,
-                    "optdefault": "'string'"
-                },
-                {
-                    "name": "fontSize",
-                    "description": "",
-                    "type": "String",
-                    "optional": true,
-                    "optdefault": "'string'"
-                },
-                {
-                    "name": "underline",
-                    "description": "",
-                    "type": "String",
-                    "optional": true,
-                    "optdefault": "'string'"
-                }
-            ]
+            "submodule": "gallery-sm-editor-base"
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 134,
+            "line": 133,
             "description": "Removes focus from this editor.",
             "itemtype": "method",
             "name": "blur",
@@ -1130,18 +2699,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 148,
-            "description": "Bolds or unbolds the current selection.",
-            "itemtype": "method",
-            "name": "bold",
-            "chainable": 1,
-            "class": "Editor.Base",
-            "module": "gallery-sm-editor",
-            "submodule": "gallery-sm-editor-base"
-        },
-        {
-            "file": "src/sm-editor/js/editor-base.js",
-            "line": 159,
+            "line": 147,
             "description": "Gets and/or sets the value of the specified editor command.\n\nSee <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>\nfor a list of possible commands.",
             "itemtype": "method",
             "name": "command",
@@ -1168,7 +2726,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 180,
+            "line": 170,
             "description": "Decreases the font size of the current selection (if possible).",
             "itemtype": "method",
             "name": "decreaseFontSize",
@@ -1179,7 +2737,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 196,
+            "line": 186,
             "description": "Focuses this editor.",
             "itemtype": "method",
             "name": "focus",
@@ -1190,7 +2748,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 210,
+            "line": 200,
             "description": "Increases the font size of the current selection (if possible).",
             "itemtype": "method",
             "name": "increaseFontSize",
@@ -1201,7 +2759,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 226,
+            "line": 218,
             "description": "Inserts the specified _html_ at the current selection point, deleting the\ncurrent selection if there is one.",
             "itemtype": "method",
             "name": "insertHTML",
@@ -1222,7 +2780,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 252,
+            "line": 244,
             "description": "Inserts the specified plain _text_ at the current selection point, deleting\nthe current selection if there is one.",
             "itemtype": "method",
             "name": "insertText",
@@ -1243,18 +2801,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 264,
-            "description": "Italicizes or unitalicizes the current selection.",
-            "itemtype": "method",
-            "name": "italic",
-            "chainable": 1,
-            "class": "Editor.Base",
-            "module": "gallery-sm-editor",
-            "submodule": "gallery-sm-editor-base"
-        },
-        {
-            "file": "src/sm-editor/js/editor-base.js",
-            "line": 275,
+            "line": 256,
             "description": "Renders this editor into its container and appends the container to the\ndocument if necessary.",
             "itemtype": "method",
             "name": "render",
@@ -1265,67 +2812,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 315,
-            "description": "Gets and/or sets the value of the specified editor style command. This\nmethod is similar to `command()`, but only supports a subset of\nstyle-related commands.\n\nSee the `styleCommands` property for a list of supported style commands.",
-            "itemtype": "method",
-            "name": "style",
-            "params": [
-                {
-                    "name": "name",
-                    "description": "Command name.",
-                    "type": "String"
-                },
-                {
-                    "name": "value",
-                    "description": "Command value. Use the special value\n    'toggle' to toggle a boolean command (like 'bold') to the opposite of\n    its current state.",
-                    "type": "Boolean|String",
-                    "optional": true
-                }
-            ],
-            "return": {
-                "description": "Value of the specified command.",
-                "type": "Boolean|String"
-            },
-            "class": "Editor.Base",
-            "module": "gallery-sm-editor",
-            "submodule": "gallery-sm-editor-base"
-        },
-        {
-            "file": "src/sm-editor/js/editor-base.js",
-            "line": 338,
-            "description": "Gets and/or sets the values of multiple editor style commands.\n\nWhen called without an argument, the current values of all supported style\ncommands will be returned. When called with a _styles_ object, the specified\nstyle commands will be set to their given values, and the resulting new\nvalues will be returned.",
-            "itemtype": "method",
-            "name": "styles",
-            "params": [
-                {
-                    "name": "styles",
-                    "description": "Hash of style names and values to set.",
-                    "type": "Object",
-                    "optional": true
-                }
-            ],
-            "return": {
-                "description": "Hash of style names and values that were set, or all styles\n    if no _styles_ parameter was specified.",
-                "type": "Object"
-            },
-            "class": "Editor.Base",
-            "module": "gallery-sm-editor",
-            "submodule": "gallery-sm-editor-base"
-        },
-        {
-            "file": "src/sm-editor/js/editor-base.js",
-            "line": 374,
-            "description": "Toggles underline on the current selection.",
-            "itemtype": "method",
-            "name": "underline",
-            "chainable": 1,
-            "class": "Editor.Base",
-            "module": "gallery-sm-editor",
-            "submodule": "gallery-sm-editor-base"
-        },
-        {
-            "file": "src/sm-editor/js/editor-base.js",
-            "line": 387,
+            "line": 297,
             "description": "Attaches editor events.",
             "itemtype": "method",
             "name": "_attachEvents",
@@ -1337,7 +2824,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 408,
+            "line": 319,
             "description": "Detaches editor events.",
             "itemtype": "method",
             "name": "_detachEvents",
@@ -1349,7 +2836,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 421,
+            "line": 332,
             "description": "Wrapper for native the native `execCommand()` that verifies that the command\nis valid in the current state and normalizes boolean/toggleable values.",
             "itemtype": "method",
             "name": "_execCommand",
@@ -1373,7 +2860,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 450,
+            "line": 359,
             "description": "Getter for the `html` attribute.",
             "itemtype": "method",
             "name": "_getHTML",
@@ -1396,7 +2883,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 462,
+            "line": 371,
             "description": "Getter for the `text` attribute.",
             "itemtype": "method",
             "name": "_getText",
@@ -1419,7 +2906,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 474,
+            "line": 383,
             "description": "Inserts a `<span>` at the current selection point containing a preformatted\ntab character.",
             "itemtype": "method",
             "name": "_insertTab",
@@ -1431,7 +2918,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 485,
+            "line": 394,
             "description": "Wrapper for the native `queryCommandState()` and `queryCommandValue()`\nmethods that uses the appropriate method for the given command type.",
             "itemtype": "method",
             "name": "_queryCommandValue",
@@ -1454,7 +2941,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 499,
+            "line": 408,
             "description": "Setter for the `html` attribute.",
             "itemtype": "method",
             "name": "_setHTML",
@@ -1477,7 +2964,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 515,
+            "line": 424,
             "description": "Setter for the `text` attribute.",
             "itemtype": "method",
             "name": "_setText",
@@ -1500,7 +2987,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 531,
+            "line": 440,
             "description": "Refreshes the editor's internal knowledge of the current document selection\nstate and fires a `selectionChange` event if the selection has changed since\nit was last refreshed.",
             "itemtype": "method",
             "name": "_updateSelection",
@@ -1529,7 +3016,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 566,
+            "line": 475,
             "description": "Handles `blur` events on the editor.",
             "itemtype": "method",
             "name": "_onBlur",
@@ -1541,7 +3028,19 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 583,
+            "line": 491,
+            "description": "Handles `dblclick` events on the editor.",
+            "itemtype": "method",
+            "name": "_onDblClick",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 503,
             "description": "Handles `focus` events on the editor.",
             "itemtype": "method",
             "name": "_onFocus",
@@ -1553,7 +3052,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 607,
+            "line": 532,
             "description": "Handles `paste` events on the editor.",
             "itemtype": "method",
             "name": "_onPaste",
@@ -1565,7 +3064,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 618,
+            "line": 543,
             "description": "HTML content of this editor.",
             "itemtype": "attribute",
             "name": "html",
@@ -1577,7 +3076,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 630,
+            "line": 555,
             "description": "Form field name to use for the hidden `<textarea>` that contains the raw\noutput of the editor in the configured output format. This name will\nonly be used if the output node doesn't already have a name when the\neditor is rendered.\n\nYou may need to customize this if you plan to use the editor in a form\nthat will be submitted to a server.",
             "itemtype": "attribute",
             "name": "outputName",
@@ -1590,7 +3089,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 648,
+            "line": 573,
             "description": "Text content of this editor, with no HTML.",
             "itemtype": "attribute",
             "name": "text",
@@ -1780,7 +3279,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 326,
+            "line": 328,
             "description": "Refreshes the `tabIndex` state of this FocusManager's items to ensure that\nitems are focusable but only the currently active item is in the tab flow.\n\nCall this method after adding, disabling, or enabling elements to ensure\nthat they're managed correctly.",
             "itemtype": "method",
             "name": "refresh",
@@ -1798,7 +3297,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 356,
+            "line": 358,
             "description": "Attaches event handlers.",
             "itemtype": "method",
             "name": "_attachEvents",
@@ -1809,7 +3308,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 376,
+            "line": 378,
             "description": "Detaches event handlers.",
             "itemtype": "method",
             "name": "_detachEvents",
@@ -1820,7 +3319,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 386,
+            "line": 388,
             "description": "Returns the container node for the current `activeItem`.",
             "itemtype": "method",
             "name": "_getActiveContainer",
@@ -1835,7 +3334,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 416,
+            "line": 418,
             "description": "Getter for the `anchoredContainerSelector` attribute.",
             "itemtype": "method",
             "name": "_getAnchoredContainerSelector",
@@ -1857,7 +3356,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 438,
+            "line": 440,
             "description": "Getter for the `anchoredItemSelector` attribute.",
             "itemtype": "method",
             "name": "_getAnchoredItemSelector",
@@ -1879,7 +3378,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 456,
+            "line": 458,
             "description": "Handles `activeItemChange` events.",
             "itemtype": "method",
             "name": "_afterActiveItemChange",
@@ -1897,7 +3396,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 480,
+            "line": 482,
             "description": "Handles `blur` events on the host node.",
             "itemtype": "method",
             "name": "_afterBlur",
@@ -1908,7 +3407,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 490,
+            "line": 492,
             "description": "Handles `focus` events on the host node.",
             "itemtype": "method",
             "name": "_afterFocus",
@@ -1926,7 +3425,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 507,
+            "line": 509,
             "description": "Handles `keydown` events on the host node.",
             "itemtype": "method",
             "name": "_onKeyDown",
@@ -1944,7 +3443,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 540,
+            "line": 542,
             "description": "Node that's currently either focused or focusable as part of the\ndocument's tab flow.",
             "itemtype": "attribute",
             "name": "activeItem",
@@ -1954,7 +3453,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 555,
+            "line": 557,
             "description": "Anchored version of `containerSelector`.\n\nFor example, if `containerSelector` is set to \"ul\", then\n`anchoredContainerSelector` will default to \">ul\". You can override the\ndefault by specifying your own anchored selector if desired.",
             "itemtype": "attribute",
             "name": "anchoredContainerSelector",
@@ -1964,7 +3463,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 568,
+            "line": 570,
             "description": "Anchored version of `itemSelector`.\n\nFor example, if `itemSelector` is set to \"li\", then\n`anchoredItemSelector` will default to \">li\". You can override the\ndefault by specifying your own anchored selector if desired.",
             "itemtype": "attribute",
             "name": "anchoredItemSelector",
@@ -1974,7 +3473,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 581,
+            "line": 583,
             "description": "If `true`, focus will wrap around to the first or last item in the\ncurrent container when the selection moves past the end or beginning of\nthe focusable items, respectively.",
             "itemtype": "attribute",
             "name": "circular",
@@ -1985,7 +3484,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 593,
+            "line": 595,
             "description": "Non-anchored CSS selector that matches a hierarchical descendant\ncontainer into which focus can descend.\n\nFor example, if the host node is a `<ul>` and item nodes are `<li>`s,\nsetting `containerSelector` to \"ul\" would allow the user to descend into\na nested `<ul>` contained inside an `<li>`.\n\nTo prevent hierarchical selection, set `containerSelector` to `null`\n(the default).",
             "itemtype": "attribute",
             "name": "containerSelector",
@@ -1995,7 +3494,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 608,
+            "line": 610,
             "description": "Non-anchored CSS selector that matches nodes that should be considered\ndisabled. Disabled nodes will not be considered focusable.\n\nBy default, a node is considered disabled if it has a `disabled`\nattribute or an `aria-disabled` or `aria-hidden` attribute set to\n\"true\".",
             "itemtype": "attribute",
             "name": "disabledSelector",
@@ -2005,7 +3504,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 622,
+            "line": 624,
             "description": "`true` if the host node or one of its focusable items is currently\nfocused, `false` otherwise.",
             "itemtype": "attribute",
             "name": "focused",
@@ -2017,7 +3516,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 635,
+            "line": 637,
             "description": "Non-anchored CSS selector that matches item nodes that should be\nfocusable.",
             "itemtype": "attribute",
             "name": "itemSelector",
@@ -2028,7 +3527,7 @@
         },
         {
             "file": "src/sm-focusmanager/js/focusmanager.js",
-            "line": 646,
+            "line": 648,
             "description": "Mapping of keyboard codes to functions or function names that should\nexecute when those keys are pressed.\n\nBy default, the following keys are mapped:\n\n* down arrow: `next()`\n* left arrow: `ascend()`\n* right arrow: `descend()`\n* up arrow: `previous()`\n\nTo customize the mapping, either modify or replace the `keys` object.\n\nValues should be functions or strings representing named functions on\nthis FocusManager instance. All functions will be executed with this\nFocusManager as the `this` object.\n\nProperties should be numerical key codes or one of the following\nstrings representing a key on the keyboard:\n\n* down\n* end\n* home\n* left\n* pgdown\n* pgup\n* right\n* space\n* up",
             "itemtype": "attribute",
             "name": "keys",
@@ -3356,7 +4855,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 39,
+            "line": 42,
             "description": "Returns a new Range object with the same boundary points as this range.\n\nThe returned Range is a copy, not a reference, so modifying it will not\naffect this range (and vice versa).",
             "itemtype": "method",
             "name": "clone",
@@ -3370,7 +4869,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 55,
+            "line": 58,
             "description": "Returns a Node instance containing a document fragment with a copy of this\nrange's contents.\n\nEvent listeners are not copied.\n\nElement ids _are_ copied. This could lead to duplicate ids, so be careful.\n\nPartially selected nodes will include parent tags to ensure that the\nfragment is valid.",
             "itemtype": "method",
             "name": "cloneContents",
@@ -3384,7 +4883,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 76,
+            "line": 79,
             "description": "Collapses this range by setting the start and end points to the same\nposition, thus resulting in an empty range.",
             "itemtype": "method",
             "name": "collapse",
@@ -3412,7 +4911,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 92,
+            "line": 95,
             "description": "Compares the start or end boundary of this range with the start or end\nboundary of another range.",
             "itemtype": "method",
             "name": "compare",
@@ -3455,7 +4954,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 130,
+            "line": 133,
             "description": "Removes the contents of this range from the DOM.",
             "itemtype": "method",
             "name": "deleteContents",
@@ -3466,7 +4965,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 143,
+            "line": 146,
             "description": "Gets or sets the node that contains the end point of this range.\n\nWhen specifying an _offset_, you may specify either a number or the string\n\"before\" or \"after\".\n\nA numerical offset will position the end point at that offset inside the\n_node_. If _node_ is a text node, the offset will represent a character\nposition. If _node_ can contain child nodes, then the offset will represent\na child index.\n\nThe offset \"before\" will cause the end point to be placed immediately before\n_node_ (not inside it).\n\nThe offset \"after\" will cause the end point to be placed immediately after\n_node_ (not inside it).",
             "itemtype": "method",
             "name": "endNode",
@@ -3495,7 +4994,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 191,
+            "line": 194,
             "description": "Gets or sets the offset of this selection's end position inside the end\nnode.\n\nIf the end node is a text node, the offset represents a character position.\nIf the end node can contain child nodes, then the offset represents a child\nindex.\n\nWhen setting an offset, you may use a numerical offset (which behaves as\ndescribed above) or the string \"before\" or \"after\".\n\nThe offset \"before\" will cause the end point to be placed immediately before\nthe current end node (not inside it).\n\nThe offset \"after\" will cause the end point to be placed immediately after\nthe current end node (not inside it).\n\nNote that setting a \"before\" or \"after\" offset will change the end node. To\nget the new end node, call `endNode()`.",
             "itemtype": "method",
             "name": "endOffset",
@@ -3517,7 +5016,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 230,
+            "line": 233,
             "description": "Moves this range's contents into a document fragment and returns a Node\ninstance containing that fragment.\n\nEvent listeners are not retained.\n\nIf this range splits a non-text element, the resulting fragment will include\na clone of that element, including its id (if it has one). This could lead\nto duplicate ids, so be careful.",
             "itemtype": "method",
             "name": "extractContents",
@@ -3531,7 +5030,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 250,
+            "line": 253,
             "description": "Inserts a node at the start of this range.",
             "itemtype": "method",
             "name": "insertNode",
@@ -3552,7 +5051,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 266,
+            "line": 269,
             "description": "Returns `true` if this range is collapsed, `false` otherwise.\n\nA `true` value means that the start and end points are the same and the\nrange is empty, whereas a `false` value means that the start and end points\nare different and the range is not empty.",
             "itemtype": "method",
             "name": "isCollapsed",
@@ -3566,7 +5065,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 282,
+            "line": 285,
             "description": "Returns `true` if this range has the same boundaries as _otherRange_,\n`false` otherwise.",
             "itemtype": "method",
             "name": "isEquivalent",
@@ -3587,7 +5086,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 296,
+            "line": 299,
             "description": "Returns `true` if this range is entirely contained within the given _node_.",
             "itemtype": "method",
             "name": "isInsideNode",
@@ -3608,7 +5107,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 322,
+            "line": 325,
             "description": "Returns the nearest common ancestor node that fully contains all nodes\nwithin this range.",
             "itemtype": "method",
             "name": "parentNode",
@@ -3622,7 +5121,127 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 336,
+            "line": 339,
+            "description": "Sets the Range to contain the Node and its contents.\n\nThe parent Node of the start and end of the Range will be the same as the\nparent of the given node.",
+            "itemtype": "method",
+            "name": "selectNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node or HTMLElement to select",
+                    "type": "HTMLElement|Node"
+                }
+            ],
+            "chainable": 1,
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 356,
+            "description": "Sets the Range to contain the contents of a Node.\n\nThe parent Node of the start and end of the Range will be the given node.\nThe startOffset is 0, and the endOffset is the number of child Nodes or\nnumber of characters contained in the reference node.",
+            "itemtype": "method",
+            "name": "selectNodeContents",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "Node or HTMLElement to select",
+                    "type": "HTMLElement|Node"
+                }
+            ],
+            "chainable": 1,
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 374,
+            "description": "Shrinks the start and end containers of the range to just the text nodes\ncontaining the selected text.\n\nUseful for normalizing a range after double clicking to select since the\nrange start/end containers vary by browser as explained below:\n\nChrome and IE use the first text node that contains the selected text\nas the startContainer with an offset to exclude any leading whitespace.\n\nFirefox will use a text node *before* the selected text\nas the startContainer, with a positive offset set to the end\nof the node. If there is no previous sibling of the selected text\nor the previous sibling is not a text node, the behavior is the\nsame as Chrome/IE.\n\nChrome uses the last text node that contains the selected text as the\nendContainer, with an offset to exclude trailing whitespace.\n\nFirefox follows the mostly the same rules for the endContainer\nas it does for the startContainer. Any sibling text node\n*after* the selected text will be used as the endContainer,\nbut with a 0 offset. If there is no next sibling or the next sibling\nis not a text node, the endContainer will be the same as the\nstartContainer, with an offset to exclude any trailing whitespace.\n\nIE will aways use a following text node as the endContainer,\neven if it is a child of a sibling. The offset will *include all*\nleading whitespace. If there is no following text node,\nthe endContainer will be the same as the startContainer, with an\noffset to *include all* trailing whitespace.\n\nExamples:\n    [] = startContainer, {} = endContainer, s:e = start/end offset\n\ngiven the HTML\n    Lorem <b>Ipsum</b> Dolor Sit\n\ndbl clicking to select the text `Lorem`\n    Chrome:  `[{Lorem }]<b>Ipsum</b> Dolor Sit`  s0:e5\n    Firefox: `[{Lorem }]<b>Ipsum</b> Dolor Sit`  s0:e5\n    IE:      `[Lorem ]<b>{Ipsum}</b> Dolor Sit`  s0:e0\n\ndbl clicking to select the text `Ipsum`\n    Chrome:  `Lorem <b>[{Ipsum}]</b> Dolor Sit`  s0:e5\n    Firefox: `[Lorem ]<b>Ipsum</b>{ Dolor Sit}`  s6:e0\n    IE:      `Lorem <b>[Ipsum]</b>{ Dolor Sit}`  s0:e1\n\ndbl clicking to select the text `Dolor`\n    Chrome:  `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s1:e6\n    Firefox: `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s1:e6\n    IE:      `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s1:e7\n\ndbl clicking to select the text `Sit`\n    Chrome:  `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s7:e10\n    Firefox: `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s7:e10\n    IE:      `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s7:e10",
+            "itemtype": "method",
+            "name": "shrink",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "trim",
+                            "description": "If `true` whitespace will be\n    ignored when shrinking the start and end containers. Offsets will\n    be set to exclude any leading whitespace from the startContainer and\n    trailing whitespace from the endContainer.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 444,
+            "description": "Shrinks the endContainer of the range to just the text node containing\nthe selected text.\n\nBrowsers are inconsistent in how they define a range, sometimes using\noffsets of sibling or parent nodes instead of the actual text node\ncontaining the selected text.",
+            "itemtype": "method",
+            "name": "shrinkEnd",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "trim",
+                            "description": "If `true` whitespace will be\n    ignored when shrinking the endContainer and an offset will be set to\n    exclude any trailing whitespace from the shrunken endContainer.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 524,
+            "description": "Shrinks the startContainer of the range to just the text node containing\nthe selected text.\n\nBrowsers are inconsistent in how they define a range, sometimes using\noffsets of sibling or parent nodes instead of the actual text node\ncontaining the selected text.",
+            "itemtype": "method",
+            "name": "shrinkStart",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "trim",
+                            "description": "If `true` whitespace will be\n    ignored when shrinking the startContainer and an offset will be set to\n    exclude any leading whitespace from the shrunken startContainer.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 605,
             "description": "Gets or sets the node that contains the start point of this range.\n\nWhen specifying an _offset_, you may specify either a number or the string\n\"before\" or \"after\".\n\nA numerical offset will position the start point at that offset inside the\n_node_. If _node_ is a text node, the offset will represent a character\nposition. If _node_ can contain child nodes, then the offset will represent\na child index.\n\nThe offset \"before\" will cause the start point to be placed immediately\nbefore _node_ (not inside it).\n\nThe offset \"after\" will cause the start point to be placed immediately after\n_node_ (not inside it).",
             "itemtype": "method",
             "name": "startNode",
@@ -3651,7 +5270,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 384,
+            "line": 653,
             "description": "Gets or sets the offset of this range's start position inside the start\nnode.\n\nIf the start node is a text node, the offset represents a character\nposition. If the start node can contain child nodes, then the offset\nrepresents a child index.\n\nWhen setting an offset, you may use a numerical offset (which behaves as\ndescribed above) or the string \"before\" or \"after\".\n\nThe offset \"before\" will cause the start point to be placed immediately\nbefore the current start node (not inside it).\n\nThe offset \"after\" will cause the start point to be placed immediately after\nthe current start node (not inside it).\n\nNote that setting a \"before\" or \"after\" offset will change the start node.\nTo get the new start node, call `startNode()`.",
             "itemtype": "method",
             "name": "startOffset",
@@ -3673,7 +5292,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 423,
+            "line": 692,
             "description": "Returns the HTML content of this range.",
             "itemtype": "method",
             "name": "toHTML",
@@ -3687,7 +5306,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 438,
+            "line": 707,
             "description": "Returns the plain text content of this range.",
             "itemtype": "method",
             "name": "toString",
@@ -3701,8 +5320,8 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 450,
-            "description": "Traverses the contents of the range, passing each node and its children to\nthe supplied callback in document order.\n\nFor example, if the range includes the following HTML...\n\n    lorem ipsum <b>dolor <i>sit</i></b> amet\n\n...then this `traverse()` call...\n\n    range.traverse(function (node) {\n        console.log(Y.Node.getDOMNode(node));\n    });\n\n...would result in the following console output:\n\n    \"lorem ipsum \"\n    <b> element\n    \"dolor \"\n    <i> element\n    \"sit\"\n    \" amet\"\n\nThe entire start and end node will be included even if the range only\nincludes a portion of them. Use the `startOffset()` and `endOffset()`\nmethods to determine where the precise boundaries are if necessary.",
+            "line": 719,
+            "description": "Traverses the contents of the range, passing each node and its children to\nthe supplied callback in document order.\n\nFor example, if the range includes the following HTML...\n\n    lorem ipsum <b>dolor <i>sit</i></b> amet\n\n...then this `traverse()` call...\n\n    range.traverse(function (node) {\n        console.log(Y.Node.getDOMNode(node));\n    });\n\n...would result in the following console output:\n\n    \"lorem ipsum \"\n    <b> element\n    \"dolor \"\n    <i> element\n    \"sit\"\n    \" amet\"\n\nThe entire start and end node will be included even if the range only\nincludes a portion of them. Use the `startOffset()` and `endOffset()`\nmethods to determine where the precise boundaries are if necessary.\n\nReturning `true` from the callback function will stop traversal",
             "itemtype": "method",
             "name": "traverse",
             "params": [
@@ -3732,7 +5351,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 528,
+            "line": 803,
             "description": "Wraps this range in the specified HTML and returns the new wrapper node.",
             "itemtype": "method",
             "name": "wrap",
@@ -3865,8 +5484,27 @@
             "module": "gallery-sm-selection"
         },
         {
+            "file": "src/sm-treeview/js/extensions/treeview-sortable.js",
+            "line": 36,
+            "description": "Re-renders a node if necessary after a `sort` event.",
+            "itemtype": "method",
+            "name": "_afterSort",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "TreeView.Sortable",
+            "module": "gallery-sm-treeview",
+            "submodule": "gallery-sm-treeview-sortable"
+        },
+        {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 29,
+            "line": 32,
             "description": "CSS class names used by this treeview.",
             "itemtype": "property",
             "name": "classNames",
@@ -3943,7 +5581,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 68,
+            "line": 71,
             "description": "Whether or not this TreeView has been rendered.",
             "itemtype": "property",
             "name": "rendered",
@@ -3954,7 +5592,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 76,
+            "line": 79,
             "description": "Default templates used to render this TreeView.",
             "itemtype": "property",
             "name": "templates",
@@ -3964,7 +5602,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 85,
+            "line": 88,
             "description": "Simple way to type-check that this is a TreeView instance.",
             "itemtype": "property",
             "name": "_isYUITreeView",
@@ -3977,7 +5615,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 94,
+            "line": 97,
             "description": "Cached value of the `lazyRender` attribute.",
             "itemtype": "property",
             "name": "_lazyRender",
@@ -3989,7 +5627,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 126,
+            "line": 129,
             "description": "Returns the HTML node (as a `Y.Node` instance) associated with the specified\n`Tree.Node` instance, if any.",
             "itemtype": "method",
             "name": "getHTMLNode",
@@ -4009,7 +5647,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 143,
+            "line": 146,
             "description": "Renders this TreeView into its container.\n\nIf the container hasn't already been added to the current document, it will\nbe appended to the `<body>` element.",
             "itemtype": "method",
             "name": "render",
@@ -4019,7 +5657,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 172,
+            "line": 175,
             "description": "Renders the children of the specified tree node.\n\nIf a container is specified, it will be assumed to be an existing rendered\ntree node, and the children will be rendered (or re-rendered) inside it.",
             "itemtype": "method",
             "name": "renderChildren",
@@ -4053,7 +5691,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 226,
+            "line": 229,
             "description": "Renders the specified tree node and its children (if any).\n\nIf a container is specified, the rendered node will be appended to it.",
             "itemtype": "method",
             "name": "renderNode",
@@ -4094,7 +5732,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 389,
+            "line": 392,
             "description": "Setter for the `lazyRender` attribute.\n\nJust caches the value in a property for faster lookups.",
             "itemtype": "method",
             "name": "_setLazyRender",
@@ -4109,7 +5747,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 651,
+            "line": 654,
             "description": "When `true`, a node's children won't be rendered until the first time\nthat node is opened.\n\nThis can significantly speed up the time it takes to render a large\ntree, but might not make sense if you're using CSS that doesn't hide the\ncontents of closed nodes.",
             "itemtype": "attribute",
             "name": "lazyRender",

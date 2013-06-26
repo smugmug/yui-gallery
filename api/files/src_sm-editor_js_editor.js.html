@@ -47,6 +47,8 @@
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
+                <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
+            
                 <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
             
                 <li><a href="../classes/Menu.html">Menu</a></li>
@@ -57,6 +59,8 @@
             
                 <li><a href="../classes/Menu.Templates.html">Menu.Templates</a></li>
             
+                <li><a href="../classes/Plugin.DragDrop.Reorder.html">Plugin.DragDrop.Reorder</a></li>
+            
                 <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
             
                 <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
@@ -65,7 +69,11 @@
             
                 <li><a href="../classes/Selection.html">Selection</a></li>
             
+                <li><a href="../classes/SM.DragDrop.html">SM.DragDrop</a></li>
+            
                 <li><a href="../classes/TreeView.html">TreeView</a></li>
+            
+                <li><a href="../classes/TreeView.Sortable.html">TreeView.Sortable</a></li>
             
             </ul>
 
@@ -73,11 +81,17 @@
             
                 <li><a href="../modules/dom-form-values.html">dom-form-values</a></li>
             
+                <li><a href="../modules/gallery-sm-dragdrop.html">gallery-sm-dragdrop</a></li>
+            
+                <li><a href="../modules/gallery-sm-dragdrop-reorder.html">gallery-sm-dragdrop-reorder</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor.html">gallery-sm-editor</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
@@ -98,6 +112,8 @@
                 <li><a href="../modules/gallery-sm-selection.html">gallery-sm-selection</a></li>
             
                 <li><a href="../modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="../modules/gallery-sm-treeview-sortable.html">gallery-sm-treeview-sortable</a></li>
             
             </ul>
         </div>
@@ -154,11 +170,12 @@ A simple but powerful WYSIWYG editor.
 @constructor
 @extends Editor.Base
 @uses Editor.Keys
+@uses Editor.Style
 @uses Editor.Undo
 **/
 
 Y.Editor = Y.mix(
-    Y.Base.create(&#x27;editor&#x27;, Y.Editor.Base, [Y.Editor.Keys, Y.Editor.Undo], {}),
+    Y.Base.create(&#x27;editor&#x27;, Y.Editor.Base, [Y.Editor.Keys, Y.Editor.Style, Y.Editor.Undo], {}),
     Y.Editor
 );
 

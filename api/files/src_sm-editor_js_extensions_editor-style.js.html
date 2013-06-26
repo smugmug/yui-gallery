@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/sm-editor/js/extensions/editor-style.js - SmugMug YUI Gallery API docs</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="SmugMug YUI Gallery API docs"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.11.0-git</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Editor.html">Editor</a></li>
+            
+                <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
+            
+                <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
+            
+                <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
+            
+                <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/Menu.html">Menu</a></li>
+            
+                <li><a href="../classes/Menu.Base.html">Menu.Base</a></li>
+            
+                <li><a href="../classes/Menu.Item.html">Menu.Item</a></li>
+            
+                <li><a href="../classes/Menu.Templates.html">Menu.Templates</a></li>
+            
+                <li><a href="../classes/Plugin.DragDrop.Reorder.html">Plugin.DragDrop.Reorder</a></li>
+            
+                <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
+            
+                <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Range.html">Range</a></li>
+            
+                <li><a href="../classes/Selection.html">Selection</a></li>
+            
+                <li><a href="../classes/SM.DragDrop.html">SM.DragDrop</a></li>
+            
+                <li><a href="../classes/TreeView.html">TreeView</a></li>
+            
+                <li><a href="../classes/TreeView.Sortable.html">TreeView.Sortable</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/dom-form-values.html">dom-form-values</a></li>
+            
+                <li><a href="../modules/gallery-sm-dragdrop.html">gallery-sm-dragdrop</a></li>
+            
+                <li><a href="../modules/gallery-sm-dragdrop-reorder.html">gallery-sm-dragdrop-reorder</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor.html">gallery-sm-editor</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
+            
+                <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-base.html">gallery-sm-menu-base</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-item.html">gallery-sm-menu-item</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
+            
+                <li><a href="../modules/gallery-sm-selection.html">gallery-sm-selection</a></li>
+            
+                <li><a href="../modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="../modules/gallery-sm-treeview-sortable.html">gallery-sm-treeview-sortable</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/sm-editor/js/extensions/editor-style.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/*jshint expr:true, onevar:false */
+
+/**
+Provides the &#x60;Editor.Style&#x60; extension.
+
+@module gallery-sm-editor
+@submodule gallery-sm-editor-style
+**/
+
+/**
+Extension for &#x60;Editor.Base&#x60; that normalizes style commands into css properties
+
+@class Editor.Style
+@constructor
+@extends Base
+@extensionfor Editor.Base
+**/
+
+(function() {
+
+var ELEMENT_NODE = 1;
+
+var EditorStyle = Y.Base.create(&#x27;editorStyle&#x27;, Y.Base, [], {
+    // -- Public Properties ----------------------------------------------------
+
+    /**
+    Hash of style commands supported by this editor.
+
+    Names should correspond with valid &#x60;execCommand()&#x60; command names. Values
+    are properties in the following format:
+
+    @property {Object} styleCommands
+      @param {String} property The name of the CSS property in camelCase form
+      @param {String} [valueOn] The &#x60;on&#x60; value of the property. eg. &#x60;bold&#x60;
+      @param {String} [valueOff] The &#x60;off&#x60; value of the property. eg. &#x60;none&#x60;
+    **/
+    styleCommands: {
+        bold: {
+            property: &#x27;fontWeight&#x27;,
+            valueOn: &#x27;bold&#x27;,
+            valueOff: &#x27;normal&#x27;
+        },
+
+        fontName: {
+            property: &#x27;fontFamily&#x27;
+        },
+
+        fontSize: {
+            property: &#x27;fontSize&#x27;
+        },
+
+        italic: {
+            property: &#x27;fontStyle&#x27;,
+            valueOn: &#x27;italic&#x27;,
+            valueOff: &#x27;normal&#x27;
+        },
+
+//        justifyCenter: {
+//            property: &#x27;textAlign&#x27;,
+//            value: &#x27;center&#x27;
+//        },
+//
+//        justifyLeft: {
+//            property: &#x27;textAlign&#x27;,
+//            value: &#x27;left&#x27;
+//        },
+//
+//        justifyRight: {
+//            property: &#x27;textAlign&#x27;,
+//            value: &#x27;right&#x27;
+//        },
+
+        underline: {
+            property: &#x27;textDecoration&#x27;,
+            valueOn: &#x27;underline&#x27;,
+            valueOff: &#x27;none&#x27;
+        }
+    },
+
+
+    // -- Public Methods -------------------------------------------------------
+
+    /**
+    Bolds or unbolds the current selection.
+
+    @method bold
+    @chainable
+    **/
+    bold: function () {
+        this.command(&#x27;bold&#x27;, &#x27;toggle&#x27;);
+        return this;
+    },
+
+    /**
+    Italicizes or unitalicizes the current selection.
+
+    @method italic
+    @chainable
+    **/
+    italic: function () {
+        this.command(&#x27;italic&#x27;, &#x27;toggle&#x27;);
+        return this;
+    },
+
+    /**
+    Gets and/or sets the values of multiple editor style commands.
+
+    When called without an argument, the current values of all supported style
+    commands will be returned. When called with a _styles_ object, the specified
+    style commands will be set to their given values, and the resulting new
+    values will be returned.
+
+    @method styles
+    @param {Object} [styles] Hash of style names and values to set.
+    @return {Object} Hash of style names and values that were set, or all styles
+        if no _styles_ parameter was specified.
+    **/
+    styles: function (styles) {
+        var results = {},
+            name;
+
+        if (styles) {
+            for (name in styles) {
+                if (styles.hasOwnProperty(name)) {
+                    results[name] = this.command(name, styles[name]);
+                }
+            }
+        } else {
+            var commands = this.styleCommands;
+
+            for (name in commands) {
+                if (commands.hasOwnProperty(name)) {
+                    results[name] = this._queryCommandValue(name);
+                }
+            }
+        }
+
+        return results;
+    },
+
+    /**
+    Toggles underline on the current selection.
+
+    @method underline
+    @chainable
+    **/
+    underline: function () {
+        this.command(&#x27;underline&#x27;, &#x27;toggle&#x27;);
+        return this;
+    },
+
+    // -- Protected Methods ----------------------------------------------------
+
+    /**
+    Traverses the children of a given node, removing empty nodes and
+    clearing out any given css properties
+
+    @method _cleanNode
+    @param {Node} rootNode
+    @param {String|Array} properties
+    @return {Node} The cleaned node
+    @protected
+    **/
+    _cleanNode: function(rootNode, properties) {
+        var styleCommands = this.styleCommands;
+
+        properties = Y.Array(properties);
+
+        function clean(node) {
+            if (ELEMENT_NODE !== node.get(&#x27;nodeType&#x27;)) {
+                return;
+            }
+
+            if (node !== rootNode) {
+                if (&#x27;&#x27; === node.get(&#x27;text&#x27;)) {
+                    // the node is empty, remove it
+                    return node.remove(true);
+                } else {
+                    // clear out the properties
+                    Y.Array.each(properties, function(style) {
+                        node.setStyle(style, &#x27;&#x27;);
+                    });
+                }
+            }
+
+            node.get(&#x27;children&#x27;).each(clean);
+
+            // if this node doesn&#x27;t have any other valid style properties
+            // on it, we can unwrap it into a text node.
+            // chrome likes to randomly add line-height for example.
+            var hasStyles = Y.Object.some(styleCommands, function(cmd) {
+                return &#x27;&#x27; !== node._node.style[cmd.property];
+            });
+
+            if (!hasStyles) {
+                var newNode = Y.Node.create(node.getHTML());
+                node.replace(newNode).remove(true);
+                node = newNode;
+            }
+
+            return node;
+        }
+
+        return clean(rootNode);
+    },
+
+
+    /**
+    Duckpunch Editor.Base._execCommand to build css styled nodes instead of
+    relying on spotty browser compatibility of &#x60;styleWithCSS&#x60;
+
+    Passes through to Editor.Base for any commands not defined
+    in &#x60;this.styleCommands&#x60;
+
+    @method _execCommand
+    @param {String} name Command name.
+    @param {Boolean|String} value Command value.
+    @protected
+    **/
+    _execCommand: function(name, value) {
+        var command = this.styleCommands[name],
+            range = this.selection.range(),
+            parentNode, styleNode;
+
+        if (!command) {
+            return Y.Editor.Base.prototype._execCommand.call(this, name, value);
+        }
+
+        if (!range) {
+            return;
+        }
+
+        parentNode = range.parentNode();
+
+        if (ELEMENT_NODE !== parentNode.get(&#x27;nodeType&#x27;)) {
+            // range.parentNode() may return a text node
+            // so make sure we actually have an element
+            parentNode = parentNode.ancestor();
+        }
+
+        if (parentNode !== this._inputNode &amp;&amp;
+            parentNode.get(&#x27;text&#x27;) === range.toString()) {
+            // if the entire text of a node is selected, just apply
+            // styles to that node, as long as its not the input node
+            styleNode = parentNode;
+        } else {
+            // otherwise, wrap the selection in a new node
+            styleNode = range.wrap(&#x27;&lt;span&gt;&#x27;);
+        }
+
+        if (this.boolCommands[name]) {
+            if (this._queryCommandValue(name)) {
+                // already set, disable
+                // determine whether an ancestor has this property set
+                // or not so we can simply unset the value instead of
+                // setting it to &#x60;none&#x60; or &#x60;normal&#x60; or whatever
+                value = this._getStyledAncestor(styleNode, command.property) ? command.valueOff : &#x27;&#x27;;
+            } else {
+                // need to enable, set appropriate value
+                value = command.valueOn || value;
+            }
+        }
+
+        styleNode.setStyle(command.property, value);
+
+        styleNode = this._cleanNode(styleNode, command.property);
+
+        // when cleaning nodes the selection may get lost if the styleNode
+        // gets unwrapped into a text node or has children unwrapped
+        // so we need to rebuild the range and select it to give the
+        // appearance the selection never changed
+        range.startNode(styleNode);
+        range.endNode(styleNode);
+
+        // set the endOffset based on the node type
+        if (ELEMENT_NODE === styleNode.get(&#x27;nodeType&#x27;)) {
+            range.endOffset(styleNode.get(&#x27;childNodes&#x27;).size());
+        } else {
+            range.endOffset(styleNode.get(&#x27;text&#x27;).length);
+        }
+
+        this.selection.select(range);
+    },
+
+    /**
+    Walks the ancestor tree of a given node until a node that has
+    the css property set is found
+
+    @method _getStyledAncestor
+    @param {Node} startNode
+    @param {String} property
+    @param {Boolean} [self] Whether or not to include &#x60;startNode&#x60; in the scan
+    @return {Node} The node having &#x60;property&#x60; set, or null if no node was found
+    @protected
+    **/
+    _getStyledAncestor: function(startNode, property, self) {
+        return startNode.ancestor(function(node) {
+            if (ELEMENT_NODE !== node._node.nodeType) {
+                return false;
+            }
+
+            // don&#x27;t use node.getStyle() because it will return
+            // computedStyle for empty string values like &#x60;property: &quot;&quot;&#x60;
+            // https://github.com/yui/yui3/blob/master/src/dom/js/dom-style.js#L106
+            return !!node._node.style[property];
+        }, self, this.selectors.input);
+    },
+
+    /**
+    Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes
+    instead of relying on spotty browser compatibility of &#x60;styleWithCSS&#x60;
+
+    Passes through to Editor.Base for any commands not defined
+    in &#x60;this.styleCommands&#x60;
+
+    @method _queryCommandValue
+    @param {String} name Command name.
+    @return {Boolean|String} Command value.
+    @protected
+    **/
+    _queryCommandValue: function(name) {
+        var command = this.styleCommands[name],
+            range = this.selection.range(),
+            parentNode, styleNode, value;
+
+        if (!command) {
+            return Y.Editor.Base.prototype._queryCommandValue.call(this, name);
+        }
+
+        if (range) {
+            parentNode = range.shrink().parentNode();
+
+            // walk the ancestor tree to find the closest
+            // element node ancestor, inclusive of the parentNode
+            styleNode = parentNode.ancestor(function(node) {
+                return ELEMENT_NODE === node.get(&#x27;nodeType&#x27;);
+            }, true);
+
+            // getStyle will fall back to computedStyle if the
+            // property isn&#x27;t explicitly set
+            value = styleNode.getStyle(command.property);
+
+            if (this.boolCommands[name]) {
+                value = (value === command.valueOn);
+            }
+        }
+
+        return value;
+    }
+});
+
+Y.namespace(&#x27;Editor&#x27;).Style = EditorStyle;
+
+}());
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

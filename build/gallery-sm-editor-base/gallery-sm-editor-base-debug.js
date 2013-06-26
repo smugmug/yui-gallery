@@ -89,29 +89,28 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     **/
 
     /**
-    Hash of style commands supported by this editor.
+    Hash of boolean commands supported by this editor. A boolean command is
+    one that does not require a value. Executing this command will toggle
+    the currently set value.
 
-    Names should correspond with valid `execCommand()` command names. Values
-    should be strings specifying the style's type: either 'boolean' or 'string'.
+    Names should correspond with valid `execCommand()` command names.
 
-    @property {Object} styleCommands
-    @param {String} [bold='boolean']
-    @param {String} [italic='boolean']
-    @param {String} [fontName='string']
-    @param {String} [fontSize='string']
-    @param {String} [underline='string']
+    @property {Object} boolCommands
     **/
-    styleCommands: {
-        bold     : 'boolean',
-        italic   : 'boolean',
-        fontName : 'string',
-        fontSize : 'string',
-        underline: 'boolean'
+    boolCommands: {
+        bold     : true,
+        italic   : true,
+        underline: true,
+        justifyCenter: true,
+        justifyFull: true,
+        justifyLeft: true,
+        justifyRight: true
     },
 
     // -- Protected Properties -------------------------------------------------
 
     // -- Lifecycle ------------------------------------------------------------
+
     initializer: function () {
         this.selection  = new Y.Selection();
         this.selectors  = {};
@@ -148,17 +147,6 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     },
 
     /**
-    Bolds or unbolds the current selection.
-
-    @method bold
-    @chainable
-    **/
-    bold: function () {
-        this.style('bold', 'toggle');
-        return this;
-    },
-
-    /**
     Gets and/or sets the value of the specified editor command.
 
     See <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>
@@ -172,6 +160,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @return {Boolean|String} Value of the specified command.
     **/
     command: function (name, value) {
+        this.focus();
+        
         if (typeof value !== 'undefined') {
             this._execCommand(name, value);
         }
@@ -186,10 +176,10 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @chainable
     **/
     decreaseFontSize: function () {
-        var newSize = parseInt(this.style('fontSize'), 10) - 1;
+        var newSize = parseInt(this.command('fontSize'), 10) - 1;
 
         if (newSize > 0) {
-            this.style('fontSize', '' + newSize);
+            this.command('fontSize', '' + newSize);
         }
 
         return this;
@@ -216,10 +206,12 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @chainable
     **/
     increaseFontSize: function () {
-        var newSize = parseInt(this.style('fontSize'), 10) + 1;
+        var newSize = parseInt(this.command('fontSize'), 10) + 1;
 
-        if (newSize < 8) {
-            this.style('fontSize', '' + newSize);
+        // currently only webkit supports size 7 (xxx-large), so keep
+        // it under 7 for compatibility
+        if (newSize < 7) {
+            this.command('fontSize', '' + newSize);
         }
 
         return this;
@@ -264,17 +256,6 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     },
 
     /**
-    Italicizes or unitalicizes the current selection.
-
-    @method italic
-    @chainable
-    **/
-    italic: function () {
-        this.style('italic', 'toggle');
-        return this;
-    },
-
-    /**
     Renders this editor into its container and appends the container to the
     document if necessary.
 
@@ -302,7 +283,6 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         }
 
         inputNode.set('contentEditable', true);
-        doc.execCommand('styleWithCSS', false, 'true');
 
         this._inputNode = inputNode;
         this._rendered  = true;
@@ -311,76 +291,6 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         this.fire(EVT_RENDER);
 
-        return this;
-    },
-
-    /**
-    Gets and/or sets the value of the specified editor style command. This
-    method is similar to `command()`, but only supports a subset of
-    style-related commands.
-
-    See the `styleCommands` property for a list of supported style commands.
-
-    @method style
-    @param {String} name Command name.
-    @param {Boolean|String} [value] Command value. Use the special value
-        'toggle' to toggle a boolean command (like 'bold') to the opposite of
-        its current state.
-    @return {Boolean|String} Value of the specified command.
-    **/
-    style: function (name, value) {
-        if (!this.styleCommands.hasOwnProperty(name)) {
-            Y.error('sm-editor: Unsupported style: ' + name);
-            return;
-        }
-
-        return this.command(name, value);
-    },
-
-    /**
-    Gets and/or sets the values of multiple editor style commands.
-
-    When called without an argument, the current values of all supported style
-    commands will be returned. When called with a _styles_ object, the specified
-    style commands will be set to their given values, and the resulting new
-    values will be returned.
-
-    @method styles
-    @param {Object} [styles] Hash of style names and values to set.
-    @return {Object} Hash of style names and values that were set, or all styles
-        if no _styles_ parameter was specified.
-    **/
-    styles: function (styles) {
-        var results = {},
-            name;
-
-        if (styles) {
-            for (name in styles) {
-                if (styles.hasOwnProperty(name)) {
-                    results[name] = this.style(name, styles[name]);
-                }
-            }
-        } else {
-            var commands = this.styleCommands;
-
-            for (name in commands) {
-                if (commands.hasOwnProperty(name)) {
-                    results[name] = this._queryCommandValue(name);
-                }
-            }
-        }
-
-        return results;
-    },
-
-    /**
-    Toggles underline on the current selection.
-
-    @method underline
-    @chainable
-    **/
-    underline: function () {
-        this.style('underline', 'toggle');
         return this;
     },
 
@@ -402,6 +312,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         this._events = [
             container.delegate('blur',  this._onBlur,  selectors.input, this),
+            container.delegate('dblclick', this._onDblClick, selectors.input, this),
             container.delegate('focus', this._onFocus, selectors.input, this),
             container.delegate('paste', this._onPaste, selectors.input, this)
         ];
@@ -430,14 +341,12 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _execCommand: function (name, value) {
-        var type = this.styleCommands[name];
-
         if (!doc.queryCommandEnabled(name)) {
             Y.log('Command is not currently allowed: ' + name, 'warn', 'sm-editor');
             return;
         }
 
-        if (type === 'boolean') {
+        if (this.boolCommands[name]) {
             // Only execute the command if the desired state differs from the
             // current state, or the desired state is 'toggle', indicating that
             // the command should be toggled regardless of its current state.
@@ -494,7 +403,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _queryCommandValue: function (name) {
-        return this.styleCommands[name] === 'boolean' ?
+        return this.boolCommands[name] ?
             !!doc.queryCommandState(name) : doc.queryCommandValue(name);
     },
 
@@ -577,9 +486,20 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         }
 
         clearInterval(this._selectionMonitor);
-        this._updateSelection();
 
         this.fire(EVT_BLUR);
+    },
+
+    /**
+    Handles `dblclick` events on the editor.
+
+    @method _onDblClick
+    @protected
+    **/
+    _onDblClick: function() {
+        var range = this.selection.range();
+
+        this.selection.select(range.shrink({trim: true}));
     },
 
     /**
@@ -593,6 +513,11 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         if (!this._rendered) {
             return;
+        }
+
+        // restore the previously selected range
+        if (this._selectedRange) {
+            this.selection.select(this._selectedRange);
         }
 
         this._updateSelection();
