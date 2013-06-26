@@ -1,6 +1,7 @@
 YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
+        "DragDrop",
         "Editor",
         "Editor.Base",
         "Editor.Keys",
@@ -14,7 +15,6 @@ YUI.add("yuidoc-meta", function(Y) {
         "Plugin.FocusManager",
         "Plugin.Menu",
         "Range",
-        "SM.DragDrop",
         "Selection",
         "TreeView",
         "TreeView.Sortable"
@@ -47,7 +47,7 @@ YUI.add("yuidoc-meta", function(Y) {
         {
             "displayName": "gallery-sm-dragdrop",
             "name": "gallery-sm-dragdrop",
-            "description": "Provides the `SM.DragDrop` class, a simpler and more efficient drag and drop\nimplementation than the one in YUI core."
+            "description": "Provides the `DragDrop` class, a simpler and more efficient drag and drop\nimplementation than the one in YUI core."
         },
         {
             "displayName": "gallery-sm-dragdrop-reorder",

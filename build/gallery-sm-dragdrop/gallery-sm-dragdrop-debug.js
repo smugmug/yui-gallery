@@ -11,7 +11,7 @@ TODO:
 */
 
 /**
-Provides the `SM.DragDrop` class, a simpler and more efficient drag and drop
+Provides the `DragDrop` class, a simpler and more efficient drag and drop
 implementation than the one in YUI core.
 
 @module gallery-sm-dragdrop
@@ -23,7 +23,7 @@ A simpler and more efficient drag and drop implementation than the one in YUI
 core. Highly optimized for delegation-based drag targets, remaining responsive
 and memory-efficient even when managing thousands of draggable nodes.
 
-@class SM.DragDrop
+@class DragDrop
 @extends Base
 @constructor
 **/
@@ -1403,7 +1403,7 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
     }
 });
 
-Y.namespace('SM').DragDrop = DragDrop;
+Y.DragDrop = DragDrop;
 
 
 }, '@VERSION@', {"requires": ["base", "classnamemanager", "event-move", "node-event-delegate", "node-screen"]});
