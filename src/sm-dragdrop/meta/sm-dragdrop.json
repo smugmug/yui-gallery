@@ -1,0 +1,27 @@
+{
+    "gallery-sm-dragdrop": {
+        "requires": [
+            "base",
+            "classnamemanager",
+            "event-move",
+            "node-event-delegate",
+            "node-screen"
+        ]
+    },
+
+    "gallery-sm-dragdrop-proxy": {
+        "requires": [
+            "base-pluginhost",
+            "gallery-sm-dragdrop",
+            "plugin"
+        ]
+    },
+
+    "gallery-sm-dragdrop-reorder": {
+        "requires": [
+            "base-pluginhost",
+            "gallery-sm-dragdrop",
+            "plugin"
+        ]
+    }
+}

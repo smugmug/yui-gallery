@@ -1,0 +1,23 @@
+{
+    "name": "gallery-sm-dragdrop",
+
+    "builds": {
+        "gallery-sm-dragdrop": {
+            "jsfiles": [
+                "dragdrop.js"
+            ]
+        },
+
+        "gallery-sm-dragdrop-proxy": {
+            "jsfiles": [
+                "plugins/dragdrop-proxy.js"
+            ]
+        },
+
+        "gallery-sm-dragdrop-reorder": {
+            "jsfiles": [
+                "plugins/dragdrop-reorder.js"
+            ]
+        }
+    }
+}

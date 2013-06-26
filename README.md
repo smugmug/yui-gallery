@@ -22,6 +22,13 @@ A powerful, easy to use, and extremely fast TreeView widget.
 Works in Progress
 -----------------
 
+### [gallery-sm-dragdrop](src/sm-dragdrop)
+
+_Work in progress_. A simpler and more efficient drag and drop implementation
+than the one in YUI core. Highly optimized for delegation-based drag targets,
+remaining responsive and memory-efficient even when managing thousands of
+draggable nodes.
+
 ### [gallery-sm-editor](src/sm-editor)
 
 _Work in progress_. A simple but powerful contentEditable-based WYSIWYG editor.
