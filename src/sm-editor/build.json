@@ -26,6 +26,12 @@
             ]
         },
 
+        "gallery-sm-editor-link": {
+            "jsfiles": [
+                "js/extensions/editor-link.js"
+            ]
+        },
+
         "gallery-sm-editor-style": {
             "jsfiles": [
                 "js/extensions/editor-style.js"
