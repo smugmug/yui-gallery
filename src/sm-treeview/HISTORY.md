@@ -1,7 +1,7 @@
 SmugMug TreeView History
 ========================
 
-## git
+## 2013-06-20
 
 * Nodes are no longer automatically focused when selected in single-select mode.
 
