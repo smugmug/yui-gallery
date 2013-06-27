@@ -1,5 +1,4 @@
 /*jshint onevar:false */
-/*global MutationObserver:true */
 
 /*
 TODO:
@@ -32,10 +31,7 @@ var DOM = Y.DOM,
     doc          = Y.config.doc,
     getClassName = Y.ClassNameManager.getClassName,
     isMac        = typeof navigator !== 'undefined' && /^mac/i.test(navigator.platform),
-    win          = Y.config.win,
-
-    MutationObserver = win.MutationObserver || win.WebKitMutationObserver ||
-        win.MozMutationObserver;
+    win          = Y.config.win;
 
 /**
 Fired whenever the pointer moves during a drag operation.
@@ -194,36 +190,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         this._publishedEvents = null;
     },
 
-    // -- Public Methods -------------------------------------------------------
-
-    /**
-    Synchronizes the internal cache of dropzone node locations, which is used to
-    determine whether a dragged node may be dropped.
-
-    You should call this method if you modify the DOM or change the position or
-    metrics of a dropzone node during a drag operation. Otherwise, dropzone
-    positions may be miscalculated.
-
-    Calling this method when a drag operation is not in progress will have no
-    effect.
-
-    @method sync
-    @chainable
-    **/
-    sync: function () {
-        if (this._dragState.dragging) {
-            this._cacheBoundingRects();
-
-            if (this._scrollContainer || this._scrollSelector) {
-                this._cacheScrollRects();
-            }
-        }
-
-        return this;
-    },
-
-    // -- Protected Methods ----------------------------------------------------
-
     /**
     Attaches event handlers.
 
@@ -255,8 +221,7 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
                 'distanceThresholdChange',
                 'dragSelectorChange',
                 'enableTouchDragChange',
-                'timeThresholdChange',
-                'useMutationObserverChange'
+                'timeThresholdChange'
             ], this._reinitialize),
 
             this.after([
@@ -271,15 +236,50 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
             doc.on('gesturemove', this._onDocMove, {standAlone: true}, this),
             doc.on('gesturemoveend', this._onDocMoveEnd, {standAlone: true}, this)
         ];
+    },
 
-        // If supported and enabled, a MutationObserver is used to update cached
-        // dropzone bounding rects when the DOM is modified during a drag
-        // operation.
-        if (MutationObserver && this.get('useMutationObserver')) {
-            this._mutationObserver = new MutationObserver(
-                Y.bind(this.sync, this));
+    /**
+    Detaches event handlers.
+
+    @method _detachEvents
+    @protected
+    **/
+    _detachEvents: function () {
+        if (this._events) {
+            new Y.EventHandle(this._events).detach();
+            this._events = null;
         }
     },
+
+    // -- Public Methods -------------------------------------------------------
+
+    /**
+    Synchronizes the internal cache of dropzone node locations, which is used to
+    determine whether a dragged node may be dropped.
+
+    You should call this method if you modify the DOM or change the position or
+    metrics of a dropzone node during a drag operation. Otherwise, dropzone
+    positions may be miscalculated.
+
+    Calling this method when a drag operation is not in progress will have no
+    effect.
+
+    @method sync
+    @chainable
+    **/
+    sync: function () {
+        if (this._dragState.dragging) {
+            this._cacheBoundingRects();
+
+            if (this._scrollContainer || this._scrollSelector) {
+                this._cacheScrollRects();
+            }
+        }
+
+        return this;
+    },
+
+    // -- Protected Methods ----------------------------------------------------
 
     /**
     Attribute change event handler that caches the new value of the attribute in
@@ -389,24 +389,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
     },
 
     /**
-    Detaches event handlers.
-
-    @method _detachEvents
-    @protected
-    **/
-    _detachEvents: function () {
-        if (this._events) {
-            new Y.EventHandle(this._events).detach();
-            this._events = null;
-        }
-
-        if (this._mutationObserver) {
-            this._mutationObserver.disconnect();
-            this._mutationObserver = null;
-        }
-    },
-
-    /**
     Ends a drag operation, cleans up after it, and fires a `dragend` event.
 
     @method _endDrag
@@ -420,10 +402,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         } else if (state.dragging) {
             if (state.dropNode) {
                 this._fireDragLeave();
-            }
-
-            if (this._mutationObserver) {
-                this._mutationObserver.disconnect();
             }
 
             this._proxyOrDragNode().removeClass(this.classNames.dragging);
@@ -1082,19 +1060,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         this._proxyOrDragNode().addClass(this.classNames.dragging);
 
         this.sync();
-
-        if (this._mutationObserver) {
-            // Activate the mutation observer. This will automatically update
-            // cached dropzone bounding rects whenever the container or one of
-            // its descendants is modified in the DOM.
-            this._mutationObserver.observe(this._container._node, {
-                attributes   : true,
-                characterData: true,
-                childList    : true,
-                subtree      : true
-            });
-        }
-
         this._fireDrag();
     },
 
@@ -1402,24 +1367,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         **/
         timeThreshold: {
             value: 800
-        },
-
-        /**
-        Whether or not to use a MutationObserver in capable browsers to
-        automatically detect changes to drop zone nodes during a drag operation.
-
-        This can be more convenient than manually calling `sync()` whenever a
-        drop zone changes, but it only works in very modern browsers and may
-        result in poor performance if frequent changes are made to drop zone
-        nodes during a drag operation.
-
-        It should be considered experimental.
-
-        @attribute {Boolean} useMutationObserver
-        @default false
-        **/
-        useMutationObserver: {
-            value: false
         }
     }
 });
