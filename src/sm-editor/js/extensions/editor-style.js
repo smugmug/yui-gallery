@@ -318,9 +318,20 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         if (range) {
             parentNode = range.shrink().parentNode();
 
-            // walk the ancestor tree to find the closest
-            // element node ancestor, inclusive of the parentNode
-            styleNode = EDOM.getAncestorElement(parentNode);
+            // first attempt to get any explicitly styled ancestor for
+            // the given property. Need to do this first because browsers
+            // sometimes return different values for explicit style vs.
+            // computed style. `font-weight: bold;` for example will return
+            // `bold` in all browsers when explicitly set but `700` in
+            // Firefox and Internet Explorer with computedStyle.
+            styleNode = this._getStyledAncestor(parentNode, command.property, true);
+
+            if (!styleNode) {
+                // no explicitly styled ancestor found. walk the
+                // ancestor tree to find the closest element
+                // node ancestor, inclusive of the parentNode
+                styleNode = EDOM.getAncestorElement(parentNode);
+            }
 
             // getStyle will fall back to computedStyle if the
             // property isn't explicitly set
