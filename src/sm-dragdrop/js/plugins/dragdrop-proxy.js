@@ -1,3 +1,5 @@
+/*jshint expr:true, onevar:false */
+
 var getClassName = Y.ClassNameManager.getClassName;
 
 Y.namespace('Plugin.DragDrop').Proxy = Y.Base.create('dragdropProxy', Y.Plugin.Base, [], {

@@ -1,4 +1,4 @@
-/*jshint onevar:false */
+/*jshint expr:true, onevar:false */
 
 /*
 TODO:
