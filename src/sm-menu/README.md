@@ -23,7 +23,7 @@ In your HTML, create a container element for the menu. Be sure to add the `yui3-
 Load YUI onto the page if you haven't already.
 
 ```html
-<script src="http://yui.yahooapis.com/3.9.1/build/yui/yui-min.js"></script>
+<script src="http://yui.yahooapis.com/3.10.3/build/yui/yui-min.js"></script>
 ```
 
 Next, in your JS, create an instance of `Y.Menu`, specify some menu items, then render the menu into its container element.
@@ -50,7 +50,7 @@ YUI({
         ]
     });
 
-    menu.render();
+    menu.render().show();
 }
 ```
 
@@ -92,7 +92,7 @@ YUI().use('gallery-sm-menu', function (Y) {
         sourceNode: '#menu-data'
     });
 
-    menu.render();
+    menu.render().show();
 });
 ```
 
