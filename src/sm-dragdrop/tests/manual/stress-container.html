@@ -6,9 +6,11 @@
 
     <style>
     #container {
-        height: 1000px;
+        border: 1px solid #cfcfcf;
+        height: 500px;
+        margin-top: 500px;
         overflow: scroll;
-        width: 1000px;
+        width: 800px;
     }
 
     .box {
@@ -53,6 +55,7 @@ container.setHTML(boxes.join(''));
 var dd;
 
 dd = new Y.DragDrop({
+    container      : '#container',
     dragSelector   : '.box',
     dropSelector   : '.box',
     scrollContainer: true
