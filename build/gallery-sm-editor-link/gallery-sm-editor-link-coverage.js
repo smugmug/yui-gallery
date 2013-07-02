@@ -1,6 +1,197 @@
-if (typeof __coverage__ === 'undefined') { __coverage__ = {}; }
-if (!__coverage__['build/gallery-sm-editor-link/gallery-sm-editor-link.js']) {
-   __coverage__['build/gallery-sm-editor-link/gallery-sm-editor-link.js'] = {"path":"build/gallery-sm-editor-link/gallery-sm-editor-link.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0},"fnMap":{"1":{"name":"(anonymous_1)","line":1,"loc":{"start":{"line":1,"column":34},"end":{"line":1,"column":53}}},"2":{"name":"(anonymous_2)","line":21,"loc":{"start":{"line":21,"column":1},"end":{"line":21,"column":12}}},"3":{"name":"(anonymous_3)","line":41,"loc":{"start":{"line":41,"column":10},"end":{"line":41,"column":29}}},"4":{"name":"(anonymous_4)","line":68,"loc":{"start":{"line":68,"column":12},"end":{"line":68,"column":24}}},"5":{"name":"(anonymous_5)","line":82,"loc":{"start":{"line":82,"column":12},"end":{"line":82,"column":23}}},"6":{"name":"(anonymous_6)","line":98,"loc":{"start":{"line":98,"column":20},"end":{"line":98,"column":31}}}},"statementMap":{"1":{"start":{"line":1,"column":0},"end":{"line":112,"column":83}},"2":{"start":{"line":21,"column":0},"end":{"line":109,"column":5}},"3":{"start":{"line":22,"column":0},"end":{"line":22,"column":24}},"4":{"start":{"line":24,"column":0},"end":{"line":105,"column":3}},"5":{"start":{"line":42,"column":8},"end":{"line":42,"column":21}},"6":{"start":{"line":44,"column":8},"end":{"line":44,"column":43}},"7":{"start":{"line":46,"column":8},"end":{"line":48,"column":9}},"8":{"start":{"line":47,"column":12},"end":{"line":47,"column":19}},"9":{"start":{"line":50,"column":8},"end":{"line":50,"column":34}},"10":{"start":{"line":51,"column":8},"end":{"line":51,"column":53}},"11":{"start":{"line":52,"column":8},"end":{"line":52,"column":58}},"12":{"start":{"line":53,"column":8},"end":{"line":53,"column":44}},"13":{"start":{"line":55,"column":8},"end":{"line":55,"column":55}},"14":{"start":{"line":57,"column":8},"end":{"line":57,"column":20}},"15":{"start":{"line":69,"column":8},"end":{"line":69,"column":39}},"16":{"start":{"line":83,"column":8},"end":{"line":84,"column":18}},"17":{"start":{"line":86,"column":8},"end":{"line":90,"column":9}},"18":{"start":{"line":87,"column":12},"end":{"line":87,"column":44}},"19":{"start":{"line":89,"column":12},"end":{"line":89,"column":62}},"20":{"start":{"line":92,"column":8},"end":{"line":92,"column":20}},"21":{"start":{"line":99,"column":8},"end":{"line":99,"column":21}},"22":{"start":{"line":101,"column":8},"end":{"line":101,"column":70}},"23":{"start":{"line":103,"column":8},"end":{"line":103,"column":56}},"24":{"start":{"line":107,"column":0},"end":{"line":107,"column":40}}},"branchMap":{"1":{"line":46,"type":"if","locations":[{"start":{"line":46,"column":8},"end":{"line":46,"column":8}},{"start":{"line":46,"column":8},"end":{"line":46,"column":8}}]},"2":{"line":50,"type":"binary-expr","locations":[{"start":{"line":50,"column":8},"end":{"line":50,"column":15}},{"start":{"line":50,"column":20},"end":{"line":50,"column":32}}]},"3":{"line":51,"type":"binary-expr","locations":[{"start":{"line":51,"column":8},"end":{"line":51,"column":22}},{"start":{"line":51,"column":27},"end":{"line":51,"column":51}}]},"4":{"line":52,"type":"binary-expr","locations":[{"start":{"line":52,"column":8},"end":{"line":52,"column":20}},{"start":{"line":52,"column":25},"end":{"line":52,"column":56}}]},"5":{"line":53,"type":"binary-expr","locations":[{"start":{"line":53,"column":8},"end":{"line":53,"column":20}},{"start":{"line":53,"column":25},"end":{"line":53,"column":42}}]},"6":{"line":86,"type":"if","locations":[{"start":{"line":86,"column":8},"end":{"line":86,"column":8}},{"start":{"line":86,"column":8},"end":{"line":86,"column":8}}]}},"code":["(function () { YUI.add('gallery-sm-editor-link', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Link` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-link","**/","","/**","Extension for `Editor.Base` that enables inserting links","","@class Editor.Link","@constructor","@extends Base","@extensionfor Editor.Base","**/","","(function() {","var EDOM = Y.Editor.DOM;","","var EditorLink = Y.Base.create('editorLink', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    template: '<a href=\"{href}\" target=\"{target}\"></a>',","","    // -- Public Methods -------------------------------------------------------","","    /**","    Wraps the currently selected range in an anchor element","","    @method link","    @param {Object} options","      @param {String} [options.target=_self]","      @param {String} [options.text=range.toString()]","      @param {String} options.href","    @chainable","    **/","    link: function (options) {","        this.focus();","","        var range = this.selection.range();","","        if (!range) {","            return;","        }","","        options || (options = {});","        options.target || (options.target = '_self');","        options.text || (options.text = range.toString());","        options.href || (options.href = '');","","        range.wrap(Y.Lang.sub(this.template, options));","","        return this;","    },","","","    /**","    Returns whether or not the current range is entirely in an anchor element","","    @method isLink","    @return {boolean} `true` if the range is contained in an anchor element,","      `false` otherwise","    **/","    isLink: function () {","        return !!this._getAnchorNode();","    },","","","    /**","    Removes link by replacing the anchor element with the child nodes","    of the anchor","","    The anchor element will be removed from the DOM and destroyed.","","    @method unlink","    @chainable","    **/","    unlink: function() {","        var anchorNode = this._getAnchorNode(),","            range;","","        if (anchorNode) {","            range = EDOM.unwrap(anchorNode);","","            this.selection.select(range.shrink({trim: true}));","        }","","        return this;","    },","","","    // -- Protected Methods ----------------------------------------------------","","    _getAnchorNode: function() {","        this.focus();","","        var parentNode = this.selection.range().shrink().parentNode();","","        return EDOM.getAncestorElement(parentNode, 'a');","    }","});","","Y.namespace('Editor').Link = EditorLink;","","}());","","","}, '@VERSION@', {\"requires\": [\"gallery-sm-editor-base\", \"gallery-sm-editor-dom\"]});","","}());"]};
+if (typeof _yuitest_coverage == "undefined"){
+    _yuitest_coverage = {};
+    _yuitest_coverline = function(src, line){
+        var coverage = _yuitest_coverage[src];
+        if (!coverage.lines[line]){
+            coverage.calledLines++;
+        }
+        coverage.lines[line]++;
+    };
+    _yuitest_coverfunc = function(src, name, line){
+        var coverage = _yuitest_coverage[src],
+            funcId = name + ":" + line;
+        if (!coverage.functions[funcId]){
+            coverage.calledFunctions++;
+        }
+        coverage.functions[funcId]++;
+    };
 }
-var __cov_URaa20$SP4SK4EP2RxuctA = __coverage__['build/gallery-sm-editor-link/gallery-sm-editor-link.js'];
-__cov_URaa20$SP4SK4EP2RxuctA.s['1']++;YUI.add('gallery-sm-editor-link',function(Y,NAME){__cov_URaa20$SP4SK4EP2RxuctA.f['1']++;__cov_URaa20$SP4SK4EP2RxuctA.s['2']++;(function(){__cov_URaa20$SP4SK4EP2RxuctA.f['2']++;__cov_URaa20$SP4SK4EP2RxuctA.s['3']++;var EDOM=Y.Editor.DOM;__cov_URaa20$SP4SK4EP2RxuctA.s['4']++;var EditorLink=Y.Base.create('editorLink',Y.Base,[],{template:'<a href="{href}" target="{target}"></a>',link:function(options){__cov_URaa20$SP4SK4EP2RxuctA.f['3']++;__cov_URaa20$SP4SK4EP2RxuctA.s['5']++;this.focus();__cov_URaa20$SP4SK4EP2RxuctA.s['6']++;var range=this.selection.range();__cov_URaa20$SP4SK4EP2RxuctA.s['7']++;if(!range){__cov_URaa20$SP4SK4EP2RxuctA.b['1'][0]++;__cov_URaa20$SP4SK4EP2RxuctA.s['8']++;return;}else{__cov_URaa20$SP4SK4EP2RxuctA.b['1'][1]++;}__cov_URaa20$SP4SK4EP2RxuctA.s['9']++;(__cov_URaa20$SP4SK4EP2RxuctA.b['2'][0]++,options)||(__cov_URaa20$SP4SK4EP2RxuctA.b['2'][1]++,options={});__cov_URaa20$SP4SK4EP2RxuctA.s['10']++;(__cov_URaa20$SP4SK4EP2RxuctA.b['3'][0]++,options.target)||(__cov_URaa20$SP4SK4EP2RxuctA.b['3'][1]++,options.target='_self');__cov_URaa20$SP4SK4EP2RxuctA.s['11']++;(__cov_URaa20$SP4SK4EP2RxuctA.b['4'][0]++,options.text)||(__cov_URaa20$SP4SK4EP2RxuctA.b['4'][1]++,options.text=range.toString());__cov_URaa20$SP4SK4EP2RxuctA.s['12']++;(__cov_URaa20$SP4SK4EP2RxuctA.b['5'][0]++,options.href)||(__cov_URaa20$SP4SK4EP2RxuctA.b['5'][1]++,options.href='');__cov_URaa20$SP4SK4EP2RxuctA.s['13']++;range.wrap(Y.Lang.sub(this.template,options));__cov_URaa20$SP4SK4EP2RxuctA.s['14']++;return this;},isLink:function(){__cov_URaa20$SP4SK4EP2RxuctA.f['4']++;__cov_URaa20$SP4SK4EP2RxuctA.s['15']++;return!!this._getAnchorNode();},unlink:function(){__cov_URaa20$SP4SK4EP2RxuctA.f['5']++;__cov_URaa20$SP4SK4EP2RxuctA.s['16']++;var anchorNode=this._getAnchorNode(),range;__cov_URaa20$SP4SK4EP2RxuctA.s['17']++;if(anchorNode){__cov_URaa20$SP4SK4EP2RxuctA.b['6'][0]++;__cov_URaa20$SP4SK4EP2RxuctA.s['18']++;range=EDOM.unwrap(anchorNode);__cov_URaa20$SP4SK4EP2RxuctA.s['19']++;this.selection.select(range.shrink({trim:true}));}else{__cov_URaa20$SP4SK4EP2RxuctA.b['6'][1]++;}__cov_URaa20$SP4SK4EP2RxuctA.s['20']++;return this;},_getAnchorNode:function(){__cov_URaa20$SP4SK4EP2RxuctA.f['6']++;__cov_URaa20$SP4SK4EP2RxuctA.s['21']++;this.focus();__cov_URaa20$SP4SK4EP2RxuctA.s['22']++;var parentNode=this.selection.range().shrink().parentNode();__cov_URaa20$SP4SK4EP2RxuctA.s['23']++;return EDOM.getAncestorElement(parentNode,'a');}});__cov_URaa20$SP4SK4EP2RxuctA.s['24']++;Y.namespace('Editor').Link=EditorLink;}());},'@VERSION@',{'requires':['gallery-sm-editor-base','gallery-sm-editor-dom']});
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"] = {
+    lines: {},
+    functions: {},
+    coveredLines: 0,
+    calledLines: 0,
+    coveredFunctions: 0,
+    calledFunctions: 0,
+    path: "build/gallery-sm-editor-link/gallery-sm-editor-link.js",
+    code: []
+};
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"].code=["YUI.add('gallery-sm-editor-link', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Link` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-link","**/","","/**","Extension for `Editor.Base` that enables inserting links","","@class Editor.Link","@constructor","@extends Base","@extensionfor Editor.Base","**/","","(function() {","var EDOM = Y.Editor.DOM;","","var EditorLink = Y.Base.create('editorLink', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    template: '<a href=\"{href}\" target=\"{target}\"></a>',","","    // -- Public Methods -------------------------------------------------------","","    /**","    Wraps the currently selected range in an anchor element","","    @method link","    @param {Object} options","      @param {String} [options.target=_self]","      @param {String} [options.text=range.toString()]","      @param {String} options.href","    @chainable","    **/","    link: function (options) {","        return this.command(this._link, options);","    },","","","    /**","    Returns whether or not the current range is entirely in an anchor element","","    @method isLink","    @return {boolean} `true` if the range is contained in an anchor element,","      `false` otherwise","    **/","    isLink: function () {","        return !!this._getAnchorNode();","    },","","","    /**","    Removes link by replacing the anchor element with the child nodes","    of the anchor","","    The anchor element will be removed from the DOM and destroyed.","","    @method unlink","    @chainable","    **/","    unlink: function() {","        var anchorNode = this._getAnchorNode(),","            range;","","        if (anchorNode) {","            range = EDOM.unwrap(anchorNode);","","            this.selection.select(range.shrink({trim: true}));","        }","","        return this;","    },","","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Returns the nearest ancestor anchor that entirely contains","    the current range","","    @method _getAnchorNode","    @returns {Node} The containing anchor element","    @protected","    **/","    _getAnchorNode: function() {","        this.focus();","","        var parentNode = this.selection.range().shrink().parentNode();","","        return EDOM.getAncestorElement(parentNode, 'a');","    },","","","    /**","    Implementation for the public `link` method","","    @method _link","    @param {Object} options","      @param {String} [options.target=_self]","      @param {String} [options.text=range.toString()]","      @param {String} options.href","    @chainable","    @protected","    **/","    _link: function(options){","        var range = this.selection.range();","","        if (!range) {","            return;","        }","","        options || (options = {});","        options.target || (options.target = '_self');","        //options.text || (options.text = range.toString());","        options.href || (options.href = '');","","        range.wrap(Y.Lang.sub(this.template, options));","","        return this;","    }","});","","Y.namespace('Editor').Link = EditorLink;","","}());","","","}, '@VERSION@', {\"requires\": [\"gallery-sm-editor-base\", \"gallery-sm-editor-dom\"]});"];
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"].lines = {"1":0,"21":0,"22":0,"24":0,"42":0,"54":0,"68":0,"71":0,"72":0,"74":0,"77":0,"92":0,"94":0,"96":0,"112":0,"114":0,"115":0,"118":0,"119":0,"121":0,"123":0,"125":0,"129":0};
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"].functions = {"link:41":0,"isLink:53":0,"unlink:67":0,"_getAnchorNode:91":0,"_link:111":0,"(anonymous 2):21":0,"(anonymous 1):1":0};
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"].coveredLines = 23;
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"].coveredFunctions = 7;
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 1);
+YUI.add('gallery-sm-editor-link', function (Y, NAME) {
+
+/*jshint expr:true, onevar:false */
+
+/**
+Provides the `Editor.Link` extension.
+
+@module gallery-sm-editor
+@submodule gallery-sm-editor-link
+**/
+
+/**
+Extension for `Editor.Base` that enables inserting links
+
+@class Editor.Link
+@constructor
+@extends Base
+@extensionfor Editor.Base
+**/
+
+_yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "(anonymous 1)", 1);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 21);
+(function() {
+_yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "(anonymous 2)", 21);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 22);
+var EDOM = Y.Editor.DOM;
+
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 24);
+var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
+    // -- Public Properties ----------------------------------------------------
+
+    template: '<a href="{href}" target="{target}"></a>',
+
+    // -- Public Methods -------------------------------------------------------
+
+    /**
+    Wraps the currently selected range in an anchor element
+
+    @method link
+    @param {Object} options
+      @param {String} [options.target=_self]
+      @param {String} [options.text=range.toString()]
+      @param {String} options.href
+    @chainable
+    **/
+    link: function (options) {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "link", 41);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 42);
+return this.command(this._link, options);
+    },
+
+
+    /**
+    Returns whether or not the current range is entirely in an anchor element
+
+    @method isLink
+    @return {boolean} `true` if the range is contained in an anchor element,
+      `false` otherwise
+    **/
+    isLink: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "isLink", 53);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 54);
+return !!this._getAnchorNode();
+    },
+
+
+    /**
+    Removes link by replacing the anchor element with the child nodes
+    of the anchor
+
+    The anchor element will be removed from the DOM and destroyed.
+
+    @method unlink
+    @chainable
+    **/
+    unlink: function() {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "unlink", 67);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 68);
+var anchorNode = this._getAnchorNode(),
+            range;
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 71);
+if (anchorNode) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 72);
+range = EDOM.unwrap(anchorNode);
+
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 74);
+this.selection.select(range.shrink({trim: true}));
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 77);
+return this;
+    },
+
+
+    // -- Protected Methods ----------------------------------------------------
+
+    /**
+    Returns the nearest ancestor anchor that entirely contains
+    the current range
+
+    @method _getAnchorNode
+    @returns {Node} The containing anchor element
+    @protected
+    **/
+    _getAnchorNode: function() {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "_getAnchorNode", 91);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 92);
+this.focus();
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 94);
+var parentNode = this.selection.range().shrink().parentNode();
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 96);
+return EDOM.getAncestorElement(parentNode, 'a');
+    },
+
+
+    /**
+    Implementation for the public `link` method
+
+    @method _link
+    @param {Object} options
+      @param {String} [options.target=_self]
+      @param {String} [options.text=range.toString()]
+      @param {String} options.href
+    @chainable
+    @protected
+    **/
+    _link: function(options){
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "_link", 111);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 112);
+var range = this.selection.range();
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 114);
+if (!range) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 115);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 118);
+options || (options = {});
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 119);
+options.target || (options.target = '_self');
+        //options.text || (options.text = range.toString());
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 121);
+options.href || (options.href = '');
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 123);
+range.wrap(Y.Lang.sub(this.template, options));
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 125);
+return this;
+    }
+});
+
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 129);
+Y.namespace('Editor').Link = EditorLink;
+
+}());
+
+
+}, '@VERSION@', {"requires": ["gallery-sm-editor-base", "gallery-sm-editor-dom"]});
