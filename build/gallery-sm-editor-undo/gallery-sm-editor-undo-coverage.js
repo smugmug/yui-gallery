@@ -1,6 +1,407 @@
-if (typeof __coverage__ === 'undefined') { __coverage__ = {}; }
-if (!__coverage__['build/gallery-sm-editor-undo/gallery-sm-editor-undo.js']) {
-   __coverage__['build/gallery-sm-editor-undo/gallery-sm-editor-undo.js'] = {"path":"build/gallery-sm-editor-undo/gallery-sm-editor-undo.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0,"67":0,"68":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0],"12":[0,0],"13":[0,0],"14":[0,0],"15":[0,0],"16":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0},"fnMap":{"1":{"name":"(anonymous_1)","line":1,"loc":{"start":{"line":1,"column":34},"end":{"line":1,"column":53}}},"2":{"name":"(anonymous_2)","line":65,"loc":{"start":{"line":65,"column":17},"end":{"line":65,"column":29}}},"3":{"name":"(anonymous_3)","line":79,"loc":{"start":{"line":79,"column":16},"end":{"line":79,"column":28}}},"4":{"name":"(anonymous_4)","line":94,"loc":{"start":{"line":94,"column":10},"end":{"line":94,"column":22}}},"5":{"name":"(anonymous_5)","line":131,"loc":{"start":{"line":131,"column":10},"end":{"line":131,"column":22}}},"6":{"name":"(anonymous_6)","line":171,"loc":{"start":{"line":171,"column":14},"end":{"line":171,"column":26}}},"7":{"name":"(anonymous_7)","line":201,"loc":{"start":{"line":201,"column":14},"end":{"line":201,"column":26}}},"8":{"name":"(anonymous_8)","line":230,"loc":{"start":{"line":230,"column":23},"end":{"line":230,"column":35}}},"9":{"name":"(anonymous_9)","line":247,"loc":{"start":{"line":247,"column":24},"end":{"line":247,"column":40}}},"10":{"name":"(anonymous_10)","line":259,"loc":{"start":{"line":259,"column":23},"end":{"line":259,"column":35}}},"11":{"name":"(anonymous_11)","line":274,"loc":{"start":{"line":274,"column":18},"end":{"line":274,"column":30}}}},"statementMap":{"1":{"start":{"line":1,"column":0},"end":{"line":295,"column":58}},"2":{"start":{"line":24,"column":0},"end":{"line":290,"column":3}},"3":{"start":{"line":66,"column":8},"end":{"line":68,"column":9}},"4":{"start":{"line":67,"column":12},"end":{"line":67,"column":79}},"5":{"start":{"line":70,"column":8},"end":{"line":70,"column":29}},"6":{"start":{"line":71,"column":8},"end":{"line":71,"column":29}},"7":{"start":{"line":73,"column":8},"end":{"line":73,"column":61}},"8":{"start":{"line":74,"column":8},"end":{"line":74,"column":73}},"9":{"start":{"line":76,"column":8},"end":{"line":76,"column":33}},"10":{"start":{"line":80,"column":8},"end":{"line":80,"column":33}},"11":{"start":{"line":82,"column":8},"end":{"line":82,"column":31}},"12":{"start":{"line":83,"column":8},"end":{"line":83,"column":31}},"13":{"start":{"line":95,"column":8},"end":{"line":95,"column":41}},"14":{"start":{"line":97,"column":8},"end":{"line":99,"column":9}},"15":{"start":{"line":98,"column":12},"end":{"line":98,"column":24}},"16":{"start":{"line":103,"column":8},"end":{"line":105,"column":9}},"17":{"start":{"line":104,"column":12},"end":{"line":104,"column":31}},"18":{"start":{"line":107,"column":8},"end":{"line":107,"column":24}},"19":{"start":{"line":108,"column":8},"end":{"line":108,"column":38}},"20":{"start":{"line":111,"column":8},"end":{"line":111,"column":64}},"21":{"start":{"line":113,"column":8},"end":{"line":120,"column":9}},"22":{"start":{"line":114,"column":12},"end":{"line":114,"column":38}},"23":{"start":{"line":115,"column":12},"end":{"line":115,"column":45}},"24":{"start":{"line":117,"column":12},"end":{"line":117,"column":41}},"25":{"start":{"line":119,"column":12},"end":{"line":119,"column":32}},"26":{"start":{"line":122,"column":8},"end":{"line":122,"column":20}},"27":{"start":{"line":132,"column":8},"end":{"line":132,"column":41}},"28":{"start":{"line":134,"column":8},"end":{"line":136,"column":9}},"29":{"start":{"line":135,"column":12},"end":{"line":135,"column":24}},"30":{"start":{"line":140,"column":8},"end":{"line":142,"column":9}},"31":{"start":{"line":141,"column":12},"end":{"line":141,"column":31}},"32":{"start":{"line":144,"column":8},"end":{"line":144,"column":24}},"33":{"start":{"line":145,"column":8},"end":{"line":145,"column":38}},"34":{"start":{"line":148,"column":8},"end":{"line":148,"column":64}},"35":{"start":{"line":150,"column":8},"end":{"line":157,"column":9}},"36":{"start":{"line":151,"column":12},"end":{"line":151,"column":38}},"37":{"start":{"line":152,"column":12},"end":{"line":152,"column":45}},"38":{"start":{"line":154,"column":12},"end":{"line":154,"column":41}},"39":{"start":{"line":156,"column":12},"end":{"line":156,"column":32}},"40":{"start":{"line":159,"column":8},"end":{"line":159,"column":20}},"41":{"start":{"line":172,"column":8},"end":{"line":174,"column":19}},"42":{"start":{"line":176,"column":8},"end":{"line":181,"column":9}},"43":{"start":{"line":179,"column":12},"end":{"line":179,"column":71}},"44":{"start":{"line":180,"column":12},"end":{"line":180,"column":41}},"45":{"start":{"line":183,"column":8},"end":{"line":183,"column":45}},"46":{"start":{"line":185,"column":8},"end":{"line":187,"column":9}},"47":{"start":{"line":186,"column":12},"end":{"line":186,"column":32}},"48":{"start":{"line":189,"column":8},"end":{"line":191,"column":9}},"49":{"start":{"line":190,"column":12},"end":{"line":190,"column":26}},"50":{"start":{"line":202,"column":8},"end":{"line":204,"column":19}},"51":{"start":{"line":206,"column":8},"end":{"line":211,"column":9}},"52":{"start":{"line":209,"column":12},"end":{"line":209,"column":71}},"53":{"start":{"line":210,"column":12},"end":{"line":210,"column":41}},"54":{"start":{"line":213,"column":8},"end":{"line":213,"column":45}},"55":{"start":{"line":215,"column":8},"end":{"line":217,"column":9}},"56":{"start":{"line":216,"column":12},"end":{"line":216,"column":32}},"57":{"start":{"line":219,"column":8},"end":{"line":221,"column":9}},"58":{"start":{"line":220,"column":12},"end":{"line":220,"column":26}},"59":{"start":{"line":231,"column":8},"end":{"line":233,"column":9}},"60":{"start":{"line":232,"column":12},"end":{"line":232,"column":19}},"61":{"start":{"line":235,"column":8},"end":{"line":237,"column":10}},"62":{"start":{"line":248,"column":8},"end":{"line":250,"column":9}},"63":{"start":{"line":249,"column":12},"end":{"line":249,"column":28}},"64":{"start":{"line":260,"column":8},"end":{"line":263,"column":9}},"65":{"start":{"line":261,"column":12},"end":{"line":261,"column":57}},"66":{"start":{"line":262,"column":12},"end":{"line":262,"column":36}},"67":{"start":{"line":275,"column":8},"end":{"line":275,"column":24}},"68":{"start":{"line":292,"column":0},"end":{"line":292,"column":40}}},"branchMap":{"1":{"line":66,"type":"if","locations":[{"start":{"line":66,"column":8},"end":{"line":66,"column":8}},{"start":{"line":66,"column":8},"end":{"line":66,"column":8}}]},"2":{"line":97,"type":"if","locations":[{"start":{"line":97,"column":8},"end":{"line":97,"column":8}},{"start":{"line":97,"column":8},"end":{"line":97,"column":8}}]},"3":{"line":103,"type":"if","locations":[{"start":{"line":103,"column":8},"end":{"line":103,"column":8}},{"start":{"line":103,"column":8},"end":{"line":103,"column":8}}]},"4":{"line":113,"type":"if","locations":[{"start":{"line":113,"column":8},"end":{"line":113,"column":8}},{"start":{"line":113,"column":8},"end":{"line":113,"column":8}}]},"5":{"line":134,"type":"if","locations":[{"start":{"line":134,"column":8},"end":{"line":134,"column":8}},{"start":{"line":134,"column":8},"end":{"line":134,"column":8}}]},"6":{"line":140,"type":"if","locations":[{"start":{"line":140,"column":8},"end":{"line":140,"column":8}},{"start":{"line":140,"column":8},"end":{"line":140,"column":8}}]},"7":{"line":150,"type":"if","locations":[{"start":{"line":150,"column":8},"end":{"line":150,"column":8}},{"start":{"line":150,"column":8},"end":{"line":150,"column":8}}]},"8":{"line":176,"type":"if","locations":[{"start":{"line":176,"column":8},"end":{"line":176,"column":8}},{"start":{"line":176,"column":8},"end":{"line":176,"column":8}}]},"9":{"line":185,"type":"if","locations":[{"start":{"line":185,"column":8},"end":{"line":185,"column":8}},{"start":{"line":185,"column":8},"end":{"line":185,"column":8}}]},"10":{"line":189,"type":"if","locations":[{"start":{"line":189,"column":8},"end":{"line":189,"column":8}},{"start":{"line":189,"column":8},"end":{"line":189,"column":8}}]},"11":{"line":206,"type":"if","locations":[{"start":{"line":206,"column":8},"end":{"line":206,"column":8}},{"start":{"line":206,"column":8},"end":{"line":206,"column":8}}]},"12":{"line":215,"type":"if","locations":[{"start":{"line":215,"column":8},"end":{"line":215,"column":8}},{"start":{"line":215,"column":8},"end":{"line":215,"column":8}}]},"13":{"line":219,"type":"if","locations":[{"start":{"line":219,"column":8},"end":{"line":219,"column":8}},{"start":{"line":219,"column":8},"end":{"line":219,"column":8}}]},"14":{"line":231,"type":"if","locations":[{"start":{"line":231,"column":8},"end":{"line":231,"column":8}},{"start":{"line":231,"column":8},"end":{"line":231,"column":8}}]},"15":{"line":248,"type":"if","locations":[{"start":{"line":248,"column":8},"end":{"line":248,"column":8}},{"start":{"line":248,"column":8},"end":{"line":248,"column":8}}]},"16":{"line":260,"type":"if","locations":[{"start":{"line":260,"column":8},"end":{"line":260,"column":8}},{"start":{"line":260,"column":8},"end":{"line":260,"column":8}}]}},"code":["(function () { YUI.add('gallery-sm-editor-undo', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Undo` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-undo","**/","","/**","Extension for `Editor.Base` that adds a cross-browser undo/redo stack.","","When mixed into an editor that also mixes in the `Editor.Keys` extension, handy","undo/redo keyboard shortcuts and triggers will be added as well.","","@class Editor.Undo","@constructor","@extends Base","@extensionfor Editor.Base","**/","","var EditorUndo = Y.Base.create('editorUndo', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    /**","    Key commands related to undo/redo functionality.","","    @property {Object} undoKeyCommands","    **/","    undoKeyCommands: {","        // Undo/redo.","        'ctrl+z'      : 'undo',","        'ctrl+shift+z': 'redo',","","        // Store an undo entry on these triggers.","        'backspace': {fn: '_addUndo', allowDefault: true},","        'ctrl+x'   : {fn: '_addUndo', allowDefault: true},","        'ctrl+v'   : {fn: '_addUndo', allowDefault: true},","        'delete'   : {fn: '_addUndo', allowDefault: true},","        'enter'    : {fn: '_addUndo', allowDefault: true, async: true},","        '.'        : {fn: '_addUndo', allowDefault: true, async: true},","        'shift+!'  : {fn: '_addUndo', allowDefault: true, async: true},","        'shift+?'  : {fn: '_addUndo', allowDefault: true, async: true}","    },","","    // -- Protected Properties -------------------------------------------------","","    /**","    Array of redoable changes that have previously been undone.","","    @property {Array} _redoStack","    @protected","    **/","","    /**","    Array of undoable changes that have been made to this editor.","","    @property {Array} _undoStack","    @protected","    **/","","    // -- Lifecycle ------------------------------------------------------------","    initializer: function () {","        if (this.keyCommands) {","            this.keyCommands = Y.merge(this.keyCommands, this.undoKeyCommands);","        }","","        this._redoStack = [];","        this._undoStack = [];","","        Y.Do.before(this._addUndo, this, 'insertHTML', this);","        Y.Do.before(this._beforeExecCommand, this, '_execCommand', this);","","        this._attachUndoEvents();","    },","","    destructor: function () {","        this._detachUndoEvents();","","        this._redoStack = null;","        this._undoStack = null;","    },","","    // -- Public Methods -------------------------------------------------------","","    /**","    Redoes the last change that was undone in this editor.","","    @method redo","    @chainable","    **/","    redo: function () {","        var html = this._redoStack.pop();","","        if (typeof html !== 'string') {","            return this;","        }","","        // If the HTML on the stack is the same as what we've currently got,","        // recurse to pop the previous item off the stack.","        if (html.replace(this._cursorHTML, '') === this._inputNode.getHTML()) {","            return this.redo();","        }","","        this._addUndo();","        this._inputNode.setHTML(html);","","        // Restore the cursor position.","        var cursor = this._inputNode.one(this.selectors.cursor);","","        if (cursor) {","            var range = new Y.Range();","            range.startNode(cursor, 'after');","","            this.selection.select(range);","","            cursor.remove(true);","        }","","        return this;","    },","","    /**","    Undoes the last change made in this editor.","","    @method undo","    @chainable","    **/","    undo: function () {","        var html = this._undoStack.pop();","","        if (typeof html !== 'string') {","            return this;","        }","","        // If the HTML on the stack is the same as what we've currently got,","        // recurse to pop the previous item off the stack.","        if (html.replace(this._cursorHTML, '') === this._inputNode.getHTML()) {","            return this.undo();","        }","","        this._addRedo();","        this._inputNode.setHTML(html);","","        // Restore the cursor position.","        var cursor = this._inputNode.one(this.selectors.cursor);","","        if (cursor) {","            var range = new Y.Range();","            range.startNode(cursor, 'after');","","            this.selection.select(range);","","            cursor.remove(true);","        }","","        return this;","    },","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Adds an entry to the undo stack representing the current state of the","    editor.","","    @method _addUndo","    @protected","    **/","    _addUndo: function () {","        var range = this.selection.range(),","            stack = this._undoStack,","            cursor;","","        if (range) {","            // Insert a cursor marker at the beginning of the range so we can","            // restore the cursor position on undo.","            cursor = range.insertNode(Y.Node.create(this._cursorHTML));","            this.selection.select(range);","        }","","        var html = this._inputNode.getHTML();","","        if (cursor) {","            cursor.remove(true);","        }","","        if (stack.push(html) > this.get('undoLevels')) {","            stack.shift();","        }","    },","","    /**","    Adds an entry to the redo stack representing the current state of the","    editor.","","    @method _addRedo","    @protected","    **/","    _addRedo: function () {","        var range = this.selection.range(),","            stack = this._redoStack,","            cursor;","","        if (range) {","            // Insert a cursor marker at the beginning of the range so we can","            // restore the cursor position on redo.","            cursor = range.insertNode(Y.Node.create(this._cursorHTML));","            this.selection.select(range);","        }","","        var html = this._inputNode.getHTML();","","        if (cursor) {","            cursor.remove(true);","        }","","        if (stack.push(html) > this.get('undoLevels')) {","            stack.shift();","        }","    },","","    /**","    Attaches undo events.","","    @method _attachUndoEvents","    @protected","    **/","    _attachUndoEvents: function () {","        if (this._undoEvents) {","            return;","        }","","        this._undoEvents = [","            this.after('render', this._afterRender)","        ];","    },","","    /**","    Wrapper for `Editor.Base#_execCommand()`.","","    @method _beforeExecCommand","    @param {String} name Command name.","    @protected","    **/","    _beforeExecCommand: function (name) {","        if (!/^(?:redo|undo)$/i.test(name)) {","            this._addUndo();","        }","    },","","    /**","    Detaches undo events.","","    @method _detachUndoEvents","    @protected","    **/","    _detachUndoEvents: function () {","        if (this._undoEvents) {","            new Y.EventHandle(this._undoEvents).detach();","            this._undoEvents = null;","        }","    },","","    // -- Protected Event Handlers ---------------------------------------------","","    /**","    Handles editor `render` events.","","    @method _afterRender","    @protected","    **/","    _afterRender: function () {","        this._addUndo();","    }","}, {","    ATTRS: {","        /**","        Number of undo/redo levels to maintain. Lowering this number may reduce","        memory usage, especially when editing very large documents.","","        @attribute {Number} undoLevels","        @default 20","        **/","        undoLevels: {","            value: 20","        }","    }","});","","Y.namespace('Editor').Undo = EditorUndo;","","","}, '@VERSION@', {\"requires\": [\"gallery-sm-editor-base\"]});","","}());"]};
+if (typeof _yuitest_coverage == "undefined"){
+    _yuitest_coverage = {};
+    _yuitest_coverline = function(src, line){
+        var coverage = _yuitest_coverage[src];
+        if (!coverage.lines[line]){
+            coverage.calledLines++;
+        }
+        coverage.lines[line]++;
+    };
+    _yuitest_coverfunc = function(src, name, line){
+        var coverage = _yuitest_coverage[src],
+            funcId = name + ":" + line;
+        if (!coverage.functions[funcId]){
+            coverage.calledFunctions++;
+        }
+        coverage.functions[funcId]++;
+    };
 }
-var __cov_guZ8iyAJL$Nb_K7yUY2TlQ = __coverage__['build/gallery-sm-editor-undo/gallery-sm-editor-undo.js'];
-__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['1']++;YUI.add('gallery-sm-editor-undo',function(Y,NAME){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.f['1']++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['2']++;var EditorUndo=Y.Base.create('editorUndo',Y.Base,[],{undoKeyCommands:{'ctrl+z':'undo','ctrl+shift+z':'redo','backspace':{fn:'_addUndo',allowDefault:true},'ctrl+x':{fn:'_addUndo',allowDefault:true},'ctrl+v':{fn:'_addUndo',allowDefault:true},'delete':{fn:'_addUndo',allowDefault:true},'enter':{fn:'_addUndo',allowDefault:true,async:true},'.':{fn:'_addUndo',allowDefault:true,async:true},'shift+!':{fn:'_addUndo',allowDefault:true,async:true},'shift+?':{fn:'_addUndo',allowDefault:true,async:true}},initializer:function(){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.f['2']++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['3']++;if(this.keyCommands){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['1'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['4']++;this.keyCommands=Y.merge(this.keyCommands,this.undoKeyCommands);}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['1'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['5']++;this._redoStack=[];__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['6']++;this._undoStack=[];__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['7']++;Y.Do.before(this._addUndo,this,'insertHTML',this);__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['8']++;Y.Do.before(this._beforeExecCommand,this,'_execCommand',this);__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['9']++;this._attachUndoEvents();},destructor:function(){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.f['3']++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['10']++;this._detachUndoEvents();__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['11']++;this._redoStack=null;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['12']++;this._undoStack=null;},redo:function(){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.f['4']++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['13']++;var html=this._redoStack.pop();__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['14']++;if(typeof html!=='string'){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['2'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['15']++;return this;}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['2'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['16']++;if(html.replace(this._cursorHTML,'')===this._inputNode.getHTML()){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['3'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['17']++;return this.redo();}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['3'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['18']++;this._addUndo();__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['19']++;this._inputNode.setHTML(html);__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['20']++;var cursor=this._inputNode.one(this.selectors.cursor);__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['21']++;if(cursor){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['4'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['22']++;var range=new Y.Range();__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['23']++;range.startNode(cursor,'after');__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['24']++;this.selection.select(range);__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['25']++;cursor.remove(true);}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['4'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['26']++;return this;},undo:function(){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.f['5']++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['27']++;var html=this._undoStack.pop();__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['28']++;if(typeof html!=='string'){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['5'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['29']++;return this;}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['5'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['30']++;if(html.replace(this._cursorHTML,'')===this._inputNode.getHTML()){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['6'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['31']++;return this.undo();}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['6'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['32']++;this._addRedo();__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['33']++;this._inputNode.setHTML(html);__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['34']++;var cursor=this._inputNode.one(this.selectors.cursor);__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['35']++;if(cursor){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['7'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['36']++;var range=new Y.Range();__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['37']++;range.startNode(cursor,'after');__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['38']++;this.selection.select(range);__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['39']++;cursor.remove(true);}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['7'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['40']++;return this;},_addUndo:function(){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.f['6']++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['41']++;var range=this.selection.range(),stack=this._undoStack,cursor;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['42']++;if(range){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['8'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['43']++;cursor=range.insertNode(Y.Node.create(this._cursorHTML));__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['44']++;this.selection.select(range);}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['8'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['45']++;var html=this._inputNode.getHTML();__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['46']++;if(cursor){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['9'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['47']++;cursor.remove(true);}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['9'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['48']++;if(stack.push(html)>this.get('undoLevels')){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['10'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['49']++;stack.shift();}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['10'][1]++;}},_addRedo:function(){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.f['7']++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['50']++;var range=this.selection.range(),stack=this._redoStack,cursor;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['51']++;if(range){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['11'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['52']++;cursor=range.insertNode(Y.Node.create(this._cursorHTML));__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['53']++;this.selection.select(range);}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['11'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['54']++;var html=this._inputNode.getHTML();__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['55']++;if(cursor){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['12'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['56']++;cursor.remove(true);}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['12'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['57']++;if(stack.push(html)>this.get('undoLevels')){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['13'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['58']++;stack.shift();}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['13'][1]++;}},_attachUndoEvents:function(){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.f['8']++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['59']++;if(this._undoEvents){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['14'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['60']++;return;}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['14'][1]++;}__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['61']++;this._undoEvents=[this.after('render',this._afterRender)];},_beforeExecCommand:function(name){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.f['9']++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['62']++;if(!/^(?:redo|undo)$/i.test(name)){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['15'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['63']++;this._addUndo();}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['15'][1]++;}},_detachUndoEvents:function(){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.f['10']++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['64']++;if(this._undoEvents){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['16'][0]++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['65']++;new Y.EventHandle(this._undoEvents).detach();__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['66']++;this._undoEvents=null;}else{__cov_guZ8iyAJL$Nb_K7yUY2TlQ.b['16'][1]++;}},_afterRender:function(){__cov_guZ8iyAJL$Nb_K7yUY2TlQ.f['11']++;__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['67']++;this._addUndo();}},{ATTRS:{undoLevels:{value:20}}});__cov_guZ8iyAJL$Nb_K7yUY2TlQ.s['68']++;Y.namespace('Editor').Undo=EditorUndo;},'@VERSION@',{'requires':['gallery-sm-editor-base']});
+_yuitest_coverage["build/gallery-sm-editor-undo/gallery-sm-editor-undo.js"] = {
+    lines: {},
+    functions: {},
+    coveredLines: 0,
+    calledLines: 0,
+    coveredFunctions: 0,
+    calledFunctions: 0,
+    path: "build/gallery-sm-editor-undo/gallery-sm-editor-undo.js",
+    code: []
+};
+_yuitest_coverage["build/gallery-sm-editor-undo/gallery-sm-editor-undo.js"].code=["YUI.add('gallery-sm-editor-undo', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Undo` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-undo","**/","","/**","Extension for `Editor.Base` that adds a cross-browser undo/redo stack.","","When mixed into an editor that also mixes in the `Editor.Keys` extension, handy","undo/redo keyboard shortcuts and triggers will be added as well.","","@class Editor.Undo","@constructor","@extends Base","@extensionfor Editor.Base","**/","","var EditorUndo = Y.Base.create('editorUndo', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    /**","    Key commands related to undo/redo functionality.","","    @property {Object} undoKeyCommands","    **/","    undoKeyCommands: {","        // Undo/redo.","        'ctrl+z'      : 'undo',","        'ctrl+shift+z': 'redo',","","        // Store an undo entry on these triggers.","        'backspace': {fn: '_addUndo', allowDefault: true},","        'ctrl+x'   : {fn: '_addUndo', allowDefault: true},","        'ctrl+v'   : {fn: '_addUndo', allowDefault: true},","        'delete'   : {fn: '_addUndo', allowDefault: true},","        'enter'    : {fn: '_addUndo', allowDefault: true, async: true},","        '.'        : {fn: '_addUndo', allowDefault: true, async: true},","        'shift+!'  : {fn: '_addUndo', allowDefault: true, async: true},","        'shift+?'  : {fn: '_addUndo', allowDefault: true, async: true}","    },","","    // -- Protected Properties -------------------------------------------------","","    /**","    Array of redoable changes that have previously been undone.","","    @property {Array} _redoStack","    @protected","    **/","","    /**","    Array of undoable changes that have been made to this editor.","","    @property {Array} _undoStack","    @protected","    **/","","    // -- Lifecycle ------------------------------------------------------------","    initializer: function () {","        if (this.keyCommands) {","            this.keyCommands = Y.merge(this.keyCommands, this.undoKeyCommands);","        }","","        this._redoStack = [];","        this._undoStack = [];","","        Y.Do.before(this._addUndo, this, 'insertHTML', this);","        Y.Do.before(this._beforeExecCommand, this, '_execCommand', this);","","        this._attachUndoEvents();","    },","","    destructor: function () {","        this._detachUndoEvents();","","        this._redoStack = null;","        this._undoStack = null;","    },","","    // -- Public Methods -------------------------------------------------------","","    /**","    Redoes the last change that was undone in this editor.","","    @method redo","    @chainable","    **/","    redo: function () {","        var html = this._redoStack.pop();","","        if (typeof html !== 'string') {","            return this;","        }","","        // If the HTML on the stack is the same as what we've currently got,","        // recurse to pop the previous item off the stack.","        if (html.replace(this._cursorHTML, '') === this._inputNode.getHTML()) {","            return this.redo();","        }","","        this._addUndo();","        this._inputNode.setHTML(html);","","        // Restore the cursor position.","        var cursor = this._inputNode.one(this.selectors.cursor);","","        if (cursor) {","            var range = new Y.Range();","            range.startNode(cursor, 'after');","","            this.selection.select(range);","","            cursor.remove(true);","        }","","        return this;","    },","","    /**","    Undoes the last change made in this editor.","","    @method undo","    @chainable","    **/","    undo: function () {","        var html = this._undoStack.pop();","","        if (typeof html !== 'string') {","            return this;","        }","","        // If the HTML on the stack is the same as what we've currently got,","        // recurse to pop the previous item off the stack.","        if (html.replace(this._cursorHTML, '') === this._inputNode.getHTML()) {","            return this.undo();","        }","","        this._addRedo();","        this._inputNode.setHTML(html);","","        // Restore the cursor position.","        var cursor = this._inputNode.one(this.selectors.cursor);","","        if (cursor) {","            var range = new Y.Range();","            range.startNode(cursor, 'after');","","            this.selection.select(range);","","            cursor.remove(true);","        }","","        return this;","    },","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Adds an entry to the undo stack representing the current state of the","    editor.","","    @method _addUndo","    @protected","    **/","    _addUndo: function () {","        var range = this.selection.range(),","            stack = this._undoStack,","            cursor;","","        if (range) {","            // Insert a cursor marker at the beginning of the range so we can","            // restore the cursor position on undo.","            cursor = range.insertNode(Y.Node.create(this._cursorHTML));","            this.selection.select(range);","        }","","        var html = this._inputNode.getHTML();","","        if (cursor) {","            cursor.remove(true);","        }","","        if (stack.push(html) > this.get('undoLevels')) {","            stack.shift();","        }","    },","","    /**","    Adds an entry to the redo stack representing the current state of the","    editor.","","    @method _addRedo","    @protected","    **/","    _addRedo: function () {","        var range = this.selection.range(),","            stack = this._redoStack,","            cursor;","","        if (range) {","            // Insert a cursor marker at the beginning of the range so we can","            // restore the cursor position on redo.","            cursor = range.insertNode(Y.Node.create(this._cursorHTML));","            this.selection.select(range);","        }","","        var html = this._inputNode.getHTML();","","        if (cursor) {","            cursor.remove(true);","        }","","        if (stack.push(html) > this.get('undoLevels')) {","            stack.shift();","        }","    },","","    /**","    Attaches undo events.","","    @method _attachUndoEvents","    @protected","    **/","    _attachUndoEvents: function () {","        if (this._undoEvents) {","            return;","        }","","        this._undoEvents = [","            this.after('render', this._afterRender)","        ];","    },","","    /**","    Wrapper for `Editor.Base#_execCommand()`.","","    @method _beforeExecCommand","    @param {String} name Command name.","    @protected","    **/","    _beforeExecCommand: function (name) {","        if (!/^(?:redo|undo)$/i.test(name)) {","            this._addUndo();","        }","    },","","    /**","    Detaches undo events.","","    @method _detachUndoEvents","    @protected","    **/","    _detachUndoEvents: function () {","        if (this._undoEvents) {","            new Y.EventHandle(this._undoEvents).detach();","            this._undoEvents = null;","        }","    },","","    // -- Protected Event Handlers ---------------------------------------------","","    /**","    Handles editor `render` events.","","    @method _afterRender","    @protected","    **/","    _afterRender: function () {","        this._addUndo();","    }","}, {","    ATTRS: {","        /**","        Number of undo/redo levels to maintain. Lowering this number may reduce","        memory usage, especially when editing very large documents.","","        @attribute {Number} undoLevels","        @default 20","        **/","        undoLevels: {","            value: 20","        }","    }","});","","Y.namespace('Editor').Undo = EditorUndo;","","","}, '@VERSION@', {\"requires\": [\"gallery-sm-editor-base\"]});"];
+_yuitest_coverage["build/gallery-sm-editor-undo/gallery-sm-editor-undo.js"].lines = {"1":0,"24":0,"66":0,"67":0,"70":0,"71":0,"73":0,"74":0,"76":0,"80":0,"82":0,"83":0,"95":0,"97":0,"98":0,"103":0,"104":0,"107":0,"108":0,"111":0,"113":0,"114":0,"115":0,"117":0,"119":0,"122":0,"132":0,"134":0,"135":0,"140":0,"141":0,"144":0,"145":0,"148":0,"150":0,"151":0,"152":0,"154":0,"156":0,"159":0,"172":0,"176":0,"179":0,"180":0,"183":0,"185":0,"186":0,"189":0,"190":0,"202":0,"206":0,"209":0,"210":0,"213":0,"215":0,"216":0,"219":0,"220":0,"231":0,"232":0,"235":0,"248":0,"249":0,"260":0,"261":0,"262":0,"275":0,"292":0};
+_yuitest_coverage["build/gallery-sm-editor-undo/gallery-sm-editor-undo.js"].functions = {"initializer:65":0,"destructor:79":0,"redo:94":0,"undo:131":0,"_addUndo:171":0,"_addRedo:201":0,"_attachUndoEvents:230":0,"_beforeExecCommand:247":0,"_detachUndoEvents:259":0,"_afterRender:274":0,"(anonymous 1):1":0};
+_yuitest_coverage["build/gallery-sm-editor-undo/gallery-sm-editor-undo.js"].coveredLines = 68;
+_yuitest_coverage["build/gallery-sm-editor-undo/gallery-sm-editor-undo.js"].coveredFunctions = 11;
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 1);
+YUI.add('gallery-sm-editor-undo', function (Y, NAME) {
+
+/*jshint expr:true, onevar:false */
+
+/**
+Provides the `Editor.Undo` extension.
+
+@module gallery-sm-editor
+@submodule gallery-sm-editor-undo
+**/
+
+/**
+Extension for `Editor.Base` that adds a cross-browser undo/redo stack.
+
+When mixed into an editor that also mixes in the `Editor.Keys` extension, handy
+undo/redo keyboard shortcuts and triggers will be added as well.
+
+@class Editor.Undo
+@constructor
+@extends Base
+@extensionfor Editor.Base
+**/
+
+_yuitest_coverfunc("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", "(anonymous 1)", 1);
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 24);
+var EditorUndo = Y.Base.create('editorUndo', Y.Base, [], {
+    // -- Public Properties ----------------------------------------------------
+
+    /**
+    Key commands related to undo/redo functionality.
+
+    @property {Object} undoKeyCommands
+    **/
+    undoKeyCommands: {
+        // Undo/redo.
+        'ctrl+z'      : 'undo',
+        'ctrl+shift+z': 'redo',
+
+        // Store an undo entry on these triggers.
+        'backspace': {fn: '_addUndo', allowDefault: true},
+        'ctrl+x'   : {fn: '_addUndo', allowDefault: true},
+        'ctrl+v'   : {fn: '_addUndo', allowDefault: true},
+        'delete'   : {fn: '_addUndo', allowDefault: true},
+        'enter'    : {fn: '_addUndo', allowDefault: true, async: true},
+        '.'        : {fn: '_addUndo', allowDefault: true, async: true},
+        'shift+!'  : {fn: '_addUndo', allowDefault: true, async: true},
+        'shift+?'  : {fn: '_addUndo', allowDefault: true, async: true}
+    },
+
+    // -- Protected Properties -------------------------------------------------
+
+    /**
+    Array of redoable changes that have previously been undone.
+
+    @property {Array} _redoStack
+    @protected
+    **/
+
+    /**
+    Array of undoable changes that have been made to this editor.
+
+    @property {Array} _undoStack
+    @protected
+    **/
+
+    // -- Lifecycle ------------------------------------------------------------
+    initializer: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", "initializer", 65);
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 66);
+if (this.keyCommands) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 67);
+this.keyCommands = Y.merge(this.keyCommands, this.undoKeyCommands);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 70);
+this._redoStack = [];
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 71);
+this._undoStack = [];
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 73);
+Y.Do.before(this._addUndo, this, 'insertHTML', this);
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 74);
+Y.Do.before(this._beforeExecCommand, this, '_execCommand', this);
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 76);
+this._attachUndoEvents();
+    },
+
+    destructor: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", "destructor", 79);
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 80);
+this._detachUndoEvents();
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 82);
+this._redoStack = null;
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 83);
+this._undoStack = null;
+    },
+
+    // -- Public Methods -------------------------------------------------------
+
+    /**
+    Redoes the last change that was undone in this editor.
+
+    @method redo
+    @chainable
+    **/
+    redo: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", "redo", 94);
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 95);
+var html = this._redoStack.pop();
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 97);
+if (typeof html !== 'string') {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 98);
+return this;
+        }
+
+        // If the HTML on the stack is the same as what we've currently got,
+        // recurse to pop the previous item off the stack.
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 103);
+if (html.replace(this._cursorHTML, '') === this._inputNode.getHTML()) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 104);
+return this.redo();
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 107);
+this._addUndo();
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 108);
+this._inputNode.setHTML(html);
+
+        // Restore the cursor position.
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 111);
+var cursor = this._inputNode.one(this.selectors.cursor);
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 113);
+if (cursor) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 114);
+var range = new Y.Range();
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 115);
+range.startNode(cursor, 'after');
+
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 117);
+this.selection.select(range);
+
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 119);
+cursor.remove(true);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 122);
+return this;
+    },
+
+    /**
+    Undoes the last change made in this editor.
+
+    @method undo
+    @chainable
+    **/
+    undo: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", "undo", 131);
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 132);
+var html = this._undoStack.pop();
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 134);
+if (typeof html !== 'string') {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 135);
+return this;
+        }
+
+        // If the HTML on the stack is the same as what we've currently got,
+        // recurse to pop the previous item off the stack.
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 140);
+if (html.replace(this._cursorHTML, '') === this._inputNode.getHTML()) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 141);
+return this.undo();
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 144);
+this._addRedo();
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 145);
+this._inputNode.setHTML(html);
+
+        // Restore the cursor position.
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 148);
+var cursor = this._inputNode.one(this.selectors.cursor);
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 150);
+if (cursor) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 151);
+var range = new Y.Range();
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 152);
+range.startNode(cursor, 'after');
+
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 154);
+this.selection.select(range);
+
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 156);
+cursor.remove(true);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 159);
+return this;
+    },
+
+    // -- Protected Methods ----------------------------------------------------
+
+    /**
+    Adds an entry to the undo stack representing the current state of the
+    editor.
+
+    @method _addUndo
+    @protected
+    **/
+    _addUndo: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", "_addUndo", 171);
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 172);
+var range = this.selection.range(),
+            stack = this._undoStack,
+            cursor;
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 176);
+if (range) {
+            // Insert a cursor marker at the beginning of the range so we can
+            // restore the cursor position on undo.
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 179);
+cursor = range.insertNode(Y.Node.create(this._cursorHTML));
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 180);
+this.selection.select(range);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 183);
+var html = this._inputNode.getHTML();
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 185);
+if (cursor) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 186);
+cursor.remove(true);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 189);
+if (stack.push(html) > this.get('undoLevels')) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 190);
+stack.shift();
+        }
+    },
+
+    /**
+    Adds an entry to the redo stack representing the current state of the
+    editor.
+
+    @method _addRedo
+    @protected
+    **/
+    _addRedo: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", "_addRedo", 201);
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 202);
+var range = this.selection.range(),
+            stack = this._redoStack,
+            cursor;
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 206);
+if (range) {
+            // Insert a cursor marker at the beginning of the range so we can
+            // restore the cursor position on redo.
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 209);
+cursor = range.insertNode(Y.Node.create(this._cursorHTML));
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 210);
+this.selection.select(range);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 213);
+var html = this._inputNode.getHTML();
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 215);
+if (cursor) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 216);
+cursor.remove(true);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 219);
+if (stack.push(html) > this.get('undoLevels')) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 220);
+stack.shift();
+        }
+    },
+
+    /**
+    Attaches undo events.
+
+    @method _attachUndoEvents
+    @protected
+    **/
+    _attachUndoEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", "_attachUndoEvents", 230);
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 231);
+if (this._undoEvents) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 232);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 235);
+this._undoEvents = [
+            this.after('render', this._afterRender)
+        ];
+    },
+
+    /**
+    Wrapper for `Editor.Base#_execCommand()`.
+
+    @method _beforeExecCommand
+    @param {String} name Command name.
+    @protected
+    **/
+    _beforeExecCommand: function (name) {
+        _yuitest_coverfunc("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", "_beforeExecCommand", 247);
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 248);
+if (!/^(?:redo|undo)$/i.test(name)) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 249);
+this._addUndo();
+        }
+    },
+
+    /**
+    Detaches undo events.
+
+    @method _detachUndoEvents
+    @protected
+    **/
+    _detachUndoEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", "_detachUndoEvents", 259);
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 260);
+if (this._undoEvents) {
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 261);
+new Y.EventHandle(this._undoEvents).detach();
+            _yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 262);
+this._undoEvents = null;
+        }
+    },
+
+    // -- Protected Event Handlers ---------------------------------------------
+
+    /**
+    Handles editor `render` events.
+
+    @method _afterRender
+    @protected
+    **/
+    _afterRender: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", "_afterRender", 274);
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 275);
+this._addUndo();
+    }
+}, {
+    ATTRS: {
+        /**
+        Number of undo/redo levels to maintain. Lowering this number may reduce
+        memory usage, especially when editing very large documents.
+
+        @attribute {Number} undoLevels
+        @default 20
+        **/
+        undoLevels: {
+            value: 20
+        }
+    }
+});
+
+_yuitest_coverline("build/gallery-sm-editor-undo/gallery-sm-editor-undo.js", 292);
+Y.namespace('Editor').Undo = EditorUndo;
+
+
+}, '@VERSION@', {"requires": ["gallery-sm-editor-base"]});

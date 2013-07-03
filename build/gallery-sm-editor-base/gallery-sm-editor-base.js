@@ -153,20 +153,31 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     for a list of possible commands.
 
     @method command
-    @param {String} name Command name.
-    @param {Boolean|String|null} [value] Command value. Use the special value
-        'toggle' to toggle a boolean command (like 'bold') to the opposite of
-        its current state.
-    @return {Boolean|String} Value of the specified command.
+    @param {String|Function} name Command name or function to execute. By
+        default functions will execute in the editor context. Use Y.bind
+        to provide a different execution context.
+    @param {*} [value*] Command value or 0..n arguments to pass
+        to the command function. Use the special value 'toggle' to toggle a
+        boolean command (like 'bold') to the opposite of its current state.
+    @return {*} Value of the specified command or return value of the
+        supplied function.
     **/
     command: function (name, value) {
-        this.focus();
-        
-        if (typeof value !== 'undefined') {
-            this._execCommand(name, value);
-        }
+        var args = Y.Array(arguments, 1, true);
 
-        return this._queryCommandValue(name);
+        this.focus();
+
+        if (typeof name === 'function') {
+            return name.apply(this, args);
+        } else {
+            value = args.shift();
+
+            if (typeof value !== 'undefined') {
+                this._execCommand(name, value);
+            }
+
+            return this._queryCommandValue(name);
+        }
     },
 
     /**

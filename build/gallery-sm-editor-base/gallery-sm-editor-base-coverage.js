@@ -1,6 +1,768 @@
-if (typeof __coverage__ === 'undefined') { __coverage__ = {}; }
-if (!__coverage__['build/gallery-sm-editor-base/gallery-sm-editor-base.js']) {
-   __coverage__['build/gallery-sm-editor-base/gallery-sm-editor-base.js'] = {"path":"build/gallery-sm-editor-base/gallery-sm-editor-base.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0,"67":0,"68":0,"69":0,"70":0,"71":0,"72":0,"73":0,"74":0,"75":0,"76":0,"77":0,"78":0,"79":0,"80":0,"81":0,"82":0,"83":0,"84":0,"85":0,"86":0,"87":0,"88":0,"89":0,"90":0,"91":0,"92":0,"93":0,"94":0,"95":0,"96":0,"97":0,"98":0,"99":0,"100":0,"101":0,"102":0,"103":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0],"12":[0,0],"13":[0,0],"14":[0,0],"15":[0,0],"16":[0,0],"17":[0,0],"18":[0,0],"19":[0,0],"20":[0,0],"21":[0,0],"22":[0,0],"23":[0,0],"24":[0,0],"25":[0,0],"26":[0,0,0],"27":[0,0],"28":[0,0,0],"29":[0,0],"30":[0,0],"31":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0},"fnMap":{"1":{"name":"(anonymous_1)","line":1,"loc":{"start":{"line":1,"column":34},"end":{"line":1,"column":53}}},"2":{"name":"(anonymous_2)","line":114,"loc":{"start":{"line":114,"column":17},"end":{"line":114,"column":29}}},"3":{"name":"(anonymous_3)","line":120,"loc":{"start":{"line":120,"column":39},"end":{"line":120,"column":60}}},"4":{"name":"(anonymous_4)","line":127,"loc":{"start":{"line":127,"column":16},"end":{"line":127,"column":28}}},"5":{"name":"(anonymous_5)","line":141,"loc":{"start":{"line":141,"column":10},"end":{"line":141,"column":22}}},"6":{"name":"(anonymous_6)","line":162,"loc":{"start":{"line":162,"column":13},"end":{"line":162,"column":36}}},"7":{"name":"(anonymous_7)","line":178,"loc":{"start":{"line":178,"column":22},"end":{"line":178,"column":34}}},"8":{"name":"(anonymous_8)","line":194,"loc":{"start":{"line":194,"column":11},"end":{"line":194,"column":23}}},"9":{"name":"(anonymous_9)","line":208,"loc":{"start":{"line":208,"column":22},"end":{"line":208,"column":34}}},"10":{"name":"(anonymous_10)","line":229,"loc":{"start":{"line":229,"column":16},"end":{"line":229,"column":32}}},"11":{"name":"(anonymous_11)","line":254,"loc":{"start":{"line":254,"column":16},"end":{"line":254,"column":32}}},"12":{"name":"(anonymous_12)","line":265,"loc":{"start":{"line":265,"column":12},"end":{"line":265,"column":24}}},"13":{"name":"(anonymous_13)","line":305,"loc":{"start":{"line":305,"column":19},"end":{"line":305,"column":31}}},"14":{"name":"(anonymous_14)","line":327,"loc":{"start":{"line":327,"column":19},"end":{"line":327,"column":31}}},"15":{"name":"(anonymous_15)","line":343,"loc":{"start":{"line":343,"column":18},"end":{"line":343,"column":41}}},"16":{"name":"(anonymous_16)","line":368,"loc":{"start":{"line":368,"column":14},"end":{"line":368,"column":31}}},"17":{"name":"(anonymous_17)","line":380,"loc":{"start":{"line":380,"column":14},"end":{"line":380,"column":31}}},"18":{"name":"(anonymous_18)","line":391,"loc":{"start":{"line":391,"column":16},"end":{"line":391,"column":28}}},"19":{"name":"(anonymous_19)","line":404,"loc":{"start":{"line":404,"column":24},"end":{"line":404,"column":40}}},"20":{"name":"(anonymous_20)","line":417,"loc":{"start":{"line":417,"column":14},"end":{"line":417,"column":31}}},"21":{"name":"(anonymous_21)","line":433,"loc":{"start":{"line":433,"column":14},"end":{"line":433,"column":31}}},"22":{"name":"(anonymous_22)","line":452,"loc":{"start":{"line":452,"column":23},"end":{"line":452,"column":42}}},"23":{"name":"(anonymous_23)","line":482,"loc":{"start":{"line":482,"column":13},"end":{"line":482,"column":25}}},"24":{"name":"(anonymous_24)","line":498,"loc":{"start":{"line":498,"column":17},"end":{"line":498,"column":28}}},"25":{"name":"(anonymous_25)","line":510,"loc":{"start":{"line":510,"column":14},"end":{"line":510,"column":26}}},"26":{"name":"(anonymous_26)","line":526,"loc":{"start":{"line":526,"column":45},"end":{"line":526,"column":57}}},"27":{"name":"(anonymous_27)","line":539,"loc":{"start":{"line":539,"column":14},"end":{"line":539,"column":26}}}},"statementMap":{"1":{"start":{"line":1,"column":0},"end":{"line":591,"column":113}},"2":{"start":{"line":5,"column":0},"end":{"line":5,"column":28}},"3":{"start":{"line":23,"column":0},"end":{"line":24,"column":51}},"4":{"start":{"line":31,"column":0},"end":{"line":31,"column":22}},"5":{"start":{"line":38,"column":0},"end":{"line":38,"column":24}},"6":{"start":{"line":45,"column":0},"end":{"line":45,"column":26}},"7":{"start":{"line":57,"column":0},"end":{"line":57,"column":45}},"8":{"start":{"line":59,"column":0},"end":{"line":586,"column":3}},"9":{"start":{"line":115,"column":8},"end":{"line":115,"column":44}},"10":{"start":{"line":116,"column":8},"end":{"line":116,"column":29}},"11":{"start":{"line":118,"column":8},"end":{"line":118,"column":82}},"12":{"start":{"line":120,"column":8},"end":{"line":122,"column":17}},"13":{"start":{"line":121,"column":12},"end":{"line":121,"column":45}},"14":{"start":{"line":124,"column":8},"end":{"line":124,"column":29}},"15":{"start":{"line":128,"column":8},"end":{"line":128,"column":29}},"16":{"start":{"line":130,"column":8},"end":{"line":130,"column":30}},"17":{"start":{"line":142,"column":8},"end":{"line":144,"column":9}},"18":{"start":{"line":143,"column":12},"end":{"line":143,"column":35}},"19":{"start":{"line":146,"column":8},"end":{"line":146,"column":20}},"20":{"start":{"line":163,"column":8},"end":{"line":163,"column":21}},"21":{"start":{"line":165,"column":8},"end":{"line":167,"column":9}},"22":{"start":{"line":166,"column":12},"end":{"line":166,"column":43}},"23":{"start":{"line":169,"column":8},"end":{"line":169,"column":45}},"24":{"start":{"line":179,"column":8},"end":{"line":179,"column":65}},"25":{"start":{"line":181,"column":8},"end":{"line":183,"column":9}},"26":{"start":{"line":182,"column":12},"end":{"line":182,"column":51}},"27":{"start":{"line":185,"column":8},"end":{"line":185,"column":20}},"28":{"start":{"line":195,"column":8},"end":{"line":197,"column":9}},"29":{"start":{"line":196,"column":12},"end":{"line":196,"column":36}},"30":{"start":{"line":199,"column":8},"end":{"line":199,"column":20}},"31":{"start":{"line":209,"column":8},"end":{"line":209,"column":65}},"32":{"start":{"line":213,"column":8},"end":{"line":215,"column":9}},"33":{"start":{"line":214,"column":12},"end":{"line":214,"column":51}},"34":{"start":{"line":217,"column":8},"end":{"line":217,"column":20}},"35":{"start":{"line":230,"column":8},"end":{"line":232,"column":42}},"36":{"start":{"line":234,"column":8},"end":{"line":236,"column":9}},"37":{"start":{"line":235,"column":12},"end":{"line":235,"column":19}},"38":{"start":{"line":238,"column":8},"end":{"line":238,"column":55}},"39":{"start":{"line":239,"column":8},"end":{"line":239,"column":25}},"40":{"start":{"line":241,"column":8},"end":{"line":241,"column":32}},"41":{"start":{"line":243,"column":8},"end":{"line":243,"column":20}},"42":{"start":{"line":255,"column":8},"end":{"line":255,"column":57}},"43":{"start":{"line":266,"column":8},"end":{"line":267,"column":61}},"44":{"start":{"line":269,"column":8},"end":{"line":269,"column":51}},"45":{"start":{"line":271,"column":8},"end":{"line":274,"column":9}},"46":{"start":{"line":272,"column":12},"end":{"line":273,"column":66}},"47":{"start":{"line":276,"column":8},"end":{"line":277,"column":36}},"48":{"start":{"line":279,"column":8},"end":{"line":283,"column":9}},"49":{"start":{"line":280,"column":12},"end":{"line":280,"column":36}},"50":{"start":{"line":281,"column":15},"end":{"line":283,"column":9}},"51":{"start":{"line":282,"column":12},"end":{"line":282,"column":40}},"52":{"start":{"line":285,"column":8},"end":{"line":285,"column":47}},"53":{"start":{"line":287,"column":8},"end":{"line":287,"column":36}},"54":{"start":{"line":288,"column":8},"end":{"line":288,"column":31}},"55":{"start":{"line":290,"column":8},"end":{"line":290,"column":46}},"56":{"start":{"line":292,"column":8},"end":{"line":292,"column":30}},"57":{"start":{"line":294,"column":8},"end":{"line":294,"column":20}},"58":{"start":{"line":306,"column":8},"end":{"line":308,"column":9}},"59":{"start":{"line":307,"column":12},"end":{"line":307,"column":19}},"60":{"start":{"line":310,"column":8},"end":{"line":311,"column":39}},"61":{"start":{"line":313,"column":8},"end":{"line":318,"column":10}},"62":{"start":{"line":328,"column":8},"end":{"line":331,"column":9}},"63":{"start":{"line":329,"column":12},"end":{"line":329,"column":53}},"64":{"start":{"line":330,"column":12},"end":{"line":330,"column":32}},"65":{"start":{"line":344,"column":8},"end":{"line":346,"column":9}},"66":{"start":{"line":345,"column":12},"end":{"line":345,"column":19}},"67":{"start":{"line":348,"column":8},"end":{"line":357,"column":9}},"68":{"start":{"line":352,"column":12},"end":{"line":354,"column":13}},"69":{"start":{"line":353,"column":16},"end":{"line":353,"column":51}},"70":{"start":{"line":356,"column":12},"end":{"line":356,"column":48}},"71":{"start":{"line":369,"column":8},"end":{"line":369,"column":66}},"72":{"start":{"line":381,"column":8},"end":{"line":381,"column":68}},"73":{"start":{"line":392,"column":8},"end":{"line":392,"column":68}},"74":{"start":{"line":405,"column":8},"end":{"line":406,"column":72}},"75":{"start":{"line":418,"column":8},"end":{"line":420,"column":9}},"76":{"start":{"line":419,"column":12},"end":{"line":419,"column":43}},"77":{"start":{"line":422,"column":8},"end":{"line":422,"column":21}},"78":{"start":{"line":434,"column":8},"end":{"line":436,"column":9}},"79":{"start":{"line":435,"column":12},"end":{"line":435,"column":47}},"80":{"start":{"line":438,"column":8},"end":{"line":438,"column":21}},"81":{"start":{"line":453,"column":8},"end":{"line":455,"column":50}},"82":{"start":{"line":457,"column":8},"end":{"line":459,"column":9}},"83":{"start":{"line":458,"column":12},"end":{"line":458,"column":19}},"84":{"start":{"line":461,"column":8},"end":{"line":461,"column":39}},"85":{"start":{"line":465,"column":8},"end":{"line":471,"column":9}},"86":{"start":{"line":466,"column":12},"end":{"line":470,"column":15}},"87":{"start":{"line":483,"column":8},"end":{"line":485,"column":9}},"88":{"start":{"line":484,"column":12},"end":{"line":484,"column":19}},"89":{"start":{"line":487,"column":8},"end":{"line":487,"column":46}},"90":{"start":{"line":489,"column":8},"end":{"line":489,"column":28}},"91":{"start":{"line":499,"column":8},"end":{"line":499,"column":43}},"92":{"start":{"line":501,"column":8},"end":{"line":501,"column":58}},"93":{"start":{"line":511,"column":8},"end":{"line":511,"column":24}},"94":{"start":{"line":513,"column":8},"end":{"line":515,"column":9}},"95":{"start":{"line":514,"column":12},"end":{"line":514,"column":19}},"96":{"start":{"line":518,"column":8},"end":{"line":520,"column":9}},"97":{"start":{"line":519,"column":12},"end":{"line":519,"column":55}},"98":{"start":{"line":522,"column":8},"end":{"line":522,"column":32}},"99":{"start":{"line":524,"column":8},"end":{"line":524,"column":46}},"100":{"start":{"line":526,"column":8},"end":{"line":528,"column":16}},"101":{"start":{"line":527,"column":12},"end":{"line":527,"column":36}},"102":{"start":{"line":530,"column":8},"end":{"line":530,"column":29}},"103":{"start":{"line":588,"column":0},"end":{"line":588,"column":40}}},"branchMap":{"1":{"line":142,"type":"if","locations":[{"start":{"line":142,"column":8},"end":{"line":142,"column":8}},{"start":{"line":142,"column":8},"end":{"line":142,"column":8}}]},"2":{"line":165,"type":"if","locations":[{"start":{"line":165,"column":8},"end":{"line":165,"column":8}},{"start":{"line":165,"column":8},"end":{"line":165,"column":8}}]},"3":{"line":181,"type":"if","locations":[{"start":{"line":181,"column":8},"end":{"line":181,"column":8}},{"start":{"line":181,"column":8},"end":{"line":181,"column":8}}]},"4":{"line":195,"type":"if","locations":[{"start":{"line":195,"column":8},"end":{"line":195,"column":8}},{"start":{"line":195,"column":8},"end":{"line":195,"column":8}}]},"5":{"line":213,"type":"if","locations":[{"start":{"line":213,"column":8},"end":{"line":213,"column":8}},{"start":{"line":213,"column":8},"end":{"line":213,"column":8}}]},"6":{"line":230,"type":"cond-expr","locations":[{"start":{"line":230,"column":51},"end":{"line":230,"column":70}},{"start":{"line":230,"column":73},"end":{"line":230,"column":77}}]},"7":{"line":234,"type":"if","locations":[{"start":{"line":234,"column":8},"end":{"line":234,"column":8}},{"start":{"line":234,"column":8},"end":{"line":234,"column":8}}]},"8":{"line":271,"type":"if","locations":[{"start":{"line":271,"column":8},"end":{"line":271,"column":8}},{"start":{"line":271,"column":8},"end":{"line":271,"column":8}}]},"9":{"line":279,"type":"if","locations":[{"start":{"line":279,"column":8},"end":{"line":279,"column":8}},{"start":{"line":279,"column":8},"end":{"line":279,"column":8}}]},"10":{"line":281,"type":"if","locations":[{"start":{"line":281,"column":15},"end":{"line":281,"column":15}},{"start":{"line":281,"column":15},"end":{"line":281,"column":15}}]},"11":{"line":306,"type":"if","locations":[{"start":{"line":306,"column":8},"end":{"line":306,"column":8}},{"start":{"line":306,"column":8},"end":{"line":306,"column":8}}]},"12":{"line":328,"type":"if","locations":[{"start":{"line":328,"column":8},"end":{"line":328,"column":8}},{"start":{"line":328,"column":8},"end":{"line":328,"column":8}}]},"13":{"line":344,"type":"if","locations":[{"start":{"line":344,"column":8},"end":{"line":344,"column":8}},{"start":{"line":344,"column":8},"end":{"line":344,"column":8}}]},"14":{"line":348,"type":"if","locations":[{"start":{"line":348,"column":8},"end":{"line":348,"column":8}},{"start":{"line":348,"column":8},"end":{"line":348,"column":8}}]},"15":{"line":352,"type":"if","locations":[{"start":{"line":352,"column":12},"end":{"line":352,"column":12}},{"start":{"line":352,"column":12},"end":{"line":352,"column":12}}]},"16":{"line":352,"type":"binary-expr","locations":[{"start":{"line":352,"column":16},"end":{"line":352,"column":34}},{"start":{"line":352,"column":38},"end":{"line":352,"column":77}}]},"17":{"line":369,"type":"cond-expr","locations":[{"start":{"line":369,"column":32},"end":{"line":369,"column":57}},{"start":{"line":369,"column":60},"end":{"line":369,"column":65}}]},"18":{"line":381,"type":"cond-expr","locations":[{"start":{"line":381,"column":32},"end":{"line":381,"column":59}},{"start":{"line":381,"column":62},"end":{"line":381,"column":67}}]},"19":{"line":405,"type":"cond-expr","locations":[{"start":{"line":406,"column":12},"end":{"line":406,"column":41}},{"start":{"line":406,"column":44},"end":{"line":406,"column":71}}]},"20":{"line":418,"type":"if","locations":[{"start":{"line":418,"column":8},"end":{"line":418,"column":8}},{"start":{"line":418,"column":8},"end":{"line":418,"column":8}}]},"21":{"line":434,"type":"if","locations":[{"start":{"line":434,"column":8},"end":{"line":434,"column":8}},{"start":{"line":434,"column":8},"end":{"line":434,"column":8}}]},"22":{"line":453,"type":"binary-expr","locations":[{"start":{"line":453,"column":24},"end":{"line":453,"column":43}},{"start":{"line":453,"column":47},"end":{"line":453,"column":51}}]},"23":{"line":454,"type":"binary-expr","locations":[{"start":{"line":454,"column":24},"end":{"line":454,"column":46}},{"start":{"line":454,"column":50},"end":{"line":454,"column":54}}]},"24":{"line":455,"type":"binary-expr","locations":[{"start":{"line":455,"column":24},"end":{"line":455,"column":31}},{"start":{"line":455,"column":35},"end":{"line":455,"column":49}}]},"25":{"line":457,"type":"if","locations":[{"start":{"line":457,"column":8},"end":{"line":457,"column":8}},{"start":{"line":457,"column":8},"end":{"line":457,"column":8}}]},"26":{"line":457,"type":"binary-expr","locations":[{"start":{"line":457,"column":12},"end":{"line":457,"column":34}},{"start":{"line":457,"column":39},"end":{"line":457,"column":48}},{"start":{"line":457,"column":52},"end":{"line":457,"column":84}}]},"27":{"line":465,"type":"if","locations":[{"start":{"line":465,"column":8},"end":{"line":465,"column":8}},{"start":{"line":465,"column":8},"end":{"line":465,"column":8}}]},"28":{"line":465,"type":"binary-expr","locations":[{"start":{"line":465,"column":12},"end":{"line":465,"column":19}},{"start":{"line":465,"column":24},"end":{"line":465,"column":33}},{"start":{"line":465,"column":37},"end":{"line":465,"column":75}}]},"29":{"line":483,"type":"if","locations":[{"start":{"line":483,"column":8},"end":{"line":483,"column":8}},{"start":{"line":483,"column":8},"end":{"line":483,"column":8}}]},"30":{"line":513,"type":"if","locations":[{"start":{"line":513,"column":8},"end":{"line":513,"column":8}},{"start":{"line":513,"column":8},"end":{"line":513,"column":8}}]},"31":{"line":518,"type":"if","locations":[{"start":{"line":518,"column":8},"end":{"line":518,"column":8}},{"start":{"line":518,"column":8},"end":{"line":518,"column":8}}]}},"code":["(function () { YUI.add('gallery-sm-editor-base', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","Y.Node.DOM_EVENTS.paste = 1;","","/**","Provides `Y.Editor.Base`, the core implementation of the SmugMug editor.","","@module gallery-sm-editor","@submodule gallery-sm-editor-base","**/","","/**","Base implementation of the SmugMug editor. Provides core editor functionality,","but no undo stack, keyboard shortcuts, etc.","","@class Editor.Base","@constructor","@extends View","**/","","var doc          = Y.config.doc,","    getClassName = Y.ClassNameManager.getClassName;","","/**","Fired after this editor loses focus.","","@event blur","**/","var EVT_BLUR = 'blur';","","/**","Fired after this editor receives focus.","","@event focus","**/","var EVT_FOCUS = 'focus';","","/**","Fired after this editor is rendered.","","@event render","**/","var EVT_RENDER = 'render';","","/**","Fired when this editor's selection changes.","","@event selectionChange","@param {Range} prevRange Range that was previously selected, or `null` if there","    was no previous selection.","@param {Range} range Range that's now selected, or `null` if the current","    selection is empty or outside the editor.","@param {Selection} selection Reference to this editor's Selection instance.","**/","var EVT_SELECTION_CHANGE = 'selectionChange';","","var EditorBase = Y.Base.create('editorBase', Y.View, [], {","    // -- Public Properties ----------------------------------------------------","","    /**","    CSS class names used by this editor.","","    @property {Object} classNames","    @param {String} cursor Class name used for a placeholder node that","        represents the cursor position.","    @param {String} editor Class name used for the editor's container.","    @param {String} input Class name used for the WYSIWYG YUI Editor frame that","        will receive user input.","    **/","    classNames: {","        cursor: getClassName('sm-editor-cursor', true),","        editor: getClassName('sm-editor', true),","        input : getClassName('sm-editor-input', true)","    },","","    /**","    `Y.Selection` instance representing the current document selection.","","    The selection object's state always reflects the current selection, so it","    will update when the selection changes. If you need to retain the state of a","    past selection, hold onto a Range instance representing that selection.","","    Also, beware: this selection object reflects the current selection in the","    entire browser document, not just within this editor.","","    @property {Selection} selection","    **/","","    /**","    Hash of boolean commands supported by this editor. A boolean command is","    one that does not require a value. Executing this command will toggle","    the currently set value.","","    Names should correspond with valid `execCommand()` command names.","","    @property {Object} boolCommands","    **/","    boolCommands: {","        bold     : true,","        italic   : true,","        underline: true,","        justifyCenter: true,","        justifyFull: true,","        justifyLeft: true,","        justifyRight: true","    },","","    // -- Protected Properties -------------------------------------------------","","    // -- Lifecycle ------------------------------------------------------------","","    initializer: function () {","        this.selection  = new Y.Selection();","        this.selectors  = {};","","        this._cursorHTML = '<span class=\"' + this.classNames.cursor + '\"></span>';","","        Y.Object.each(this.classNames, function (name, key) {","            this.selectors[key] = '.' + name;","        }, this);","","        this._attachEvents();","    },","","    destructor: function () {","        this._detachEvents();","","        this.selection = null;","    },","","    // -- Public Methods -------------------------------------------------------","","    /**","    Removes focus from this editor.","","    @method blur","    @chainable","    **/","    blur: function () {","        if (this._inputNode) {","            this._inputNode.blur();","        }","","        return this;","    },","","    /**","    Gets and/or sets the value of the specified editor command.","","    See <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>","    for a list of possible commands.","","    @method command","    @param {String} name Command name.","    @param {Boolean|String|null} [value] Command value. Use the special value","        'toggle' to toggle a boolean command (like 'bold') to the opposite of","        its current state.","    @return {Boolean|String} Value of the specified command.","    **/","    command: function (name, value) {","        this.focus();","        ","        if (typeof value !== 'undefined') {","            this._execCommand(name, value);","        }","","        return this._queryCommandValue(name);","    },","","    /**","    Decreases the font size of the current selection (if possible).","","    @method decreaseFontSize","    @chainable","    **/","    decreaseFontSize: function () {","        var newSize = parseInt(this.command('fontSize'), 10) - 1;","","        if (newSize > 0) {","            this.command('fontSize', '' + newSize);","        }","","        return this;","    },","","    /**","    Focuses this editor.","","    @method focus","    @chainable","    **/","    focus: function () {","        if (this._inputNode) {","            this._inputNode.focus();","        }","","        return this;","    },","","    /**","    Increases the font size of the current selection (if possible).","","    @method increaseFontSize","    @chainable","    **/","    increaseFontSize: function () {","        var newSize = parseInt(this.command('fontSize'), 10) + 1;","","        // currently only webkit supports size 7 (xxx-large), so keep","        // it under 7 for compatibility","        if (newSize < 7) {","            this.command('fontSize', '' + newSize);","        }","","        return this;","    },","","    /**","    Inserts the specified _html_ at the current selection point, deleting the","    current selection if there is one.","","    @method insertHTML","    @param {HTML|HTMLElement|Node} html HTML to insert, in the form of an HTML","        string, HTMLElement, or Node instance.","    @return {Node} Node instance representing the inserted HTML.","    **/","    insertHTML: function (html) {","        var node      = typeof html === 'string' ? Y.Node.create(html) : html,","            selection = this.selection,","            range     = selection.range();","","        if (!range) {","            return;","        }","","        node = range.deleteContents().insertNode(node);","        range.collapse();","","        selection.select(range);","","        return node;","    },","","    /**","    Inserts the specified plain _text_ at the current selection point, deleting","    the current selection if there is one.","","    @method insertText","    @param {String} text Text to insert.","    @return {Node} Node instance representing the inserted text node.","    **/","    insertText: function (text) {","        return this.insertHTML(doc.createTextNode(text));","    },","","    /**","    Renders this editor into its container and appends the container to the","    document if necessary.","","    @method render","    @chainable","    **/","    render: function () {","        var container  = this.get('container'),","            inputNode  = container.one(this.selectors.input);","","        container.addClass(this.classNames.editor);","","        if (!inputNode) {","            inputNode = container.appendChild('<div/>')","                                 .addClass(this.classNames.input);","        }","","        var html = this.get('html'),","            text = this.get('text');","","        if (html) {","            inputNode.setHTML(html);","        } else if (text) {","            inputNode.set('text', text);","        }","","        inputNode.set('contentEditable', true);","","        this._inputNode = inputNode;","        this._rendered  = true;","","        this._updateSelection({silent: true});","","        this.fire(EVT_RENDER);","","        return this;","    },","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Attaches editor events.","","    @method _attachEvents","    @protected","    **/","    _attachEvents: function () {","        if (this._events) {","            return;","        }","","        var container = this.get('container'),","            selectors = this.selectors;","","        this._events = [","            container.delegate('blur',  this._onBlur,  selectors.input, this),","            container.delegate('dblclick', this._onDblClick, selectors.input, this),","            container.delegate('focus', this._onFocus, selectors.input, this),","            container.delegate('paste', this._onPaste, selectors.input, this)","        ];","    },","","    /**","    Detaches editor events.","","    @method _detachEvents","    @protected","    **/","    _detachEvents: function () {","        if (this._events) {","            new Y.EventHandle(this._events).detach();","            this._events = null;","        }","    },","","    /**","    Wrapper for native the native `execCommand()` that verifies that the command","    is valid in the current state and normalizes boolean/toggleable values.","","    @method _execCommand","    @param {String} name Command name.","    @param {Boolean|String} value Command value.","    @protected","    **/","    _execCommand: function (name, value) {","        if (!doc.queryCommandEnabled(name)) {","            return;","        }","","        if (this.boolCommands[name]) {","            // Only execute the command if the desired state differs from the","            // current state, or the desired state is 'toggle', indicating that","            // the command should be toggled regardless of its current state.","            if (value === 'toggle' || value !== this._queryCommandValue(name)) {","                doc.execCommand(name, false, null);","            }","        } else {","            doc.execCommand(name, false, value);","        }","    },","","    /**","    Getter for the `html` attribute.","","    @method _getHTML","    @param {HTML} value Internal value.","    @return {HTML} HTML.","    @protected","    **/","    _getHTML: function (value) {","        return this._rendered ? this._inputNode.getHTML() : value;","    },","","    /**","    Getter for the `text` attribute.","","    @method _getText","    @param {String} value Internal value.","    @return {String} Text.","    @protected","    **/","    _getText: function (value) {","        return this._rendered ? this._inputNode.get('text') : value;","    },","","    /**","    Inserts a `<span>` at the current selection point containing a preformatted","    tab character.","","    @method _insertTab","    @protected","    **/","    _insertTab: function () {","        this.insertHTML('<span style=\"white-space:pre;\">\\t</span>');","    },","","    /**","    Wrapper for the native `queryCommandState()` and `queryCommandValue()`","    methods that uses the appropriate method for the given command type.","","    @method _queryCommandValue","    @param {String} name Command name.","    @return {Boolean|String} Command value.","    @protected","    **/","    _queryCommandValue: function (name) {","        return this.boolCommands[name] ?","            !!doc.queryCommandState(name) : doc.queryCommandValue(name);","    },","","    /**","    Setter for the `html` attribute.","","    @method _setHTML","    @param {HTML} value HTML.","    @return {HTML} HTML.","    @protected","    **/","    _setHTML: function (value) {","        if (this._rendered) {","            this._inputNode.setHTML(value);","        }","","        return value;","    },","","    /**","    Setter for the `text` attribute.","","    @method _setText","    @param {String} value Text.","    @return {String} Text.","    @protected","    **/","    _setText: function (value) {","        if (this._rendered) {","            this._inputNode.set('text', value);","        }","","        return value;","    },","","    /**","    Refreshes the editor's internal knowledge of the current document selection","    state and fires a `selectionChange` event if the selection has changed since","    it was last refreshed.","","    @method _updateSelection","    @param {Object} [options] Options.","        @param {Boolean} [options.silent=false] If `true`, the `selectionChange`","            event will be suppressed.","    @protected","    **/","    _updateSelection:  function (options) {","        var prevRange = this._selectedRange || null,","            newRange  = this.selection.range() || null,","            silent    = options && options.silent;","","        if (newRange === prevRange || (prevRange && prevRange.isEquivalent(newRange))) {","            return;","        }","","        this._selectedRange = newRange;","","        // Only fire an event if options.silent is falsy and the new range is","        // either null or is entirely inside this editor.","        if (!silent && (!newRange || newRange.isInsideNode(this._inputNode))) {","            this.fire(EVT_SELECTION_CHANGE, {","                prevRange: prevRange,","                range    : newRange,","                selection: this.selection","            });","        }","    },","","    // -- Protected Event Handlers ---------------------------------------------","","    /**","    Handles `blur` events on the editor.","","    @method _onBlur","    @protected","    **/","    _onBlur: function () {","        if (!this._rendered) {","            return;","        }","","        clearInterval(this._selectionMonitor);","","        this.fire(EVT_BLUR);","    },","","    /**","    Handles `dblclick` events on the editor.","","    @method _onDblClick","    @protected","    **/","    _onDblClick: function() {","        var range = this.selection.range();","","        this.selection.select(range.shrink({trim: true}));","    },","","    /**","    Handles `focus` events on the editor.","","    @method _onFocus","    @protected","    **/","    _onFocus: function () {","        var self = this;","","        if (!this._rendered) {","            return;","        }","","        // restore the previously selected range","        if (this._selectedRange) {","            this.selection.select(this._selectedRange);","        }","","        this._updateSelection();","","        clearInterval(this._selectionMonitor);","","        this._selectionMonitor = setInterval(function () {","            self._updateSelection();","        }, 200);","","        this.fire(EVT_FOCUS);","    },","","    /**","    Handles `paste` events on the editor.","","    @method _onPaste","    @protected","    **/","    _onPaste: function () {","        // TODO: handle paste events!","    }","}, {","    ATTRS: {","        /**","        HTML content of this editor.","","        @attribute {HTML} html","        @default ''","        **/","        html: {","            getter: '_getHTML',","            setter: '_setHTML',","            value : ''","        },","","        /**","        Form field name to use for the hidden `<textarea>` that contains the raw","        output of the editor in the configured output format. This name will","        only be used if the output node doesn't already have a name when the","        editor is rendered.","","        You may need to customize this if you plan to use the editor in a form","        that will be submitted to a server.","","        @attribute {String} outputName","        @default 'editor'","        @initOnly","        **/","        outputName: {","            value    : 'editor',","            writeOnce: 'initOnly'","        },","","        /**","        Text content of this editor, with no HTML.","","        @attribute {String} text","        @default ''","        **/","        text: {","            getter: '_getText',","            setter: '_setText',","            value : ''","        }","    }","});","","Y.namespace('Editor').Base = EditorBase;","","","}, '@VERSION@', {\"requires\": [\"base-build\", \"classnamemanager\", \"event-focus\", \"gallery-sm-selection\", \"view\"]});","","}());"]};
+if (typeof _yuitest_coverage == "undefined"){
+    _yuitest_coverage = {};
+    _yuitest_coverline = function(src, line){
+        var coverage = _yuitest_coverage[src];
+        if (!coverage.lines[line]){
+            coverage.calledLines++;
+        }
+        coverage.lines[line]++;
+    };
+    _yuitest_coverfunc = function(src, name, line){
+        var coverage = _yuitest_coverage[src],
+            funcId = name + ":" + line;
+        if (!coverage.functions[funcId]){
+            coverage.calledFunctions++;
+        }
+        coverage.functions[funcId]++;
+    };
 }
-var __cov_pZ_o6xPAJNJigJ_ql$q8bw = __coverage__['build/gallery-sm-editor-base/gallery-sm-editor-base.js'];
-__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['1']++;YUI.add('gallery-sm-editor-base',function(Y,NAME){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['1']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['2']++;Y.Node.DOM_EVENTS.paste=1;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['3']++;var doc=Y.config.doc,getClassName=Y.ClassNameManager.getClassName;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['4']++;var EVT_BLUR='blur';__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['5']++;var EVT_FOCUS='focus';__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['6']++;var EVT_RENDER='render';__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['7']++;var EVT_SELECTION_CHANGE='selectionChange';__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['8']++;var EditorBase=Y.Base.create('editorBase',Y.View,[],{classNames:{cursor:getClassName('sm-editor-cursor',true),editor:getClassName('sm-editor',true),input:getClassName('sm-editor-input',true)},boolCommands:{bold:true,italic:true,underline:true,justifyCenter:true,justifyFull:true,justifyLeft:true,justifyRight:true},initializer:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['2']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['9']++;this.selection=new Y.Selection();__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['10']++;this.selectors={};__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['11']++;this._cursorHTML='<span class="'+this.classNames.cursor+'"></span>';__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['12']++;Y.Object.each(this.classNames,function(name,key){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['3']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['13']++;this.selectors[key]='.'+name;},this);__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['14']++;this._attachEvents();},destructor:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['4']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['15']++;this._detachEvents();__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['16']++;this.selection=null;},blur:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['5']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['17']++;if(this._inputNode){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['1'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['18']++;this._inputNode.blur();}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['1'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['19']++;return this;},command:function(name,value){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['6']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['20']++;this.focus();__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['21']++;if(typeof value!=='undefined'){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['2'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['22']++;this._execCommand(name,value);}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['2'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['23']++;return this._queryCommandValue(name);},decreaseFontSize:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['7']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['24']++;var newSize=parseInt(this.command('fontSize'),10)-1;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['25']++;if(newSize>0){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['3'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['26']++;this.command('fontSize',''+newSize);}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['3'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['27']++;return this;},focus:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['8']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['28']++;if(this._inputNode){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['4'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['29']++;this._inputNode.focus();}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['4'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['30']++;return this;},increaseFontSize:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['9']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['31']++;var newSize=parseInt(this.command('fontSize'),10)+1;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['32']++;if(newSize<7){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['5'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['33']++;this.command('fontSize',''+newSize);}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['5'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['34']++;return this;},insertHTML:function(html){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['10']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['35']++;var node=typeof html==='string'?(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['6'][0]++,Y.Node.create(html)):(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['6'][1]++,html),selection=this.selection,range=selection.range();__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['36']++;if(!range){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['7'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['37']++;return;}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['7'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['38']++;node=range.deleteContents().insertNode(node);__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['39']++;range.collapse();__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['40']++;selection.select(range);__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['41']++;return node;},insertText:function(text){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['11']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['42']++;return this.insertHTML(doc.createTextNode(text));},render:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['12']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['43']++;var container=this.get('container'),inputNode=container.one(this.selectors.input);__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['44']++;container.addClass(this.classNames.editor);__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['45']++;if(!inputNode){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['8'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['46']++;inputNode=container.appendChild('<div/>').addClass(this.classNames.input);}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['8'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['47']++;var html=this.get('html'),text=this.get('text');__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['48']++;if(html){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['9'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['49']++;inputNode.setHTML(html);}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['9'][1]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['50']++;if(text){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['10'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['51']++;inputNode.set('text',text);}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['10'][1]++;}}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['52']++;inputNode.set('contentEditable',true);__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['53']++;this._inputNode=inputNode;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['54']++;this._rendered=true;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['55']++;this._updateSelection({silent:true});__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['56']++;this.fire(EVT_RENDER);__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['57']++;return this;},_attachEvents:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['13']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['58']++;if(this._events){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['11'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['59']++;return;}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['11'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['60']++;var container=this.get('container'),selectors=this.selectors;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['61']++;this._events=[container.delegate('blur',this._onBlur,selectors.input,this),container.delegate('dblclick',this._onDblClick,selectors.input,this),container.delegate('focus',this._onFocus,selectors.input,this),container.delegate('paste',this._onPaste,selectors.input,this)];},_detachEvents:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['14']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['62']++;if(this._events){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['12'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['63']++;new Y.EventHandle(this._events).detach();__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['64']++;this._events=null;}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['12'][1]++;}},_execCommand:function(name,value){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['15']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['65']++;if(!doc.queryCommandEnabled(name)){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['13'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['66']++;return;}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['13'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['67']++;if(this.boolCommands[name]){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['14'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['68']++;if((__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['16'][0]++,value==='toggle')||(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['16'][1]++,value!==this._queryCommandValue(name))){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['15'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['69']++;doc.execCommand(name,false,null);}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['15'][1]++;}}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['14'][1]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['70']++;doc.execCommand(name,false,value);}},_getHTML:function(value){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['16']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['71']++;return this._rendered?(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['17'][0]++,this._inputNode.getHTML()):(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['17'][1]++,value);},_getText:function(value){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['17']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['72']++;return this._rendered?(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['18'][0]++,this._inputNode.get('text')):(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['18'][1]++,value);},_insertTab:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['18']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['73']++;this.insertHTML('<span style="white-space:pre;">\t</span>');},_queryCommandValue:function(name){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['19']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['74']++;return this.boolCommands[name]?(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['19'][0]++,!!doc.queryCommandState(name)):(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['19'][1]++,doc.queryCommandValue(name));},_setHTML:function(value){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['20']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['75']++;if(this._rendered){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['20'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['76']++;this._inputNode.setHTML(value);}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['20'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['77']++;return value;},_setText:function(value){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['21']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['78']++;if(this._rendered){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['21'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['79']++;this._inputNode.set('text',value);}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['21'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['80']++;return value;},_updateSelection:function(options){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['22']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['81']++;var prevRange=(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['22'][0]++,this._selectedRange)||(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['22'][1]++,null),newRange=(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['23'][0]++,this.selection.range())||(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['23'][1]++,null),silent=(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['24'][0]++,options)&&(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['24'][1]++,options.silent);__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['82']++;if((__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['26'][0]++,newRange===prevRange)||(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['26'][1]++,prevRange)&&(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['26'][2]++,prevRange.isEquivalent(newRange))){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['25'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['83']++;return;}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['25'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['84']++;this._selectedRange=newRange;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['85']++;if((__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['28'][0]++,!silent)&&((__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['28'][1]++,!newRange)||(__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['28'][2]++,newRange.isInsideNode(this._inputNode)))){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['27'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['86']++;this.fire(EVT_SELECTION_CHANGE,{prevRange:prevRange,range:newRange,selection:this.selection});}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['27'][1]++;}},_onBlur:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['23']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['87']++;if(!this._rendered){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['29'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['88']++;return;}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['29'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['89']++;clearInterval(this._selectionMonitor);__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['90']++;this.fire(EVT_BLUR);},_onDblClick:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['24']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['91']++;var range=this.selection.range();__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['92']++;this.selection.select(range.shrink({trim:true}));},_onFocus:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['25']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['93']++;var self=this;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['94']++;if(!this._rendered){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['30'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['95']++;return;}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['30'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['96']++;if(this._selectedRange){__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['31'][0]++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['97']++;this.selection.select(this._selectedRange);}else{__cov_pZ_o6xPAJNJigJ_ql$q8bw.b['31'][1]++;}__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['98']++;this._updateSelection();__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['99']++;clearInterval(this._selectionMonitor);__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['100']++;this._selectionMonitor=setInterval(function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['26']++;__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['101']++;self._updateSelection();},200);__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['102']++;this.fire(EVT_FOCUS);},_onPaste:function(){__cov_pZ_o6xPAJNJigJ_ql$q8bw.f['27']++;}},{ATTRS:{html:{getter:'_getHTML',setter:'_setHTML',value:''},outputName:{value:'editor',writeOnce:'initOnly'},text:{getter:'_getText',setter:'_setText',value:''}}});__cov_pZ_o6xPAJNJigJ_ql$q8bw.s['103']++;Y.namespace('Editor').Base=EditorBase;},'@VERSION@',{'requires':['base-build','classnamemanager','event-focus','gallery-sm-selection','view']});
+_yuitest_coverage["build/gallery-sm-editor-base/gallery-sm-editor-base.js"] = {
+    lines: {},
+    functions: {},
+    coveredLines: 0,
+    calledLines: 0,
+    coveredFunctions: 0,
+    calledFunctions: 0,
+    path: "build/gallery-sm-editor-base/gallery-sm-editor-base.js",
+    code: []
+};
+_yuitest_coverage["build/gallery-sm-editor-base/gallery-sm-editor-base.js"].code=["YUI.add('gallery-sm-editor-base', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","Y.Node.DOM_EVENTS.paste = 1;","","/**","Provides `Y.Editor.Base`, the core implementation of the SmugMug editor.","","@module gallery-sm-editor","@submodule gallery-sm-editor-base","**/","","/**","Base implementation of the SmugMug editor. Provides core editor functionality,","but no undo stack, keyboard shortcuts, etc.","","@class Editor.Base","@constructor","@extends View","**/","","var doc          = Y.config.doc,","    getClassName = Y.ClassNameManager.getClassName;","","/**","Fired after this editor loses focus.","","@event blur","**/","var EVT_BLUR = 'blur';","","/**","Fired after this editor receives focus.","","@event focus","**/","var EVT_FOCUS = 'focus';","","/**","Fired after this editor is rendered.","","@event render","**/","var EVT_RENDER = 'render';","","/**","Fired when this editor's selection changes.","","@event selectionChange","@param {Range} prevRange Range that was previously selected, or `null` if there","    was no previous selection.","@param {Range} range Range that's now selected, or `null` if the current","    selection is empty or outside the editor.","@param {Selection} selection Reference to this editor's Selection instance.","**/","var EVT_SELECTION_CHANGE = 'selectionChange';","","var EditorBase = Y.Base.create('editorBase', Y.View, [], {","    // -- Public Properties ----------------------------------------------------","","    /**","    CSS class names used by this editor.","","    @property {Object} classNames","    @param {String} cursor Class name used for a placeholder node that","        represents the cursor position.","    @param {String} editor Class name used for the editor's container.","    @param {String} input Class name used for the WYSIWYG YUI Editor frame that","        will receive user input.","    **/","    classNames: {","        cursor: getClassName('sm-editor-cursor', true),","        editor: getClassName('sm-editor', true),","        input : getClassName('sm-editor-input', true)","    },","","    /**","    `Y.Selection` instance representing the current document selection.","","    The selection object's state always reflects the current selection, so it","    will update when the selection changes. If you need to retain the state of a","    past selection, hold onto a Range instance representing that selection.","","    Also, beware: this selection object reflects the current selection in the","    entire browser document, not just within this editor.","","    @property {Selection} selection","    **/","","    /**","    Hash of boolean commands supported by this editor. A boolean command is","    one that does not require a value. Executing this command will toggle","    the currently set value.","","    Names should correspond with valid `execCommand()` command names.","","    @property {Object} boolCommands","    **/","    boolCommands: {","        bold     : true,","        italic   : true,","        underline: true,","        justifyCenter: true,","        justifyFull: true,","        justifyLeft: true,","        justifyRight: true","    },","","    // -- Protected Properties -------------------------------------------------","","    // -- Lifecycle ------------------------------------------------------------","","    initializer: function () {","        this.selection  = new Y.Selection();","        this.selectors  = {};","","        this._cursorHTML = '<span class=\"' + this.classNames.cursor + '\"></span>';","","        Y.Object.each(this.classNames, function (name, key) {","            this.selectors[key] = '.' + name;","        }, this);","","        this._attachEvents();","    },","","    destructor: function () {","        this._detachEvents();","","        this.selection = null;","    },","","    // -- Public Methods -------------------------------------------------------","","    /**","    Removes focus from this editor.","","    @method blur","    @chainable","    **/","    blur: function () {","        if (this._inputNode) {","            this._inputNode.blur();","        }","","        return this;","    },","","    /**","    Gets and/or sets the value of the specified editor command.","","    See <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>","    for a list of possible commands.","","    @method command","    @param {String|Function} name Command name or function to execute. By","        default functions will execute in the editor context. Use Y.bind","        to provide a different execution context.","    @param {*} [value*] Command value or 0..n arguments to pass","        to the command function. Use the special value 'toggle' to toggle a","        boolean command (like 'bold') to the opposite of its current state.","    @return {*} Value of the specified command or return value of the","        supplied function.","    **/","    command: function (name, value) {","        var args = Y.Array(arguments, 1, true);","","        this.focus();","","        if (typeof name === 'function') {","            return name.apply(this, args);","        } else {","            value = args.shift();","","            if (typeof value !== 'undefined') {","                this._execCommand(name, value);","            }","","            return this._queryCommandValue(name);","        }","    },","","    /**","    Decreases the font size of the current selection (if possible).","","    @method decreaseFontSize","    @chainable","    **/","    decreaseFontSize: function () {","        var newSize = parseInt(this.command('fontSize'), 10) - 1;","","        if (newSize > 0) {","            this.command('fontSize', '' + newSize);","        }","","        return this;","    },","","    /**","    Focuses this editor.","","    @method focus","    @chainable","    **/","    focus: function () {","        if (this._inputNode) {","            this._inputNode.focus();","        }","","        return this;","    },","","    /**","    Increases the font size of the current selection (if possible).","","    @method increaseFontSize","    @chainable","    **/","    increaseFontSize: function () {","        var newSize = parseInt(this.command('fontSize'), 10) + 1;","","        // currently only webkit supports size 7 (xxx-large), so keep","        // it under 7 for compatibility","        if (newSize < 7) {","            this.command('fontSize', '' + newSize);","        }","","        return this;","    },","","    /**","    Inserts the specified _html_ at the current selection point, deleting the","    current selection if there is one.","","    @method insertHTML","    @param {HTML|HTMLElement|Node} html HTML to insert, in the form of an HTML","        string, HTMLElement, or Node instance.","    @return {Node} Node instance representing the inserted HTML.","    **/","    insertHTML: function (html) {","        var node      = typeof html === 'string' ? Y.Node.create(html) : html,","            selection = this.selection,","            range     = selection.range();","","        if (!range) {","            return;","        }","","        node = range.deleteContents().insertNode(node);","        range.collapse();","","        selection.select(range);","","        return node;","    },","","    /**","    Inserts the specified plain _text_ at the current selection point, deleting","    the current selection if there is one.","","    @method insertText","    @param {String} text Text to insert.","    @return {Node} Node instance representing the inserted text node.","    **/","    insertText: function (text) {","        return this.insertHTML(doc.createTextNode(text));","    },","","    /**","    Renders this editor into its container and appends the container to the","    document if necessary.","","    @method render","    @chainable","    **/","    render: function () {","        var container  = this.get('container'),","            inputNode  = container.one(this.selectors.input);","","        container.addClass(this.classNames.editor);","","        if (!inputNode) {","            inputNode = container.appendChild('<div/>')","                                 .addClass(this.classNames.input);","        }","","        var html = this.get('html'),","            text = this.get('text');","","        if (html) {","            inputNode.setHTML(html);","        } else if (text) {","            inputNode.set('text', text);","        }","","        inputNode.set('contentEditable', true);","","        this._inputNode = inputNode;","        this._rendered  = true;","","        this._updateSelection({silent: true});","","        this.fire(EVT_RENDER);","","        return this;","    },","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Attaches editor events.","","    @method _attachEvents","    @protected","    **/","    _attachEvents: function () {","        if (this._events) {","            return;","        }","","        var container = this.get('container'),","            selectors = this.selectors;","","        this._events = [","            container.delegate('blur',  this._onBlur,  selectors.input, this),","            container.delegate('dblclick', this._onDblClick, selectors.input, this),","            container.delegate('focus', this._onFocus, selectors.input, this),","            container.delegate('paste', this._onPaste, selectors.input, this)","        ];","    },","","    /**","    Detaches editor events.","","    @method _detachEvents","    @protected","    **/","    _detachEvents: function () {","        if (this._events) {","            new Y.EventHandle(this._events).detach();","            this._events = null;","        }","    },","","    /**","    Wrapper for native the native `execCommand()` that verifies that the command","    is valid in the current state and normalizes boolean/toggleable values.","","    @method _execCommand","    @param {String} name Command name.","    @param {Boolean|String} value Command value.","    @protected","    **/","    _execCommand: function (name, value) {","        if (!doc.queryCommandEnabled(name)) {","            return;","        }","","        if (this.boolCommands[name]) {","            // Only execute the command if the desired state differs from the","            // current state, or the desired state is 'toggle', indicating that","            // the command should be toggled regardless of its current state.","            if (value === 'toggle' || value !== this._queryCommandValue(name)) {","                doc.execCommand(name, false, null);","            }","        } else {","            doc.execCommand(name, false, value);","        }","    },","","    /**","    Getter for the `html` attribute.","","    @method _getHTML","    @param {HTML} value Internal value.","    @return {HTML} HTML.","    @protected","    **/","    _getHTML: function (value) {","        return this._rendered ? this._inputNode.getHTML() : value;","    },","","    /**","    Getter for the `text` attribute.","","    @method _getText","    @param {String} value Internal value.","    @return {String} Text.","    @protected","    **/","    _getText: function (value) {","        return this._rendered ? this._inputNode.get('text') : value;","    },","","    /**","    Inserts a `<span>` at the current selection point containing a preformatted","    tab character.","","    @method _insertTab","    @protected","    **/","    _insertTab: function () {","        this.insertHTML('<span style=\"white-space:pre;\">\\t</span>');","    },","","    /**","    Wrapper for the native `queryCommandState()` and `queryCommandValue()`","    methods that uses the appropriate method for the given command type.","","    @method _queryCommandValue","    @param {String} name Command name.","    @return {Boolean|String} Command value.","    @protected","    **/","    _queryCommandValue: function (name) {","        return this.boolCommands[name] ?","            !!doc.queryCommandState(name) : doc.queryCommandValue(name);","    },","","    /**","    Setter for the `html` attribute.","","    @method _setHTML","    @param {HTML} value HTML.","    @return {HTML} HTML.","    @protected","    **/","    _setHTML: function (value) {","        if (this._rendered) {","            this._inputNode.setHTML(value);","        }","","        return value;","    },","","    /**","    Setter for the `text` attribute.","","    @method _setText","    @param {String} value Text.","    @return {String} Text.","    @protected","    **/","    _setText: function (value) {","        if (this._rendered) {","            this._inputNode.set('text', value);","        }","","        return value;","    },","","    /**","    Refreshes the editor's internal knowledge of the current document selection","    state and fires a `selectionChange` event if the selection has changed since","    it was last refreshed.","","    @method _updateSelection","    @param {Object} [options] Options.","        @param {Boolean} [options.silent=false] If `true`, the `selectionChange`","            event will be suppressed.","    @protected","    **/","    _updateSelection:  function (options) {","        var prevRange = this._selectedRange || null,","            newRange  = this.selection.range() || null,","            silent    = options && options.silent;","","        if (newRange === prevRange || (prevRange && prevRange.isEquivalent(newRange))) {","            return;","        }","","        this._selectedRange = newRange;","","        // Only fire an event if options.silent is falsy and the new range is","        // either null or is entirely inside this editor.","        if (!silent && (!newRange || newRange.isInsideNode(this._inputNode))) {","            this.fire(EVT_SELECTION_CHANGE, {","                prevRange: prevRange,","                range    : newRange,","                selection: this.selection","            });","        }","    },","","    // -- Protected Event Handlers ---------------------------------------------","","    /**","    Handles `blur` events on the editor.","","    @method _onBlur","    @protected","    **/","    _onBlur: function () {","        if (!this._rendered) {","            return;","        }","","        clearInterval(this._selectionMonitor);","","        this.fire(EVT_BLUR);","    },","","    /**","    Handles `dblclick` events on the editor.","","    @method _onDblClick","    @protected","    **/","    _onDblClick: function() {","        var range = this.selection.range();","","        this.selection.select(range.shrink({trim: true}));","    },","","    /**","    Handles `focus` events on the editor.","","    @method _onFocus","    @protected","    **/","    _onFocus: function () {","        var self = this;","","        if (!this._rendered) {","            return;","        }","","        // restore the previously selected range","        if (this._selectedRange) {","            this.selection.select(this._selectedRange);","        }","","        this._updateSelection();","","        clearInterval(this._selectionMonitor);","","        this._selectionMonitor = setInterval(function () {","            self._updateSelection();","        }, 200);","","        this.fire(EVT_FOCUS);","    },","","    /**","    Handles `paste` events on the editor.","","    @method _onPaste","    @protected","    **/","    _onPaste: function () {","        // TODO: handle paste events!","    }","}, {","    ATTRS: {","        /**","        HTML content of this editor.","","        @attribute {HTML} html","        @default ''","        **/","        html: {","            getter: '_getHTML',","            setter: '_setHTML',","            value : ''","        },","","        /**","        Form field name to use for the hidden `<textarea>` that contains the raw","        output of the editor in the configured output format. This name will","        only be used if the output node doesn't already have a name when the","        editor is rendered.","","        You may need to customize this if you plan to use the editor in a form","        that will be submitted to a server.","","        @attribute {String} outputName","        @default 'editor'","        @initOnly","        **/","        outputName: {","            value    : 'editor',","            writeOnce: 'initOnly'","        },","","        /**","        Text content of this editor, with no HTML.","","        @attribute {String} text","        @default ''","        **/","        text: {","            getter: '_getText',","            setter: '_setText',","            value : ''","        }","    }","});","","Y.namespace('Editor').Base = EditorBase;","","","}, '@VERSION@', {\"requires\": [\"base-build\", \"classnamemanager\", \"event-focus\", \"gallery-sm-selection\", \"view\"]});"];
+_yuitest_coverage["build/gallery-sm-editor-base/gallery-sm-editor-base.js"].lines = {"1":0,"5":0,"23":0,"31":0,"38":0,"45":0,"57":0,"59":0,"115":0,"116":0,"118":0,"120":0,"121":0,"124":0,"128":0,"130":0,"142":0,"143":0,"146":0,"166":0,"168":0,"170":0,"171":0,"173":0,"175":0,"176":0,"179":0,"190":0,"192":0,"193":0,"196":0,"206":0,"207":0,"210":0,"220":0,"224":0,"225":0,"228":0,"241":0,"245":0,"246":0,"249":0,"250":0,"252":0,"254":0,"266":0,"277":0,"280":0,"282":0,"283":0,"287":0,"290":0,"291":0,"292":0,"293":0,"296":0,"298":0,"299":0,"301":0,"303":0,"305":0,"317":0,"318":0,"321":0,"324":0,"339":0,"340":0,"341":0,"355":0,"356":0,"359":0,"363":0,"364":0,"367":0,"380":0,"392":0,"403":0,"416":0,"429":0,"430":0,"433":0,"445":0,"446":0,"449":0,"464":0,"468":0,"469":0,"472":0,"476":0,"477":0,"494":0,"495":0,"498":0,"500":0,"510":0,"512":0,"522":0,"524":0,"525":0,"529":0,"530":0,"533":0,"535":0,"537":0,"538":0,"541":0,"599":0};
+_yuitest_coverage["build/gallery-sm-editor-base/gallery-sm-editor-base.js"].functions = {"(anonymous 2):120":0,"initializer:114":0,"destructor:127":0,"blur:141":0,"command:165":0,"decreaseFontSize:189":0,"focus:205":0,"increaseFontSize:219":0,"insertHTML:240":0,"insertText:265":0,"render:276":0,"_attachEvents:316":0,"_detachEvents:338":0,"_execCommand:354":0,"_getHTML:379":0,"_getText:391":0,"_insertTab:402":0,"_queryCommandValue:415":0,"_setHTML:428":0,"_setText:444":0,"_updateSelection:463":0,"_onBlur:493":0,"_onDblClick:509":0,"(anonymous 3):537":0,"_onFocus:521":0,"(anonymous 1):1":0};
+_yuitest_coverage["build/gallery-sm-editor-base/gallery-sm-editor-base.js"].coveredLines = 107;
+_yuitest_coverage["build/gallery-sm-editor-base/gallery-sm-editor-base.js"].coveredFunctions = 26;
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 1);
+YUI.add('gallery-sm-editor-base', function (Y, NAME) {
+
+/*jshint expr:true, onevar:false */
+
+_yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "(anonymous 1)", 1);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 5);
+Y.Node.DOM_EVENTS.paste = 1;
+
+/**
+Provides `Y.Editor.Base`, the core implementation of the SmugMug editor.
+
+@module gallery-sm-editor
+@submodule gallery-sm-editor-base
+**/
+
+/**
+Base implementation of the SmugMug editor. Provides core editor functionality,
+but no undo stack, keyboard shortcuts, etc.
+
+@class Editor.Base
+@constructor
+@extends View
+**/
+
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 23);
+var doc          = Y.config.doc,
+    getClassName = Y.ClassNameManager.getClassName;
+
+/**
+Fired after this editor loses focus.
+
+@event blur
+**/
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 31);
+var EVT_BLUR = 'blur';
+
+/**
+Fired after this editor receives focus.
+
+@event focus
+**/
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 38);
+var EVT_FOCUS = 'focus';
+
+/**
+Fired after this editor is rendered.
+
+@event render
+**/
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 45);
+var EVT_RENDER = 'render';
+
+/**
+Fired when this editor's selection changes.
+
+@event selectionChange
+@param {Range} prevRange Range that was previously selected, or `null` if there
+    was no previous selection.
+@param {Range} range Range that's now selected, or `null` if the current
+    selection is empty or outside the editor.
+@param {Selection} selection Reference to this editor's Selection instance.
+**/
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 57);
+var EVT_SELECTION_CHANGE = 'selectionChange';
+
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 59);
+var EditorBase = Y.Base.create('editorBase', Y.View, [], {
+    // -- Public Properties ----------------------------------------------------
+
+    /**
+    CSS class names used by this editor.
+
+    @property {Object} classNames
+    @param {String} cursor Class name used for a placeholder node that
+        represents the cursor position.
+    @param {String} editor Class name used for the editor's container.
+    @param {String} input Class name used for the WYSIWYG YUI Editor frame that
+        will receive user input.
+    **/
+    classNames: {
+        cursor: getClassName('sm-editor-cursor', true),
+        editor: getClassName('sm-editor', true),
+        input : getClassName('sm-editor-input', true)
+    },
+
+    /**
+    `Y.Selection` instance representing the current document selection.
+
+    The selection object's state always reflects the current selection, so it
+    will update when the selection changes. If you need to retain the state of a
+    past selection, hold onto a Range instance representing that selection.
+
+    Also, beware: this selection object reflects the current selection in the
+    entire browser document, not just within this editor.
+
+    @property {Selection} selection
+    **/
+
+    /**
+    Hash of boolean commands supported by this editor. A boolean command is
+    one that does not require a value. Executing this command will toggle
+    the currently set value.
+
+    Names should correspond with valid `execCommand()` command names.
+
+    @property {Object} boolCommands
+    **/
+    boolCommands: {
+        bold     : true,
+        italic   : true,
+        underline: true,
+        justifyCenter: true,
+        justifyFull: true,
+        justifyLeft: true,
+        justifyRight: true
+    },
+
+    // -- Protected Properties -------------------------------------------------
+
+    // -- Lifecycle ------------------------------------------------------------
+
+    initializer: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "initializer", 114);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 115);
+this.selection  = new Y.Selection();
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 116);
+this.selectors  = {};
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 118);
+this._cursorHTML = '<span class="' + this.classNames.cursor + '"></span>';
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 120);
+Y.Object.each(this.classNames, function (name, key) {
+            _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "(anonymous 2)", 120);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 121);
+this.selectors[key] = '.' + name;
+        }, this);
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 124);
+this._attachEvents();
+    },
+
+    destructor: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "destructor", 127);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 128);
+this._detachEvents();
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 130);
+this.selection = null;
+    },
+
+    // -- Public Methods -------------------------------------------------------
+
+    /**
+    Removes focus from this editor.
+
+    @method blur
+    @chainable
+    **/
+    blur: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "blur", 141);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 142);
+if (this._inputNode) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 143);
+this._inputNode.blur();
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 146);
+return this;
+    },
+
+    /**
+    Gets and/or sets the value of the specified editor command.
+
+    See <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>
+    for a list of possible commands.
+
+    @method command
+    @param {String|Function} name Command name or function to execute. By
+        default functions will execute in the editor context. Use Y.bind
+        to provide a different execution context.
+    @param {*} [value*] Command value or 0..n arguments to pass
+        to the command function. Use the special value 'toggle' to toggle a
+        boolean command (like 'bold') to the opposite of its current state.
+    @return {*} Value of the specified command or return value of the
+        supplied function.
+    **/
+    command: function (name, value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "command", 165);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 166);
+var args = Y.Array(arguments, 1, true);
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 168);
+this.focus();
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 170);
+if (typeof name === 'function') {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 171);
+return name.apply(this, args);
+        } else {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 173);
+value = args.shift();
+
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 175);
+if (typeof value !== 'undefined') {
+                _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 176);
+this._execCommand(name, value);
+            }
+
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 179);
+return this._queryCommandValue(name);
+        }
+    },
+
+    /**
+    Decreases the font size of the current selection (if possible).
+
+    @method decreaseFontSize
+    @chainable
+    **/
+    decreaseFontSize: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "decreaseFontSize", 189);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 190);
+var newSize = parseInt(this.command('fontSize'), 10) - 1;
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 192);
+if (newSize > 0) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 193);
+this.command('fontSize', '' + newSize);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 196);
+return this;
+    },
+
+    /**
+    Focuses this editor.
+
+    @method focus
+    @chainable
+    **/
+    focus: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "focus", 205);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 206);
+if (this._inputNode) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 207);
+this._inputNode.focus();
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 210);
+return this;
+    },
+
+    /**
+    Increases the font size of the current selection (if possible).
+
+    @method increaseFontSize
+    @chainable
+    **/
+    increaseFontSize: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "increaseFontSize", 219);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 220);
+var newSize = parseInt(this.command('fontSize'), 10) + 1;
+
+        // currently only webkit supports size 7 (xxx-large), so keep
+        // it under 7 for compatibility
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 224);
+if (newSize < 7) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 225);
+this.command('fontSize', '' + newSize);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 228);
+return this;
+    },
+
+    /**
+    Inserts the specified _html_ at the current selection point, deleting the
+    current selection if there is one.
+
+    @method insertHTML
+    @param {HTML|HTMLElement|Node} html HTML to insert, in the form of an HTML
+        string, HTMLElement, or Node instance.
+    @return {Node} Node instance representing the inserted HTML.
+    **/
+    insertHTML: function (html) {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "insertHTML", 240);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 241);
+var node      = typeof html === 'string' ? Y.Node.create(html) : html,
+            selection = this.selection,
+            range     = selection.range();
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 245);
+if (!range) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 246);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 249);
+node = range.deleteContents().insertNode(node);
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 250);
+range.collapse();
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 252);
+selection.select(range);
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 254);
+return node;
+    },
+
+    /**
+    Inserts the specified plain _text_ at the current selection point, deleting
+    the current selection if there is one.
+
+    @method insertText
+    @param {String} text Text to insert.
+    @return {Node} Node instance representing the inserted text node.
+    **/
+    insertText: function (text) {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "insertText", 265);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 266);
+return this.insertHTML(doc.createTextNode(text));
+    },
+
+    /**
+    Renders this editor into its container and appends the container to the
+    document if necessary.
+
+    @method render
+    @chainable
+    **/
+    render: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "render", 276);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 277);
+var container  = this.get('container'),
+            inputNode  = container.one(this.selectors.input);
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 280);
+container.addClass(this.classNames.editor);
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 282);
+if (!inputNode) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 283);
+inputNode = container.appendChild('<div/>')
+                                 .addClass(this.classNames.input);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 287);
+var html = this.get('html'),
+            text = this.get('text');
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 290);
+if (html) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 291);
+inputNode.setHTML(html);
+        } else {_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 292);
+if (text) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 293);
+inputNode.set('text', text);
+        }}
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 296);
+inputNode.set('contentEditable', true);
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 298);
+this._inputNode = inputNode;
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 299);
+this._rendered  = true;
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 301);
+this._updateSelection({silent: true});
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 303);
+this.fire(EVT_RENDER);
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 305);
+return this;
+    },
+
+    // -- Protected Methods ----------------------------------------------------
+
+    /**
+    Attaches editor events.
+
+    @method _attachEvents
+    @protected
+    **/
+    _attachEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_attachEvents", 316);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 317);
+if (this._events) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 318);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 321);
+var container = this.get('container'),
+            selectors = this.selectors;
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 324);
+this._events = [
+            container.delegate('blur',  this._onBlur,  selectors.input, this),
+            container.delegate('dblclick', this._onDblClick, selectors.input, this),
+            container.delegate('focus', this._onFocus, selectors.input, this),
+            container.delegate('paste', this._onPaste, selectors.input, this)
+        ];
+    },
+
+    /**
+    Detaches editor events.
+
+    @method _detachEvents
+    @protected
+    **/
+    _detachEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_detachEvents", 338);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 339);
+if (this._events) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 340);
+new Y.EventHandle(this._events).detach();
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 341);
+this._events = null;
+        }
+    },
+
+    /**
+    Wrapper for native the native `execCommand()` that verifies that the command
+    is valid in the current state and normalizes boolean/toggleable values.
+
+    @method _execCommand
+    @param {String} name Command name.
+    @param {Boolean|String} value Command value.
+    @protected
+    **/
+    _execCommand: function (name, value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_execCommand", 354);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 355);
+if (!doc.queryCommandEnabled(name)) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 356);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 359);
+if (this.boolCommands[name]) {
+            // Only execute the command if the desired state differs from the
+            // current state, or the desired state is 'toggle', indicating that
+            // the command should be toggled regardless of its current state.
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 363);
+if (value === 'toggle' || value !== this._queryCommandValue(name)) {
+                _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 364);
+doc.execCommand(name, false, null);
+            }
+        } else {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 367);
+doc.execCommand(name, false, value);
+        }
+    },
+
+    /**
+    Getter for the `html` attribute.
+
+    @method _getHTML
+    @param {HTML} value Internal value.
+    @return {HTML} HTML.
+    @protected
+    **/
+    _getHTML: function (value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_getHTML", 379);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 380);
+return this._rendered ? this._inputNode.getHTML() : value;
+    },
+
+    /**
+    Getter for the `text` attribute.
+
+    @method _getText
+    @param {String} value Internal value.
+    @return {String} Text.
+    @protected
+    **/
+    _getText: function (value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_getText", 391);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 392);
+return this._rendered ? this._inputNode.get('text') : value;
+    },
+
+    /**
+    Inserts a `<span>` at the current selection point containing a preformatted
+    tab character.
+
+    @method _insertTab
+    @protected
+    **/
+    _insertTab: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_insertTab", 402);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 403);
+this.insertHTML('<span style="white-space:pre;">\t</span>');
+    },
+
+    /**
+    Wrapper for the native `queryCommandState()` and `queryCommandValue()`
+    methods that uses the appropriate method for the given command type.
+
+    @method _queryCommandValue
+    @param {String} name Command name.
+    @return {Boolean|String} Command value.
+    @protected
+    **/
+    _queryCommandValue: function (name) {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_queryCommandValue", 415);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 416);
+return this.boolCommands[name] ?
+            !!doc.queryCommandState(name) : doc.queryCommandValue(name);
+    },
+
+    /**
+    Setter for the `html` attribute.
+
+    @method _setHTML
+    @param {HTML} value HTML.
+    @return {HTML} HTML.
+    @protected
+    **/
+    _setHTML: function (value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_setHTML", 428);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 429);
+if (this._rendered) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 430);
+this._inputNode.setHTML(value);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 433);
+return value;
+    },
+
+    /**
+    Setter for the `text` attribute.
+
+    @method _setText
+    @param {String} value Text.
+    @return {String} Text.
+    @protected
+    **/
+    _setText: function (value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_setText", 444);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 445);
+if (this._rendered) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 446);
+this._inputNode.set('text', value);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 449);
+return value;
+    },
+
+    /**
+    Refreshes the editor's internal knowledge of the current document selection
+    state and fires a `selectionChange` event if the selection has changed since
+    it was last refreshed.
+
+    @method _updateSelection
+    @param {Object} [options] Options.
+        @param {Boolean} [options.silent=false] If `true`, the `selectionChange`
+            event will be suppressed.
+    @protected
+    **/
+    _updateSelection:  function (options) {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_updateSelection", 463);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 464);
+var prevRange = this._selectedRange || null,
+            newRange  = this.selection.range() || null,
+            silent    = options && options.silent;
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 468);
+if (newRange === prevRange || (prevRange && prevRange.isEquivalent(newRange))) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 469);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 472);
+this._selectedRange = newRange;
+
+        // Only fire an event if options.silent is falsy and the new range is
+        // either null or is entirely inside this editor.
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 476);
+if (!silent && (!newRange || newRange.isInsideNode(this._inputNode))) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 477);
+this.fire(EVT_SELECTION_CHANGE, {
+                prevRange: prevRange,
+                range    : newRange,
+                selection: this.selection
+            });
+        }
+    },
+
+    // -- Protected Event Handlers ---------------------------------------------
+
+    /**
+    Handles `blur` events on the editor.
+
+    @method _onBlur
+    @protected
+    **/
+    _onBlur: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_onBlur", 493);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 494);
+if (!this._rendered) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 495);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 498);
+clearInterval(this._selectionMonitor);
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 500);
+this.fire(EVT_BLUR);
+    },
+
+    /**
+    Handles `dblclick` events on the editor.
+
+    @method _onDblClick
+    @protected
+    **/
+    _onDblClick: function() {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_onDblClick", 509);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 510);
+var range = this.selection.range();
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 512);
+this.selection.select(range.shrink({trim: true}));
+    },
+
+    /**
+    Handles `focus` events on the editor.
+
+    @method _onFocus
+    @protected
+    **/
+    _onFocus: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "_onFocus", 521);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 522);
+var self = this;
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 524);
+if (!this._rendered) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 525);
+return;
+        }
+
+        // restore the previously selected range
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 529);
+if (this._selectedRange) {
+            _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 530);
+this.selection.select(this._selectedRange);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 533);
+this._updateSelection();
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 535);
+clearInterval(this._selectionMonitor);
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 537);
+this._selectionMonitor = setInterval(function () {
+            _yuitest_coverfunc("build/gallery-sm-editor-base/gallery-sm-editor-base.js", "(anonymous 3)", 537);
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 538);
+self._updateSelection();
+        }, 200);
+
+        _yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 541);
+this.fire(EVT_FOCUS);
+    },
+
+    /**
+    Handles `paste` events on the editor.
+
+    @method _onPaste
+    @protected
+    **/
+    _onPaste: function () {
+        // TODO: handle paste events!
+    }
+}, {
+    ATTRS: {
+        /**
+        HTML content of this editor.
+
+        @attribute {HTML} html
+        @default ''
+        **/
+        html: {
+            getter: '_getHTML',
+            setter: '_setHTML',
+            value : ''
+        },
+
+        /**
+        Form field name to use for the hidden `<textarea>` that contains the raw
+        output of the editor in the configured output format. This name will
+        only be used if the output node doesn't already have a name when the
+        editor is rendered.
+
+        You may need to customize this if you plan to use the editor in a form
+        that will be submitted to a server.
+
+        @attribute {String} outputName
+        @default 'editor'
+        @initOnly
+        **/
+        outputName: {
+            value    : 'editor',
+            writeOnce: 'initOnly'
+        },
+
+        /**
+        Text content of this editor, with no HTML.
+
+        @attribute {String} text
+        @default ''
+        **/
+        text: {
+            getter: '_getText',
+            setter: '_setText',
+            value : ''
+        }
+    }
+});
+
+_yuitest_coverline("build/gallery-sm-editor-base/gallery-sm-editor-base.js", 599);
+Y.namespace('Editor').Base = EditorBase;
+
+
+}, '@VERSION@', {"requires": ["base-build", "classnamemanager", "event-focus", "gallery-sm-selection", "view"]});
