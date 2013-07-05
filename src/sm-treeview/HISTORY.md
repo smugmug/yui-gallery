@@ -1,6 +1,12 @@
 SmugMug TreeView History
 ========================
 
+## git
+
+* Fixed: When re-rendering the children of an already-rendered node, DOM nodes
+  were removed and re-appended to the container unnecessarily. They're now
+  simply updated in place.
+
 ## 2013-06-20
 
 * Nodes are no longer automatically focused when selected in single-select mode.
