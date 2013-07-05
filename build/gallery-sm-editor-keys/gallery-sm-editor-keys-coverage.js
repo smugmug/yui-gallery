@@ -1,6 +1,262 @@
-if (typeof __coverage__ === 'undefined') { __coverage__ = {}; }
-if (!__coverage__['build/gallery-sm-editor-keys/gallery-sm-editor-keys.js']) {
-   __coverage__['build/gallery-sm-editor-keys/gallery-sm-editor-keys.js'] = {"path":"build/gallery-sm-editor-keys/gallery-sm-editor-keys.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0],"12":[0,0],"13":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0},"fnMap":{"1":{"name":"(anonymous_1)","line":1,"loc":{"start":{"line":1,"column":34},"end":{"line":1,"column":53}}},"2":{"name":"(anonymous_2)","line":95,"loc":{"start":{"line":95,"column":17},"end":{"line":95,"column":29}}},"3":{"name":"(anonymous_3)","line":99,"loc":{"start":{"line":99,"column":16},"end":{"line":99,"column":28}}},"4":{"name":"(anonymous_4)","line":111,"loc":{"start":{"line":111,"column":22},"end":{"line":111,"column":34}}},"5":{"name":"(anonymous_5)","line":129,"loc":{"start":{"line":129,"column":22},"end":{"line":129,"column":34}}},"6":{"name":"(anonymous_6)","line":145,"loc":{"start":{"line":145,"column":16},"end":{"line":145,"column":29}}},"7":{"name":"(anonymous_7)","line":178,"loc":{"start":{"line":178,"column":27},"end":{"line":178,"column":39}}}},"statementMap":{"1":{"start":{"line":1,"column":0},"end":{"line":191,"column":58}},"2":{"start":{"line":22,"column":0},"end":{"line":186,"column":3}},"3":{"start":{"line":96,"column":8},"end":{"line":96,"column":32}},"4":{"start":{"line":100,"column":8},"end":{"line":100,"column":32}},"5":{"start":{"line":112,"column":8},"end":{"line":114,"column":9}},"6":{"start":{"line":113,"column":12},"end":{"line":113,"column":19}},"7":{"start":{"line":116,"column":8},"end":{"line":116,"column":46}},"8":{"start":{"line":118,"column":8},"end":{"line":120,"column":10}},"9":{"start":{"line":130,"column":8},"end":{"line":133,"column":9}},"10":{"start":{"line":131,"column":12},"end":{"line":131,"column":56}},"11":{"start":{"line":132,"column":12},"end":{"line":132,"column":35}},"12":{"start":{"line":146,"column":8},"end":{"line":146,"column":32}},"13":{"start":{"line":150,"column":8},"end":{"line":152,"column":9}},"14":{"start":{"line":151,"column":12},"end":{"line":151,"column":19}},"15":{"start":{"line":154,"column":8},"end":{"line":154,"column":23}},"16":{"start":{"line":156,"column":8},"end":{"line":156,"column":58}},"17":{"start":{"line":156,"column":38},"end":{"line":156,"column":56}},"18":{"start":{"line":157,"column":8},"end":{"line":157,"column":59}},"19":{"start":{"line":157,"column":38},"end":{"line":157,"column":57}},"20":{"start":{"line":158,"column":8},"end":{"line":158,"column":60}},"21":{"start":{"line":158,"column":38},"end":{"line":158,"column":58}},"22":{"start":{"line":160,"column":8},"end":{"line":161,"column":60}},"23":{"start":{"line":163,"column":8},"end":{"line":163,"column":56}},"24":{"start":{"line":165,"column":8},"end":{"line":184,"column":9}},"25":{"start":{"line":166,"column":12},"end":{"line":167,"column":28}},"26":{"start":{"line":169,"column":12},"end":{"line":171,"column":13}},"27":{"start":{"line":170,"column":16},"end":{"line":170,"column":30}},"28":{"start":{"line":173,"column":12},"end":{"line":175,"column":13}},"29":{"start":{"line":174,"column":16},"end":{"line":174,"column":35}},"30":{"start":{"line":177,"column":12},"end":{"line":183,"column":13}},"31":{"start":{"line":178,"column":16},"end":{"line":180,"column":22}},"32":{"start":{"line":179,"column":20},"end":{"line":179,"column":44}},"33":{"start":{"line":182,"column":16},"end":{"line":182,"column":40}},"34":{"start":{"line":188,"column":0},"end":{"line":188,"column":40}}},"branchMap":{"1":{"line":112,"type":"if","locations":[{"start":{"line":112,"column":8},"end":{"line":112,"column":8}},{"start":{"line":112,"column":8},"end":{"line":112,"column":8}}]},"2":{"line":130,"type":"if","locations":[{"start":{"line":130,"column":8},"end":{"line":130,"column":8}},{"start":{"line":130,"column":8},"end":{"line":130,"column":8}}]},"3":{"line":150,"type":"if","locations":[{"start":{"line":150,"column":8},"end":{"line":150,"column":8}},{"start":{"line":150,"column":8},"end":{"line":150,"column":8}}]},"4":{"line":156,"type":"if","locations":[{"start":{"line":156,"column":8},"end":{"line":156,"column":8}},{"start":{"line":156,"column":8},"end":{"line":156,"column":8}}]},"5":{"line":157,"type":"if","locations":[{"start":{"line":157,"column":8},"end":{"line":157,"column":8}},{"start":{"line":157,"column":8},"end":{"line":157,"column":8}}]},"6":{"line":157,"type":"binary-expr","locations":[{"start":{"line":157,"column":12},"end":{"line":157,"column":21}},{"start":{"line":157,"column":25},"end":{"line":157,"column":34}}]},"7":{"line":158,"type":"if","locations":[{"start":{"line":158,"column":8},"end":{"line":158,"column":8}},{"start":{"line":158,"column":8},"end":{"line":158,"column":8}}]},"8":{"line":160,"type":"binary-expr","locations":[{"start":{"line":160,"column":19},"end":{"line":160,"column":43}},{"start":{"line":161,"column":16},"end":{"line":161,"column":58}}]},"9":{"line":165,"type":"if","locations":[{"start":{"line":165,"column":8},"end":{"line":165,"column":8}},{"start":{"line":165,"column":8},"end":{"line":165,"column":8}}]},"10":{"line":166,"type":"binary-expr","locations":[{"start":{"line":166,"column":23},"end":{"line":166,"column":33}},{"start":{"line":166,"column":37},"end":{"line":166,"column":44}}]},"11":{"line":169,"type":"if","locations":[{"start":{"line":169,"column":12},"end":{"line":169,"column":12}},{"start":{"line":169,"column":12},"end":{"line":169,"column":12}}]},"12":{"line":173,"type":"if","locations":[{"start":{"line":173,"column":12},"end":{"line":173,"column":12}},{"start":{"line":173,"column":12},"end":{"line":173,"column":12}}]},"13":{"line":177,"type":"if","locations":[{"start":{"line":177,"column":12},"end":{"line":177,"column":12}},{"start":{"line":177,"column":12},"end":{"line":177,"column":12}}]}},"code":["(function () { YUI.add('gallery-sm-editor-keys', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Keys` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-keys","**/","","/**","Extension for `Editor.Base` that adds support for configurable keyboard","shortcuts, including a set of default shortcuts.","","@class Editor.Keys","@constructor","@extends Base","@extensionfor Editor.Base","**/","","var EditorKeys = Y.Base.create('editorKeys', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    /**","    Hash of keyCode values that should be ignored when processing keyboard","    events.","","    This is used to avoid double-handling of modifier keys, since other event","    properties are used to detect whether modifier keys are pressed.","","    @property {Object} ignoreKeyCodes","    **/","    ignoreKeyCodes: {","        16 : 'shift',","        17 : 'ctrl',      // Opera uses this keyCode for meta, which is fine","        18 : 'alt',","        91 : 'leftmeta',  // WebKit","        93 : 'rightmeta', // WebKit","        224: 'meta'       // Gecko","    },","","    /**","    Mapping of keyCode values to friendly names for special keys.","","    @property {Object} keyCodeMap","    **/","    keyCodeMap: {","        8  : 'backspace',","        9  : 'tab',","        13 : 'enter',","        27 : 'esc',","        32 : 'space',","        33 : 'pgup',","        34 : 'pgdown',","        35 : 'end',","        36 : 'home',","        37 : 'left',","        38 : 'up',","        39 : 'right',","        40 : 'down',","        46 : 'delete',","        49 : '!',","        61 : '=', // Gecko","        173: '-', // Gecko","        187: '=', // WebKit, IE","        189: '-', // WebKit, IE","        190: '.',","        191: '?',","        219: '[',","        221: ']'","    },","","    /**","    Mapping of shortcut keys to function handlers.","","    @property {Object} keyCommands","    **/","    keyCommands: {","        // The Ctrl key and the Cmd (meta) key are synonymous.","","        // Formatting.","        'ctrl+-': 'decreaseFontSize',","        'ctrl+=': 'increaseFontSize', // unshifted + key","        'ctrl+b': 'bold',","        // TODO: 'ctrl+d': 'selectWord',","        'ctrl+i': 'italic',","        'ctrl+u': 'underline',","","        // Special cases.","        'tab': '_insertTab'","    },","","    // -- Lifecycle ------------------------------------------------------------","    initializer: function () {","        this._attachKeyEvents();","    },","","    destructor: function () {","        this._detachKeyEvents();","    },","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Attaches keyboard events.","","    @method _attachKeyEvents","    @protected","    **/","    _attachKeyEvents: function () {","        if (this._keyEvents) {","            return;","        }","","        var container = this.get('container');","","        this._keyEvents = [","            container.delegate('keydown', this._onKeyDown, this.selectors.input, this)","        ];","    },","","    /**","    Detaches keyboard events.","","    @method _detachKeyEvents","    @protected","    **/","    _detachKeyEvents: function () {","        if (this._keyEvents) {","            new Y.EventHandle(this._keyEvents).detach();","            this._keyEvents = null;","        }","    },","","    // -- Protected Event Handlers ---------------------------------------------","","    /**","    Handles `keydown` events on this editor.","","    @method _onKeyDown","    @param {EventFacade} e","    @protected","    **/","    _onKeyDown: function (e) {","        var keyCode = e.keyCode;","","        // Ignore individual modifier keys, since we don't care about them until","        // another key is also depressed.","        if (this.ignoreKeyCodes[keyCode]) {","            return;","        }","","        var combo = [];","","        if (e.altKey)               { combo.push('alt'); }","        if (e.ctrlKey || e.metaKey) { combo.push('ctrl'); }","        if (e.shiftKey)             { combo.push('shift'); }","","        combo.push(this.keyCodeMap[keyCode] ||","                String.fromCharCode(keyCode).toLowerCase());","","        var handler = this.keyCommands[combo.join('+')];","","        if (handler) {","            var fn   = handler.fn || handler,","                self = this;","","            if (typeof fn === 'string') {","                fn = this[fn];","            }","","            if (!handler.allowDefault) {","                e.preventDefault();","            }","","            if (handler.async) {","                setTimeout(function () {","                    fn.call(self, e, combo);","                }, 0);","            } else {","                fn.call(this, e, combo);","            }","        }","    }","});","","Y.namespace('Editor').Keys = EditorKeys;","","","}, '@VERSION@', {\"requires\": [\"gallery-sm-editor-base\"]});","","}());"]};
+if (typeof _yuitest_coverage == "undefined"){
+    _yuitest_coverage = {};
+    _yuitest_coverline = function(src, line){
+        var coverage = _yuitest_coverage[src];
+        if (!coverage.lines[line]){
+            coverage.calledLines++;
+        }
+        coverage.lines[line]++;
+    };
+    _yuitest_coverfunc = function(src, name, line){
+        var coverage = _yuitest_coverage[src],
+            funcId = name + ":" + line;
+        if (!coverage.functions[funcId]){
+            coverage.calledFunctions++;
+        }
+        coverage.functions[funcId]++;
+    };
 }
-var __cov_NKglySp5C_kQRboqDENkVg = __coverage__['build/gallery-sm-editor-keys/gallery-sm-editor-keys.js'];
-__cov_NKglySp5C_kQRboqDENkVg.s['1']++;YUI.add('gallery-sm-editor-keys',function(Y,NAME){__cov_NKglySp5C_kQRboqDENkVg.f['1']++;__cov_NKglySp5C_kQRboqDENkVg.s['2']++;var EditorKeys=Y.Base.create('editorKeys',Y.Base,[],{ignoreKeyCodes:{16:'shift',17:'ctrl',18:'alt',91:'leftmeta',93:'rightmeta',224:'meta'},keyCodeMap:{8:'backspace',9:'tab',13:'enter',27:'esc',32:'space',33:'pgup',34:'pgdown',35:'end',36:'home',37:'left',38:'up',39:'right',40:'down',46:'delete',49:'!',61:'=',173:'-',187:'=',189:'-',190:'.',191:'?',219:'[',221:']'},keyCommands:{'ctrl+-':'decreaseFontSize','ctrl+=':'increaseFontSize','ctrl+b':'bold','ctrl+i':'italic','ctrl+u':'underline','tab':'_insertTab'},initializer:function(){__cov_NKglySp5C_kQRboqDENkVg.f['2']++;__cov_NKglySp5C_kQRboqDENkVg.s['3']++;this._attachKeyEvents();},destructor:function(){__cov_NKglySp5C_kQRboqDENkVg.f['3']++;__cov_NKglySp5C_kQRboqDENkVg.s['4']++;this._detachKeyEvents();},_attachKeyEvents:function(){__cov_NKglySp5C_kQRboqDENkVg.f['4']++;__cov_NKglySp5C_kQRboqDENkVg.s['5']++;if(this._keyEvents){__cov_NKglySp5C_kQRboqDENkVg.b['1'][0]++;__cov_NKglySp5C_kQRboqDENkVg.s['6']++;return;}else{__cov_NKglySp5C_kQRboqDENkVg.b['1'][1]++;}__cov_NKglySp5C_kQRboqDENkVg.s['7']++;var container=this.get('container');__cov_NKglySp5C_kQRboqDENkVg.s['8']++;this._keyEvents=[container.delegate('keydown',this._onKeyDown,this.selectors.input,this)];},_detachKeyEvents:function(){__cov_NKglySp5C_kQRboqDENkVg.f['5']++;__cov_NKglySp5C_kQRboqDENkVg.s['9']++;if(this._keyEvents){__cov_NKglySp5C_kQRboqDENkVg.b['2'][0]++;__cov_NKglySp5C_kQRboqDENkVg.s['10']++;new Y.EventHandle(this._keyEvents).detach();__cov_NKglySp5C_kQRboqDENkVg.s['11']++;this._keyEvents=null;}else{__cov_NKglySp5C_kQRboqDENkVg.b['2'][1]++;}},_onKeyDown:function(e){__cov_NKglySp5C_kQRboqDENkVg.f['6']++;__cov_NKglySp5C_kQRboqDENkVg.s['12']++;var keyCode=e.keyCode;__cov_NKglySp5C_kQRboqDENkVg.s['13']++;if(this.ignoreKeyCodes[keyCode]){__cov_NKglySp5C_kQRboqDENkVg.b['3'][0]++;__cov_NKglySp5C_kQRboqDENkVg.s['14']++;return;}else{__cov_NKglySp5C_kQRboqDENkVg.b['3'][1]++;}__cov_NKglySp5C_kQRboqDENkVg.s['15']++;var combo=[];__cov_NKglySp5C_kQRboqDENkVg.s['16']++;if(e.altKey){__cov_NKglySp5C_kQRboqDENkVg.b['4'][0]++;__cov_NKglySp5C_kQRboqDENkVg.s['17']++;combo.push('alt');}else{__cov_NKglySp5C_kQRboqDENkVg.b['4'][1]++;}__cov_NKglySp5C_kQRboqDENkVg.s['18']++;if((__cov_NKglySp5C_kQRboqDENkVg.b['6'][0]++,e.ctrlKey)||(__cov_NKglySp5C_kQRboqDENkVg.b['6'][1]++,e.metaKey)){__cov_NKglySp5C_kQRboqDENkVg.b['5'][0]++;__cov_NKglySp5C_kQRboqDENkVg.s['19']++;combo.push('ctrl');}else{__cov_NKglySp5C_kQRboqDENkVg.b['5'][1]++;}__cov_NKglySp5C_kQRboqDENkVg.s['20']++;if(e.shiftKey){__cov_NKglySp5C_kQRboqDENkVg.b['7'][0]++;__cov_NKglySp5C_kQRboqDENkVg.s['21']++;combo.push('shift');}else{__cov_NKglySp5C_kQRboqDENkVg.b['7'][1]++;}__cov_NKglySp5C_kQRboqDENkVg.s['22']++;combo.push((__cov_NKglySp5C_kQRboqDENkVg.b['8'][0]++,this.keyCodeMap[keyCode])||(__cov_NKglySp5C_kQRboqDENkVg.b['8'][1]++,String.fromCharCode(keyCode).toLowerCase()));__cov_NKglySp5C_kQRboqDENkVg.s['23']++;var handler=this.keyCommands[combo.join('+')];__cov_NKglySp5C_kQRboqDENkVg.s['24']++;if(handler){__cov_NKglySp5C_kQRboqDENkVg.b['9'][0]++;__cov_NKglySp5C_kQRboqDENkVg.s['25']++;var fn=(__cov_NKglySp5C_kQRboqDENkVg.b['10'][0]++,handler.fn)||(__cov_NKglySp5C_kQRboqDENkVg.b['10'][1]++,handler),self=this;__cov_NKglySp5C_kQRboqDENkVg.s['26']++;if(typeof fn==='string'){__cov_NKglySp5C_kQRboqDENkVg.b['11'][0]++;__cov_NKglySp5C_kQRboqDENkVg.s['27']++;fn=this[fn];}else{__cov_NKglySp5C_kQRboqDENkVg.b['11'][1]++;}__cov_NKglySp5C_kQRboqDENkVg.s['28']++;if(!handler.allowDefault){__cov_NKglySp5C_kQRboqDENkVg.b['12'][0]++;__cov_NKglySp5C_kQRboqDENkVg.s['29']++;e.preventDefault();}else{__cov_NKglySp5C_kQRboqDENkVg.b['12'][1]++;}__cov_NKglySp5C_kQRboqDENkVg.s['30']++;if(handler.async){__cov_NKglySp5C_kQRboqDENkVg.b['13'][0]++;__cov_NKglySp5C_kQRboqDENkVg.s['31']++;setTimeout(function(){__cov_NKglySp5C_kQRboqDENkVg.f['7']++;__cov_NKglySp5C_kQRboqDENkVg.s['32']++;fn.call(self,e,combo);},0);}else{__cov_NKglySp5C_kQRboqDENkVg.b['13'][1]++;__cov_NKglySp5C_kQRboqDENkVg.s['33']++;fn.call(this,e,combo);}}else{__cov_NKglySp5C_kQRboqDENkVg.b['9'][1]++;}}});__cov_NKglySp5C_kQRboqDENkVg.s['34']++;Y.namespace('Editor').Keys=EditorKeys;},'@VERSION@',{'requires':['gallery-sm-editor-base']});
+_yuitest_coverage["build/gallery-sm-editor-keys/gallery-sm-editor-keys.js"] = {
+    lines: {},
+    functions: {},
+    coveredLines: 0,
+    calledLines: 0,
+    coveredFunctions: 0,
+    calledFunctions: 0,
+    path: "build/gallery-sm-editor-keys/gallery-sm-editor-keys.js",
+    code: []
+};
+_yuitest_coverage["build/gallery-sm-editor-keys/gallery-sm-editor-keys.js"].code=["YUI.add('gallery-sm-editor-keys', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Keys` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-keys","**/","","/**","Extension for `Editor.Base` that adds support for configurable keyboard","shortcuts, including a set of default shortcuts.","","@class Editor.Keys","@constructor","@extends Base","@extensionfor Editor.Base","**/","","var EditorKeys = Y.Base.create('editorKeys', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    /**","    Hash of keyCode values that should be ignored when processing keyboard","    events.","","    This is used to avoid double-handling of modifier keys, since other event","    properties are used to detect whether modifier keys are pressed.","","    @property {Object} ignoreKeyCodes","    **/","    ignoreKeyCodes: {","        16 : 'shift',","        17 : 'ctrl',      // Opera uses this keyCode for meta, which is fine","        18 : 'alt',","        91 : 'leftmeta',  // WebKit","        93 : 'rightmeta', // WebKit","        224: 'meta'       // Gecko","    },","","    /**","    Mapping of keyCode values to friendly names for special keys.","","    @property {Object} keyCodeMap","    **/","    keyCodeMap: {","        8  : 'backspace',","        9  : 'tab',","        13 : 'enter',","        27 : 'esc',","        32 : 'space',","        33 : 'pgup',","        34 : 'pgdown',","        35 : 'end',","        36 : 'home',","        37 : 'left',","        38 : 'up',","        39 : 'right',","        40 : 'down',","        46 : 'delete',","        49 : '!',","        61 : '=', // Gecko","        173: '-', // Gecko","        187: '=', // WebKit, IE","        189: '-', // WebKit, IE","        190: '.',","        191: '?',","        219: '[',","        221: ']'","    },","","    /**","    Mapping of shortcut keys to function handlers.","","    @property {Object} keyCommands","    **/","    keyCommands: {","        // The Ctrl key and the Cmd (meta) key are synonymous.","","        // Formatting.","        'ctrl+-': 'decreaseFontSize',","        'ctrl+=': 'increaseFontSize', // unshifted + key","        'ctrl+b': 'bold',","        // TODO: 'ctrl+d': 'selectWord',","        'ctrl+i': 'italic',","        'ctrl+u': 'underline',","","        // Special cases.","        'tab': '_insertTab'","    },","","    // -- Lifecycle ------------------------------------------------------------","    initializer: function () {","        this._attachKeyEvents();","    },","","    destructor: function () {","        this._detachKeyEvents();","    },","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Attaches keyboard events.","","    @method _attachKeyEvents","    @protected","    **/","    _attachKeyEvents: function () {","        if (this._keyEvents) {","            return;","        }","","        var container = this.get('container');","","        this._keyEvents = [","            container.delegate('keydown', this._onKeyDown, this.selectors.input, this)","        ];","    },","","    /**","    Detaches keyboard events.","","    @method _detachKeyEvents","    @protected","    **/","    _detachKeyEvents: function () {","        if (this._keyEvents) {","            new Y.EventHandle(this._keyEvents).detach();","            this._keyEvents = null;","        }","    },","","    // -- Protected Event Handlers ---------------------------------------------","","    /**","    Handles `keydown` events on this editor.","","    @method _onKeyDown","    @param {EventFacade} e","    @protected","    **/","    _onKeyDown: function (e) {","        var keyCode = e.keyCode;","","        // Ignore individual modifier keys, since we don't care about them until","        // another key is also depressed.","        if (this.ignoreKeyCodes[keyCode]) {","            return;","        }","","        var combo = [];","","        if (e.altKey)               { combo.push('alt'); }","        if (e.ctrlKey || e.metaKey) { combo.push('ctrl'); }","        if (e.shiftKey)             { combo.push('shift'); }","","        combo.push(this.keyCodeMap[keyCode] ||","                String.fromCharCode(keyCode).toLowerCase());","","        var handler = this.keyCommands[combo.join('+')];","","        if (handler) {","            var fn   = handler.fn || handler,","                self = this;","","            if (typeof fn === 'string') {","                fn = this[fn];","            }","","            if (!handler.allowDefault) {","                e.preventDefault();","            }","","            if (handler.async) {","                setTimeout(function () {","                    fn.call(self, e, combo);","                }, 0);","            } else {","                fn.call(this, e, combo);","            }","        }","    }","});","","Y.namespace('Editor').Keys = EditorKeys;","","","}, '@VERSION@', {\"requires\": [\"gallery-sm-editor-base\"]});"];
+_yuitest_coverage["build/gallery-sm-editor-keys/gallery-sm-editor-keys.js"].lines = {"1":0,"22":0,"96":0,"100":0,"112":0,"113":0,"116":0,"118":0,"130":0,"131":0,"132":0,"146":0,"150":0,"151":0,"154":0,"156":0,"157":0,"158":0,"160":0,"163":0,"165":0,"166":0,"169":0,"170":0,"173":0,"174":0,"177":0,"178":0,"179":0,"182":0,"188":0};
+_yuitest_coverage["build/gallery-sm-editor-keys/gallery-sm-editor-keys.js"].functions = {"initializer:95":0,"destructor:99":0,"_attachKeyEvents:111":0,"_detachKeyEvents:129":0,"(anonymous 2):178":0,"_onKeyDown:145":0,"(anonymous 1):1":0};
+_yuitest_coverage["build/gallery-sm-editor-keys/gallery-sm-editor-keys.js"].coveredLines = 31;
+_yuitest_coverage["build/gallery-sm-editor-keys/gallery-sm-editor-keys.js"].coveredFunctions = 7;
+_yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 1);
+YUI.add('gallery-sm-editor-keys', function (Y, NAME) {
+
+/*jshint expr:true, onevar:false */
+
+/**
+Provides the `Editor.Keys` extension.
+
+@module gallery-sm-editor
+@submodule gallery-sm-editor-keys
+**/
+
+/**
+Extension for `Editor.Base` that adds support for configurable keyboard
+shortcuts, including a set of default shortcuts.
+
+@class Editor.Keys
+@constructor
+@extends Base
+@extensionfor Editor.Base
+**/
+
+_yuitest_coverfunc("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", "(anonymous 1)", 1);
+_yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 22);
+var EditorKeys = Y.Base.create('editorKeys', Y.Base, [], {
+    // -- Public Properties ----------------------------------------------------
+
+    /**
+    Hash of keyCode values that should be ignored when processing keyboard
+    events.
+
+    This is used to avoid double-handling of modifier keys, since other event
+    properties are used to detect whether modifier keys are pressed.
+
+    @property {Object} ignoreKeyCodes
+    **/
+    ignoreKeyCodes: {
+        16 : 'shift',
+        17 : 'ctrl',      // Opera uses this keyCode for meta, which is fine
+        18 : 'alt',
+        91 : 'leftmeta',  // WebKit
+        93 : 'rightmeta', // WebKit
+        224: 'meta'       // Gecko
+    },
+
+    /**
+    Mapping of keyCode values to friendly names for special keys.
+
+    @property {Object} keyCodeMap
+    **/
+    keyCodeMap: {
+        8  : 'backspace',
+        9  : 'tab',
+        13 : 'enter',
+        27 : 'esc',
+        32 : 'space',
+        33 : 'pgup',
+        34 : 'pgdown',
+        35 : 'end',
+        36 : 'home',
+        37 : 'left',
+        38 : 'up',
+        39 : 'right',
+        40 : 'down',
+        46 : 'delete',
+        49 : '!',
+        61 : '=', // Gecko
+        173: '-', // Gecko
+        187: '=', // WebKit, IE
+        189: '-', // WebKit, IE
+        190: '.',
+        191: '?',
+        219: '[',
+        221: ']'
+    },
+
+    /**
+    Mapping of shortcut keys to function handlers.
+
+    @property {Object} keyCommands
+    **/
+    keyCommands: {
+        // The Ctrl key and the Cmd (meta) key are synonymous.
+
+        // Formatting.
+        'ctrl+-': 'decreaseFontSize',
+        'ctrl+=': 'increaseFontSize', // unshifted + key
+        'ctrl+b': 'bold',
+        // TODO: 'ctrl+d': 'selectWord',
+        'ctrl+i': 'italic',
+        'ctrl+u': 'underline',
+
+        // Special cases.
+        'tab': '_insertTab'
+    },
+
+    // -- Lifecycle ------------------------------------------------------------
+    initializer: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", "initializer", 95);
+_yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 96);
+this._attachKeyEvents();
+    },
+
+    destructor: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", "destructor", 99);
+_yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 100);
+this._detachKeyEvents();
+    },
+
+    // -- Protected Methods ----------------------------------------------------
+
+    /**
+    Attaches keyboard events.
+
+    @method _attachKeyEvents
+    @protected
+    **/
+    _attachKeyEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", "_attachKeyEvents", 111);
+_yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 112);
+if (this._keyEvents) {
+            _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 113);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 116);
+var container = this.get('container');
+
+        _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 118);
+this._keyEvents = [
+            container.delegate('keydown', this._onKeyDown, this.selectors.input, this)
+        ];
+    },
+
+    /**
+    Detaches keyboard events.
+
+    @method _detachKeyEvents
+    @protected
+    **/
+    _detachKeyEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", "_detachKeyEvents", 129);
+_yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 130);
+if (this._keyEvents) {
+            _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 131);
+new Y.EventHandle(this._keyEvents).detach();
+            _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 132);
+this._keyEvents = null;
+        }
+    },
+
+    // -- Protected Event Handlers ---------------------------------------------
+
+    /**
+    Handles `keydown` events on this editor.
+
+    @method _onKeyDown
+    @param {EventFacade} e
+    @protected
+    **/
+    _onKeyDown: function (e) {
+        _yuitest_coverfunc("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", "_onKeyDown", 145);
+_yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 146);
+var keyCode = e.keyCode;
+
+        // Ignore individual modifier keys, since we don't care about them until
+        // another key is also depressed.
+        _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 150);
+if (this.ignoreKeyCodes[keyCode]) {
+            _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 151);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 154);
+var combo = [];
+
+        _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 156);
+if (e.altKey)               { combo.push('alt'); }
+        _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 157);
+if (e.ctrlKey || e.metaKey) { combo.push('ctrl'); }
+        _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 158);
+if (e.shiftKey)             { combo.push('shift'); }
+
+        _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 160);
+combo.push(this.keyCodeMap[keyCode] ||
+                String.fromCharCode(keyCode).toLowerCase());
+
+        _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 163);
+var handler = this.keyCommands[combo.join('+')];
+
+        _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 165);
+if (handler) {
+            _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 166);
+var fn   = handler.fn || handler,
+                self = this;
+
+            _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 169);
+if (typeof fn === 'string') {
+                _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 170);
+fn = this[fn];
+            }
+
+            _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 173);
+if (!handler.allowDefault) {
+                _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 174);
+e.preventDefault();
+            }
+
+            _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 177);
+if (handler.async) {
+                _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 178);
+setTimeout(function () {
+                    _yuitest_coverfunc("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", "(anonymous 2)", 178);
+_yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 179);
+fn.call(self, e, combo);
+                }, 0);
+            } else {
+                _yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 182);
+fn.call(this, e, combo);
+            }
+        }
+    }
+});
+
+_yuitest_coverline("build/gallery-sm-editor-keys/gallery-sm-editor-keys.js", 188);
+Y.namespace('Editor').Keys = EditorKeys;
+
+
+}, '@VERSION@', {"requires": ["gallery-sm-editor-base"]});
