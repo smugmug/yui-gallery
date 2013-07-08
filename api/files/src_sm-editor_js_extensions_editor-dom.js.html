@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/sm-editor/js/extensions/editor-dom.js - SmugMug YUI Gallery API docs</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="SmugMug YUI Gallery API docs"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.11.0-git</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/DragDrop.html">DragDrop</a></li>
+            
+                <li><a href="../classes/Editor.html">Editor</a></li>
+            
+                <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
+            
+                <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
+            
+                <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
+            
+                <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
+            
+                <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/Menu.html">Menu</a></li>
+            
+                <li><a href="../classes/Menu.Base.html">Menu.Base</a></li>
+            
+                <li><a href="../classes/Menu.Item.html">Menu.Item</a></li>
+            
+                <li><a href="../classes/Menu.Templates.html">Menu.Templates</a></li>
+            
+                <li><a href="../classes/Plugin.DragDrop.Reorder.html">Plugin.DragDrop.Reorder</a></li>
+            
+                <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
+            
+                <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Range.html">Range</a></li>
+            
+                <li><a href="../classes/Selection.html">Selection</a></li>
+            
+                <li><a href="../classes/TreeView.html">TreeView</a></li>
+            
+                <li><a href="../classes/TreeView.Sortable.html">TreeView.Sortable</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/dom-form-values.html">dom-form-values</a></li>
+            
+                <li><a href="../modules/gallery-sm-dragdrop.html">gallery-sm-dragdrop</a></li>
+            
+                <li><a href="../modules/gallery-sm-dragdrop-reorder.html">gallery-sm-dragdrop-reorder</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor.html">gallery-sm-editor</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
+            
+                <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-base.html">gallery-sm-menu-base</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-item.html">gallery-sm-menu-item</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
+            
+                <li><a href="../modules/gallery-sm-selection.html">gallery-sm-selection</a></li>
+            
+                <li><a href="../modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="../modules/gallery-sm-treeview-sortable.html">gallery-sm-treeview-sortable</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/sm-editor/js/extensions/editor-dom.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/*jshint expr:true, onevar:false */
+
+/**
+Provides the &#x60;Editor.DOM&#x60; utility class.
+
+@module gallery-sm-editor
+@submodule gallery-sm-editor-dom
+**/
+
+/**
+DOM utility methods for &#x60;Editor.Base&#x60;
+
+@class Editor.DOM
+**/
+
+var EditorDOM = function() {};
+
+/**
+Finds the nearest ancestor with a given tagName
+
+@param {Node} node
+@param {String} [tagName] Optional tagName. If not provided, the nearest
+  ancestor element node will be returned
+@return {Node}
+@static
+**/
+EditorDOM.getAncestorElement = function(node, tagName) {
+    tagName &amp;&amp; (tagName = tagName.toUpperCase());
+
+    function tagFn(node) {
+        var nodeTag = node.get(&#x27;tagName&#x27;);
+
+        return nodeTag &amp;&amp; tagName === nodeTag.toUpperCase();
+    }
+
+    return node.ancestor(tagName ? tagFn : EditorDOM.isElementNode, true);
+};
+
+
+/**
+@method isElementNode
+@param {Node} node
+@return {Boolean}
+@static
+**/
+EditorDOM.isElementNode = function(node) {
+    return 1 === node.get(&#x27;nodeType&#x27;);
+};
+
+
+/**
+@method isTextNode
+@param {Node} node
+@return {Boolean}
+@static
+**/
+EditorDOM.isTextNode = function(node) {
+    return 3 === node.get(&#x27;nodeType&#x27;);
+};
+
+
+/**
+Returns the maximum offset of a given node as determined by the type of node.
+
+Element nodes will return the number of childNodes
+Text nodes will return the length of the text
+
+@method maxOffset
+@param {HTMLElement|Node} node
+@return {Number} Number of child nodes or length of text
+@static
+**/
+EditorDOM.maxOffset = function(node) {
+    node = Y.one(node);
+
+    return node.get(&#x27;childNodes&#x27;).size() || node.get(&#x27;length&#x27;);
+};
+
+
+/**
+Unwraps a node
+
+@method unwrap
+@param {Node} node
+@return {Range} Range containing the unwrapped child nodes
+@static
+**/
+EditorDOM.unwrap = function (node) {
+    var parent, child, range, startNode, endNode;
+
+    parent = node.get(&#x27;parentElement&#x27;);
+
+    while (child = node.get(&#x27;firstChild&#x27;)) {
+        parent.insertBefore(child, node);
+
+        if (!startNode) {
+            startNode = child;
+        }
+
+        endNode = child;
+    }
+
+    node.remove(true);
+
+    range = new Y.Range();
+    range.startNode(startNode);
+    range.endNode(endNode, EditorDOM.maxOffset(endNode));
+
+    return range;
+};
+
+
+Y.namespace(&#x27;Editor&#x27;).DOM = EditorDOM;
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

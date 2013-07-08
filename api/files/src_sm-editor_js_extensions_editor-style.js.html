@@ -47,7 +47,11 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
+            
+                <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
             
                 <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
             
@@ -89,7 +93,11 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
@@ -174,7 +182,7 @@ Extension for &#x60;Editor.Base&#x60; that normalizes style commands into css pr
 
 (function() {
 
-var ELEMENT_NODE = 1;
+var EDOM = Y.Editor.DOM;
 
 var EditorStyle = Y.Base.create(&#x27;editorStyle&#x27;, Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
@@ -311,53 +319,57 @@ var EditorStyle = Y.Base.create(&#x27;editorStyle&#x27;, Y.Base, [], {
     Traverses the children of a given node, removing empty nodes and
     clearing out any given css properties
 
+    Note: rootNode may get destroyed during the cleaning process
+
     @method _cleanNode
-    @param {Node} rootNode
+    @param {Range} range
     @param {String|Array} properties
-    @return {Node} The cleaned node
+    @return {Range}
     @protected
     **/
-    _cleanNode: function(rootNode, properties) {
-        var styleCommands = this.styleCommands;
+    _cleanRange: function(range, properties) {
+        var rootNode = range.parentNode(),
+            styleCommands = this.styleCommands;
 
         properties = Y.Array(properties);
 
+        function hasStyles(node) {
+            return Y.Object.some(styleCommands, function(cmd) {
+                return &#x27;&#x27; !== node._node.style[cmd.property];
+            });
+        }
+
         function clean(node) {
-            if (ELEMENT_NODE !== node.get(&#x27;nodeType&#x27;)) {
+            if (!EDOM.isElementNode(node)) {
                 return;
             }
 
-            if (node !== rootNode) {
-                if (&#x27;&#x27; === node.get(&#x27;text&#x27;)) {
-                    // the node is empty, remove it
-                    return node.remove(true);
-                } else {
-                    // clear out the properties
-                    Y.Array.each(properties, function(style) {
-                        node.setStyle(style, &#x27;&#x27;);
-                    });
+            if (&#x27;&#x27; === node.get(&#x27;text&#x27;)) {
+                // the node is empty, remove it
+                node.remove(true);
+            } else {
+                // clear out the properties
+                Y.Array.each(properties, function(style) {
+                    node.setStyle(style, &#x27;&#x27;);
+                });
+
+                node.get(&#x27;children&#x27;).each(clean);
+
+                if (!hasStyles(node)) {
+                    EDOM.unwrap(node);
                 }
             }
-
-            node.get(&#x27;children&#x27;).each(clean);
-
-            // if this node doesn&#x27;t have any other valid style properties
-            // on it, we can unwrap it into a text node.
-            // chrome likes to randomly add line-height for example.
-            var hasStyles = Y.Object.some(styleCommands, function(cmd) {
-                return &#x27;&#x27; !== node._node.style[cmd.property];
-            });
-
-            if (!hasStyles) {
-                var newNode = Y.Node.create(node.getHTML());
-                node.replace(newNode).remove(true);
-                node = newNode;
-            }
-
-            return node;
         }
 
-        return clean(rootNode);
+        rootNode.get(&#x27;children&#x27;).each(clean);
+
+        if (!hasStyles(rootNode)) {
+            range = EDOM.unwrap(rootNode);
+        } else {
+            range.selectNodeContents(rootNode);
+        }
+
+        return range;
     },
 
 
@@ -386,13 +398,9 @@ var EditorStyle = Y.Base.create(&#x27;editorStyle&#x27;, Y.Base, [], {
             return;
         }
 
-        parentNode = range.parentNode();
-
-        if (ELEMENT_NODE !== parentNode.get(&#x27;nodeType&#x27;)) {
-            // range.parentNode() may return a text node
-            // so make sure we actually have an element
-            parentNode = parentNode.ancestor();
-        }
+        // range.parentNode() may return a text node
+        // so make sure we actually have an element
+        parentNode = EDOM.getAncestorElement(range.parentNode());
 
         if (parentNode !== this._inputNode &amp;&amp;
             parentNode.get(&#x27;text&#x27;) === range.toString()) {
@@ -419,21 +427,9 @@ var EditorStyle = Y.Base.create(&#x27;editorStyle&#x27;, Y.Base, [], {
 
         styleNode.setStyle(command.property, value);
 
-        styleNode = this._cleanNode(styleNode, command.property);
+        range.selectNodeContents(styleNode);
 
-        // when cleaning nodes the selection may get lost if the styleNode
-        // gets unwrapped into a text node or has children unwrapped
-        // so we need to rebuild the range and select it to give the
-        // appearance the selection never changed
-        range.startNode(styleNode);
-        range.endNode(styleNode);
-
-        // set the endOffset based on the node type
-        if (ELEMENT_NODE === styleNode.get(&#x27;nodeType&#x27;)) {
-            range.endOffset(styleNode.get(&#x27;childNodes&#x27;).size());
-        } else {
-            range.endOffset(styleNode.get(&#x27;text&#x27;).length);
-        }
+        range = this._cleanRange(range, command.property);
 
         this.selection.select(range);
     },
@@ -451,7 +447,7 @@ var EditorStyle = Y.Base.create(&#x27;editorStyle&#x27;, Y.Base, [], {
     **/
     _getStyledAncestor: function(startNode, property, self) {
         return startNode.ancestor(function(node) {
-            if (ELEMENT_NODE !== node._node.nodeType) {
+            if (!EDOM.isElementNode(node)) {
                 return false;
             }
 
@@ -486,11 +482,20 @@ var EditorStyle = Y.Base.create(&#x27;editorStyle&#x27;, Y.Base, [], {
         if (range) {
             parentNode = range.shrink().parentNode();
 
-            // walk the ancestor tree to find the closest
-            // element node ancestor, inclusive of the parentNode
-            styleNode = parentNode.ancestor(function(node) {
-                return ELEMENT_NODE === node.get(&#x27;nodeType&#x27;);
-            }, true);
+            // first attempt to get any explicitly styled ancestor for
+            // the given property. Need to do this first because browsers
+            // sometimes return different values for explicit style vs.
+            // computed style. &#x60;font-weight: bold;&#x60; for example will return
+            // &#x60;bold&#x60; in all browsers when explicitly set but &#x60;700&#x60; in
+            // Firefox and Internet Explorer with computedStyle.
+            styleNode = this._getStyledAncestor(parentNode, command.property, true);
+
+            if (!styleNode) {
+                // no explicitly styled ancestor found. walk the
+                // ancestor tree to find the closest element
+                // node ancestor, inclusive of the parentNode
+                styleNode = EDOM.getAncestorElement(parentNode);
+            }
 
             // getStyle will fall back to computedStyle if the
             // property isn&#x27;t explicitly set

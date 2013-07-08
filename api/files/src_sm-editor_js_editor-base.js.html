@@ -47,7 +47,11 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
+            
+                <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
             
                 <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
             
@@ -89,7 +93,11 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
@@ -307,20 +315,31 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
     for a list of possible commands.
 
     @method command
-    @param {String} name Command name.
-    @param {Boolean|String|null} [value] Command value. Use the special value
-        &#x27;toggle&#x27; to toggle a boolean command (like &#x27;bold&#x27;) to the opposite of
-        its current state.
-    @return {Boolean|String} Value of the specified command.
+    @param {String|Function} name Command name or function to execute. By
+        default functions will execute in the editor context. Use Y.bind
+        to provide a different execution context.
+    @param {*} [value*] Command value or 0..n arguments to pass
+        to the command function. Use the special value &#x27;toggle&#x27; to toggle a
+        boolean command (like &#x27;bold&#x27;) to the opposite of its current state.
+    @return {*} Value of the specified command or return value of the
+        supplied function.
     **/
     command: function (name, value) {
-        this.focus();
-        
-        if (typeof value !== &#x27;undefined&#x27;) {
-            this._execCommand(name, value);
-        }
+        var args = Y.Array(arguments, 1, true);
 
-        return this._queryCommandValue(name);
+        this.focus();
+
+        if (typeof name === &#x27;function&#x27;) {
+            return name.apply(this, args);
+        } else {
+            value = args.shift();
+
+            if (typeof value !== &#x27;undefined&#x27;) {
+                this._execCommand(name, value);
+            }
+
+            return this._queryCommandValue(name);
+        }
     },
 
     /**

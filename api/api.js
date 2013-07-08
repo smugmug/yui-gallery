@@ -4,7 +4,9 @@ YUI.add("yuidoc-meta", function(Y) {
         "DragDrop",
         "Editor",
         "Editor.Base",
+        "Editor.DOM",
         "Editor.Keys",
+        "Editor.Link",
         "Editor.Style",
         "Editor.Undo",
         "Menu",
@@ -24,7 +26,9 @@ YUI.add("yuidoc-meta", function(Y) {
         "gallery-sm-dragdrop-reorder",
         "gallery-sm-editor",
         "gallery-sm-editor-base",
+        "gallery-sm-editor-dom",
         "gallery-sm-editor-keys",
+        "gallery-sm-editor-link",
         "gallery-sm-editor-style",
         "gallery-sm-editor-undo",
         "gallery-sm-focusmanager",
@@ -65,9 +69,19 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Provides `Y.Editor.Base`, the core implementation of the SmugMug editor."
         },
         {
+            "displayName": "gallery-sm-editor-dom",
+            "name": "gallery-sm-editor-dom",
+            "description": "Provides the `Editor.DOM` utility class."
+        },
+        {
             "displayName": "gallery-sm-editor-keys",
             "name": "gallery-sm-editor-keys",
             "description": "Provides the `Editor.Keys` extension."
+        },
+        {
+            "displayName": "gallery-sm-editor-link",
+            "name": "gallery-sm-editor-link",
+            "description": "Provides the `Editor.Link` extension."
         },
         {
             "displayName": "gallery-sm-editor-style",

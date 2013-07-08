@@ -47,7 +47,11 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
+            
+                <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
             
                 <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
             
@@ -89,7 +93,11 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
@@ -1445,7 +1453,7 @@ this class for iteration performance reasons.</p>
             
                 <li class="arg">
                     
-                        <code>rootNode</code>
+                        <code>range</code>
                     
                 </li>
             
@@ -1461,7 +1469,7 @@ this class for iteration performance reasons.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+            <span class="type"><a href="../classes/Range.html" class="crosslink">Range</a></span>
         </span>
     
 
@@ -1503,6 +1511,8 @@ this class for iteration performance reasons.</p>
     <div class="description">
         <p>Traverses the children of a given node, removing empty nodes and
 clearing out any given css properties</p>
+
+<p>Note: rootNode may get destroyed during the cleaning process</p>
     </div>
 
     
@@ -1513,8 +1523,8 @@ clearing out any given css properties</p>
             
                 <li class="param">
                     
-                        <code class="param-name">rootNode</code>
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                        <code class="param-name">range</code>
+                        <span class="type"><a href="../classes/Range.html" class="crosslink">Range</a></span>
                     
 
                     
@@ -1552,9 +1562,8 @@ clearing out any given css properties</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
+                        <span class="type"><a href="../classes/Range.html" class="crosslink">Range</a></span>:
                     
-                    The cleaned node
                 
             </div>
         </div>
@@ -1635,7 +1644,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
                     
 
                     <div class="param-description">
-                        
+                         
                     </div>
 
                     
@@ -2014,7 +2023,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l208"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:208</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l212"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:212</code></a>
         
         </p>
 
@@ -3432,7 +3441,7 @@ where the calling method has already obtained the config from state.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l285"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:285</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l273"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:273</code></a>
         
         </p>
 
@@ -4921,7 +4930,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l309"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:309</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l297"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:297</code></a>
         
         </p>
 

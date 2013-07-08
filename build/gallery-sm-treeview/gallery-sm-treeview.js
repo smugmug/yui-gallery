@@ -330,7 +330,7 @@ TreeView = Y.Base.create('treeView', Y.View, [
 
         treeNode.state.rendered = true;
 
-        if (options.container) {
+        if (options.container && htmlNode.get('parentNode') !== options.container) {
             options.container.append(htmlNode);
         }
 

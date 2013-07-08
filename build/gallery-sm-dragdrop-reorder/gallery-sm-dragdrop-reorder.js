@@ -1,5 +1,7 @@
 YUI.add('gallery-sm-dragdrop-reorder', function (Y, NAME) {
 
+/*jshint expr:true, onevar:false */
+
 /**
 Provides the `Plugin.DragDrop.Reorder` class, a `DragDrop` plugin that adds
 drag-to-reorder functionality to a collection of nodes.

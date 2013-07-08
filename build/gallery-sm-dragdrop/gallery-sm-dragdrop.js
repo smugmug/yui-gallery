@@ -1,6 +1,6 @@
 YUI.add('gallery-sm-dragdrop', function (Y, NAME) {
 
-/*global MutationObserver:true */
+/*jshint expr:true, onevar:false */
 
 /*
 TODO:
@@ -33,10 +33,7 @@ var DOM = Y.DOM,
     doc          = Y.config.doc,
     getClassName = Y.ClassNameManager.getClassName,
     isMac        = typeof navigator !== 'undefined' && /^mac/i.test(navigator.platform),
-    win          = Y.config.win,
-
-    MutationObserver = win.MutationObserver || win.WebKitMutationObserver ||
-        win.MozMutationObserver;
+    win          = Y.config.win;
 
 /**
 Fired whenever the pointer moves during a drag operation.
@@ -180,10 +177,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         this._scrollMargin       = this.get('scrollMargin');
         this._scrollSelector     = this.get('scrollSelector');
 
-        if (this._container === Y.one('body')) {
-            this._containerIsBody = true;
-        }
-
         this._attachEvents();
     },
 
@@ -191,8 +184,77 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         this._endDrag();
         this._detachEvents();
 
+        clearTimeout(this._scrollEventThrottle);
+
         this._dragState       = null;
         this._publishedEvents = null;
+    },
+
+    /**
+    Attaches event handlers.
+
+    @method _attachEvents
+    @protected
+    **/
+    _attachEvents: function () {
+        if (this._events) {
+            this._detachEvents();
+        }
+
+        var container    = this._container,
+            docNode      = Y.one(doc),
+            dragSelector = this._dragSelector;
+
+        this._containerIsBody = this._container._node === doc.body;
+
+        this._events = [
+            this.after([
+                'containerChange',
+                'distanceThresholdChange',
+                'dragHandleSelectorChange',
+                'dragSelectorChange',
+                'scrollContainerChange',
+                'scrollMarginChange',
+                'scrollSelectorChange'
+            ], this._cacheAttrValue),
+
+            this.after([
+                'containerChange',
+                'distanceThresholdChange',
+                'dragSelectorChange',
+                'enableTouchDragChange',
+                'timeThresholdChange'
+            ], this._reinitialize),
+
+            this.after([
+                'dropSelectorChange',
+                'scrollContainerChange',
+                'scrollSelectorChange'
+            ], this.sync),
+
+            container.delegate('dragstart', this._onNativeDragStart, dragSelector, this),
+            container.delegate('gesturemovestart', this._onDraggableMoveStart, dragSelector, {}, this),
+
+            docNode.on('gesturemove', this._onDocMove, {standAlone: true}, this),
+            docNode.on('gesturemoveend', this._onDocMoveEnd, {standAlone: true}, this)
+        ];
+
+        if (!this._containerIsBody) {
+            this._events.push(container.on('scroll', this._onContainerScroll, this));
+        }
+    },
+
+    /**
+    Detaches event handlers.
+
+    @method _detachEvents
+    @protected
+    **/
+    _detachEvents: function () {
+        if (this._events) {
+            new Y.EventHandle(this._events).detach();
+            this._events = null;
+        }
     },
 
     // -- Public Methods -------------------------------------------------------
@@ -213,6 +275,7 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
     **/
     sync: function () {
         if (this._dragState.dragging) {
+            this._viewportScrollOffsets = this._getViewportScrollOffsets();
             this._cacheBoundingRects();
 
             if (this._scrollContainer || this._scrollSelector) {
@@ -224,63 +287,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
     },
 
     // -- Protected Methods ----------------------------------------------------
-
-    /**
-    Attaches event handlers.
-
-    @method _attachEvents
-    @protected
-    **/
-    _attachEvents: function () {
-        if (this._events) {
-            this._detachEvents();
-        }
-
-        var container    = this._container,
-            doc          = Y.one(Y.config.doc),
-            dragSelector = this._dragSelector;
-
-        this._events = [
-            this.after([
-                'containerChange',
-                'distanceThresholdChange',
-                'dragHandleSelectorChange',
-                'dragSelectorChange',
-                'scrollContainerChange',
-                'scrollMarginChange',
-                'scrollSelectorChange'
-            ], this._cacheAttrValue),
-
-            this.after([
-                'containerChange',
-                'distanceThresholdChange',
-                'dragSelectorChange',
-                'enableTouchDragChange',
-                'timeThresholdChange',
-                'useMutationObserverChange'
-            ], this._reinitialize),
-
-            this.after([
-                'dropSelectorChange',
-                'scrollContainerChange',
-                'scrollSelectorChange'
-            ], this.sync),
-
-            container.delegate('dragstart', this._onNativeDragStart, dragSelector, this),
-            container.delegate('gesturemovestart', this._onDraggableMoveStart, dragSelector, {}, this),
-
-            doc.on('gesturemove', this._onDocMove, {standAlone: true}, this),
-            doc.on('gesturemoveend', this._onDocMoveEnd, {standAlone: true}, this)
-        ];
-
-        // If supported and enabled, a MutationObserver is used to update cached
-        // dropzone bounding rects when the DOM is modified during a drag
-        // operation.
-        if (MutationObserver && this.get('useMutationObserver')) {
-            this._mutationObserver = new MutationObserver(
-                Y.bind(this.sync, this));
-        }
-    },
 
     /**
     Attribute change event handler that caches the new value of the attribute in
@@ -310,13 +316,15 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         var dragEl    = this._proxyOrDragNode()._node,
             dropEls   = Y.Selector.query(this.get('dropSelector'), this._container._node),
             dropRects = this._dropRects = [],
-            dropEl, rect;
+
+            dropEl,
+            rect;
 
         for (var i = 0, len = dropEls.length; i < len; i++) {
             dropEl = dropEls[i];
 
             if (dropEl !== dragEl) {
-                rect    = this._getBoundingRect(dropEl);
+                rect    = this._getAbsoluteBoundingRect(dropEl);
                 rect.el = dropEl;
 
                 dropRects.push(rect);
@@ -370,7 +378,7 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
             isHorizontal = el.scrollWidth > el.clientWidth;
 
             if (isVertical || isHorizontal) {
-                rect              = this._getBoundingRect(el);
+                rect              = this._getAbsoluteBoundingRect(el);
                 rect.el           = el;
                 rect.isVertical   = isVertical;
                 rect.isHorizontal = isHorizontal;
@@ -388,24 +396,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
     },
 
     /**
-    Detaches event handlers.
-
-    @method _detachEvents
-    @protected
-    **/
-    _detachEvents: function () {
-        if (this._events) {
-            new Y.EventHandle(this._events).detach();
-            this._events = null;
-        }
-
-        if (this._mutationObserver) {
-            this._mutationObserver.disconnect();
-            this._mutationObserver = null;
-        }
-    },
-
-    /**
     Ends a drag operation, cleans up after it, and fires a `dragend` event.
 
     @method _endDrag
@@ -419,10 +409,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         } else if (state.dragging) {
             if (state.dropNode) {
                 this._fireDragLeave();
-            }
-
-            if (this._mutationObserver) {
-                this._mutationObserver.disconnect();
             }
 
             this._proxyOrDragNode().removeClass(this.classNames.dragging);
@@ -469,6 +455,7 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
             originalDragEl = state.dragNode._node, // original drag node, never a proxy
             pointerX       = state.pageXY[0],
             pointerY       = state.pageXY[1],
+
             dropRect;
 
         for (var i = 0, len = dropRects.length; i < len; i++) {
@@ -512,10 +499,10 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
             return intersections;
         }
 
-        var scrollMargin  = this._scrollMargin,
-            state         = this._dragState,
-            pointerX      = state.pageXY[0],
-            pointerY      = state.pageXY[1],
+        var scrollMargin = this._scrollMargin,
+            state        = this._dragState,
+            pointerX     = state.pageXY[0],
+            pointerY     = state.pageXY[1],
 
             scrollData,
             scrollRect;
@@ -661,16 +648,14 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
 
     /**
     Returns a bounding rect for _el_ with absolute coordinates corrected for
-    scroll positions.
+    viewport scroll offsets.
 
     The native `getBoundingClientRect()` returns coordinates for an element's
-    visual position relative to the top left of the viewport, so if the element
-    is part of a scrollable region that has been scrolled, its coordinates will
-    be different than if the region hadn't been scrolled.
+    position relative to the top left of the viewport, so if the viewport has
+    been scrolled, its coordinates will be different.
 
-    This method corrects for scroll offsets all the way up the node tree, so the
-    returned bounding rect will represent an absolute position on a virtual
-    canvas, regardless of scrolling.
+    This method returns an element's absolute rect, which will be the same
+    regardless of whether the viewport has been scrolled.
 
     @method _getAbsoluteBoundingRect
     @param {HTMLElement} el HTML element.
@@ -678,28 +663,9 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
     @protected
     **/
     _getAbsoluteBoundingRect: function (el) {
-        var body = doc.body,
-
-            // pageXOffset and pageYOffset work everywhere except IE <9.
-            offsetX = win.pageXOffset !== undefined ? win.pageXOffset :
-                (doc.documentElement || body.parentNode || body).scrollLeft,
-            offsetY = win.pageYOffset !== undefined ? win.pageYOffset :
-                (doc.documentElement || body.parentNode || body).scrollTop,
-
-            rect = el.getBoundingClientRect();
-
-        if (el !== body) {
-            var parent = el.parentNode;
-
-            // The element's rect will be affected by the scroll positions of
-            // *all* of its scrollable parents, not just the window, so we have
-            // to walk up the tree and collect every scroll offset. Good times.
-            while (parent !== body) {
-                offsetX += parent.scrollLeft;
-                offsetY += parent.scrollTop;
-                parent   = parent.parentNode;
-            }
-        }
+        var offsetX = this._viewportScrollOffsets[0],
+            offsetY = this._viewportScrollOffsets[1],
+            rect    = el.getBoundingClientRect();
 
         return {
             bottom: rect.bottom + offsetY,
@@ -748,6 +714,27 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         return [
             Math.abs(state.startXY[0] - state.pageXY[0]),
             Math.abs(state.startXY[1] - state.pageXY[1])
+        ];
+    },
+
+    /**
+    Returns the current X and Y scroll offsets of the viewport.
+
+    @method _getViewportScrollOffsets
+    @return {Number[]} Array containing the X and Y scroll offsets of the
+        viewport.
+    @protected
+    **/
+    _getViewportScrollOffsets: function () {
+        var body = doc.body;
+
+        return [
+            // pageXOffset and pageYOffset work everywhere except IE <9.
+            win.pageXOffset !== undefined ? win.pageXOffset :
+                (doc.documentElement || body.parentNode || body).scrollLeft,
+
+            win.pageYOffset !== undefined ? win.pageYOffset :
+                (doc.documentElement || body.parentNode || body).scrollTop
         ];
     },
 
@@ -867,11 +854,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
     **/
     _reinitialize: function () {
         this._endDrag();
-
-        if (this._container === Y.one('body')) {
-            this._containerIsBody = true;
-        }
-
         this._detachEvents();
         this._attachEvents();
     },
@@ -1061,20 +1043,28 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         this._proxyOrDragNode().addClass(this.classNames.dragging);
 
         this.sync();
+        this._fireDrag();
+    },
 
-        if (this._mutationObserver) {
-            // Activate the mutation observer. This will automatically update
-            // cached dropzone bounding rects whenever the container or one of
-            // its descendants is modified in the DOM.
-            this._mutationObserver.observe(this._container._node, {
-                attributes   : true,
-                characterData: true,
-                childList    : true,
-                subtree      : true
-            });
+    /**
+    Handles native `scroll` events on the container if the container isn't the
+    body. This is necessary in order to update bounding client rects when
+    scrollable containers are scrolled.
+
+    @method _onContainerScroll
+    @protected
+    **/
+    _onContainerScroll: function () {
+        if (!this._dragState.dragging || this._scrollEventThrottle) {
+            return;
         }
 
-        this._fireDrag();
+        var self = this;
+
+        this._scrollEventThrottle = setTimeout(function () {
+            self._scrollEventThrottle = null;
+            self.sync();
+        }, 100);
     },
 
     /**
@@ -1381,24 +1371,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         **/
         timeThreshold: {
             value: 800
-        },
-
-        /**
-        Whether or not to use a MutationObserver in capable browsers to
-        automatically detect changes to drop zone nodes during a drag operation.
-
-        This can be more convenient than manually calling `sync()` whenever a
-        drop zone changes, but it only works in very modern browsers and may
-        result in poor performance if frequent changes are made to drop zone
-        nodes during a drag operation.
-
-        It should be considered experimental.
-
-        @attribute {Boolean} useMutationObserver
-        @default false
-        **/
-        useMutationObserver: {
-            value: false
         }
     }
 });
