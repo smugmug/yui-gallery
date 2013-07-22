@@ -203,51 +203,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
 
 
     /**
-    Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes
-    instead of relying on spotty browser compatibility of `styleWithCSS`
-
-    Passes through to Editor.Base for any commands not defined
-    in `this.styleCommands`
-
-    @method _queryCommandValue
-    @param {String} name Command name.
-    @return {Boolean|String} Command value.
-    @protected
-    **/
-    _queryCommandValue: function(name) {
-        var command = this.styleCommands[name],
-            range = this.selection.range(),
-            styleNode, value;
-
-        if (!command) {
-            return Y.Editor.Base.prototype._queryCommandValue.call(this, name);
-        }
-
-        if (range) {
-            styleNode = EDOM.getAncestorElement(range.startNode(), EDOM.isInlineElement);
-            value = styleNode && styleNode._node.style[command.property];
-
-            range.traverse(function(node) {
-                if (EDOM.isInlineElement(node)) {
-                    if (node._node.style[command.property] !== value) {
-                        value = null;
-                        return true;
-                    }
-                }
-            });
-        }
-
-        if (this.boolCommands[name]) {
-            value = (value === command.valueOn);
-        } else if ('' === value) {
-            value = null;
-        }
-
-        return value;
-    },
-
-
-    /**
     Parses inline elements from a given range. Partially selected nodes will
     be split and text nodes will be wrapped in `<span>` tags if necessary.
 
@@ -322,6 +277,51 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         }
 
         return contents;
+    },
+
+
+    /**
+    Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes
+    instead of relying on spotty browser compatibility of `styleWithCSS`
+
+    Passes through to Editor.Base for any commands not defined
+    in `this.styleCommands`
+
+    @method _queryCommandValue
+    @param {String} name Command name.
+    @return {Boolean|String} Command value.
+    @protected
+    **/
+    _queryCommandValue: function(name) {
+        var command = this.styleCommands[name],
+            range = this.selection.range(),
+            styleNode, value;
+
+        if (!command) {
+            return Y.Editor.Base.prototype._queryCommandValue.call(this, name);
+        }
+
+        if (range) {
+            styleNode = EDOM.getAncestorElement(range.startNode(), EDOM.isInlineElement);
+            value = styleNode && styleNode._node.style[command.property];
+
+            range.traverse(function(node) {
+                if (EDOM.isInlineElement(node)) {
+                    if (node._node.style[command.property] !== value) {
+                        value = null;
+                        return true;
+                    }
+                }
+            });
+        }
+
+        if (this.boolCommands[name]) {
+            value = (value === command.valueOn);
+        } else if ('' === value) {
+            value = null;
+        }
+
+        return value;
     }
 });
 
