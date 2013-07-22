@@ -18,7 +18,8 @@ Extension for `Editor.Base` that normalizes style commands into css properties
 
 (function() {
 
-var EDOM = Y.Editor.DOM;
+var EDOM = Y.Editor.DOM,
+    STYLENODE = '<span></span>';
 
 var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
@@ -151,63 +152,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
 
     // -- Protected Methods ----------------------------------------------------
 
-    /**
-    Traverses the children of a given node, removing empty nodes and
-    clearing out any given css properties
-
-    Note: rootNode may get destroyed during the cleaning process
-
-    @method _cleanNode
-    @param {Range} range
-    @param {String|Array} properties
-    @return {Range}
-    @protected
-    **/
-    _cleanRange: function(range, properties) {
-        var rootNode = range.parentNode(),
-            styleCommands = this.styleCommands;
-
-        properties = Y.Array(properties);
-
-        function hasStyles(node) {
-            return Y.Object.some(styleCommands, function(cmd) {
-                return '' !== node._node.style[cmd.property];
-            });
-        }
-
-        function clean(node) {
-            if (!EDOM.isElementNode(node)) {
-                return;
-            }
-
-            if ('' === node.get('text')) {
-                // the node is empty, remove it
-                node.remove(true);
-            } else {
-                // clear out the properties
-                Y.Array.each(properties, function(style) {
-                    node.setStyle(style, '');
-                });
-
-                node.get('children').each(clean);
-
-                if (!hasStyles(node)) {
-                    EDOM.unwrap(node);
-                }
-            }
-        }
-
-        rootNode.get('children').each(clean);
-
-        if (!hasStyles(rootNode)) {
-            range = EDOM.unwrap(rootNode);
-        } else {
-            range.selectNodeContents(rootNode);
-        }
-
-        return range;
-    },
-
 
     /**
     Duckpunch Editor.Base._execCommand to build css styled nodes instead of
@@ -224,7 +168,7 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     _execCommand: function(name, value) {
         var command = this.styleCommands[name],
             range = this.selection.range(),
-            parentNode, styleNode;
+            styleNodes;
 
         if (!command) {
             return Y.Editor.Base.prototype._execCommand.call(this, name, value);
@@ -234,38 +178,28 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
             return;
         }
 
-        // range.parentNode() may return a text node
-        // so make sure we actually have an element
-        parentNode = EDOM.getAncestorElement(range.parentNode());
+        styleNodes = this._extractStyleNodes(range);
 
-        if (parentNode !== this._inputNode &&
-            parentNode.get('text') === range.toString()) {
-            // if the entire text of a node is selected, just apply
-            // styles to that node, as long as its not the input node
-            styleNode = parentNode;
-        } else {
-            // otherwise, wrap the selection in a new node
-            styleNode = range.wrap('<span>');
-        }
-
-        if (this.boolCommands[name]) {
-            if (this._queryCommandValue(name)) {
-                // already set, disable
-                // determine whether an ancestor has this property set
-                // or not so we can simply unset the value instead of
-                // setting it to `none` or `normal` or whatever
-                value = this._getStyledAncestor(styleNode, command.property) ? command.valueOff : '';
-            } else {
-                // need to enable, set appropriate value
-                value = command.valueOn || value;
+        styleNodes.each(function(styleNode) {
+            if (this.boolCommands[name]) {
+                if (this._queryCommandValue(name)) {
+                    // already set, disable
+                    // determine whether an ancestor has this property set
+                    // or not so we can simply unset the value instead of
+                    // setting it to `none` or `normal` or whatever
+                    value = this._getStyledAncestor(styleNode, command.property) ? command.valueOff : '';
+                } else {
+                    // need to enable, set appropriate value
+                    value = command.valueOn || value;
+                }
             }
-        }
 
-        styleNode.setStyle(command.property, value);
+            styleNode.setStyle(command.property, value);
+        }, this);
 
-        range.selectNodeContents(styleNode);
-
-        range = this._cleanRange(range, command.property);
+        range.startNode(styleNodes.item(0), 0);
+        range.endNode(styleNodes.item(styleNodes.size() - 1));
+        range.endOffset(EDOM.maxOffset(range.endNode()));
 
         this.selection.select(range);
     },
@@ -343,6 +277,86 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         }
 
         return value;
+    },
+
+
+    /**
+    Parses inline elements from a given range. Partially selected nodes will
+    be split and text nodes will be wrapped in `<span>` tags if necessary.
+
+    The initial range will not be updated to reflect any changes, however
+    selecting the contents of the resulting NodeList will be identical to the
+    initial range.
+
+    @method _extractStyleNodes
+    @param {Range} range
+    @return {NodeList} NodeList of inline elements within the given `range`
+    @protected
+    **/
+    _extractStyleNodes: function(range) {
+        var inlineParent, styleContext, contents,
+            startNode, startOffset;
+
+        debugger;
+
+        range.shrink();
+
+        // see if the range is contained in an inline element
+        inlineParent = EDOM.getAncestorElement(
+            range.parentNode(),
+            EDOM.isInlineElement
+        );
+
+        if (inlineParent) {
+            if (range.toString() === inlineParent.get('text')) {
+                // the entire node is selected, just return the node
+                return new Y.NodeList([inlineParent]);
+            }
+
+            // any text nodes extracted from the range will be wrapped in
+            // clones of the parent node to maintain existing styles
+            styleContext = inlineParent;
+        } else {
+            // the default style context for any text nodes in the range
+            styleContext = Y.Node.create(STYLENODE);
+        }
+
+        // extract the contents and wrap any text nodes in the
+        // appropriate style context
+        contents = range.extractContents().get('childNodes');
+        contents.each(function(node, ix) {
+            if (EDOM.isTextNode(node)) {
+                // wrap any text nodes in a style context
+                contents.splice(ix, 1, styleContext.cloneNode(false).append(node));
+            }
+        });
+
+        // after extracting the contents, we will have a collapsed range
+        // at the position where we extracted the contents
+        startNode = range.startNode();
+        startOffset = range.startOffset();
+
+        if (EDOM.isBlockElement(startNode)) {
+            // If the common element containing the range is a block level
+            // element it is not necessary to split that container.
+            // Insert the contents back in as the next sibling of the node
+            // they were extracted from
+            startNode.insert(contents, startOffset);
+        } else {
+            // The range was entirely contained in an inline element or
+            // text node. Split that node and insert the contents in between
+            // the split nodes
+            var splitNode = EDOM.split(startNode, startOffset),
+                splitParent = splitNode.get('parentNode');
+
+            if (EDOM.isTextNode(splitNode) && !EDOM.isBlockElement(splitParent)) {
+                splitNode = EDOM.split(splitParent, splitNode);
+            }
+
+            splitNode.insert(contents, 'before');
+        }
+
+        return contents;
     }
 });
 
