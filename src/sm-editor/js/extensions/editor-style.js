@@ -170,30 +170,27 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
             range = this.selection.range(),
             styleNodes;
 
+        if (!range) {
+            return;
+        }
+
         if (!command) {
             return Y.Editor.Base.prototype._execCommand.call(this, name, value);
         }
 
-        if (!range) {
-            return;
+        if (this.boolCommands[name] && 'toggle' === value) {
+            if (this._queryCommandValue(name)) {
+                // already enabled, turn it off
+                value = '';
+            } else {
+                // need to enable, set appropriate value
+                value = command.valueOn || value;
+            }
         }
 
         styleNodes = this._extractStyleNodes(range);
 
         styleNodes.each(function(styleNode) {
-            if (this.boolCommands[name]) {
-                if (this._queryCommandValue(name)) {
-                    // already set, disable
-                    // determine whether an ancestor has this property set
-                    // or not so we can simply unset the value instead of
-                    // setting it to `none` or `normal` or whatever
-                    value = this._getStyledAncestor(styleNode, command.property) ? command.valueOff : '';
-                } else {
-                    // need to enable, set appropriate value
-                    value = command.valueOn || value;
-                }
-            }
-
             styleNode.setStyle(command.property, value);
         }, this);
 
@@ -204,29 +201,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         this.selection.select(range);
     },
 
-    /**
-    Walks the ancestor tree of a given node until a node that has
-    the css property set is found
-
-    @method _getStyledAncestor
-    @param {Node} startNode
-    @param {String} property
-    @param {Boolean} [self] Whether or not to include `startNode` in the scan
-    @return {Node} The node having `property` set, or null if no node was found
-    @protected
-    **/
-    _getStyledAncestor: function(startNode, property, self) {
-        return startNode.ancestor(function(node) {
-            if (!EDOM.isElementNode(node)) {
-                return false;
-            }
-
-            // don't use node.getStyle() because it will return
-            // computedStyle for empty string values like `property: ""`
-            // https://github.com/yui/yui3/blob/master/src/dom/js/dom-style.js#L106
-            return !!node._node.style[property];
-        }, self, this.selectors.input);
-    },
 
     /**
     Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes
@@ -243,37 +217,30 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     _queryCommandValue: function(name) {
         var command = this.styleCommands[name],
             range = this.selection.range(),
-            parentNode, styleNode, value;
+            styleNode, value;
 
         if (!command) {
             return Y.Editor.Base.prototype._queryCommandValue.call(this, name);
         }
 
         if (range) {
-            parentNode = range.shrink().parentNode();
+            styleNode = EDOM.getAncestorElement(range.startNode(), EDOM.isInlineElement);
+            value = styleNode && styleNode._node.style[command.property];
 
-            // first attempt to get any explicitly styled ancestor for
-            // the given property. Need to do this first because browsers
-            // sometimes return different values for explicit style vs.
-            // computed style. `font-weight: bold;` for example will return
-            // `bold` in all browsers when explicitly set but `700` in
-            // Firefox and Internet Explorer with computedStyle.
-            styleNode = this._getStyledAncestor(parentNode, command.property, true);
+            range.traverse(function(node) {
+                if (EDOM.isInlineElement(node)) {
+                    if (node._node.style[command.property] !== value) {
+                        value = null;
+                        return true;
+                    }
+                }
+            });
+        }
 
-            if (!styleNode) {
-                // no explicitly styled ancestor found. walk the
-                // ancestor tree to find the closest element
-                // node ancestor, inclusive of the parentNode
-                styleNode = EDOM.getAncestorElement(parentNode);
-            }
-
-            // getStyle will fall back to computedStyle if the
-            // property isn't explicitly set
-            value = styleNode.getStyle(command.property);
-
-            if (this.boolCommands[name]) {
-                value = (value === command.valueOn);
-            }
+        if (this.boolCommands[name]) {
+            value = (value === command.valueOn);
+        } else if ('' === value) {
+            value = null;
         }
 
         return value;
@@ -296,8 +263,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     _extractStyleNodes: function(range) {
         var inlineParent, styleContext, contents,
             startNode, startOffset;
-
-        debugger;
 
         range.shrink();
 
