@@ -231,6 +231,80 @@ Range.prototype = {
     },
 
     /**
+    Attempts to expand the range to include element nodes while
+    still being equivalent to the current range. Start and End nodes
+    are not guaranteed to be element nodes after this method is executed.
+
+    Examples:
+
+        [] = startContainer, {} = endContainer, s:e = start/end offset
+
+    given the HTML
+
+        <div><span>Lorem</span></div>
+
+    an initial range of
+
+        <div><span>[{Lorem]}</span></div>  s0:e5
+
+    after expansion would be
+
+        [{<div><span>Lorem</span></div>}]  s0:e1
+
+    @method expand
+    @chainable
+    **/
+    expand: function() {
+        return this.expandStart().expandEnd();
+    },
+
+    /**
+    Attempts to expand the range end to include element nodes while
+    still being equivalent to the current range. End node is not
+    guaranteed to be an element node after this method is executed.
+
+    @method expandEnd
+    @chainable
+    **/
+    expandEnd: function() {
+        var node = this.endNode(),
+            offset = this.endOffset(),
+            nodeType = node.get('nodeType');
+
+        if (TEXT_NODE === nodeType && node.get('length') === offset
+            && !node.get('nextSibling')) {
+            // text node, offset at the end of the node and no next sibling
+            // change the endNode to be after the parent node
+            this.endNode(node.get('parentNode'), 'after');
+        }
+
+        return this;
+    },
+
+    /**
+    Attempts to expand the range start to include element nodes while
+    still being equivalent to the current range. Start node is not
+    guaranteed to be an element node after this method is executed.
+
+    @method expandStart
+    @chainable
+    **/
+    expandStart: function() {
+        var node = this.startNode(),
+            offset = this.startOffset(),
+            nodeType = node.get('nodeType');
+
+        if (TEXT_NODE === nodeType && 0 === offset
+            && !node.get('previousSibling')) {
+            // text node, offset at the start of the node and no previous sibling
+            // change the startNode to be before the parent node
+            this.startNode(node.get('parentNode'), 'before');
+        }
+
+        return this;
+    },
+
+    /**
     Moves this range's contents into a document fragment and returns a Node
     instance containing that fragment.
 
