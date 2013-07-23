@@ -321,6 +321,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         this._events = [
             container.delegate('blur',  this._onBlur,  selectors.input, this),
+            container.delegate('copy',  this._onCopy,  selectors.input, this),
+            container.delegate('cut',  this._onCut,  selectors.input, this),
             container.delegate('dblclick', this._onDblClick, selectors.input, this),
             container.delegate('focus', this._onFocus, selectors.input, this),
             container.delegate('paste', this._onPaste, selectors.input, this)
@@ -497,6 +499,57 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         clearInterval(this._selectionMonitor);
 
         this.fire(EVT_BLUR);
+    },
+
+    /**
+    Handles `copy` events on the editor.
+
+    @method _onCopy
+    @param {EventFacade} e
+    @protected
+    **/
+    _onCopy: function (e) {
+        var clipboard = e._event.clipboardData || window.clipboardData,
+            range = this.selection.range(),
+            contents = range.cloneContents().getHTML();
+
+        e.preventDefault();
+
+        try {
+            // IE doesn't support mime types
+            clipboard.setData('text/html', contents);
+            clipboard.setData('text/plain', contents);
+        } catch (err) {
+            clipboard.setData('text', contents);
+        }
+    },
+
+    /**
+    Handles `cut` events on the editor.
+
+    @method _onCut
+    @param {EventFacade} e
+    @protected
+    **/
+    _onCut: function (e) {
+        var clipboard = e._event.clipboardData || window.clipboardData,
+            range = this.selection.range(),
+
+            // note the `expand()`. this prevents any empty nodes
+            // being left after `extractContents()`
+            contents = range.expand().extractContents().getHTML();
+
+        e.preventDefault();
+
+        this.selection.select(range);
+
+        try {
+            // IE doesn't support mime types
+            clipboard.setData('text/html', contents);
+            clipboard.setData('text/plain', contents);
+        } catch (err) {
+            clipboard.setData('text', contents);
+        }
     },
 
     /**

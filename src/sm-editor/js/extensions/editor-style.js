@@ -322,6 +322,52 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         }
 
         return value;
+    },
+
+    // -- Protected Event Handlers ---------------------------------------------
+
+    /**
+    Handles `paste` events on the editor.
+
+    @method _onPaste
+    @param {EventFacade} e
+    @protected
+    **/
+    _onPaste: function (e) {
+        var clipboard = e._event.clipboardData || window.clipboardData,
+            contents = clipboard.getData('text'),
+            range = this.selection.range(),
+            endNode, endOffset;
+
+        e.preventDefault();
+
+        // convert contents to a nodeList so after the contents are
+        // inserted into the proper position in the DOM, the range
+        // can be positioned properly after the pasted content
+        contents = Y.one(document.createDocumentFragment())
+                    .setHTML(contents).get('childNodes');
+
+        range.expand().deleteContents();
+
+        endNode = range.endNode();
+        endOffset = range.endOffset();
+
+        if (EDOM.isBlockElement(endNode)) {
+            endNode.insert(contents, endOffset);
+        } else if (endOffset === EDOM.maxOffset(endNode)) {
+            // if already at the end of a node insert contents after
+            endNode.insert(contents, 'after');
+        } else {
+            // somewhere in an inline or text node (but not at the end)
+            // split the node and insert the contents in between
+            EDOM.split(endNode, endOffset).insert(contents, 'before');
+        }
+
+        // set the endNode to the last pasted node
+        range.endNode(contents.item(contents.size() - 1), 'after');
+
+        // collapse the range after the pasted text
+        this.selection.select(range.collapse());
     }
 });
 
