@@ -457,6 +457,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
     @method _updateSelection
     @param {Object} [options] Options.
+        @param {Boolean} [options.force=false] If `true`, the internal selection
+            state will be updated regardless of if the selection changed.
         @param {Boolean} [options.silent=false] If `true`, the `selectionChange`
             event will be suppressed.
     @protected
@@ -464,9 +466,11 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     _updateSelection:  function (options) {
         var prevRange = this._selectedRange || null,
             newRange  = this.selection.range() || null,
+            force     = options && options.force,
             silent    = options && options.silent;
 
-        if (newRange === prevRange || (prevRange && prevRange.isEquivalent(newRange))) {
+        if (!force &&
+            (newRange === prevRange || (prevRange && prevRange.isEquivalent(newRange)))) {
             return;
         }
 
