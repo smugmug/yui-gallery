@@ -13,7 +13,46 @@ DOM utility methods for `Editor.Base`
 @class Editor.DOM
 **/
 
-var EditorDOM = function() {};
+var EditorDOM = {};
+
+EditorDOM.inlineElements = 'b, em, i, span, strong, u';
+
+/**
+Copies styles from a node to another node
+@param {HTMLElement|Node} from
+@param {HTMLElement|Node} to
+@param {Array} styles
+@param {Object} [options]
+    @param {Boolean} [options.explicit=false] When set to `true` copy only
+        explicitly set properties from the source node. IOW, don't use
+        computedStyle.
+    @param {Boolean} [options.overwrite=false] When set to `true`
+        properties from the source node will overwrite the same property
+        set on the destination node.
+**/
+EditorDOM.copyStyles = function(from, to, styles, options) {
+    var newStyles = {},
+        explicit = options && options.explicit,
+        overwrite = options && options.overwrite;
+
+    from = Y.one(from);
+    to = Y.one(to);
+
+    if (!EditorDOM.isElementNode(from) || !EditorDOM.isElementNode(to)) {
+        return;
+    }
+
+    Y.Array.each(styles, function(prop) {
+        var newVal = explicit ? from._node.style[prop] : from.getStyle(prop);
+
+        if ('' !== newVal && (overwrite || '' === to._node.style[prop])) {
+            newStyles[prop] = newVal;
+        }
+    });
+
+    to.setStyles(newStyles);
+};
+
 
 /**
 Finds the nearest ancestor element node.
@@ -72,18 +111,20 @@ EditorDOM.getStyledAncestor = function(startNode, property, self) {
 
 
 /**
-Returns true if the given node is a block element, false otherwise
+Returns true if the given node is a container element, false otherwise
+A container element is defined as a non-inline element
 
-@method isBlockElement
-@param {HTMLElement|Node} node
-@return {Boolean} true if the given node is a block element, false otherwise
+@method isContainer
+@param {HTMLNode|Node} node
+@return {Boolean} true if the given node is a container element, false otherwise
 @static
 **/
-EditorDOM.isBlockElement = function(node) {
+EditorDOM.isContainer = function(node) {
     node = Y.one(node);
 
-    return EditorDOM.isElementNode(node) &&
-        'block' === node.getStyle('display');
+    // isElementNode() will exclude document fragments, which are valid
+    // containers, use !isTextNode() instead
+    return !EditorDOM.isTextNode(node) && !EditorDOM.isInlineElement(node);
 };
 
 
@@ -91,14 +132,34 @@ EditorDOM.isBlockElement = function(node) {
 Returns true if the given node is an element node, false otherwise
 
 @method isElementNode
-@param {HTMLElement|Node} node
+@param {HTMLNode|Node} node
 @return {Boolean} true if the given node is an element node, false otherwise
 @static
 **/
 EditorDOM.isElementNode = function(node) {
     node = Y.one(node);
 
-    return 1 === node.get('nodeType');
+    return node._node && 1 === node._node.nodeType;
+};
+
+
+/**
+Returns true if the given node is empty
+
+Nodes containing only returns, tabs or linefeeds are considered empty
+Nodes containing only whitespace are not considered empty
+
+@method isEmptyNode
+@param {HTMLNode|Node} node
+@return {Boolean} true if the given node is a empty, false otherwise
+@static
+**/
+EditorDOM.isEmptyNode = function(node) {
+    node = Y.one(node);
+
+    var text = node ? node.get('text') : '';
+
+    return /^[^\S ]*$/.test(text);
 };
 
 
@@ -106,15 +167,14 @@ EditorDOM.isElementNode = function(node) {
 Returns true if the given node is an inline element node, false otherwise
 
 @method isInlineElement
-@param {HTMLElement|Node} node
+@param {HTMLNode|Node} node
 @return {Boolean} true if the given node is an inline element node, false otherwise
 @static
 **/
 EditorDOM.isInlineElement = function(node) {
     node = Y.one(node);
 
-    return EditorDOM.isElementNode(node) &&
-        /^inline/.test(node.getStyle('display'));
+    return node && node.test(EditorDOM.inlineElements);
 };
 
 
@@ -122,14 +182,14 @@ EditorDOM.isInlineElement = function(node) {
 Returns true if the given node is a text node, false otherwise
 
 @method isTextNode
-@param {HTMLElement|Node} node
+@param {HTMLNode|Node} node
 @return {Boolean} true if the given node is a text node, false otherwise
 @static
 **/
 EditorDOM.isTextNode = function(node) {
     node = Y.one(node);
 
-    return 3 === node.get('nodeType');
+    return node._node && 3 === node._node.nodeType;
 };
 
 
@@ -140,7 +200,7 @@ Element nodes will return the number of childNodes
 Text nodes will return the length of the text
 
 @method maxOffset
-@param {HTMLElement|Node} node
+@param {HTMLNode|Node} node
 @return {Number} Number of child nodes or length of text
 @static
 **/
@@ -148,6 +208,24 @@ EditorDOM.maxOffset = function(node) {
     node = Y.one(node);
 
     return node.get('childNodes').size() || node.get('length');
+};
+
+
+/**
+Replace spaces in text with a replacement string.
+
+Primarily to workaround a webkit issue where it won't put the caret after
+trailing whitespace at the end of a node
+
+@param {String} text The source text that will have spaces replaced
+@param {String} [replacement=\u00a0] The string to use as the replacement for
+    spaces in _text_. Defaults to a nonblank space
+@returns {String} _text_ with spaces replaced
+**/
+EditorDOM.replaceSpaces = function(text, replacement) {
+    replacement || (replacement = '\u00a0');
+
+    return text.replace(/ /g, replacement)
 };
 
 
@@ -201,8 +279,8 @@ Unwraps a node
 EditorDOM.unwrap = function (node) {
     var range, startNode, endNode;
 
-    startNode = node.get('firstChild');
-    endNode = node.get('lastChild');
+    startNode = node.get('firstChild') || node;
+    endNode = node.get('lastChild') || node;
 
     startNode.unwrap();
 
