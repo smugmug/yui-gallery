@@ -60,6 +60,8 @@ Fired after a drag operation ends or is canceled.
 @param {Number[]} deltaXY Number of pixels the pointer has moved on the X and Y
     axes since the drag operation began.
 @param {Node} dragNode The node that was dragged.
+@param {Boolean} dropped Whether or not the drag operation resulted in a
+    successful drop.
 @param {Number[]} pageXY Current X and Y coordinates of the pointer.
 @param {Number[]} startXY X and Y coordinates of the pointer when the drag
     operation began.
@@ -415,6 +417,7 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
 
             this._publishAndFire(EVT_DRAG_END, Y.merge(state, {
                 deltaXY: this._getDelta(),
+                dropped: !!state.dropped,
                 state  : state
             }));
         }
@@ -1138,6 +1141,8 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
             }
 
             if (state.dropNode) {
+                state.dropped = true;
+
                 this._publishAndFire(EVT_DROP, Y.merge(state, {
                     deltaXY: this._getDelta(),
                     state  : state
