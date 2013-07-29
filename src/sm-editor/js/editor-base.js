@@ -161,12 +161,13 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         supplied function.
     **/
     command: function (name, value) {
-        var args = Y.Array(arguments, 1, true);
+        var args = Y.Array(arguments, 1, true),
+            retVal;
 
         this.focus();
 
         if (typeof name === 'function') {
-            return name.apply(this, args);
+            retVal = name.apply(this, args);
         } else {
             value = args.shift();
 
@@ -174,8 +175,12 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
                 this._execCommand(name, value);
             }
 
-            return this._queryCommandValue(name);
+            retVal = this._queryCommandValue(name);
         }
+
+        this._updateSelection({force: true});
+
+        return retVal;
     },
 
     /**
