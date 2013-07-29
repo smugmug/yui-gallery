@@ -22,7 +22,32 @@ var EDOM = Y.Editor.DOM;
 var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
 
-    template: '<a href="{href}" target="{target}"></a>',
+    /**
+    Key commands related to creating hyperlinks.
+
+    @property {Object} linkKeyCommands
+    **/
+    linkKeyCommands: {
+        // Create a link.
+        'ctrl+l'      : {fn: 'link', allowDefault: false}
+    },
+
+    /**
+    HTML Template for building an anchor node
+
+    @property {Object} linkTemplate
+    **/
+    linkTemplate: '<a href="{href}" target="{target}"></a>',
+
+
+    // -- Lifecycle ------------------------------------------------------------
+
+    initializer: function () {
+//        if (this.keyCommands) {
+//            this.keyCommands = Y.merge(this.keyCommands, this.linkKeyCommands);
+//        }
+    },
+
 
     // -- Public Methods -------------------------------------------------------
 
@@ -31,9 +56,9 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
 
     @method link
     @param {Object} options
-      @param {String} [options.target=_self]
-      @param {String} [options.text=range.toString()]
-      @param {String} options.href
+        @param {String} options.href
+        @param {String} [options.target=_self]
+        @param {String} [options.text]
     @chainable
     **/
     link: function (options) {
@@ -96,29 +121,46 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
 
 
     /**
-    Implementation for the public `link` method
+    Implementation for the public `link` method.
+
+    Wraps the currently selected range in an anchor `<a>` tag
 
     @method _link
     @param {Object} options
-      @param {String} [options.target=_self]
-      @param {String} [options.text=range.toString()]
-      @param {String} options.href
+        @param {String} options.href
+        @param {String} [options.target=_self]
+        @param {String} [options.text]
     @chainable
     @protected
     **/
     _link: function(options){
-        var range = this.selection.range();
+        var range = this.selection.range(),
+            anchorNode;
 
         if (!range) {
             return;
         }
 
+        if (this.isLink()) {
+            range = this.unlink().selection.range();
+        }
+
         options || (options = {});
         options.target || (options.target = '_self');
-        //options.text || (options.text = range.toString());
         options.href || (options.href = '');
 
-        range.wrap(Y.Lang.sub(this.template, options));
+        range.shrink();
+
+        anchorNode = Y.Lang.sub(this.linkTemplate, options);
+        anchorNode = range.wrap(anchorNode);
+
+        if (options.text && options.text !== range.toString()) {
+            anchorNode.set('text', options.text);
+        }
+
+        range.endNode(anchorNode, 'after');
+
+        this.selection.select(range.collapse());
 
         return this;
     }
