@@ -216,7 +216,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         range.endOffset(EDOM.maxOffset(range.endNode()));
 
         this.selection.select(range);
-        this._updateSelection({force: true});
     },
 
 
@@ -244,8 +243,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
                 parentNode = node.get('parentNode');
 
                 if (EDOM.isTextNode(node)) {
-                    node.set('text', EDOM.replaceSpaces(node.get('text')));
-
                     if (EDOM.isContainer(parentNode)) {
                         node.wrap(STYLENODE);
                     } else if (node.get('previousSibling')) {
@@ -510,9 +507,15 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
 
         contents = this.get('formatFn')(contents);
 
-        // expanding the range before deleting contents makes sure
-        // no empty nodes are left around
-        range.expand().deleteContents();
+        if (!range.isCollapsed()) {
+            if (this._inputNode !== EDOM.getAncestorElement(range.parentNode())) {
+                // expanding the range before deleting contents makes sure
+                // the entire node is deleted, if possible.
+                range.expand();
+            }
+
+            range.deleteContents();
+        }
 
         range.endNode(this._splitAfterRange(range, contents), 'before');
 

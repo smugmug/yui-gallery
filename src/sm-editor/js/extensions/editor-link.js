@@ -149,7 +149,11 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
         options.target || (options.target = '_self');
         options.href || (options.href = '');
 
-        range.shrink();
+        if (this._inputNode !== EDOM.getAncestorElement(range.parentNode())) {
+            // expanding the range before deleting contents makes sure
+            // the entire node is wrapped, if possible.
+            range.expand();
+        }
 
         anchorNode = Y.Lang.sub(this.linkTemplate, options);
         anchorNode = range.wrap(anchorNode);
