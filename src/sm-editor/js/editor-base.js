@@ -469,8 +469,14 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
             force     = options && options.force,
             silent    = options && options.silent;
 
-        if (!force &&
-            (newRange === prevRange || (prevRange && prevRange.isEquivalent(newRange)))) {
+        if (!force && (
+                newRange === prevRange || (
+                    prevRange &&
+                    prevRange.isEquivalent(newRange) &&
+                    prevRange.toHTML() === newRange.toHTML()
+                )
+            )
+        ) {
             return;
         }
 
