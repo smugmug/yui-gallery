@@ -90,7 +90,8 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
 
         this._queueEvents = [
             container.delegate('keypress', this._onKeyPress, this.selectors.input, this),
-            Y.Do.before(this._queueBeforeExecCommand, this, '_execCommand', this)
+            Y.Do.before(this._queueBeforeExecCommand, this, '_execCommand', this),
+            Y.Do.before(this._queueBeforeQueryCommandValue, this, '_queryCommandValue', this)
         ];
     },
 
@@ -132,6 +133,7 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
         }
 
         Y.Object.each(this._commandQueue, function(value, cmd) {
+            delete this._commandQueue[cmd];
             this._execCommand(cmd, value);
         }, this);
 
@@ -166,7 +168,7 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     **/
     _onKeyPress: function(e) {
         var range = this.selection.range(),
-            wrapperNode, textNode;
+            wrapperNode;
 
         if (range.shrink().isCollapsed() && this._commandQueue) {
             e.preventDefault();
@@ -183,8 +185,11 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
             range = this.selection.range().shrink().collapse();
 
             this.selection.select(range);
+        } else {
+            this._clearCommandQueue();
         }
     },
+
 
     /**
     Wrapper for `Editor.Base#_execCommand()`.
@@ -200,6 +205,20 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
         if (range && range.shrink().isCollapsed()) {
             this._queueCommand(name, value);
             return new Y.Do.Halt('queue prevented _execCommand');
+        }
+    },
+
+
+    /**
+    Wrapper for `Editor.Base#_queryCommandValue()`.
+
+    @method _queueBeforeQueryCommandValue
+    @param {String} name Command name.
+    @protected
+    **/
+    _queueBeforeQueryCommandValue: function (name) {
+        if (this._commandQueue && this._commandQueue.hasOwnProperty(name)) {
+            return new Y.Do.Halt('queue prevented _queryCommandValue', this._commandQueue[name]);
         }
     }
 });
