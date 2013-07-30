@@ -177,7 +177,7 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     _execCommand: function(name, value) {
         var command = this.styleCommands[name],
             range = this.selection.range(),
-            styleNodes;
+            styleNodes, style;
 
         if (!range) {
             return;
@@ -189,7 +189,9 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
 
         styleNodes = this._getStyleNodes(range);
 
-        var style = styleNodes.item(0).getStyle(command.property);
+        // These nodes aren't in the DOM, getStyle() won't work...at least on
+        // any windows browser.  works fine on OSX. weird.
+        style = styleNodes.item(0)._node.style[command.property];
 
         if (this.boolCommands[name] && 'toggle' === value) {
             if (style && '' !== style) {
@@ -205,9 +207,7 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
 
         // expanding the range before deleting contents makes sure
         // the entire node is deleted, if possible.
-        range.expand(this._inputNode);
-
-        range.deleteContents();
+        range.expand(this._inputNode).deleteContents();
 
         this._splitAfterRange(range, styleNodes);
 
