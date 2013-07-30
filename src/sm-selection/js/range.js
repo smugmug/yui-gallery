@@ -279,7 +279,7 @@ Range.prototype = {
         container = Y.one(container);
 
         if (TEXT_NODE === nodeType && endNode.length === offset && !endNode.nextSibling
-                && (container && container._node !== parentNode)) {
+                && (!container || container._node !== parentNode)) {
             this.endNode(parentNode, 'after');
         }
 
@@ -305,7 +305,7 @@ Range.prototype = {
         container = Y.one(container);
 
         if (TEXT_NODE === nodeType && 0 === offset && !startNode.previousSibling
-                && (container && container._node !== parentNode)) {
+                && (!container || container._node !== parentNode)) {
             this.startNode(parentNode, 'before');
         }
 
