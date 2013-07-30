@@ -254,7 +254,7 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
                     if (!EDOM.isContainer(parentNode)) {
                         parentNode.insert(node, 'after');
 
-                        node.addClass('className', parentNode.get('className'));
+                        node.addClass(parentNode.get('className'));
 
                         EDOM.copyStyles(parentNode, node, supportedStyles, {
                             explicit: true,
