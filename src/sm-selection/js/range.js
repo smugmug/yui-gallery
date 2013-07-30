@@ -252,10 +252,12 @@ Range.prototype = {
         [{<div><span>Lorem</span></div>}]  s0:e1
 
     @method expand
+    @param {HTMLElement|Node} [container] If provided, do not expand the range
+        past this container
     @chainable
     **/
-    expand: function() {
-        return this.expandStart().expandEnd();
+    expand: function(container) {
+        return this.expandStart(container).expandEnd(container);
     },
 
     /**
@@ -264,18 +266,21 @@ Range.prototype = {
     guaranteed to be an element node after this method is executed.
 
     @method expandEnd
+    @param {HTMLElement|Node} [container] If provided, do not expand the range
+        past this container
     @chainable
     **/
-    expandEnd: function() {
-        var node = this.endNode(),
+    expandEnd: function(container) {
+        var endNode = this.endNode()._node,
             offset = this.endOffset(),
-            nodeType = node.get('nodeType');
+            nodeType = endNode.nodeType,
+            parentNode = endNode.parentNode;
 
-        if (TEXT_NODE === nodeType && node.get('length') === offset
-            && !node.get('nextSibling')) {
-            // text node, offset at the end of the node and no next sibling
-            // change the endNode to be after the parent node
-            this.endNode(node.get('parentNode'), 'after');
+        container = Y.one(container);
+
+        if (TEXT_NODE === nodeType && endNode.length === offset && !endNode.nextSibling
+                && (container && container._node !== parentNode)) {
+            this.endNode(parentNode, 'after');
         }
 
         return this;
@@ -287,18 +292,21 @@ Range.prototype = {
     guaranteed to be an element node after this method is executed.
 
     @method expandStart
+    @param {HTMLElement|Node} [container] If provided, do not expand the range
+        past this container
     @chainable
     **/
-    expandStart: function() {
-        var node = this.startNode(),
+    expandStart: function(container) {
+        var startNode = this.startNode()._node,
             offset = this.startOffset(),
-            nodeType = node.get('nodeType');
+            nodeType = startNode.nodeType,
+            parentNode = startNode.parentNode;
 
-        if (TEXT_NODE === nodeType && 0 === offset
-            && !node.get('previousSibling')) {
-            // text node, offset at the start of the node and no previous sibling
-            // change the startNode to be before the parent node
-            this.startNode(node.get('parentNode'), 'before');
+        container = Y.one(container);
+
+        if (TEXT_NODE === nodeType && 0 === offset && !startNode.previousSibling
+                && (container && container._node !== parentNode)) {
+            this.startNode(parentNode, 'before');
         }
 
         return this;
