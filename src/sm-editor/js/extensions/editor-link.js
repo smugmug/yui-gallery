@@ -157,7 +157,14 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
         anchorNode = range.wrap(anchorNode);
 
         if (options.text && options.text !== range.toString()) {
-            anchorNode.set('text', options.text);
+            var firstChild = anchorNode.get('firstChild');
+
+            if (EDOM.isInlineElement(firstChild)) {
+                firstChild.set('text', options.text);
+                anchorNode.setHTML(firstChild);
+            } else {
+                anchorNode.set('text', options.text);
+            }
         }
 
         range.endNode(anchorNode, 'after');
