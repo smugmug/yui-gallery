@@ -29,7 +29,7 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     **/
     linkKeyCommands: {
         // Create a link.
-        'ctrl+l'      : {fn: 'link', allowDefault: false}
+        'ctrl+h'      : {fn: '_linkPrompt', allowDefault: false}
     },
 
     /**
@@ -151,7 +151,7 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
 
         // expanding the range before deleting contents makes sure
         // the entire node is wrapped, if possible.
-        range.expand();
+        range.expand(this._inputNode);
 
         anchorNode = Y.Lang.sub(this.linkTemplate, options);
         anchorNode = range.wrap(anchorNode);
@@ -165,6 +165,19 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
         this.selection.select(range.collapse());
 
         return this;
+    },
+
+
+    /**
+    @method _linkPrompt
+    @protected
+    **/
+    _linkPrompt: function() {
+        var href = Y.config.win.prompt('Enter a url');
+
+        if (href) {
+            this.link({href: href});
+        }
     }
 });
 
