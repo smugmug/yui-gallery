@@ -26,7 +26,7 @@ _yuitest_coverage["build/gallery-sm-editor/gallery-sm-editor.js"] = {
     path: "build/gallery-sm-editor/gallery-sm-editor.js",
     code: []
 };
-_yuitest_coverage["build/gallery-sm-editor/gallery-sm-editor.js"].code=["YUI.add('gallery-sm-editor', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides `Y.Editor`, a simple but powerful WYSIWYG editor.","","@module gallery-sm-editor","@main gallery-sm-editor","**/","","/**","A simple but powerful WYSIWYG editor.","","@class Editor","@constructor","@extends Editor.Base","@uses Editor.Keys","@uses Editor.Link","@uses Editor.Style","@uses Editor.Undo","**/","","Y.Editor = Y.mix(","    Y.Base.create('editor', Y.Editor.Base, [","        Y.Editor.Keys,","        Y.Editor.Link,","        Y.Editor.Style,","        Y.Editor.Undo","    ], {}),","    Y.Editor",");","","","}, '@VERSION@', {","    \"requires\": [","        \"gallery-sm-editor-base\",","        \"gallery-sm-editor-keys\",","        \"gallery-sm-editor-link\",","        \"gallery-sm-editor-style\",","        \"gallery-sm-editor-undo\"","    ],","    \"skinnable\": true","});"];
+_yuitest_coverage["build/gallery-sm-editor/gallery-sm-editor.js"].code=["YUI.add('gallery-sm-editor', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides `Y.Editor`, a simple but powerful WYSIWYG editor.","","@module gallery-sm-editor","@main gallery-sm-editor","**/","","/**","A simple but powerful WYSIWYG editor.","","@class Editor","@constructor","@extends Editor.Base","@uses Editor.Keys","@uses Editor.Link","@uses Editor.Style","@uses Editor.Undo","**/","","Y.Editor = Y.mix(","    Y.Base.create('editor', Y.Editor.Base, [","        Y.Editor.Keys,","        Y.Editor.Link,","        Y.Editor.Queue,","        Y.Editor.Style","//        Y.Editor.Undo","    ], {}),","    Y.Editor",");","","","}, '@VERSION@', {","    \"requires\": [","        \"gallery-sm-editor-base\",","        \"gallery-sm-editor-keys\",","        \"gallery-sm-editor-link\",","        \"gallery-sm-editor-queue\",","        \"gallery-sm-editor-style\",","        \"gallery-sm-editor-undo\"","    ],","    \"skinnable\": true","});"];
 _yuitest_coverage["build/gallery-sm-editor/gallery-sm-editor.js"].lines = {"1":0,"24":0};
 _yuitest_coverage["build/gallery-sm-editor/gallery-sm-editor.js"].functions = {"(anonymous 1):1":0};
 _yuitest_coverage["build/gallery-sm-editor/gallery-sm-editor.js"].coveredLines = 2;
@@ -61,8 +61,9 @@ Y.Editor = Y.mix(
     Y.Base.create('editor', Y.Editor.Base, [
         Y.Editor.Keys,
         Y.Editor.Link,
-        Y.Editor.Style,
-        Y.Editor.Undo
+        Y.Editor.Queue,
+        Y.Editor.Style
+//        Y.Editor.Undo
     ], {}),
     Y.Editor
 );
@@ -73,6 +74,7 @@ Y.Editor = Y.mix(
         "gallery-sm-editor-base",
         "gallery-sm-editor-keys",
         "gallery-sm-editor-link",
+        "gallery-sm-editor-queue",
         "gallery-sm-editor-style",
         "gallery-sm-editor-undo"
     ],

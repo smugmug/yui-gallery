@@ -231,6 +231,88 @@ Range.prototype = {
     },
 
     /**
+    Attempts to expand the range to include element nodes while
+    still being equivalent to the current range. Start and End nodes
+    are not guaranteed to be element nodes after this method is executed.
+
+    Examples:
+
+        [] = startContainer, {} = endContainer, s:e = start/end offset
+
+    given the HTML
+
+        <div><span>Lorem</span></div>
+
+    an initial range of
+
+        <div><span>[{Lorem]}</span></div>  s0:e5
+
+    after expansion would be
+
+        [{<div><span>Lorem</span></div>}]  s0:e1
+
+    @method expand
+    @param {HTMLElement|Node} [container] If provided, do not expand the range
+        past this container
+    @chainable
+    **/
+    expand: function(container) {
+        return this.expandStart(container).expandEnd(container);
+    },
+
+    /**
+    Attempts to expand the range end to include element nodes while
+    still being equivalent to the current range. End node is not
+    guaranteed to be an element node after this method is executed.
+
+    @method expandEnd
+    @param {HTMLElement|Node} [container] If provided, do not expand the range
+        past this container
+    @chainable
+    **/
+    expandEnd: function(container) {
+        var endNode = this.endNode()._node,
+            offset = this.endOffset(),
+            nodeType = endNode.nodeType,
+            parentNode = endNode.parentNode;
+
+        container = Y.one(container);
+
+        if (TEXT_NODE === nodeType && endNode.length === offset && !endNode.nextSibling
+                && (!container || container._node !== parentNode)) {
+            this.endNode(parentNode, 'after');
+        }
+
+        return this;
+    },
+
+    /**
+    Attempts to expand the range start to include element nodes while
+    still being equivalent to the current range. Start node is not
+    guaranteed to be an element node after this method is executed.
+
+    @method expandStart
+    @param {HTMLElement|Node} [container] If provided, do not expand the range
+        past this container
+    @chainable
+    **/
+    expandStart: function(container) {
+        var startNode = this.startNode()._node,
+            offset = this.startOffset(),
+            nodeType = startNode.nodeType,
+            parentNode = startNode.parentNode;
+
+        container = Y.one(container);
+
+        if (TEXT_NODE === nodeType && 0 === offset && !startNode.previousSibling
+                && (!container || container._node !== parentNode)) {
+            this.startNode(parentNode, 'before');
+        }
+
+        return this;
+    },
+
+    /**
     Moves this range's contents into a document fragment and returns a Node
     instance containing that fragment.
 
