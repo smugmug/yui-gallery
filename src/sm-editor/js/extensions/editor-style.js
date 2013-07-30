@@ -185,27 +185,23 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
 
         if (!command) {
             return Y.Editor.Base.prototype._execCommand.call(this, name, value);
-        } else {
-            fn = command.fn || function(node, value) { node.setStyle(command.property, value)};
-
-            if ('string' === typeof fn) {
-                fn = this[fn];
-            }
-        }
-
-        if (this.boolCommands[name] && 'toggle' === value) {
-            if (this._queryCommandValue(name)) {
-                value = '';
-            } else {
-                value = command.valueOn || value;
-            }
         }
 
         styleNodes = this._getStyleNodes(range);
 
-        styleNodes.each(function(node) {
-            fn(node, value);
-        });
+        var style = styleNodes.item(0).getStyle(command.property);
+
+        if (this.boolCommands[name] && 'toggle' === value) {
+            if (style && '' !== style) {
+                style = '';
+            } else {
+                style = command.valueOn;
+            }
+        } else {
+            style = value;
+        }
+
+        styleNodes.setStyle(command.property, style);
 
         // expanding the range before deleting contents makes sure
         // the entire node is deleted, if possible.
