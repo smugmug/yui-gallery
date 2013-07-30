@@ -177,7 +177,7 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     _execCommand: function(name, value) {
         var command = this.styleCommands[name],
             range = this.selection.range(),
-            fn, styleNodes;
+            styleNodes;
 
         if (!range) {
             return;
@@ -229,10 +229,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     @protected
     **/
     _formatHTML: function(html) {
-        function replaceNode(node) {
-            return node;
-        }
-
         function flatten(node) {
             var childNodes = node.get('childNodes')._nodes;
 
@@ -447,7 +443,7 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     _queryCommandValue: function(name) {
         var command = this.styleCommands[name],
             range = this.selection.range(),
-            styleNode, value;
+            parentNode, styleNode, value;
 
         if (!command) {
             return Y.Editor.Base.prototype._queryCommandValue.call(this, name);
@@ -487,7 +483,13 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
 
     // -- Protected Event Handlers ---------------------------------------------
 
-    _afterDelete: function(e) {
+    /**
+    Handles `delete` events on the editor
+
+    @method _afterDelete
+    @protected
+    **/
+    _afterDelete: function() {
         this._clearCommandQueue();
         this._updateSelection({force: true});
     },

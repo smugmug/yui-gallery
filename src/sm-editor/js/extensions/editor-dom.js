@@ -159,7 +159,7 @@ EditorDOM.isEmptyNode = function(node) {
 
     var text = node ? node.get('text') : '';
 
-    return /^[^\S ]*$/.test(text);
+    return (/^[^\S ]*$/).test(text);
 };
 
 
@@ -225,7 +225,7 @@ trailing whitespace at the end of a node
 EditorDOM.replaceSpaces = function(text, replacement) {
     replacement || (replacement = '\u00a0');
 
-    return text.replace(/ /g, replacement)
+    return text.replace(/ /g, replacement);
 };
 
 

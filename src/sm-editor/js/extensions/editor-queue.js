@@ -137,7 +137,7 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
             this._execCommand(cmd, value);
         }, this);
 
-        this._clearCommandQueue()
+        this._clearCommandQueue();
     },
 
 
