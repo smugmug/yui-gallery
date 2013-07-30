@@ -20,7 +20,10 @@ Extension for `Editor.Base` that normalizes style commands into css properties
 
 (function() {
 
-var EDOM = Y.Editor.DOM;
+var doc = Y.config.doc,
+    win = Y.config.win,
+    EDOM = Y.Editor.DOM,
+    STYLENODE = '<span></span>';
 
 var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
@@ -57,26 +60,33 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
             valueOff: 'normal'
         },
 
-//        justifyCenter: {
-//            property: 'textAlign',
-//            value: 'center'
-//        },
-//
-//        justifyLeft: {
-//            property: 'textAlign',
-//            value: 'left'
-//        },
-//
-//        justifyRight: {
-//            property: 'textAlign',
-//            value: 'right'
-//        },
-
         underline: {
             property: 'textDecoration',
             valueOn: 'underline',
             valueOff: 'none'
         }
+    },
+
+    /**
+    Key commands related to style functionality.
+
+    @property {Object} styleKeyCommands
+    **/
+    styleKeyCommands: {
+        'backspace': {fn: '_afterDelete', allowDefault: true, async: true},
+        'delete'   : {fn: '_afterDelete', allowDefault: true, async: true}
+    },
+
+
+    // -- Lifecycle ------------------------------------------------------------
+
+    initializer: function () {
+        if (this.keyCommands) {
+            this.keyCommands = Y.merge(this.keyCommands, this.styleKeyCommands);
+        }
+    },
+
+    destructor: function () {
     },
 
 
@@ -151,65 +161,8 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         return this;
     },
 
+
     // -- Protected Methods ----------------------------------------------------
-
-    /**
-    Traverses the children of a given node, removing empty nodes and
-    clearing out any given css properties
-
-    Note: rootNode may get destroyed during the cleaning process
-
-    @method _cleanNode
-    @param {Range} range
-    @param {String|Array} properties
-    @return {Range}
-    @protected
-    **/
-    _cleanRange: function(range, properties) {
-        var rootNode = range.parentNode(),
-            styleCommands = this.styleCommands;
-
-        properties = Y.Array(properties);
-
-        function hasStyles(node) {
-            return Y.Object.some(styleCommands, function(cmd) {
-                return '' !== node._node.style[cmd.property];
-            });
-        }
-
-        function clean(node) {
-            if (!EDOM.isElementNode(node)) {
-                return;
-            }
-
-            if ('' === node.get('text')) {
-                // the node is empty, remove it
-                node.remove(true);
-            } else {
-                // clear out the properties
-                Y.Array.each(properties, function(style) {
-                    node.setStyle(style, '');
-                });
-
-                node.get('children').each(clean);
-
-                if (!hasStyles(node)) {
-                    EDOM.unwrap(node);
-                }
-            }
-        }
-
-        rootNode.get('children').each(clean);
-
-        if (!hasStyles(rootNode)) {
-            range = EDOM.unwrap(rootNode);
-        } else {
-            range.selectNodeContents(rootNode);
-        }
-
-        return range;
-    },
-
 
     /**
     Duckpunch Editor.Base._execCommand to build css styled nodes instead of
@@ -226,51 +179,128 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     _execCommand: function(name, value) {
         var command = this.styleCommands[name],
             range = this.selection.range(),
-            parentNode, styleNode;
-
-        if (!command) {
-            return Y.Editor.Base.prototype._execCommand.call(this, name, value);
-        }
+            styleNodes;
 
         if (!range) {
             return;
         }
 
-        // range.parentNode() may return a text node
-        // so make sure we actually have an element
-        parentNode = EDOM.getAncestorElement(range.parentNode());
-
-        if (parentNode !== this._inputNode &&
-            parentNode.get('text') === range.toString()) {
-            // if the entire text of a node is selected, just apply
-            // styles to that node, as long as its not the input node
-            styleNode = parentNode;
-        } else {
-            // otherwise, wrap the selection in a new node
-            styleNode = range.wrap('<span>');
+        if (!command) {
+            return Y.Editor.Base.prototype._execCommand.call(this, name, value);
         }
 
-        if (this.boolCommands[name]) {
-            if (this._queryCommandValue(name)) {
-                // already set, disable
-                // determine whether an ancestor has this property set
-                // or not so we can simply unset the value instead of
-                // setting it to `none` or `normal` or whatever
-                value = this._getStyledAncestor(styleNode, command.property) ? command.valueOff : '';
+        styleNodes = this._getStyleNodes(range);
+
+        var style = styleNodes.item(0).getStyle(command.property);
+
+        if (this.boolCommands[name] && 'toggle' === value) {
+            if (style && '' !== style) {
+                style = '';
             } else {
-                // need to enable, set appropriate value
-                value = command.valueOn || value;
+                style = command.valueOn;
             }
+        } else {
+            style = value;
         }
 
-        styleNode.setStyle(command.property, value);
+        styleNodes.setStyle(command.property, style);
 
-        range.selectNodeContents(styleNode);
+        // expanding the range before deleting contents makes sure
+        // the entire node is deleted, if possible.
+        range.expand(this._inputNode);
 
-        range = this._cleanRange(range, command.property);
+        range.deleteContents();
+
+        this._splitAfterRange(range, styleNodes);
+
+        range.startNode(styleNodes.item(0), 0);
+        range.endNode(styleNodes.item(styleNodes.size() - 1));
+        range.endOffset(EDOM.maxOffset(range.endNode()));
 
         this.selection.select(range);
     },
+
+
+    /**
+    Reformats html to the proper style
+
+    <span>blah blah</span>
+    @param {HTML} html HTML string to format
+    @return {Node} Node instance containing a document fragment with the
+        formatted _html_
+    @protected
+    **/
+    _formatHTML: function(html) {
+        function flatten(node) {
+            var childNodes = node.get('childNodes')._nodes;
+
+            Y.Array.each(childNodes.reverse(), function(node) {
+                var parentNode;
+
+                node = Y.one(node);
+                parentNode = node.get('parentNode');
+
+                if (EDOM.isTextNode(node)) {
+                    if (EDOM.isContainer(parentNode)) {
+                        node.wrap(STYLENODE);
+                    } else if (node.get('previousSibling')) {
+                        EDOM.split(parentNode, node);
+                    }
+                } else {
+                    // TODO: replace b, em, i, strong, u nodes with spans
+
+                    if (!EDOM.isContainer(parentNode)) {
+                        parentNode.insert(node, 'after');
+
+                        node.addClass(parentNode.get('className'));
+
+                        EDOM.copyStyles(parentNode, node, supportedStyles, {
+                            explicit: true,
+                            overwrite: false
+                        });
+                    } else {
+                        // TODO: clear styles on containers
+                    }
+
+                    flatten(node);
+
+                    if (!EDOM.isContainer(node) && EDOM.isEmptyNode(node)) {
+                        node.remove(true);
+                    }
+
+                    node.removeAttribute('id');
+                }
+            });
+        }
+
+        var frag, supportedStyles = [];
+
+        Y.Object.each(this.styleCommands, function(cmd) {
+            supportedStyles.push(cmd.property);
+        });
+
+        frag = Y.one(doc.createDocumentFragment()).setHTML(html);
+
+        flatten(frag);
+
+        return frag;
+    },
+
+
+    /**
+    Getter for the `html` attribute.
+
+    @method _getHTML
+    @param {HTML} value HTML.
+    @return {HTML} HTML.
+    @protected
+    **/
+    _getHTML: function (value) {
+        value = Y.Editor.Base.prototype._getHTML.call(this, value);
+
+        return this.get('formatFn')(value).getHTML();
+    },
+
 
     /**
     Walks the ancestor tree of a given node until a node that has
@@ -295,6 +325,110 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
             return !!node._node.style[property];
         }, self, this.selectors.input);
     },
+
+
+    /**
+    Parses inline elements from a given range. Partially selected nodes will
+    be split and text nodes will be wrapped in `<span>` tags if necessary.
+
+    The range will not be modified.
+
+    @method _getStyleNodes
+    @param {Range} range
+    @return {NodeList} NodeList of inline elements within the given `range`
+    @protected
+    **/
+    _getStyleNodes: function(range) {
+        var inlineParent, styleContext, contents;
+
+        // expanding the range before deleting contents makes sure
+        // the entire node is deleted, if possible.
+        range.expand(this._inputNode);
+
+        // see if the range is contained in an inline element
+        inlineParent = EDOM.getAncestorElement(
+            range.parentNode(),
+            EDOM.isInlineElement
+        );
+
+        if (inlineParent) {
+            if (range.toString() === inlineParent.get('text')) {
+                // the entire node is selected, just return the node
+                return new Y.NodeList([inlineParent]);
+            }
+
+            // wrap textnodes in clones of the inline parent node
+            // to maintain existing styles
+            styleContext = inlineParent;
+        } else {
+            styleContext = Y.Node.create(STYLENODE);
+        }
+
+        contents = range.cloneContents().get('childNodes');
+
+        contents.each(function(node, ix) {
+            if (EDOM.isTextNode(node)) {
+                // wrap any text nodes in a style context
+                contents.splice(ix, 1, styleContext.cloneNode(false).append(node));
+            }
+        });
+
+        return contents;
+    },
+
+
+    /**
+    Setter for the `html` attribute.
+
+    @method _setHTML
+    @param {HTML} value HTML.
+    @return {HTML} HTML.
+    @protected
+    **/
+    _setHTML: function (value) {
+        value = this.get('formatFn')(value).getHTML();
+
+        return Y.Editor.Base.prototype._setHTML.call(this, value);
+    },
+
+
+    /**
+    Splits the node at the end of the selection
+
+    @method _splitAfterRange
+    @param {Range} range
+    @param {HTMLCollection|HTMLElement|Node|NodeList|String} [contents] Contents
+        to be inserted after the split
+    @return {Node} Node reference of the node created after splitting. Any
+        _contents_ will have been inserted as previous siblings of this node.
+    **/
+    _splitAfterRange: function(range, contents) {
+        var endNode, endOffset;
+
+        endNode = range.endNode();
+        endOffset = range.endOffset();
+
+        while (!EDOM.isContainer(endNode) && endOffset === EDOM.maxOffset(endNode)) {
+            endOffset = range.endOffset('after');
+            endNode = range.endNode();
+        }
+
+        while (!EDOM.isContainer(endNode)) {
+            endOffset = EDOM.split(endNode, endOffset);
+            endNode = endOffset.get('parentNode');
+        }
+
+        if (contents) {
+            endNode.insert(contents, endOffset);
+        }
+
+        if (!endOffset._node) {
+            endOffset = endNode.get('childNodes').item(endOffset);
+        }
+
+        return endOffset;
+    },
+
 
     /**
     Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes
@@ -338,13 +472,78 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
             // getStyle will fall back to computedStyle if the
             // property isn't explicitly set
             value = styleNode.getStyle(command.property);
+        }
 
-            if (this.boolCommands[name]) {
-                value = (value === command.valueOn);
-            }
+        if (this.boolCommands[name]) {
+            value = (value === command.valueOn);
+        } else if ('' === value) {
+            value = null;
         }
 
         return value;
+    },
+
+    // -- Protected Event Handlers ---------------------------------------------
+
+    /**
+    Handles `delete` events on the editor
+
+    @method _afterDelete
+    @protected
+    **/
+    _afterDelete: function() {
+        this._clearCommandQueue();
+        this._updateSelection({force: true});
+    },
+
+
+    /**
+    Handles `paste` events on the editor.
+
+    @method _onPaste
+    @param {EventFacade} e
+    @protected
+    **/
+    _onPaste: function (e) {
+        var clipboard = e._event.clipboardData || win.clipboardData,
+            contents = clipboard.getData('text'),
+            range = this.selection.range();
+
+        e.preventDefault();
+
+        contents = this.get('formatFn')(contents);
+
+        if (!range.isCollapsed()) {
+            // expanding the range before deleting contents makes sure
+            // the entire node is deleted, if possible.
+            range.expand(this._inputNode);
+
+            range.deleteContents();
+        }
+
+        range.endNode(this._splitAfterRange(range, contents), 'before');
+
+        // collapse the range after the pasted text
+        this.selection.select(range.collapse());
+        this._updateSelection({force: true});
+    }
+}, {
+    ATTRS: {
+        /**
+        Function for formatting editor html
+
+        One day allow custom formatting. Today is not that day.
+        **/
+        formatFn: {
+            readOnly: true,
+            setter: function(val) {
+                return Y.bind(val, this);
+            },
+            validator: Y.Lang.isFunction,
+            valueFn: function() {
+                return this._formatHTML;
+            }
+        }
     }
 });
 
@@ -353,4 +552,12 @@ Y.namespace('Editor').Style = EditorStyle;
 }());
 
 
-}, '@VERSION@', {"requires": ["gallery-sm-editor-base", "gallery-sm-editor-dom", "node-style"]});
+}, '@VERSION@', {
+    "requires": [
+        "gallery-sm-editor-base",
+        "gallery-sm-editor-dom",
+        "gallery-sm-editor-keys",
+        "gallery-sm-editor-queue",
+        "node-style"
+    ]
+});

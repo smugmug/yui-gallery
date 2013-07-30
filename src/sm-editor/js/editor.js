@@ -23,8 +23,9 @@ Y.Editor = Y.mix(
     Y.Base.create('editor', Y.Editor.Base, [
         Y.Editor.Keys,
         Y.Editor.Link,
-        Y.Editor.Style,
-        Y.Editor.Undo
+        Y.Editor.Queue,
+        Y.Editor.Style
+//        Y.Editor.Undo
     ], {}),
     Y.Editor
 );

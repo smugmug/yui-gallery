@@ -32,6 +32,12 @@
             ]
         },
 
+        "gallery-sm-editor-queue": {
+            "jsfiles": [
+                "js/extensions/editor-queue.js"
+            ]
+        },
+
         "gallery-sm-editor-style": {
             "jsfiles": [
                 "js/extensions/editor-style.js"
