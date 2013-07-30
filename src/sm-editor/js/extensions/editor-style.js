@@ -207,7 +207,11 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
             fn(node, value);
         });
 
-        range.expand().deleteContents();
+        // expanding the range before deleting contents makes sure
+        // the entire node is deleted, if possible.
+        range.expand(this._inputNode);
+
+        range.deleteContents();
 
         this._splitAfterRange(range, styleNodes);
 
@@ -343,7 +347,9 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     _getStyleNodes: function(range) {
         var inlineParent, styleContext, contents;
 
-        range.expand();
+        // expanding the range before deleting contents makes sure
+        // the entire node is deleted, if possible.
+        range.expand(this._inputNode);
 
         // see if the range is contained in an inline element
         inlineParent = EDOM.getAncestorElement(
@@ -508,11 +514,9 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         contents = this.get('formatFn')(contents);
 
         if (!range.isCollapsed()) {
-            if (this._inputNode !== EDOM.getAncestorElement(range.parentNode())) {
-                // expanding the range before deleting contents makes sure
-                // the entire node is deleted, if possible.
-                range.expand();
-            }
+            // expanding the range before deleting contents makes sure
+            // the entire node is deleted, if possible.
+            range.expand(this._inputNode);
 
             range.deleteContents();
         }
