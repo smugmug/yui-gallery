@@ -199,8 +199,10 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
             } else {
                 style = command.valueOn;
             }
+        } else if (value) {
+            style = command.valueOn || value;
         } else {
-            style = value;
+            style = '';
         }
 
         styleNodes.setStyle(command.property, style);

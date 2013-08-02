@@ -71,8 +71,8 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     destructor: function () {
         this._detachQueueEvents();
     },
-    
-    
+
+
     // -- Protected Methods ----------------------------------------------------
 
     /**
@@ -119,7 +119,7 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
             this._queueEvents = null;
         }
     },
-    
+
 
     /**
     Executes all commands on the command queue
@@ -148,13 +148,25 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     @protected
     **/
     _queueCommand: function(name, value) {
-        this._commandQueue || (this._commandQueue = {});
+        if (!this._commandQueue) {
+            this._commandQueue = {};
 
-        if ('toggle' === value && 'toggle' === this._commandQueue[name]) {
-            delete this._commandQueue[name];
-        } else {
-            this._commandQueue[name] = value;
+            // seed the command queue with existing styles
+            Y.Object.each(this.styles(), function(val, name) {
+                if (this.boolCommands[name]) {
+                    // convert boolean commands to their literal value
+                    val = val ? this.styleCommands[name].valueOn : ''
+                }
+
+                this._commandQueue[name] = val;
+            }, this);
         }
+
+        if (this.boolCommands[name] && 'toggle' === value) {
+            value = this._commandQueue[name] ? '' : this.styleCommands[name].valueOn;
+        }
+
+        this._commandQueue[name] = value;
     },
 
 
@@ -217,8 +229,14 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     @protected
     **/
     _queueBeforeQueryCommandValue: function (name) {
-        if (this._commandQueue && this._commandQueue.hasOwnProperty(name)) {
-            return new Y.Do.Halt('queue prevented _queryCommandValue', this._commandQueue[name]);
+        var cmd = this._commandQueue && this._commandQueue[name];
+
+        if (Y.Lang.isValue(cmd)) { // because cmd could be ''
+            if (this.boolCommands[name]) {
+                cmd = cmd === this.styleCommands[name].valueOn;
+            }
+
+            return new Y.Do.Halt('queue prevented _queryCommandValue', cmd);
         }
     }
 });
