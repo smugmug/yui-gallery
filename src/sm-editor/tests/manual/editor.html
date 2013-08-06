@@ -17,9 +17,16 @@
 
     #editor {
         font: 20px Georgia;
-        height: 300px;
         float: left;
         width: 500px;
+    }
+
+    #editor, .sm-editor-input {
+        height: 300px;
+        }
+
+    #info-html {
+        margin-top: 15px;
     }
 
     #info {
@@ -69,6 +76,26 @@
             </tr>
 
             <tr>
+                <th scope="row">Parent</th>
+                <td><span id="info-parentnode"></span></td>
+            </tr>
+
+            <tr>
+                <th scope="row">Start</th>
+                <td><span id="info-startnode"></span> <span id="info-startoffset"></span></td>
+            </tr>
+
+            <tr>
+                <th scope="row">End</th>
+                <td><span id="info-endnode"></span> <span id="info-endoffset"></span></td>
+            </tr>
+
+            <tr>
+                <th scope="row">Collapsed</th>
+                <td><span id="info-collapsed"></span></td>
+            </tr>
+
+            <tr>
                 <th scope="row">Formatting</th>
                 <td id="info-formatting">none</td>
             </tr>
@@ -82,8 +109,15 @@
                 <th scope="row">Redo stack</th>
                 <td><span id="info-redo">0</span> entries</td>
             </tr>
+
+            <tr>
+                <th scope="row">Queued Commands</th>
+                <td><span id="info-queue"></span></td>
+            </tr>
         </table>
     </div>
+
+    <code id="info-html" class="yui3-skin-sam"></code>
 </div>
 
 <script src="/build/yui/yui.js"></script>
@@ -92,19 +126,42 @@ Y = YUI({filter: 'raw'}).use('gallery-sm-editor', 'json-stringify', function (Y)
 
 var editor = window.editor = new Y.Editor({
     container: '#editor',
-    html     : 'lorem ipsum <b>dolor <i>sit</i></b> amet'
+    html     : 'lorem <span id="removeme" class="copyme" style="font-weight: bold;">ipsum <span style="text-decoration: underline;">dolor</span></span> <span style="font-style: italic;">sit </span>amet'
 });
 
-var infoFormatting = Y.one('#info-formatting'),
-    infoRedo       = Y.one('#info-redo'),
-    infoSelected   = Y.one('#info-selected'),
-    infoUndo       = Y.one('#info-undo');
+var infoCollapsed   = Y.one('#info-collapsed'),
+    infoEndNode     = Y.one('#info-endnode'),
+    infoEndOffset   = Y.one('#info-endoffset'),
+    infoFormatting  = Y.one('#info-formatting'),
+    infoHTML        = Y.one('#info-html'),
+    infoParentNode  = Y.one('#info-parentnode'),
+    infoQueue       = Y.one('#info-queue'),
+    infoRedo        = Y.one('#info-redo'),
+    infoSelected    = Y.one('#info-selected'),
+    infoStartNode   = Y.one('#info-startnode'),
+    infoStartOffset = Y.one('#info-startoffset');
+    infoUndo        = Y.one('#info-undo');
 
 editor.after('selectionChange', function (e) {
+    var range = e.range;
+
+    infoCollapsed.set('text', range && range.isCollapsed() ? 'true' : 'false');
+    infoEndNode.set('text', range && range.endNode().get('nodeName'));
+    infoEndOffset.set('text', range && range.endOffset());
     infoFormatting.set('text', Y.JSON.stringify(editor.styles(), null, 4));
-    infoRedo.set('text', editor._redoStack.length);
+    infoHTML.set('text', editor.get('html'));
+    infoParentNode.set('text', range && range.parentNode().get('nodeName'));
+    infoQueue.set('text', '');
+//    infoRedo.set('text', editor._redoStack.length);
     infoSelected.set('text', e.selection.toString().length);
-    infoUndo.set('text', editor._undoStack.length);
+    infoStartNode.set('text', range && range.startNode().get('nodeName'));
+    infoStartOffset.set('text', range && range.startOffset());
+//    infoUndo.set('text', editor._undoStack.length);
+
+
+    if (editor._queuedCommands) {
+        infoQueue.set('text', Y.JSON.stringify(editor._queuedCommands, null, 4));
+    }
 });
 
 editor.render().focus();

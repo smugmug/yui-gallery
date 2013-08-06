@@ -25,8 +25,9 @@ Y.Editor = Y.mix(
     Y.Base.create('editor', Y.Editor.Base, [
         Y.Editor.Keys,
         Y.Editor.Link,
-        Y.Editor.Style,
-        Y.Editor.Undo
+        Y.Editor.Queue,
+        Y.Editor.Style
+//        Y.Editor.Undo
     ], {}),
     Y.Editor
 );
@@ -37,6 +38,7 @@ Y.Editor = Y.mix(
         "gallery-sm-editor-base",
         "gallery-sm-editor-keys",
         "gallery-sm-editor-link",
+        "gallery-sm-editor-queue",
         "gallery-sm-editor-style",
         "gallery-sm-editor-undo"
     ],

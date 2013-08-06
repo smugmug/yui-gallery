@@ -4,6 +4,7 @@
             "gallery-sm-editor-base",
             "gallery-sm-editor-keys",
             "gallery-sm-editor-link",
+            "gallery-sm-editor-queue",
             "gallery-sm-editor-style",
             "gallery-sm-editor-undo"
         ],
@@ -41,10 +42,19 @@
         ]
     },
 
+    "gallery-sm-editor-queue": {
+        "requires": [
+            "gallery-sm-editor-base",
+            "gallery-sm-editor-keys"
+        ]
+    },
+
     "gallery-sm-editor-style": {
         "requires": [
             "gallery-sm-editor-base",
             "gallery-sm-editor-dom",
+            "gallery-sm-editor-keys",
+            "gallery-sm-editor-queue",
             "node-style"
         ]
     },

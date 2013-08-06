@@ -161,12 +161,13 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         supplied function.
     **/
     command: function (name, value) {
-        var args = Y.Array(arguments, 1, true);
+        var args = Y.Array(arguments, 1, true),
+            retVal;
 
         this.focus();
 
         if (typeof name === 'function') {
-            return name.apply(this, args);
+            retVal = name.apply(this, args);
         } else {
             value = args.shift();
 
@@ -174,8 +175,12 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
                 this._execCommand(name, value);
             }
 
-            return this._queryCommandValue(name);
+            retVal = this._queryCommandValue(name);
         }
+
+        this._updateSelection({force: true});
+
+        return retVal;
     },
 
     /**
@@ -321,6 +326,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         this._events = [
             container.delegate('blur',  this._onBlur,  selectors.input, this),
+            container.delegate('copy',  this._onCopy,  selectors.input, this),
+            container.delegate('cut',  this._onCut,  selectors.input, this),
             container.delegate('dblclick', this._onDblClick, selectors.input, this),
             container.delegate('focus', this._onFocus, selectors.input, this),
             container.delegate('paste', this._onPaste, selectors.input, this)
@@ -455,6 +462,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
     @method _updateSelection
     @param {Object} [options] Options.
+        @param {Boolean} [options.force=false] If `true`, the internal selection
+            state will be updated regardless of if the selection changed.
         @param {Boolean} [options.silent=false] If `true`, the `selectionChange`
             event will be suppressed.
     @protected
@@ -462,9 +471,17 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     _updateSelection:  function (options) {
         var prevRange = this._selectedRange || null,
             newRange  = this.selection.range() || null,
+            force     = options && options.force,
             silent    = options && options.silent;
 
-        if (newRange === prevRange || (prevRange && prevRange.isEquivalent(newRange))) {
+        if (!force && (
+                newRange === prevRange || (
+                    prevRange &&
+                    prevRange.isEquivalent(newRange) &&
+                    prevRange.toHTML() === newRange.toHTML()
+                )
+            )
+        ) {
             return;
         }
 
@@ -497,6 +514,57 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         clearInterval(this._selectionMonitor);
 
         this.fire(EVT_BLUR);
+    },
+
+    /**
+    Handles `copy` events on the editor.
+
+    @method _onCopy
+    @param {EventFacade} e
+    @protected
+    **/
+    _onCopy: function (e) {
+        var clipboard = e._event.clipboardData || window.clipboardData,
+            range = this.selection.range(),
+            contents = range.cloneContents().getHTML();
+
+        e.preventDefault();
+
+        try {
+            // IE doesn't support mime types
+            clipboard.setData('text/html', contents);
+            clipboard.setData('text/plain', contents);
+        } catch (err) {
+            clipboard.setData('text', contents);
+        }
+    },
+
+    /**
+    Handles `cut` events on the editor.
+
+    @method _onCut
+    @param {EventFacade} e
+    @protected
+    **/
+    _onCut: function (e) {
+        var clipboard = e._event.clipboardData || window.clipboardData,
+            range = this.selection.range(),
+
+            // note the `expand()`. this prevents any empty nodes
+            // being left after `extractContents()`
+            contents = range.expand().extractContents().getHTML();
+
+        e.preventDefault();
+
+        this.selection.select(range);
+
+        try {
+            // IE doesn't support mime types
+            clipboard.setData('text/html', contents);
+            clipboard.setData('text/plain', contents);
+        } catch (err) {
+            clipboard.setData('text', contents);
+        }
     },
 
     /**
