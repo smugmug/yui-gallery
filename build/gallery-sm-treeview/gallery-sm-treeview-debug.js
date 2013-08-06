@@ -208,9 +208,14 @@ TreeView = Y.Base.create('treeView', Y.View, [
     @method renderChildren
     @param {Tree.Node} treeNode Tree node whose children should be rendered.
     @param {Object} [options] Options.
+
         @param {Node} [options.container] `Y.Node` instance of a container into
             which the children should be rendered. If the container already
             contains rendered children, they will be re-rendered in place.
+
+        @param {Boolean} [options.force=false] If `true`, children will be
+            re-rendered from scratch even if they've already been rendered.
+
     @return {Node} `Y.Node` instance containing the rendered children.
     **/
     renderChildren: function (treeNode, options) {
@@ -219,6 +224,11 @@ TreeView = Y.Base.create('treeView', Y.View, [
         var container    = options.container,
             childrenNode = container && container.one('>.' + this.classNames.children),
             lazyRender   = this._lazyRender;
+
+        if (childrenNode && options.force) {
+            childrenNode.remove(true);
+            childrenNode = null;
+        }
 
         if (!childrenNode) {
             childrenNode = Y.Node.create(this.templates.children({
@@ -261,10 +271,17 @@ TreeView = Y.Base.create('treeView', Y.View, [
     @method renderNode
     @param {Tree.Node} treeNode Tree node to render.
     @param {Object} [options] Options.
+
         @param {Node} [options.container] `Y.Node` instance of a container to
             which the rendered tree node should be appended.
+
+        @param {Boolean} [options.force=false] If `true`, this node (and its
+            children if `renderChildren` is `true`) will be re-rendered from
+            scratch, even if it's already been rendered.
+
         @param {Boolean} [options.renderChildren=false] Whether or not to render
             this node's children.
+
     @return {Node} `Y.Node` instance of the rendered tree node.
     **/
     renderNode: function (treeNode, options) {
@@ -273,7 +290,9 @@ TreeView = Y.Base.create('treeView', Y.View, [
         var classNames     = this.classNames,
             hasChildren    = treeNode.hasChildren(),
             htmlNode       = treeNode._htmlNode,
+            oldHtmlNode    = options.force && htmlNode,
             nodeClassNames = {},
+
             className;
 
         // Build the hash of CSS classes for this node.
@@ -281,7 +300,7 @@ TreeView = Y.Base.create('treeView', Y.View, [
         nodeClassNames[classNames.canHaveChildren] = !!treeNode.canHaveChildren;
         nodeClassNames[classNames.hasChildren]     = hasChildren;
 
-        if (htmlNode) {
+        if (htmlNode && !options.force) {
             // This node has already been rendered, so we just need to update
             // the DOM instead of re-rendering it from scratch.
             htmlNode.one('.' + classNames.label).setHTML(treeNode.label);
@@ -292,7 +311,8 @@ TreeView = Y.Base.create('treeView', Y.View, [
                 }
             }
         } else {
-            // This node hasn't been rendered yet, so render it from scratch.
+            // This node hasn't been rendered yet or is being forcibly
+            // re-rendered.
             var enabledClassNames = [];
 
             for (className in nodeClassNames) {
@@ -330,8 +350,13 @@ TreeView = Y.Base.create('treeView', Y.View, [
 
         treeNode.state.rendered = true;
 
-        if (options.container && htmlNode.get('parentNode') !== options.container) {
-            options.container.append(htmlNode);
+        if (options.force) {
+            oldHtmlNode.replace(htmlNode);
+            oldHtmlNode.destroy();
+        } else {
+            if (options.container && htmlNode.get('parentNode') !== options.container) {
+                options.container.append(htmlNode);
+            }
         }
 
         return htmlNode;
