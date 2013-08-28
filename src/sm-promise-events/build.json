@@ -1,0 +1,11 @@
+{
+    "name": "gallery-sm-promise-events",
+
+    "builds": {
+        "gallery-sm-promise-events": {
+            "jsfiles": [
+                "js/events.js"
+            ]
+        }
+    }
+}
