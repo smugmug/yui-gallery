@@ -125,7 +125,7 @@ Y.mix(Notifier.prototype, {
 
         for (i = 0, len = targets.length; i < len; ++i) {
             target = targets[i];
-            subs   = target && target && target._evts &&target._evts.subs[type];
+            subs   = target && target._evts &&target._evts.subs[type];
 
             if (subs) {
                 for (j = 0, jlen = subs.length; j < jlen; ++j) {
