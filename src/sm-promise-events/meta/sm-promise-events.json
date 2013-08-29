@@ -1,7 +1,8 @@
 {
     "gallery-sm-promise-events": {
         "requires": [
-            "promise"
+            "promise",
+            "array-extras"
         ]
     }
 }
