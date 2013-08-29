@@ -16,16 +16,16 @@ Useful Links
 Usage
 -----
 
-Create a `Y.Promise.Events` instance. Create a Promise and pass it to the
+Create a `Y.Promise.EventNotifier` instance. Create a Promise and pass it to the
 instance's `addEvents` method. The Promise is now decorated with an
 `on(type, callback)` method and its `then` method will return promises
-similarly decorated and linked to your `Y.Promise.Events` instance.
+similarly decorated and linked to your `Y.Promise.EventNotifier` instance.
 
 ```js
 YUI({
     gallery: 'gallery-2013.03.27-22-06'
 }).use('node', 'gallery-sm-promise-events', function (Y) {
-    var notifier = new Y.Promise.Events(),
+    var notifier = new Y.Promise.EventNotifier(),
         promise, chainedPromise, interval, cancel;
 
     // Wire up a button to cancel the promise transaction
