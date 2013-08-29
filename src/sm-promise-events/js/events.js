@@ -9,8 +9,7 @@ promises as well, allowing notifications to cascade throughout a promise chain.
 @module gallery-sm-promise-events
 @since @@SINCE@@
 **/
-var isObject   = Y.Lang.isObject,
-    toArray    = Y.Array,
+var toArray    = Y.Array,
     Notifier;
 
 /**
@@ -84,59 +83,68 @@ Y.mix(Notifier.prototype, {
 
     /**
     Notify registered Promises and their children of an event. Subscription
-    callbacks will be passed an object with a `type` property. If additional
-    parameters are passed to `fire`, a `details` property will be added with
-    thos parameters in an array. If the second parameter is an object, it will
-    be shallow-copied onto the event object.
+    callbacks will be passed additional _args_ parameters.
 
     @method fire
     @param {String} type The name of the event to notify subscribers of
-    @param {Any*} [details*] Any additional details to include in `e.details`
+    @param {Any*} [args*] Arguments to pass to the callbacks
     @return {Promise.EventNotifier} this instance
     @chainable
     **/
-    fire: function (type, details) {
+    fire: function (type) {
         var targets = this._targets.slice(),
             known   = {},
-            e       = (details && isObject(details, true)) ?
-                        Y.merge(details) : {},
+            args    = arguments.length > 1 && toArray(arguments, 1, true),
             target, subs,
-            i, len, j, jlen, guid;
+            i, j, jlen, guid, callback;
+
+        // Add index 0 and 1 entries for use in Y.bind.apply(Y, args) below.
+        // Index 0 will be set to the callback, and index 1 will be left as null
+        // resulting in Y.bind.apply(Y, [callback, null, arg0,...argN])
+        if (args) {
+            args.unshift(null, null);
+        }
 
         // Breadth-first notification order, mimicking resolution order
         // Note: Not caching a length comparator because this pushes to the end
         // of the targets array as it iterates.
         for (i = 0; i < targets.length; ++i) {
-            // Not that this should ever happen, but don't push known promise
-            // targets onto the list again. That would make for an infinite loop
+            target = targets[i];
+
             if (targets[i]._evts) {
+                // Not that this should ever happen, but don't push known
+                // promise targets onto the list again. That would make for an
+                // infinite loop
                 guid = Y.stamp(targets[i]);
 
-                if (!known[guid]) {
-                    known[guid] = 1;
-
-                    targets.push.apply(targets, targets[i]._evts.targets);
+                if (known[guid]) {
+                    continue;
                 }
-            }
-        }
 
-        e.type = type;
+                known[guid] = 1;
 
-        if (arguments.length > 1) {
-            e.details = toArray(arguments, 1, true);
-        }
+                // Queue any child promises to get notified
+                targets.push.apply(targets, targets[i]._evts.targets);
 
-        for (i = 0, len = targets.length; i < len; ++i) {
-            target = targets[i];
-            subs   = target && target._evts &&target._evts.subs[type];
+                // Notify subscribers
+                subs = target._evts.subs[type];
 
-            if (subs) {
-                for (j = 0, jlen = subs.length; j < jlen; ++j) {
-                    // Force async to mimic resolution lifecycle, and each
-                    // callback in its own event loop turn to avoid swallowing
-                    // errors and errors breaking the current js thread.
-                    // TODO: would synchronous notifications be better?
-                    Y.soon(Y.bind(subs[j], null, e));
+                if (subs) {
+                    for (j = 0, jlen = subs.length; j < jlen; ++j) {
+                        callback = subs[j];
+
+                        if (args) {
+                            args[0]  = callback;
+                            callback = Y.bind.apply(Y, args);
+                        }
+
+                        // Force async to mimic resolution lifecycle, and
+                        // each callback in its own event loop turn to
+                        // avoid swallowing errors and errors breaking the
+                        // current js thread.
+                        // TODO: would synchronous notifications be better?
+                        Y.soon(callback);
+                    }
                 }
             }
         }

@@ -39,31 +39,7 @@ suite.add(new Y.Test.Case({
         test.wait();
     },
 
-    'event object should receive an event object': function () {
-        var test     = this,
-            notifier = new Y.Promise.EventNotifier(),
-            promise  = new Y.Promise(function (resolve) {
-                resolve();
-            });
-
-        notifier.addEvents(promise);
-
-        promise.on('test', function (e) {
-            test.resume(function () {
-                Y.Assert.isObject(e);
-            });
-        });
-
-        // In a setTimeout because we're not testing asynchronicity, so forcing
-        // async avoids test noise.
-        setTimeout(function () {
-            notifier.fire('test');
-        }, 0);
-
-        test.wait();
-    },
-
-    'event object should have fire(name, THIS_STUFF)': function () {
+    'event subscribers should receive fire(type, THIS_STUFF)': function () {
         var test     = this,
             details  = { message: 'testing' },
             notifier = new Y.Promise.EventNotifier(),
@@ -73,14 +49,10 @@ suite.add(new Y.Test.Case({
 
         notifier.addEvents(promise);
 
-        promise.on('test', function (e) {
+        promise.on('test', function (x, y) {
             test.resume(function () {
-                Y.Assert.isObject(e);
-                Y.Assert.areSame('testing', e.message);
-                Y.Assert.areSame('test', e.type);
-                Y.Assert.isArray(e.details);
-                Y.Assert.areSame(details, e.details[0]);
-                Y.Assert.areSame('a', e.details[1]);
+                Y.Assert.areSame(details, x);
+                Y.Assert.areSame('a', y);
             });
         });
 
@@ -135,14 +107,10 @@ suite.add(new Y.Test.Case({
 
         promise.then(function () {
             // no-op
-        }).on('test', function (e) {
+        }).on('test', function (x, y) {
             test.resume(function () {
-                Y.Assert.isObject(e);
-                Y.Assert.areSame('testing', e.message);
-                Y.Assert.areSame('test', e.type);
-                Y.Assert.isArray(e.details);
-                Y.Assert.areSame(details, e.details[0]);
-                Y.Assert.areSame('a', e.details[1]);
+                Y.Assert.areSame(details, x);
+                Y.Assert.areSame('a', y);
             });
         });
 
