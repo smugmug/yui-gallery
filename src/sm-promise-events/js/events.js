@@ -11,7 +11,6 @@ promises as well, allowing notifications to cascade throughout a promise chain.
 **/
 var isObject   = Y.Lang.isObject,
     toArray    = Y.Array,
-    arrayIndex = Y.Array.indexOf,
     Notifier;
 
 /**
@@ -98,11 +97,11 @@ Y.mix(Notifier.prototype, {
     **/
     fire: function (type, details) {
         var targets = this._targets.slice(),
-            known   = [],
+            known   = {},
             e       = (details && isObject(details, true)) ?
                         Y.merge(details) : {},
             target, subs,
-            i, len, j, jlen;
+            i, len, j, jlen, guid;
 
         // Breadth-first notification order, mimicking resolution order
         // Note: Not caching a length comparator because this pushes to the end
@@ -110,12 +109,16 @@ Y.mix(Notifier.prototype, {
         for (i = 0; i < targets.length; ++i) {
             // Not that this should ever happen, but don't push known promise
             // targets onto the list again. That would make for an infinite loop
-            if (arrayIndex(targets[i], known) === -1 && targets[i]._evts) {
-                targets.push.apply(targets, targets[i]._evts.targets);
+            if (targets[i]._evts) {
+                guid = Y.stamp(targets[i]);
+
+                if (!known[guid]) {
+                    known[guid] = 1;
+
+                    targets.push.apply(targets, targets[i]._evts.targets);
+                }
             }
         }
-
-        targets = Y.Array.unique(targets);
 
         e.type = type;
 
