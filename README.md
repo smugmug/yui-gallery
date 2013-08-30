@@ -9,6 +9,11 @@ This repo contains open source YUI components that have been contributed to the
 Modules
 -------
 
+### [gallery-sm-map](src/sm-map)
+
+An ordered map data structure with an interface and behavior similar to (but not
+exactly the same as) ECMAScript 6 Maps.
+
 ### [gallery-sm-menu](src/sm-menu)
 
 An awesome menu widget that makes it easy to create standalone menus, dropdown
