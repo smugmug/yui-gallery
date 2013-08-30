@@ -61,7 +61,6 @@ YUI({
     notifier.addEvents(promise);
 
     promise.on('progress', function (e) {
-        // e.type === 'progress'
         Y.one('#progress-indicator').setStyle('width', e.percent + '%');
     });
 
@@ -70,7 +69,7 @@ YUI({
         Y.one('#message').setHTML('All done!').show();
     });
 
-    chainedPromise.on('cancel', function (e) {
+    chainedPromise.on('cancel', function () {
         Y.one('#message').setHTML('Canceled!').show();
         Y.one('#progress-indicator').hide();
     });
