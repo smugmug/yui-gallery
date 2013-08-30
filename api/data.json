@@ -136,13 +136,6 @@
             "fors": {},
             "namespaces": {}
         },
-        "src/sm-indexed-map/js/indexed-map.js": {
-            "name": "src/sm-indexed-map/js/indexed-map.js",
-            "modules": {},
-            "classes": {},
-            "fors": {},
-            "namespaces": {}
-        },
         "src/sm-map/js/map.js": {
             "name": "src/sm-map/js/map.js",
             "modules": {
@@ -4602,26 +4595,6 @@
             "name": "keys",
             "type": "Object",
             "class": "Plugin.FocusManager",
-            "module": "gallery-sm-focusmanager"
-        },
-        {
-            "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 17,
-            "description": "Returns the numerical index of the entry with the given _key_, or `-1` if\nnot found.\n\nThis is a very efficient operation with string keys, but is slower with\nnon-string keys.",
-            "itemtype": "method",
-            "name": "indexOfKey",
-            "params": [
-                {
-                    "name": "key",
-                    "description": "Key to look up.",
-                    "type": "Mixed"
-                }
-            ],
-            "return": {
-                "description": "Index of the entry with the given _key_, or `-1` if not\n    found.",
-                "type": "Number"
-            },
-            "class": "Map",
             "module": "gallery-sm-focusmanager"
         },
         {
