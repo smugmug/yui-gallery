@@ -1,5 +1,25 @@
 /*jshint es3: true, globalstrict: true, indent: 4 */
 
+/**
+Provides the `Y.Map` data structure.
+
+@module gallery-sm-map
+@main gallery-sm-map
+**/
+
+/**
+An ordered map data structure with an interface and behavior similar to (but not
+exactly the same as) [ECMAScript 6 Maps][es6-maps].
+
+[es6-maps]:http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.14
+
+@class Map
+@constructor
+@param {Array[]} [entries] Array of entries to add to the map. Each entry should
+    itself be an array in which the first item is the key and the second item is
+    the value for that entry.
+**/
+
 "use strict";
 
 var isNative           = Y.Lang._isNative,
