@@ -1,0 +1,22 @@
+{
+  "name": "smugmug-yui-gallery",
+  "version": "0.0.1",
+  "description": "SmugMug YUI gallery modules.",
+  "private": true,
+
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-benchmark": "~0.2.0"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/smugmug/yui-gallery.git"
+  },
+
+  "license": "MIT",
+
+  "bugs": {
+    "url": "https://github.com/smugmug/yui-gallery/issues"
+  }
+}

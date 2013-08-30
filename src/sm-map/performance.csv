@@ -1,0 +1,7 @@
+name,date,error,count,cycles,hz
+"Create an instance","Fri Aug 30 2013 16:50:32 GMT-0700 (PDT)",,126960,7,2447416.58752672
+"Set an entry with a string key","Fri Aug 30 2013 16:50:38 GMT-0700 (PDT)",,182793,4,3503395.924802145
+"Set an entry with an object key","Fri Aug 30 2013 16:50:43 GMT-0700 (PDT)",,296671,4,5633390.204243049
+"Get a string key from a 500-entry map","Fri Aug 30 2013 16:50:49 GMT-0700 (PDT)",,339525,6,6474410.692735327
+"Get an object key from a 500-entry map (best-case)","Fri Aug 30 2013 16:50:54 GMT-0700 (PDT)",,311297,4,6021922.005371526
+"Get an object key from a 500-entry map (worst-case)","Fri Aug 30 2013 16:51:00 GMT-0700 (PDT)",,10728,4,212292.2490422226

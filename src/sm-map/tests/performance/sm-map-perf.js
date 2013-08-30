@@ -1,49 +1,86 @@
-var suite = new PerfSuite('Y.Map', {
-    slug: 'sm-map',
+/*jshint node:true */
 
-    yui: {
-        version: '3.12.0',
+global.YUI = require('../../../../yui/build/yui/yui').YUI;
+require('../../../../build/gallery-sm-map/gallery-sm-map');
 
-        config: {
-            modules: {
-                'gallery-sm-map': 'assets/gallery-sm-map.js'
+var Y = global.Y = YUI().use('gallery-sm-map');
+
+function fillMap(map, entryCount) {
+    for (var i = 0; i < entryCount; ++i) {
+        map.set({}, i);
+    }
+
+    return map;
+}
+
+global.fillMap = fillMap;
+
+module.exports = {
+    name: 'Y.Map',
+
+    tests: {
+        'Create an instance': function () {
+            global.result = new Y.Map();
+        },
+
+        'Set an entry with a string key': {
+            setup: function () {
+                var map = new Y.Map(),
+                    key = 'foo';
+            },
+
+            fn: function () {
+                global.result = map.set(key, 'bar');
             }
         },
 
-        use: ['gallery-sm-map'],
-    },
+        'Set an entry with an object key': {
+            setup: function () {
+                var map = new Y.Map(),
+                    key = {};
+            },
 
-    assets: [
-        '../../../../build/gallery-sm-map/gallery-sm-map.js'
-    ]
-});
+            fn: function () {
+                global.result = map.set(key, 'bar');
+            }
+        },
 
-suite.add('Create a Map instance', function () {
-    this.map = new Y.Map();
-});
+        'Get a string key from a 500-entry map': {
+            setup: function () {
+                var map = fillMap(new Y.Map(), 499);
+                map.set('key', 'value');
+            },
 
-suite.add('Create a string entry', function () {
-    map.set('foo', 'bar');
-}, {
-    setup: function () {
-        var map = new Y.Map();
-    }
-});
+            fn: function () {
+                global.result = map.get('key');
+            }
+        },
 
-suite.add('Get an object key from a large map', function () {
-    this.value = map.get(needle);
-}, {
-    setup: function () {
-        var map         = new Y.Map(),
-            needle      = {},
-            needleIndex = Math.floor(Math.random() * 999);
+        'Get an object key from a 500-entry map (best-case)': {
+            setup: function () {
+                var key = {},
+                    map = new Y.Map([[key, 'value']]);
 
-        for (var i = 0; i < 1000; ++i) {
-            if (i === needleIndex) {
-                map.set(needle, 'you found me!');
-            } else {
-                map.set({}, 'not me!');
+                fillMap(map, 499);
+            },
+
+            fn: function () {
+                global.result = map.get(key);
+            }
+        },
+
+        'Get an object key from a 500-entry map (worst-case)': {
+            setup: function () {
+                var key = {},
+                    map = new Y.Map();
+
+                fillMap(map, 499);
+                map.set(key, 'value');
+            },
+
+            fn: function () {
+                global.result = map.get(key);
             }
         }
     }
-});
+};

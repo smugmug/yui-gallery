@@ -55,6 +55,41 @@ Useful Links
 * [API Docs](http://smugmug.github.com/yui-gallery/api/)
 
 
+Running Benchmarks
+------------------
+
+Some components have Node.js-based performance benchmarks. Here's how to run
+them.
+
+First, install [Node.js](http://nodejs.org/) 0.10.x or higher. Then install this
+repo's dev dependencies by running the following command from the root of the
+repo:
+
+```
+$ npm i -g grunt-cli && npm i
+```
+
+Next, create a symlink that points to a local clone of the
+[YUI](https://github.com/yui/yui3) repo. Don't have a local YUI clone? Create
+one!
+
+```
+$ ln -s /path/to/yui/repo yui
+```
+
+Finally, run the benchmarks:
+
+```
+$ grunt benchmark
+```
+
+Or, to run the benchmarks for a single component, run
+`grunt benchmark:module-name`. For example:
+
+```
+$ grunt benchmark:gallery-sm-map
+```
+
 License
 -------
 
