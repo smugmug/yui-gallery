@@ -7,8 +7,10 @@ YUI.add("yuidoc-meta", function(Y) {
         "Editor.DOM",
         "Editor.Keys",
         "Editor.Link",
+        "Editor.Queue",
         "Editor.Style",
         "Editor.Undo",
+        "Map",
         "Menu",
         "Menu.Base",
         "Menu.Item",
@@ -16,6 +18,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "Plugin.DragDrop.Reorder",
         "Plugin.FocusManager",
         "Plugin.Menu",
+        "Promise.EventNotifier",
         "Range",
         "Selection",
         "TreeView",
@@ -29,14 +32,17 @@ YUI.add("yuidoc-meta", function(Y) {
         "gallery-sm-editor-dom",
         "gallery-sm-editor-keys",
         "gallery-sm-editor-link",
+        "gallery-sm-editor-queue",
         "gallery-sm-editor-style",
         "gallery-sm-editor-undo",
         "gallery-sm-focusmanager",
+        "gallery-sm-map",
         "gallery-sm-menu",
         "gallery-sm-menu-base",
         "gallery-sm-menu-item",
         "gallery-sm-menu-plugin",
         "gallery-sm-menu-templates",
+        "gallery-sm-promise-events",
         "gallery-sm-range",
         "gallery-sm-selection",
         "gallery-sm-treeview",
@@ -84,6 +90,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Provides the `Editor.Link` extension."
         },
         {
+            "displayName": "gallery-sm-editor-queue",
+            "name": "gallery-sm-editor-queue",
+            "description": "Provides the `Editor.Queue` extension."
+        },
+        {
             "displayName": "gallery-sm-editor-style",
             "name": "gallery-sm-editor-style",
             "description": "Provides the `Editor.Style` extension."
@@ -97,6 +108,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "gallery-sm-focusmanager",
             "name": "gallery-sm-focusmanager",
             "description": "Provides the FocusManager Node plugin, which makes it easy to manage keyboard\nfocus among the descendants of a node."
+        },
+        {
+            "displayName": "gallery-sm-map",
+            "name": "gallery-sm-map",
+            "description": "Provides the `Y.Map` data structure."
         },
         {
             "displayName": "gallery-sm-menu",
@@ -122,6 +138,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "gallery-sm-menu-templates",
             "name": "gallery-sm-menu-templates",
             "description": "Provides templates for `Menu`."
+        },
+        {
+            "displayName": "gallery-sm-promise-events",
+            "name": "gallery-sm-promise-events",
+            "description": "Provides a `Y.Promise.EventNotifier` class. Instances can be used to decorate\n`Y.Promise` instances with an `on()` method to allow for non-resolution related\nevent notifications such as cancelation or progress. Additionally, the\npromise's `then` method is \"infected\" to propagate the mixin to its returned\npromises as well, allowing notifications to cascade throughout a promise chain."
         },
         {
             "displayName": "gallery-sm-range",

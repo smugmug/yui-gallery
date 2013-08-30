@@ -53,9 +53,13 @@
             
                 <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
             
+                <li><a href="../classes/Editor.Queue.html">Editor.Queue</a></li>
+            
                 <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
             
                 <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
             
                 <li><a href="../classes/Menu.html">Menu</a></li>
             
@@ -70,6 +74,8 @@
                 <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
             
                 <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Promise.EventNotifier.html">Promise.EventNotifier</a></li>
             
                 <li><a href="../classes/Range.html">Range</a></li>
             
@@ -99,11 +105,15 @@
             
                 <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-map.html">gallery-sm-map</a></li>
             
                 <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
             
@@ -114,6 +124,8 @@
                 <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
             
                 <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-promise-events.html">gallery-sm-promise-events</a></li>
             
                 <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
             
@@ -292,6 +304,13 @@
                             </li>
                         
                             <li class="index-item method private inherited">
+                                <a href="#method__addOutOfOrder">_addOutOfOrder</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private inherited">
                                 <a href="#method__aggregateAttrs">_aggregateAttrs</a>
 
                                 
@@ -362,13 +381,6 @@
                             </li>
                         
                             <li class="index-item method private inherited">
-                                <a href="#method__filterAttrCfgs">_filterAttrCfgs</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method private inherited">
                                 <a href="#method__fireAttrChange">_fireAttrChange</a>
 
                                 
@@ -432,6 +444,13 @@
                             </li>
                         
                             <li class="index-item method private inherited">
+                                <a href="#method__getInstanceAttrCfgs">_getInstanceAttrCfgs</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private inherited">
                                 <a href="#method__getStateVal">_getStateVal</a>
 
                                 
@@ -440,6 +459,13 @@
                         
                             <li class="index-item method private inherited">
                                 <a href="#method__getType">_getType</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private inherited">
+                                <a href="#method__hasPotentialSubscribers">_hasPotentialSubscribers</a>
 
                                 
                                 
@@ -496,6 +522,13 @@
                         
                             <li class="index-item method protected">
                                 <a href="#method__link">_link</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected">
+                                <a href="#method__linkPrompt">_linkPrompt</a>
 
                                 
                                 
@@ -841,6 +874,20 @@
                                 
                             </li>
                         
+                            <li class="index-item property">
+                                <a href="#property_linkKeyCommands">linkKeyCommands</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_linkTemplate">linkTemplate</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item property deprecated inherited">
                                 <a href="#property_name">name</a>
 
@@ -955,7 +1002,7 @@
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l836"><code>attribute&#x2F;js&#x2F;AttributeCore.js:836</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l854"><code>attribute&#x2F;js&#x2F;AttributeCore.js:854</code></a>
         
         </p>
 
@@ -1085,7 +1132,7 @@ See <a href="#method_addAttr">addAttr</a>.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l382"><code>attribute&#x2F;js&#x2F;AttributeCore.js:382</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l360"><code>attribute&#x2F;js&#x2F;AttributeCore.js:360</code></a>
         
         </p>
 
@@ -1147,6 +1194,129 @@ along the critical path, where the calling method has already obtained lazy conf
 </div>
 
                 
+                    <div id="method__addOutOfOrder" class="method item private inherited">
+    <h3 class="name"><code>_addOutOfOrder</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>cfg</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="http://yuilibrary.com/yui/docs/api/classes/AttributeCore.html#method__addOutOfOrder">AttributeCore</a>:
+            
+        
+        
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l527"><code>attribute&#x2F;js&#x2F;AttributeCore.js:527</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Utility method used by get/set to add attributes
+encountered out of order when calling addAttrs().</p>
+
+<p>For example, if:</p>
+
+<pre class="code prettyprint"><code>this.addAttrs({
+     foo: {
+         setter: function() {
+            // make sure this bar is available when foo is added
+            this.get("bar");
+         }
+     },
+     bar: {
+         value: ...
+     }
+});
+</code></pre>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>attribute name</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">cfg</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>attribute configuration</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method__aggregateAttrs" class="method item private inherited">
     <h3 class="name"><code>_aggregateAttrs</code></h3>
 
@@ -1192,7 +1362,7 @@ along the critical path, where the calling method has already obtained lazy conf
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l575"><code>base&#x2F;js&#x2F;BaseCore.js:575</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l618"><code>base&#x2F;js&#x2F;BaseCore.js:618</code></a>
         
         </p>
 
@@ -1287,7 +1457,7 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l538"><code>base&#x2F;js&#x2F;BaseCore.js:538</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l581"><code>base&#x2F;js&#x2F;BaseCore.js:581</code></a>
         
         </p>
 
@@ -1341,7 +1511,7 @@ this class for iteration performance reasons.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l309"><code>base&#x2F;js&#x2F;BaseCore.js:309</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l364"><code>base&#x2F;js&#x2F;BaseCore.js:364</code></a>
         
         </p>
 
@@ -1394,7 +1564,7 @@ this class for iteration performance reasons.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l281"><code>base&#x2F;js&#x2F;BaseCore.js:281</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l336"><code>base&#x2F;js&#x2F;BaseCore.js:336</code></a>
         
         </p>
 
@@ -1457,7 +1627,7 @@ this class for iteration performance reasons.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l549"><code>base&#x2F;js&#x2F;BaseCore.js:549</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l592"><code>base&#x2F;js&#x2F;BaseCore.js:592</code></a>
         
         </p>
 
@@ -1516,6 +1686,12 @@ Since it's on a critical path, we don't want to re-do the check.</p>
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>eventFastPath</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -1544,7 +1720,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeObservable.js.html#l186"><code>attribute&#x2F;js&#x2F;AttributeObservable.js:186</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeObservable.js.html#l185"><code>attribute&#x2F;js&#x2F;AttributeObservable.js:185</code></a>
         
         </p>
 
@@ -1574,6 +1750,21 @@ Since it's on a critical path, we don't want to re-do the check.</p>
 
                     <div class="param-description">
                         <p>The event object for attribute change events.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">eventFastPath</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Whether or not we're using this as a fast path in the case of no listeners or not</p>
                     </div>
 
                     
@@ -1630,7 +1821,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l190"><code>base&#x2F;js&#x2F;BaseObservable.js:190</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l202"><code>base&#x2F;js&#x2F;BaseObservable.js:202</code></a>
         
         </p>
 
@@ -1716,7 +1907,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l178"><code>base&#x2F;js&#x2F;BaseObservable.js:178</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l190"><code>base&#x2F;js&#x2F;BaseObservable.js:190</code></a>
         
         </p>
 
@@ -1793,7 +1984,7 @@ refers to the configuration object passed to the constructor.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l721"><code>base&#x2F;js&#x2F;BaseCore.js:721</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l782"><code>base&#x2F;js&#x2F;BaseCore.js:782</code></a>
         
         </p>
 
@@ -1867,7 +2058,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l427"><code>base&#x2F;js&#x2F;BaseCore.js:427</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l470"><code>base&#x2F;js&#x2F;BaseCore.js:470</code></a>
         
         </p>
 
@@ -1933,135 +2124,6 @@ that by the time all classes are processed, allCfgs will be empty.</p>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
                     The set of adhoc attributes passed in, in the form
-of an object with attribute name/configuration pairs.
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method__filterAttrCfgs" class="method item private inherited">
-    <h3 class="name"><code>_filterAttrCfgs</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>clazz</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>allCfgs</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="http://yuilibrary.com/yui/docs/api/classes/BaseCore.html#method__filterAttrCfgs">BaseCore</a>:
-            
-        
-        
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l356"><code>base&#x2F;js&#x2F;BaseCore.js:356</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A helper method used when processing ATTRS across the class hierarchy during
-initialization. Returns a disposable object with the attributes defined for
-the provided class, extracted from the set of all attributes passed in.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">clazz</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The class for which the desired attributes are required.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">allCfgs</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The set of all attribute configurations for this instance.
-Attributes will be removed from this set, if they belong to the filtered class, so
-that by the time all classes are processed, allCfgs will be empty.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
-                    
-                    The set of attributes belonging to the class passed in, in the form
 of an object with attribute name/configuration pairs.
                 
             </div>
@@ -2303,7 +2365,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l81"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:81</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l106"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:106</code></a>
         
         </p>
 
@@ -2386,7 +2448,7 @@ the current range</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l543"><code>attribute&#x2F;js&#x2F;AttributeCore.js:543</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l564"><code>attribute&#x2F;js&#x2F;AttributeCore.js:564</code></a>
         
         </p>
 
@@ -2587,7 +2649,7 @@ configuration properties for all attributes.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l339"><code>base&#x2F;js&#x2F;BaseCore.js:339</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l394"><code>base&#x2F;js&#x2F;BaseCore.js:394</code></a>
         
         </p>
 
@@ -2682,7 +2744,7 @@ the cached value.
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l945"><code>attribute&#x2F;js&#x2F;AttributeCore.js:945</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l963"><code>attribute&#x2F;js&#x2F;AttributeCore.js:963</code></a>
         
         </p>
 
@@ -2818,7 +2880,7 @@ provided and the attribute is not read-only.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l774"><code>attribute&#x2F;js&#x2F;AttributeCore.js:774</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l792"><code>attribute&#x2F;js&#x2F;AttributeCore.js:792</code></a>
         
         </p>
 
@@ -2912,7 +2974,7 @@ returned. If set to true, all attributes modified from their initial values are 
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l323"><code>base&#x2F;js&#x2F;BaseCore.js:323</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l378"><code>base&#x2F;js&#x2F;BaseCore.js:378</code></a>
         
         </p>
 
@@ -3057,6 +3119,113 @@ implementations which need to fast-track publish for performance reasons.</p>
 </div>
 
                 
+                    <div id="method__getInstanceAttrCfgs" class="method item private inherited">
+    <h3 class="name"><code>_getInstanceAttrCfgs</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>allCfgs</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="http://yuilibrary.com/yui/docs/api/classes/BaseCore.html#method__getInstanceAttrCfgs">BaseCore</a>:
+            
+        
+        
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l411"><code>base&#x2F;js&#x2F;BaseCore.js:411</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A helper method used to isolate the attrs config for this instance to pass to <code>addAttrs</code>,
+from the static cached ATTRS for the class.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">allCfgs</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The set of all attribute configurations for this instance.
+Attributes will be removed from this set, if they belong to the filtered class, so
+that by the time all classes are processed, allCfgs will be empty.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
+                    
+                    The set of attributes to be added for this instance, suitable
+for passing through to <code>addAttrs</code>.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method__getStateVal" class="method item private inherited">
     <h3 class="name"><code>_getStateVal</code></h3>
 
@@ -3108,7 +3277,7 @@ implementations which need to fast-track publish for performance reasons.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l600"><code>attribute&#x2F;js&#x2F;AttributeCore.js:600</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l618"><code>attribute&#x2F;js&#x2F;AttributeCore.js:618</code></a>
         
         </p>
 
@@ -3233,6 +3402,109 @@ applied to the supplied type.</p>
 
     
 
+    
+
+    
+</div>
+
+                
+                    <div id="method__hasPotentialSubscribers" class="method item private inherited">
+    <h3 class="name"><code>_hasPotentialSubscribers</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fullType</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="http://yuilibrary.com/yui/docs/api/classes/EventTarget.html#method__hasPotentialSubscribers">EventTarget</a>:
+            
+        
+        
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l637"><code>event-custom&#x2F;js&#x2F;event-facade.js:637</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fullType</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The fully prefixed type name</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    Whether the event has potential subscribers or not
+                
+            </div>
+        </div>
     
 
     
@@ -3404,7 +3676,7 @@ constructor.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l254"><code>base&#x2F;js&#x2F;BaseCore.js:254</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l309"><code>base&#x2F;js&#x2F;BaseCore.js:309</code></a>
         
         </p>
 
@@ -3479,7 +3751,7 @@ constructor.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l1011"><code>attribute&#x2F;js&#x2F;AttributeCore.js:1011</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l1029"><code>attribute&#x2F;js&#x2F;AttributeCore.js:1029</code></a>
         
         </p>
 
@@ -3598,7 +3870,7 @@ either through the constructor.ATTRS property, or explicitly passed in.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l219"><code>base&#x2F;js&#x2F;BaseCore.js:219</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l274"><code>base&#x2F;js&#x2F;BaseCore.js:274</code></a>
         
         </p>
 
@@ -3684,7 +3956,7 @@ either through the constructor.ATTRS property, or explicitly passed in.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l659"><code>base&#x2F;js&#x2F;BaseCore.js:659</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l702"><code>base&#x2F;js&#x2F;BaseCore.js:702</code></a>
         
         </p>
 
@@ -3763,7 +4035,7 @@ invoking the initializer method on the prototype of each class in the hierarchy.
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l457"><code>base&#x2F;js&#x2F;BaseCore.js:457</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l500"><code>base&#x2F;js&#x2F;BaseCore.js:500</code></a>
         
         </p>
 
@@ -3832,7 +4104,7 @@ across the class hierarchy for the instance.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l369"><code>attribute&#x2F;js&#x2F;AttributeCore.js:369</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l347"><code>attribute&#x2F;js&#x2F;AttributeCore.js:347</code></a>
         
         </p>
 
@@ -3937,7 +4209,7 @@ added lazily and still requires initialization.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l98"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:98</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l123"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:123</code></a>
         
         </p>
 
@@ -3948,7 +4220,9 @@ added lazily and still requires initialization.</p>
     </div>
 
     <div class="description">
-        <p>Implementation for the public <code>link</code> method</p>
+        <p>Implementation for the public <code>link</code> method.</p>
+
+<p>Wraps the currently selected range in an anchor <code>&lt;a&gt;</code> tag</p>
     </div>
 
     
@@ -3974,6 +4248,19 @@ added lazily and still requires initialization.</p>
                             
                             <li class="param">
                                 
+                                    <code class="param-name">href</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                
+
+                                <div class="param-description">
+                                    
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
                                     <code class="param-name optional">[target=_self]</code>
                                     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                                     <span class="flag optional" title="This parameter is optional.">optional</span>
@@ -3988,22 +4275,9 @@ added lazily and still requires initialization.</p>
                             
                             <li class="param">
                                 
-                                    <code class="param-name optional">[text=range.toString()]</code>
+                                    <code class="param-name optional">[text]</code>
                                     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                                     <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">href</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                                 
 
                                 <div class="param-description">
@@ -4019,6 +4293,62 @@ added lazily and still requires initialization.</p>
             
             </ul>
         </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__linkPrompt" class="method item protected">
+    <h3 class="name"><code>_linkPrompt</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l178"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:178</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
     
 
     
@@ -4208,7 +4538,7 @@ it published) by setting the events 'monitor' config.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l897"><code>attribute&#x2F;js&#x2F;AttributeCore.js:897</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l915"><code>attribute&#x2F;js&#x2F;AttributeCore.js:915</code></a>
         
         </p>
 
@@ -4365,7 +4695,7 @@ Y.on('detachcategory| menu:click', fn)</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l98"><code>base&#x2F;js&#x2F;BaseObservable.js:98</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l110"><code>base&#x2F;js&#x2F;BaseObservable.js:110</code></a>
         
         </p>
 
@@ -4460,7 +4790,7 @@ construction, prior to init.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l883"><code>attribute&#x2F;js&#x2F;AttributeCore.js:883</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l901"><code>attribute&#x2F;js&#x2F;AttributeCore.js:901</code></a>
         
         </p>
 
@@ -4733,7 +5063,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l427"><code>attribute&#x2F;js&#x2F;AttributeCore.js:427</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l405"><code>attribute&#x2F;js&#x2F;AttributeCore.js:405</code></a>
         
         </p>
 
@@ -4887,7 +5217,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l443"><code>attribute&#x2F;js&#x2F;AttributeCore.js:443</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l421"><code>attribute&#x2F;js&#x2F;AttributeCore.js:421</code></a>
         
         </p>
 
@@ -5050,7 +5380,7 @@ readOnly or writeOnce attributes which have already been set.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l742"><code>attribute&#x2F;js&#x2F;AttributeCore.js:742</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l760"><code>attribute&#x2F;js&#x2F;AttributeCore.js:760</code></a>
         
         </p>
 
@@ -5199,7 +5529,7 @@ readOnly or writeOnce attributes which have already been set.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l640"><code>attribute&#x2F;js&#x2F;AttributeCore.js:640</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l658"><code>attribute&#x2F;js&#x2F;AttributeCore.js:658</code></a>
         
         </p>
 
@@ -5383,7 +5713,7 @@ where the calling method has already obtained the config from state.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l622"><code>attribute&#x2F;js&#x2F;AttributeCore.js:622</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l640"><code>attribute&#x2F;js&#x2F;AttributeCore.js:640</code></a>
         
         </p>
 
@@ -5731,7 +6061,7 @@ to protect the original values, you will need to merge the object.
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l805"><code>attribute&#x2F;js&#x2F;AttributeCore.js:805</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l823"><code>attribute&#x2F;js&#x2F;AttributeCore.js:823</code></a>
         
         </p>
 
@@ -5866,7 +6196,7 @@ See <a href="#method_addAttr">addAttr</a>.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l455"><code>event-custom&#x2F;js&#x2F;event-facade.js:455</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l496"><code>event-custom&#x2F;js&#x2F;event-facade.js:496</code></a>
         
         </p>
 
@@ -5978,7 +6308,7 @@ be specified.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l833"><code>event-custom&#x2F;js&#x2F;event-target.js:833</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l834"><code>event-custom&#x2F;js&#x2F;event-target.js:834</code></a>
         
         </p>
 
@@ -6130,7 +6460,7 @@ if configured for the event, has executed.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l341"><code>attribute&#x2F;js&#x2F;AttributeCore.js:341</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l319"><code>attribute&#x2F;js&#x2F;AttributeCore.js:319</code></a>
         
         </p>
 
@@ -6222,7 +6552,7 @@ if configured for the event, has executed.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l870"><code>event-custom&#x2F;js&#x2F;event-target.js:870</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l871"><code>event-custom&#x2F;js&#x2F;event-target.js:871</code></a>
         
         </p>
 
@@ -6307,7 +6637,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l507"><code>event-custom&#x2F;js&#x2F;event-facade.js:507</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l548"><code>event-custom&#x2F;js&#x2F;event-facade.js:548</code></a>
         
         </p>
 
@@ -6403,7 +6733,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l297"><code>base&#x2F;js&#x2F;BaseCore.js:297</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l352"><code>base&#x2F;js&#x2F;BaseCore.js:352</code></a>
         
         </p>
 
@@ -6700,7 +7030,7 @@ be removed.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventTarget.html" class="crosslink external" target="_blank">EventTarget</a></span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -6739,17 +7069,17 @@ be removed.</p>
 from the context specified when the event was created, and with the
 following parameters.</p>
 
-<p>If the custom event object hasn't been created, then the event hasn't
-been published and it has no subscribers.  For performance sake, we
-immediate exit in this case.  This means the event won't bubble, so
-if the intention is that a bubble target be notified, the event must
-be published on this object first.</p>
-
 <p>The first argument is the event type, and any additional arguments are
 passed to the listeners as parameters.  If the first of these is an
 object literal, and the event is configured to emit an event facade,
 that object is mixed into the event facade and the facade is provided
 in place of the original object.</p>
+
+<p>If the custom event object hasn't been created, then the event hasn't
+been published and it has no subscribers.  For performance sake, we
+immediate exit in this case.  This means the event won't bubble, so
+if the intention is that a bubble target be notified, the event must
+be published on this object first.</p>
     </div>
 
     
@@ -6804,9 +7134,10 @@ the event facade.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventTarget.html" class="crosslink external" target="_blank">EventTarget</a></span>:
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    the event host
+                    True if the whole lifecycle of the event went through,
+false if at any point the event propagation was halted.
                 
             </div>
         </div>
@@ -6859,7 +7190,7 @@ the event facade.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l353"><code>attribute&#x2F;js&#x2F;AttributeCore.js:353</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l331"><code>attribute&#x2F;js&#x2F;AttributeCore.js:331</code></a>
         
         </p>
 
@@ -6963,7 +7294,7 @@ dot notation can be used to obtain the value of a property of the object (e.g. <
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l762"><code>attribute&#x2F;js&#x2F;AttributeCore.js:762</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l780"><code>attribute&#x2F;js&#x2F;AttributeCore.js:780</code></a>
         
         </p>
 
@@ -7071,7 +7402,7 @@ returned. If set to true, all attributes modified from their initial values are 
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l814"><code>event-custom&#x2F;js&#x2F;event-target.js:814</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l815"><code>event-custom&#x2F;js&#x2F;event-target.js:815</code></a>
         
         </p>
 
@@ -7178,7 +7509,7 @@ falsy value otherwise</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l479"><code>event-custom&#x2F;js&#x2F;event-facade.js:479</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l520"><code>event-custom&#x2F;js&#x2F;event-facade.js:520</code></a>
         
         </p>
 
@@ -7259,7 +7590,7 @@ falsy value otherwise</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l264"><code>base&#x2F;js&#x2F;BaseCore.js:264</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l319"><code>base&#x2F;js&#x2F;BaseCore.js:319</code></a>
         
         </p>
 
@@ -7354,7 +7685,7 @@ and invokes initializers for the class hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l44"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:44</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l69"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:69</code></a>
         
         </p>
 
@@ -7434,7 +7765,7 @@ and invokes initializers for the class hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l29"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:29</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l54"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:54</code></a>
         
         </p>
 
@@ -7471,6 +7802,19 @@ and invokes initializers for the class hierarchy.</p>
                             
                             <li class="param">
                                 
+                                    <code class="param-name">href</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                
+
+                                <div class="param-description">
+                                    
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
                                     <code class="param-name optional">[target=_self]</code>
                                     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                                     <span class="flag optional" title="This parameter is optional.">optional</span>
@@ -7485,22 +7829,9 @@ and invokes initializers for the class hierarchy.</p>
                             
                             <li class="param">
                                 
-                                    <code class="param-name optional">[text=range.toString()]</code>
+                                    <code class="param-name optional">[text]</code>
                                     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                                     <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">href</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                                 
 
                                 <div class="param-description">
@@ -8592,7 +8923,7 @@ case the custom event is returned.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l489"><code>event-custom&#x2F;js&#x2F;event-facade.js:489</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l530"><code>event-custom&#x2F;js&#x2F;event-facade.js:530</code></a>
         
         </p>
 
@@ -8801,7 +9132,7 @@ the attribute is not readOnly, or writeOnce.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l410"><code>attribute&#x2F;js&#x2F;AttributeCore.js:410</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l388"><code>attribute&#x2F;js&#x2F;AttributeCore.js:388</code></a>
         
         </p>
 
@@ -8946,7 +9277,7 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l729"><code>attribute&#x2F;js&#x2F;AttributeCore.js:729</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l747"><code>attribute&#x2F;js&#x2F;AttributeCore.js:747</code></a>
         
         </p>
 
@@ -9108,7 +9439,7 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l754"><code>base&#x2F;js&#x2F;BaseCore.js:754</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l815"><code>base&#x2F;js&#x2F;BaseCore.js:815</code></a>
         
         </p>
 
@@ -9178,7 +9509,7 @@ and the instance guid, if set.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l56"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:56</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l81"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:81</code></a>
         
         </p>
 
@@ -9378,7 +9709,7 @@ be removed.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l100"><code>base&#x2F;js&#x2F;BaseCore.js:100</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l155"><code>base&#x2F;js&#x2F;BaseCore.js:155</code></a>
         
         </p>
 
@@ -9398,6 +9729,94 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
 
     
         <p><strong>Default:</strong> undefined (false)</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_linkKeyCommands" class="property item">
+    <h3 class="name"><code>linkKeyCommands</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l25"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:25</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Key commands related to creating hyperlinks.</p>
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_linkTemplate" class="property item">
+    <h3 class="name"><code>linkTemplate</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l35"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:35</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>HTML Template for building an anchor node</p>
+    </div>
+
     
 
     
@@ -9428,7 +9847,7 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l242"><code>base&#x2F;js&#x2F;BaseCore.js:242</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l297"><code>base&#x2F;js&#x2F;BaseCore.js:297</code></a>
         
         </p>
 
@@ -9488,7 +9907,7 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l157"><code>base&#x2F;js&#x2F;BaseCore.js:157</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l212"><code>base&#x2F;js&#x2F;BaseCore.js:212</code></a>
         
         </p>
 
@@ -9592,7 +10011,7 @@ has been through the destroy lifecycle phase.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l143"><code>base&#x2F;js&#x2F;BaseCore.js:143</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l198"><code>base&#x2F;js&#x2F;BaseCore.js:198</code></a>
         
         </p>
 
@@ -9695,7 +10114,7 @@ has been through the init lifecycle phase.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l151"><code>base&#x2F;js&#x2F;BaseObservable.js:151</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l163"><code>base&#x2F;js&#x2F;BaseObservable.js:163</code></a>
         
         </p>
 

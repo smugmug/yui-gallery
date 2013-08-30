@@ -53,9 +53,13 @@
             
                 <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
             
+                <li><a href="../classes/Editor.Queue.html">Editor.Queue</a></li>
+            
                 <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
             
                 <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
             
                 <li><a href="../classes/Menu.html">Menu</a></li>
             
@@ -70,6 +74,8 @@
                 <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
             
                 <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Promise.EventNotifier.html">Promise.EventNotifier</a></li>
             
                 <li><a href="../classes/Range.html">Range</a></li>
             
@@ -99,11 +105,15 @@
             
                 <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-map.html">gallery-sm-map</a></li>
             
                 <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
             
@@ -114,6 +124,8 @@
                 <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
             
                 <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-promise-events.html">gallery-sm-promise-events</a></li>
             
                 <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
             
@@ -325,12 +337,13 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
         supplied function.
     **/
     command: function (name, value) {
-        var args = Y.Array(arguments, 1, true);
+        var args = Y.Array(arguments, 1, true),
+            retVal;
 
         this.focus();
 
         if (typeof name === &#x27;function&#x27;) {
-            return name.apply(this, args);
+            retVal = name.apply(this, args);
         } else {
             value = args.shift();
 
@@ -338,8 +351,12 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
                 this._execCommand(name, value);
             }
 
-            return this._queryCommandValue(name);
+            retVal = this._queryCommandValue(name);
         }
+
+        this._updateSelection({force: true});
+
+        return retVal;
     },
 
     /**
@@ -485,6 +502,8 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
 
         this._events = [
             container.delegate(&#x27;blur&#x27;,  this._onBlur,  selectors.input, this),
+            container.delegate(&#x27;copy&#x27;,  this._onCopy,  selectors.input, this),
+            container.delegate(&#x27;cut&#x27;,  this._onCut,  selectors.input, this),
             container.delegate(&#x27;dblclick&#x27;, this._onDblClick, selectors.input, this),
             container.delegate(&#x27;focus&#x27;, this._onFocus, selectors.input, this),
             container.delegate(&#x27;paste&#x27;, this._onPaste, selectors.input, this)
@@ -619,6 +638,8 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
 
     @method _updateSelection
     @param {Object} [options] Options.
+        @param {Boolean} [options.force=false] If &#x60;true&#x60;, the internal selection
+            state will be updated regardless of if the selection changed.
         @param {Boolean} [options.silent=false] If &#x60;true&#x60;, the &#x60;selectionChange&#x60;
             event will be suppressed.
     @protected
@@ -626,9 +647,17 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
     _updateSelection:  function (options) {
         var prevRange = this._selectedRange || null,
             newRange  = this.selection.range() || null,
+            force     = options &amp;&amp; options.force,
             silent    = options &amp;&amp; options.silent;
 
-        if (newRange === prevRange || (prevRange &amp;&amp; prevRange.isEquivalent(newRange))) {
+        if (!force &amp;&amp; (
+                newRange === prevRange || (
+                    prevRange &amp;&amp;
+                    prevRange.isEquivalent(newRange) &amp;&amp;
+                    prevRange.toHTML() === newRange.toHTML()
+                )
+            )
+        ) {
             return;
         }
 
@@ -661,6 +690,57 @@ var EditorBase = Y.Base.create(&#x27;editorBase&#x27;, Y.View, [], {
         clearInterval(this._selectionMonitor);
 
         this.fire(EVT_BLUR);
+    },
+
+    /**
+    Handles &#x60;copy&#x60; events on the editor.
+
+    @method _onCopy
+    @param {EventFacade} e
+    @protected
+    **/
+    _onCopy: function (e) {
+        var clipboard = e._event.clipboardData || window.clipboardData,
+            range = this.selection.range(),
+            contents = range.cloneContents().getHTML();
+
+        e.preventDefault();
+
+        try {
+            // IE doesn&#x27;t support mime types
+            clipboard.setData(&#x27;text/html&#x27;, contents);
+            clipboard.setData(&#x27;text/plain&#x27;, contents);
+        } catch (err) {
+            clipboard.setData(&#x27;text&#x27;, contents);
+        }
+    },
+
+    /**
+    Handles &#x60;cut&#x60; events on the editor.
+
+    @method _onCut
+    @param {EventFacade} e
+    @protected
+    **/
+    _onCut: function (e) {
+        var clipboard = e._event.clipboardData || window.clipboardData,
+            range = this.selection.range(),
+
+            // note the &#x60;expand()&#x60;. this prevents any empty nodes
+            // being left after &#x60;extractContents()&#x60;
+            contents = range.expand().extractContents().getHTML();
+
+        e.preventDefault();
+
+        this.selection.select(range);
+
+        try {
+            // IE doesn&#x27;t support mime types
+            clipboard.setData(&#x27;text/html&#x27;, contents);
+            clipboard.setData(&#x27;text/plain&#x27;, contents);
+        } catch (err) {
+            clipboard.setData(&#x27;text&#x27;, contents);
+        }
     },
 
     /**

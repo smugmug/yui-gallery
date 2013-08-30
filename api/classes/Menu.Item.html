@@ -53,9 +53,13 @@
             
                 <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
             
+                <li><a href="../classes/Editor.Queue.html">Editor.Queue</a></li>
+            
                 <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
             
                 <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
             
                 <li><a href="../classes/Menu.html">Menu</a></li>
             
@@ -70,6 +74,8 @@
                 <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
             
                 <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Promise.EventNotifier.html">Promise.EventNotifier</a></li>
             
                 <li><a href="../classes/Range.html">Range</a></li>
             
@@ -99,11 +105,15 @@
             
                 <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-map.html">gallery-sm-map</a></li>
             
                 <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
             
@@ -114,6 +124,8 @@
                 <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
             
                 <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-promise-events.html">gallery-sm-promise-events</a></li>
             
                 <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
             
@@ -409,6 +421,13 @@
                         
                             <li class="index-item method inherited">
                                 <a href="#method_append">append</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method inherited">
+                                <a href="#method_depth">depth</a>
 
                                 
                                 
@@ -808,6 +827,79 @@ children.</p>
 </div>
 
                 
+                    <div id="method_depth" class="method item inherited">
+    <h3 class="name"><code>depth</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="http://yuilibrary.com/yui/docs/api/classes/Tree.Node.html#method_depth">Tree.Node</a>:
+            
+        
+        
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l195"><code>tree&#x2F;js&#x2F;tree-node.js:195</code></a>
+        
+        </p>
+
+
+        
+
+        
+            <p>Available since 3.11.0</p>
+        
+    </div>
+
+    <div class="description">
+        <p>Returns this node's depth.</p>
+
+<p>The root node of a tree always has a depth of 0. A child of the root has a
+depth of 1, a child of that child will have a depth of 2, and so on.</p>
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>:
+                    
+                    This node's depth.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_disable" class="method item">
     <h3 class="name"><code>disable</code></h3>
 
@@ -960,7 +1052,7 @@ children.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l195"><code>tree&#x2F;js&#x2F;tree-node.js:195</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l221"><code>tree&#x2F;js&#x2F;tree-node.js:221</code></a>
         
         </p>
 
@@ -1236,7 +1328,7 @@ reusable unless the <code>destroy</code> option is truthy.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l216"><code>tree&#x2F;js&#x2F;tree-node.js:216</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l242"><code>tree&#x2F;js&#x2F;tree-node.js:242</code></a>
         
         </p>
 
@@ -1407,7 +1499,7 @@ works.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l246"><code>tree&#x2F;js&#x2F;tree-node.js:246</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l272"><code>tree&#x2F;js&#x2F;tree-node.js:272</code></a>
         
         </p>
 
@@ -1585,7 +1677,7 @@ works.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l257"><code>tree&#x2F;js&#x2F;tree-node.js:257</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l283"><code>tree&#x2F;js&#x2F;tree-node.js:283</code></a>
         
         </p>
 
@@ -1665,7 +1757,7 @@ this node doesn't have a parent node.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l269"><code>tree&#x2F;js&#x2F;tree-node.js:269</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l295"><code>tree&#x2F;js&#x2F;tree-node.js:295</code></a>
         
         </p>
 
@@ -1774,7 +1866,7 @@ not a child of this node.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l290"><code>tree&#x2F;js&#x2F;tree-node.js:290</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l316"><code>tree&#x2F;js&#x2F;tree-node.js:316</code></a>
         
         </p>
 
@@ -2086,7 +2178,7 @@ hidden.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l320"><code>tree&#x2F;js&#x2F;tree-node.js:320</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l346"><code>tree&#x2F;js&#x2F;tree-node.js:346</code></a>
         
         </p>
 
@@ -2156,7 +2248,7 @@ merely associated with a tree and has not yet been inserted.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l336"><code>tree&#x2F;js&#x2F;tree-node.js:336</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l362"><code>tree&#x2F;js&#x2F;tree-node.js:362</code></a>
         
         </p>
 
@@ -2225,7 +2317,7 @@ merely associated with a tree and has not yet been inserted.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l347"><code>tree&#x2F;js&#x2F;tree-node.js:347</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l373"><code>tree&#x2F;js&#x2F;tree-node.js:373</code></a>
         
         </p>
 
@@ -2311,7 +2403,7 @@ child.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l361"><code>tree&#x2F;js&#x2F;tree-node.js:361</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l387"><code>tree&#x2F;js&#x2F;tree-node.js:387</code></a>
         
         </p>
 
@@ -2443,7 +2535,7 @@ be removed from that tree and moved to this one.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l381"><code>tree&#x2F;js&#x2F;tree-node.js:381</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l407"><code>tree&#x2F;js&#x2F;tree-node.js:407</code></a>
         
         </p>
 
@@ -2521,7 +2613,7 @@ first child</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l395"><code>tree&#x2F;js&#x2F;tree-node.js:395</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l421"><code>tree&#x2F;js&#x2F;tree-node.js:421</code></a>
         
         </p>
 
@@ -2761,7 +2853,7 @@ first child</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l415"><code>tree&#x2F;js&#x2F;tree-node.js:415</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l441"><code>tree&#x2F;js&#x2F;tree-node.js:441</code></a>
         
         </p>
 
@@ -2831,7 +2923,7 @@ descendants of this node's children.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l435"><code>tree&#x2F;js&#x2F;tree-node.js:435</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l461"><code>tree&#x2F;js&#x2F;tree-node.js:461</code></a>
         
         </p>
 
@@ -2921,7 +3013,7 @@ descendants of this node's children.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l472"><code>tree&#x2F;js&#x2F;tree-node.js:472</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/tree_js_tree-node.js.html#l498"><code>tree&#x2F;js&#x2F;tree-node.js:498</code></a>
         
         </p>
 

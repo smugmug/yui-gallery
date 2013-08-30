@@ -53,9 +53,13 @@
             
                 <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
             
+                <li><a href="../classes/Editor.Queue.html">Editor.Queue</a></li>
+            
                 <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
             
                 <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
             
                 <li><a href="../classes/Menu.html">Menu</a></li>
             
@@ -70,6 +74,8 @@
                 <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
             
                 <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Promise.EventNotifier.html">Promise.EventNotifier</a></li>
             
                 <li><a href="../classes/Range.html">Range</a></li>
             
@@ -99,11 +105,15 @@
             
                 <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-map.html">gallery-sm-map</a></li>
             
                 <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
             
@@ -114,6 +124,8 @@
                 <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
             
                 <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-promise-events.html">gallery-sm-promise-events</a></li>
             
                 <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
             
@@ -345,9 +357,14 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [
     @method renderChildren
     @param {Tree.Node} treeNode Tree node whose children should be rendered.
     @param {Object} [options] Options.
+
         @param {Node} [options.container] &#x60;Y.Node&#x60; instance of a container into
             which the children should be rendered. If the container already
             contains rendered children, they will be re-rendered in place.
+
+        @param {Boolean} [options.force=false] If &#x60;true&#x60;, children will be
+            re-rendered from scratch even if they&#x27;ve already been rendered.
+
     @return {Node} &#x60;Y.Node&#x60; instance containing the rendered children.
     **/
     renderChildren: function (treeNode, options) {
@@ -356,6 +373,11 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [
         var container    = options.container,
             childrenNode = container &amp;&amp; container.one(&#x27;&gt;.&#x27; + this.classNames.children),
             lazyRender   = this._lazyRender;
+
+        if (childrenNode &amp;&amp; options.force) {
+            childrenNode.remove(true);
+            childrenNode = null;
+        }
 
         if (!childrenNode) {
             childrenNode = Y.Node.create(this.templates.children({
@@ -398,10 +420,17 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [
     @method renderNode
     @param {Tree.Node} treeNode Tree node to render.
     @param {Object} [options] Options.
+
         @param {Node} [options.container] &#x60;Y.Node&#x60; instance of a container to
             which the rendered tree node should be appended.
+
+        @param {Boolean} [options.force=false] If &#x60;true&#x60;, this node (and its
+            children if &#x60;renderChildren&#x60; is &#x60;true&#x60;) will be re-rendered from
+            scratch, even if it&#x27;s already been rendered.
+
         @param {Boolean} [options.renderChildren=false] Whether or not to render
             this node&#x27;s children.
+
     @return {Node} &#x60;Y.Node&#x60; instance of the rendered tree node.
     **/
     renderNode: function (treeNode, options) {
@@ -410,7 +439,9 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [
         var classNames     = this.classNames,
             hasChildren    = treeNode.hasChildren(),
             htmlNode       = treeNode._htmlNode,
+            oldHtmlNode    = options.force &amp;&amp; htmlNode,
             nodeClassNames = {},
+
             className;
 
         // Build the hash of CSS classes for this node.
@@ -418,7 +449,7 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [
         nodeClassNames[classNames.canHaveChildren] = !!treeNode.canHaveChildren;
         nodeClassNames[classNames.hasChildren]     = hasChildren;
 
-        if (htmlNode) {
+        if (htmlNode &amp;&amp; !options.force) {
             // This node has already been rendered, so we just need to update
             // the DOM instead of re-rendering it from scratch.
             htmlNode.one(&#x27;.&#x27; + classNames.label).setHTML(treeNode.label);
@@ -429,7 +460,8 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [
                 }
             }
         } else {
-            // This node hasn&#x27;t been rendered yet, so render it from scratch.
+            // This node hasn&#x27;t been rendered yet or is being forcibly
+            // re-rendered.
             var enabledClassNames = [];
 
             for (className in nodeClassNames) {
@@ -467,8 +499,13 @@ TreeView = Y.Base.create(&#x27;treeView&#x27;, Y.View, [
 
         treeNode.state.rendered = true;
 
-        if (options.container &amp;&amp; htmlNode.get(&#x27;parentNode&#x27;) !== options.container) {
-            options.container.append(htmlNode);
+        if (options.force) {
+            oldHtmlNode.replace(htmlNode);
+            oldHtmlNode.destroy();
+        } else {
+            if (options.container &amp;&amp; htmlNode.get(&#x27;parentNode&#x27;) !== options.container) {
+                options.container.append(htmlNode);
+            }
         }
 
         return htmlNode;

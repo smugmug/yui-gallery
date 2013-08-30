@@ -70,6 +70,17 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/sm-editor/js/extensions/editor-queue.js": {
+            "name": "src/sm-editor/js/extensions/editor-queue.js",
+            "modules": {
+                "gallery-sm-editor-queue": 1
+            },
+            "classes": {
+                "Editor.Queue": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/sm-editor/js/extensions/editor-style.js": {
             "name": "src/sm-editor/js/extensions/editor-style.js",
             "modules": {
@@ -121,6 +132,24 @@
             },
             "classes": {
                 "Plugin.FocusManager": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-indexed-map/js/indexed-map.js": {
+            "name": "src/sm-indexed-map/js/indexed-map.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/sm-map/js/map.js": {
+            "name": "src/sm-map/js/map.js",
+            "modules": {
+                "gallery-sm-map": 1
+            },
+            "classes": {
+                "Map": 1
             },
             "fors": {},
             "namespaces": {}
@@ -179,6 +208,19 @@
             },
             "fors": {},
             "namespaces": {}
+        },
+        "src/sm-promise-events/js/events.js": {
+            "name": "src/sm-promise-events/js/events.js",
+            "modules": {
+                "gallery-sm-promise-events": 1
+            },
+            "classes": {
+                "Promise.EventNotifier": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Promise": 1
+            }
         },
         "src/sm-selection/js/range.js": {
             "name": "src/sm-selection/js/range.js",
@@ -287,6 +329,7 @@
                 "gallery-sm-editor-dom": 1,
                 "gallery-sm-editor-keys": 1,
                 "gallery-sm-editor-link": 1,
+                "gallery-sm-editor-queue": 1,
                 "gallery-sm-editor-style": 1,
                 "gallery-sm-editor-undo": 1,
                 "gallery-sm-editor-base": 1
@@ -295,6 +338,7 @@
                 "Editor.DOM": 1,
                 "Editor.Keys": 1,
                 "Editor.Link": 1,
+                "Editor.Queue": 1,
                 "Editor.Style": 1,
                 "Editor.Undo": 1,
                 "Editor.Base": 1,
@@ -353,6 +397,21 @@
             "line": 10,
             "description": "Provides the `Editor.Link` extension."
         },
+        "gallery-sm-editor-queue": {
+            "name": "gallery-sm-editor-queue",
+            "submodules": {},
+            "classes": {
+                "Editor.Queue": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "gallery-sm-editor",
+            "namespace": "",
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
+            "line": 10,
+            "description": "Provides the `Editor.Queue` extension."
+        },
         "gallery-sm-editor-style": {
             "name": "gallery-sm-editor-style",
             "submodules": {},
@@ -410,6 +469,20 @@
             "file": "src/sm-focusmanager/js/focusmanager.js",
             "line": 11,
             "description": "Provides the FocusManager Node plugin, which makes it easy to manage keyboard\nfocus among the descendants of a node.",
+            "itemtype": "main"
+        },
+        "gallery-sm-map": {
+            "name": "gallery-sm-map",
+            "submodules": {},
+            "classes": {
+                "Map": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "src/sm-map/js/map.js",
+            "line": 10,
+            "description": "Provides the `Y.Map` data structure.",
             "itemtype": "main"
         },
         "gallery-sm-menu": {
@@ -494,6 +567,22 @@
             "file": "src/sm-menu/js/menu-templates.js",
             "line": 8,
             "description": "Provides templates for `Menu`."
+        },
+        "gallery-sm-promise-events": {
+            "name": "gallery-sm-promise-events",
+            "submodules": {},
+            "classes": {
+                "Promise.EventNotifier": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "Promise": 1
+            },
+            "tag": "module",
+            "file": "src/sm-promise-events/js/events.js",
+            "line": 15,
+            "description": "Provides a `Y.Promise.EventNotifier` class. Instances can be used to decorate\n`Y.Promise` instances with an `on()` method to allow for non-resolution related\nevent notifications such as cancelation or progress. Additionally, the\npromise's `then` method is \"infected\" to propagate the mixin to its returned\npromises as well, allowing notifications to cascade throughout a promise chain.",
+            "since": "@@SINCE@@"
         },
         "gallery-sm-selection": {
             "name": "gallery-sm-selection",
@@ -649,6 +738,25 @@
             "is_constructor": 1,
             "extends": "Base"
         },
+        "Editor.Queue": {
+            "name": "Editor.Queue",
+            "shortname": "Editor.Queue",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [
+                "Editor.Base"
+            ],
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-queue",
+            "namespace": "",
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
+            "line": 10,
+            "description": "Extension for `Editor.Base` that queues commands",
+            "is_constructor": 1,
+            "extends": "Base"
+        },
         "Editor.Style": {
             "name": "Editor.Style",
             "shortname": "Editor.Style",
@@ -743,6 +851,29 @@
             "description": "Node plugin that makes it easy to manage keyboard focus among the descendants of\na node.\n\n### Example: Simple flat list\n\n    <ul id=\"list\">\n        <li>Item 1</li>\n        <li>Item 2</li>\n        <li>Item 3</li>\n    </ul>\n\n    <script>\n    YUI().use('gallery-sm-focusmanager', function (Y) {\n        // Make the list items in #list keyboard-focusable using the arrow keys.\n        Y.one('#list').plug(Y.Plugin.FocusManager);\n    });\n    </script>\n\n### Example: Hierarchical list\n\n    <ul id=\"list\">\n        <li>\n            Item 1\n            <ul>\n                <li>Item 1.1</li>\n                <li>\n                    Item 1.2\n                    <ul>\n                        <li>Item 1.2.1</li>\n                        <li>Item 1.2.2</li>\n                    </ul>\n                </li>\n            </ul>\n        </li>\n        <li>Item 2</li>\n        <li>Item 3</li>\n    </ul>\n\n    <script>\n    YUI().use('gallery-sm-focusmanager', function (Y) {\n        // Make the list items in #list keyboard-focusable and allow\n        // descending/ascending into and out of nested lists using the right and\n        // left arrow keys.\n        Y.one('#list').plug(Y.Plugin.FocusManager, {\n            containerSelector: 'ul'\n        });\n    });\n    </script>",
             "extends": "Plugin.Base",
             "is_constructor": 1
+        },
+        "Map": {
+            "name": "Map",
+            "shortname": "Map",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-map",
+            "namespace": "",
+            "file": "src/sm-map/js/map.js",
+            "line": 10,
+            "description": "An ordered map data structure with an interface and behavior similar to (but not\nexactly the same as) [ECMAScript 6 Maps][es6-maps].\n\n[es6-maps]:http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.14",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "entries",
+                    "description": "Array of entries to add to the map. Each entry should\n    itself be an array in which the first item is the key and the second item is\n    the value for that entry.",
+                    "type": "Array[]",
+                    "optional": true
+                }
+            ]
         },
         "Plugin.Menu": {
             "name": "Plugin.Menu",
@@ -914,6 +1045,20 @@
             "uses": [
                 "View"
             ]
+        },
+        "Promise.EventNotifier": {
+            "name": "Promise.EventNotifier",
+            "shortname": "Promise.EventNotifier",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-promise-events",
+            "namespace": "Promise",
+            "file": "src/sm-promise-events/js/events.js",
+            "line": 15,
+            "is_constructor": 1
         },
         "Range": {
             "name": "Range",
@@ -1353,7 +1498,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/plugins/dragdrop-reorder.js",
-            "line": 586,
+            "line": 596,
             "description": "Orientation of the reorderable items. May be one of the following\nstrings:\n\n- **column** - for items in a single vertical column\n- **grid** - for items in a grid-like pattern that may have both columns\n  and rows.\n- **row** - for items in a single horizontal row\n\nThis affects how before/after positions are calculated. The default is\n**grid**.",
             "itemtype": "attribute",
             "name": "orientation",
@@ -1413,6 +1558,11 @@
                     "type": "Node"
                 },
                 {
+                    "name": "dropped",
+                    "description": "Whether or not the drag operation resulted in a\n    successful drop.",
+                    "type": "Boolean"
+                },
+                {
                     "name": "pageXY",
                     "description": "Current X and Y coordinates of the pointer.",
                     "type": "Number[]"
@@ -1428,7 +1578,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 67,
+            "line": 69,
             "description": "Fired when the pointer enters a drop zone during a drag operation.\n\nTo prevent the drop zone from being treated as a valid drop target, call\n`preventDefault()` on this event's facade.",
             "itemtype": "event",
             "name": "dragenter",
@@ -1465,7 +1615,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 85,
+            "line": 87,
             "description": "Fired after the pointer leaves a drop zone during a drag operation.",
             "itemtype": "event",
             "name": "dragleave",
@@ -1501,7 +1651,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 99,
+            "line": 101,
             "description": "Fired when the pointer moves over a drop zone during a drag operation.",
             "itemtype": "event",
             "name": "dragover",
@@ -1537,7 +1687,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 113,
+            "line": 115,
             "description": "Fired when a drag operation begins.\n\nYou can override the pointer offset specified in the `pointerOffset` attribute\nby setting a `pointerOffset` property on the event facade during the \"on\" phase\nof this event. This custom pointer offset will then be used only for the current\ndrag operation.\n\nTo cancel the drag operation, call `preventDefault()` on this event's facade.",
             "itemtype": "event",
             "name": "dragstart",
@@ -1559,7 +1709,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 130,
+            "line": 132,
             "description": "Fired after a draggable node is dropped onto a node marked as a drop zone.",
             "itemtype": "event",
             "name": "drop",
@@ -1595,7 +1745,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 147,
+            "line": 149,
             "description": "CSS class names used by DragDrop.",
             "itemtype": "property",
             "name": "classNames",
@@ -1619,7 +1769,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 191,
+            "line": 195,
             "description": "Attaches event handlers.",
             "itemtype": "method",
             "name": "_attachEvents",
@@ -1630,7 +1780,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 245,
+            "line": 254,
             "description": "Detaches event handlers.",
             "itemtype": "method",
             "name": "_detachEvents",
@@ -1641,7 +1791,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 260,
+            "line": 269,
             "description": "Synchronizes the internal cache of dropzone node locations, which is used to\ndetermine whether a dragged node may be dropped.\n\nYou should call this method if you modify the DOM or change the position or\nmetrics of a dropzone node during a drag operation. Otherwise, dropzone\npositions may be miscalculated.\n\nCalling this method when a drag operation is not in progress will have no\neffect.",
             "itemtype": "method",
             "name": "sync",
@@ -1651,7 +1801,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 289,
+            "line": 298,
             "description": "Attribute change event handler that caches the new value of the attribute in\na protected property on this class.",
             "itemtype": "method",
             "name": "_cacheAttrValue",
@@ -1669,7 +1819,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 301,
+            "line": 310,
             "description": "Caches bounding rect information for every node in the container that\nmatches the `dropSelector`.\n\nThis is used during a drag to compute dropzone intersections with the\ndragged node, since mouse events can't be used when the dragged node\nobscures the dropzone.",
             "itemtype": "method",
             "name": "_cacheBoundingRects",
@@ -1684,7 +1834,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 338,
+            "line": 347,
             "description": "Caches bounding rect information for all scrollable elements.\n\nThis is used during a drag to figure out when we need to auto-scroll a node\nthe pointer is being dragged over.",
             "itemtype": "method",
             "name": "_cacheScrollRects",
@@ -1699,7 +1849,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 396,
+            "line": 405,
             "description": "Ends a drag operation, cleans up after it, and fires a `dragend` event.",
             "itemtype": "method",
             "name": "_endDrag",
@@ -1710,7 +1860,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 427,
+            "line": 437,
             "description": "Ends a pending drag operation and cleans up after the pending state.\n\nThis doesn't prevent a drag operation from starting; it just cleans up\ntemporary state that's only necessary when a drag is pending.",
             "itemtype": "method",
             "name": "_endPendingDrag",
@@ -1721,7 +1871,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 441,
+            "line": 451,
             "description": "Searches for a cached drop zone bounding rect that intersects with the\ncurrent pointer position, and returns the intersected element if found.",
             "itemtype": "method",
             "name": "_findDropIntersection",
@@ -1736,7 +1886,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 481,
+            "line": 491,
             "description": "Searches for cached scroll zone bounding rects in which the pointer is\ncurrently within the scroll margin (the area near an element's border that\nshould cause the element to scroll).\n\nReturns an array of all intersected scroll zones.",
             "itemtype": "method",
             "name": "_findScrollIntersections",
@@ -1751,7 +1901,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 556,
+            "line": 566,
             "description": "Fires a `drag` event and, if necessary, a `dragover` event.",
             "itemtype": "method",
             "name": "_fireDrag",
@@ -1762,7 +1912,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 581,
+            "line": 591,
             "description": "Fires a `dragenter` event for the specified dropzone node.",
             "itemtype": "method",
             "name": "_fireDragEnter",
@@ -1780,7 +1930,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 603,
+            "line": 613,
             "description": "Fires a `dragleave` event.",
             "itemtype": "method",
             "name": "_fireDragLeave",
@@ -1791,7 +1941,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 624,
+            "line": 634,
             "description": "Fires a `dragstart` event, but only if `this._dragState.pending` is `true`.",
             "itemtype": "method",
             "name": "_fireDragStart",
@@ -1802,7 +1952,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 647,
+            "line": 657,
             "description": "Returns a bounding rect for _el_ with absolute coordinates corrected for\nviewport scroll offsets.\n\nThe native `getBoundingClientRect()` returns coordinates for an element's\nposition relative to the top left of the viewport, so if the viewport has\nbeen scrolled, its coordinates will be different.\n\nThis method returns an element's absolute rect, which will be the same\nregardless of whether the viewport has been scrolled.",
             "itemtype": "method",
             "name": "_getAbsoluteBoundingRect",
@@ -1824,7 +1974,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 678,
+            "line": 688,
             "description": "Returns a bounding rect for _el_, normalizing for older versions of IE that\ndon't provide height and width information in native bounding rects.",
             "itemtype": "method",
             "name": "_getBoundingRect",
@@ -1846,7 +1996,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 701,
+            "line": 711,
             "description": "Returns the XY delta between where the pointer was at the start of the\ncurrent drag operation and where the pointer is now.",
             "itemtype": "method",
             "name": "_getDelta",
@@ -1861,7 +2011,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 718,
+            "line": 728,
             "description": "Returns the current X and Y scroll offsets of the viewport.",
             "itemtype": "method",
             "name": "_getViewportScrollOffsets",
@@ -1876,7 +2026,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 739,
+            "line": 749,
             "description": "Moves the dragged node or its proxy to the current pointer location, but\nconstrained within the container if the pointer is outside the container.",
             "itemtype": "method",
             "name": "_moveDragNode",
@@ -1887,7 +2037,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 784,
+            "line": 794,
             "description": "Prevents the WebKit long-touch callout menu from appearing on the current\ndragNode, if any.",
             "itemtype": "method",
             "name": "_preventTouchCallout",
@@ -1901,7 +2051,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 804,
+            "line": 814,
             "description": "Returns the proxy node associated with the current drag operation, or the\noriginal dragged node if node proxy node is set.",
             "itemtype": "method",
             "name": "_proxyOrDragNode",
@@ -1916,7 +2066,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 816,
+            "line": 826,
             "description": "Utility method for lazily publishing and firing events.",
             "itemtype": "method",
             "name": "_publishAndFire",
@@ -1955,7 +2105,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 844,
+            "line": 854,
             "description": "Detaches and reattaches event handlers.\n\nThis is necessary after the `container`, `dragSelector`, or `dropSelector`\nattributes are changed.",
             "itemtype": "method",
             "name": "_reinitialize",
@@ -1966,7 +2116,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 859,
+            "line": 869,
             "description": "Restores the original value of the current dragNode's `webkitTouchCallout`\nstyle before it was prevented by `_preventTouchCallout()`.",
             "itemtype": "method",
             "name": "_restoreTouchCallout",
@@ -1980,7 +2130,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 879,
+            "line": 889,
             "description": "Begins scrolling all currently intersected scroll zones in whichever\ndirection(s) they need to be scrolled.\n\nScrolling will continue (and will accelerate in speed) until the\n`_scrollIntersections` property is empty.",
             "itemtype": "method",
             "name": "_scroll",
@@ -2000,7 +2150,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 950,
+            "line": 960,
             "description": "Default handler for the `drag` event.",
             "itemtype": "method",
             "name": "_defDragFn",
@@ -2011,7 +2161,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 998,
+            "line": 1008,
             "description": "Default handler for the `dragenter` event.",
             "itemtype": "method",
             "name": "_defDragEnterFn",
@@ -2029,7 +2179,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1012,
+            "line": 1022,
             "description": "Default handler for the `dragstart` event.",
             "itemtype": "method",
             "name": "_defDragStartFn",
@@ -2047,7 +2197,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1047,
+            "line": 1057,
             "description": "Handles native `scroll` events on the container if the container isn't the\nbody. This is necessary in order to update bounding client rects when\nscrollable containers are scrolled.",
             "itemtype": "method",
             "name": "_onContainerScroll",
@@ -2058,7 +2208,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1068,
+            "line": 1078,
             "description": "Handler for the `gesturemove` event.",
             "itemtype": "method",
             "name": "_onDocMove",
@@ -2076,7 +2226,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1102,
+            "line": 1123,
             "description": "Handler for the `gesturemoveend` event.",
             "itemtype": "method",
             "name": "_onDocMoveEnd",
@@ -2087,7 +2237,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1149,
+            "line": 1172,
             "description": "Handler for the `gesturemovestart` event.",
             "itemtype": "method",
             "name": "_onDraggableMoveStart",
@@ -2105,7 +2255,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1191,
+            "line": 1217,
             "description": "Handles native `dragstart` events on draggable nodes.\n\nThe default behavior of these events must be prevented in order to avoid\nconflicts.",
             "itemtype": "method",
             "name": "_onNativeDragStart",
@@ -2123,7 +2273,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1205,
+            "line": 1231,
             "description": "Called when the `dragenter` event's default handler is prevented.\n\nThis will prevent the entered node from being considered a valid dropzone.",
             "itemtype": "method",
             "name": "_preventedDragEnterFn",
@@ -2141,7 +2291,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1218,
+            "line": 1244,
             "description": "Called when the `dragstart` event's default handler is prevented.\n\nThis will cancel the drag operation.",
             "itemtype": "method",
             "name": "_preventedDragStartFn",
@@ -2152,7 +2302,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1231,
+            "line": 1257,
             "description": "Container node to which drag operations should be constrained. All\ndraggable nodes and dropzones must be descendants of this container, and\ndraggable nodes will not be draggable or droppable outside its borders.\n\nIf not specified, the `<body>` element will be used as the container.",
             "itemtype": "attribute",
             "name": "container",
@@ -2163,8 +2313,8 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1249,
-            "description": "Distance in pixels that the mouse cursor must move after a mousedown\nbefore the movement will be considered the beginning of a drag event.\n\nThis value has no effect on touch-based interactions (see\n`maxGestureDistance`).",
+            "line": 1275,
+            "description": "Distance in pixels that the mouse cursor must move after a mousedown\nbefore the movement will be considered the beginning of a drag event.\n\nThis value has no effect on touch-based interactions (see\n`touchCancelDistance`).",
             "itemtype": "attribute",
             "name": "distanceThreshold",
             "type": "Number",
@@ -2174,7 +2324,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1263,
+            "line": 1289,
             "description": "CSS selector that matches one or more nodes within a draggable node that\nshould be treated as drag handles for that node.\n\nIf a `dragHandleSelector` is set, nodes matched by `dragSelector` will\nonly be draggable by their handles.",
             "itemtype": "attribute",
             "name": "dragHandleSelector",
@@ -2184,7 +2334,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1274,
+            "line": 1300,
             "description": "CSS selector that matches one or more nodes within the `container` that\nshould be draggable.",
             "itemtype": "attribute",
             "name": "dragSelector",
@@ -2194,7 +2344,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1282,
+            "line": 1308,
             "description": "CSS selector that matches one or more nodes within the `container` that\nshould be considered drop zones.",
             "itemtype": "attribute",
             "name": "dropSelector",
@@ -2204,7 +2354,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1290,
+            "line": 1316,
             "description": "Whether or not to enable dragging in response to touch events. There are\ncurrently some edge cases with this, which is why it might make sense to\ndisable it in certain situations.",
             "itemtype": "attribute",
             "name": "enableTouchDrag",
@@ -2215,7 +2365,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1302,
+            "line": 1328,
             "description": "Array of custom X and Y pixel offset values specifying how the dragged\nnode or proxy node should be positioned relative to the pointer\nposition, or the string \"auto\" for an automatic offset based on the\ninitial grab point.\n\nYou can override the pointer offset specified here on a per-drag basis\nby setting a `pointerOffset` property on the event facade passed to the\n\"on\" phase of the `dragstart` event.",
             "itemtype": "attribute",
             "name": "pointerOffset",
@@ -2226,7 +2376,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1319,
+            "line": 1345,
             "description": "Whether or not to automatically scroll the container if necessary when\nthe pointer approaches an edge during a drag operation.\n\nIf it's necessary to auto-scroll nodes other than the container, select\nthose nodes using the `scrollSelector` attribute.",
             "itemtype": "attribute",
             "name": "scrollContainer",
@@ -2236,7 +2386,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1332,
+            "line": 1358,
             "description": "Distance in pixels from the edge of a scrollable node at which the\npointer will cause the node to begin scrolling during a drag operation.\n\nThe smaller this number is, the closer the pointer will have to be to\nthe edge before the node will start to scroll.",
             "itemtype": "attribute",
             "name": "scrollMargin",
@@ -2247,7 +2397,7 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1346,
+            "line": 1372,
             "description": "CSS selector that matches scrollable nodes within the `container` that\nshould be automatically scrolled when the pointer is dragged near the\nnode's edges.",
             "itemtype": "attribute",
             "name": "scrollSelector",
@@ -2257,8 +2407,8 @@
         },
         {
             "file": "src/sm-dragdrop/js/dragdrop.js",
-            "line": 1355,
-            "description": "Amount of time in milliseconds that must pass after a mousedown or tap\nwithout a corresponding mouseup or release before we'll consider the\naction the beginning of a drag event.\n\nFor mouse-based interactions, exceeding this threshold will cause a\ndrag event to start even if the `distanceThreshold` is not met.\n\nFor touch-based interactions, a drag event will only start if this\nthreshold is exceeded *and* the touch point doesn't move more than the\nnumber of pixels specified by `maxGestureDistance`.",
+            "line": 1381,
+            "description": "Amount of time in milliseconds that must pass after a mousedown or tap\nwithout a corresponding mouseup or release before we'll consider the\naction the beginning of a drag event.\n\nFor mouse-based interactions, exceeding this threshold will cause a\ndrag event to start even if the `distanceThreshold` is not met.\n\nThis attribute has no effect on touch-based interactions (see\n`touchDelay`).",
             "itemtype": "attribute",
             "name": "timeThreshold",
             "type": "Number",
@@ -2267,9 +2417,78 @@
             "module": "gallery-sm-dragdrop"
         },
         {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1399,
+            "description": "Maximum distance in pixels from the original touch point that the\npointer may move during the `touchDelay` time before a pending drag is\ncanceled.\n\nThis helps avoid triggering unintended drag interactions when the user\nis actually scrolling or performing some other touch gesture.\n\nThis attribute has no effect on mouse-based interactions.",
+            "itemtype": "attribute",
+            "name": "touchCancelDistance",
+            "type": "Number",
+            "default": "10",
+            "class": "DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
+            "file": "src/sm-dragdrop/js/dragdrop.js",
+            "line": 1416,
+            "description": "Delay in milliseconds after an initial touch before a drag interaction\nbegins when using a touch-based input device.\n\nIf the touch ends before this delay is over, or if the touch point moves\nby more than `touchCancelDistance` pixels before this delay is over, the\npending drag is canceled.\n\nThis attribute has no effect on mouse-based interactions.",
+            "itemtype": "attribute",
+            "name": "touchDelay",
+            "type": "Number",
+            "default": "1000",
+            "class": "DragDrop",
+            "module": "gallery-sm-dragdrop"
+        },
+        {
             "file": "src/sm-editor/js/extensions/editor-dom.js",
-            "line": 18,
-            "description": "Finds the nearest ancestor with a given tagName",
+            "line": 20,
+            "description": "Copies styles from a node to another node",
+            "params": [
+                {
+                    "name": "from",
+                    "description": "",
+                    "type": "HTMLElement|Node"
+                },
+                {
+                    "name": "to",
+                    "description": "",
+                    "type": "HTMLElement|Node"
+                },
+                {
+                    "name": "styles",
+                    "description": "",
+                    "type": "Array"
+                },
+                {
+                    "name": "options",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "explicit",
+                            "description": "When set to `true` copy only\n        explicitly set properties from the source node. IOW, don't use\n        computedStyle.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "overwrite",
+                            "description": "When set to `true`\n        properties from the source node will overwrite the same property\n        set on the destination node.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "class": "Editor.DOM",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-dom"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-dom.js",
+            "line": 57,
+            "description": "Finds the nearest ancestor element node.",
             "params": [
                 {
                     "name": "node",
@@ -2278,8 +2497,8 @@
                 },
                 {
                     "name": "tagName",
-                    "description": "Optional tagName. If not provided, the nearest\n  ancestor element node will be returned",
-                    "type": "String",
+                    "description": "Optional tagName or function. If a tagName\n  is provided, the nearest ancestor with that tag will be returned. If a\n  function is provided, it will be used for the comparision. It will receive\n  a node as its only argument and should return a boolean. If nothing is\n  provided, the nearest ancestor element node will be returned",
+                    "type": "Function|String",
                     "optional": true
                 }
             ],
@@ -2294,18 +2513,74 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-dom.js",
-            "line": 40,
+            "line": 88,
+            "description": "Walks the ancestor tree of a given node until a node that has\nthe css property set is found",
+            "itemtype": "method",
+            "name": "getStyledAncestor",
+            "params": [
+                {
+                    "name": "startNode",
+                    "description": "",
+                    "type": "Node"
+                },
+                {
+                    "name": "property",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "self",
+                    "description": "Whether or not to include `startNode` in the scan",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "The node having `property` set, or null if no node was found",
+                "type": "Node"
+            },
+            "static": 1,
+            "class": "Editor.DOM",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-dom"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-dom.js",
+            "line": 113,
+            "description": "Returns true if the given node is a container element, false otherwise\nA container element is defined as a non-inline element",
+            "itemtype": "method",
+            "name": "isContainer",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "",
+                    "type": "HTMLNode|Node"
+                }
+            ],
+            "return": {
+                "description": "true if the given node is a container element, false otherwise",
+                "type": "Boolean"
+            },
+            "static": 1,
+            "class": "Editor.DOM",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-dom"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-dom.js",
+            "line": 131,
+            "description": "Returns true if the given node is an element node, false otherwise",
             "itemtype": "method",
             "name": "isElementNode",
             "params": [
                 {
                     "name": "node",
                     "description": "",
-                    "type": "Node"
+                    "type": "HTMLNode|Node"
                 }
             ],
             "return": {
-                "description": "",
+                "description": "true if the given node is an element node, false otherwise",
                 "type": "Boolean"
             },
             "static": 1,
@@ -2315,18 +2590,63 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-dom.js",
-            "line": 51,
+            "line": 146,
+            "description": "Returns true if the given node is empty\n\nNodes containing only returns, tabs or linefeeds are considered empty\nNodes containing only whitespace are not considered empty",
+            "itemtype": "method",
+            "name": "isEmptyNode",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "",
+                    "type": "HTMLNode|Node"
+                }
+            ],
+            "return": {
+                "description": "true if the given node is a empty, false otherwise",
+                "type": "Boolean"
+            },
+            "static": 1,
+            "class": "Editor.DOM",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-dom"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-dom.js",
+            "line": 166,
+            "description": "Returns true if the given node is an inline element node, false otherwise",
+            "itemtype": "method",
+            "name": "isInlineElement",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "",
+                    "type": "HTMLNode|Node"
+                }
+            ],
+            "return": {
+                "description": "true if the given node is an inline element node, false otherwise",
+                "type": "Boolean"
+            },
+            "static": 1,
+            "class": "Editor.DOM",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-dom"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-dom.js",
+            "line": 181,
+            "description": "Returns true if the given node is a text node, false otherwise",
             "itemtype": "method",
             "name": "isTextNode",
             "params": [
                 {
                     "name": "node",
                     "description": "",
-                    "type": "Node"
+                    "type": "HTMLNode|Node"
                 }
             ],
             "return": {
-                "description": "",
+                "description": "true if the given node is a text node, false otherwise",
                 "type": "Boolean"
             },
             "static": 1,
@@ -2336,7 +2656,7 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-dom.js",
-            "line": 62,
+            "line": 196,
             "description": "Returns the maximum offset of a given node as determined by the type of node.\n\nElement nodes will return the number of childNodes\nText nodes will return the length of the text",
             "itemtype": "method",
             "name": "maxOffset",
@@ -2344,7 +2664,7 @@
                 {
                     "name": "node",
                     "description": "",
-                    "type": "HTMLElement|Node"
+                    "type": "HTMLNode|Node"
                 }
             ],
             "return": {
@@ -2358,7 +2678,59 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-dom.js",
-            "line": 80,
+            "line": 214,
+            "description": "Replace spaces in text with a replacement string.\n\nPrimarily to workaround a webkit issue where it won't put the caret after\ntrailing whitespace at the end of a node",
+            "params": [
+                {
+                    "name": "text",
+                    "description": "The source text that will have spaces replaced",
+                    "type": "String"
+                },
+                {
+                    "name": "replacement",
+                    "description": "The string to use as the replacement for\n    spaces in _text_. Defaults to a nonblank space",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "\\u00a0"
+                }
+            ],
+            "return": {
+                "description": "_text_ with spaces replaced",
+                "type": "String"
+            },
+            "class": "Editor.DOM",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-dom"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-dom.js",
+            "line": 232,
+            "description": "Splits the given node at the specified offset",
+            "itemtype": "method",
+            "name": "split",
+            "params": [
+                {
+                    "name": "node",
+                    "description": "The node to split",
+                    "type": "Node"
+                },
+                {
+                    "name": "offset",
+                    "description": "Position to split the node.\n    For text nodes this is numerical offset, for element nodes can be a\n    a number referencing a childNode of `node` or a childNode reference.",
+                    "type": "Number|Node"
+                }
+            ],
+            "return": {
+                "description": "Node reference to the node created after splitting. It will\n    be the nextSibling of `node`. If offset is not valid, the original `node`\n    is returned.",
+                "type": "Node"
+            },
+            "class": "Editor.DOM",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-dom"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-dom.js",
+            "line": 271,
             "description": "Unwraps a node",
             "itemtype": "method",
             "name": "unwrap",
@@ -2456,7 +2828,29 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-link.js",
-            "line": 29,
+            "line": 25,
+            "description": "Key commands related to creating hyperlinks.",
+            "itemtype": "property",
+            "name": "linkKeyCommands",
+            "type": "Object",
+            "class": "Editor.Link",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-link"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-link.js",
+            "line": 35,
+            "description": "HTML Template for building an anchor node",
+            "itemtype": "property",
+            "name": "linkTemplate",
+            "type": "Object",
+            "class": "Editor.Link",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-link"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-link.js",
+            "line": 54,
             "description": "Wraps the currently selected range in an anchor element",
             "itemtype": "method",
             "name": "link",
@@ -2466,6 +2860,11 @@
                     "description": "",
                     "type": "Object",
                     "props": [
+                        {
+                            "name": "href",
+                            "description": "",
+                            "type": "String"
+                        },
                         {
                             "name": "target",
                             "description": "",
@@ -2477,13 +2876,7 @@
                             "name": "text",
                             "description": "",
                             "type": "String",
-                            "optional": true,
-                            "optdefault": "range.toString()"
-                        },
-                        {
-                            "name": "href",
-                            "description": "",
-                            "type": "String"
+                            "optional": true
                         }
                     ]
                 }
@@ -2495,7 +2888,7 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-link.js",
-            "line": 44,
+            "line": 69,
             "description": "Returns whether or not the current range is entirely in an anchor element",
             "itemtype": "method",
             "name": "isLink",
@@ -2509,7 +2902,7 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-link.js",
-            "line": 56,
+            "line": 81,
             "description": "Removes link by replacing the anchor element with the child nodes\nof the anchor\n\nThe anchor element will be removed from the DOM and destroyed.",
             "itemtype": "method",
             "name": "unlink",
@@ -2520,7 +2913,7 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-link.js",
-            "line": 81,
+            "line": 106,
             "description": "Returns the nearest ancestor anchor that entirely contains\nthe current range",
             "itemtype": "method",
             "name": "_getAnchorNode",
@@ -2536,8 +2929,8 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-link.js",
-            "line": 98,
-            "description": "Implementation for the public `link` method",
+            "line": 123,
+            "description": "Implementation for the public `link` method.\n\nWraps the currently selected range in an anchor `<a>` tag",
             "itemtype": "method",
             "name": "_link",
             "params": [
@@ -2546,6 +2939,11 @@
                     "description": "",
                     "type": "Object",
                     "props": [
+                        {
+                            "name": "href",
+                            "description": "",
+                            "type": "String"
+                        },
                         {
                             "name": "target",
                             "description": "",
@@ -2557,13 +2955,7 @@
                             "name": "text",
                             "description": "",
                             "type": "String",
-                            "optional": true,
-                            "optdefault": "range.toString()"
-                        },
-                        {
-                            "name": "href",
-                            "description": "",
-                            "type": "String"
+                            "optional": true
                         }
                     ]
                 }
@@ -2576,8 +2968,161 @@
             "submodule": "gallery-sm-editor-link"
         },
         {
-            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "file": "src/sm-editor/js/extensions/editor-link.js",
+            "line": 178,
+            "itemtype": "method",
+            "name": "_linkPrompt",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Link",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-link"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
             "line": 26,
+            "description": "Key commands related to queue functionality.",
+            "itemtype": "property",
+            "name": "queueKeyCommands",
+            "type": "Object",
+            "class": "Editor.Queue",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-queue"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
+            "line": 50,
+            "description": "Hash of commands queued for execution on the next keypress.\n\nWorkaround for webkit bug where it wont place a caret in an empty node\nor between nodes.",
+            "itemtype": "property",
+            "name": "_commandQueue",
+            "type": "Object",
+            "class": "Editor.Queue",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-queue"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
+            "line": 78,
+            "description": "Attaches queue events.",
+            "itemtype": "method",
+            "name": "_attachQueueEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Queue",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-queue"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
+            "line": 99,
+            "description": "Clears the command queue",
+            "itemtype": "method",
+            "name": "_clearCommandQueue",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Queue",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-queue"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
+            "line": 110,
+            "description": "Detaches queue events.",
+            "itemtype": "method",
+            "name": "_detachQueueEvents",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Queue",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-queue"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
+            "line": 124,
+            "description": "Executes all commands on the command queue",
+            "itemtype": "method",
+            "name": "_flushCommandQueue",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Queue",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-queue"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
+            "line": 144,
+            "description": "Adds a command to the queue",
+            "itemtype": "method",
+            "name": "_queueCommand",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Queue",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-queue"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
+            "line": 163,
+            "description": "Handles `keypress` events on the editor",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Queue",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-queue"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
+            "line": 194,
+            "description": "Wrapper for `Editor.Base#_execCommand()`.",
+            "itemtype": "method",
+            "name": "_queueBeforeExecCommand",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Command name.",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "Command value.",
+                    "type": "Boolean|String"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Queue",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-queue"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-queue.js",
+            "line": 212,
+            "description": "Wrapper for `Editor.Base#_queryCommandValue()`.",
+            "itemtype": "method",
+            "name": "_queueBeforeQueryCommandValue",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Command name.",
+                    "type": "String"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Queue",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-queue"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 29,
             "description": "Hash of style commands supported by this editor.\n\nNames should correspond with valid `execCommand()` command names. Values\nare properties in the following format:",
             "itemtype": "property",
             "name": "styleCommands",
@@ -2607,7 +3152,18 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-style.js",
-            "line": 83,
+            "line": 68,
+            "description": "Key commands related to style functionality.",
+            "itemtype": "property",
+            "name": "styleKeyCommands",
+            "type": "Object",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 93,
             "description": "Bolds or unbolds the current selection.",
             "itemtype": "method",
             "name": "bold",
@@ -2618,7 +3174,7 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-style.js",
-            "line": 94,
+            "line": 104,
             "description": "Italicizes or unitalicizes the current selection.",
             "itemtype": "method",
             "name": "italic",
@@ -2629,7 +3185,7 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-style.js",
-            "line": 105,
+            "line": 115,
             "description": "Gets and/or sets the values of multiple editor style commands.\n\nWhen called without an argument, the current values of all supported style\ncommands will be returned. When called with a _styles_ object, the specified\nstyle commands will be set to their given values, and the resulting new\nvalues will be returned.",
             "itemtype": "method",
             "name": "styles",
@@ -2651,7 +3207,7 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-style.js",
-            "line": 141,
+            "line": 151,
             "description": "Toggles underline on the current selection.",
             "itemtype": "method",
             "name": "underline",
@@ -2662,35 +3218,7 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-style.js",
-            "line": 154,
-            "description": "Traverses the children of a given node, removing empty nodes and\nclearing out any given css properties\n\nNote: rootNode may get destroyed during the cleaning process",
-            "itemtype": "method",
-            "name": "_cleanNode",
-            "params": [
-                {
-                    "name": "range",
-                    "description": "",
-                    "type": "Range"
-                },
-                {
-                    "name": "properties",
-                    "description": "",
-                    "type": "String|Array"
-                }
-            ],
-            "return": {
-                "description": "",
-                "type": "Range"
-            },
-            "access": "protected",
-            "tagname": "",
-            "class": "Editor.Style",
-            "module": "gallery-sm-editor",
-            "submodule": "gallery-sm-editor-style"
-        },
-        {
-            "file": "src/sm-editor/js/extensions/editor-style.js",
-            "line": 212,
+            "line": 165,
             "description": "Duckpunch Editor.Base._execCommand to build css styled nodes instead of\nrelying on spotty browser compatibility of `styleWithCSS`\n\nPasses through to Editor.Base for any commands not defined\nin `this.styleCommands`",
             "itemtype": "method",
             "name": "_execCommand",
@@ -2714,7 +3242,51 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-style.js",
-            "line": 273,
+            "line": 222,
+            "description": "Reformats html to the proper style\n\n<span>blah blah</span>",
+            "params": [
+                {
+                    "name": "html",
+                    "description": "HTML string to format",
+                    "type": "HTML"
+                }
+            ],
+            "return": {
+                "description": "Node instance containing a document fragment with the\n    formatted _html_",
+                "type": "Node"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 288,
+            "description": "Getter for the `html` attribute.",
+            "itemtype": "method",
+            "name": "_getHTML",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "HTML.",
+                    "type": "HTML"
+                }
+            ],
+            "return": {
+                "description": "HTML.",
+                "type": "HTML"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 303,
             "description": "Walks the ancestor tree of a given node until a node that has\nthe css property set is found",
             "itemtype": "method",
             "name": "_getStyledAncestor",
@@ -2748,7 +3320,80 @@
         },
         {
             "file": "src/sm-editor/js/extensions/editor-style.js",
-            "line": 297,
+            "line": 328,
+            "description": "Parses inline elements from a given range. Partially selected nodes will\nbe split and text nodes will be wrapped in `<span>` tags if necessary.\n\nThe range will not be modified.",
+            "itemtype": "method",
+            "name": "_getStyleNodes",
+            "params": [
+                {
+                    "name": "range",
+                    "description": "",
+                    "type": "Range"
+                }
+            ],
+            "return": {
+                "description": "NodeList of inline elements within the given `range`",
+                "type": "NodeList"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 378,
+            "description": "Setter for the `html` attribute.",
+            "itemtype": "method",
+            "name": "_setHTML",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "HTML.",
+                    "type": "HTML"
+                }
+            ],
+            "return": {
+                "description": "HTML.",
+                "type": "HTML"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 393,
+            "description": "Splits the node at the end of the selection",
+            "itemtype": "method",
+            "name": "_splitAfterRange",
+            "params": [
+                {
+                    "name": "range",
+                    "description": "",
+                    "type": "Range"
+                },
+                {
+                    "name": "contents",
+                    "description": "Contents\n    to be inserted after the split",
+                    "type": "HTMLCollection|HTMLElement|Node|NodeList|String",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Node reference of the node created after splitting. Any\n    _contents_ will have been inserted as previous siblings of this node.",
+                "type": "Node"
+            },
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 431,
             "description": "Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes\ninstead of relying on spotty browser compatibility of `styleWithCSS`\n\nPasses through to Editor.Base for any commands not defined\nin `this.styleCommands`",
             "itemtype": "method",
             "name": "_queryCommandValue",
@@ -2765,6 +3410,45 @@
             },
             "access": "protected",
             "tagname": "",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 486,
+            "description": "Handles `delete` events on the editor",
+            "itemtype": "method",
+            "name": "_afterDelete",
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 498,
+            "description": "Handles `paste` events on the editor.",
+            "itemtype": "method",
+            "name": "_onPaste",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Style",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-style"
+        },
+        {
+            "file": "src/sm-editor/js/extensions/editor-style.js",
+            "line": 530,
+            "description": "Function for formatting editor html\n\nOne day allow custom formatting. Today is not that day.",
             "class": "Editor.Style",
             "module": "gallery-sm-editor",
             "submodule": "gallery-sm-editor-style"
@@ -3066,7 +3750,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 181,
+            "line": 186,
             "description": "Decreases the font size of the current selection (if possible).",
             "itemtype": "method",
             "name": "decreaseFontSize",
@@ -3077,7 +3761,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 197,
+            "line": 202,
             "description": "Focuses this editor.",
             "itemtype": "method",
             "name": "focus",
@@ -3088,7 +3772,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 211,
+            "line": 216,
             "description": "Increases the font size of the current selection (if possible).",
             "itemtype": "method",
             "name": "increaseFontSize",
@@ -3099,7 +3783,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 229,
+            "line": 234,
             "description": "Inserts the specified _html_ at the current selection point, deleting the\ncurrent selection if there is one.",
             "itemtype": "method",
             "name": "insertHTML",
@@ -3120,7 +3804,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 255,
+            "line": 260,
             "description": "Inserts the specified plain _text_ at the current selection point, deleting\nthe current selection if there is one.",
             "itemtype": "method",
             "name": "insertText",
@@ -3141,7 +3825,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 267,
+            "line": 272,
             "description": "Renders this editor into its container and appends the container to the\ndocument if necessary.",
             "itemtype": "method",
             "name": "render",
@@ -3152,7 +3836,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 308,
+            "line": 313,
             "description": "Attaches editor events.",
             "itemtype": "method",
             "name": "_attachEvents",
@@ -3164,7 +3848,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 330,
+            "line": 337,
             "description": "Detaches editor events.",
             "itemtype": "method",
             "name": "_detachEvents",
@@ -3176,7 +3860,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 343,
+            "line": 350,
             "description": "Wrapper for native the native `execCommand()` that verifies that the command\nis valid in the current state and normalizes boolean/toggleable values.",
             "itemtype": "method",
             "name": "_execCommand",
@@ -3200,7 +3884,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 370,
+            "line": 377,
             "description": "Getter for the `html` attribute.",
             "itemtype": "method",
             "name": "_getHTML",
@@ -3223,7 +3907,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 382,
+            "line": 389,
             "description": "Getter for the `text` attribute.",
             "itemtype": "method",
             "name": "_getText",
@@ -3246,7 +3930,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 394,
+            "line": 401,
             "description": "Inserts a `<span>` at the current selection point containing a preformatted\ntab character.",
             "itemtype": "method",
             "name": "_insertTab",
@@ -3258,7 +3942,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 405,
+            "line": 412,
             "description": "Wrapper for the native `queryCommandState()` and `queryCommandValue()`\nmethods that uses the appropriate method for the given command type.",
             "itemtype": "method",
             "name": "_queryCommandValue",
@@ -3281,7 +3965,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 419,
+            "line": 426,
             "description": "Setter for the `html` attribute.",
             "itemtype": "method",
             "name": "_setHTML",
@@ -3304,7 +3988,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 435,
+            "line": 442,
             "description": "Setter for the `text` attribute.",
             "itemtype": "method",
             "name": "_setText",
@@ -3327,7 +4011,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 451,
+            "line": 458,
             "description": "Refreshes the editor's internal knowledge of the current document selection\nstate and fires a `selectionChange` event if the selection has changed since\nit was last refreshed.",
             "itemtype": "method",
             "name": "_updateSelection",
@@ -3338,6 +4022,13 @@
                     "type": "Object",
                     "optional": true,
                     "props": [
+                        {
+                            "name": "force",
+                            "description": "If `true`, the internal selection\n        state will be updated regardless of if the selection changed.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
                         {
                             "name": "silent",
                             "description": "If `true`, the `selectionChange`\n        event will be suppressed.",
@@ -3356,7 +4047,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 486,
+            "line": 503,
             "description": "Handles `blur` events on the editor.",
             "itemtype": "method",
             "name": "_onBlur",
@@ -3368,7 +4059,45 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 502,
+            "line": 519,
+            "description": "Handles `copy` events on the editor.",
+            "itemtype": "method",
+            "name": "_onCopy",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 542,
+            "description": "Handles `cut` events on the editor.",
+            "itemtype": "method",
+            "name": "_onCut",
+            "params": [
+                {
+                    "name": "e",
+                    "description": "",
+                    "type": "EventFacade"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Editor.Base",
+            "module": "gallery-sm-editor",
+            "submodule": "gallery-sm-editor-base"
+        },
+        {
+            "file": "src/sm-editor/js/editor-base.js",
+            "line": 570,
             "description": "Handles `dblclick` events on the editor.",
             "itemtype": "method",
             "name": "_onDblClick",
@@ -3380,7 +4109,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 514,
+            "line": 582,
             "description": "Handles `focus` events on the editor.",
             "itemtype": "method",
             "name": "_onFocus",
@@ -3392,7 +4121,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 543,
+            "line": 611,
             "description": "Handles `paste` events on the editor.",
             "itemtype": "method",
             "name": "_onPaste",
@@ -3404,7 +4133,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 554,
+            "line": 622,
             "description": "HTML content of this editor.",
             "itemtype": "attribute",
             "name": "html",
@@ -3416,7 +4145,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 566,
+            "line": 634,
             "description": "Form field name to use for the hidden `<textarea>` that contains the raw\noutput of the editor in the configured output format. This name will\nonly be used if the output node doesn't already have a name when the\neditor is rendered.\n\nYou may need to customize this if you plan to use the editor in a form\nthat will be submitted to a server.",
             "itemtype": "attribute",
             "name": "outputName",
@@ -3429,7 +4158,7 @@
         },
         {
             "file": "src/sm-editor/js/editor-base.js",
-            "line": 584,
+            "line": 652,
             "description": "Text content of this editor, with no HTML.",
             "itemtype": "attribute",
             "name": "text",
@@ -3874,6 +4603,304 @@
             "type": "Object",
             "class": "Plugin.FocusManager",
             "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 17,
+            "description": "Returns the numerical index of the entry with the given _key_, or `-1` if\nnot found.\n\nThis is a very efficient operation with string keys, but is slower with\nnon-string keys.",
+            "itemtype": "method",
+            "name": "indexOfKey",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "Key to look up.",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "Index of the entry with the given _key_, or `-1` if not\n    found.",
+                "type": "Number"
+            },
+            "class": "Map",
+            "module": "gallery-sm-focusmanager"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 62,
+            "description": "The number of entries in this map.",
+            "itemtype": "property",
+            "name": "size",
+            "type": "Number",
+            "default": "0",
+            "readonly": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 72,
+            "description": "Deletes all entries from this map.",
+            "itemtype": "method",
+            "name": "clear",
+            "chainable": 1,
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 90,
+            "description": "Executes the given _callback_ function on each entry in this map.",
+            "itemtype": "method",
+            "name": "each",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "Callback function.",
+                    "type": "Function",
+                    "props": [
+                        {
+                            "name": "value",
+                            "description": "Value being iterated.",
+                            "type": "Mixed"
+                        },
+                        {
+                            "name": "key",
+                            "description": "Key being iterated.",
+                            "type": "Mixed"
+                        },
+                        {
+                            "name": "map",
+                            "description": "Reference to this map.",
+                            "type": "Map"
+                        }
+                    ]
+                },
+                {
+                    "name": "thisObj",
+                    "description": "`this` object to use when calling _callback_.",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "see": [
+                "forEach"
+            ],
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 117,
+            "description": "Returns an array of all the entries in this map. Each entry is an array with\ntwo items, the first being a key and the second a value associated with that\nkey.",
+            "itemtype": "method",
+            "name": "entries",
+            "return": {
+                "description": "Array of entries.",
+                "type": "Array"
+            },
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 135,
+            "description": "Returns the value associated with the given _key_, or _default_ if the key\nisn't found.",
+            "itemtype": "method",
+            "name": "get",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "Key to look up.",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "defaultValue",
+                    "description": "Default value to return if _key_ isn't found.",
+                    "type": "Mixed",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Value associated with the given _key_, or _default_ if the\n    key isn't found.",
+                "type": "Mixed"
+            },
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 150,
+            "description": "Returns `true` if _key_ exists in this map, `false` otherwise.",
+            "itemtype": "method",
+            "name": "has",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "Key to look up.",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "`true` if _key_ exists in this map, `false` otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 161,
+            "description": "Returns an array of all the keys in this map.",
+            "itemtype": "method",
+            "name": "keys",
+            "return": {
+                "description": "Array of keys.",
+                "type": "Array"
+            },
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 171,
+            "description": "Deletes the entry with the given _key_.",
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "Key to delete.",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "`true` if the key existed and was deleted, `false`\n    otherwise.",
+                "type": "Boolean"
+            },
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 200,
+            "description": "Sets the value of the entry with the given _key_. If the key already exists,\nits value will be overwritten; otherwise it will be created.\n\nThe _key_ may be any JavaScript value (including both primitives and\nobjects), but string keys will allow fast lookups, whereas non-string keys\nwill result in slower lookups.",
+            "itemtype": "method",
+            "name": "set",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "Key to set.",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "value",
+                    "description": "Value to set.",
+                    "type": "Mixed"
+                }
+            ],
+            "chainable": 1,
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 234,
+            "description": "Returns an array of all the values in this map.",
+            "itemtype": "method",
+            "name": "values",
+            "return": {
+                "description": "Array of values.",
+                "type": "Array"
+            },
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 246,
+            "description": "Returns the numerical index of the entry with the given _key_, or `-1` if\nnot found.\n\nThis is a very efficient operation with string keys, but is slower with\nnon-string keys.",
+            "itemtype": "method",
+            "name": "_indexOfKey",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "Key to look up.",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "Index of the entry with the given _key_, or `-1` if not\n    found.",
+                "type": "Number"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 282,
+            "description": "Returns `true` if the two given values are the same value, `false`\notherwise.\n\nThis is an implementation of the ES5/6 SameValue comparison algorithm, which\nis more correct than `===` in that it considers `NaN` to be the same as\n`NaN`, and does not consider `0` to be the same as `-0`.\n\nThis method is an alias for `Object.is()` if available, or a fallback\nimplementation if not.",
+            "itemtype": "method",
+            "name": "_is",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "First value to compare.",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "b",
+                    "description": "Second value to compare.",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "`true` if _a_ and _b_ are the same value, `false`\n    otherwise.",
+                "type": "Boolean"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 311,
+            "description": "Alias for `remove()`.",
+            "itemtype": "method",
+            "name": "delete",
+            "see": [
+                "remove"
+            ],
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 319,
+            "description": "Alias for `each()`.",
+            "itemtype": "method",
+            "name": "forEach",
+            "see": [
+                "each"
+            ],
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 327,
+            "description": "Returns a JSON-serializable representation of this map.\n\nThis is effectively an alias for `entries()`, but could be overridden to\nreturn a customized representation.",
+            "itemtype": "method",
+            "name": "toJSON",
+            "return": {
+                "description": "JSON-serializable array of entries in this map.",
+                "type": "Array"
+            },
+            "class": "Map",
+            "module": "gallery-sm-map"
         },
         {
             "file": "src/sm-menu/js/plugins/menu-plugin.js",
@@ -5194,6 +6221,73 @@
             "module": "gallery-sm-menu"
         },
         {
+            "file": "src/sm-promise-events/js/events.js",
+            "line": 24,
+            "description": "Decorate a Promise with an `on` method and make its `then` method propagate\nevent support to its generated child promises.",
+            "itemtype": "method",
+            "name": "decorate",
+            "params": [
+                {
+                    "name": "promise",
+                    "description": "the Promise to add event support to",
+                    "type": "Promise"
+                }
+            ],
+            "static": 1,
+            "class": "Promise.EventNotifier",
+            "module": "gallery-sm-promise-events",
+            "namespace": "Promise"
+        },
+        {
+            "file": "src/sm-promise-events/js/events.js",
+            "line": 68,
+            "description": "Decorate a promise and register it and its kin as targets for notifications\nfrom this instance.\n\nReturns the input promise.",
+            "itemtype": "method",
+            "name": "addEvents",
+            "params": [
+                {
+                    "name": "promise",
+                    "description": "The Promise to add event support to",
+                    "type": "Promise"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Promise"
+            },
+            "class": "Promise.EventNotifier",
+            "module": "gallery-sm-promise-events",
+            "namespace": "Promise"
+        },
+        {
+            "file": "src/sm-promise-events/js/events.js",
+            "line": 84,
+            "description": "Notify registered Promises and their children of an event. Subscription\ncallbacks will be passed additional _args_ parameters.",
+            "itemtype": "method",
+            "name": "fire",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The name of the event to notify subscribers of",
+                    "type": "String"
+                },
+                {
+                    "name": "args*",
+                    "description": "Arguments to pass to the callbacks",
+                    "type": "Any*",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "this instance",
+                "type": "Promise.EventNotifier"
+            },
+            "chainable": 1,
+            "class": "Promise.EventNotifier",
+            "module": "gallery-sm-promise-events",
+            "namespace": "Promise"
+        },
+        {
             "file": "src/sm-selection/js/range.js",
             "line": 42,
             "description": "Returns a new Range object with the same boundary points as this range.\n\nThe returned Range is a copy, not a reference, so modifying it will not\naffect this range (and vice versa).",
@@ -5357,6 +6451,63 @@
         {
             "file": "src/sm-selection/js/range.js",
             "line": 233,
+            "description": "Attempts to expand the range to include element nodes while\nstill being equivalent to the current range. Start and End nodes\nare not guaranteed to be element nodes after this method is executed.\n\nExamples:\n\n    [] = startContainer, {} = endContainer, s:e = start/end offset\n\ngiven the HTML\n\n    <div><span>Lorem</span></div>\n\nan initial range of\n\n    <div><span>[{Lorem]}</span></div>  s0:e5\n\nafter expansion would be\n\n    [{<div><span>Lorem</span></div>}]  s0:e1",
+            "itemtype": "method",
+            "name": "expand",
+            "params": [
+                {
+                    "name": "container",
+                    "description": "If provided, do not expand the range\n    past this container",
+                    "type": "HTMLElement|Node",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 263,
+            "description": "Attempts to expand the range end to include element nodes while\nstill being equivalent to the current range. End node is not\nguaranteed to be an element node after this method is executed.",
+            "itemtype": "method",
+            "name": "expandEnd",
+            "params": [
+                {
+                    "name": "container",
+                    "description": "If provided, do not expand the range\n    past this container",
+                    "type": "HTMLElement|Node",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 289,
+            "description": "Attempts to expand the range start to include element nodes while\nstill being equivalent to the current range. Start node is not\nguaranteed to be an element node after this method is executed.",
+            "itemtype": "method",
+            "name": "expandStart",
+            "params": [
+                {
+                    "name": "container",
+                    "description": "If provided, do not expand the range\n    past this container",
+                    "type": "HTMLElement|Node",
+                    "optional": true
+                }
+            ],
+            "chainable": 1,
+            "class": "Range",
+            "module": "gallery-sm-selection",
+            "submodule": "gallery-sm-range"
+        },
+        {
+            "file": "src/sm-selection/js/range.js",
+            "line": 315,
             "description": "Moves this range's contents into a document fragment and returns a Node\ninstance containing that fragment.\n\nEvent listeners are not retained.\n\nIf this range splits a non-text element, the resulting fragment will include\na clone of that element, including its id (if it has one). This could lead\nto duplicate ids, so be careful.",
             "itemtype": "method",
             "name": "extractContents",
@@ -5370,7 +6521,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 253,
+            "line": 335,
             "description": "Inserts a node at the start of this range.",
             "itemtype": "method",
             "name": "insertNode",
@@ -5391,7 +6542,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 269,
+            "line": 351,
             "description": "Returns `true` if this range is collapsed, `false` otherwise.\n\nA `true` value means that the start and end points are the same and the\nrange is empty, whereas a `false` value means that the start and end points\nare different and the range is not empty.",
             "itemtype": "method",
             "name": "isCollapsed",
@@ -5405,7 +6556,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 285,
+            "line": 367,
             "description": "Returns `true` if this range has the same boundaries as _otherRange_,\n`false` otherwise.",
             "itemtype": "method",
             "name": "isEquivalent",
@@ -5426,7 +6577,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 299,
+            "line": 381,
             "description": "Returns `true` if this range is entirely contained within the given _node_.",
             "itemtype": "method",
             "name": "isInsideNode",
@@ -5447,7 +6598,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 325,
+            "line": 407,
             "description": "Returns the nearest common ancestor node that fully contains all nodes\nwithin this range.",
             "itemtype": "method",
             "name": "parentNode",
@@ -5461,7 +6612,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 339,
+            "line": 421,
             "description": "Sets the Range to contain the Node and its contents.\n\nThe parent Node of the start and end of the Range will be the same as the\nparent of the given node.",
             "itemtype": "method",
             "name": "selectNode",
@@ -5479,7 +6630,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 356,
+            "line": 438,
             "description": "Sets the Range to contain the contents of a Node.\n\nThe parent Node of the start and end of the Range will be the given node.\nThe startOffset is 0, and the endOffset is the number of child Nodes or\nnumber of characters contained in the reference node.",
             "itemtype": "method",
             "name": "selectNodeContents",
@@ -5497,7 +6648,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 374,
+            "line": 456,
             "description": "Shrinks the start and end containers of the range to just the text nodes\ncontaining the selected text.\n\nUseful for normalizing a range after double clicking to select since the\nrange start/end containers vary by browser as explained below:\n\nChrome and IE use the first text node that contains the selected text\nas the startContainer with an offset to exclude any leading whitespace.\n\nFirefox will use a text node *before* the selected text\nas the startContainer, with a positive offset set to the end\nof the node. If there is no previous sibling of the selected text\nor the previous sibling is not a text node, the behavior is the\nsame as Chrome/IE.\n\nChrome uses the last text node that contains the selected text as the\nendContainer, with an offset to exclude trailing whitespace.\n\nFirefox follows the mostly the same rules for the endContainer\nas it does for the startContainer. Any sibling text node\n*after* the selected text will be used as the endContainer,\nbut with a 0 offset. If there is no next sibling or the next sibling\nis not a text node, the endContainer will be the same as the\nstartContainer, with an offset to exclude any trailing whitespace.\n\nIE will aways use a following text node as the endContainer,\neven if it is a child of a sibling. The offset will *include all*\nleading whitespace. If there is no following text node,\nthe endContainer will be the same as the startContainer, with an\noffset to *include all* trailing whitespace.\n\nExamples:\n    [] = startContainer, {} = endContainer, s:e = start/end offset\n\ngiven the HTML\n    Lorem <b>Ipsum</b> Dolor Sit\n\ndbl clicking to select the text `Lorem`\n    Chrome:  `[{Lorem }]<b>Ipsum</b> Dolor Sit`  s0:e5\n    Firefox: `[{Lorem }]<b>Ipsum</b> Dolor Sit`  s0:e5\n    IE:      `[Lorem ]<b>{Ipsum}</b> Dolor Sit`  s0:e0\n\ndbl clicking to select the text `Ipsum`\n    Chrome:  `Lorem <b>[{Ipsum}]</b> Dolor Sit`  s0:e5\n    Firefox: `[Lorem ]<b>Ipsum</b>{ Dolor Sit}`  s6:e0\n    IE:      `Lorem <b>[Ipsum]</b>{ Dolor Sit}`  s0:e1\n\ndbl clicking to select the text `Dolor`\n    Chrome:  `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s1:e6\n    Firefox: `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s1:e6\n    IE:      `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s1:e7\n\ndbl clicking to select the text `Sit`\n    Chrome:  `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s7:e10\n    Firefox: `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s7:e10\n    IE:      `Lorem <b>Ipsum</b>[{ Dolor Sit}]`  s7:e10",
             "itemtype": "method",
             "name": "shrink",
@@ -5525,7 +6676,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 444,
+            "line": 526,
             "description": "Shrinks the endContainer of the range to just the text node containing\nthe selected text.\n\nBrowsers are inconsistent in how they define a range, sometimes using\noffsets of sibling or parent nodes instead of the actual text node\ncontaining the selected text.",
             "itemtype": "method",
             "name": "shrinkEnd",
@@ -5553,7 +6704,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 524,
+            "line": 606,
             "description": "Shrinks the startContainer of the range to just the text node containing\nthe selected text.\n\nBrowsers are inconsistent in how they define a range, sometimes using\noffsets of sibling or parent nodes instead of the actual text node\ncontaining the selected text.",
             "itemtype": "method",
             "name": "shrinkStart",
@@ -5581,7 +6732,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 605,
+            "line": 687,
             "description": "Gets or sets the node that contains the start point of this range.\n\nWhen specifying an _offset_, you may specify either a number or the string\n\"before\" or \"after\".\n\nA numerical offset will position the start point at that offset inside the\n_node_. If _node_ is a text node, the offset will represent a character\nposition. If _node_ can contain child nodes, then the offset will represent\na child index.\n\nThe offset \"before\" will cause the start point to be placed immediately\nbefore _node_ (not inside it).\n\nThe offset \"after\" will cause the start point to be placed immediately after\n_node_ (not inside it).",
             "itemtype": "method",
             "name": "startNode",
@@ -5610,7 +6761,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 653,
+            "line": 735,
             "description": "Gets or sets the offset of this range's start position inside the start\nnode.\n\nIf the start node is a text node, the offset represents a character\nposition. If the start node can contain child nodes, then the offset\nrepresents a child index.\n\nWhen setting an offset, you may use a numerical offset (which behaves as\ndescribed above) or the string \"before\" or \"after\".\n\nThe offset \"before\" will cause the start point to be placed immediately\nbefore the current start node (not inside it).\n\nThe offset \"after\" will cause the start point to be placed immediately after\nthe current start node (not inside it).\n\nNote that setting a \"before\" or \"after\" offset will change the start node.\nTo get the new start node, call `startNode()`.",
             "itemtype": "method",
             "name": "startOffset",
@@ -5632,7 +6783,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 692,
+            "line": 774,
             "description": "Returns the HTML content of this range.",
             "itemtype": "method",
             "name": "toHTML",
@@ -5646,7 +6797,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 707,
+            "line": 789,
             "description": "Returns the plain text content of this range.",
             "itemtype": "method",
             "name": "toString",
@@ -5660,7 +6811,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 719,
+            "line": 801,
             "description": "Traverses the contents of the range, passing each node and its children to\nthe supplied callback in document order.\n\nFor example, if the range includes the following HTML...\n\n    lorem ipsum <b>dolor <i>sit</i></b> amet\n\n...then this `traverse()` call...\n\n    range.traverse(function (node) {\n        console.log(Y.Node.getDOMNode(node));\n    });\n\n...would result in the following console output:\n\n    \"lorem ipsum \"\n    <b> element\n    \"dolor \"\n    <i> element\n    \"sit\"\n    \" amet\"\n\nThe entire start and end node will be included even if the range only\nincludes a portion of them. Use the `startOffset()` and `endOffset()`\nmethods to determine where the precise boundaries are if necessary.\n\nReturning `true` from the callback function will stop traversal",
             "itemtype": "method",
             "name": "traverse",
@@ -5691,7 +6842,7 @@
         },
         {
             "file": "src/sm-selection/js/range.js",
-            "line": 803,
+            "line": 885,
             "description": "Wraps this range in the specified HTML and returns the new wrapper node.",
             "itemtype": "method",
             "name": "wrap",
@@ -6018,6 +7169,13 @@
                             "description": "`Y.Node` instance of a container into\n        which the children should be rendered. If the container already\n        contains rendered children, they will be re-rendered in place.",
                             "type": "Node",
                             "optional": true
+                        },
+                        {
+                            "name": "force",
+                            "description": "If `true`, children will be\n        re-rendered from scratch even if they've already been rendered.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
                         }
                     ]
                 }
@@ -6031,7 +7189,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 229,
+            "line": 239,
             "description": "Renders the specified tree node and its children (if any).\n\nIf a container is specified, the rendered node will be appended to it.",
             "itemtype": "method",
             "name": "renderNode",
@@ -6054,6 +7212,13 @@
                             "optional": true
                         },
                         {
+                            "name": "force",
+                            "description": "If `true`, this node (and its\n        children if `renderChildren` is `true`) will be re-rendered from\n        scratch, even if it's already been rendered.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
                             "name": "renderChildren",
                             "description": "Whether or not to render\n        this node's children.",
                             "type": "Boolean",
@@ -6072,7 +7237,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 392,
+            "line": 417,
             "description": "Setter for the `lazyRender` attribute.\n\nJust caches the value in a property for faster lookups.",
             "itemtype": "method",
             "name": "_setLazyRender",
@@ -6087,7 +7252,7 @@
         },
         {
             "file": "src/sm-treeview/js/treeview.js",
-            "line": 654,
+            "line": 679,
             "description": "When `true`, a node's children won't be rendered until the first time\nthat node is opened.\n\nThis can significantly speed up the time it takes to render a large\ntree, but might not make sense if you're using CSS that doesn't hide the\ncontents of closed nodes.",
             "itemtype": "attribute",
             "name": "lazyRender",
@@ -6100,11 +7265,39 @@
     "warnings": [
         {
             "message": "replacing incorrect tag: returns with return",
-            "line": " src/sm-editor/js/extensions/editor-link.js:81"
+            "line": " src/sm-editor/js/extensions/editor-dom.js:214"
         },
         {
-            "message": "Missing item type\nFinds the nearest ancestor with a given tagName",
-            "line": " src/sm-editor/js/extensions/editor-dom.js:18"
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sm-editor/js/extensions/editor-dom.js:232"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/sm-editor/js/extensions/editor-link.js:106"
+        },
+        {
+            "message": "Missing item type\nCopies styles from a node to another node",
+            "line": " src/sm-editor/js/extensions/editor-dom.js:20"
+        },
+        {
+            "message": "Missing item type\nFinds the nearest ancestor element node.",
+            "line": " src/sm-editor/js/extensions/editor-dom.js:57"
+        },
+        {
+            "message": "Missing item type\nReplace spaces in text with a replacement string.\n\nPrimarily to workaround a webkit issue where it won't put the caret after\ntrailing whitespace at the end of a node",
+            "line": " src/sm-editor/js/extensions/editor-dom.js:214"
+        },
+        {
+            "message": "Missing item type\nHandles `keypress` events on the editor",
+            "line": " src/sm-editor/js/extensions/editor-queue.js:163"
+        },
+        {
+            "message": "Missing item type\nReformats html to the proper style\n\n<span>blah blah</span>",
+            "line": " src/sm-editor/js/extensions/editor-style.js:222"
+        },
+        {
+            "message": "Missing item type\nFunction for formatting editor html\n\nOne day allow custom formatting. Today is not that day.",
+            "line": " src/sm-editor/js/extensions/editor-style.js:530"
         }
     ]
 }

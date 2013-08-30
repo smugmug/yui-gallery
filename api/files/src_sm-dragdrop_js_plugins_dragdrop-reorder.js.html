@@ -53,9 +53,13 @@
             
                 <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
             
+                <li><a href="../classes/Editor.Queue.html">Editor.Queue</a></li>
+            
                 <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
             
                 <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
             
                 <li><a href="../classes/Menu.html">Menu</a></li>
             
@@ -70,6 +74,8 @@
                 <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
             
                 <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Promise.EventNotifier.html">Promise.EventNotifier</a></li>
             
                 <li><a href="../classes/Range.html">Range</a></li>
             
@@ -99,11 +105,15 @@
             
                 <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-map.html">gallery-sm-map</a></li>
             
                 <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
             
@@ -114,6 +124,8 @@
                 <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
             
                 <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-promise-events.html">gallery-sm-promise-events</a></li>
             
                 <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
             
@@ -639,11 +651,13 @@ Y.namespace(&#x27;Plugin.DragDrop&#x27;).Reorder = Y.Base.create(&#x27;dragdropR
 
         if (item.before) {
             this._publishAndFire(EVT_REORDER_BEFORE, facade, {
-                defaultFn: this._defReorderBeforeFn
+                defaultFn  : this._defReorderBeforeFn,
+                preventedFn: this._preventedReorderBeforeFn
             });
         } else if (item.after) {
             this._publishAndFire(EVT_REORDER_AFTER, facade, {
-                defaultFn: this._defReorderAfterFn
+                defaultFn  : this._defReorderAfterFn,
+                preventedFn: this._preventedReorderAfterFn
             });
         }
     },
@@ -732,6 +746,14 @@ Y.namespace(&#x27;Plugin.DragDrop&#x27;).Reorder = Y.Base.create(&#x27;dragdropR
 
     _onDragStart: function (e) {
         e.state.reorder = {};
+    },
+
+    _preventedReorderAfterFn: function (e) {
+        this._fireEnd();
+    },
+
+    _preventedReorderBeforeFn: function (e) {
+        this._fireEnd();
     },
 
     _preventedReorderStartFn: function (e) {

@@ -53,9 +53,13 @@
             
                 <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
             
+                <li><a href="../classes/Editor.Queue.html">Editor.Queue</a></li>
+            
                 <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
             
                 <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
             
                 <li><a href="../classes/Menu.html">Menu</a></li>
             
@@ -70,6 +74,8 @@
                 <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
             
                 <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Promise.EventNotifier.html">Promise.EventNotifier</a></li>
             
                 <li><a href="../classes/Range.html">Range</a></li>
             
@@ -99,11 +105,15 @@
             
                 <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-map.html">gallery-sm-map</a></li>
             
                 <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
             
@@ -114,6 +124,8 @@
                 <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
             
                 <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-promise-events.html">gallery-sm-promise-events</a></li>
             
                 <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
             
@@ -293,6 +305,13 @@ and memory-efficient even when managing thousands of draggable nodes.</p>
                             </li>
                         
                             <li class="index-item method private inherited">
+                                <a href="#method__addOutOfOrder">_addOutOfOrder</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private inherited">
                                 <a href="#method__aggregateAttrs">_aggregateAttrs</a>
 
                                 
@@ -432,13 +451,6 @@ and memory-efficient even when managing thousands of draggable nodes.</p>
                                 
                             </li>
                         
-                            <li class="index-item method private inherited">
-                                <a href="#method__filterAttrCfgs">_filterAttrCfgs</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method protected">
                                 <a href="#method__findDropIntersection">_findDropIntersection</a>
 
@@ -559,6 +571,13 @@ and memory-efficient even when managing thousands of draggable nodes.</p>
                             </li>
                         
                             <li class="index-item method private inherited">
+                                <a href="#method__getInstanceAttrCfgs">_getInstanceAttrCfgs</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private inherited">
                                 <a href="#method__getStateVal">_getStateVal</a>
 
                                 
@@ -574,6 +593,13 @@ and memory-efficient even when managing thousands of draggable nodes.</p>
                         
                             <li class="index-item method protected">
                                 <a href="#method__getViewportScrollOffsets">_getViewportScrollOffsets</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private inherited">
+                                <a href="#method__hasPotentialSubscribers">_hasPotentialSubscribers</a>
 
                                 
                                 
@@ -1130,6 +1156,14 @@ and memory-efficient even when managing thousands of draggable nodes.</p>
                                 <a href="#attr_timeThreshold">timeThreshold</a>
                             </li>
                         
+                            <li class="index-item attr">
+                                <a href="#attr_touchCancelDistance">touchCancelDistance</a>
+                            </li>
+                        
+                            <li class="index-item attr">
+                                <a href="#attr_touchDelay">touchDelay</a>
+                            </li>
+                        
                     </ul>
                 </div>
             
@@ -1266,7 +1300,7 @@ and memory-efficient even when managing thousands of draggable nodes.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l836"><code>attribute&#x2F;js&#x2F;AttributeCore.js:836</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l854"><code>attribute&#x2F;js&#x2F;AttributeCore.js:854</code></a>
         
         </p>
 
@@ -1396,7 +1430,7 @@ See <a href="#method_addAttr">addAttr</a>.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l382"><code>attribute&#x2F;js&#x2F;AttributeCore.js:382</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l360"><code>attribute&#x2F;js&#x2F;AttributeCore.js:360</code></a>
         
         </p>
 
@@ -1458,6 +1492,129 @@ along the critical path, where the calling method has already obtained lazy conf
 </div>
 
                 
+                    <div id="method__addOutOfOrder" class="method item private inherited">
+    <h3 class="name"><code>_addOutOfOrder</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>cfg</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="http://yuilibrary.com/yui/docs/api/classes/AttributeCore.html#method__addOutOfOrder">AttributeCore</a>:
+            
+        
+        
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l527"><code>attribute&#x2F;js&#x2F;AttributeCore.js:527</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Utility method used by get/set to add attributes
+encountered out of order when calling addAttrs().</p>
+
+<p>For example, if:</p>
+
+<pre class="code prettyprint"><code>this.addAttrs({
+     foo: {
+         setter: function() {
+            // make sure this bar is available when foo is added
+            this.get("bar");
+         }
+     },
+     bar: {
+         value: ...
+     }
+});
+</code></pre>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>attribute name</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">cfg</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>attribute configuration</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method__aggregateAttrs" class="method item private inherited">
     <h3 class="name"><code>_aggregateAttrs</code></h3>
 
@@ -1503,7 +1660,7 @@ along the critical path, where the calling method has already obtained lazy conf
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l575"><code>base&#x2F;js&#x2F;BaseCore.js:575</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l618"><code>base&#x2F;js&#x2F;BaseCore.js:618</code></a>
         
         </p>
 
@@ -1601,7 +1758,7 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l191"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:191</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l195"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:195</code></a>
         
         </p>
 
@@ -1654,7 +1811,7 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l538"><code>base&#x2F;js&#x2F;BaseCore.js:538</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l581"><code>base&#x2F;js&#x2F;BaseCore.js:581</code></a>
         
         </p>
 
@@ -1708,7 +1865,7 @@ this class for iteration performance reasons.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l309"><code>base&#x2F;js&#x2F;BaseCore.js:309</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l364"><code>base&#x2F;js&#x2F;BaseCore.js:364</code></a>
         
         </p>
 
@@ -1761,7 +1918,7 @@ this class for iteration performance reasons.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l281"><code>base&#x2F;js&#x2F;BaseCore.js:281</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l336"><code>base&#x2F;js&#x2F;BaseCore.js:336</code></a>
         
         </p>
 
@@ -1827,7 +1984,7 @@ this class for iteration performance reasons.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l289"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:289</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l298"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:298</code></a>
         
         </p>
 
@@ -1911,7 +2068,7 @@ a protected property on this class.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l301"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:301</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l310"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:310</code></a>
         
         </p>
 
@@ -1989,7 +2146,7 @@ obscures the dropzone.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l338"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:338</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l347"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:347</code></a>
         
         </p>
 
@@ -2068,7 +2225,7 @@ the pointer is being dragged over.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l549"><code>base&#x2F;js&#x2F;BaseCore.js:549</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l592"><code>base&#x2F;js&#x2F;BaseCore.js:592</code></a>
         
         </p>
 
@@ -2127,6 +2284,12 @@ Since it's on a critical path, we don't want to re-do the check.</p>
                     
                 </li>
             
+                <li class="arg">
+                    
+                        <code>eventFastPath</code>
+                    
+                </li>
+            
             </ul><span class="paren">)</span>
         </div>
     
@@ -2155,7 +2318,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeObservable.js.html#l186"><code>attribute&#x2F;js&#x2F;AttributeObservable.js:186</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeObservable.js.html#l185"><code>attribute&#x2F;js&#x2F;AttributeObservable.js:185</code></a>
         
         </p>
 
@@ -2185,6 +2348,21 @@ Since it's on a critical path, we don't want to re-do the check.</p>
 
                     <div class="param-description">
                         <p>The event object for attribute change events.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">eventFastPath</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Whether or not we're using this as a fast path in the case of no listeners or not</p>
                     </div>
 
                     
@@ -2241,7 +2419,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l190"><code>base&#x2F;js&#x2F;BaseObservable.js:190</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l202"><code>base&#x2F;js&#x2F;BaseObservable.js:202</code></a>
         
         </p>
 
@@ -2330,7 +2508,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l998"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:998</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1008"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1008</code></a>
         
         </p>
 
@@ -2409,7 +2587,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l950"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:950</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l960"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:960</code></a>
         
         </p>
 
@@ -2475,7 +2653,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1012"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1012</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1022"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1022</code></a>
         
         </p>
 
@@ -2561,7 +2739,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l178"><code>base&#x2F;js&#x2F;BaseObservable.js:178</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l190"><code>base&#x2F;js&#x2F;BaseObservable.js:190</code></a>
         
         </p>
 
@@ -2638,7 +2816,7 @@ refers to the configuration object passed to the constructor.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l721"><code>base&#x2F;js&#x2F;BaseCore.js:721</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l782"><code>base&#x2F;js&#x2F;BaseCore.js:782</code></a>
         
         </p>
 
@@ -2695,7 +2873,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l245"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:245</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l254"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:254</code></a>
         
         </p>
 
@@ -2751,7 +2929,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l396"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:396</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l405"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:405</code></a>
         
         </p>
 
@@ -2807,7 +2985,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l427"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:427</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l437"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:437</code></a>
         
         </p>
 
@@ -2883,7 +3061,7 @@ temporary state that's only necessary when a drag is pending.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l427"><code>base&#x2F;js&#x2F;BaseCore.js:427</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l470"><code>base&#x2F;js&#x2F;BaseCore.js:470</code></a>
         
         </p>
 
@@ -2959,135 +3137,6 @@ of an object with attribute name/configuration pairs.
 </div>
 
                 
-                    <div id="method__filterAttrCfgs" class="method item private inherited">
-    <h3 class="name"><code>_filterAttrCfgs</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>clazz</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>allCfgs</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="http://yuilibrary.com/yui/docs/api/classes/BaseCore.html#method__filterAttrCfgs">BaseCore</a>:
-            
-        
-        
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l356"><code>base&#x2F;js&#x2F;BaseCore.js:356</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>A helper method used when processing ATTRS across the class hierarchy during
-initialization. Returns a disposable object with the attributes defined for
-the provided class, extracted from the set of all attributes passed in.</p>
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">clazz</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The class for which the desired attributes are required.</p>
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">allCfgs</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>The set of all attribute configurations for this instance.
-Attributes will be removed from this set, if they belong to the filtered class, so
-that by the time all classes are processed, allCfgs will be empty.</p>
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
-                    
-                    The set of attributes belonging to the class passed in, in the form
-of an object with attribute name/configuration pairs.
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
                     <div id="method__findDropIntersection" class="method item protected">
     <h3 class="name"><code>_findDropIntersection</code></h3>
 
@@ -3126,7 +3175,7 @@ of an object with attribute name/configuration pairs.
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l441"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:441</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l451"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:451</code></a>
         
         </p>
 
@@ -3201,7 +3250,7 @@ current pointer position, and returns the intersected element if found.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l481"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:481</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l491"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:491</code></a>
         
         </p>
 
@@ -3467,7 +3516,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l556"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:556</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l566"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:566</code></a>
         
         </p>
 
@@ -3533,7 +3582,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l581"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:581</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l591"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:591</code></a>
         
         </p>
 
@@ -3612,7 +3661,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l603"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:603</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l613"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:613</code></a>
         
         </p>
 
@@ -3668,7 +3717,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l624"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:624</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l634"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:634</code></a>
         
         </p>
 
@@ -3738,7 +3787,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l647"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:647</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l657"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:657</code></a>
         
         </p>
 
@@ -3851,7 +3900,7 @@ regardless of whether the viewport has been scrolled.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l543"><code>attribute&#x2F;js&#x2F;AttributeCore.js:543</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l564"><code>attribute&#x2F;js&#x2F;AttributeCore.js:564</code></a>
         
         </p>
 
@@ -4052,7 +4101,7 @@ configuration properties for all attributes.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l339"><code>base&#x2F;js&#x2F;BaseCore.js:339</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l394"><code>base&#x2F;js&#x2F;BaseCore.js:394</code></a>
         
         </p>
 
@@ -4147,7 +4196,7 @@ the cached value.
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l945"><code>attribute&#x2F;js&#x2F;AttributeCore.js:945</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l963"><code>attribute&#x2F;js&#x2F;AttributeCore.js:963</code></a>
         
         </p>
 
@@ -4283,7 +4332,7 @@ provided and the attribute is not read-only.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l774"><code>attribute&#x2F;js&#x2F;AttributeCore.js:774</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l792"><code>attribute&#x2F;js&#x2F;AttributeCore.js:792</code></a>
         
         </p>
 
@@ -4390,7 +4439,7 @@ returned. If set to true, all attributes modified from their initial values are 
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l678"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:678</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l688"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:688</code></a>
         
         </p>
 
@@ -4484,7 +4533,7 @@ don't provide height and width information in native bounding rects.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l323"><code>base&#x2F;js&#x2F;BaseCore.js:323</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l378"><code>base&#x2F;js&#x2F;BaseCore.js:378</code></a>
         
         </p>
 
@@ -4559,7 +4608,7 @@ cached value.
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l701"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:701</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l711"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:711</code></a>
         
         </p>
 
@@ -4703,6 +4752,113 @@ implementations which need to fast-track publish for performance reasons.</p>
 </div>
 
                 
+                    <div id="method__getInstanceAttrCfgs" class="method item private inherited">
+    <h3 class="name"><code>_getInstanceAttrCfgs</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>allCfgs</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="http://yuilibrary.com/yui/docs/api/classes/BaseCore.html#method__getInstanceAttrCfgs">BaseCore</a>:
+            
+        
+        
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l411"><code>base&#x2F;js&#x2F;BaseCore.js:411</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>A helper method used to isolate the attrs config for this instance to pass to <code>addAttrs</code>,
+from the static cached ATTRS for the class.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">allCfgs</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The set of all attribute configurations for this instance.
+Attributes will be removed from this set, if they belong to the filtered class, so
+that by the time all classes are processed, allCfgs will be empty.</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
+                    
+                    The set of attributes to be added for this instance, suitable
+for passing through to <code>addAttrs</code>.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method__getStateVal" class="method item private inherited">
     <h3 class="name"><code>_getStateVal</code></h3>
 
@@ -4754,7 +4910,7 @@ implementations which need to fast-track publish for performance reasons.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l600"><code>attribute&#x2F;js&#x2F;AttributeCore.js:600</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l618"><code>attribute&#x2F;js&#x2F;AttributeCore.js:618</code></a>
         
         </p>
 
@@ -4923,7 +5079,7 @@ applied to the supplied type.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l718"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:718</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l728"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:728</code></a>
         
         </p>
 
@@ -4950,6 +5106,109 @@ applied to the supplied type.</p>
                     
                     Array containing the X and Y scroll offsets of the
     viewport.
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__hasPotentialSubscribers" class="method item private inherited">
+    <h3 class="name"><code>_hasPotentialSubscribers</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>fullType</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="http://yuilibrary.com/yui/docs/api/classes/EventTarget.html#method__hasPotentialSubscribers">EventTarget</a>:
+            
+        
+        
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l637"><code>event-custom&#x2F;js&#x2F;event-facade.js:637</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">fullType</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The fully prefixed type name</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    Whether the event has potential subscribers or not
                 
             </div>
         </div>
@@ -5124,7 +5383,7 @@ constructor.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l254"><code>base&#x2F;js&#x2F;BaseCore.js:254</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l309"><code>base&#x2F;js&#x2F;BaseCore.js:309</code></a>
         
         </p>
 
@@ -5199,7 +5458,7 @@ constructor.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l1011"><code>attribute&#x2F;js&#x2F;AttributeCore.js:1011</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l1029"><code>attribute&#x2F;js&#x2F;AttributeCore.js:1029</code></a>
         
         </p>
 
@@ -5318,7 +5577,7 @@ either through the constructor.ATTRS property, or explicitly passed in.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l219"><code>base&#x2F;js&#x2F;BaseCore.js:219</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l274"><code>base&#x2F;js&#x2F;BaseCore.js:274</code></a>
         
         </p>
 
@@ -5404,7 +5663,7 @@ either through the constructor.ATTRS property, or explicitly passed in.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l659"><code>base&#x2F;js&#x2F;BaseCore.js:659</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l702"><code>base&#x2F;js&#x2F;BaseCore.js:702</code></a>
         
         </p>
 
@@ -5483,7 +5742,7 @@ invoking the initializer method on the prototype of each class in the hierarchy.
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l457"><code>base&#x2F;js&#x2F;BaseCore.js:457</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l500"><code>base&#x2F;js&#x2F;BaseCore.js:500</code></a>
         
         </p>
 
@@ -5552,7 +5811,7 @@ across the class hierarchy for the instance.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l369"><code>attribute&#x2F;js&#x2F;AttributeCore.js:369</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l347"><code>attribute&#x2F;js&#x2F;AttributeCore.js:347</code></a>
         
         </p>
 
@@ -5781,7 +6040,7 @@ it published) by setting the events 'monitor' config.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l739"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:739</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l749"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:749</code></a>
         
         </p>
 
@@ -5849,7 +6108,7 @@ constrained within the container if the pointer is outside the container.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l897"><code>attribute&#x2F;js&#x2F;AttributeCore.js:897</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l915"><code>attribute&#x2F;js&#x2F;AttributeCore.js:915</code></a>
         
         </p>
 
@@ -5944,7 +6203,7 @@ by the top level attribute name, or null, if valueHash is falsey.
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1047"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1047</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1057"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1057</code></a>
         
         </p>
 
@@ -6012,7 +6271,7 @@ scrollable containers are scrolled.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1068"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1068</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1078"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1078</code></a>
         
         </p>
 
@@ -6091,7 +6350,7 @@ scrollable containers are scrolled.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1102"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1102</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1123"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1123</code></a>
         
         </p>
 
@@ -6157,7 +6416,7 @@ scrollable containers are scrolled.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1149"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1149</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1172"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1172</code></a>
         
         </p>
 
@@ -6246,7 +6505,7 @@ scrollable containers are scrolled.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1191"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1191</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1217"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1217</code></a>
         
         </p>
 
@@ -6390,7 +6649,7 @@ Y.on('detachcategory| menu:click', fn)</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l98"><code>base&#x2F;js&#x2F;BaseObservable.js:98</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l110"><code>base&#x2F;js&#x2F;BaseObservable.js:110</code></a>
         
         </p>
 
@@ -6481,7 +6740,7 @@ construction, prior to init.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1205"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1205</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1231"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1231</code></a>
         
         </p>
 
@@ -6562,7 +6821,7 @@ construction, prior to init.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1218"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1218</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1244"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1244</code></a>
         
         </p>
 
@@ -6620,7 +6879,7 @@ construction, prior to init.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l784"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:784</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l794"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:794</code></a>
         
         </p>
 
@@ -6691,7 +6950,7 @@ dragNode, if any.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l883"><code>attribute&#x2F;js&#x2F;AttributeCore.js:883</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l901"><code>attribute&#x2F;js&#x2F;AttributeCore.js:901</code></a>
         
         </p>
 
@@ -6792,7 +7051,7 @@ attr config objects.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l804"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:804</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l814"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:814</code></a>
         
         </p>
 
@@ -7034,7 +7293,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l816"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:816</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l826"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:826</code></a>
         
         </p>
 
@@ -7163,7 +7422,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l844"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:844</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l854"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:854</code></a>
         
         </p>
 
@@ -7222,7 +7481,7 @@ attributes are changed.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l859"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:859</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l869"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:869</code></a>
         
         </p>
 
@@ -7289,7 +7548,7 @@ style before it was prevented by <code>_preventTouchCallout()</code>.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l879"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:879</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l889"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:889</code></a>
         
         </p>
 
@@ -7403,7 +7662,7 @@ direction(s) they need to be scrolled.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l427"><code>attribute&#x2F;js&#x2F;AttributeCore.js:427</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l405"><code>attribute&#x2F;js&#x2F;AttributeCore.js:405</code></a>
         
         </p>
 
@@ -7557,7 +7816,7 @@ direction(s) they need to be scrolled.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l443"><code>attribute&#x2F;js&#x2F;AttributeCore.js:443</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l421"><code>attribute&#x2F;js&#x2F;AttributeCore.js:421</code></a>
         
         </p>
 
@@ -7720,7 +7979,7 @@ readOnly or writeOnce attributes which have already been set.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l742"><code>attribute&#x2F;js&#x2F;AttributeCore.js:742</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l760"><code>attribute&#x2F;js&#x2F;AttributeCore.js:760</code></a>
         
         </p>
 
@@ -7869,7 +8128,7 @@ readOnly or writeOnce attributes which have already been set.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l640"><code>attribute&#x2F;js&#x2F;AttributeCore.js:640</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l658"><code>attribute&#x2F;js&#x2F;AttributeCore.js:658</code></a>
         
         </p>
 
@@ -8053,7 +8312,7 @@ where the calling method has already obtained the config from state.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l622"><code>attribute&#x2F;js&#x2F;AttributeCore.js:622</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l640"><code>attribute&#x2F;js&#x2F;AttributeCore.js:640</code></a>
         
         </p>
 
@@ -8401,7 +8660,7 @@ to protect the original values, you will need to merge the object.
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l805"><code>attribute&#x2F;js&#x2F;AttributeCore.js:805</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l823"><code>attribute&#x2F;js&#x2F;AttributeCore.js:823</code></a>
         
         </p>
 
@@ -8536,7 +8795,7 @@ See <a href="#method_addAttr">addAttr</a>.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l455"><code>event-custom&#x2F;js&#x2F;event-facade.js:455</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l496"><code>event-custom&#x2F;js&#x2F;event-facade.js:496</code></a>
         
         </p>
 
@@ -8648,7 +8907,7 @@ be specified.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l833"><code>event-custom&#x2F;js&#x2F;event-target.js:833</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l834"><code>event-custom&#x2F;js&#x2F;event-target.js:834</code></a>
         
         </p>
 
@@ -8800,7 +9059,7 @@ if configured for the event, has executed.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l341"><code>attribute&#x2F;js&#x2F;AttributeCore.js:341</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l319"><code>attribute&#x2F;js&#x2F;AttributeCore.js:319</code></a>
         
         </p>
 
@@ -8892,7 +9151,7 @@ if configured for the event, has executed.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l870"><code>event-custom&#x2F;js&#x2F;event-target.js:870</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l871"><code>event-custom&#x2F;js&#x2F;event-target.js:871</code></a>
         
         </p>
 
@@ -8977,7 +9236,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l507"><code>event-custom&#x2F;js&#x2F;event-facade.js:507</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l548"><code>event-custom&#x2F;js&#x2F;event-facade.js:548</code></a>
         
         </p>
 
@@ -9073,7 +9332,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l297"><code>base&#x2F;js&#x2F;BaseCore.js:297</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l352"><code>base&#x2F;js&#x2F;BaseCore.js:352</code></a>
         
         </p>
 
@@ -9370,7 +9629,7 @@ be removed.</p>
 
     
         <span class="returns-inline">
-            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventTarget.html" class="crosslink external" target="_blank">EventTarget</a></span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -9409,17 +9668,17 @@ be removed.</p>
 from the context specified when the event was created, and with the
 following parameters.</p>
 
-<p>If the custom event object hasn't been created, then the event hasn't
-been published and it has no subscribers.  For performance sake, we
-immediate exit in this case.  This means the event won't bubble, so
-if the intention is that a bubble target be notified, the event must
-be published on this object first.</p>
-
 <p>The first argument is the event type, and any additional arguments are
 passed to the listeners as parameters.  If the first of these is an
 object literal, and the event is configured to emit an event facade,
 that object is mixed into the event facade and the facade is provided
 in place of the original object.</p>
+
+<p>If the custom event object hasn't been created, then the event hasn't
+been published and it has no subscribers.  For performance sake, we
+immediate exit in this case.  This means the event won't bubble, so
+if the intention is that a bubble target be notified, the event must
+be published on this object first.</p>
     </div>
 
     
@@ -9474,9 +9733,10 @@ the event facade.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventTarget.html" class="crosslink external" target="_blank">EventTarget</a></span>:
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    the event host
+                    True if the whole lifecycle of the event went through,
+false if at any point the event propagation was halted.
                 
             </div>
         </div>
@@ -9529,7 +9789,7 @@ the event facade.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l353"><code>attribute&#x2F;js&#x2F;AttributeCore.js:353</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l331"><code>attribute&#x2F;js&#x2F;AttributeCore.js:331</code></a>
         
         </p>
 
@@ -9633,7 +9893,7 @@ dot notation can be used to obtain the value of a property of the object (e.g. <
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l762"><code>attribute&#x2F;js&#x2F;AttributeCore.js:762</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l780"><code>attribute&#x2F;js&#x2F;AttributeCore.js:780</code></a>
         
         </p>
 
@@ -9741,7 +10001,7 @@ returned. If set to true, all attributes modified from their initial values are 
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l814"><code>event-custom&#x2F;js&#x2F;event-target.js:814</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-target.js.html#l815"><code>event-custom&#x2F;js&#x2F;event-target.js:815</code></a>
         
         </p>
 
@@ -9848,7 +10108,7 @@ falsy value otherwise</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l479"><code>event-custom&#x2F;js&#x2F;event-facade.js:479</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l520"><code>event-custom&#x2F;js&#x2F;event-facade.js:520</code></a>
         
         </p>
 
@@ -9929,7 +10189,7 @@ falsy value otherwise</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l264"><code>base&#x2F;js&#x2F;BaseCore.js:264</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l319"><code>base&#x2F;js&#x2F;BaseCore.js:319</code></a>
         
         </p>
 
@@ -11056,7 +11316,7 @@ case the custom event is returned.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l489"><code>event-custom&#x2F;js&#x2F;event-facade.js:489</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l530"><code>event-custom&#x2F;js&#x2F;event-facade.js:530</code></a>
         
         </p>
 
@@ -11265,7 +11525,7 @@ the attribute is not readOnly, or writeOnce.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l410"><code>attribute&#x2F;js&#x2F;AttributeCore.js:410</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l388"><code>attribute&#x2F;js&#x2F;AttributeCore.js:388</code></a>
         
         </p>
 
@@ -11410,7 +11670,7 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l729"><code>attribute&#x2F;js&#x2F;AttributeCore.js:729</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/attribute_js_AttributeCore.js.html#l747"><code>attribute&#x2F;js&#x2F;AttributeCore.js:747</code></a>
         
         </p>
 
@@ -11573,7 +11833,7 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l260"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:260</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l269"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:269</code></a>
         
         </p>
 
@@ -11636,7 +11896,7 @@ effect.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l754"><code>base&#x2F;js&#x2F;BaseCore.js:754</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l815"><code>base&#x2F;js&#x2F;BaseCore.js:815</code></a>
         
         </p>
 
@@ -11847,7 +12107,7 @@ be removed.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l100"><code>base&#x2F;js&#x2F;BaseCore.js:100</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l155"><code>base&#x2F;js&#x2F;BaseCore.js:155</code></a>
         
         </p>
 
@@ -11898,7 +12158,7 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l147"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:147</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l149"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:149</code></a>
         
         </p>
 
@@ -11989,7 +12249,7 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l242"><code>base&#x2F;js&#x2F;BaseCore.js:242</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l297"><code>base&#x2F;js&#x2F;BaseCore.js:297</code></a>
         
         </p>
 
@@ -12050,7 +12310,7 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1231"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1231</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1257"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1257</code></a>
         
         </p>
 
@@ -12157,7 +12417,7 @@ draggable nodes will not be draggable or droppable outside its borders.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l157"><code>base&#x2F;js&#x2F;BaseCore.js:157</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l212"><code>base&#x2F;js&#x2F;BaseCore.js:212</code></a>
         
         </p>
 
@@ -12262,7 +12522,7 @@ has been through the destroy lifecycle phase.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1249"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1249</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1275"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1275</code></a>
         
         </p>
 
@@ -12276,7 +12536,7 @@ has been through the destroy lifecycle phase.</p>
 before the movement will be considered the beginning of a drag event.</p>
 
 <p>This value has no effect on touch-based interactions (see
-<code>maxGestureDistance</code>).</p>
+<code>touchCancelDistance</code>).</p>
     </div>
 
     
@@ -12370,7 +12630,7 @@ before the movement will be considered the beginning of a drag event.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1263"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1263</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1289"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1289</code></a>
         
         </p>
 
@@ -12476,7 +12736,7 @@ only be draggable by their handles.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1274"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1274</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1300"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1300</code></a>
         
         </p>
 
@@ -12579,7 +12839,7 @@ should be draggable.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1282"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1282</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1308"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1308</code></a>
         
         </p>
 
@@ -12682,7 +12942,7 @@ should be considered drop zones.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1290"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1290</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1316"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1316</code></a>
         
         </p>
 
@@ -12787,7 +13047,7 @@ disable it in certain situations.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l143"><code>base&#x2F;js&#x2F;BaseCore.js:143</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseCore.js.html#l198"><code>base&#x2F;js&#x2F;BaseCore.js:198</code></a>
         
         </p>
 
@@ -12892,7 +13152,7 @@ has been through the init lifecycle phase.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1302"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1302</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1328"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1328</code></a>
         
         </p>
 
@@ -13003,7 +13263,7 @@ by setting a <code>pointerOffset</code> property on the event facade passed to t
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1319"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1319</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1345"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1345</code></a>
         
         </p>
 
@@ -13109,7 +13369,7 @@ those nodes using the <code>scrollSelector</code> attribute.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1332"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1332</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1358"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1358</code></a>
         
         </p>
 
@@ -13217,7 +13477,7 @@ the edge before the node will start to scroll.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1346"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1346</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1372"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1372</code></a>
         
         </p>
 
@@ -13321,7 +13581,7 @@ node's edges.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1355"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1355</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1381"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1381</code></a>
         
         </p>
 
@@ -13338,9 +13598,8 @@ action the beginning of a drag event.</p>
 <p>For mouse-based interactions, exceeding this threshold will cause a
 drag event to start even if the <code>distanceThreshold</code> is not met.</p>
 
-<p>For touch-based interactions, a drag event will only start if this
-threshold is exceeded <em>and</em> the touch point doesn't move more than the
-number of pixels specified by <code>maxGestureDistance</code>.</p>
+<p>This attribute has no effect on touch-based interactions (see
+<code>touchDelay</code>).</p>
     </div>
 
     
@@ -13353,6 +13612,228 @@ number of pixels specified by <code>maxGestureDistance</code>.</p>
 
             <p>
             Fires when the value for the configuration attribute <code>timeThreshold</code> is
+            changed. You can listen for the event using the <code>on</code> method if you
+            wish to be notified before the attribute's value has changed, or
+            using the <code>after</code> method if you wish to be notified after the
+            attribute's value has changed.
+            </p>
+
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                    <li class="param">
+                        <code class="param-name">e</code>
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventFacade.html" class="crosslink external" target="_blank">EventFacade</a></span>
+
+                        <div class="param-description">
+                            An Event Facade object with the following
+                            attribute-specific properties added:
+                        </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                <code class="param-name">prevVal</code>
+                                <span class="type">Any</span>
+                                <div class="param-description">The value of the attribute, prior to it being set.</div>
+                            </li>
+                            <li class="param">
+                                <code class="param-name">newVal</code>
+                                <span class="type">Any</span>
+                                <div class="param-description">The value the attribute is to be set to.</div>
+                            </li>
+                            <li class="param">
+                                <code class="param-name">attrName</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                <div class="param-description">The name of the attribute being set.</div>
+                            </li>
+                            <li class="param">
+                                <code class="param-name">subAttrName</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                <div class="param-description">If setting a property within the attribute's value, the name of the sub-attribute property being set.</div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="attr_touchCancelDistance" class="attr item">
+    <a name="config_touchCancelDistance"></a> 
+    <h3 class="name"><code>touchCancelDistance</code></h3>
+    <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1399"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1399</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Maximum distance in pixels from the original touch point that the
+pointer may move during the <code>touchDelay</code> time before a pending drag is
+canceled.</p>
+
+<p>This helps avoid triggering unintended drag interactions when the user
+is actually scrolling or performing some other touch gesture.</p>
+
+<p>This attribute has no effect on mouse-based interactions.</p>
+    </div>
+
+    
+        <p><strong>Default:</strong> 10</p>
+    
+
+    
+        <div class="emits box">
+            <h4>Fires event <code>touchCancelDistanceChange</code></h4>
+
+            <p>
+            Fires when the value for the configuration attribute <code>touchCancelDistance</code> is
+            changed. You can listen for the event using the <code>on</code> method if you
+            wish to be notified before the attribute's value has changed, or
+            using the <code>after</code> method if you wish to be notified after the
+            attribute's value has changed.
+            </p>
+
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                    <li class="param">
+                        <code class="param-name">e</code>
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventFacade.html" class="crosslink external" target="_blank">EventFacade</a></span>
+
+                        <div class="param-description">
+                            An Event Facade object with the following
+                            attribute-specific properties added:
+                        </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                <code class="param-name">prevVal</code>
+                                <span class="type">Any</span>
+                                <div class="param-description">The value of the attribute, prior to it being set.</div>
+                            </li>
+                            <li class="param">
+                                <code class="param-name">newVal</code>
+                                <span class="type">Any</span>
+                                <div class="param-description">The value the attribute is to be set to.</div>
+                            </li>
+                            <li class="param">
+                                <code class="param-name">attrName</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                <div class="param-description">The name of the attribute being set.</div>
+                            </li>
+                            <li class="param">
+                                <code class="param-name">subAttrName</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                <div class="param-description">If setting a property within the attribute's value, the name of the sub-attribute property being set.</div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="attr_touchDelay" class="attr item">
+    <a name="config_touchDelay"></a> 
+    <h3 class="name"><code>touchDelay</code></h3>
+    <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l1416"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:1416</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Delay in milliseconds after an initial touch before a drag interaction
+begins when using a touch-based input device.</p>
+
+<p>If the touch ends before this delay is over, or if the touch point moves
+by more than <code>touchCancelDistance</code> pixels before this delay is over, the
+pending drag is canceled.</p>
+
+<p>This attribute has no effect on mouse-based interactions.</p>
+    </div>
+
+    
+        <p><strong>Default:</strong> 1000</p>
+    
+
+    
+        <div class="emits box">
+            <h4>Fires event <code>touchDelayChange</code></h4>
+
+            <p>
+            Fires when the value for the configuration attribute <code>touchDelay</code> is
             changed. You can listen for the event using the <code>on</code> method if you
             wish to be notified before the attribute's value has changed, or
             using the <code>after</code> method if you wish to be notified after the
@@ -13432,7 +13913,7 @@ number of pixels specified by <code>maxGestureDistance</code>.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l151"><code>base&#x2F;js&#x2F;BaseObservable.js:151</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/base_js_BaseObservable.js.html#l163"><code>base&#x2F;js&#x2F;BaseObservable.js:163</code></a>
         
         </p>
 
@@ -13678,6 +14159,22 @@ zone intersections from being calculated.</p>
             
                 <li class="param">
                     
+                        <code class="param-name">dropped</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Whether or not the drag operation resulted in a
+    successful drop.</p>
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
                         <code class="param-name">pageXY</code>
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number[]</a></span>
                     
@@ -13739,7 +14236,7 @@ zone intersections from being calculated.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l67"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:67</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l69"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:69</code></a>
         
         </p>
 
@@ -13870,7 +14367,7 @@ zone intersections from being calculated.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l85"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:85</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l87"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:87</code></a>
         
         </p>
 
@@ -13998,7 +14495,7 @@ zone intersections from being calculated.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l99"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:99</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l101"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:101</code></a>
         
         </p>
 
@@ -14126,7 +14623,7 @@ zone intersections from being calculated.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l113"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:113</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l115"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:115</code></a>
         
         </p>
 
@@ -14214,7 +14711,7 @@ drag operation.</p>
             
         
         
-        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l130"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:130</code></a>
+        <a href="../files/src_sm-dragdrop_js_dragdrop.js.html#l132"><code>src&#x2F;sm-dragdrop&#x2F;js&#x2F;dragdrop.js:132</code></a>
         
         </p>
 

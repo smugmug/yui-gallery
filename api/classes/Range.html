@@ -53,9 +53,13 @@
             
                 <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
             
+                <li><a href="../classes/Editor.Queue.html">Editor.Queue</a></li>
+            
                 <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
             
                 <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
             
                 <li><a href="../classes/Menu.html">Menu</a></li>
             
@@ -70,6 +74,8 @@
                 <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
             
                 <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Promise.EventNotifier.html">Promise.EventNotifier</a></li>
             
                 <li><a href="../classes/Range.html">Range</a></li>
             
@@ -99,11 +105,15 @@
             
                 <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-map.html">gallery-sm-map</a></li>
             
                 <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
             
@@ -114,6 +124,8 @@
                 <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
             
                 <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-promise-events.html">gallery-sm-promise-events</a></li>
             
                 <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
             
@@ -347,6 +359,27 @@ DOM Range specification.</p>
                         
                             <li class="index-item method">
                                 <a href="#method_endOffset">endOffset</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_expand">expand</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_expandEnd">expandEnd</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_expandStart">expandStart</a>
 
                                 
                                 
@@ -1249,6 +1282,305 @@ get the new end node, call <code>endNode()</code>.</p>
 </div>
 
                 
+                    <div id="method_expand" class="method item">
+    <h3 class="name"><code>expand</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[container]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-selection_js_range.js.html#l233"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:233</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Attempts to expand the range to include element nodes while
+still being equivalent to the current range. Start and End nodes
+are not guaranteed to be element nodes after this method is executed.</p>
+
+<p>Examples:</p>
+
+<pre class="code prettyprint"><code>[] = startContainer, {} = endContainer, s:e = start/end offset
+</code></pre>
+
+<p>given the HTML</p>
+
+<pre class="code prettyprint"><code>&lt;div&gt;&lt;span&gt;Lorem&lt;/span&gt;&lt;/div&gt;
+</code></pre>
+
+<p>an initial range of</p>
+
+<pre class="code prettyprint"><code>&lt;div&gt;&lt;span&gt;[{Lorem]}&lt;/span&gt;&lt;/div&gt;  s0:e5
+</code></pre>
+
+<p>after expansion would be</p>
+
+<pre class="code prettyprint"><code>[{&lt;div&gt;&lt;span&gt;Lorem&lt;/span&gt;&lt;/div&gt;}]  s0:e1
+</code></pre>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[container]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>If provided, do not expand the range
+    past this container</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_expandEnd" class="method item">
+    <h3 class="name"><code>expandEnd</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[container]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-selection_js_range.js.html#l263"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:263</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Attempts to expand the range end to include element nodes while
+still being equivalent to the current range. End node is not
+guaranteed to be an element node after this method is executed.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[container]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>If provided, do not expand the range
+    past this container</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_expandStart" class="method item">
+    <h3 class="name"><code>expandStart</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[container]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <span class="flag chainable">chainable</span>
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-selection_js_range.js.html#l289"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:289</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Attempts to expand the range start to include element nodes while
+still being equivalent to the current range. Start node is not
+guaranteed to be an element node after this method is executed.</p>
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[container]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>If provided, do not expand the range
+    past this container</p>
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method_extractContents" class="method item">
     <h3 class="name"><code>extractContents</code></h3>
 
@@ -1285,7 +1617,7 @@ get the new end node, call <code>endNode()</code>.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l233"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:233</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l315"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:315</code></a>
         
         </p>
 
@@ -1374,7 +1706,7 @@ to duplicate ids, so be careful.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l253"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:253</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l335"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:335</code></a>
         
         </p>
 
@@ -1469,7 +1801,7 @@ to duplicate ids, so be careful.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l269"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:269</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l351"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:351</code></a>
         
         </p>
 
@@ -1554,7 +1886,7 @@ are different and the range is not empty.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l285"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:285</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l367"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:367</code></a>
         
         </p>
 
@@ -1660,7 +1992,7 @@ are different and the range is not empty.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l299"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:299</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l381"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:381</code></a>
         
         </p>
 
@@ -1756,7 +2088,7 @@ are different and the range is not empty.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l325"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:325</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l407"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:407</code></a>
         
         </p>
 
@@ -1837,7 +2169,7 @@ within this range.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l339"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:339</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l421"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:421</code></a>
         
         </p>
 
@@ -1929,7 +2261,7 @@ parent of the given node.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l356"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:356</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l438"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:438</code></a>
         
         </p>
 
@@ -2022,7 +2354,7 @@ number of characters contained in the reference node.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l374"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:374</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l456"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:456</code></a>
         
         </p>
 
@@ -2188,7 +2520,7 @@ offset to <em>include all</em> trailing whitespace.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l444"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:444</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l526"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:526</code></a>
         
         </p>
 
@@ -2303,7 +2635,7 @@ containing the selected text.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l524"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:524</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l606"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:606</code></a>
         
         </p>
 
@@ -2426,7 +2758,7 @@ containing the selected text.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l605"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:605</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l687"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:687</code></a>
         
         </p>
 
@@ -2567,7 +2899,7 @@ before <em>node</em> (not inside it).</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l653"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:653</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l735"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:735</code></a>
         
         </p>
 
@@ -2684,7 +3016,7 @@ To get the new start node, call <code>startNode()</code>.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l692"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:692</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l774"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:774</code></a>
         
         </p>
 
@@ -2755,7 +3087,7 @@ To get the new start node, call <code>startNode()</code>.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l707"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:707</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l789"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:789</code></a>
         
         </p>
 
@@ -2840,7 +3172,7 @@ To get the new start node, call <code>startNode()</code>.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l719"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:719</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l801"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:801</code></a>
         
         </p>
 
@@ -3000,7 +3332,7 @@ methods to determine where the precise boundaries are if necessary.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l803"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:803</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l885"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:885</code></a>
         
         </p>
 

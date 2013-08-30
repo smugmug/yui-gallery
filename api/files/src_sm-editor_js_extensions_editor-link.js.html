@@ -53,9 +53,13 @@
             
                 <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
             
+                <li><a href="../classes/Editor.Queue.html">Editor.Queue</a></li>
+            
                 <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
             
                 <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
             
                 <li><a href="../classes/Menu.html">Menu</a></li>
             
@@ -70,6 +74,8 @@
                 <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
             
                 <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Promise.EventNotifier.html">Promise.EventNotifier</a></li>
             
                 <li><a href="../classes/Range.html">Range</a></li>
             
@@ -99,11 +105,15 @@
             
                 <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-map.html">gallery-sm-map</a></li>
             
                 <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
             
@@ -114,6 +124,8 @@
                 <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
             
                 <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-promise-events.html">gallery-sm-promise-events</a></li>
             
                 <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
             
@@ -186,7 +198,32 @@ var EDOM = Y.Editor.DOM;
 var EditorLink = Y.Base.create(&#x27;editorLink&#x27;, Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
 
-    template: &#x27;&lt;a href=&quot;{href}&quot; target=&quot;{target}&quot;&gt;&lt;/a&gt;&#x27;,
+    /**
+    Key commands related to creating hyperlinks.
+
+    @property {Object} linkKeyCommands
+    **/
+    linkKeyCommands: {
+        // Create a link.
+        &#x27;ctrl+h&#x27;      : {fn: &#x27;_linkPrompt&#x27;, allowDefault: false}
+    },
+
+    /**
+    HTML Template for building an anchor node
+
+    @property {Object} linkTemplate
+    **/
+    linkTemplate: &#x27;&lt;a href=&quot;{href}&quot; target=&quot;{target}&quot;&gt;&lt;/a&gt;&#x27;,
+
+
+    // -- Lifecycle ------------------------------------------------------------
+
+    initializer: function () {
+//        if (this.keyCommands) {
+//            this.keyCommands = Y.merge(this.keyCommands, this.linkKeyCommands);
+//        }
+    },
+
 
     // -- Public Methods -------------------------------------------------------
 
@@ -195,9 +232,9 @@ var EditorLink = Y.Base.create(&#x27;editorLink&#x27;, Y.Base, [], {
 
     @method link
     @param {Object} options
-      @param {String} [options.target=_self]
-      @param {String} [options.text=range.toString()]
-      @param {String} options.href
+        @param {String} options.href
+        @param {String} [options.target=_self]
+        @param {String} [options.text]
     @chainable
     **/
     link: function (options) {
@@ -260,31 +297,70 @@ var EditorLink = Y.Base.create(&#x27;editorLink&#x27;, Y.Base, [], {
 
 
     /**
-    Implementation for the public &#x60;link&#x60; method
+    Implementation for the public &#x60;link&#x60; method.
+
+    Wraps the currently selected range in an anchor &#x60;&lt;a&gt;&#x60; tag
 
     @method _link
     @param {Object} options
-      @param {String} [options.target=_self]
-      @param {String} [options.text=range.toString()]
-      @param {String} options.href
+        @param {String} options.href
+        @param {String} [options.target=_self]
+        @param {String} [options.text]
     @chainable
     @protected
     **/
     _link: function(options){
-        var range = this.selection.range();
+        var range = this.selection.range(),
+            anchorNode;
 
         if (!range) {
             return;
         }
 
+        if (this.isLink()) {
+            range = this.unlink().selection.range();
+        }
+
         options || (options = {});
         options.target || (options.target = &#x27;_self&#x27;);
-        //options.text || (options.text = range.toString());
         options.href || (options.href = &#x27;&#x27;);
 
-        range.wrap(Y.Lang.sub(this.template, options));
+        // expanding the range before deleting contents makes sure
+        // the entire node is wrapped, if possible.
+        range.expand(this._inputNode);
+
+        anchorNode = Y.Lang.sub(this.linkTemplate, options);
+        anchorNode = range.wrap(anchorNode);
+
+        if (options.text &amp;&amp; options.text !== range.toString()) {
+            var firstChild = anchorNode.get(&#x27;firstChild&#x27;);
+
+            if (EDOM.isInlineElement(firstChild)) {
+                firstChild.set(&#x27;text&#x27;, options.text);
+                anchorNode.setHTML(firstChild);
+            } else {
+                anchorNode.set(&#x27;text&#x27;, options.text);
+            }
+        }
+
+        range.endNode(anchorNode, &#x27;after&#x27;);
+
+        this.selection.select(range.collapse());
 
         return this;
+    },
+
+
+    /**
+    @method _linkPrompt
+    @protected
+    **/
+    _linkPrompt: function() {
+        var href = Y.config.win.prompt(&#x27;Enter a url&#x27;);
+
+        if (href) {
+            this.link({href: href});
+        }
     }
 });
 
