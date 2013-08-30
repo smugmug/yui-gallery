@@ -44,7 +44,7 @@ Useful Links
 
 * [API Docs][api-docs]
 
-[api-docs]:http://smugmug.github.com/yui-gallery/api/modules/gallery-sm-map.html
+[api-docs]:http://smugmug.github.io/yui-gallery/api/classes/Map.html
 
 
 Features
