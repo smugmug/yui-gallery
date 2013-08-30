@@ -14,7 +14,7 @@
     "url": "git://github.com/smugmug/yui-gallery.git"
   },
 
-  "license": "MIT",
+  "license": "BSD",
 
   "bugs": {
     "url": "https://github.com/smugmug/yui-gallery/issues"
