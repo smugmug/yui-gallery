@@ -22,7 +22,8 @@ exactly the same as) [ECMAScript 6 Maps][es6-maps].
 
 "use strict";
 
-var isNative           = Y.Lang._isNative,
+var emptyObject        = {},
+    isNative           = Y.Lang._isNative,
     nativeObjectCreate = isNative(Object.create),
     sizeIsGetter       = isNative(Object.defineProperty) && Y.UA.ie !== 8;
 
@@ -186,7 +187,9 @@ Y.mix(YMap.prototype, {
         this._mapKeys.splice(i, 1);
         this._mapValues.splice(i, 1);
 
-        if (typeof key === 'string') {
+        if (typeof key === 'string'
+                && (nativeObjectCreate || this._isSafeKey(key))) {
+
             delete this._mapKeyIndices[key];
         }
 
@@ -220,7 +223,9 @@ Y.mix(YMap.prototype, {
         this._mapKeys[i]   = key;
         this._mapValues[i] = value;
 
-        if (typeof key === 'string') {
+        if (typeof key === 'string'
+                && (nativeObjectCreate || this._isSafeKey(key))) {
+
             this._mapKeyIndices[key] = i;
         }
 
@@ -260,7 +265,9 @@ Y.mix(YMap.prototype, {
         var i;
 
         // If the key is a string, do a fast hash lookup for the index.
-        if (typeof key === 'string') {
+        if (typeof key === 'string'
+                && (nativeObjectCreate || this._isSafeKey(key))) {
+
             i = this._mapKeyIndices[key];
             return i >= 0 ? i : -1;
         }
@@ -277,6 +284,19 @@ Y.mix(YMap.prototype, {
         }
 
         return -1;
+    },
+
+    /**
+    Returns `true` if the given string _key_ is safe to use in environments that
+    don't support `Object.create()`.
+
+    @method _isSafeKey
+    @param {String} key Key to check.
+    @return {Boolean} `true` if the key is safe.
+    @protected
+    **/
+    _isSafeKey: function (key) {
+        return !(key === 'prototype' || key in emptyObject);
     },
 
     /**

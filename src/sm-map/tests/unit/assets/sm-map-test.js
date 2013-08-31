@@ -318,6 +318,16 @@ suite.add(new Y.Test.Case({
         Assert.areSame('replaced NaN', this.map.get(NaN), 'NaN entry should be replaced');
     },
 
+    'set() should handle potentially unsafe string keys safely': function () {
+        this.map.set('prototype', 'foo');
+        this.map.set('constructor', 'foo');
+        this.map.set('hasOwnProperty', 'foo');
+
+        Assert.areSame('foo', this.map.get('prototype'), '"prototype" should not break');
+        Assert.areSame('foo', this.map.get('constructor'), '"constructor" should not break');
+        Assert.areSame('foo', this.map.get('hasOwnProperty'), '"hasOwnProperty" should not break');
+    },
+
     'set() should be chainable': function () {
         Assert.areSame(this.map, this.map.set('foo', 'bar'));
     },
