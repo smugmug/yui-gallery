@@ -7,6 +7,29 @@ exactly the same as) [ECMAScript 6 Maps][es6-maps].
 [es6-maps]:http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.14
 
 
+Features
+--------
+
+* Efficient key/value data structure that maintains insertion order.
+
+* Use any JavaScript value (including objects, arrays, functions, `NaN`, even
+  DOM elements) as keys.
+
+* Iterate over the map using `each()`, retrieve an array of entries with
+  `entries()`, retrieve an array of keys with `keys()`, or retrieve an array of
+  values with `values()`.
+
+* O(1) lookup time for string keys. O(n) lookup time for other key types.
+
+
+Useful Links
+------------
+
+* [API Docs][api-docs]
+
+[api-docs]:http://smugmug.github.io/yui-gallery/api/classes/Map.html
+
+
 Example
 -------
 
@@ -39,33 +62,9 @@ YUI().use('gallery-sm-map', function (Y) {
 });
 ```
 
-Useful Links
-------------
-
-* [API Docs][api-docs]
-
-[api-docs]:http://smugmug.github.io/yui-gallery/api/classes/Map.html
-
-
-Features
---------
-
-* Efficient key/value data structure that maintains insertion order.
-
-* Use any JavaScript value (including objects, arrays, functions, `NaN`, even
-  DOM elements) as keys.
-
-* Iterate over the map using `each()`, retrieve an array of entries with
-  `entries()`, retrieve an array of keys with `keys()`, or retrieve an array of
-  values with `values()`.
-
-* O(1) lookup time for string keys. O(n) lookup time for other key types.
-
 
 Differences from ES6 Maps
 -------------------------
-
-* Does not support ES6 iterators, as most browsers don't implement them yet.
 
 * `delete()` and `remove()` are equivalent for backwards compatibility with
   browsers that don't support reserved words as property names (in ES6, only
@@ -79,6 +78,13 @@ Differences from ES6 Maps
   the given key isn't found.
 
 * `toJSON()` is an alias for `entries()` (ES6 doesn't define `toJSON()`).
+
+* Does not support ES6 iterators, as most browsers don't implement them yet.
+
+* The Y.Map constructor doesn't accept a `comparator` argument, whereas the ES6
+  Map constructor does. Its only valid value in ES6 is the string "is", which
+  causes an ES6 Map to treat `0` and `-0` as distinct values. If you care about
+  this for some reason, I'd love to know why.
 
 * In older browsers (notably IE8 and lower), the `size` property is enumerable
   and writable. This is unavoidable due to limitations in these browsers.

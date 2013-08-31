@@ -267,11 +267,11 @@ Y.mix(YMap.prototype, {
 
         // Otherwise, do a slow O(n) lookup.
         var keys = this._mapKeys,
-            is   = this._is,
+            same = this._sameValueZero,
             len;
 
         for (i = 0, len = keys.length; i < len; ++i) {
-            if (is(keys[i], key)) {
+            if (same(keys[i], key)) {
                 return i;
             }
         }
@@ -283,28 +283,23 @@ Y.mix(YMap.prototype, {
     Returns `true` if the two given values are the same value, `false`
     otherwise.
 
-    This is an implementation of the ES5/6 SameValue comparison algorithm, which
-    is more correct than `===` in that it considers `NaN` to be the same as
-    `NaN`, and does not consider `0` to be the same as `-0`.
+    This is an implementation of the [ES6 SameValueZero][es6-svz] comparison
+    algorithm. It's more correct than `===` in that it considers `NaN` to be the
+    same as `NaN`.
 
-    This method is an alias for `Object.is()` if available, or a fallback
-    implementation if not.
+    Note that `0` and `-0` are considered the same by this algorithm.
 
-    @method _is
+    [es6-svz]: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-9.2.4
+
+    @method _sameValueZero
     @param {Mixed} a First value to compare.
     @param {Mixed} b Second value to compare.
     @return {Boolean} `true` if _a_ and _b_ are the same value, `false`
         otherwise.
     @protected
     **/
-    _is: isNative(Object.is) ? Object.is : function (a, b) {
-        if (a === b) {
-            // 0 === -0, but they're not identical.
-            return a !== 0 || 1 / a === 1 / b;
-        }
-
-        // NaN !== NaN, but they're identical.
-        return a !== a && b !== b;
+    _sameValueZero: function (a, b) {
+        return a === b || (a !== a && b !== b);
     }
 }, true);
 

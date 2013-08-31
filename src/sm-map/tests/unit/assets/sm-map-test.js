@@ -89,7 +89,6 @@ suite.add(new Y.Test.Case({
             [this.regex, 'regex'],
             [null, 'null'],
             [0, '0'],
-            [-0, '-0'],
             [3.14, 'pi'],
             [false, 'false']
         ];
@@ -218,7 +217,7 @@ suite.add(new Y.Test.Case({
         Assert.areSame('regex', this.map.get(this.regex), 'should support regex keys');
         Assert.areSame('null', this.map.get(null), 'should support null keys');
         Assert.areSame('0', this.map.get(0), 'should support numeric keys');
-        Assert.areSame('-0', this.map.get(-0), 'should treat 0 and -0 as unique keys');
+        Assert.areSame('0', this.map.get(-0), 'should treat 0 and -0 as the same key');
         Assert.areSame('pi', this.map.get(3.14), 'should support float keys');
         Assert.areSame('false', this.map.get(false), 'should support boolean keys');
 
@@ -247,7 +246,6 @@ suite.add(new Y.Test.Case({
         Assert.isTrue(this.map.has(this.regex), 'should have regex key');
         Assert.isTrue(this.map.has(null), 'should have null key');
         Assert.isTrue(this.map.has(0), 'should have numeric key');
-        Assert.isTrue(this.map.has(-0), 'should have -0');
         Assert.isTrue(this.map.has(3.14), 'should have float key');
         Assert.isTrue(this.map.has(false), 'should have boolean key');
 
@@ -281,9 +279,8 @@ suite.add(new Y.Test.Case({
         Assert.isTrue(this.map.remove('a'), 'should return true if the key is found');
         Assert.isFalse(this.map.has('a'), 'entry should be removed');
 
-        Assert.isTrue(this.map.remove(-0), 'should remove -0 key');
-        Assert.isFalse(this.map.has(-0), '-0 entry should be removed');
-        Assert.isTrue(this.map.has(0), '-0 should not be confused with 0');
+        Assert.isTrue(this.map.remove(0), 'should remove 0 key');
+        Assert.isFalse(this.map.has(0), '0 entry should be removed');
 
         this.map.set(NaN, 'NaN');
         Assert.isTrue(this.map.has(NaN), 'NaN key should be created');
@@ -308,16 +305,16 @@ suite.add(new Y.Test.Case({
         var expectedSize = this.map.size;
 
         Assert.isTrue(this.map.has('a'), '"a" key should exist');
-        Assert.isTrue(this.map.has(-0), '-0 key should exist');
+        Assert.isTrue(this.map.has(0), '0 key should exist');
         Assert.isTrue(this.map.has(NaN), 'NaN key should exist');
 
         this.map.set('a', 'replaced a');
-        this.map.set(-0, 'replaced -0');
+        this.map.set(0, 'replaced 0');
         this.map.set(NaN, 'replaced NaN');
 
         Assert.areSame(expectedSize, this.map.size, 'map size should not change');
         Assert.areSame('replaced a', this.map.get('a'), '"a" entry should be replaced');
-        Assert.areSame('replaced -0', this.map.get(-0), '-0 entry should be replaced');
+        Assert.areSame('replaced 0', this.map.get(0), '0 entry should be replaced');
         Assert.areSame('replaced NaN', this.map.get(NaN), 'NaN entry should be replaced');
     },
 
