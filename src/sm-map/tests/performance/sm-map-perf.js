@@ -13,7 +13,8 @@ function fillMap(map, entryCount) {
     return map;
 }
 
-global.fillMap = fillMap;
+global.fillMap      = fillMap;
+global.uniqueSuffix = 0;
 
 module.exports = {
     name: 'Y.Map',
@@ -25,23 +26,31 @@ module.exports = {
 
         'Set an entry with a string key': {
             setup: function () {
-                var map = new Y.Map(),
-                    key = 'foo';
+                var map = new Y.Map();
             },
 
             fn: function () {
-                global.result = map.set(key, 'bar');
+                global.result = map.set('foo' + (global.uniqueSuffix += 1), 'bar');
             }
         },
 
         'Set an entry with an object key': {
             setup: function () {
-                var map = new Y.Map(),
-                    key = {};
+                var map = new Y.Map();
             },
 
             fn: function () {
-                global.result = map.set(key, 'bar');
+                global.result = map.set({}, 'bar');
+            }
+        },
+
+        'Set an entry with an object key (autoStamp enabled)': {
+            setup: function () {
+                var map = new Y.Map({autoStamp: true});
+            },
+
+            fn: function () {
+                global.result = map.set({}, 'bar');
             }
         },
 
@@ -73,6 +82,20 @@ module.exports = {
             setup: function () {
                 var key = {},
                     map = new Y.Map();
+
+                fillMap(map, 499);
+                map.set(key, 'value');
+            },
+
+            fn: function () {
+                global.result = map.get(key);
+            }
+        },
+
+        'Get an object key from a 500-entry map (worst-case, autoStamp enabled)': {
+            setup: function () {
+                var key = {},
+                    map = new Y.Map({autoStamp: true});
 
                 fillMap(map, 499);
                 map.set(key, 'value');

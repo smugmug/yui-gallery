@@ -1,8 +1,8 @@
 SmugMug Map
 ===========
 
-An ordered map data structure with an interface and behavior similar to (but not
-exactly the same as) [ECMAScript 6 Maps][es6-maps].
+An ordered hash map data structure with an interface and behavior similar to
+(but not exactly the same as) [ECMAScript 6 Maps][es6-maps].
 
 [es6-maps]:http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.14
 
@@ -20,6 +20,14 @@ Features
   values with `values()`.
 
 * O(1) lookup time for string keys. O(n) lookup time for other key types.
+
+* Set the `objectIdName` property to the name of a property to use as a unique
+  id string for object keys, enabling much faster O(1) lookups for object keys
+  that already have meaningful unique ids.
+
+* Or enable the `autoStamp` option to automatically stamp object keys with
+  unique ids, enabling much faster O(1) lookups for object keys with no effort
+  on your part.
 
 
 Useful Links
@@ -85,6 +93,9 @@ Differences from ES6 Maps
   Map constructor does. Its only valid value in ES6 is the string "is", which
   causes an ES6 Map to treat `0` and `-0` as distinct values. If you care about
   this for some reason, I'd love to know why.
+
+* The Y.Map constructor accepts an `options` argument. The ES6 Map constructor
+  does not.
 
 * In older browsers (notably IE8 and lower), the `size` property is enumerable
   and writable. This is unavoidable due to limitations in these browsers.

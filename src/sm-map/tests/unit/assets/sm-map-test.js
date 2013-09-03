@@ -1,8 +1,9 @@
 YUI.add('gallery-sm-map-test', function (Y) {
 
-var Assert      = Y.Assert,
-    ArrayAssert = Y.ArrayAssert,
-    YMap        = Y.Map;
+var Assert       = Y.Assert,
+    ArrayAssert  = Y.ArrayAssert,
+    ObjectAssert = Y.ObjectAssert,
+    YMap         = Y.Map;
 
 var suite = Y.MapTestSuite = new Y.Test.Suite('Map');
 
@@ -28,6 +29,30 @@ suite.add(new Y.Test.Case({
 
         ArrayAssert.itemsAreSame(['one', 'two', 'three'], map.values(),
             '"one", "two", and "three" should be values');
+    },
+
+    'constructor should accept an array-like entries object': function () {
+        var map = (function () {
+            return new YMap(arguments);
+        }(['a', 'one'], ['b', 'two']));
+
+        Assert.areSame(2, map.size, 'map should have two entries');
+        Assert.areSame('one', map.get('a'), '"a" entry should be set');
+        Assert.areSame('two', map.get('b'), '"b" entry should be set');
+    },
+
+    'constructor should accept an options object as the second argument': function () {
+        var map = new YMap([['a', 'one']], {foo: 'bar'});
+
+        Assert.areSame('one', map.get('a'), '"a" entry should be set');
+        Assert.areSame('bar', map._mapOptions.foo, '"foo" option should be set');
+    },
+
+    'constructor should accept an options object as the only argument': function () {
+        var map = new YMap({foo: 'bar'});
+
+        Assert.areSame(0, map.size, 'map should be empty');
+        Assert.areSame('bar', map._mapOptions.foo, '"foo" option should be set');
     }
 }));
 
@@ -66,7 +91,10 @@ suite.add(new Y.Test.Case({
 
         Assert.isFalse(Object.propertyIsEnumerable(map.size), 'size should not be enumerable');
 
-        map.size = 5;
+        try {
+            map.size = 5;
+        } catch (ex) {}
+
         Assert.areSame(0, map.size, 'size should not be writable');
     }
 }));
@@ -101,7 +129,8 @@ suite.add(new Y.Test.Case({
             this.values[i] = this.entries[i][1];
         }
 
-        this.map = new YMap(this.entries);
+        this.map        = new YMap(this.entries);
+        this.stampedMap = new YMap(this.entries, {autoStamp: true});
     },
 
     'clear() should delete all entries from the map': function () {
@@ -232,6 +261,30 @@ suite.add(new Y.Test.Case({
         }
     },
 
+    'get() should return the value of the given stamped object key': function () {
+        Assert.isUndefined(this.stampedMap.get('bogus'), 'should return undefined by default for a missing key');
+        Assert.areSame('one', this.stampedMap.get('a'), 'should support string keys');
+        Assert.areSame('array', this.stampedMap.get(this.array), 'should support array keys');
+        Assert.areSame('function', this.stampedMap.get(this.fn), 'should support function keys');
+        Assert.areSame('object', this.stampedMap.get(this.object), 'should support object keys');
+        Assert.areSame('regex', this.stampedMap.get(this.regex), 'should support regex keys');
+        Assert.areSame('null', this.stampedMap.get(null), 'should support null keys');
+        Assert.areSame('0', this.stampedMap.get(0), 'should support numeric keys');
+        Assert.areSame('0', this.stampedMap.get(-0), 'should treat 0 and -0 as the same key');
+        Assert.areSame('pi', this.stampedMap.get(3.14), 'should support float keys');
+        Assert.areSame('false', this.stampedMap.get(false), 'should support boolean keys');
+
+        this.stampedMap.set(NaN, 'NaN');
+        Assert.areSame('NaN', this.stampedMap.get(NaN), 'should support NaN keys');
+
+        if (Y.config.doc) {
+            var el = Y.config.doc.createElement('div');
+
+            this.stampedMap.set(el, 'DOM element');
+            Assert.areSame('DOM element', this.stampedMap.get(el), 'should support DOM element keys');
+        }
+    },
+
     'get() should return the defaultValue if provided and the key is not found': function () {
         var obj = {};
         Assert.areSame(obj, this.map.get('bogus', obj));
@@ -260,6 +313,29 @@ suite.add(new Y.Test.Case({
         }
     },
 
+    'has() should return `true` if a key exists in a stamped map': function () {
+        Assert.isFalse(this.stampedMap.has('bogus'), 'should not have bogus key');
+        Assert.isTrue(this.stampedMap.has('a'), 'should have string key');
+        Assert.isTrue(this.stampedMap.has(this.array), 'should have array key');
+        Assert.isTrue(this.stampedMap.has(this.fn), 'should have function key');
+        Assert.isTrue(this.stampedMap.has(this.object), 'should have object key');
+        Assert.isTrue(this.stampedMap.has(this.regex), 'should have regex key');
+        Assert.isTrue(this.stampedMap.has(null), 'should have null key');
+        Assert.isTrue(this.stampedMap.has(0), 'should have numeric key');
+        Assert.isTrue(this.stampedMap.has(3.14), 'should have float key');
+        Assert.isTrue(this.stampedMap.has(false), 'should have boolean key');
+
+        this.stampedMap.set(NaN, 'NaN');
+        Assert.isTrue(this.stampedMap.has(NaN), 'should have NaN key');
+
+        if (Y.config.doc) {
+            var el = Y.config.doc.createElement('div');
+
+            this.stampedMap.set(el, 'DOM element');
+            Assert.isTrue(this.stampedMap.has(el), 'should have DOM element key');
+        }
+    },
+
     'keys() should return an array of all the keys in the map': function () {
         ArrayAssert.itemsAreSame(this.keys, this.map.keys(), 'expected keys should be returned');
     },
@@ -275,17 +351,41 @@ suite.add(new Y.Test.Case({
     },
 
     'remove() should delete the entry with the given key': function () {
+        var size = this.map.size;
+
         Assert.isFalse(this.map.remove('bogus'), 'should return false if the key is not found');
         Assert.isTrue(this.map.remove('a'), 'should return true if the key is found');
         Assert.isFalse(this.map.has('a'), 'entry should be removed');
+        Assert.areSame(size - 1, this.map.size, 'size should be -1');
 
         Assert.isTrue(this.map.remove(0), 'should remove 0 key');
         Assert.isFalse(this.map.has(0), '0 entry should be removed');
+        Assert.areSame(size - 2, this.map.size, 'size should be -2');
 
         this.map.set(NaN, 'NaN');
         Assert.isTrue(this.map.has(NaN), 'NaN key should be created');
         Assert.isTrue(this.map.remove(NaN), 'should remove NaN key');
         Assert.isFalse(this.map.has(NaN), 'NaN key entry should be removed');
+        Assert.areSame(size - 2, this.map.size, 'size should be -2 after removing NaN');
+    },
+
+    'remove() should delete the entry with the given key from a stamped map': function () {
+        var size = this.stampedMap.size;
+
+        Assert.isFalse(this.stampedMap.remove('bogus'), 'should return false if the key is not found');
+        Assert.isTrue(this.stampedMap.remove('a'), 'should return true if the key is found');
+        Assert.isFalse(this.stampedMap.has('a'), 'entry should be removed');
+        Assert.areSame(size - 1, this.stampedMap.size, 'size should be -1');
+
+        Assert.isTrue(this.stampedMap.remove(0), 'should remove 0 key');
+        Assert.isFalse(this.stampedMap.has(0), '0 entry should be removed');
+        Assert.areSame(size - 2, this.stampedMap.size, 'size should be -2');
+
+        this.stampedMap.set(NaN, 'NaN');
+        Assert.isTrue(this.stampedMap.has(NaN), 'NaN key should be created');
+        Assert.isTrue(this.stampedMap.remove(NaN), 'should remove NaN key');
+        Assert.isFalse(this.stampedMap.has(NaN), 'NaN key entry should be removed');
+        Assert.areSame(size - 2, this.stampedMap.size, 'size should be -2 after removing NaN');
     },
 
     "set() should create an entry if one doesn't exist": function () {
@@ -326,6 +426,27 @@ suite.add(new Y.Test.Case({
         Assert.areSame('foo', this.map.get('prototype'), '"prototype" should not break');
         Assert.areSame('foo', this.map.get('constructor'), '"constructor" should not break');
         Assert.areSame('foo', this.map.get('hasOwnProperty'), '"hasOwnProperty" should not break');
+    },
+
+    'set() should stamp object keys when the `autoStamp` option is truthy': function () {
+        var map = new YMap({autoStamp: true}),
+            key = {};
+
+        map.set(key, 'value');
+        ObjectAssert.ownsKey('_yuid', key, 'key should be stamped');
+
+        key = {_yuid: 'fake id'};
+        map.set(key, 'value');
+        Assert.areSame('fake id', key._yuid, 'existing id should not be overwritten');
+
+        key = {};
+        map = new YMap({
+            autoStamp   : true,
+            objectIdName: 'id'
+        });
+
+        map.set(key, 'value');
+        ObjectAssert.ownsKey('id', key, 'should stamp custom id property');
     },
 
     'set() should be chainable': function () {
