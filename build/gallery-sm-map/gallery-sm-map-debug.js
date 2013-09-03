@@ -10,8 +10,8 @@ Provides the `Y.Map` data structure.
 **/
 
 /**
-An ordered map data structure with an interface and behavior similar to (but not
-exactly the same as) [ECMAScript 6 Maps][es6-maps].
+An ordered hash map data structure with an interface and behavior similar to
+(but not exactly the same as) [ECMAScript 6 Maps][es6-maps].
 
 [es6-maps]:http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.14
 
@@ -20,15 +20,46 @@ exactly the same as) [ECMAScript 6 Maps][es6-maps].
 @param {Array[]} [entries] Array of entries to add to the map. Each entry should
     itself be an array in which the first item is the key and the second item is
     the value for that entry.
+
+@param {Object} [options] Options.
+
+    @param {Boolean} [options.autoStamp=false] If `true`, objects used as keys
+        will be automatically stamped with a unique id as the value of the
+        property defined by the `objectIdName` option ("_yuid" by default) if
+        that property isn't already set. This will result in much faster lookups
+        for object keys.
+
+    @param {String} [options.objectIdName="_yuid"] Name of a property whose
+        string value should be used as the unique key when present on an object
+        that's given as a key. This will significantly speed up lookups of
+        object-based keys that define this property.
+
+        By default the `objectIdName` is set to "_yuid", which is a unique id
+        property defined on many YUI objects. You can stamp any object with a
+        "_yuid" property by passing it to `Y.stamp()`, or enable the `autoStamp`
+        option to automatically stamp object keys on insertion.
 **/
 
 "use strict";
 
-var isNative           = Y.Lang._isNative,
+var emptyObject        = {},
+    isNative           = Y.Lang._isNative,
     nativeObjectCreate = isNative(Object.create),
     sizeIsGetter       = isNative(Object.defineProperty) && Y.UA.ie !== 8;
 
-function YMap(entries) {
+function YMap(entries, options) {
+    // Allow options as only param.
+    if (arguments.length === 1 && !('length' in entries)
+            && typeof entries === 'object') {
+
+        options = entries;
+        entries = null;
+    }
+
+    if (options) {
+        this._mapOptions = Y.merge(YMap.prototype._mapOptions, options);
+    }
+
     this.clear();
 
     if (entries) {
@@ -69,6 +100,18 @@ Y.mix(YMap.prototype, {
     @readOnly
     **/
 
+    // -- Protected Properties -------------------------------------------------
+
+    /**
+    Options that affect the functionality of this map.
+
+    @property {Object} _mapOptions
+    @protected
+    **/
+    _mapOptions: {
+        objectIdName: '_yuid'
+    },
+
     // -- Public Methods -------------------------------------------------------
 
     /**
@@ -78,9 +121,10 @@ Y.mix(YMap.prototype, {
     @chainable
     **/
     clear: function () {
-        this._mapKeyIndices = nativeObjectCreate ? Object.create(null) : {};
-        this._mapKeys       = [];
-        this._mapValues     = [];
+        this._mapKeyIndices    = nativeObjectCreate ? Object.create(null) : {};
+        this._mapKeys          = [];
+        this._mapObjectIndices = nativeObjectCreate ? Object.create(null) : {};
+        this._mapValues        = [];
 
         if (!sizeIsGetter) {
             this.size = 0;
@@ -179,7 +223,8 @@ Y.mix(YMap.prototype, {
         otherwise.
     **/
     remove: function (key) {
-        var i = this._indexOfKey(key);
+        var i             = this._indexOfKey(key),
+            objectIdName  = this._mapOptions.objectIdName;
 
         if (i < 0) {
             return false;
@@ -189,7 +234,13 @@ Y.mix(YMap.prototype, {
         this._mapValues.splice(i, 1);
 
         if (typeof key === 'string') {
-            delete this._mapKeyIndices[key];
+            if (nativeObjectCreate || this._isSafeKey(key)) {
+                delete this._mapKeyIndices[key];
+            }
+        } else if (objectIdName && key !== null && key[objectIdName]) {
+            if (nativeObjectCreate || this._isSafeKey(key[objectIdName])) {
+                delete this._mapObjectIndices[key[objectIdName]];
+            }
         }
 
         if (!sizeIsGetter) {
@@ -205,7 +256,7 @@ Y.mix(YMap.prototype, {
 
     The _key_ may be any JavaScript value (including both primitives and
     objects), but string keys will allow fast lookups, whereas non-string keys
-    will result in slower lookups.
+    may result in slower lookups.
 
     @method set
     @param {Mixed} key Key to set.
@@ -213,7 +264,8 @@ Y.mix(YMap.prototype, {
     @chainable
     **/
     set: function (key, value) {
-        var i = this._indexOfKey(key);
+        var i             = this._indexOfKey(key),
+            objectIdName  = this._mapOptions.objectIdName;
 
         if (i < 0) {
             i = this._mapKeys.length;
@@ -223,7 +275,21 @@ Y.mix(YMap.prototype, {
         this._mapValues[i] = value;
 
         if (typeof key === 'string') {
-            this._mapKeyIndices[key] = i;
+            if (nativeObjectCreate || this._isSafeKey(key)) {
+                this._mapKeyIndices[key] = i;
+            }
+        } else if (objectIdName && key && typeof key === 'object') {
+            if (!key[objectIdName] && this._mapOptions.autoStamp) {
+                try {
+                    key[objectIdName] = Y.guid();
+                } catch (ex) {}
+            }
+
+            if (key[objectIdName]
+                    && (nativeObjectCreate || this._isSafeKey(key[objectIdName]))) {
+
+                this._mapObjectIndices[key[objectIdName]] = i;
+            }
         }
 
         if (!sizeIsGetter) {
@@ -259,21 +325,38 @@ Y.mix(YMap.prototype, {
     @protected
     **/
     _indexOfKey: function (key) {
-        var i;
+        var objectIdName = this._mapOptions.objectIdName,
+            i;
 
         // If the key is a string, do a fast hash lookup for the index.
         if (typeof key === 'string') {
-            i = this._mapKeyIndices[key];
-            return i >= 0 ? i : -1;
+            if (nativeObjectCreate || this._isSafeKey(key)) {
+                i = this._mapKeyIndices[key];
+                return i >= 0 ? i : -1;
+            }
+
+        // If the key is an object but has an objectIdName property, do a fast
+        // hash lookup for the index of the object key.
+        } else if (objectIdName && key !== null && key[objectIdName]) {
+            if (nativeObjectCreate || this._isSafeKey(key[objectIdName])) {
+                i = this._mapObjectIndices[key[objectIdName]];
+
+                // Return the index if found. If not, we'll fall back to a slow
+                // lookup. Even if the object has an id property, it may not be
+                // indexed by that property in this Map.
+                if (i >= 0) {
+                    return i;
+                }
+            }
         }
 
-        // Otherwise, do a slow O(n) lookup.
+        // Resort to a slow O(n) lookup.
         var keys = this._mapKeys,
-            is   = this._is,
+            same = this._sameValueZero,
             len;
 
         for (i = 0, len = keys.length; i < len; ++i) {
-            if (is(keys[i], key)) {
+            if (same(keys[i], key)) {
                 return i;
             }
         }
@@ -282,31 +365,39 @@ Y.mix(YMap.prototype, {
     },
 
     /**
+    Returns `true` if the given string _key_ is safe to use in environments that
+    don't support `Object.create()`.
+
+    @method _isSafeKey
+    @param {String} key Key to check.
+    @return {Boolean} `true` if the key is safe.
+    @protected
+    **/
+    _isSafeKey: function (key) {
+        return !(key === 'prototype' || key in emptyObject);
+    },
+
+    /**
     Returns `true` if the two given values are the same value, `false`
     otherwise.
 
-    This is an implementation of the ES5/6 SameValue comparison algorithm, which
-    is more correct than `===` in that it considers `NaN` to be the same as
-    `NaN`, and does not consider `0` to be the same as `-0`.
+    This is an implementation of the [ES6 SameValueZero][es6-svz] comparison
+    algorithm. It's more correct than `===` in that it considers `NaN` to be the
+    same as `NaN`.
 
-    This method is an alias for `Object.is()` if available, or a fallback
-    implementation if not.
+    Note that `0` and `-0` are considered the same by this algorithm.
 
-    @method _is
+    [es6-svz]: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-9.2.4
+
+    @method _sameValueZero
     @param {Mixed} a First value to compare.
     @param {Mixed} b Second value to compare.
     @return {Boolean} `true` if _a_ and _b_ are the same value, `false`
         otherwise.
     @protected
     **/
-    _is: isNative(Object.is) ? Object.is : function (a, b) {
-        if (a === b) {
-            // 0 === -0, but they're not identical.
-            return a !== 0 || 1 / a === 1 / b;
-        }
-
-        // NaN !== NaN, but they're identical.
-        return a !== a && b !== b;
+    _sameValueZero: function (a, b) {
+        return a === b || (a !== a && b !== b);
     }
 }, true);
 
