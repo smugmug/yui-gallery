@@ -200,6 +200,7 @@
 
 <div class="box intro">
     <p>Represents a single menu item in a <code>Menu</code>.</p>
+
 </div>
 
 
@@ -283,6 +284,7 @@
 
                     <div class="param-description">
                         <p><code>Menu</code> instance with which this node should be associated.</p>
+
                     </div>
 
                     
@@ -300,6 +302,7 @@
                     <div class="param-description">
                         <p>Configuration hash for this menu item. Supports all the
     config properties of <code>Tree.Node</code> in addition to the following.</p>
+
                     </div>
 
                     
@@ -314,6 +317,7 @@
 
                                 <div class="param-description">
                                     <p>State hash for this menu item.</p>
+
                                 </div>
 
                                 
@@ -357,8 +361,9 @@
                                 
 
                                 <div class="param-description">
-                                    <p>Type of this menu item. May be 'item',
-        'heading', or 'separator'.</p>
+                                    <p>Type of this menu item. May be &#39;item&#39;,
+        &#39;heading&#39;, or &#39;separator&#39;.</p>
+
                                 </div>
 
                                 
@@ -373,7 +378,8 @@
 
                                 <div class="param-description">
                                     <p>URL associated with this item. If this item
-        is of type 'item', clicking on the item will navigate to this URL.</p>
+        is of type &#39;item&#39;, clicking on the item will navigate to this URL.</p>
+
                                 </div>
 
                                 
@@ -741,8 +747,9 @@
     </div>
 
     <div class="description">
-        <p>Appends the given tree node or array of nodes to the end of this node's
+        <p>Appends the given tree node or array of nodes to the end of this node&#39;s
 children.</p>
+
     </div>
 
     
@@ -764,6 +771,7 @@ children.</p>
     object, array of child nodes, or array of node config objects to append
     to the given parent. Node config objects will automatically be converted
     into node instances.</p>
+
                     </div>
 
                     
@@ -780,6 +788,7 @@ children.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -795,6 +804,7 @@ children.</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, the <code>add</code> event will
         be suppressed.</p>
+
                                 </div>
 
                                 
@@ -817,7 +827,8 @@ children.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Tree.Node.html" class="crosslink external" target="_blank">Tree.Node</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Tree.Node.html" class="crosslink external" target="_blank">Tree.Node[]</a></span>:
                     
-                    Node or array of nodes that were appended.
+                    <p>Node or array of nodes that were appended.</p>
+
                 
             </div>
         </div>
@@ -873,10 +884,10 @@ children.</p>
     </div>
 
     <div class="description">
-        <p>Returns this node's depth.</p>
-
+        <p>Returns this node&#39;s depth.</p>
 <p>The root node of a tree always has a depth of 0. A child of the root has a
 depth of 1, a child of that child will have a depth of 2, and so on.</p>
+
     </div>
 
     
@@ -890,7 +901,8 @@ depth of 1, a child of that child will have a depth of 2, and so on.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    This node's depth.
+                    <p>This node&#39;s depth.</p>
+
                 
             </div>
         </div>
@@ -956,6 +968,7 @@ depth of 1, a child of that child will have a depth of 2, and so on.</p>
 
     <div class="description">
         <p>Disables this menu item. Disabled items are not clickable or selectable.</p>
+
     </div>
 
     
@@ -975,6 +988,7 @@ depth of 1, a child of that child will have a depth of 2, and so on.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -990,6 +1004,7 @@ depth of 1, a child of that child will have a depth of 2, and so on.</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, the <code>disable</code> event
         will be suppressed.</p>
+
                                 </div>
 
                                 
@@ -1065,6 +1080,7 @@ depth of 1, a child of that child will have a depth of 2, and so on.</p>
     <div class="description">
         <p>Removes all children from this node. The removed children will still be
 reusable unless the <code>destroy</code> option is truthy.</p>
+
     </div>
 
     
@@ -1084,6 +1100,7 @@ reusable unless the <code>destroy</code> option is truthy.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -1099,7 +1116,8 @@ reusable unless the <code>destroy</code> option is truthy.</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, the children will
         also be destroyed, which makes them available for garbage collection
-        and means they can't be reused.</p>
+        and means they can&#39;t be reused.</p>
+
                                 </div>
 
                                 
@@ -1115,6 +1133,7 @@ reusable unless the <code>destroy</code> option is truthy.</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, <code>remove</code> events will
         be suppressed.</p>
+
                                 </div>
 
                                 
@@ -1132,6 +1151,7 @@ reusable unless the <code>destroy</code> option is truthy.</p>
         to the event facade of the resulting event. This can be used to
         distinguish between changes triggered by a user and changes
         triggered programmatically, for example.</p>
+
                                 </div>
 
                                 
@@ -1154,7 +1174,8 @@ reusable unless the <code>destroy</code> option is truthy.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Tree.Node.html" class="crosslink external" target="_blank">Tree.Node[]</a></span>:
                     
-                    Array of removed child nodes.
+                    <p>Array of removed child nodes.</p>
+
                 
             </div>
         </div>
@@ -1220,6 +1241,7 @@ reusable unless the <code>destroy</code> option is truthy.</p>
 
     <div class="description">
         <p>Enables this menu item.</p>
+
     </div>
 
     
@@ -1239,6 +1261,7 @@ reusable unless the <code>destroy</code> option is truthy.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -1254,6 +1277,7 @@ reusable unless the <code>destroy</code> option is truthy.</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, the <code>enable</code> event
         will be suppressed.</p>
+
                                 </div>
 
                                 
@@ -1342,11 +1366,10 @@ reusable unless the <code>destroy</code> option is truthy.</p>
         <p>Performs a depth-first traversal of this node, passing it and each of its
 descendants to the specified <em>callback</em>, and returning the first node for
 which the callback returns a truthy value.</p>
-
 <p>Traversal will stop as soon as a truthy value is returned from the callback.</p>
-
 <p>See <code>Tree#traverseNode()</code> for more details on how depth-first traversal
 works.</p>
+
     </div>
 
     
@@ -1366,6 +1389,7 @@ works.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -1382,6 +1406,7 @@ works.</p>
                                     <p>Depth limit. If specified, descendants
         will only be traversed to this depth before backtracking and moving
         on.</p>
+
                                 </div>
 
                                 
@@ -1403,6 +1428,7 @@ works.</p>
                         <p>Callback function to call with the traversed
     node and each of its descendants. If this function returns a truthy
     value, traversal will be stopped and the current node will be returned.</p>
+
                     </div>
 
                     
@@ -1416,6 +1442,7 @@ works.</p>
 
                                 <div class="param-description">
                                     <p>Node being traversed.</p>
+
                                 </div>
 
                                 
@@ -1436,6 +1463,7 @@ works.</p>
 
                     <div class="param-description">
                         <p><code>this</code> object to use when executing <em>callback</em>.</p>
+
                     </div>
 
                     
@@ -1454,9 +1482,10 @@ works.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Tree.Node.html" class="crosslink external" target="_blank">Tree.Node</a> | Null</span>:
                     
-                    Returns the first node for which the <em>callback</em>
+                    <p>Returns the first node for which the <em>callback</em>
     returns a truthy value, or <code>null</code> if the callback never returns a truthy
-    value.
+    value.</p>
+
                 
             </div>
         </div>
@@ -1511,6 +1540,7 @@ works.</p>
 
     <div class="description">
         <p>Returns <code>true</code> if this node has one or more child nodes.</p>
+
     </div>
 
     
@@ -1524,8 +1554,9 @@ works.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if this node has one or more child nodes, <code>false</code>
-    otherwise.
+                    <p><code>true</code> if this node has one or more child nodes, <code>false</code>
+    otherwise.</p>
+
                 
             </div>
         </div>
@@ -1591,6 +1622,7 @@ works.</p>
 
     <div class="description">
         <p>Hides this menu item.</p>
+
     </div>
 
     
@@ -1610,6 +1642,7 @@ works.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -1625,6 +1658,7 @@ works.</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, the <code>hide</code> event
         will be suppressed.</p>
+
                                 </div>
 
                                 
@@ -1689,7 +1723,8 @@ works.</p>
 
     <div class="description">
         <p>Returns the numerical index of this node within its parent node, or <code>-1</code> if
-this node doesn't have a parent node.</p>
+this node doesn&#39;t have a parent node.</p>
+
     </div>
 
     
@@ -1703,8 +1738,9 @@ this node doesn't have a parent node.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    Index of this node within its parent node, or <code>-1</code> if this
-    node doesn't have a parent node.
+                    <p>Index of this node within its parent node, or <code>-1</code> if this
+    node doesn&#39;t have a parent node.</p>
+
                 
             </div>
         </div>
@@ -1770,6 +1806,7 @@ this node doesn't have a parent node.</p>
     <div class="description">
         <p>Returns the numerical index of the given child node, or <code>-1</code> if the node is
 not a child of this node.</p>
+
     </div>
 
     
@@ -1788,6 +1825,7 @@ not a child of this node.</p>
 
                     <div class="param-description">
                         <p>Child node.</p>
+
                     </div>
 
                     
@@ -1806,8 +1844,9 @@ not a child of this node.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    Index of the child, or <code>-1</code> if the node is not a child of
-    this node.
+                    <p>Index of the child, or <code>-1</code> if the node is not a child of
+    this node.</p>
+
                 
             </div>
         </div>
@@ -1879,9 +1918,9 @@ not a child of this node.</p>
     <div class="description">
         <p>Inserts a node or array of nodes at the specified index under this node, or
 appends them to this node if no index is specified.</p>
-
 <p>If a node being inserted is from another tree, it and all its children will
 be removed from that tree and moved to this one.</p>
+
     </div>
 
     
@@ -1903,6 +1942,7 @@ be removed from that tree and moved to this one.</p>
     object, array of child nodes, or array of node config objects to insert
     under the given parent. Node config objects will automatically be
     converted into node instances.</p>
+
                     </div>
 
                     
@@ -1919,6 +1959,7 @@ be removed from that tree and moved to this one.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -1935,6 +1976,7 @@ be removed from that tree and moved to this one.</p>
                                     <p>Index at which to insert the child node.
         If not specified, the node will be appended as the last child of the
         parent.</p>
+
                                 </div>
 
                                 
@@ -1950,6 +1992,7 @@ be removed from that tree and moved to this one.</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, the <code>add</code> event will
         be suppressed.</p>
+
                                 </div>
 
                                 
@@ -1967,6 +2010,7 @@ be removed from that tree and moved to this one.</p>
         passed along to the event facade of the resulting event. This can be
         used to distinguish between changes triggered by a user and changes
         triggered programmatically, for example.</p>
+
                                 </div>
 
                                 
@@ -1989,7 +2033,8 @@ be removed from that tree and moved to this one.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Tree.Node.html" class="crosslink external" target="_blank">Tree.Node[]</a></span>:
                     
-                    Node or array of nodes that were inserted.
+                    <p>Node or array of nodes that were inserted.</p>
+
                 
             </div>
         </div>
@@ -2048,6 +2093,7 @@ be removed from that tree and moved to this one.</p>
     <div class="description">
         <p>Returns <code>true</code> if this menu item or one of its ancestors is currently
 disabled.</p>
+
     </div>
 
     
@@ -2061,8 +2107,9 @@ disabled.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if this menu item or one of its ancestors is
-    currently disabled, <code>false</code> otherwise.
+                    <p><code>true</code> if this menu item or one of its ancestors is
+    currently disabled, <code>false</code> otherwise.</p>
+
                 
             </div>
         </div>
@@ -2121,6 +2168,7 @@ disabled.</p>
     <div class="description">
         <p>Returns <code>true</code> if this menu item or one of its ancestors is currently
 hidden.</p>
+
     </div>
 
     
@@ -2134,8 +2182,9 @@ hidden.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if this menu item or one of its ancestors is
-    currently hidden, <code>false</code> otherwise.
+                    <p><code>true</code> if this menu item or one of its ancestors is
+    currently hidden, <code>false</code> otherwise.</p>
+
                 
             </div>
         </div>
@@ -2191,6 +2240,7 @@ hidden.</p>
     <div class="description">
         <p>Returns <code>true</code> if this node has been inserted into a tree, <code>false</code> if it is
 merely associated with a tree and has not yet been inserted.</p>
+
     </div>
 
     
@@ -2204,8 +2254,9 @@ merely associated with a tree and has not yet been inserted.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if this node has been inserted into a tree, <code>false</code>
-    otherwise.
+                    <p><code>true</code> if this node has been inserted into a tree, <code>false</code>
+    otherwise.</p>
+
                 
             </div>
         </div>
@@ -2260,6 +2311,7 @@ merely associated with a tree and has not yet been inserted.</p>
 
     <div class="description">
         <p>Returns <code>true</code> if this node is the root of the tree.</p>
+
     </div>
 
     
@@ -2273,8 +2325,9 @@ merely associated with a tree and has not yet been inserted.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if this node is the root of the tree, <code>false</code>
-    otherwise.
+                    <p><code>true</code> if this node is the root of the tree, <code>false</code>
+    otherwise.</p>
+
                 
             </div>
         </div>
@@ -2328,8 +2381,9 @@ merely associated with a tree and has not yet been inserted.</p>
     </div>
 
     <div class="description">
-        <p>Returns this node's next sibling, or <code>undefined</code> if this node is the last
+        <p>Returns this node&#39;s next sibling, or <code>undefined</code> if this node is the last
 child.</p>
+
     </div>
 
     
@@ -2343,8 +2397,9 @@ child.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Tree.Node.html" class="crosslink external" target="_blank">Tree.Node</a></span>:
                     
-                    This node's next sibling, or <code>undefined</code> if this node is
-    the last child.
+                    <p>This node&#39;s next sibling, or <code>undefined</code> if this node is
+    the last child.</p>
+
                 
             </div>
         </div>
@@ -2414,10 +2469,10 @@ child.</p>
     </div>
 
     <div class="description">
-        <p>Prepends a node or array of nodes at the beginning of this node's children.</p>
-
+        <p>Prepends a node or array of nodes at the beginning of this node&#39;s children.</p>
 <p>If a node being prepended is from another tree, it and all its children will
 be removed from that tree and moved to this one.</p>
+
     </div>
 
     
@@ -2439,6 +2494,7 @@ be removed from that tree and moved to this one.</p>
     object, array of child nodes, or array of node config objects to prepend
     to this node. Node config objects will automatically be converted into
     node instances.</p>
+
                     </div>
 
                     
@@ -2455,6 +2511,7 @@ be removed from that tree and moved to this one.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -2470,6 +2527,7 @@ be removed from that tree and moved to this one.</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, the <code>add</code> event will
         be suppressed.</p>
+
                                 </div>
 
                                 
@@ -2492,7 +2550,8 @@ be removed from that tree and moved to this one.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Tree.Node.html" class="crosslink external" target="_blank">Tree.Node</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Tree.Node.html" class="crosslink external" target="_blank">Tree.Node[]</a></span>:
                     
-                    Node or array of nodes that were prepended.
+                    <p>Node or array of nodes that were prepended.</p>
+
                 
             </div>
         </div>
@@ -2546,8 +2605,9 @@ be removed from that tree and moved to this one.</p>
     </div>
 
     <div class="description">
-        <p>Returns this node's previous sibling, or <code>undefined</code> if this node is the
+        <p>Returns this node&#39;s previous sibling, or <code>undefined</code> if this node is the
 first child</p>
+
     </div>
 
     
@@ -2561,8 +2621,9 @@ first child</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Tree.Node.html" class="crosslink external" target="_blank">Tree.Node</a></span>:
                     
-                    This node's previous sibling, or <code>undefined</code> if this
-    node is the first child.
+                    <p>This node&#39;s previous sibling, or <code>undefined</code> if this
+    node is the first child.</p>
+
                 
             </div>
         </div>
@@ -2625,6 +2686,7 @@ first child</p>
 
     <div class="description">
         <p>Removes this node from its parent node.</p>
+
     </div>
 
     
@@ -2644,6 +2706,7 @@ first child</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -2659,7 +2722,8 @@ first child</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, this node and all
         its children will also be destroyed, which makes them available for
-        garbage collection and means they can't be reused.</p>
+        garbage collection and means they can&#39;t be reused.</p>
+
                                 </div>
 
                                 
@@ -2675,6 +2739,7 @@ first child</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, the <code>remove</code> event
         will be suppressed.</p>
+
                                 </div>
 
                                 
@@ -2692,6 +2757,7 @@ first child</p>
         to the event facade of the resulting event. This can be used to
         distinguish between changes triggered by a user and changes
         triggered programmatically, for example.</p>
+
                                 </div>
 
                                 
@@ -2767,6 +2833,7 @@ first child</p>
 
     <div class="description">
         <p>Shows this menu item.</p>
+
     </div>
 
     
@@ -2786,6 +2853,7 @@ first child</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -2801,6 +2869,7 @@ first child</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, the <code>show</code> event
         will be suppressed.</p>
+
                                 </div>
 
                                 
@@ -2865,7 +2934,8 @@ first child</p>
 
     <div class="description">
         <p>Returns the total number of nodes contained within this node, including all
-descendants of this node's children.</p>
+descendants of this node&#39;s children.</p>
+
     </div>
 
     
@@ -2879,8 +2949,9 @@ descendants of this node's children.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    Total number of nodes contained within this node, including
-    all descendants.
+                    <p>Total number of nodes contained within this node, including
+    all descendants.</p>
+
                 
             </div>
         </div>
@@ -2935,6 +3006,7 @@ descendants of this node's children.</p>
 
     <div class="description">
         <p>Serializes this node to an object suitable for use in JSON.</p>
+
     </div>
 
     
@@ -2948,7 +3020,8 @@ descendants of this node's children.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    Serialized node object.
+                    <p>Serialized node object.</p>
+
                 
             </div>
         </div>
@@ -3026,22 +3099,19 @@ descendants of this node's children.</p>
     <div class="description">
         <p>Performs a depth-first traversal of this node, passing it and each of its
 descendants to the specified <em>callback</em>.</p>
-
 <p>If the callback function returns <code>Tree.STOP_TRAVERSAL</code>, traversal will be
 stopped immediately. Otherwise, it will continue until the deepest
 descendant of <em>node</em> has been traversed, or until each branch has been
 traversed to the optional maximum depth limit.</p>
-
 <p>Since traversal is depth-first, that means nodes are traversed like this:</p>
-
 <pre class="code prettyprint"><code>        1
       / | \
      2  8  9
     / \     \
    3   7    10
  / | \      / \
-4  5  6    11 12
-</code></pre>
+4  5  6    11 12</code></pre>
+
     </div>
 
     
@@ -3061,6 +3131,7 @@ traversed to the optional maximum depth limit.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -3077,6 +3148,7 @@ traversed to the optional maximum depth limit.</p>
                                     <p>Depth limit. If specified, descendants
         will only be traversed to this depth before backtracking and moving
         on.</p>
+
                                 </div>
 
                                 
@@ -3097,6 +3169,7 @@ traversed to the optional maximum depth limit.</p>
                     <div class="param-description">
                         <p>Callback function to call with the traversed
     node and each of its descendants.</p>
+
                     </div>
 
                     
@@ -3110,6 +3183,7 @@ traversed to the optional maximum depth limit.</p>
 
                                 <div class="param-description">
                                     <p>Node being traversed.</p>
+
                                 </div>
 
                                 
@@ -3130,6 +3204,7 @@ traversed to the optional maximum depth limit.</p>
 
                     <div class="param-description">
                         <p><code>this</code> object to use when executing <em>callback</em>.</p>
+
                     </div>
 
                     
@@ -3148,8 +3223,9 @@ traversed to the optional maximum depth limit.</p>
                     
                         <span class="type">Mixed</span>:
                     
-                    Returns <code>Tree.STOP_TRAVERSAL</code> if traversal was stopped;
-    otherwise returns <code>undefined</code>.
+                    <p>Returns <code>Tree.STOP_TRAVERSAL</code> if traversal was stopped;
+    otherwise returns <code>undefined</code>.</p>
+
                 
             </div>
         </div>
@@ -3200,6 +3276,7 @@ traversed to the optional maximum depth limit.</p>
 
     <div class="description">
         <p>Mapping of child node ids to indices.</p>
+
     </div>
 
     
@@ -3243,6 +3320,7 @@ traversed to the optional maximum depth limit.</p>
 
     <div class="description">
         <p>Flag indicating whether the <code>_indexMap</code> is stale and needs to be rebuilt.</p>
+
     </div>
 
     
@@ -3288,6 +3366,7 @@ traversed to the optional maximum depth limit.</p>
 
     <div class="description">
         <p>Simple way to type-check that this is an instance of Tree.Node.</p>
+
     </div>
 
     
@@ -3334,9 +3413,9 @@ traversed to the optional maximum depth limit.</p>
     <div class="description">
         <p>Array of property names on this node that should be serialized to JSON when
 <code>toJSON()</code> is called.</p>
-
 <p>Note that the <code>children</code> property is a special case that is managed
 separately.</p>
+
     </div>
 
     
@@ -3378,15 +3457,14 @@ separately.</p>
 
     <div class="description">
         <p>Whether or not this node can contain child nodes.</p>
-
 <p>This value is falsy by default unless child nodes are added at instantiation
 time, in which case it will be automatically set to <code>true</code>. You can also
 manually set it to <code>true</code> to indicate that a node can have children even
 though it might not currently have any children.</p>
-
 <p>Note that regardless of the value of this property, appending, prepending,
 or inserting a node into this node will cause <code>canHaveChildren</code> to be set to
 true automatically.</p>
+
     </div>
 
     
@@ -3428,6 +3506,7 @@ true automatically.</p>
 
     <div class="description">
         <p>Child nodes contained within this node.</p>
+
     </div>
 
     
@@ -3471,9 +3550,9 @@ true automatically.</p>
 
     <div class="description">
         <p>Arbitrary serializable data related to this node.</p>
-
 <p>Use this property to store any data that should accompany this node when it
 is serialized to JSON.</p>
+
     </div>
 
     
@@ -3517,6 +3596,7 @@ is serialized to JSON.</p>
 
     <div class="description">
         <p>Unique id for this node.</p>
+
     </div>
 
     
@@ -3559,6 +3639,7 @@ is serialized to JSON.</p>
     <div class="description">
         <p>Parent node of this node, or <code>undefined</code> if this is an unattached node or
 the root node.</p>
+
     </div>
 
     
@@ -3600,10 +3681,10 @@ the root node.</p>
 
     <div class="description">
         <p>Current state of this node.</p>
-
 <p>Use this property to store state-specific info -- such as whether this node
-is "open", "selected", or any other arbitrary state -- that should accompany
+is &quot;open&quot;, &quot;selected&quot;, or any other arbitrary state -- that should accompany
 this node when it is serialized to JSON.</p>
+
     </div>
 
     
@@ -3645,6 +3726,7 @@ this node when it is serialized to JSON.</p>
 
     <div class="description">
         <p>The Tree instance with which this node is associated.</p>
+
     </div>
 
     

@@ -201,6 +201,7 @@
     <p>A simpler and more efficient drag and drop implementation than the one in YUI
 core. Highly optimized for delegation-based drag targets, remaining responsive
 and memory-efficient even when managing thousands of draggable nodes.</p>
+
 </div>
 
 
@@ -1312,11 +1313,11 @@ and memory-efficient even when managing thousands of draggable nodes.</p>
 
     <div class="description">
         <p>Implementation behind the public addAttrs method.</p>
-
 <p>This method is invoked directly by get if it encounters a scenario
-in which an attribute's valueFn attempts to obtain the
+in which an attribute&#39;s valueFn attempts to obtain the
 value an attribute in the same group of attributes, which has not yet
 been added (on demand initialization).</p>
+
     </div>
 
     
@@ -1335,6 +1336,7 @@ been added (on demand initialization).</p>
 
                     <div class="param-description">
                         <p>An object with attribute name/configuration pairs.</p>
+
                     </div>
 
                     
@@ -1351,6 +1353,7 @@ been added (on demand initialization).</p>
                     <div class="param-description">
                         <p>An object with attribute name/value pairs, defining the initial values to apply.
 Values defined in the cfgs argument will be over-written by values in this argument unless defined as read only.</p>
+
                     </div>
 
                     
@@ -1368,6 +1371,7 @@ Values defined in the cfgs argument will be over-written by values in this argum
                         <p>Whether or not to delay the intialization of these attributes until the first call to get/set.
 Individual attributes can over-ride this behavior by defining a lazyAdd configuration property in their configuration.
 See <a href="#method_addAttr">addAttr</a>.</p>
+
                     </div>
 
                     
@@ -1442,6 +1446,7 @@ See <a href="#method_addAttr">addAttr</a>.</p>
 
     <div class="description">
         <p>Finishes initializing an attribute which has been lazily added.</p>
+
     </div>
 
     
@@ -1460,6 +1465,7 @@ See <a href="#method_addAttr">addAttr</a>.</p>
 
                     <div class="param-description">
                         <p>The name of the attribute</p>
+
                     </div>
 
                     
@@ -1477,6 +1483,7 @@ See <a href="#method_addAttr">addAttr</a>.</p>
                     <div class="param-description">
                         <p>Optional config hash for the attribute. This is added for performance
 along the critical path, where the calling method has already obtained lazy config from state.</p>
+
                     </div>
 
                     
@@ -1552,21 +1559,19 @@ along the critical path, where the calling method has already obtained lazy conf
     <div class="description">
         <p>Utility method used by get/set to add attributes
 encountered out of order when calling addAttrs().</p>
-
 <p>For example, if:</p>
-
 <pre class="code prettyprint"><code>this.addAttrs({
      foo: {
          setter: function() {
             // make sure this bar is available when foo is added
-            this.get("bar");
+            this.get(&quot;bar&quot;);
          }
      },
      bar: {
          value: ...
      }
-});
-</code></pre>
+});</code></pre>
+
     </div>
 
     
@@ -1585,6 +1590,7 @@ encountered out of order when calling addAttrs().</p>
 
                     <div class="param-description">
                         <p>attribute name</p>
+
                     </div>
 
                     
@@ -1600,6 +1606,7 @@ encountered out of order when calling addAttrs().</p>
 
                     <div class="param-description">
                         <p>attribute configuration</p>
+
                     </div>
 
                     
@@ -1673,10 +1680,10 @@ encountered out of order when calling addAttrs().</p>
     <div class="description">
         <p>A helper method, used by _initHierarchyData to aggregate
 attribute configuration across the instances class hierarchy.</p>
-
 <p>The method will protect the attribute configuration value to protect the statically defined
 default value in ATTRS if required (if the value is an object literal, array or the
 attribute configuration has cloneDefaultValue set to shallow or deep).</p>
+
     </div>
 
     
@@ -1696,6 +1703,7 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
                     <div class="param-description">
                         <p>An array of ATTRS definitions across classes in the hierarchy
 (subclass first, Base last)</p>
+
                     </div>
 
                     
@@ -1714,7 +1722,8 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    The aggregate set of ATTRS definitions for the instance
+                    <p>The aggregate set of ATTRS definitions for the instance</p>
+
                 
             </div>
         </div>
@@ -1770,6 +1779,7 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
 
     <div class="description">
         <p>Attaches event handlers.</p>
+
     </div>
 
     
@@ -1824,6 +1834,7 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
     <div class="description">
         <p>Utility method to define the attribute hash used to filter/whitelist property mixes for
 this class for iteration performance reasons.</p>
+
     </div>
 
     
@@ -1877,6 +1888,7 @@ this class for iteration performance reasons.</p>
 
     <div class="description">
         <p>Internal destroy implementation for BaseCore</p>
+
     </div>
 
     
@@ -1930,6 +1942,7 @@ this class for iteration performance reasons.</p>
 
     <div class="description">
         <p>Internal initialization implementation for BaseCore</p>
+
     </div>
 
     
@@ -1997,6 +2010,7 @@ this class for iteration performance reasons.</p>
     <div class="description">
         <p>Attribute change event handler that caches the new value of the attribute in
 a protected property on this class.</p>
+
     </div>
 
     
@@ -2081,10 +2095,10 @@ a protected property on this class.</p>
     <div class="description">
         <p>Caches bounding rect information for every node in the container that
 matches the <code>dropSelector</code>.</p>
-
 <p>This is used during a drag to compute dropzone intersections with the
-dragged node, since mouse events can't be used when the dragged node
+dragged node, since mouse events can&#39;t be used when the dragged node
 obscures the dropzone.</p>
+
     </div>
 
     
@@ -2098,7 +2112,8 @@ obscures the dropzone.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object[]</a></span>:
                     
-                    Array of bounding rects.
+                    <p>Array of bounding rects.</p>
+
                 
             </div>
         </div>
@@ -2158,9 +2173,9 @@ obscures the dropzone.</p>
 
     <div class="description">
         <p>Caches bounding rect information for all scrollable elements.</p>
-
 <p>This is used during a drag to figure out when we need to auto-scroll a node
 the pointer is being dragged over.</p>
+
     </div>
 
     
@@ -2174,7 +2189,8 @@ the pointer is being dragged over.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object[]</a></span>:
                     
-                    Array of bounding rects.
+                    <p>Array of bounding rects.</p>
+
                 
             </div>
         </div>
@@ -2237,7 +2253,8 @@ the pointer is being dragged over.</p>
 
     <div class="description">
         <p>This method assumes that the value has already been checked to be an object.
-Since it's on a critical path, we don't want to re-do the check.</p>
+Since it&#39;s on a critical path, we don&#39;t want to re-do the check.</p>
+
     </div>
 
     
@@ -2330,6 +2347,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
 
     <div class="description">
         <p>Default function for attribute change events.</p>
+
     </div>
 
     
@@ -2348,6 +2366,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
 
                     <div class="param-description">
                         <p>The event object for attribute change events.</p>
+
                     </div>
 
                     
@@ -2362,7 +2381,8 @@ Since it's on a critical path, we don't want to re-do the check.</p>
                     
 
                     <div class="param-description">
-                        <p>Whether or not we're using this as a fast path in the case of no listeners or not</p>
+                        <p>Whether or not we&#39;re using this as a fast path in the case of no listeners or not</p>
+
                     </div>
 
                     
@@ -2431,6 +2451,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
 
     <div class="description">
         <p>Default destroy event handler</p>
+
     </div>
 
     
@@ -2449,6 +2470,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
 
                     <div class="param-description">
                         <p>Event object</p>
+
                     </div>
 
                     
@@ -2520,6 +2542,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
 
     <div class="description">
         <p>Default handler for the <code>dragenter</code> event.</p>
+
     </div>
 
     
@@ -2599,6 +2622,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
 
     <div class="description">
         <p>Default handler for the <code>drag</code> event.</p>
+
     </div>
 
     
@@ -2665,6 +2689,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
 
     <div class="description">
         <p>Default handler for the <code>dragstart</code> event.</p>
+
     </div>
 
     
@@ -2751,6 +2776,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
 
     <div class="description">
         <p>Default init event handler</p>
+
     </div>
 
     
@@ -2770,6 +2796,7 @@ Since it's on a critical path, we don't want to re-do the check.</p>
                     <div class="param-description">
                         <p>Event object, with a cfg property which
 refers to the configuration object passed to the constructor.</p>
+
                     </div>
 
                     
@@ -2829,6 +2856,7 @@ refers to the configuration object passed to the constructor.</p>
     <div class="description">
         <p>Destroys the class hierarchy for this instance by invoking
 the destructor method on the prototype of each class in the hierarchy.</p>
+
     </div>
 
     
@@ -2885,6 +2913,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
 
     <div class="description">
         <p>Detaches event handlers.</p>
+
     </div>
 
     
@@ -2941,6 +2970,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
 
     <div class="description">
         <p>Ends a drag operation, cleans up after it, and fires a <code>dragend</code> event.</p>
+
     </div>
 
     
@@ -2997,9 +3027,9 @@ the destructor method on the prototype of each class in the hierarchy.</p>
 
     <div class="description">
         <p>Ends a pending drag operation and cleans up after the pending state.</p>
+<p>This doesn&#39;t prevent a drag operation from starting; it just cleans up
+temporary state that&#39;s only necessary when a drag is pending.</p>
 
-<p>This doesn't prevent a drag operation from starting; it just cleans up
-temporary state that's only necessary when a drag is pending.</p>
     </div>
 
     
@@ -3093,6 +3123,7 @@ temporary state that's only necessary when a drag is pending.</p>
                         <p>The set of all attribute configurations for this instance.
 Attributes will be removed from this set, if they belong to the filtered class, so
 that by the time all classes are processed, allCfgs will be empty.</p>
+
                     </div>
 
                     
@@ -3108,6 +3139,7 @@ that by the time all classes are processed, allCfgs will be empty.</p>
 
                     <div class="param-description">
                         <p>The config object passed in by the user, from which adhoc attrs are to be filtered.</p>
+
                     </div>
 
                     
@@ -3126,8 +3158,9 @@ that by the time all classes are processed, allCfgs will be empty.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    The set of adhoc attributes passed in, in the form
-of an object with attribute name/configuration pairs.
+                    <p>The set of adhoc attributes passed in, in the form
+of an object with attribute name/configuration pairs.</p>
+
                 
             </div>
         </div>
@@ -3188,6 +3221,7 @@ of an object with attribute name/configuration pairs.
     <div class="description">
         <p>Searches for a cached drop zone bounding rect that intersects with the
 current pointer position, and returns the intersected element if found.</p>
+
     </div>
 
     
@@ -3201,8 +3235,9 @@ current pointer position, and returns the intersected element if found.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | Null</span>:
                     
-                    Intersected drop zone element, or <code>null</code> if no
-    intersection found.
+                    <p>Intersected drop zone element, or <code>null</code> if no
+    intersection found.</p>
+
                 
             </div>
         </div>
@@ -3262,10 +3297,10 @@ current pointer position, and returns the intersected element if found.</p>
 
     <div class="description">
         <p>Searches for cached scroll zone bounding rects in which the pointer is
-currently within the scroll margin (the area near an element's border that
+currently within the scroll margin (the area near an element&#39;s border that
 should cause the element to scroll).</p>
-
 <p>Returns an array of all intersected scroll zones.</p>
+
     </div>
 
     
@@ -3279,7 +3314,8 @@ should cause the element to scroll).</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object[]</a></span>:
                     
-                    Array of intersected scroll zones.
+                    <p>Array of intersected scroll zones.</p>
+
                 
             </div>
         </div>
@@ -3372,6 +3408,7 @@ should cause the element to scroll).</p>
 
     <div class="description">
         <p>Utility method to help setup the event payload and fire the attribute change event.</p>
+
     </div>
 
     
@@ -3390,6 +3427,7 @@ should cause the element to scroll).</p>
 
                     <div class="param-description">
                         <p>The name of the attribute</p>
+
                     </div>
 
                     
@@ -3406,6 +3444,7 @@ should cause the element to scroll).</p>
                     <div class="param-description">
                         <p>The full path of the property being changed,
 if this is a sub-attribute value being change. Otherwise null.</p>
+
                     </div>
 
                     
@@ -3421,6 +3460,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
 
                     <div class="param-description">
                         <p>The current value of the attribute</p>
+
                     </div>
 
                     
@@ -3436,6 +3476,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
 
                     <div class="param-description">
                         <p>The new value of the attribute</p>
+
                     </div>
 
                     
@@ -3450,7 +3491,8 @@ if this is a sub-attribute value being change. Otherwise null.</p>
                     
 
                     <div class="param-description">
-                        <p>Any additional event data to mix into the attribute change event's event facade.</p>
+                        <p>Any additional event data to mix into the attribute change event&#39;s event facade.</p>
+
                     </div>
 
                     
@@ -3467,6 +3509,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
 
                     <div class="param-description">
                         <p>The attribute config stored in State, if already available.</p>
+
                     </div>
 
                     
@@ -3528,6 +3571,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
 
     <div class="description">
         <p>Fires a <code>drag</code> event and, if necessary, a <code>dragover</code> event.</p>
+
     </div>
 
     
@@ -3594,6 +3638,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
 
     <div class="description">
         <p>Fires a <code>dragenter</code> event for the specified dropzone node.</p>
+
     </div>
 
     
@@ -3612,6 +3657,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
 
                     <div class="param-description">
                         <p>Dropzone node that was entered.</p>
+
                     </div>
 
                     
@@ -3673,6 +3719,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
 
     <div class="description">
         <p>Fires a <code>dragleave</code> event.</p>
+
     </div>
 
     
@@ -3729,6 +3776,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
 
     <div class="description">
         <p>Fires a <code>dragstart</code> event, but only if <code>this._dragState.pending</code> is <code>true</code>.</p>
+
     </div>
 
     
@@ -3800,13 +3848,12 @@ if this is a sub-attribute value being change. Otherwise null.</p>
     <div class="description">
         <p>Returns a bounding rect for <em>el</em> with absolute coordinates corrected for
 viewport scroll offsets.</p>
-
-<p>The native <code>getBoundingClientRect()</code> returns coordinates for an element's
+<p>The native <code>getBoundingClientRect()</code> returns coordinates for an element&#39;s
 position relative to the top left of the viewport, so if the viewport has
 been scrolled, its coordinates will be different.</p>
-
-<p>This method returns an element's absolute rect, which will be the same
+<p>This method returns an element&#39;s absolute rect, which will be the same
 regardless of whether the viewport has been scrolled.</p>
+
     </div>
 
     
@@ -3825,6 +3872,7 @@ regardless of whether the viewport has been scrolled.</p>
 
                     <div class="param-description">
                         <p>HTML element.</p>
+
                     </div>
 
                     
@@ -3843,7 +3891,8 @@ regardless of whether the viewport has been scrolled.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    Absolute bounding rect for <em>el</em>.
+                    <p>Absolute bounding rect for <em>el</em>.</p>
+
                 
             </div>
         </div>
@@ -3913,8 +3962,8 @@ regardless of whether the viewport has been scrolled.</p>
     <div class="description">
         <p>Provides the common implementation for the public get method,
 allowing Attribute hosts to over-ride either method.</p>
-
 <p>See <a href="#method_get">get</a> for argument details.</p>
+
     </div>
 
     
@@ -3933,6 +3982,7 @@ allowing Attribute hosts to over-ride either method.</p>
 
                     <div class="param-description">
                         <p>The name of the attribute.</p>
+
                     </div>
 
                     
@@ -3951,7 +4001,8 @@ allowing Attribute hosts to over-ride either method.</p>
                     
                         <span class="type">Any</span>:
                     
-                    The value of the attribute.
+                    <p>The value of the attribute.</p>
+
                 
             </div>
         </div>
@@ -4020,6 +4071,7 @@ allowing Attribute hosts to over-ride either method.</p>
         <p>Returns an object with the configuration properties (and value)
 for the given attribute. If attrName is not provided, returns the
 configuration properties for all attributes.</p>
+
     </div>
 
     
@@ -4038,6 +4090,7 @@ configuration properties for all attributes.</p>
 
                     <div class="param-description">
                         <p>Optional. The attribute name. If not provided, the method will return the configuration for all attributes.</p>
+
                     </div>
 
                     
@@ -4056,7 +4109,8 @@ configuration properties for all attributes.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    The configuration properties for the given attribute, or all attributes.
+                    <p>The configuration properties for the given attribute, or all attributes.</p>
+
                 
             </div>
         </div>
@@ -4114,6 +4168,7 @@ configuration properties for all attributes.</p>
     <div class="description">
         <p>Returns an aggregated set of attribute configurations, by traversing
 the class hierarchy.</p>
+
     </div>
 
     
@@ -4127,9 +4182,10 @@ the class hierarchy.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    The hash of attribute configurations, aggregated across classes in the hierarchy
+                    <p>The hash of attribute configurations, aggregated across classes in the hierarchy
 This value is cached the first time the method, or _getClasses, is invoked. Subsequent invocations return
-the cached value.
+the cached value.</p>
+
                 
             </div>
         </div>
@@ -4211,6 +4267,7 @@ the cached value.
 either the default configuration provided, or the
 over-ridden value if it exists in the set of initValues
 provided and the attribute is not read-only.</p>
+
     </div>
 
     
@@ -4229,6 +4286,7 @@ provided and the attribute is not read-only.</p>
 
                     <div class="param-description">
                         <p>The name of the attribute</p>
+
                     </div>
 
                     
@@ -4244,6 +4302,7 @@ provided and the attribute is not read-only.</p>
 
                     <div class="param-description">
                         <p>The attribute configuration object</p>
+
                     </div>
 
                     
@@ -4259,6 +4318,7 @@ provided and the attribute is not read-only.</p>
 
                     <div class="param-description">
                         <p>The object with simple and complex attribute name/value pairs returned from _normAttrVals</p>
+
                     </div>
 
                     
@@ -4277,7 +4337,8 @@ provided and the attribute is not read-only.</p>
                     
                         <span class="type">Any</span>:
                     
-                    The initial value of the attribute.
+                    <p>The initial value of the attribute.</p>
+
                 
             </div>
         </div>
@@ -4344,6 +4405,7 @@ provided and the attribute is not read-only.</p>
 
     <div class="description">
         <p>Implementation behind the public getAttrs method, to get multiple attribute values.</p>
+
     </div>
 
     
@@ -4363,6 +4425,7 @@ provided and the attribute is not read-only.</p>
                     <div class="param-description">
                         <p>Optional. An array of attribute names. If omitted, all attribute values are
 returned. If set to true, all attributes modified from their initial values are returned.</p>
+
                     </div>
 
                     
@@ -4381,7 +4444,8 @@ returned. If set to true, all attributes modified from their initial values are 
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    An object with attribute name/value pairs.
+                    <p>An object with attribute name/value pairs.</p>
+
                 
             </div>
         </div>
@@ -4451,7 +4515,8 @@ returned. If set to true, all attributes modified from their initial values are 
 
     <div class="description">
         <p>Returns a bounding rect for <em>el</em>, normalizing for older versions of IE that
-don't provide height and width information in native bounding rects.</p>
+don&#39;t provide height and width information in native bounding rects.</p>
+
     </div>
 
     
@@ -4470,6 +4535,7 @@ don't provide height and width information in native bounding rects.</p>
 
                     <div class="param-description">
                         <p>HTML element.</p>
+
                     </div>
 
                     
@@ -4488,7 +4554,8 @@ don't provide height and width information in native bounding rects.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    Bounding rect for <em>el</em>.
+                    <p>Bounding rect for <em>el</em>.</p>
+
                 
             </div>
         </div>
@@ -4545,6 +4612,7 @@ don't provide height and width information in native bounding rects.</p>
 
     <div class="description">
         <p>Returns the class hierarchy for this object, with BaseCore being the last class in the array.</p>
+
     </div>
 
     
@@ -4558,9 +4626,10 @@ don't provide height and width information in native bounding rects.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function[]</a></span>:
                     
-                    An array of classes (constructor functions), making up the class hierarchy for this object.
+                    <p>An array of classes (constructor functions), making up the class hierarchy for this object.
 This value is cached the first time the method, or _getAttrCfgs, is invoked. Subsequent invocations return the
-cached value.
+cached value.</p>
+
                 
             </div>
         </div>
@@ -4621,6 +4690,7 @@ cached value.
     <div class="description">
         <p>Returns the XY delta between where the pointer was at the start of the
 current drag operation and where the pointer is now.</p>
+
     </div>
 
     
@@ -4634,7 +4704,8 @@ current drag operation and where the pointer is now.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number[]</a></span>:
                     
-                    Array containing the X and Y deltas.
+                    <p>Array containing the X and Y deltas.</p>
+
                 
             </div>
         </div>
@@ -4701,11 +4772,11 @@ current drag operation and where the pointer is now.</p>
 
     <div class="description">
         <p>Returns the fully qualified type, given a short type string.
-That is, returns "foo:bar" when given "bar" if "foo" is the configured prefix.</p>
-
+That is, returns &quot;foo:bar&quot; when given &quot;bar&quot; if &quot;foo&quot; is the configured prefix.</p>
 <p>NOTE: This method, unlike _getType, does no checking of the value passed in, and
 is designed to be used with the low level _publish() method, for critical path
 implementations which need to fast-track publish for performance reasons.</p>
+
     </div>
 
     
@@ -4724,6 +4795,7 @@ implementations which need to fast-track publish for performance reasons.</p>
 
                     <div class="param-description">
                         <p>The short type to prefix</p>
+
                     </div>
 
                     
@@ -4742,7 +4814,8 @@ implementations which need to fast-track publish for performance reasons.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                     
-                    The prefixed type, if a prefix is set, otherwise the type passed in
+                    <p>The prefixed type, if a prefix is set, otherwise the type passed in</p>
+
                 
             </div>
         </div>
@@ -4810,6 +4883,7 @@ implementations which need to fast-track publish for performance reasons.</p>
     <div class="description">
         <p>A helper method used to isolate the attrs config for this instance to pass to <code>addAttrs</code>,
 from the static cached ATTRS for the class.</p>
+
     </div>
 
     
@@ -4830,6 +4904,7 @@ from the static cached ATTRS for the class.</p>
                         <p>The set of all attribute configurations for this instance.
 Attributes will be removed from this set, if they belong to the filtered class, so
 that by the time all classes are processed, allCfgs will be empty.</p>
+
                     </div>
 
                     
@@ -4848,8 +4923,9 @@ that by the time all classes are processed, allCfgs will be empty.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    The set of attributes to be added for this instance, suitable
-for passing through to <code>addAttrs</code>.
+                    <p>The set of attributes to be added for this instance, suitable
+for passing through to <code>addAttrs</code>.</p>
+
                 
             </div>
         </div>
@@ -4923,6 +4999,7 @@ for passing through to <code>addAttrs</code>.
     <div class="description">
         <p>Gets the stored value for the attribute, from either the
 internal state object, or the state proxy if it exits</p>
+
     </div>
 
     
@@ -4941,6 +5018,7 @@ internal state object, or the state proxy if it exits</p>
 
                     <div class="param-description">
                         <p>The name of the attribute</p>
+
                     </div>
 
                     
@@ -4958,6 +5036,7 @@ internal state object, or the state proxy if it exits</p>
                     <div class="param-description">
                         <p>Optional config hash for the attribute. This is added for performance along the critical path,
 where the calling method has already obtained the config from state.</p>
+
                     </div>
 
                     
@@ -4976,7 +5055,8 @@ where the calling method has already obtained the config from state.</p>
                     
                         <span class="type">Any</span>:
                     
-                    The stored value of the attribute
+                    <p>The stored value of the attribute</p>
+
                 
             </div>
         </div>
@@ -5031,6 +5111,7 @@ where the calling method has already obtained the config from state.</p>
         <p>If the instance has a prefix attribute and the
 event type is not prefixed, the instance prefix is
 applied to the supplied type.</p>
+
     </div>
 
     
@@ -5091,6 +5172,7 @@ applied to the supplied type.</p>
 
     <div class="description">
         <p>Returns the current X and Y scroll offsets of the viewport.</p>
+
     </div>
 
     
@@ -5104,8 +5186,9 @@ applied to the supplied type.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number[]</a></span>:
                     
-                    Array containing the X and Y scroll offsets of the
-    viewport.
+                    <p>Array containing the X and Y scroll offsets of the
+    viewport.</p>
+
                 
             </div>
         </div>
@@ -5190,6 +5273,7 @@ applied to the supplied type.</p>
 
                     <div class="param-description">
                         <p>The fully prefixed type name</p>
+
                     </div>
 
                     
@@ -5208,7 +5292,8 @@ applied to the supplied type.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    Whether the event has potential subscribers or not
+                    <p>Whether the event has potential subscribers or not</p>
+
                 
             </div>
         </div>
@@ -5284,6 +5369,7 @@ applied to the supplied type.</p>
     <div class="description">
         <p>Constructor logic for attributes. Initializes the host state, and sets up the inital attributes passed to the
 constructor.</p>
+
     </div>
 
     
@@ -5303,6 +5389,7 @@ constructor.</p>
                     <div class="param-description">
                         <p>The attributes to add during construction (passed through to <a href="#method_addAttrs">addAttrs</a>).
        These can also be defined on the constructor being augmented with Attribute by defining the ATTRS property on the constructor.</p>
+
                     </div>
 
                     
@@ -5319,6 +5406,7 @@ constructor.</p>
                     <div class="param-description">
                         <p>The initial attribute values to apply (passed through to <a href="#method_addAttrs">addAttrs</a>).
        These are not merged/cloned. The caller is responsible for isolating user provided values if required.</p>
+
                     </div>
 
                     
@@ -5334,6 +5422,7 @@ constructor.</p>
 
                     <div class="param-description">
                         <p>Whether or not to add attributes lazily (passed through to <a href="#method_addAttrs">addAttrs</a>).</p>
+
                     </div>
 
                     
@@ -5395,6 +5484,7 @@ constructor.</p>
 
     <div class="description">
         <p>Initializes AttributeCore</p>
+
     </div>
 
     
@@ -5471,6 +5561,7 @@ constructor.</p>
     <div class="description">
         <p>Utility method to set up initial attributes defined during construction,
 either through the constructor.ATTRS property, or explicitly passed in.</p>
+
     </div>
 
     
@@ -5490,6 +5581,7 @@ either through the constructor.ATTRS property, or explicitly passed in.</p>
                     <div class="param-description">
                         <p>The attributes to add during construction (passed through to <a href="#method_addAttrs">addAttrs</a>).
        These can also be defined on the constructor being augmented with Attribute by defining the ATTRS property on the constructor.</p>
+
                     </div>
 
                     
@@ -5506,6 +5598,7 @@ either through the constructor.ATTRS property, or explicitly passed in.</p>
                     <div class="param-description">
                         <p>The initial attribute values to apply (passed through to <a href="#method_addAttrs">addAttrs</a>).
        These are not merged/cloned. The caller is responsible for isolating user provided values if required.</p>
+
                     </div>
 
                     
@@ -5521,6 +5614,7 @@ either through the constructor.ATTRS property, or explicitly passed in.</p>
 
                     <div class="param-description">
                         <p>Whether or not to add attributes lazily (passed through to <a href="#method_addAttrs">addAttrs</a>).</p>
+
                     </div>
 
                     
@@ -5589,6 +5683,7 @@ either through the constructor.ATTRS property, or explicitly passed in.</p>
 
     <div class="description">
         <p>Internal construction logic for BaseCore.</p>
+
     </div>
 
     
@@ -5607,6 +5702,7 @@ either through the constructor.ATTRS property, or explicitly passed in.</p>
 
                     <div class="param-description">
                         <p>The constructor configuration object</p>
+
                     </div>
 
                     
@@ -5675,9 +5771,10 @@ either through the constructor.ATTRS property, or explicitly passed in.</p>
 
     <div class="description">
         <p>Initializes the class hierarchy for the instance, which includes
-initializing attributes for each class defined in the class's
+initializing attributes for each class defined in the class&#39;s
 static <a href="#property_BaseCore.ATTRS">ATTRS</a> property and
 invoking the initializer method on the prototype of each class in the hierarchy.</p>
+
     </div>
 
     
@@ -5696,6 +5793,7 @@ invoking the initializer method on the prototype of each class in the hierarchy.
 
                     <div class="param-description">
                         <p>Object with configuration property name/value pairs</p>
+
                     </div>
 
                     
@@ -5756,6 +5854,7 @@ invoking the initializer method on the prototype of each class in the hierarchy.
         <p>A helper method used by _getClasses and _getAttrCfgs, which determines both
 the array of classes and aggregate set of attribute configurations
 across the class hierarchy for the instance.</p>
+
     </div>
 
     
@@ -5824,6 +5923,7 @@ across the class hierarchy for the instance.</p>
     <div class="description">
         <p>Checks whether or not the attribute is one which has been
 added lazily and still requires initialization.</p>
+
     </div>
 
     
@@ -5842,6 +5942,7 @@ added lazily and still requires initialization.</p>
 
                     <div class="param-description">
                         <p>The name of the attribute</p>
+
                     </div>
 
                     
@@ -5860,7 +5961,8 @@ added lazily and still requires initialization.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    true if it's a lazily added attribute, false otherwise.
+                    <p>true if it&#39;s a lazily added attribute, false otherwise.</p>
+
                 
             </div>
         </div>
@@ -5935,13 +6037,14 @@ added lazily and still requires initialization.</p>
 
     <div class="description">
         <p>This is the entry point for the event monitoring system.
-You can monitor 'attach', 'detach', 'fire', and 'publish'.
-When configured, these events generate an event.  click ->
-click<em>attach, click</em>detach, click_publish -- these can
+You can monitor &#39;attach&#39;, &#39;detach&#39;, &#39;fire&#39;, and &#39;publish&#39;.
+When configured, these events generate an event.  click -&gt;
+click_attach, click_detach, click_publish -- these can
 be subscribed to like other events to monitor the event
 system.  Inividual published events can have monitoring
-turned on or off (publish can't be turned off before it
-it published) by setting the events 'monitor' config.</p>
+turned on or off (publish can&#39;t be turned off before it
+it published) by setting the events &#39;monitor&#39; config.</p>
+
     </div>
 
     
@@ -5959,7 +6062,8 @@ it published) by setting the events 'monitor' config.</p>
                     
 
                     <div class="param-description">
-                        <p>'attach', 'detach', 'fire', or 'publish'</p>
+                        <p>&#39;attach&#39;, &#39;detach&#39;, &#39;fire&#39;, or &#39;publish&#39;</p>
+
                     </div>
 
                     
@@ -5975,6 +6079,7 @@ it published) by setting the events 'monitor' config.</p>
 
                     <div class="param-description">
                         <p>The prefixed name of the event being monitored, or the CustomEvent object.</p>
+
                     </div>
 
                     
@@ -5991,6 +6096,7 @@ it published) by setting the events 'monitor' config.</p>
                     <div class="param-description">
                         <p>Information about the event interaction, such as
                  fire() args, subscription category, publish config</p>
+
                     </div>
 
                     
@@ -6053,6 +6159,7 @@ it published) by setting the events 'monitor' config.</p>
     <div class="description">
         <p>Moves the dragged node or its proxy to the current pointer location, but
 constrained within the container if the pointer is outside the container.</p>
+
     </div>
 
     
@@ -6121,6 +6228,7 @@ constrained within the container if the pointer is outside the container.</p>
     <div class="description">
         <p>Utility method to normalize attribute values. The base implementation
 simply merges the hash to protect the original.</p>
+
     </div>
 
     
@@ -6139,6 +6247,7 @@ simply merges the hash to protect the original.</p>
 
                     <div class="param-description">
                         <p>An object with attribute name/value pairs</p>
+
                     </div>
 
                     
@@ -6157,9 +6266,10 @@ simply merges the hash to protect the original.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    An object literal with 2 properties - "simple" and "complex",
+                    <p>An object literal with 2 properties - &quot;simple&quot; and &quot;complex&quot;,
 containing simple and complex attribute values respectively keyed
-by the top level attribute name, or null, if valueHash is falsey.
+by the top level attribute name, or null, if valueHash is falsey.</p>
+
                 
             </div>
         </div>
@@ -6214,9 +6324,10 @@ by the top level attribute name, or null, if valueHash is falsey.
     </div>
 
     <div class="description">
-        <p>Handles native <code>scroll</code> events on the container if the container isn't the
+        <p>Handles native <code>scroll</code> events on the container if the container isn&#39;t the
 body. This is necessary in order to update bounding client rects when
 scrollable containers are scrolled.</p>
+
     </div>
 
     
@@ -6283,6 +6394,7 @@ scrollable containers are scrolled.</p>
 
     <div class="description">
         <p>Handler for the <code>gesturemove</code> event.</p>
+
     </div>
 
     
@@ -6362,6 +6474,7 @@ scrollable containers are scrolled.</p>
 
     <div class="description">
         <p>Handler for the <code>gesturemoveend</code> event.</p>
+
     </div>
 
     
@@ -6428,6 +6541,7 @@ scrollable containers are scrolled.</p>
 
     <div class="description">
         <p>Handler for the <code>gesturemovestart</code> event.</p>
+
     </div>
 
     
@@ -6517,9 +6631,9 @@ scrollable containers are scrolled.</p>
 
     <div class="description">
         <p>Handles native <code>dragstart</code> events on draggable nodes.</p>
-
 <p>The default behavior of these events must be prevented in order to avoid
 conflicts.</p>
+
     </div>
 
     
@@ -6597,7 +6711,8 @@ conflicts.</p>
     <div class="description">
         <p>Returns an array with the detach key (if provided),
 and the prefixed event name from _getType
-Y.on('detachcategory| menu:click', fn)</p>
+Y.on(&#39;detachcategory| menu:click&#39;, fn)</p>
+
     </div>
 
     
@@ -6663,6 +6778,7 @@ Y.on('detachcategory| menu:click', fn)</p>
         <p>Handles the special on, after and target properties which allow the user to
 easily configure on and after listeners as well as bubble targets during
 construction, prior to init.</p>
+
     </div>
 
     
@@ -6681,6 +6797,7 @@ construction, prior to init.</p>
 
                     <div class="param-description">
                         <p>The user configuration object</p>
+
                     </div>
 
                     
@@ -6751,9 +6868,9 @@ construction, prior to init.</p>
     </div>
 
     <div class="description">
-        <p>Called when the <code>dragenter</code> event's default handler is prevented.</p>
-
+        <p>Called when the <code>dragenter</code> event&#39;s default handler is prevented.</p>
 <p>This will prevent the entered node from being considered a valid dropzone.</p>
+
     </div>
 
     
@@ -6832,9 +6949,9 @@ construction, prior to init.</p>
     </div>
 
     <div class="description">
-        <p>Called when the <code>dragstart</code> event's default handler is prevented.</p>
-
+        <p>Called when the <code>dragstart</code> event&#39;s default handler is prevented.</p>
 <p>This will cancel the drag operation.</p>
+
     </div>
 
     
@@ -6892,6 +7009,7 @@ construction, prior to init.</p>
     <div class="description">
         <p>Prevents the WebKit long-touch callout menu from appearing on the current
 dragNode, if any.</p>
+
     </div>
 
     
@@ -6967,6 +7085,7 @@ dragNode, if any.</p>
         <p>Utility method to protect an attribute configuration
 hash, by merging the entire object and the individual
 attr config objects.</p>
+
     </div>
 
     
@@ -6985,6 +7104,7 @@ attr config objects.</p>
 
                     <div class="param-description">
                         <p>A hash of attribute to configuration object pairs.</p>
+
                     </div>
 
                     
@@ -7003,7 +7123,8 @@ attr config objects.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    A protected version of the attrs argument.
+                    <p>A protected version of the attrs argument.</p>
+
                 
             </div>
         </div>
@@ -7064,6 +7185,7 @@ attr config objects.</p>
     <div class="description">
         <p>Returns the proxy node associated with the current drag operation, or the
 original dragged node if node proxy node is set.</p>
+
     </div>
 
     
@@ -7077,7 +7199,8 @@ original dragged node if node proxy node is set.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
                     
-                    Proxy node or original dragged node.
+                    <p>Proxy node or original dragged node.</p>
+
                 
             </div>
         </div>
@@ -7156,8 +7279,9 @@ original dragged node if node proxy node is set.</p>
 
     <div class="description">
         <p>The low level event publish implementation. It expects all the massaging to have been done
-outside of this method. e.g. the <code>type</code> to <code>fullType</code> conversion. It's designed to be a fast
+outside of this method. e.g. the <code>type</code> to <code>fullType</code> conversion. It&#39;s designed to be a fast
 path publish, which can be used by critical code paths to improve performance.</p>
+
     </div>
 
     
@@ -7176,6 +7300,7 @@ path publish, which can be used by critical code paths to improve performance.</
 
                     <div class="param-description">
                         <p>The prefixed type of the event to publish.</p>
+
                     </div>
 
                     
@@ -7191,6 +7316,7 @@ path publish, which can be used by critical code paths to improve performance.</
 
                     <div class="param-description">
                         <p>The EventTarget specific configuration to mix into the published event.</p>
+
                     </div>
 
                     
@@ -7206,6 +7332,7 @@ path publish, which can be used by critical code paths to improve performance.</
 
                     <div class="param-description">
                         <p>The publish specific configuration to mix into the published event.</p>
+
                     </div>
 
                     
@@ -7224,8 +7351,9 @@ path publish, which can be used by critical code paths to improve performance.</
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/CustomEvent.html" class="crosslink external" target="_blank">CustomEvent</a></span>:
                     
-                    The published event. If called without <code>etOpts</code> or <code>ceOpts</code>, this will
-be the default <code>CustomEvent</code> instance, and can be configured independently.
+                    <p>The published event. If called without <code>etOpts</code> or <code>ceOpts</code>, this will
+be the default <code>CustomEvent</code> instance, and can be configured independently.</p>
+
                 
             </div>
         </div>
@@ -7305,6 +7433,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
 
     <div class="description">
         <p>Utility method for lazily publishing and firing events.</p>
+
     </div>
 
     
@@ -7323,6 +7452,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
 
                     <div class="param-description">
                         <p>Event name to fire.</p>
+
                     </div>
 
                     
@@ -7338,6 +7468,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
 
                     <div class="param-description">
                         <p>Event facade.</p>
+
                     </div>
 
                     
@@ -7354,6 +7485,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
 
                     <div class="param-description">
                         <p>Event options.</p>
+
                     </div>
 
                     
@@ -7369,6 +7501,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
                                 <div class="param-description">
                                     <p>Whether the default handler
         should be executed directly without actually firing the event.</p>
+
                                 </div>
 
                                 
@@ -7434,9 +7567,9 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
 
     <div class="description">
         <p>Detaches and reattaches event handlers.</p>
-
 <p>This is necessary after the <code>container</code>, <code>dragSelector</code>, or <code>dropSelector</code>
 attributes are changed.</p>
+
     </div>
 
     
@@ -7492,8 +7625,9 @@ attributes are changed.</p>
     </div>
 
     <div class="description">
-        <p>Restores the original value of the current dragNode's <code>webkitTouchCallout</code>
+        <p>Restores the original value of the current dragNode&#39;s <code>webkitTouchCallout</code>
 style before it was prevented by <code>_preventTouchCallout()</code>.</p>
+
     </div>
 
     
@@ -7561,9 +7695,9 @@ style before it was prevented by <code>_preventTouchCallout()</code>.</p>
     <div class="description">
         <p>Begins scrolling all currently intersected scroll zones in whichever
 direction(s) they need to be scrolled.</p>
-
 <p>Scrolling will continue (and will accelerate in speed) until the
 <code>_scrollIntersections</code> property is empty.</p>
+
     </div>
 
     
@@ -7585,6 +7719,7 @@ direction(s) they need to be scrolled.</p>
                         <p>Number of pixels to scroll. Scrolling will
     automatically accelerate as long as the pointer remains within a scroll
     margin.</p>
+
                     </div>
 
                     
@@ -7674,6 +7809,7 @@ direction(s) they need to be scrolled.</p>
 
     <div class="description">
         <p>Allows setting of readOnly/writeOnce attributes. See <a href="#method_set">set</a> for argument details.</p>
+
     </div>
 
     
@@ -7692,6 +7828,7 @@ direction(s) they need to be scrolled.</p>
 
                     <div class="param-description">
                         <p>The name of the attribute.</p>
+
                     </div>
 
                     
@@ -7707,6 +7844,7 @@ direction(s) they need to be scrolled.</p>
 
                     <div class="param-description">
                         <p>The value to set the attribute to.</p>
+
                     </div>
 
                     
@@ -7723,6 +7861,7 @@ direction(s) they need to be scrolled.</p>
 
                     <div class="param-description">
                         <p>Optional data providing the circumstances for the change.</p>
+
                     </div>
 
                     
@@ -7741,7 +7880,8 @@ direction(s) they need to be scrolled.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    A reference to the host object.
+                    <p>A reference to the host object.</p>
+
                 
             </div>
         </div>
@@ -7828,8 +7968,8 @@ direction(s) they need to be scrolled.</p>
 
     <div class="description">
         <p>Provides the common implementation for the public set and protected _set methods.</p>
-
 <p>See <a href="#method_set">set</a> for argument details.</p>
+
     </div>
 
     
@@ -7848,6 +7988,7 @@ direction(s) they need to be scrolled.</p>
 
                     <div class="param-description">
                         <p>The name of the attribute.</p>
+
                     </div>
 
                     
@@ -7863,6 +8004,7 @@ direction(s) they need to be scrolled.</p>
 
                     <div class="param-description">
                         <p>The value to set the attribute to.</p>
+
                     </div>
 
                     
@@ -7879,6 +8021,7 @@ direction(s) they need to be scrolled.</p>
 
                     <div class="param-description">
                         <p>Optional data providing the circumstances for the change.</p>
+
                     </div>
 
                     
@@ -7895,6 +8038,7 @@ direction(s) they need to be scrolled.</p>
                     <div class="param-description">
                         <p>If true, allows the caller to set values for
 readOnly or writeOnce attributes which have already been set.</p>
+
                     </div>
 
                     
@@ -7913,7 +8057,8 @@ readOnly or writeOnce attributes which have already been set.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    A reference to the host object.
+                    <p>A reference to the host object.</p>
+
                 
             </div>
         </div>
@@ -7991,6 +8136,7 @@ readOnly or writeOnce attributes which have already been set.</p>
 
     <div class="description">
         <p>Implementation behind the public setAttrs method, to set multiple attribute values.</p>
+
     </div>
 
     
@@ -8009,6 +8155,7 @@ readOnly or writeOnce attributes which have already been set.</p>
 
                     <div class="param-description">
                         <p>An object with attributes name/value pairs.</p>
+
                     </div>
 
                     
@@ -8025,6 +8172,7 @@ readOnly or writeOnce attributes which have already been set.</p>
 
                     <div class="param-description">
                         <p>Optional data providing the circumstances for the change</p>
+
                     </div>
 
                     
@@ -8043,7 +8191,8 @@ readOnly or writeOnce attributes which have already been set.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    A reference to the host object.
+                    <p>A reference to the host object.</p>
+
                 
             </div>
         </div>
@@ -8141,6 +8290,7 @@ readOnly or writeOnce attributes which have already been set.</p>
     <div class="description">
         <p>Updates the stored value of the attribute in the privately held State object,
 if validation and setter passes.</p>
+
     </div>
 
     
@@ -8159,6 +8309,7 @@ if validation and setter passes.</p>
 
                     <div class="param-description">
                         <p>The attribute name.</p>
+
                     </div>
 
                     
@@ -8173,7 +8324,8 @@ if validation and setter passes.</p>
                     
 
                     <div class="param-description">
-                        <p>The sub-attribute name, if setting a sub-attribute property ("x.y.z").</p>
+                        <p>The sub-attribute name, if setting a sub-attribute property (&quot;x.y.z&quot;).</p>
+
                     </div>
 
                     
@@ -8189,6 +8341,7 @@ if validation and setter passes.</p>
 
                     <div class="param-description">
                         <p>The currently stored value of the attribute.</p>
+
                     </div>
 
                     
@@ -8204,6 +8357,7 @@ if validation and setter passes.</p>
 
                     <div class="param-description">
                         <p>The value which is going to be stored.</p>
+
                     </div>
 
                     
@@ -8220,6 +8374,7 @@ if validation and setter passes.</p>
 
                     <div class="param-description">
                         <p>Optional data providing the circumstances for the change.</p>
+
                     </div>
 
                     
@@ -8237,6 +8392,7 @@ if validation and setter passes.</p>
                     <div class="param-description">
                         <p>Optional config hash for the attribute. This is added for performance along the critical path,
 where the calling method has already obtained the config from state.</p>
+
                     </div>
 
                     
@@ -8255,7 +8411,8 @@ where the calling method has already obtained the config from state.</p>
                     
                         <span class="type">Booolean</span>:
                     
-                    true if the new attribute value was stored, false if not.
+                    <p>true if the new attribute value was stored, false if not.</p>
+
                 
             </div>
         </div>
@@ -8325,6 +8482,7 @@ where the calling method has already obtained the config from state.</p>
     <div class="description">
         <p>Sets the stored value for the attribute, in either the
 internal state object, or the state proxy if it exits</p>
+
     </div>
 
     
@@ -8343,6 +8501,7 @@ internal state object, or the state proxy if it exits</p>
 
                     <div class="param-description">
                         <p>The name of the attribute</p>
+
                     </div>
 
                     
@@ -8358,6 +8517,7 @@ internal state object, or the state proxy if it exits</p>
 
                     <div class="param-description">
                         <p>The value of the attribute</p>
+
                     </div>
 
                     
@@ -8444,7 +8604,6 @@ internal state object, or the state proxy if it exits</p>
         <p>
 Adds an attribute with the provided configuration to the host object.
 </p>
-
 <p>
 The config argument object supports the following properties:
 </p>
@@ -8457,7 +8616,7 @@ The config argument object supports the following properties:
    <dd>
    <p>A function, which will return the initial value to set on the attribute. This is useful
    for cases where the attribute configuration is defined statically, but needs to
-   reference the host instance ("this") to obtain an initial value. If both the value and valueFn properties are defined,
+   reference the host instance (&quot;this&quot;) to obtain an initial value. If both the value and valueFn properties are defined,
    the value returned by the valueFn has precedence over the value property, unless it returns undefined, in which
    case the value property is used.</p>
 
@@ -8470,10 +8629,10 @@ The config argument object supports the following properties:
 
    <dt>writeOnce &#60;boolean&#62; or &#60;string&#62;</dt>
    <dd>
-       Whether or not the attribute is "write once". Attributes having writeOnce set to true,
+       Whether or not the attribute is &quot;write once&quot;. Attributes having writeOnce set to true,
        can only have their values set once, be it through the default configuration,
        constructor configuration arguments, or by invoking set.
-       <p>The writeOnce attribute can also be set to the string "initOnly",
+       <p>The writeOnce attribute can also be set to the string &quot;initOnly&quot;,
         in which case the attribute can only be set during initialization
        (when used with Base, this means it can only be set during construction)</p>
    </dd>
@@ -8518,7 +8677,7 @@ The config argument object supports the following properties:
 </dl>
 
 <p>The setter, getter and validator are invoked with the value and name passed in as the first and second arguments, and with
-the context ("this") set to the host object.</p>
+the context (&quot;this&quot;) set to the host object.</p>
 
 <p>Configuration properties outside of the list mentioned above are considered private properties used internally by attribute,
 and are not intended for public use.</p>
@@ -8540,6 +8699,7 @@ and are not intended for public use.</p>
 
                     <div class="param-description">
                         <p>The name of the attribute.</p>
+
                     </div>
 
                     
@@ -8555,7 +8715,6 @@ and are not intended for public use.</p>
 
                     <div class="param-description">
                         <p>An object with attribute configuration property/value pairs, specifying the configuration for the attribute.</p>
-
 <p>
 <strong>NOTE:</strong> The configuration object is modified when adding an attribute, so if you need
 to protect the original values, you will need to merge the object.
@@ -8575,6 +8734,7 @@ to protect the original values, you will need to merge the object.
 
                     <div class="param-description">
                         <p>(optional) Whether or not to add this attribute lazily (on the first call to get/set).</p>
+
                     </div>
 
                     
@@ -8593,7 +8753,8 @@ to protect the original values, you will need to merge the object.
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    A reference to the host object.
+                    <p>A reference to the host object.</p>
+
                 
             </div>
         </div>
@@ -8672,7 +8833,6 @@ to protect the original values, you will need to merge the object.
 
     <div class="description">
         <p>Configures a group of attributes, and sets initial values.</p>
-
 <p>
 <strong>NOTE:</strong> This method does not isolate the configuration object by merging/cloning.
 The caller is responsible for merging/cloning the configuration object if required.
@@ -8695,6 +8855,7 @@ The caller is responsible for merging/cloning the configuration object if requir
 
                     <div class="param-description">
                         <p>An object with attribute name/configuration pairs.</p>
+
                     </div>
 
                     
@@ -8711,6 +8872,7 @@ The caller is responsible for merging/cloning the configuration object if requir
                     <div class="param-description">
                         <p>An object with attribute name/value pairs, defining the initial values to apply.
 Values defined in the cfgs argument will be over-written by values in this argument unless defined as read only.</p>
+
                     </div>
 
                     
@@ -8728,6 +8890,7 @@ Values defined in the cfgs argument will be over-written by values in this argum
                         <p>Whether or not to delay the intialization of these attributes until the first call to get/set.
 Individual attributes can over-ride this behavior by defining a lazyAdd configuration property in their configuration.
 See <a href="#method_addAttr">addAttr</a>.</p>
+
                     </div>
 
                     
@@ -8746,7 +8909,8 @@ See <a href="#method_addAttr">addAttr</a>.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    A reference to the host object.
+                    <p>A reference to the host object.</p>
+
                 
             </div>
         </div>
@@ -8809,10 +8973,9 @@ See <a href="#method_addAttr">addAttr</a>.</p>
         <p>Registers another EventTarget as a bubble target.  Bubble order
 is determined by the order registered.  Multiple targets can
 be specified.</p>
-
 <p>Events can only bubble if emitFacade is true.</p>
-
 <p>Included in the event-custom-complex submodule.</p>
+
     </div>
 
     
@@ -8831,6 +8994,7 @@ be specified.</p>
 
                     <div class="param-description">
                         <p>the target to add</p>
+
                     </div>
 
                     
@@ -8922,6 +9086,7 @@ be specified.</p>
 supplied callback will execute after any listeners add
 via the subscribe method, and after the default function,
 if configured for the event, has executed.</p>
+
     </div>
 
     
@@ -8940,6 +9105,7 @@ if configured for the event, has executed.</p>
 
                     <div class="param-description">
                         <p>The name of the event</p>
+
                     </div>
 
                     
@@ -8955,6 +9121,7 @@ if configured for the event, has executed.</p>
 
                     <div class="param-description">
                         <p>The callback to execute in response to the event</p>
+
                     </div>
 
                     
@@ -8971,6 +9138,7 @@ if configured for the event, has executed.</p>
 
                     <div class="param-description">
                         <p>Override <code>this</code> object in callback</p>
+
                     </div>
 
                     
@@ -8987,6 +9155,7 @@ if configured for the event, has executed.</p>
 
                     <div class="param-description">
                         <p>0..n additional arguments to supply to the subscriber</p>
+
                     </div>
 
                     
@@ -9005,8 +9174,9 @@ if configured for the event, has executed.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventHandle.html" class="crosslink external" target="_blank">EventHandle</a></span>:
                     
-                    A subscription handle capable of detaching the
-                      subscription
+                    <p>A subscription handle capable of detaching the
+                      subscription</p>
+
                 
             </div>
         </div>
@@ -9071,6 +9241,7 @@ if configured for the event, has executed.</p>
 
     <div class="description">
         <p>Checks if the given attribute has been added to the host</p>
+
     </div>
 
     
@@ -9089,6 +9260,7 @@ if configured for the event, has executed.</p>
 
                     <div class="param-description">
                         <p>The name of the attribute to check.</p>
+
                     </div>
 
                     
@@ -9107,8 +9279,9 @@ if configured for the event, has executed.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    true if an attribute with the given name has been added, false if it hasn't.
-        This method will return true for lazily added attributes.
+                    <p>true if an attribute with the given name has been added, false if it hasn&#39;t.
+        This method will return true for lazily added attributes.</p>
+
                 
             </div>
         </div>
@@ -9166,12 +9339,11 @@ if configured for the event, has executed.</p>
 or method.  If the first argument is a function, it
 is assumed the target is a method.  For DOM and custom
 events, this is an alias for Y.on.</p>
-
 <p>For DOM and custom events:
 type, callback, context, 0-n arguments</p>
-
 <p>For methods:
 callback, object (method host), methodName, context, 0-n arguments</p>
+
     </div>
 
     
@@ -9183,7 +9355,8 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             <div class="returns-description">
                 
                     
-                    detach handle
+                    <p>detach handle</p>
+
                 
             </div>
         </div>
@@ -9248,6 +9421,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
 
     <div class="description">
         <p>Propagate an event.  Requires the event-custom-complex module.</p>
+
     </div>
 
     
@@ -9266,6 +9440,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
 
                     <div class="param-description">
                         <p>the custom event to propagate</p>
+
                     </div>
 
                     
@@ -9284,7 +9459,8 @@ callback, object (method host), methodName, context, 0-n arguments</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    the aggregated return value from Event.Custom.fire
+                    <p>the aggregated return value from Event.Custom.fire</p>
+
                 
             </div>
         </div>
@@ -9344,6 +9520,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
 
     <div class="description">
         <p>Destroy lifecycle method. Invokes destructors for the class hierarchy.</p>
+
     </div>
 
     
@@ -9357,7 +9534,8 @@ callback, object (method host), methodName, context, 0-n arguments</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/BaseCore.html" class="crosslink external" target="_blank">BaseCore</a></span>:
                     
-                    A reference to this object
+                    <p>A reference to this object</p>
+
                 
             </div>
         </div>
@@ -9434,6 +9612,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
 
     <div class="description">
         <p>Detach one or more listeners the from the specified event</p>
+
     </div>
 
     
@@ -9455,6 +9634,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
                        type of event.  If the type
                        is not specified, it will attempt to remove
                        the listener from all hosted events.</p>
+
                     </div>
 
                     
@@ -9471,6 +9651,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
                     <div class="param-description">
                         <p>The subscribed function to unsubscribe, if not
                          supplied, all subscribers will be removed.</p>
+
                     </div>
 
                     
@@ -9490,6 +9671,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
                        disambiguate multiple listeners that are the same
                        (e.g., you subscribe many object using a function
                        that lives on the prototype)</p>
+
                     </div>
 
                     
@@ -9508,7 +9690,8 @@ callback, object (method host), methodName, context, 0-n arguments</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventTarget.html" class="crosslink external" target="_blank">EventTarget</a></span>:
                     
-                    the host
+                    <p>the host</p>
+
                 
             </div>
         </div>
@@ -9571,6 +9754,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
         <p>Removes all listeners from the specified event.  If the event type
 is not specified, all listeners from all hosted custom events will
 be removed.</p>
+
     </div>
 
     
@@ -9589,6 +9773,7 @@ be removed.</p>
 
                     <div class="param-description">
                         <p>The type, or name of the event</p>
+
                     </div>
 
                     
@@ -9667,18 +9852,17 @@ be removed.</p>
         <p>Fire a custom event by name.  The callback functions will be executed
 from the context specified when the event was created, and with the
 following parameters.</p>
-
 <p>The first argument is the event type, and any additional arguments are
 passed to the listeners as parameters.  If the first of these is an
 object literal, and the event is configured to emit an event facade,
 that object is mixed into the event facade and the facade is provided
 in place of the original object.</p>
-
-<p>If the custom event object hasn't been created, then the event hasn't
+<p>If the custom event object hasn&#39;t been created, then the event hasn&#39;t
 been published and it has no subscribers.  For performance sake, we
-immediate exit in this case.  This means the event won't bubble, so
+immediate exit in this case.  This means the event won&#39;t bubble, so
 if the intention is that a bubble target be notified, the event must
 be published on this object first.</p>
+
     </div>
 
     
@@ -9697,7 +9881,8 @@ be published on this object first.</p>
 
                     <div class="param-description">
                         <p>The type of the event, or an object that contains
-a 'type' property.</p>
+a &#39;type&#39; property.</p>
+
                     </div>
 
                     
@@ -9717,6 +9902,7 @@ the handler.  If the first of these is an object literal and the event is
 configured to emit an event facade, the event facade will replace that
 parameter after the properties the object literal contains are copied to
 the event facade.</p>
+
                     </div>
 
                     
@@ -9735,8 +9921,9 @@ the event facade.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    True if the whole lifecycle of the event went through,
-false if at any point the event propagation was halted.
+                    <p>True if the whole lifecycle of the event went through,
+false if at any point the event propagation was halted.</p>
+
                 
             </div>
         </div>
@@ -9801,8 +9988,9 @@ false if at any point the event propagation was halted.
 
     <div class="description">
         <p>Returns the current value of the attribute. If the attribute
-has been configured with a 'getter' function, this method will delegate
-to the 'getter' to obtain the value of the attribute.</p>
+has been configured with a &#39;getter&#39; function, this method will delegate
+to the &#39;getter&#39; to obtain the value of the attribute.</p>
+
     </div>
 
     
@@ -9821,7 +10009,8 @@ to the 'getter' to obtain the value of the attribute.</p>
 
                     <div class="param-description">
                         <p>The name of the attribute. If the value of the attribute is an Object,
-dot notation can be used to obtain the value of a property of the object (e.g. <code>get("x.y.z")</code>)</p>
+dot notation can be used to obtain the value of a property of the object (e.g. <code>get(&quot;x.y.z&quot;)</code>)</p>
+
                     </div>
 
                     
@@ -9840,7 +10029,8 @@ dot notation can be used to obtain the value of a property of the object (e.g. <
                     
                         <span class="type">Any</span>:
                     
-                    The value of the attribute
+                    <p>The value of the attribute</p>
+
                 
             </div>
         </div>
@@ -9905,6 +10095,7 @@ dot notation can be used to obtain the value of a property of the object (e.g. <
 
     <div class="description">
         <p>Gets multiple attribute values.</p>
+
     </div>
 
     
@@ -9924,6 +10115,7 @@ dot notation can be used to obtain the value of a property of the object (e.g. <
                     <div class="param-description">
                         <p>Optional. An array of attribute names. If omitted, all attribute values are
 returned. If set to true, all attributes modified from their initial values are returned.</p>
+
                     </div>
 
                     
@@ -9942,7 +10134,8 @@ returned. If set to true, all attributes modified from their initial values are 
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    An object with attribute name/value pairs.
+                    <p>An object with attribute name/value pairs.</p>
+
                 
             </div>
         </div>
@@ -10014,6 +10207,7 @@ returned. If set to true, all attributes modified from their initial values are 
     <div class="description">
         <p>Returns the custom event of the provided type has been created, a
 falsy value otherwise</p>
+
     </div>
 
     
@@ -10032,6 +10226,7 @@ falsy value otherwise</p>
 
                     <div class="param-description">
                         <p>the type, or name of the event</p>
+
                     </div>
 
                     
@@ -10047,6 +10242,7 @@ falsy value otherwise</p>
 
                     <div class="param-description">
                         <p>if true, the type is prefixed already</p>
+
                     </div>
 
                     
@@ -10065,7 +10261,8 @@ falsy value otherwise</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/CustomEvent.html" class="crosslink external" target="_blank">CustomEvent</a></span>:
                     
-                    the custom event or null
+                    <p>the custom event or null</p>
+
                 
             </div>
         </div>
@@ -10120,6 +10317,7 @@ falsy value otherwise</p>
 
     <div class="description">
         <p>Returns an array of bubble targets for this object.</p>
+
     </div>
 
     
@@ -10131,7 +10329,8 @@ falsy value otherwise</p>
             <div class="returns-description">
                 
                     
-                    EventTarget[]
+                    <p>EventTarget[]</p>
+
                 
             </div>
         </div>
@@ -10202,6 +10401,7 @@ falsy value otherwise</p>
     <div class="description">
         <p>Init lifecycle method, invoked during construction. Sets up attributes
 and invokes initializers for the class hierarchy.</p>
+
     </div>
 
     
@@ -10220,6 +10420,7 @@ and invokes initializers for the class hierarchy.</p>
 
                     <div class="param-description">
                         <p>Object with configuration property name/value pairs</p>
+
                     </div>
 
                     
@@ -10238,7 +10439,8 @@ and invokes initializers for the class hierarchy.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/BaseCore.html" class="crosslink external" target="_blank">BaseCore</a></span>:
                     
-                    A reference to this object
+                    <p>A reference to this object</p>
+
                 
             </div>
         </div>
@@ -10305,7 +10507,6 @@ and invokes initializers for the class hierarchy.</p>
 
     <div class="description">
         <p>Updates the configuration of an attribute which has already been added.</p>
-
 <p>
 The properties which can be modified through this interface are limited
 to the following subset of attributes, which can be safely modified
@@ -10330,6 +10531,7 @@ broadcast and getter.
 
                     <div class="param-description">
                         <p>The name of the attribute whose configuration is to be updated.</p>
+
                     </div>
 
                     
@@ -10345,6 +10547,7 @@ broadcast and getter.
 
                     <div class="param-description">
                         <p>An object with configuration property/value pairs, specifying the configuration properties to modify.</p>
+
                     </div>
 
                     
@@ -10434,23 +10637,21 @@ broadcast and getter.
     <div class="description">
         <p>Subscribe a callback function to a custom event fired by this object or
 from an object that bubbles its events to this object.</p>
-
 <p>Callback functions for events published with <code>emitFacade = true</code> will
-receive an <code>EventFacade</code> as the first argument (typically named "e").
+receive an <code>EventFacade</code> as the first argument (typically named &quot;e&quot;).
 These callbacks can then call <code>e.preventDefault()</code> to disable the
-behavior published to that event's <code>defaultFn</code>.  See the <code>EventFacade</code>
+behavior published to that event&#39;s <code>defaultFn</code>.  See the <code>EventFacade</code>
 API for all available properties and methods. Subscribers to
 non-<code>emitFacade</code> events will receive the arguments passed to <code>fire()</code>
 after the event name.</p>
-
 <p>To subscribe to multiple events at once, pass an object as the first
 argument, where the key:value pairs correspond to the eventName:callback,
 or pass an array of event names as the first argument to subscribe to
 all listed events with the same callback.</p>
-
 <p>Returning <code>false</code> from a callback is supported as an alternative to
 calling <code>e.preventDefault(); e.stopPropagation();</code>.  However, it is
 recommended to use the event methods whenever possible.</p>
+
     </div>
 
     
@@ -10469,6 +10670,7 @@ recommended to use the event methods whenever possible.</p>
 
                     <div class="param-description">
                         <p>The name of the event</p>
+
                     </div>
 
                     
@@ -10484,6 +10686,7 @@ recommended to use the event methods whenever possible.</p>
 
                     <div class="param-description">
                         <p>The callback to execute in response to the event</p>
+
                     </div>
 
                     
@@ -10500,6 +10703,7 @@ recommended to use the event methods whenever possible.</p>
 
                     <div class="param-description">
                         <p>Override <code>this</code> object in callback</p>
+
                     </div>
 
                     
@@ -10516,6 +10720,7 @@ recommended to use the event methods whenever possible.</p>
 
                     <div class="param-description">
                         <p>0..n additional arguments to supply to the subscriber</p>
+
                     </div>
 
                     
@@ -10534,8 +10739,9 @@ recommended to use the event methods whenever possible.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventHandle.html" class="crosslink external" target="_blank">EventHandle</a></span>:
                     
-                    A subscription handle capable of detaching that
-                      subscription
+                    <p>A subscription handle capable of detaching that
+                      subscription</p>
+
                 
             </div>
         </div>
@@ -10620,6 +10826,7 @@ recommended to use the event methods whenever possible.</p>
         <p>Listen to a custom event hosted by this object one time.
 This is the equivalent to <code>on</code> except the
 listener is immediatelly detached when it is executed.</p>
+
     </div>
 
     
@@ -10638,6 +10845,7 @@ listener is immediatelly detached when it is executed.</p>
 
                     <div class="param-description">
                         <p>The name of the event</p>
+
                     </div>
 
                     
@@ -10653,6 +10861,7 @@ listener is immediatelly detached when it is executed.</p>
 
                     <div class="param-description">
                         <p>The callback to execute in response to the event</p>
+
                     </div>
 
                     
@@ -10669,6 +10878,7 @@ listener is immediatelly detached when it is executed.</p>
 
                     <div class="param-description">
                         <p>Override <code>this</code> object in callback</p>
+
                     </div>
 
                     
@@ -10685,6 +10895,7 @@ listener is immediatelly detached when it is executed.</p>
 
                     <div class="param-description">
                         <p>0..n additional arguments to supply to the subscriber</p>
+
                     </div>
 
                     
@@ -10703,8 +10914,9 @@ listener is immediatelly detached when it is executed.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventHandle.html" class="crosslink external" target="_blank">EventHandle</a></span>:
                     
-                    A subscription handle capable of detaching the
-                      subscription
+                    <p>A subscription handle capable of detaching the
+                      subscription</p>
+
                 
             </div>
         </div>
@@ -10789,6 +11001,7 @@ listener is immediatelly detached when it is executed.</p>
         <p>Listen to a custom event hosted by this object one time.
 This is the equivalent to <code>after</code> except the
 listener is immediatelly detached when it is executed.</p>
+
     </div>
 
     
@@ -10807,6 +11020,7 @@ listener is immediatelly detached when it is executed.</p>
 
                     <div class="param-description">
                         <p>The name of the event</p>
+
                     </div>
 
                     
@@ -10822,6 +11036,7 @@ listener is immediatelly detached when it is executed.</p>
 
                     <div class="param-description">
                         <p>The callback to execute in response to the event</p>
+
                     </div>
 
                     
@@ -10838,6 +11053,7 @@ listener is immediatelly detached when it is executed.</p>
 
                     <div class="param-description">
                         <p>Override <code>this</code> object in callback</p>
+
                     </div>
 
                     
@@ -10854,6 +11070,7 @@ listener is immediatelly detached when it is executed.</p>
 
                     <div class="param-description">
                         <p>0..n additional arguments to supply to the subscriber</p>
+
                     </div>
 
                     
@@ -10872,8 +11089,9 @@ listener is immediatelly detached when it is executed.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventHandle.html" class="crosslink external" target="_blank">EventHandle</a></span>:
                     
-                    A subscription handle capable of detaching that
-                      subscription
+                    <p>A subscription handle capable of detaching that
+                      subscription</p>
+
                 
             </div>
         </div>
@@ -10945,11 +11163,12 @@ listener is immediatelly detached when it is executed.</p>
     </div>
 
     <div class="description">
-        <p>Takes the type parameter passed to 'on' and parses out the
+        <p>Takes the type parameter passed to &#39;on&#39; and parses out the
 various pieces that could be included in the type.  If the
 event type is passed without a prefix, it will be expanded
 to include the prefix one is supplied or the event target
 is configured with a default prefix.</p>
+
     </div>
 
     
@@ -10968,6 +11187,7 @@ is configured with a default prefix.</p>
 
                     <div class="param-description">
                         <p>the type</p>
+
                     </div>
 
                     
@@ -10984,6 +11204,7 @@ is configured with a default prefix.</p>
 
                     <div class="param-description">
                         <p>the prefix</p>
+
                     </div>
 
                     
@@ -11002,11 +11223,12 @@ is configured with a default prefix.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external external" target="_blank">Array</a></span>:
                     
-                    an array containing:
- * the detach category, if supplied,
- * the prefixed event type,
- * whether or not this is an after listener,
- * the supplied event type
+                    <p>an array containing:
+ <em> the detach category, if supplied,
+ </em> the prefixed event type,
+ <em> whether or not this is an after listener,
+ </em> the supplied event type</p>
+
                 
             </div>
         </div>
@@ -11079,6 +11301,7 @@ is configured with a default prefix.</p>
         <p>Creates a new custom event of the specified type.  If a custom event
 by that name already exists, it will not be re-created.  In either
 case the custom event is returned.</p>
+
     </div>
 
     
@@ -11097,6 +11320,7 @@ case the custom event is returned.</p>
 
                     <div class="param-description">
                         <p>the type, or name of the event</p>
+
                     </div>
 
                     
@@ -11111,60 +11335,59 @@ case the custom event is returned.</p>
                     
 
                     <div class="param-description">
-                        <p>optional config params.  Valid properties are:</p>
-
-<p><ul>
+                        <p><p>optional config params.  Valid properties are:</p>
+ <ul>
    <li>
-  'broadcast': whether or not the YUI instance and YUI global are notified when the event is fired (false)
+  &#39;broadcast&#39;: whether or not the YUI instance and YUI global are notified when the event is fired (false)
    </li>
    <li>
-  'bubbles': whether or not this event bubbles (true)
+  &#39;bubbles&#39;: whether or not this event bubbles (true)
              Events can only bubble if emitFacade is true.
    </li>
    <li>
-  'context': the default execution context for the listeners (this)
+  &#39;context&#39;: the default execution context for the listeners (this)
    </li>
    <li>
-  'defaultFn': the default function to execute when this event fires if preventDefault was not called
+  &#39;defaultFn&#39;: the default function to execute when this event fires if preventDefault was not called
    </li>
    <li>
-  'emitFacade': whether or not this event emits a facade (false)
+  &#39;emitFacade&#39;: whether or not this event emits a facade (false)
    </li>
    <li>
-  'prefix': the prefix for this targets events, e.g., 'menu' in 'menu:click'
+  &#39;prefix&#39;: the prefix for this targets events, e.g., &#39;menu&#39; in &#39;menu:click&#39;
    </li>
    <li>
-  'fireOnce': if an event is configured to fire once, new subscribers after
+  &#39;fireOnce&#39;: if an event is configured to fire once, new subscribers after
   the fire will be notified immediately.
    </li>
    <li>
-  'async': fireOnce event listeners will fire synchronously if the event has already
+  &#39;async&#39;: fireOnce event listeners will fire synchronously if the event has already
    fired unless async is true.
    </li>
    <li>
-  'preventable': whether or not preventDefault() has an effect (true)
+  &#39;preventable&#39;: whether or not preventDefault() has an effect (true)
    </li>
    <li>
-  'preventedFn': a function that is executed when preventDefault is called
+  &#39;preventedFn&#39;: a function that is executed when preventDefault is called
    </li>
    <li>
-  'queuable': whether or not this event can be queued during bubbling (false)
+  &#39;queuable&#39;: whether or not this event can be queued during bubbling (false)
    </li>
    <li>
-  'silent': if silent is true, debug messages are not provided for this event.
+  &#39;silent&#39;: if silent is true, debug messages are not provided for this event.
    </li>
    <li>
-  'stoppedFn': a function that is executed when stopPropagation is called
+  &#39;stoppedFn&#39;: a function that is executed when stopPropagation is called
    </li></p>
-
-<p><li>
-  'monitored': specifies whether or not this event should send notifications about
+<p>   <li>
+  &#39;monitored&#39;: specifies whether or not this event should send notifications about
   when the event has been attached, detached, or published.
    </li>
    <li>
-  'type': the event type (valid option if not provided as the first parameter to publish)
+  &#39;type&#39;: the event type (valid option if not provided as the first parameter to publish)
    </li>
  </ul></p>
+
                     </div>
 
                     
@@ -11183,7 +11406,8 @@ case the custom event is returned.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/CustomEvent.html" class="crosslink external" target="_blank">CustomEvent</a></span>:
                     
-                    the custom event
+                    <p>the custom event</p>
+
                 
             </div>
         </div>
@@ -11244,6 +11468,7 @@ case the custom event is returned.</p>
 
     <div class="description">
         <p>Removes an attribute from the host object</p>
+
     </div>
 
     
@@ -11262,6 +11487,7 @@ case the custom event is returned.</p>
 
                     <div class="param-description">
                         <p>The name of the attribute to be removed.</p>
+
                     </div>
 
                     
@@ -11328,6 +11554,7 @@ case the custom event is returned.</p>
 
     <div class="description">
         <p>Removes a bubble target</p>
+
     </div>
 
     
@@ -11346,6 +11573,7 @@ case the custom event is returned.</p>
 
                     <div class="param-description">
                         <p>the target to remove</p>
+
                     </div>
 
                     
@@ -11419,6 +11647,7 @@ case the custom event is returned.</p>
     <div class="description">
         <p>Resets the attribute (or all attributes) to its initial value, as long as
 the attribute is not readOnly, or writeOnce.</p>
+
     </div>
 
     
@@ -11437,6 +11666,7 @@ the attribute is not readOnly, or writeOnce.</p>
 
                     <div class="param-description">
                         <p>Optional. The name of the attribute to reset.  If omitted, all attributes are reset.</p>
+
                     </div>
 
                     
@@ -11455,7 +11685,8 @@ the attribute is not readOnly, or writeOnce.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    A reference to the host object.
+                    <p>A reference to the host object.</p>
+
                 
             </div>
         </div>
@@ -11537,6 +11768,7 @@ the attribute is not readOnly, or writeOnce.</p>
 
     <div class="description">
         <p>Sets the value of an attribute.</p>
+
     </div>
 
     
@@ -11556,7 +11788,8 @@ the attribute is not readOnly, or writeOnce.</p>
                     <div class="param-description">
                         <p>The name of the attribute. If the
 current value of the attribute is an Object, dot notation can be used
-to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</code>).</p>
+to set the value of a property within the object (e.g. <code>set(&quot;x.y.z&quot;, 5)</code>).</p>
+
                     </div>
 
                     
@@ -11572,6 +11805,7 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
 
                     <div class="param-description">
                         <p>The value to set the attribute to.</p>
+
                     </div>
 
                     
@@ -11588,6 +11822,7 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
 
                     <div class="param-description">
                         <p>Optional data providing the circumstances for the change.</p>
+
                     </div>
 
                     
@@ -11606,7 +11841,8 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    A reference to the host object.
+                    <p>A reference to the host object.</p>
+
                 
             </div>
         </div>
@@ -11682,6 +11918,7 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
 
     <div class="description">
         <p>Sets multiple attribute values.</p>
+
     </div>
 
     
@@ -11700,6 +11937,7 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
 
                     <div class="param-description">
                         <p>An object with attributes name/value pairs.</p>
+
                     </div>
 
                     
@@ -11716,6 +11954,7 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
 
                     <div class="param-description">
                         <p>Optional data providing the circumstances for the change.</p>
+
                     </div>
 
                     
@@ -11734,7 +11973,8 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>:
                     
-                    A reference to the host object.
+                    <p>A reference to the host object.</p>
+
                 
             </div>
         </div>
@@ -11789,6 +12029,7 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
 
     <div class="description">
         <p>subscribe to an event</p>
+
     </div>
 
     
@@ -11846,13 +12087,12 @@ to set the value of a property within the object (e.g. <code>set("x.y.z", 5)</co
     <div class="description">
         <p>Synchronizes the internal cache of dropzone node locations, which is used to
 determine whether a dragged node may be dropped.</p>
-
 <p>You should call this method if you modify the DOM or change the position or
 metrics of a dropzone node during a drag operation. Otherwise, dropzone
 positions may be miscalculated.</p>
-
 <p>Calling this method when a drag operation is not in progress will have no
 effect.</p>
+
     </div>
 
     
@@ -11909,6 +12149,7 @@ effect.</p>
     <div class="description">
         <p>Default toString implementation. Provides the constructor NAME
 and the instance guid, if set.</p>
+
     </div>
 
     
@@ -11922,7 +12163,8 @@ and the instance guid, if set.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                     
-                    String representation for this object
+                    <p>String representation for this object</p>
+
                 
             </div>
         </div>
@@ -11977,6 +12219,7 @@ and the instance guid, if set.</p>
 
     <div class="description">
         <p>detach a listener</p>
+
     </div>
 
     
@@ -12044,6 +12287,7 @@ and the instance guid, if set.</p>
         <p>Removes all listeners from the specified event.  If the event type
 is not specified, all listeners from all hosted custom events will
 be removed.</p>
+
     </div>
 
     
@@ -12062,6 +12306,7 @@ be removed.</p>
 
                     <div class="param-description">
                         <p>The type, or name of the event</p>
+
                     </div>
 
                     
@@ -12120,9 +12365,9 @@ be removed.</p>
         <p>This property controls whether or not instances of this class should
 allow users to add ad-hoc attributes through the constructor configuration
 hash.</p>
-
 <p>AdHoc attributes are attributes which are not defined by the class, and are
-not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
+not handled by the MyClass._NON_ATTRS_CFG</p>
+
     </div>
 
     
@@ -12169,6 +12414,7 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
 
     <div class="description">
         <p>CSS class names used by DragDrop.</p>
+
     </div>
 
     
@@ -12187,8 +12433,9 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
                 
 
                 <div class="param-description">
-                    <p>Class name applied to a node or proxy node that's
+                    <p>Class name applied to a node or proxy node that&#39;s
     being dragged.</p>
+
                 </div>
 
                 
@@ -12203,6 +12450,7 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
                 <div class="param-description">
                     <p>Class name applied to a dropzone node over which
     a draggable node is currently being dragged.</p>
+
                 </div>
 
                 
@@ -12216,7 +12464,8 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
 
                 <div class="param-description">
                     <p>Class name applied to a node or proxy node
-    that's currently being dragged and can be dropped.</p>
+    that&#39;s currently being dragged and can be dropped.</p>
+
                 </div>
 
                 
@@ -12262,6 +12511,7 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
 
     <div class="description">
         <p>The string used to identify the class of this object.</p>
+
     </div>
 
     
@@ -12323,8 +12573,8 @@ not handled by the MyClass.<em>NON</em>ATTRS_CFG</p>
         <p>Container node to which drag operations should be constrained. All
 draggable nodes and dropzones must be descendants of this container, and
 draggable nodes will not be draggable or droppable outside its borders.</p>
-
 <p>If not specified, the <code>&lt;body&gt;</code> element will be used as the container.</p>
+
     </div>
 
     
@@ -12429,6 +12679,7 @@ draggable nodes will not be draggable or droppable outside its borders.</p>
     <div class="description">
         <p>Flag indicating whether or not this object
 has been through the destroy lifecycle phase.</p>
+
     </div>
 
     
@@ -12534,9 +12785,9 @@ has been through the destroy lifecycle phase.</p>
     <div class="description">
         <p>Distance in pixels that the mouse cursor must move after a mousedown
 before the movement will be considered the beginning of a drag event.</p>
-
 <p>This value has no effect on touch-based interactions (see
 <code>touchCancelDistance</code>).</p>
+
     </div>
 
     
@@ -12642,9 +12893,9 @@ before the movement will be considered the beginning of a drag event.</p>
     <div class="description">
         <p>CSS selector that matches one or more nodes within a draggable node that
 should be treated as drag handles for that node.</p>
-
 <p>If a <code>dragHandleSelector</code> is set, nodes matched by <code>dragSelector</code> will
 only be draggable by their handles.</p>
+
     </div>
 
     
@@ -12748,6 +12999,7 @@ only be draggable by their handles.</p>
     <div class="description">
         <p>CSS selector that matches one or more nodes within the <code>container</code> that
 should be draggable.</p>
+
     </div>
 
     
@@ -12851,6 +13103,7 @@ should be draggable.</p>
     <div class="description">
         <p>CSS selector that matches one or more nodes within the <code>container</code> that
 should be considered drop zones.</p>
+
     </div>
 
     
@@ -12955,6 +13208,7 @@ should be considered drop zones.</p>
         <p>Whether or not to enable dragging in response to touch events. There are
 currently some edge cases with this, which is why it might make sense to
 disable it in certain situations.</p>
+
     </div>
 
     
@@ -13059,6 +13313,7 @@ disable it in certain situations.</p>
     <div class="description">
         <p>Flag indicating whether or not this object
 has been through the init lifecycle phase.</p>
+
     </div>
 
     
@@ -13164,12 +13419,12 @@ has been through the init lifecycle phase.</p>
     <div class="description">
         <p>Array of custom X and Y pixel offset values specifying how the dragged
 node or proxy node should be positioned relative to the pointer
-position, or the string "auto" for an automatic offset based on the
+position, or the string &quot;auto&quot; for an automatic offset based on the
 initial grab point.</p>
-
 <p>You can override the pointer offset specified here on a per-drag basis
 by setting a <code>pointerOffset</code> property on the event facade passed to the
-"on" phase of the <code>dragstart</code> event.</p>
+&quot;on&quot; phase of the <code>dragstart</code> event.</p>
+
     </div>
 
     
@@ -13275,9 +13530,9 @@ by setting a <code>pointerOffset</code> property on the event facade passed to t
     <div class="description">
         <p>Whether or not to automatically scroll the container if necessary when
 the pointer approaches an edge during a drag operation.</p>
-
-<p>If it's necessary to auto-scroll nodes other than the container, select
+<p>If it&#39;s necessary to auto-scroll nodes other than the container, select
 those nodes using the <code>scrollSelector</code> attribute.</p>
+
     </div>
 
     
@@ -13381,9 +13636,9 @@ those nodes using the <code>scrollSelector</code> attribute.</p>
     <div class="description">
         <p>Distance in pixels from the edge of a scrollable node at which the
 pointer will cause the node to begin scrolling during a drag operation.</p>
-
 <p>The smaller this number is, the closer the pointer will have to be to
 the edge before the node will start to scroll.</p>
+
     </div>
 
     
@@ -13489,7 +13744,8 @@ the edge before the node will start to scroll.</p>
     <div class="description">
         <p>CSS selector that matches scrollable nodes within the <code>container</code> that
 should be automatically scrolled when the pointer is dragged near the
-node's edges.</p>
+node&#39;s edges.</p>
+
     </div>
 
     
@@ -13592,14 +13848,13 @@ node's edges.</p>
 
     <div class="description">
         <p>Amount of time in milliseconds that must pass after a mousedown or tap
-without a corresponding mouseup or release before we'll consider the
+without a corresponding mouseup or release before we&#39;ll consider the
 action the beginning of a drag event.</p>
-
 <p>For mouse-based interactions, exceeding this threshold will cause a
 drag event to start even if the <code>distanceThreshold</code> is not met.</p>
-
 <p>This attribute has no effect on touch-based interactions (see
 <code>touchDelay</code>).</p>
+
     </div>
 
     
@@ -13706,11 +13961,10 @@ drag event to start even if the <code>distanceThreshold</code> is not met.</p>
         <p>Maximum distance in pixels from the original touch point that the
 pointer may move during the <code>touchDelay</code> time before a pending drag is
 canceled.</p>
-
 <p>This helps avoid triggering unintended drag interactions when the user
 is actually scrolling or performing some other touch gesture.</p>
-
 <p>This attribute has no effect on mouse-based interactions.</p>
+
     </div>
 
     
@@ -13816,12 +14070,11 @@ is actually scrolling or performing some other touch gesture.</p>
     <div class="description">
         <p>Delay in milliseconds after an initial touch before a drag interaction
 begins when using a touch-based input device.</p>
-
 <p>If the touch ends before this delay is over, or if the touch point moves
 by more than <code>touchCancelDistance</code> pixels before this delay is over, the
 pending drag is canceled.</p>
-
 <p>This attribute has no effect on mouse-based interactions.</p>
+
     </div>
 
     
@@ -13929,9 +14182,8 @@ fired prior to destruction. Invoking the preventDefault
 method on the event object provided to subscribers will
 prevent destruction from proceeding.
 </p>
-
 <p>
-Subscribers to the "after" moment of this event, will be notified
+Subscribers to the &quot;after&quot; moment of this event, will be notified
 after destruction is complete (and as a result cannot prevent
 destruction).
 </p>
@@ -13953,6 +14205,7 @@ destruction).
 
                     <div class="param-description">
                         <p>Event object</p>
+
                     </div>
 
                     
@@ -14001,10 +14254,10 @@ destruction).
 
     <div class="description">
         <p>Fired whenever the pointer moves during a drag operation.</p>
-
-<p>Call the <code>preventDefault()</code> method on this event's facade to prevent the dragged
+<p>Call the <code>preventDefault()</code> method on this event&#39;s facade to prevent the dragged
 node (or its proxy) from being moved to the new location, and to prevent drop
 zone intersections from being calculated.</p>
+
     </div>
 
     
@@ -14024,6 +14277,7 @@ zone intersections from being calculated.</p>
                     <div class="param-description">
                         <p>Number of pixels the pointer has moved on the X and Y
     axes since the drag operation began.</p>
+
                     </div>
 
                     
@@ -14039,6 +14293,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>The node being dragged.</p>
+
                     </div>
 
                     
@@ -14054,6 +14309,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>Current X and Y coordinates of the pointer.</p>
+
                     </div>
 
                     
@@ -14070,6 +14326,7 @@ zone intersections from being calculated.</p>
                     <div class="param-description">
                         <p>X and Y coordinates of the pointer when the drag
     operation began.</p>
+
                     </div>
 
                     
@@ -14118,6 +14375,7 @@ zone intersections from being calculated.</p>
 
     <div class="description">
         <p>Fired after a drag operation ends or is canceled.</p>
+
     </div>
 
     
@@ -14137,6 +14395,7 @@ zone intersections from being calculated.</p>
                     <div class="param-description">
                         <p>Number of pixels the pointer has moved on the X and Y
     axes since the drag operation began.</p>
+
                     </div>
 
                     
@@ -14152,6 +14411,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>The node that was dragged.</p>
+
                     </div>
 
                     
@@ -14168,6 +14428,7 @@ zone intersections from being calculated.</p>
                     <div class="param-description">
                         <p>Whether or not the drag operation resulted in a
     successful drop.</p>
+
                     </div>
 
                     
@@ -14183,6 +14444,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>Current X and Y coordinates of the pointer.</p>
+
                     </div>
 
                     
@@ -14199,6 +14461,7 @@ zone intersections from being calculated.</p>
                     <div class="param-description">
                         <p>X and Y coordinates of the pointer when the drag
     operation began.</p>
+
                     </div>
 
                     
@@ -14247,9 +14510,9 @@ zone intersections from being calculated.</p>
 
     <div class="description">
         <p>Fired when the pointer enters a drop zone during a drag operation.</p>
-
 <p>To prevent the drop zone from being treated as a valid drop target, call
-<code>preventDefault()</code> on this event's facade.</p>
+<code>preventDefault()</code> on this event&#39;s facade.</p>
+
     </div>
 
     
@@ -14269,6 +14532,7 @@ zone intersections from being calculated.</p>
                     <div class="param-description">
                         <p>Number of pixels the pointer has moved on the X and Y
     axes since the drag operation began.</p>
+
                     </div>
 
                     
@@ -14284,6 +14548,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>The node being dragged.</p>
+
                     </div>
 
                     
@@ -14299,6 +14564,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>The node representing the drop zone.</p>
+
                     </div>
 
                     
@@ -14314,6 +14580,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>Current X and Y coordinates of the pointer.</p>
+
                     </div>
 
                     
@@ -14330,6 +14597,7 @@ zone intersections from being calculated.</p>
                     <div class="param-description">
                         <p>X and Y coordinates of the pointer when the drag
     operation began.</p>
+
                     </div>
 
                     
@@ -14378,6 +14646,7 @@ zone intersections from being calculated.</p>
 
     <div class="description">
         <p>Fired after the pointer leaves a drop zone during a drag operation.</p>
+
     </div>
 
     
@@ -14397,6 +14666,7 @@ zone intersections from being calculated.</p>
                     <div class="param-description">
                         <p>Number of pixels the pointer has moved on the X and Y
     axes since the drag operation began.</p>
+
                     </div>
 
                     
@@ -14412,6 +14682,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>The node being dragged.</p>
+
                     </div>
 
                     
@@ -14427,6 +14698,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>The node representing the drop zone.</p>
+
                     </div>
 
                     
@@ -14442,6 +14714,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>Current X and Y coordinates of the pointer.</p>
+
                     </div>
 
                     
@@ -14458,6 +14731,7 @@ zone intersections from being calculated.</p>
                     <div class="param-description">
                         <p>X and Y coordinates of the pointer when the drag
     operation began.</p>
+
                     </div>
 
                     
@@ -14506,6 +14780,7 @@ zone intersections from being calculated.</p>
 
     <div class="description">
         <p>Fired when the pointer moves over a drop zone during a drag operation.</p>
+
     </div>
 
     
@@ -14525,6 +14800,7 @@ zone intersections from being calculated.</p>
                     <div class="param-description">
                         <p>Number of pixels the pointer has moved on the X and Y
     axes since the drag operation began.</p>
+
                     </div>
 
                     
@@ -14540,6 +14816,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>The node being dragged.</p>
+
                     </div>
 
                     
@@ -14555,6 +14832,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>The node representing the drop zone.</p>
+
                     </div>
 
                     
@@ -14570,6 +14848,7 @@ zone intersections from being calculated.</p>
 
                     <div class="param-description">
                         <p>Current X and Y coordinates of the pointer.</p>
+
                     </div>
 
                     
@@ -14586,6 +14865,7 @@ zone intersections from being calculated.</p>
                     <div class="param-description">
                         <p>X and Y coordinates of the pointer when the drag
     operation began.</p>
+
                     </div>
 
                     
@@ -14634,13 +14914,12 @@ zone intersections from being calculated.</p>
 
     <div class="description">
         <p>Fired when a drag operation begins.</p>
-
 <p>You can override the pointer offset specified in the <code>pointerOffset</code> attribute
-by setting a <code>pointerOffset</code> property on the event facade during the "on" phase
+by setting a <code>pointerOffset</code> property on the event facade during the &quot;on&quot; phase
 of this event. This custom pointer offset will then be used only for the current
 drag operation.</p>
+<p>To cancel the drag operation, call <code>preventDefault()</code> on this event&#39;s facade.</p>
 
-<p>To cancel the drag operation, call <code>preventDefault()</code> on this event's facade.</p>
     </div>
 
     
@@ -14659,6 +14938,7 @@ drag operation.</p>
 
                     <div class="param-description">
                         <p>The node being dragged.</p>
+
                     </div>
 
                     
@@ -14674,6 +14954,7 @@ drag operation.</p>
 
                     <div class="param-description">
                         <p>Current X and Y coordinates of the pointer.</p>
+
                     </div>
 
                     
@@ -14722,6 +15003,7 @@ drag operation.</p>
 
     <div class="description">
         <p>Fired after a draggable node is dropped onto a node marked as a drop zone.</p>
+
     </div>
 
     
@@ -14741,6 +15023,7 @@ drag operation.</p>
                     <div class="param-description">
                         <p>Number of pixels the pointer has moved on the X and Y
     axes since the drag operation began.</p>
+
                     </div>
 
                     
@@ -14756,6 +15039,7 @@ drag operation.</p>
 
                     <div class="param-description">
                         <p>The node being dragged.</p>
+
                     </div>
 
                     
@@ -14771,6 +15055,7 @@ drag operation.</p>
 
                     <div class="param-description">
                         <p>The node representing the drop zone.</p>
+
                     </div>
 
                     
@@ -14786,6 +15071,7 @@ drag operation.</p>
 
                     <div class="param-description">
                         <p>Current X and Y coordinates of the pointer.</p>
+
                     </div>
 
                     
@@ -14802,6 +15088,7 @@ drag operation.</p>
                     <div class="param-description">
                         <p>X and Y coordinates of the pointer when the drag
     operation began.</p>
+
                     </div>
 
                     
@@ -14851,9 +15138,8 @@ Lifecycle event for the init phase, fired prior to initialization.
 Invoking the preventDefault() method on the event object provided
 to subscribers will prevent initialization from occuring.
 </p>
-
 <p>
-Subscribers to the "after" momemt of this event, will be notified
+Subscribers to the &quot;after&quot; momemt of this event, will be notified
 after initialization of the object is complete (and therefore
 cannot prevent initialization).
 </p>
@@ -14876,6 +15162,7 @@ cannot prevent initialization).
                     <div class="param-description">
                         <p>Event object, with a cfg property which
 refers to the configuration object passed to the constructor.</p>
+
                     </div>
 
                     

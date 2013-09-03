@@ -196,6 +196,7 @@
 
 <div class="box intro">
     <p>DOM utility methods for <code>Editor.Base</code></p>
+
 </div>
 
 
@@ -390,6 +391,7 @@
     <div class="description">
         <p>Walks the ancestor tree of a given node until a node that has
 the css property set is found</p>
+
     </div>
 
     
@@ -439,6 +441,7 @@ the css property set is found</p>
 
                     <div class="param-description">
                         <p>Whether or not to include <code>startNode</code> in the scan</p>
+
                     </div>
 
                     
@@ -457,7 +460,8 @@ the css property set is found</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
                     
-                    The node having <code>property</code> set, or null if no node was found
+                    <p>The node having <code>property</code> set, or null if no node was found</p>
+
                 
             </div>
         </div>
@@ -528,6 +532,7 @@ the css property set is found</p>
     <div class="description">
         <p>Returns true if the given node is a container element, false otherwise
 A container element is defined as a non-inline element</p>
+
     </div>
 
     
@@ -564,7 +569,8 @@ A container element is defined as a non-inline element</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    true if the given node is a container element, false otherwise
+                    <p>true if the given node is a container element, false otherwise</p>
+
                 
             </div>
         </div>
@@ -634,6 +640,7 @@ A container element is defined as a non-inline element</p>
 
     <div class="description">
         <p>Returns true if the given node is an element node, false otherwise</p>
+
     </div>
 
     
@@ -670,7 +677,8 @@ A container element is defined as a non-inline element</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    true if the given node is an element node, false otherwise
+                    <p>true if the given node is an element node, false otherwise</p>
+
                 
             </div>
         </div>
@@ -740,9 +748,9 @@ A container element is defined as a non-inline element</p>
 
     <div class="description">
         <p>Returns true if the given node is empty</p>
-
 <p>Nodes containing only returns, tabs or linefeeds are considered empty
 Nodes containing only whitespace are not considered empty</p>
+
     </div>
 
     
@@ -779,7 +787,8 @@ Nodes containing only whitespace are not considered empty</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    true if the given node is a empty, false otherwise
+                    <p>true if the given node is a empty, false otherwise</p>
+
                 
             </div>
         </div>
@@ -849,6 +858,7 @@ Nodes containing only whitespace are not considered empty</p>
 
     <div class="description">
         <p>Returns true if the given node is an inline element node, false otherwise</p>
+
     </div>
 
     
@@ -885,7 +895,8 @@ Nodes containing only whitespace are not considered empty</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    true if the given node is an inline element node, false otherwise
+                    <p>true if the given node is an inline element node, false otherwise</p>
+
                 
             </div>
         </div>
@@ -955,6 +966,7 @@ Nodes containing only whitespace are not considered empty</p>
 
     <div class="description">
         <p>Returns true if the given node is a text node, false otherwise</p>
+
     </div>
 
     
@@ -991,7 +1003,8 @@ Nodes containing only whitespace are not considered empty</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    true if the given node is a text node, false otherwise
+                    <p>true if the given node is a text node, false otherwise</p>
+
                 
             </div>
         </div>
@@ -1061,9 +1074,9 @@ Nodes containing only whitespace are not considered empty</p>
 
     <div class="description">
         <p>Returns the maximum offset of a given node as determined by the type of node.</p>
-
 <p>Element nodes will return the number of childNodes
 Text nodes will return the length of the text</p>
+
     </div>
 
     
@@ -1100,7 +1113,8 @@ Text nodes will return the length of the text</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    Number of child nodes or length of text
+                    <p>Number of child nodes or length of text</p>
+
                 
             </div>
         </div>
@@ -1174,6 +1188,7 @@ Text nodes will return the length of the text</p>
 
     <div class="description">
         <p>Splits the given node at the specified offset</p>
+
     </div>
 
     
@@ -1192,6 +1207,7 @@ Text nodes will return the length of the text</p>
 
                     <div class="param-description">
                         <p>The node to split</p>
+
                     </div>
 
                     
@@ -1209,6 +1225,7 @@ Text nodes will return the length of the text</p>
                         <p>Position to split the node.
     For text nodes this is numerical offset, for element nodes can be a
     a number referencing a childNode of <code>node</code> or a childNode reference.</p>
+
                     </div>
 
                     
@@ -1227,9 +1244,10 @@ Text nodes will return the length of the text</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
                     
-                    Node reference to the node created after splitting. It will
+                    <p>Node reference to the node created after splitting. It will
     be the nextSibling of <code>node</code>. If offset is not valid, the original <code>node</code>
-    is returned.
+    is returned.</p>
+
                 
             </div>
         </div>
@@ -1299,6 +1317,7 @@ Text nodes will return the length of the text</p>
 
     <div class="description">
         <p>Unwraps a node</p>
+
     </div>
 
     
@@ -1335,7 +1354,8 @@ Text nodes will return the length of the text</p>
                     
                         <span class="type"><a href="../classes/Range.html" class="crosslink">Range</a></span>:
                     
-                    Range containing the unwrapped child nodes
+                    <p>Range containing the unwrapped child nodes</p>
+
                 
             </div>
         </div>

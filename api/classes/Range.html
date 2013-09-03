@@ -197,6 +197,7 @@
 <div class="box intro">
     <p>Provides a friendly cross-browser Range API similar to the API defined in the
 DOM Range specification.</p>
+
 </div>
 
 
@@ -276,6 +277,7 @@ DOM Range specification.</p>
                     <div class="param-description">
                         <p>Native Range object to wrap. If not provided, a
     new Range will be created.</p>
+
                     </div>
 
                     
@@ -568,9 +570,9 @@ DOM Range specification.</p>
 
     <div class="description">
         <p>Returns a new Range object with the same boundary points as this range.</p>
-
 <p>The returned Range is a copy, not a reference, so modifying it will not
 affect this range (and vice versa).</p>
+
     </div>
 
     
@@ -584,8 +586,9 @@ affect this range (and vice versa).</p>
                     
                         <span class="type"><a href="../classes/Range.html" class="crosslink">Range</a></span>:
                     
-                    New Range object with the same boundary points as this
-    range.
+                    <p>New Range object with the same boundary points as this
+    range.</p>
+
                 
             </div>
         </div>
@@ -643,14 +646,12 @@ affect this range (and vice versa).</p>
 
     <div class="description">
         <p>Returns a Node instance containing a document fragment with a copy of this
-range's contents.</p>
-
+range&#39;s contents.</p>
 <p>Event listeners are not copied.</p>
-
 <p>Element ids <em>are</em> copied. This could lead to duplicate ids, so be careful.</p>
-
 <p>Partially selected nodes will include parent tags to ensure that the
 fragment is valid.</p>
+
     </div>
 
     
@@ -664,8 +665,9 @@ fragment is valid.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
                     
-                    Node instance containing a document fragment with a copy of
-    this range's contents.
+                    <p>Node instance containing a document fragment with a copy of
+    this range&#39;s contents.</p>
+
                 
             </div>
         </div>
@@ -732,6 +734,7 @@ fragment is valid.</p>
     <div class="description">
         <p>Collapses this range by setting the start and end points to the same
 position, thus resulting in an empty range.</p>
+
     </div>
 
     
@@ -751,6 +754,7 @@ position, thus resulting in an empty range.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -767,6 +771,7 @@ position, thus resulting in an empty range.</p>
                                     <p>If <code>true</code>, this range will be
         collapsed by moving the end point to the start point. Otherwise, the
         start point will be moved to the end point.</p>
+
                                 </div>
 
                                 
@@ -851,6 +856,7 @@ position, thus resulting in an empty range.</p>
     <div class="description">
         <p>Compares the start or end boundary of this range with the start or end
 boundary of another range.</p>
+
     </div>
 
     
@@ -869,6 +875,7 @@ boundary of another range.</p>
 
                     <div class="param-description">
                         <p>Range to compare to.</p>
+
                     </div>
 
                     
@@ -885,6 +892,7 @@ boundary of another range.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -900,8 +908,9 @@ boundary of another range.</p>
                                 <div class="param-description">
                                     <p>Specifies which boundary point
         on this range should be used for the comparison. Valid values are
-        'start' to use this range's start point for the comparison, or 'end'
-        to use this range's end point.</p>
+        &#39;start&#39; to use this range&#39;s start point for the comparison, or &#39;end&#39;
+        to use this range&#39;s end point.</p>
+
                                 </div>
 
                                 
@@ -917,8 +926,9 @@ boundary of another range.</p>
                                 <div class="param-description">
                                     <p>Specifies which boundary
         point on <em>otherRange</em> should be used for the comparison. Valid
-        values are 'start' to use <em>otherRange</em>'s start point for the
-        comparison, or 'end' to use <em>otherRange</em>'s end point.</p>
+        values are &#39;start&#39; to use <em>otherRange</em>&#39;s start point for the
+        comparison, or &#39;end&#39; to use <em>otherRange</em>&#39;s end point.</p>
+
                                 </div>
 
                                 
@@ -941,8 +951,9 @@ boundary of another range.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    -1, 0, or 1, indicating whether this range's boundary is
-    respectively before, equal to, or after the other range's boundary.
+                    <p>-1, 0, or 1, indicating whether this range&#39;s boundary is
+    respectively before, equal to, or after the other range&#39;s boundary.</p>
+
                 
             </div>
         </div>
@@ -998,6 +1009,7 @@ boundary of another range.</p>
 
     <div class="description">
         <p>Removes the contents of this range from the DOM.</p>
+
     </div>
 
     
@@ -1072,20 +1084,17 @@ boundary of another range.</p>
 
     <div class="description">
         <p>Gets or sets the node that contains the end point of this range.</p>
-
 <p>When specifying an <em>offset</em>, you may specify either a number or the string
-"before" or "after".</p>
-
+&quot;before&quot; or &quot;after&quot;.</p>
 <p>A numerical offset will position the end point at that offset inside the
 <em>node</em>. If <em>node</em> is a text node, the offset will represent a character
 position. If <em>node</em> can contain child nodes, then the offset will represent
 a child index.</p>
-
-<p>The offset "before" will cause the end point to be placed immediately before
+<p>The offset &quot;before&quot; will cause the end point to be placed immediately before
+<em>node</em> (not inside it).</p>
+<p>The offset &quot;after&quot; will cause the end point to be placed immediately after
 <em>node</em> (not inside it).</p>
 
-<p>The offset "after" will cause the end point to be placed immediately after
-<em>node</em> (not inside it).</p>
     </div>
 
     
@@ -1107,6 +1116,7 @@ a child index.</p>
                         <p>Node to set the end point to. May be
     specified as a Node instance, HTMLElement, or selector string. If not
     specified, the current end point will be returned.</p>
+
                     </div>
 
                     
@@ -1125,8 +1135,9 @@ a child index.</p>
                         <p>Offset position of the new end point
     relative to the <em>node</em>. If this is a number, it will be used as an
     offset position inside <em>node</em>. To specify a position immediately before
-    <em>node</em>, use the string "before". To specify a position immediately after
-    <em>node</em>, use the string "after".</p>
+    <em>node</em>, use the string &quot;before&quot;. To specify a position immediately after
+    <em>node</em>, use the string &quot;after&quot;.</p>
+
                     </div>
 
                     
@@ -1145,7 +1156,8 @@ a child index.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
                     
-                    Node that contains the end point of this range.
+                    <p>Node that contains the end point of this range.</p>
+
                 
             </div>
         </div>
@@ -1212,24 +1224,20 @@ a child index.</p>
     </div>
 
     <div class="description">
-        <p>Gets or sets the offset of this selection's end position inside the end
+        <p>Gets or sets the offset of this selection&#39;s end position inside the end
 node.</p>
-
 <p>If the end node is a text node, the offset represents a character position.
 If the end node can contain child nodes, then the offset represents a child
 index.</p>
-
 <p>When setting an offset, you may use a numerical offset (which behaves as
-described above) or the string "before" or "after".</p>
-
-<p>The offset "before" will cause the end point to be placed immediately before
+described above) or the string &quot;before&quot; or &quot;after&quot;.</p>
+<p>The offset &quot;before&quot; will cause the end point to be placed immediately before
 the current end node (not inside it).</p>
-
-<p>The offset "after" will cause the end point to be placed immediately after
+<p>The offset &quot;after&quot; will cause the end point to be placed immediately after
 the current end node (not inside it).</p>
-
-<p>Note that setting a "before" or "after" offset will change the end node. To
+<p>Note that setting a &quot;before&quot; or &quot;after&quot; offset will change the end node. To
 get the new end node, call <code>endNode()</code>.</p>
+
     </div>
 
     
@@ -1251,8 +1259,9 @@ get the new end node, call <code>endNode()</code>.</p>
                         <p>Offset position of the new end point
     relative to the current end node. If this is a number, it will be used
     as an offset position inside the node. To specify a position immediately
-    before the node, use the string "before". To specify a position
-    immediately after the node, use the string "after".</p>
+    before the node, use the string &quot;before&quot;. To specify a position
+    immediately after the node, use the string &quot;after&quot;.</p>
+
                     </div>
 
                     
@@ -1271,8 +1280,9 @@ get the new end node, call <code>endNode()</code>.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    Offset of this selection's end position inside the end
-    node.
+                    <p>Offset of this selection&#39;s end position inside the end
+    node.</p>
+
                 
             </div>
         </div>
@@ -1340,26 +1350,15 @@ get the new end node, call <code>endNode()</code>.</p>
         <p>Attempts to expand the range to include element nodes while
 still being equivalent to the current range. Start and End nodes
 are not guaranteed to be element nodes after this method is executed.</p>
-
 <p>Examples:</p>
-
-<pre class="code prettyprint"><code>[] = startContainer, {} = endContainer, s:e = start/end offset
-</code></pre>
-
+<pre class="code prettyprint"><code>[] = startContainer, {} = endContainer, s:e = start/end offset</code></pre>
 <p>given the HTML</p>
-
-<pre class="code prettyprint"><code>&lt;div&gt;&lt;span&gt;Lorem&lt;/span&gt;&lt;/div&gt;
-</code></pre>
-
+<pre class="code prettyprint"><code>&lt;div&gt;&lt;span&gt;Lorem&lt;/span&gt;&lt;/div&gt;</code></pre>
 <p>an initial range of</p>
-
-<pre class="code prettyprint"><code>&lt;div&gt;&lt;span&gt;[{Lorem]}&lt;/span&gt;&lt;/div&gt;  s0:e5
-</code></pre>
-
+<pre class="code prettyprint"><code>&lt;div&gt;&lt;span&gt;[{Lorem]}&lt;/span&gt;&lt;/div&gt;  s0:e5</code></pre>
 <p>after expansion would be</p>
+<pre class="code prettyprint"><code>[{&lt;div&gt;&lt;span&gt;Lorem&lt;/span&gt;&lt;/div&gt;}]  s0:e1</code></pre>
 
-<pre class="code prettyprint"><code>[{&lt;div&gt;&lt;span&gt;Lorem&lt;/span&gt;&lt;/div&gt;}]  s0:e1
-</code></pre>
     </div>
 
     
@@ -1380,6 +1379,7 @@ are not guaranteed to be element nodes after this method is executed.</p>
                     <div class="param-description">
                         <p>If provided, do not expand the range
     past this container</p>
+
                     </div>
 
                     
@@ -1453,6 +1453,7 @@ are not guaranteed to be element nodes after this method is executed.</p>
         <p>Attempts to expand the range end to include element nodes while
 still being equivalent to the current range. End node is not
 guaranteed to be an element node after this method is executed.</p>
+
     </div>
 
     
@@ -1473,6 +1474,7 @@ guaranteed to be an element node after this method is executed.</p>
                     <div class="param-description">
                         <p>If provided, do not expand the range
     past this container</p>
+
                     </div>
 
                     
@@ -1546,6 +1548,7 @@ guaranteed to be an element node after this method is executed.</p>
         <p>Attempts to expand the range start to include element nodes while
 still being equivalent to the current range. Start node is not
 guaranteed to be an element node after this method is executed.</p>
+
     </div>
 
     
@@ -1566,6 +1569,7 @@ guaranteed to be an element node after this method is executed.</p>
                     <div class="param-description">
                         <p>If provided, do not expand the range
     past this container</p>
+
                     </div>
 
                     
@@ -1628,14 +1632,13 @@ guaranteed to be an element node after this method is executed.</p>
     </div>
 
     <div class="description">
-        <p>Moves this range's contents into a document fragment and returns a Node
+        <p>Moves this range&#39;s contents into a document fragment and returns a Node
 instance containing that fragment.</p>
-
 <p>Event listeners are not retained.</p>
-
 <p>If this range splits a non-text element, the resulting fragment will include
 a clone of that element, including its id (if it has one). This could lead
 to duplicate ids, so be careful.</p>
+
     </div>
 
     
@@ -1649,8 +1652,9 @@ to duplicate ids, so be careful.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
                     
-                    Node instance containing a document fragment with this
-    range's contents.
+                    <p>Node instance containing a document fragment with this
+    range&#39;s contents.</p>
+
                 
             </div>
         </div>
@@ -1718,6 +1722,7 @@ to duplicate ids, so be careful.</p>
 
     <div class="description">
         <p>Inserts a node at the start of this range.</p>
+
     </div>
 
     
@@ -1737,6 +1742,7 @@ to duplicate ids, so be careful.</p>
                     <div class="param-description">
                         <p>Node instance, HTMLElement, or
     selector string of a node to insert.</p>
+
                     </div>
 
                     
@@ -1755,7 +1761,8 @@ to duplicate ids, so be careful.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
                     
-                    Inserted node.
+                    <p>Inserted node.</p>
+
                 
             </div>
         </div>
@@ -1813,10 +1820,10 @@ to duplicate ids, so be careful.</p>
 
     <div class="description">
         <p>Returns <code>true</code> if this range is collapsed, <code>false</code> otherwise.</p>
-
 <p>A <code>true</code> value means that the start and end points are the same and the
 range is empty, whereas a <code>false</code> value means that the start and end points
 are different and the range is not empty.</p>
+
     </div>
 
     
@@ -1830,7 +1837,8 @@ are different and the range is not empty.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if this range is collapsed, <code>false</code> otherwise.
+                    <p><code>true</code> if this range is collapsed, <code>false</code> otherwise.</p>
+
                 
             </div>
         </div>
@@ -1899,6 +1907,7 @@ are different and the range is not empty.</p>
     <div class="description">
         <p>Returns <code>true</code> if this range has the same boundaries as <em>otherRange</em>,
 <code>false</code> otherwise.</p>
+
     </div>
 
     
@@ -1917,6 +1926,7 @@ are different and the range is not empty.</p>
 
                     <div class="param-description">
                         <p>Range to compare this range to.</p>
+
                     </div>
 
                     
@@ -1935,8 +1945,9 @@ are different and the range is not empty.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if this range has the same boundaries as
-    <em>otherRange</em>, <code>false</code> otherwise.
+                    <p><code>true</code> if this range has the same boundaries as
+    <em>otherRange</em>, <code>false</code> otherwise.</p>
+
                 
             </div>
         </div>
@@ -2004,6 +2015,7 @@ are different and the range is not empty.</p>
 
     <div class="description">
         <p>Returns <code>true</code> if this range is entirely contained within the given <em>node</em>.</p>
+
     </div>
 
     
@@ -2023,6 +2035,7 @@ are different and the range is not empty.</p>
                     <div class="param-description">
                         <p>Node instance, HTML element, or
     selector string of the container.</p>
+
                     </div>
 
                     
@@ -2041,8 +2054,9 @@ are different and the range is not empty.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if this range is entirely contained within the
-    given <em>node</em>, <code>false</code> otherwise.
+                    <p><code>true</code> if this range is entirely contained within the
+    given <em>node</em>, <code>false</code> otherwise.</p>
+
                 
             </div>
         </div>
@@ -2101,6 +2115,7 @@ are different and the range is not empty.</p>
     <div class="description">
         <p>Returns the nearest common ancestor node that fully contains all nodes
 within this range.</p>
+
     </div>
 
     
@@ -2114,8 +2129,9 @@ within this range.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
                     
-                    Nearest common ancestor node that fully contains all nodes
-    within this range.
+                    <p>Nearest common ancestor node that fully contains all nodes
+    within this range.</p>
+
                 
             </div>
         </div>
@@ -2181,9 +2197,9 @@ within this range.</p>
 
     <div class="description">
         <p>Sets the Range to contain the Node and its contents.</p>
-
 <p>The parent Node of the start and end of the Range will be the same as the
 parent of the given node.</p>
+
     </div>
 
     
@@ -2202,6 +2218,7 @@ parent of the given node.</p>
 
                     <div class="param-description">
                         <p>Node or HTMLElement to select</p>
+
                     </div>
 
                     
@@ -2273,10 +2290,10 @@ parent of the given node.</p>
 
     <div class="description">
         <p>Sets the Range to contain the contents of a Node.</p>
-
 <p>The parent Node of the start and end of the Range will be the given node.
 The startOffset is 0, and the endOffset is the number of child Nodes or
 number of characters contained in the reference node.</p>
+
     </div>
 
     
@@ -2295,6 +2312,7 @@ number of characters contained in the reference node.</p>
 
                     <div class="param-description">
                         <p>Node or HTMLElement to select</p>
+
                     </div>
 
                     
@@ -2367,60 +2385,49 @@ number of characters contained in the reference node.</p>
     <div class="description">
         <p>Shrinks the start and end containers of the range to just the text nodes
 containing the selected text.</p>
-
 <p>Useful for normalizing a range after double clicking to select since the
 range start/end containers vary by browser as explained below:</p>
-
 <p>Chrome and IE use the first text node that contains the selected text
 as the startContainer with an offset to exclude any leading whitespace.</p>
-
 <p>Firefox will use a text node <em>before</em> the selected text
 as the startContainer, with a positive offset set to the end
 of the node. If there is no previous sibling of the selected text
 or the previous sibling is not a text node, the behavior is the
 same as Chrome/IE.</p>
-
 <p>Chrome uses the last text node that contains the selected text as the
 endContainer, with an offset to exclude trailing whitespace.</p>
-
 <p>Firefox follows the mostly the same rules for the endContainer
 as it does for the startContainer. Any sibling text node
 <em>after</em> the selected text will be used as the endContainer,
 but with a 0 offset. If there is no next sibling or the next sibling
 is not a text node, the endContainer will be the same as the
 startContainer, with an offset to exclude any trailing whitespace.</p>
-
 <p>IE will aways use a following text node as the endContainer,
 even if it is a child of a sibling. The offset will <em>include all</em>
 leading whitespace. If there is no following text node,
 the endContainer will be the same as the startContainer, with an
 offset to <em>include all</em> trailing whitespace.</p>
-
 <p>Examples:
     [] = startContainer, {} = endContainer, s:e = start/end offset</p>
-
 <p>given the HTML
     Lorem <b>Ipsum</b> Dolor Sit</p>
-
 <p>dbl clicking to select the text <code>Lorem</code>
     Chrome:  <code>[{Lorem }]&lt;b&gt;Ipsum&lt;/b&gt; Dolor Sit</code>  s0:e5
     Firefox: <code>[{Lorem }]&lt;b&gt;Ipsum&lt;/b&gt; Dolor Sit</code>  s0:e5
     IE:      <code>[Lorem ]&lt;b&gt;{Ipsum}&lt;/b&gt; Dolor Sit</code>  s0:e0</p>
-
 <p>dbl clicking to select the text <code>Ipsum</code>
     Chrome:  <code>Lorem &lt;b&gt;[{Ipsum}]&lt;/b&gt; Dolor Sit</code>  s0:e5
     Firefox: <code>[Lorem ]&lt;b&gt;Ipsum&lt;/b&gt;{ Dolor Sit}</code>  s6:e0
     IE:      <code>Lorem &lt;b&gt;[Ipsum]&lt;/b&gt;{ Dolor Sit}</code>  s0:e1</p>
-
 <p>dbl clicking to select the text <code>Dolor</code>
     Chrome:  <code>Lorem &lt;b&gt;Ipsum&lt;/b&gt;[{ Dolor Sit}]</code>  s1:e6
     Firefox: <code>Lorem &lt;b&gt;Ipsum&lt;/b&gt;[{ Dolor Sit}]</code>  s1:e6
     IE:      <code>Lorem &lt;b&gt;Ipsum&lt;/b&gt;[{ Dolor Sit}]</code>  s1:e7</p>
-
 <p>dbl clicking to select the text <code>Sit</code>
     Chrome:  <code>Lorem &lt;b&gt;Ipsum&lt;/b&gt;[{ Dolor Sit}]</code>  s7:e10
     Firefox: <code>Lorem &lt;b&gt;Ipsum&lt;/b&gt;[{ Dolor Sit}]</code>  s7:e10
     IE:      <code>Lorem &lt;b&gt;Ipsum&lt;/b&gt;[{ Dolor Sit}]</code>  s7:e10</p>
+
     </div>
 
     
@@ -2457,6 +2464,7 @@ offset to <em>include all</em> trailing whitespace.</p>
     ignored when shrinking the start and end containers. Offsets will
     be set to exclude any leading whitespace from the startContainer and
     trailing whitespace from the endContainer.</p>
+
                                 </div>
 
                                 
@@ -2533,10 +2541,10 @@ offset to <em>include all</em> trailing whitespace.</p>
     <div class="description">
         <p>Shrinks the endContainer of the range to just the text node containing
 the selected text.</p>
-
 <p>Browsers are inconsistent in how they define a range, sometimes using
 offsets of sibling or parent nodes instead of the actual text node
 containing the selected text.</p>
+
     </div>
 
     
@@ -2572,6 +2580,7 @@ containing the selected text.</p>
                                     <p>If <code>true</code> whitespace will be
     ignored when shrinking the endContainer and an offset will be set to
     exclude any trailing whitespace from the shrunken endContainer.</p>
+
                                 </div>
 
                                 
@@ -2648,10 +2657,10 @@ containing the selected text.</p>
     <div class="description">
         <p>Shrinks the startContainer of the range to just the text node containing
 the selected text.</p>
-
 <p>Browsers are inconsistent in how they define a range, sometimes using
 offsets of sibling or parent nodes instead of the actual text node
 containing the selected text.</p>
+
     </div>
 
     
@@ -2687,6 +2696,7 @@ containing the selected text.</p>
                                     <p>If <code>true</code> whitespace will be
     ignored when shrinking the startContainer and an offset will be set to
     exclude any leading whitespace from the shrunken startContainer.</p>
+
                                 </div>
 
                                 
@@ -2770,20 +2780,17 @@ containing the selected text.</p>
 
     <div class="description">
         <p>Gets or sets the node that contains the start point of this range.</p>
-
 <p>When specifying an <em>offset</em>, you may specify either a number or the string
-"before" or "after".</p>
-
+&quot;before&quot; or &quot;after&quot;.</p>
 <p>A numerical offset will position the start point at that offset inside the
 <em>node</em>. If <em>node</em> is a text node, the offset will represent a character
 position. If <em>node</em> can contain child nodes, then the offset will represent
 a child index.</p>
-
-<p>The offset "before" will cause the start point to be placed immediately
+<p>The offset &quot;before&quot; will cause the start point to be placed immediately
 before <em>node</em> (not inside it).</p>
-
-<p>The offset "after" will cause the start point to be placed immediately after
+<p>The offset &quot;after&quot; will cause the start point to be placed immediately after
 <em>node</em> (not inside it).</p>
+
     </div>
 
     
@@ -2805,6 +2812,7 @@ before <em>node</em> (not inside it).</p>
                         <p>Node to set the start point to. May
     be specified as a Node instance, HTMLElement, or selector string. If not
     specified, the current start point will be returned.</p>
+
                     </div>
 
                     
@@ -2823,8 +2831,9 @@ before <em>node</em> (not inside it).</p>
                         <p>Offset position of the new start point
     relative to the <em>node</em>. If this is a number, it will be used as an
     offset position inside <em>node</em>. To specify a position immediately before
-    <em>node</em>, use the string "before". To specify a position immediately after
-    <em>node</em>, use the string "after".</p>
+    <em>node</em>, use the string &quot;before&quot;. To specify a position immediately after
+    <em>node</em>, use the string &quot;after&quot;.</p>
+
                     </div>
 
                     
@@ -2843,7 +2852,8 @@ before <em>node</em> (not inside it).</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
                     
-                    Node that contains the start point of this range.
+                    <p>Node that contains the start point of this range.</p>
+
                 
             </div>
         </div>
@@ -2910,24 +2920,20 @@ before <em>node</em> (not inside it).</p>
     </div>
 
     <div class="description">
-        <p>Gets or sets the offset of this range's start position inside the start
+        <p>Gets or sets the offset of this range&#39;s start position inside the start
 node.</p>
-
 <p>If the start node is a text node, the offset represents a character
 position. If the start node can contain child nodes, then the offset
 represents a child index.</p>
-
 <p>When setting an offset, you may use a numerical offset (which behaves as
-described above) or the string "before" or "after".</p>
-
-<p>The offset "before" will cause the start point to be placed immediately
+described above) or the string &quot;before&quot; or &quot;after&quot;.</p>
+<p>The offset &quot;before&quot; will cause the start point to be placed immediately
 before the current start node (not inside it).</p>
-
-<p>The offset "after" will cause the start point to be placed immediately after
+<p>The offset &quot;after&quot; will cause the start point to be placed immediately after
 the current start node (not inside it).</p>
-
-<p>Note that setting a "before" or "after" offset will change the start node.
+<p>Note that setting a &quot;before&quot; or &quot;after&quot; offset will change the start node.
 To get the new start node, call <code>startNode()</code>.</p>
+
     </div>
 
     
@@ -2949,8 +2955,9 @@ To get the new start node, call <code>startNode()</code>.</p>
                         <p>Offset position of the new start point
     relative to the current start node. If this is a number, it will be used
     as an offset position inside the node. To specify a position immediately
-    before the node, use the string "before". To specify a position
-    immediately after the node, use the string "after".</p>
+    before the node, use the string &quot;before&quot;. To specify a position
+    immediately after the node, use the string &quot;after&quot;.</p>
+
                     </div>
 
                     
@@ -2969,8 +2976,9 @@ To get the new start node, call <code>startNode()</code>.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    Offset of this range's start position inside the start
-    node.
+                    <p>Offset of this range&#39;s start position inside the start
+    node.</p>
+
                 
             </div>
         </div>
@@ -3028,6 +3036,7 @@ To get the new start node, call <code>startNode()</code>.</p>
 
     <div class="description">
         <p>Returns the HTML content of this range.</p>
+
     </div>
 
     
@@ -3041,7 +3050,8 @@ To get the new start node, call <code>startNode()</code>.</p>
                     
                         <span class="type">HTML</span>:
                     
-                    HTML content of this range.
+                    <p>HTML content of this range.</p>
+
                 
             </div>
         </div>
@@ -3099,6 +3109,7 @@ To get the new start node, call <code>startNode()</code>.</p>
 
     <div class="description">
         <p>Returns the plain text content of this range.</p>
+
     </div>
 
     
@@ -3112,7 +3123,8 @@ To get the new start node, call <code>startNode()</code>.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                     
-                    Plain text content of this range.
+                    <p>Plain text content of this range.</p>
+
                 
             </div>
         </div>
@@ -3185,34 +3197,24 @@ To get the new start node, call <code>startNode()</code>.</p>
     <div class="description">
         <p>Traverses the contents of the range, passing each node and its children to
 the supplied callback in document order.</p>
-
 <p>For example, if the range includes the following HTML...</p>
-
-<pre class="code prettyprint"><code>lorem ipsum &lt;b&gt;dolor &lt;i&gt;sit&lt;/i&gt;&lt;/b&gt; amet
-</code></pre>
-
+<pre class="code prettyprint"><code>lorem ipsum &lt;b&gt;dolor &lt;i&gt;sit&lt;/i&gt;&lt;/b&gt; amet</code></pre>
 <p>...then this <code>traverse()</code> call...</p>
-
 <pre class="code prettyprint"><code>range.traverse(function (node) {
     console.log(Y.Node.getDOMNode(node));
-});
-</code></pre>
-
+});</code></pre>
 <p>...would result in the following console output:</p>
-
-<pre class="code prettyprint"><code>"lorem ipsum "
+<pre class="code prettyprint"><code>&quot;lorem ipsum &quot;
 &lt;b&gt; element
-"dolor "
+&quot;dolor &quot;
 &lt;i&gt; element
-"sit"
-" amet"
-</code></pre>
-
+&quot;sit&quot;
+&quot; amet&quot;</code></pre>
 <p>The entire start and end node will be included even if the range only
 includes a portion of them. Use the <code>startOffset()</code> and <code>endOffset()</code>
 methods to determine where the precise boundaries are if necessary.</p>
-
 <p>Returning <code>true</code> from the callback function will stop traversal</p>
+
     </div>
 
     
@@ -3231,6 +3233,7 @@ methods to determine where the precise boundaries are if necessary.</p>
 
                     <div class="param-description">
                         <p>Callback function.</p>
+
                     </div>
 
                     
@@ -3244,6 +3247,7 @@ methods to determine where the precise boundaries are if necessary.</p>
 
                                 <div class="param-description">
                                     <p>Node instance.</p>
+
                                 </div>
 
                                 
@@ -3265,6 +3269,7 @@ methods to determine where the precise boundaries are if necessary.</p>
                     <div class="param-description">
                         <p><code>this</code> object to use when calling the callback
     function.</p>
+
                     </div>
 
                     
@@ -3344,6 +3349,7 @@ methods to determine where the precise boundaries are if necessary.</p>
 
     <div class="description">
         <p>Wraps this range in the specified HTML and returns the new wrapper node.</p>
+
     </div>
 
     
@@ -3362,6 +3368,7 @@ methods to determine where the precise boundaries are if necessary.</p>
 
                     <div class="param-description">
                         <p>HTML string.</p>
+
                     </div>
 
                     
@@ -3378,6 +3385,7 @@ methods to determine where the precise boundaries are if necessary.</p>
 
                     <div class="param-description">
                         <p>Options.</p>
+
                     </div>
 
                     
@@ -3393,6 +3401,7 @@ methods to determine where the precise boundaries are if necessary.</p>
                                 <div class="param-description">
                                     <p>If <code>true</code>, this range
         will be updated to include the new wrapper node.</p>
+
                                 </div>
 
                                 
@@ -3415,7 +3424,8 @@ methods to determine where the precise boundaries are if necessary.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
                     
-                    New wrapper node.
+                    <p>New wrapper node.</p>
+
                 
             </div>
         </div>

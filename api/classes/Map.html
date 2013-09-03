@@ -194,8 +194,9 @@
 
 
 <div class="box intro">
-    <p>An ordered map data structure with an interface and behavior similar to (but not
-exactly the same as) <a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.14">ECMAScript 6 Maps</a>.</p>
+    <p>An ordered hash map data structure with an interface and behavior similar to
+(but not exactly the same as) <a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.14">ECMAScript 6 Maps</a>.</p>
+
 </div>
 
 
@@ -211,6 +212,12 @@ exactly the same as) <a href="http://people.mozilla.org/~jorendorff/es6-draft.ht
                 <li class="arg">
                     
                         <code class="optional">[entries]</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
                     
                 </li>
             
@@ -276,8 +283,71 @@ exactly the same as) <a href="http://people.mozilla.org/~jorendorff/es6-draft.ht
                         <p>Array of entries to add to the map. Each entry should
     itself be an array in which the first item is the key and the second item is
     the value for that entry.</p>
+
                     </div>
 
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Options.</p>
+
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[autoStamp=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If <code>true</code>, objects used as keys
+        will be automatically stamped with a unique id as the value of the
+        property defined by the <code>objectIdName</code> option (&quot;_yuid&quot; by default) if
+        that property isn&#39;t already set. This will result in much faster lookups
+        for object keys.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[objectIdName=&quot;_yuid&quot;]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>Name of a property whose
+        string value should be used as the unique key when present on an object
+        that&#39;s given as a key. This will significantly speed up lookups of
+        object-based keys that define this property.</p>
+<pre><code>    By default the <code>objectIdName</code> is set to &quot;_yuid&quot;, which is a unique id
+    property defined on many YUI objects. You can stamp any object with a
+    &quot;_yuid&quot; property by passing it to <code>Y.stamp()</code>, or enable the <code>autoStamp</code>
+    option to automatically stamp object keys on insertion.</code></pre>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -325,7 +395,14 @@ exactly the same as) <a href="http://people.mozilla.org/~jorendorff/es6-draft.ht
                             </li>
                         
                             <li class="index-item method protected">
-                                <a href="#method__is">_is</a>
+                                <a href="#method__isSafeKey">_isSafeKey</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected">
+                                <a href="#method__sameValueZero">_sameValueZero</a>
 
                                 
                                 
@@ -425,6 +502,13 @@ exactly the same as) <a href="http://people.mozilla.org/~jorendorff/es6-draft.ht
 
                     <ul class="index-list properties">
                         
+                            <li class="index-item property protected">
+                                <a href="#property__mapOptions">_mapOptions</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item property">
                                 <a href="#property_size">size</a>
 
@@ -494,7 +578,7 @@ exactly the same as) <a href="http://people.mozilla.org/~jorendorff/es6-draft.ht
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l246"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:246</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l312"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:312</code></a>
         
         </p>
 
@@ -507,9 +591,9 @@ exactly the same as) <a href="http://people.mozilla.org/~jorendorff/es6-draft.ht
     <div class="description">
         <p>Returns the numerical index of the entry with the given <em>key</em>, or <code>-1</code> if
 not found.</p>
-
 <p>This is a very efficient operation with string keys, but is slower with
 non-string keys.</p>
+
     </div>
 
     
@@ -528,6 +612,7 @@ non-string keys.</p>
 
                     <div class="param-description">
                         <p>Key to look up.</p>
+
                     </div>
 
                     
@@ -546,8 +631,9 @@ non-string keys.</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>:
                     
-                    Index of the entry with the given <em>key</em>, or <code>-1</code> if not
-    found.
+                    <p>Index of the entry with the given <em>key</em>, or <code>-1</code> if not
+    found.</p>
+
                 
             </div>
         </div>
@@ -557,8 +643,118 @@ non-string keys.</p>
 </div>
 
                 
-                    <div id="method__is" class="method item protected">
-    <h3 class="name"><code>_is</code></h3>
+                    <div id="method__isSafeKey" class="method item protected">
+    <h3 class="name"><code>_isSafeKey</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>key</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-map_js_map.js.html#l365"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:365</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns <code>true</code> if the given string <em>key</em> is safe to use in environments that
+don&#39;t support <code>Object.create()</code>.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">key</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Key to check.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <p><code>true</code> if the key is safe.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__sameValueZero" class="method item protected">
+    <h3 class="name"><code>_sameValueZero</code></h3>
 
     
         <div class="args">
@@ -611,7 +807,7 @@ non-string keys.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l282"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:282</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l378"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:378</code></a>
         
         </p>
 
@@ -624,13 +820,11 @@ non-string keys.</p>
     <div class="description">
         <p>Returns <code>true</code> if the two given values are the same value, <code>false</code>
 otherwise.</p>
+<p>This is an implementation of the <a href="http://people.mozilla.org/~jorendorff/es6-draft.html#sec-9.2.4">ES6 SameValueZero</a> comparison
+algorithm. It&#39;s more correct than <code>===</code> in that it considers <code>NaN</code> to be the
+same as <code>NaN</code>.</p>
+<p>Note that <code>0</code> and <code>-0</code> are considered the same by this algorithm.</p>
 
-<p>This is an implementation of the ES5/6 SameValue comparison algorithm, which
-is more correct than <code>===</code> in that it considers <code>NaN</code> to be the same as
-<code>NaN</code>, and does not consider <code>0</code> to be the same as <code>-0</code>.</p>
-
-<p>This method is an alias for <code>Object.is()</code> if available, or a fallback
-implementation if not.</p>
     </div>
 
     
@@ -649,6 +843,7 @@ implementation if not.</p>
 
                     <div class="param-description">
                         <p>First value to compare.</p>
+
                     </div>
 
                     
@@ -664,6 +859,7 @@ implementation if not.</p>
 
                     <div class="param-description">
                         <p>Second value to compare.</p>
+
                     </div>
 
                     
@@ -682,8 +878,9 @@ implementation if not.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if <em>a</em> and <em>b</em> are the same value, <code>false</code>
-    otherwise.
+                    <p><code>true</code> if <em>a</em> and <em>b</em> are the same value, <code>false</code>
+    otherwise.</p>
+
                 
             </div>
         </div>
@@ -727,7 +924,7 @@ implementation if not.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l72"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:72</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l115"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:115</code></a>
         
         </p>
 
@@ -739,6 +936,7 @@ implementation if not.</p>
 
     <div class="description">
         <p>Deletes all entries from this map.</p>
+
     </div>
 
     
@@ -781,7 +979,7 @@ implementation if not.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l311"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:311</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l402"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:402</code></a>
         
         </p>
 
@@ -793,6 +991,7 @@ implementation if not.</p>
 
     <div class="description">
         <p>Alias for <code>remove()</code>.</p>
+
     </div>
 
     
@@ -853,7 +1052,7 @@ implementation if not.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l90"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:90</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l134"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:134</code></a>
         
         </p>
 
@@ -865,6 +1064,7 @@ implementation if not.</p>
 
     <div class="description">
         <p>Executes the given <em>callback</em> function on each entry in this map.</p>
+
     </div>
 
     
@@ -883,6 +1083,7 @@ implementation if not.</p>
 
                     <div class="param-description">
                         <p>Callback function.</p>
+
                     </div>
 
                     
@@ -896,6 +1097,7 @@ implementation if not.</p>
 
                                 <div class="param-description">
                                     <p>Value being iterated.</p>
+
                                 </div>
 
                                 
@@ -909,6 +1111,7 @@ implementation if not.</p>
 
                                 <div class="param-description">
                                     <p>Key being iterated.</p>
+
                                 </div>
 
                                 
@@ -922,6 +1125,7 @@ implementation if not.</p>
 
                                 <div class="param-description">
                                     <p>Reference to this map.</p>
+
                                 </div>
 
                                 
@@ -942,6 +1146,7 @@ implementation if not.</p>
 
                     <div class="param-description">
                         <p><code>this</code> object to use when calling <em>callback</em>.</p>
+
                     </div>
 
                     
@@ -993,7 +1198,7 @@ implementation if not.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l117"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:117</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l161"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:161</code></a>
         
         </p>
 
@@ -1007,6 +1212,7 @@ implementation if not.</p>
         <p>Returns an array of all the entries in this map. Each entry is an array with
 two items, the first being a key and the second a value associated with that
 key.</p>
+
     </div>
 
     
@@ -1020,7 +1226,8 @@ key.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external external" target="_blank">Array</a></span>:
                     
-                    Array of entries.
+                    <p>Array of entries.</p>
+
                 
             </div>
         </div>
@@ -1062,7 +1269,7 @@ key.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l319"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:319</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l410"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:410</code></a>
         
         </p>
 
@@ -1074,6 +1281,7 @@ key.</p>
 
     <div class="description">
         <p>Alias for <code>each()</code>.</p>
+
     </div>
 
     
@@ -1136,7 +1344,7 @@ key.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l135"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:135</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l179"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:179</code></a>
         
         </p>
 
@@ -1148,7 +1356,8 @@ key.</p>
 
     <div class="description">
         <p>Returns the value associated with the given <em>key</em>, or <em>default</em> if the key
-isn't found.</p>
+isn&#39;t found.</p>
+
     </div>
 
     
@@ -1167,6 +1376,7 @@ isn't found.</p>
 
                     <div class="param-description">
                         <p>Key to look up.</p>
+
                     </div>
 
                     
@@ -1182,7 +1392,8 @@ isn't found.</p>
                     
 
                     <div class="param-description">
-                        <p>Default value to return if <em>key</em> isn't found.</p>
+                        <p>Default value to return if <em>key</em> isn&#39;t found.</p>
+
                     </div>
 
                     
@@ -1201,8 +1412,9 @@ isn't found.</p>
                     
                         <span class="type">Mixed</span>:
                     
-                    Value associated with the given <em>key</em>, or <em>default</em> if the
-    key isn't found.
+                    <p>Value associated with the given <em>key</em>, or <em>default</em> if the
+    key isn&#39;t found.</p>
+
                 
             </div>
         </div>
@@ -1258,7 +1470,7 @@ isn't found.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l150"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:150</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l194"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:194</code></a>
         
         </p>
 
@@ -1270,6 +1482,7 @@ isn't found.</p>
 
     <div class="description">
         <p>Returns <code>true</code> if <em>key</em> exists in this map, <code>false</code> otherwise.</p>
+
     </div>
 
     
@@ -1288,6 +1501,7 @@ isn't found.</p>
 
                     <div class="param-description">
                         <p>Key to look up.</p>
+
                     </div>
 
                     
@@ -1306,7 +1520,8 @@ isn't found.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if <em>key</em> exists in this map, <code>false</code> otherwise.
+                    <p><code>true</code> if <em>key</em> exists in this map, <code>false</code> otherwise.</p>
+
                 
             </div>
         </div>
@@ -1352,7 +1567,7 @@ isn't found.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l161"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:161</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l205"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:205</code></a>
         
         </p>
 
@@ -1364,6 +1579,7 @@ isn't found.</p>
 
     <div class="description">
         <p>Returns an array of all the keys in this map.</p>
+
     </div>
 
     
@@ -1377,7 +1593,8 @@ isn't found.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external external" target="_blank">Array</a></span>:
                     
-                    Array of keys.
+                    <p>Array of keys.</p>
+
                 
             </div>
         </div>
@@ -1433,7 +1650,7 @@ isn't found.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l171"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:171</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l215"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:215</code></a>
         
         </p>
 
@@ -1445,6 +1662,7 @@ isn't found.</p>
 
     <div class="description">
         <p>Deletes the entry with the given <em>key</em>.</p>
+
     </div>
 
     
@@ -1463,6 +1681,7 @@ isn't found.</p>
 
                     <div class="param-description">
                         <p>Key to delete.</p>
+
                     </div>
 
                     
@@ -1481,8 +1700,9 @@ isn't found.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
-                    <code>true</code> if the key existed and was deleted, <code>false</code>
-    otherwise.
+                    <p><code>true</code> if the key existed and was deleted, <code>false</code>
+    otherwise.</p>
+
                 
             </div>
         </div>
@@ -1542,7 +1762,7 @@ isn't found.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l200"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:200</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l251"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:251</code></a>
         
         </p>
 
@@ -1555,10 +1775,10 @@ isn't found.</p>
     <div class="description">
         <p>Sets the value of the entry with the given <em>key</em>. If the key already exists,
 its value will be overwritten; otherwise it will be created.</p>
-
 <p>The <em>key</em> may be any JavaScript value (including both primitives and
 objects), but string keys will allow fast lookups, whereas non-string keys
-will result in slower lookups.</p>
+may result in slower lookups.</p>
+
     </div>
 
     
@@ -1577,6 +1797,7 @@ will result in slower lookups.</p>
 
                     <div class="param-description">
                         <p>Key to set.</p>
+
                     </div>
 
                     
@@ -1592,6 +1813,7 @@ will result in slower lookups.</p>
 
                     <div class="param-description">
                         <p>Value to set.</p>
+
                     </div>
 
                     
@@ -1643,7 +1865,7 @@ will result in slower lookups.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l327"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:327</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l418"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:418</code></a>
         
         </p>
 
@@ -1655,9 +1877,9 @@ will result in slower lookups.</p>
 
     <div class="description">
         <p>Returns a JSON-serializable representation of this map.</p>
-
 <p>This is effectively an alias for <code>entries()</code>, but could be overridden to
 return a customized representation.</p>
+
     </div>
 
     
@@ -1671,7 +1893,8 @@ return a customized representation.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external external" target="_blank">Array</a></span>:
                     
-                    JSON-serializable array of entries in this map.
+                    <p>JSON-serializable array of entries in this map.</p>
+
                 
             </div>
         </div>
@@ -1717,7 +1940,7 @@ return a customized representation.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l234"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:234</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l300"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:300</code></a>
         
         </p>
 
@@ -1729,6 +1952,7 @@ return a customized representation.</p>
 
     <div class="description">
         <p>Returns an array of all the values in this map.</p>
+
     </div>
 
     
@@ -1742,7 +1966,8 @@ return a customized representation.</p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external external" target="_blank">Array</a></span>:
                     
-                    Array of values.
+                    <p>Array of values.</p>
+
                 
             </div>
         </div>
@@ -1758,6 +1983,53 @@ return a customized representation.</p>
         
             <div id="properties" class="api-class-tabpanel">
                 <h2 class="off-left">Properties</h2>
+
+                
+                    <div id="property__mapOptions" class="property item protected">
+    <h3 class="name"><code>_mapOptions</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-map_js_map.js.html#l103"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:103</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Options that affect the functionality of this map.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
 
                 
                     <div id="property_size" class="property item">
@@ -1783,7 +2055,7 @@ return a customized representation.</p>
             
         
         
-        <a href="../files/src_sm-map_js_map.js.html#l62"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:62</code></a>
+        <a href="../files/src_sm-map_js_map.js.html#l93"><code>src&#x2F;sm-map&#x2F;js&#x2F;map.js:93</code></a>
         
         </p>
 
@@ -1794,6 +2066,7 @@ return a customized representation.</p>
 
     <div class="description">
         <p>The number of entries in this map.</p>
+
     </div>
 
     

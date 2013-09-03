@@ -857,7 +857,7 @@
             "namespace": "",
             "file": "src/sm-map/js/map.js",
             "line": 10,
-            "description": "An ordered map data structure with an interface and behavior similar to (but not\nexactly the same as) [ECMAScript 6 Maps][es6-maps].\n\n[es6-maps]:http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.14",
+            "description": "An ordered hash map data structure with an interface and behavior similar to\n(but not exactly the same as) [ECMAScript 6 Maps][es6-maps].\n\n[es6-maps]:http://people.mozilla.org/~jorendorff/es6-draft.html#sec-15.14",
             "is_constructor": 1,
             "params": [
                 {
@@ -865,6 +865,28 @@
                     "description": "Array of entries to add to the map. Each entry should\n    itself be an array in which the first item is the key and the second item is\n    the value for that entry.",
                     "type": "Array[]",
                     "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "autoStamp",
+                            "description": "If `true`, objects used as keys\n        will be automatically stamped with a unique id as the value of the\n        property defined by the `objectIdName` option (\"_yuid\" by default) if\n        that property isn't already set. This will result in much faster lookups\n        for object keys.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "objectIdName",
+                            "description": "Name of a property whose\n        string value should be used as the unique key when present on an object\n        that's given as a key. This will significantly speed up lookups of\n        object-based keys that define this property.\n\n        By default the `objectIdName` is set to \"_yuid\", which is a unique id\n        property defined on many YUI objects. You can stamp any object with a\n        \"_yuid\" property by passing it to `Y.stamp()`, or enable the `autoStamp`\n        option to automatically stamp object keys on insertion.",
+                            "type": "String",
+                            "optional": true,
+                            "optdefault": "\"_yuid\""
+                        }
+                    ]
                 }
             ]
         },
@@ -4599,7 +4621,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 62,
+            "line": 93,
             "description": "The number of entries in this map.",
             "itemtype": "property",
             "name": "size",
@@ -4611,7 +4633,19 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 72,
+            "line": 103,
+            "description": "Options that affect the functionality of this map.",
+            "itemtype": "property",
+            "name": "_mapOptions",
+            "type": "Object",
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 115,
             "description": "Deletes all entries from this map.",
             "itemtype": "method",
             "name": "clear",
@@ -4621,7 +4655,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 90,
+            "line": 134,
             "description": "Executes the given _callback_ function on each entry in this map.",
             "itemtype": "method",
             "name": "each",
@@ -4664,7 +4698,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 117,
+            "line": 161,
             "description": "Returns an array of all the entries in this map. Each entry is an array with\ntwo items, the first being a key and the second a value associated with that\nkey.",
             "itemtype": "method",
             "name": "entries",
@@ -4677,7 +4711,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 135,
+            "line": 179,
             "description": "Returns the value associated with the given _key_, or _default_ if the key\nisn't found.",
             "itemtype": "method",
             "name": "get",
@@ -4703,7 +4737,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 150,
+            "line": 194,
             "description": "Returns `true` if _key_ exists in this map, `false` otherwise.",
             "itemtype": "method",
             "name": "has",
@@ -4723,7 +4757,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 161,
+            "line": 205,
             "description": "Returns an array of all the keys in this map.",
             "itemtype": "method",
             "name": "keys",
@@ -4736,7 +4770,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 171,
+            "line": 215,
             "description": "Deletes the entry with the given _key_.",
             "itemtype": "method",
             "name": "remove",
@@ -4756,8 +4790,8 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 200,
-            "description": "Sets the value of the entry with the given _key_. If the key already exists,\nits value will be overwritten; otherwise it will be created.\n\nThe _key_ may be any JavaScript value (including both primitives and\nobjects), but string keys will allow fast lookups, whereas non-string keys\nwill result in slower lookups.",
+            "line": 251,
+            "description": "Sets the value of the entry with the given _key_. If the key already exists,\nits value will be overwritten; otherwise it will be created.\n\nThe _key_ may be any JavaScript value (including both primitives and\nobjects), but string keys will allow fast lookups, whereas non-string keys\nmay result in slower lookups.",
             "itemtype": "method",
             "name": "set",
             "params": [
@@ -4778,7 +4812,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 234,
+            "line": 300,
             "description": "Returns an array of all the values in this map.",
             "itemtype": "method",
             "name": "values",
@@ -4791,7 +4825,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 246,
+            "line": 312,
             "description": "Returns the numerical index of the entry with the given _key_, or `-1` if\nnot found.\n\nThis is a very efficient operation with string keys, but is slower with\nnon-string keys.",
             "itemtype": "method",
             "name": "_indexOfKey",
@@ -4813,10 +4847,32 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 282,
-            "description": "Returns `true` if the two given values are the same value, `false`\notherwise.\n\nThis is an implementation of the ES5/6 SameValue comparison algorithm, which\nis more correct than `===` in that it considers `NaN` to be the same as\n`NaN`, and does not consider `0` to be the same as `-0`.\n\nThis method is an alias for `Object.is()` if available, or a fallback\nimplementation if not.",
+            "line": 365,
+            "description": "Returns `true` if the given string _key_ is safe to use in environments that\ndon't support `Object.create()`.",
             "itemtype": "method",
-            "name": "_is",
+            "name": "_isSafeKey",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "Key to check.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "`true` if the key is safe.",
+                "type": "Boolean"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 378,
+            "description": "Returns `true` if the two given values are the same value, `false`\notherwise.\n\nThis is an implementation of the [ES6 SameValueZero][es6-svz] comparison\nalgorithm. It's more correct than `===` in that it considers `NaN` to be the\nsame as `NaN`.\n\nNote that `0` and `-0` are considered the same by this algorithm.\n\n[es6-svz]: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-9.2.4",
+            "itemtype": "method",
+            "name": "_sameValueZero",
             "params": [
                 {
                     "name": "a",
@@ -4840,7 +4896,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 311,
+            "line": 402,
             "description": "Alias for `remove()`.",
             "itemtype": "method",
             "name": "delete",
@@ -4852,7 +4908,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 319,
+            "line": 410,
             "description": "Alias for `each()`.",
             "itemtype": "method",
             "name": "forEach",
@@ -4864,7 +4920,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 327,
+            "line": 418,
             "description": "Returns a JSON-serializable representation of this map.\n\nThis is effectively an alias for `entries()`, but could be overridden to\nreturn a customized representation.",
             "itemtype": "method",
             "name": "toJSON",
