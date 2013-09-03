@@ -170,6 +170,8 @@ Y.mix(YMap.prototype, {
     /**
     Executes the given _callback_ function on each entry in this map.
 
+    To halt iteration early, return `false` from the callback.
+
     @method each
     @param {Function} callback Callback function.
         @param {Mixed} callback.value Value being iterated.
@@ -186,8 +188,8 @@ Y.mix(YMap.prototype, {
         for (var i = 0, len = entries.length; i < len; ++i) {
             entry = entries[i];
 
-            if (0 in entry) {
-                callback.call(thisObj, entry[1], entry[0], this);
+            if (callback.call(thisObj, entry[1], entry[0], this) === false) {
+                break;
             }
         }
 

@@ -82,6 +82,8 @@ Differences from ES6 Maps
 
 * `each()` and `forEach()` are chainable.
 
+* `each()` will halt iteration if the callback returns `false`.
+
 * `get()` supports an optional `defaultValue` argument that will be returned if
   the given key isn't found.
 

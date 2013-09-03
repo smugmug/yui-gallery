@@ -204,6 +204,26 @@ suite.add(new Y.Test.Case({
         }, thisObj);
     },
 
+    'each() should halt iteration if the callback returns `false`': function () {
+        var count = 0;
+
+        this.map.each(function () {
+            count += 1;
+            return count !== 3;
+        });
+
+        Assert.areSame(3, count, 'iteration should halt early');
+
+        count = 0
+
+        this.map.each(function () {
+            count += 1;
+            return 0;
+        });
+
+        Assert.areSame(this.map.size, count, "iteration should not halt on a falsy value that isn't `false`");
+    },
+
     'each() should be chainable': function () {
         Assert.areSame(this.map, this.map.each(function () {}));
     },
