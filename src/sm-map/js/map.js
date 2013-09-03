@@ -31,11 +31,6 @@ An ordered hash map data structure with an interface and behavior similar to
         string value should be used as the unique key when present on an object
         that's given as a key. This will significantly speed up lookups of
         object-based keys that define this property.
-
-        By default the `objectIdName` is set to "_yuid", which is a unique id
-        property defined on many YUI objects. You can stamp any object with a
-        "_yuid" property by passing it to `Y.stamp()`, or enable the `autoStamp`
-        option to automatically stamp object keys on insertion.
 **/
 
 "use strict";

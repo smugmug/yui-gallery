@@ -11,8 +11,8 @@ Modules
 
 ### [gallery-sm-map](src/sm-map)
 
-An ordered map data structure with an interface and behavior similar to (but not
-exactly the same as) ECMAScript 6 Maps.
+An ordered hash map data structure with an interface and behavior similar to
+(but not exactly the same as) ECMAScript 6 Maps.
 
 ### [gallery-sm-menu](src/sm-menu)
 
