@@ -351,41 +351,57 @@ suite.add(new Y.Test.Case({
     },
 
     'remove() should delete the entry with the given key': function () {
+        var marker      = 'marker',
+            markerValue = 'markerValue';
+
+        this.map.set(marker, markerValue);
+
         var size = this.map.size;
 
         Assert.isFalse(this.map.remove('bogus'), 'should return false if the key is not found');
         Assert.isTrue(this.map.remove('a'), 'should return true if the key is found');
         Assert.isFalse(this.map.has('a'), 'entry should be removed');
         Assert.areSame(size - 1, this.map.size, 'size should be -1');
+        Assert.areSame(markerValue, this.map.get(marker), 'entries should be properly indexed');
 
         Assert.isTrue(this.map.remove(0), 'should remove 0 key');
         Assert.isFalse(this.map.has(0), '0 entry should be removed');
         Assert.areSame(size - 2, this.map.size, 'size should be -2');
+        Assert.areSame(markerValue, this.map.get(marker), 'entries should be properly indexed (2)');
 
         this.map.set(NaN, 'NaN');
         Assert.isTrue(this.map.has(NaN), 'NaN key should be created');
         Assert.isTrue(this.map.remove(NaN), 'should remove NaN key');
         Assert.isFalse(this.map.has(NaN), 'NaN key entry should be removed');
         Assert.areSame(size - 2, this.map.size, 'size should be -2 after removing NaN');
+        Assert.areSame(markerValue, this.map.get(marker), 'entries should be properly indexed (3)');
     },
 
     'remove() should delete the entry with the given key from a stamped map': function () {
+        var marker      = {},
+            markerValue = {};
+
+        this.stampedMap.set(marker, markerValue);
+
         var size = this.stampedMap.size;
 
         Assert.isFalse(this.stampedMap.remove('bogus'), 'should return false if the key is not found');
         Assert.isTrue(this.stampedMap.remove('a'), 'should return true if the key is found');
         Assert.isFalse(this.stampedMap.has('a'), 'entry should be removed');
         Assert.areSame(size - 1, this.stampedMap.size, 'size should be -1');
+        Assert.areSame(markerValue, this.stampedMap.get(marker), 'entries should be properly indexed');
 
         Assert.isTrue(this.stampedMap.remove(0), 'should remove 0 key');
         Assert.isFalse(this.stampedMap.has(0), '0 entry should be removed');
         Assert.areSame(size - 2, this.stampedMap.size, 'size should be -2');
+        Assert.areSame(markerValue, this.stampedMap.get(marker), 'entries should be properly indexed (2)');
 
         this.stampedMap.set(NaN, 'NaN');
         Assert.isTrue(this.stampedMap.has(NaN), 'NaN key should be created');
         Assert.isTrue(this.stampedMap.remove(NaN), 'should remove NaN key');
         Assert.isFalse(this.stampedMap.has(NaN), 'NaN key entry should be removed');
         Assert.areSame(size - 2, this.stampedMap.size, 'size should be -2 after removing NaN');
+        Assert.areSame(markerValue, this.stampedMap.get(marker), 'entries should be properly indexed (3)');
     },
 
     "set() should create an entry if one doesn't exist": function () {
