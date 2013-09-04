@@ -41,6 +41,15 @@ suite.add(new Y.Test.Case({
         Assert.areSame('two', map.get('b'), '"b" entry should be set');
     },
 
+    'constructor should accept another Y.Map instance': function () {
+        var firstMap  = new YMap([['a', 'one'], ['b', 'two']]),
+            secondMap = new YMap(firstMap);
+
+        Assert.areSame(2, secondMap.size, 'map should have two entries');
+        Assert.areSame('one', secondMap.get('a'), '"a" entry should be set');
+        Assert.areSame('two', secondMap.get('b'), '"b" entry should be set');
+    },
+
     'constructor should accept an options object as the second argument': function () {
         var map = new YMap([['a', 'one']], {foo: 'bar'});
 
@@ -368,6 +377,54 @@ suite.add(new Y.Test.Case({
         keys[5] = true;
         Assert.areSame('null', this.map.get(null), 'key should not be changed');
         Assert.isUndefined(this.map.get(true), 'new entry should not be created');
+    },
+
+    'merge() should merge one or more other maps into the host map': function () {
+        var mapZero = new Y.Map([['k', 'kittens'], ['p', 'puppies']]);
+
+        this.map.merge(mapZero);
+
+        Assert.areSame('kittens', this.map.get('k'), 'should have kittens');
+        Assert.areSame('puppies', this.map.get('p'), 'should have puppies');
+
+        var mapOne = new Y.Map([['foo', 'bar'], ['a', 'map one'], [this.fn, 'map one fn']]),
+            mapTwo = new Y.Map([['baz', 'quux'], ['a', 'map two'], [this.object, 'map two object']]);
+
+        this.map.merge(mapOne, mapTwo);
+
+        Assert.areSame('kittens', this.map.get('k'), 'should still have kittens');
+        Assert.areSame('puppies', this.map.get('p'), 'should still have puppies');
+        Assert.areSame('bar', this.map.get('foo'), 'should have foo');
+        Assert.areSame('map two', this.map.get('a'), 'should have "a"');
+        Assert.areSame('map one fn', this.map.get(this.fn), 'should have function');
+        Assert.areSame('quux', this.map.get('baz'), 'should have baz');
+        Assert.areSame('map two object', this.map.get(this.object), 'should have map two object');
+    },
+
+    'merge() should accept arrays of entries': function () {
+        var mapZero = [['k', 'kittens'], ['p', 'puppies']];
+
+        this.map.merge(mapZero);
+
+        Assert.areSame('kittens', this.map.get('k'), 'should have kittens');
+        Assert.areSame('puppies', this.map.get('p'), 'should have puppies');
+
+        var mapOne = [['foo', 'bar'], ['a', 'map one'], [this.fn, 'map one fn']],
+            mapTwo = [['baz', 'quux'], ['a', 'map two'], [this.object, 'map two object']];
+
+        this.map.merge(mapOne, mapTwo);
+
+        Assert.areSame('kittens', this.map.get('k'), 'should still have kittens');
+        Assert.areSame('puppies', this.map.get('p'), 'should still have puppies');
+        Assert.areSame('bar', this.map.get('foo'), 'should have foo');
+        Assert.areSame('map two', this.map.get('a'), 'should have "a"');
+        Assert.areSame('map one fn', this.map.get(this.fn), 'should have function');
+        Assert.areSame('quux', this.map.get('baz'), 'should have baz');
+        Assert.areSame('map two object', this.map.get(this.object), 'should have map two object');
+    },
+
+    'merge() should be chainable': function () {
+        Assert.areSame(this.map, this.map.merge());
     },
 
     'remove() should delete the entry with the given key': function () {

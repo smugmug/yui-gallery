@@ -87,9 +87,15 @@ Differences from ES6 Maps
 * `get()` supports an optional `defaultValue` argument that will be returned if
   the given key isn't found.
 
+* `merge()` merges one or more maps. There is no ES6 equivalent.
+
 * `toJSON()` is an alias for `entries()` (ES6 doesn't define `toJSON()`).
 
 * Does not support ES6 iterators, as most browsers don't implement them yet.
+
+* The Y.Map constructor accepts either an array of entries, a Y.Map instance,
+  or a native Map instance containing entries that should be added to the new
+  map. The ES6 Map constructor only accepts an array of entries.
 
 * The Y.Map constructor doesn't accept a `comparator` argument, whereas the ES6
   Map constructor does. Its only valid value in ES6 is the string "is", which

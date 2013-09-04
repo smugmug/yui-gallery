@@ -15,9 +15,9 @@ An ordered hash map data structure with an interface and behavior similar to
 
 @class Map
 @constructor
-@param {Array[]} [entries] Array of entries to add to the map. Each entry should
-    itself be an array in which the first item is the key and the second item is
-    the value for that entry.
+@param {Array[]|Map} [entries] Array or Map of entries to add to this map. If an
+    array, then each entry should itself be an array in which the first item is
+    the key and the second item is the value for that entry.
 
 @param {Object} [options] Options.
 
@@ -38,12 +38,13 @@ An ordered hash map data structure with an interface and behavior similar to
 var emptyObject        = {},
     isNative           = Y.Lang._isNative,
     nativeObjectCreate = isNative(Object.create),
+    protoSlice         = Array.prototype.slice,
     sizeIsGetter       = isNative(Object.defineProperty) && Y.UA.ie !== 8;
 
 function YMap(entries, options) {
     // Allow options as only param.
     if (arguments.length === 1 && !('length' in entries)
-            && typeof entries === 'object') {
+            && typeof entries.entries !== 'function') {
 
         options = entries;
         entries = null;
@@ -57,7 +58,13 @@ function YMap(entries, options) {
 
     if (entries) {
         if (!Y.Lang.isArray(entries)) {
-            entries = Array.prototype.slice.call(entries);
+            if (typeof entries.entries === 'function') {
+                // It quacks like a map!
+                entries = entries.entries();
+            } else {
+                // Assume it's an array-like object.
+                entries = protoSlice.call(entries);
+            }
         }
 
         var entry;
@@ -249,7 +256,47 @@ Y.mix(YMap.prototype, {
     @return {Array} Array of keys.
     **/
     keys: function () {
-        return Array.prototype.slice.call(this._mapKeys);
+        return protoSlice.call(this._mapKeys);
+    },
+
+    /**
+    Merges the entries from one or more other maps or entry arrays into this
+    map. Entries in later (rightmost) arguments will take precedence over
+    entries in earlier (leftmost) arguments if their keys are the same.
+
+    This method also accepts arrays of entries in lieu of actual Y.Map
+    instances, so the following operations have the same result:
+
+        // This...
+        map.merge(new Y.Map([['a', 'apple'], ['b', 'bear']]));
+
+        // ...has the same result as this...
+        map.merge([['a', 'apple'], ['b', 'bear']]);
+
+    @method merge
+    @param {Array[]|Map} maps* One or more maps or entry arrays to merge into
+        this map.
+    @chainable
+    **/
+    merge: function () {
+        var maps = protoSlice.call(arguments),
+
+            entries,
+            entry,
+            i,
+            len,
+            map;
+
+        while ((map = maps.shift())) {
+            entries = typeof map.entries === 'function' ? map.entries() : map;
+
+            for (i = 0, len = entries.length; i < len; ++i) {
+                entry = entries[i];
+                this.set(entry[0], entry[1]);
+            }
+        }
+
+        return this;
     },
 
     /**
@@ -309,7 +356,7 @@ Y.mix(YMap.prototype, {
     @return {Array} Array of values.
     **/
     values: function () {
-        return Array.prototype.slice.call(this._mapValues);
+        return protoSlice.call(this._mapValues);
     },
 
     // -- Protected Methods ----------------------------------------------------
