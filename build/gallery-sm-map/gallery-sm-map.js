@@ -17,9 +17,9 @@ An ordered hash map data structure with an interface and behavior similar to
 
 @class Map
 @constructor
-@param {Array[]} [entries] Array of entries to add to the map. Each entry should
-    itself be an array in which the first item is the key and the second item is
-    the value for that entry.
+@param {Array[]|Map} [entries] Array or Map of entries to add to this map. If an
+    array, then each entry should itself be an array in which the first item is
+    the key and the second item is the value for that entry.
 
 @param {Object} [options] Options.
 
@@ -33,11 +33,6 @@ An ordered hash map data structure with an interface and behavior similar to
         string value should be used as the unique key when present on an object
         that's given as a key. This will significantly speed up lookups of
         object-based keys that define this property.
-
-        By default the `objectIdName` is set to "_yuid", which is a unique id
-        property defined on many YUI objects. You can stamp any object with a
-        "_yuid" property by passing it to `Y.stamp()`, or enable the `autoStamp`
-        option to automatically stamp object keys on insertion.
 **/
 
 "use strict";
@@ -45,12 +40,13 @@ An ordered hash map data structure with an interface and behavior similar to
 var emptyObject        = {},
     isNative           = Y.Lang._isNative,
     nativeObjectCreate = isNative(Object.create),
+    protoSlice         = Array.prototype.slice,
     sizeIsGetter       = isNative(Object.defineProperty) && Y.UA.ie !== 8;
 
 function YMap(entries, options) {
     // Allow options as only param.
     if (arguments.length === 1 && !('length' in entries)
-            && typeof entries === 'object') {
+            && typeof entries.entries !== 'function') {
 
         options = entries;
         entries = null;
@@ -64,7 +60,13 @@ function YMap(entries, options) {
 
     if (entries) {
         if (!Y.Lang.isArray(entries)) {
-            entries = Array.prototype.slice.call(entries);
+            if (typeof entries.entries === 'function') {
+                // It quacks like a map!
+                entries = entries.entries();
+            } else {
+                // Assume it's an array-like object.
+                entries = protoSlice.call(entries);
+            }
         }
 
         var entry;
@@ -103,6 +105,43 @@ Y.mix(YMap.prototype, {
     // -- Protected Properties -------------------------------------------------
 
     /**
+    Whether or not the internal key index is in need of reindexing.
+
+    Rather than reindexing immediately whenever it becomes necessary, we use
+    this flag to allow on-demand indexing the first time an up-to-date index is
+    actually needed.
+
+    This makes multiple `remove()` operations significantly faster, at the
+    expense of a single reindex operation the next time a key is looked up.
+
+    @property {Boolean} _isIndexStale
+    @protected
+    **/
+
+    /**
+    Internal array of the keys in this map.
+
+    @property {Array} _mapKeys
+    @protected
+    **/
+
+    /**
+    Internal index mapping string keys to their indices in the `_mapKeys` array.
+
+    @property {Object} _mapKeyIndices
+    @protected
+    **/
+
+    /**
+    Internal index mapping object key ids to their indices in the `_mapKeys`
+    array. This is separate from `_mapKeyIndices` in order to prevent collisions
+    between object key ids and string keys.
+
+    @property {Object} _mapObjectIndices
+    @protected
+    **/
+
+    /**
     Options that affect the functionality of this map.
 
     @property {Object} _mapOptions
@@ -111,6 +150,13 @@ Y.mix(YMap.prototype, {
     _mapOptions: {
         objectIdName: '_yuid'
     },
+
+    /**
+    Internal array of the values in this map.
+
+    @property {Array} _mapValues
+    @protected
+    **/
 
     // -- Public Methods -------------------------------------------------------
 
@@ -121,20 +167,19 @@ Y.mix(YMap.prototype, {
     @chainable
     **/
     clear: function () {
-        this._mapKeyIndices    = nativeObjectCreate ? Object.create(null) : {};
-        this._mapKeys          = [];
-        this._mapObjectIndices = nativeObjectCreate ? Object.create(null) : {};
-        this._mapValues        = [];
+        this._mapKeys   = [];
+        this._mapValues = [];
 
-        if (!sizeIsGetter) {
-            this.size = 0;
-        }
+        this._reindexMap();
+        this._updateMapSize();
 
         return this;
     },
 
     /**
     Executes the given _callback_ function on each entry in this map.
+
+    To halt iteration early, return `false` from the callback.
 
     @method each
     @param {Function} callback Callback function.
@@ -152,8 +197,8 @@ Y.mix(YMap.prototype, {
         for (var i = 0, len = entries.length; i < len; ++i) {
             entry = entries[i];
 
-            if (0 in entry) {
-                callback.call(thisObj, entry[1], entry[0], this);
+            if (callback.call(thisObj, entry[1], entry[0], this) === false) {
+                break;
             }
         }
 
@@ -169,10 +214,12 @@ Y.mix(YMap.prototype, {
     @return {Array} Array of entries.
     **/
     entries: function () {
-        var entries = [];
+        var entries   = [],
+            mapKeys   = this._mapKeys,
+            mapValues = this._mapValues;
 
-        for (var i = 0, len = this._mapKeys.length; i < len; ++i) {
-            entries.push([this._mapKeys[i], this._mapValues[i]]);
+        for (var i = 0, len = mapKeys.length; i < len; ++i) {
+            entries.push([mapKeys[i], mapValues[i]]);
         }
 
         return entries;
@@ -211,7 +258,47 @@ Y.mix(YMap.prototype, {
     @return {Array} Array of keys.
     **/
     keys: function () {
-        return Array.prototype.slice.call(this._mapKeys);
+        return protoSlice.call(this._mapKeys);
+    },
+
+    /**
+    Merges the entries from one or more other maps or entry arrays into this
+    map. Entries in later (rightmost) arguments will take precedence over
+    entries in earlier (leftmost) arguments if their keys are the same.
+
+    This method also accepts arrays of entries in lieu of actual Y.Map
+    instances, so the following operations have the same result:
+
+        // This...
+        map.merge(new Y.Map([['a', 'apple'], ['b', 'bear']]));
+
+        // ...has the same result as this...
+        map.merge([['a', 'apple'], ['b', 'bear']]);
+
+    @method merge
+    @param {Array[]|Map} maps* One or more maps or entry arrays to merge into
+        this map.
+    @chainable
+    **/
+    merge: function () {
+        var maps = protoSlice.call(arguments),
+
+            entries,
+            entry,
+            i,
+            len,
+            map;
+
+        while ((map = maps.shift())) {
+            entries = typeof map.entries === 'function' ? map.entries() : map;
+
+            for (i = 0, len = entries.length; i < len; ++i) {
+                entry = entries[i];
+                this.set(entry[0], entry[1]);
+            }
+        }
+
+        return this;
     },
 
     /**
@@ -223,29 +310,14 @@ Y.mix(YMap.prototype, {
         otherwise.
     **/
     remove: function (key) {
-        var i             = this._indexOfKey(key),
-            objectIdName  = this._mapOptions.objectIdName;
+        var i = this._indexOfKey(key);
 
         if (i < 0) {
             return false;
         }
 
-        this._mapKeys.splice(i, 1);
-        this._mapValues.splice(i, 1);
-
-        if (typeof key === 'string') {
-            if (nativeObjectCreate || this._isSafeKey(key)) {
-                delete this._mapKeyIndices[key];
-            }
-        } else if (objectIdName && key !== null && key[objectIdName]) {
-            if (nativeObjectCreate || this._isSafeKey(key[objectIdName])) {
-                delete this._mapObjectIndices[key[objectIdName]];
-            }
-        }
-
-        if (!sizeIsGetter) {
-            this.size = this._mapKeys.length;
-        }
+        this._removeMapEntry(i);
+        this._updateMapSize();
 
         return true;
     },
@@ -264,8 +336,7 @@ Y.mix(YMap.prototype, {
     @chainable
     **/
     set: function (key, value) {
-        var i             = this._indexOfKey(key),
-            objectIdName  = this._mapOptions.objectIdName;
+        var i = this._indexOfKey(key);
 
         if (i < 0) {
             i = this._mapKeys.length;
@@ -274,27 +345,8 @@ Y.mix(YMap.prototype, {
         this._mapKeys[i]   = key;
         this._mapValues[i] = value;
 
-        if (typeof key === 'string') {
-            if (nativeObjectCreate || this._isSafeKey(key)) {
-                this._mapKeyIndices[key] = i;
-            }
-        } else if (objectIdName && key && typeof key === 'object') {
-            if (!key[objectIdName] && this._mapOptions.autoStamp) {
-                try {
-                    key[objectIdName] = Y.guid();
-                } catch (ex) {}
-            }
-
-            if (key[objectIdName]
-                    && (nativeObjectCreate || this._isSafeKey(key[objectIdName]))) {
-
-                this._mapObjectIndices[key[objectIdName]] = i;
-            }
-        }
-
-        if (!sizeIsGetter) {
-            this.size = this._mapKeys.length;
-        }
+        this._indexMapKey(i, key);
+        this._updateMapSize();
 
         return this;
     },
@@ -306,16 +358,47 @@ Y.mix(YMap.prototype, {
     @return {Array} Array of values.
     **/
     values: function () {
-        return Array.prototype.slice.call(this._mapValues);
+        return protoSlice.call(this._mapValues);
     },
 
     // -- Protected Methods ----------------------------------------------------
 
     /**
+    Indexes the given _key_ to enable faster lookups.
+
+    @method _indexMapKey
+    @param {Number} index Numerical index of the key in the internal `_mapKeys`
+        array.
+    @param {Mixed} key Key to index.
+    @protected
+    **/
+    _indexMapKey: function (index, key) {
+        var objectIdName = this._mapOptions.objectIdName;
+
+        if (typeof key === 'string') {
+            if (nativeObjectCreate || this._isSafeKey(key)) {
+                this._mapKeyIndices[key] = index;
+            }
+        } else if (objectIdName && key && typeof key === 'object') {
+            if (!key[objectIdName] && this._mapOptions.autoStamp) {
+                try {
+                    key[objectIdName] = Y.guid();
+                } catch (ex) {}
+            }
+
+            if (key[objectIdName]
+                    && (nativeObjectCreate || this._isSafeKey(key[objectIdName]))) {
+
+                this._mapObjectIndices[key[objectIdName]] = index;
+            }
+        }
+    },
+
+    /**
     Returns the numerical index of the entry with the given _key_, or `-1` if
     not found.
 
-    This is a very efficient operation with string keys, but is slower with
+    This is a very efficient operation with string keys, but may be slower with
     non-string keys.
 
     @method _indexOfKey
@@ -327,6 +410,11 @@ Y.mix(YMap.prototype, {
     _indexOfKey: function (key) {
         var objectIdName = this._mapOptions.objectIdName,
             i;
+
+        // Reindex the map if the index is stale.
+        if (this._isIndexStale) {
+            this._reindexMap();
+        }
 
         // If the key is a string, do a fast hash lookup for the index.
         if (typeof key === 'string') {
@@ -378,6 +466,46 @@ Y.mix(YMap.prototype, {
     },
 
     /**
+    Reindexes all the keys in this map.
+
+    @method _reindexMap
+    @protected
+    **/
+    _reindexMap: function () {
+        var mapKeys = this._mapKeys;
+
+        this._mapKeyIndices    = nativeObjectCreate ? Object.create(null) : {};
+        this._mapObjectIndices = nativeObjectCreate ? Object.create(null) : {};
+
+        for (var i = 0, len = mapKeys.length; i < len; ++i) {
+            this._indexMapKey(i, mapKeys[i]);
+        }
+
+        this._isIndexStale = false;
+    },
+
+    /**
+    Removes the entry at the given _index_ from internal arrays.
+
+    This method does not update the `size` property.
+
+    @method _removeMapEntry
+    @param {Number} index Index of the entry to remove.
+    @protected
+    **/
+    _removeMapEntry: function (index) {
+        if (index === this._mapKeys.length - 1) {
+            this._mapKeys.pop();
+            this._mapValues.pop();
+        } else {
+            this._mapKeys.splice(index, 1);
+            this._mapValues.splice(index, 1);
+
+            this._isIndexStale = true;
+        }
+    },
+
+    /**
     Returns `true` if the two given values are the same value, `false`
     otherwise.
 
@@ -398,6 +526,17 @@ Y.mix(YMap.prototype, {
     **/
     _sameValueZero: function (a, b) {
         return a === b || (a !== a && b !== b);
+    },
+
+    /**
+    Updates the value of the `size` property in old browsers. In ES5 browsers
+    this is a noop, since the `size` property is a getter.
+
+    @method _updateMapSize
+    @protected
+    **/
+    _updateMapSize: sizeIsGetter ? function () {} : function () {
+        this.size = this._mapKeys.length;
     }
 }, true);
 
