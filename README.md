@@ -9,6 +9,11 @@ This repo contains open source YUI components that have been contributed to the
 Modules
 -------
 
+### [gallery-sm-dom-form-values](src/sm-dom-form-values)
+
+Adds a `Y.DOM.formToObject(identifier)` method to extract form values from the
+DOM.
+
 ### [gallery-sm-map](src/sm-map)
 
 An ordered hash map data structure with an interface and behavior similar to
@@ -19,20 +24,15 @@ An ordered hash map data structure with an interface and behavior similar to
 An awesome menu widget that makes it easy to create standalone menus, dropdown
 menus, and context menus.
 
-### [gallery-sm-treeview](src/sm-treeview)
-
-A powerful, easy to use, and extremely fast TreeView widget.
-
-### [gallery-sm-dom-form-values](src/sm-dom-form-values)
-
-Adds a `Y.DOM.formToObject(identifier)` method to extract form values from the
-DOM.
-
 ### [gallery-sm-promise-events](src/sm-promise-events)
 
 Add an event notification interface to a `Y.Promise` and any child promises it
 spawns. Useful for cascading things like cancelation or progress through a
 promise chain.
+
+### [gallery-sm-treeview](src/sm-treeview)
+
+A powerful, easy to use, and extremely fast TreeView widget.
 
 
 Works in Progress
