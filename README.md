@@ -28,6 +28,12 @@ A powerful, easy to use, and extremely fast TreeView widget.
 Adds a `Y.DOM.formToObject(identifier)` method to extract form values from the
 DOM.
 
+### [gallery-sm-promise-events](src/sm-promise-events)
+
+Add an event notification interface to a `Y.Promise` and any child promises it
+spawns. Useful for cascading things like cancelation or progress through a
+promise chain.
+
 
 Works in Progress
 -----------------
