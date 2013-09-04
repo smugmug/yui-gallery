@@ -862,8 +862,8 @@
             "params": [
                 {
                     "name": "entries",
-                    "description": "Array of entries to add to the map. Each entry should\n    itself be an array in which the first item is the key and the second item is\n    the value for that entry.",
-                    "type": "Array[]",
+                    "description": "Array or Map of entries to add to this map. If an\n    array, then each entry should itself be an array in which the first item is\n    the key and the second item is the value for that entry.",
+                    "type": "Array[]|Map",
                     "optional": true
                 },
                 {
@@ -4621,7 +4621,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 88,
+            "line": 95,
             "description": "The number of entries in this map.",
             "itemtype": "property",
             "name": "size",
@@ -4633,7 +4633,55 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 98,
+            "line": 105,
+            "description": "Whether or not the internal key index is in need of reindexing.\n\nRather than reindexing immediately whenever it becomes necessary, we use\nthis flag to allow on-demand indexing the first time an up-to-date index is\nactually needed.\n\nThis makes multiple `remove()` operations significantly faster, at the\nexpense of a single reindex operation the next time a key is looked up.",
+            "itemtype": "property",
+            "name": "_isIndexStale",
+            "type": "Boolean",
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 119,
+            "description": "Internal array of the keys in this map.",
+            "itemtype": "property",
+            "name": "_mapKeys",
+            "type": "Array",
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 126,
+            "description": "Internal index mapping string keys to their indices in the `_mapKeys` array.",
+            "itemtype": "property",
+            "name": "_mapKeyIndices",
+            "type": "Object",
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 133,
+            "description": "Internal index mapping object key ids to their indices in the `_mapKeys`\narray. This is separate from `_mapKeyIndices` in order to prevent collisions\nbetween object key ids and string keys.",
+            "itemtype": "property",
+            "name": "_mapObjectIndices",
+            "type": "Object",
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 142,
             "description": "Options that affect the functionality of this map.",
             "itemtype": "property",
             "name": "_mapOptions",
@@ -4645,7 +4693,19 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 110,
+            "line": 152,
+            "description": "Internal array of the values in this map.",
+            "itemtype": "property",
+            "name": "_mapValues",
+            "type": "Array",
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 161,
             "description": "Deletes all entries from this map.",
             "itemtype": "method",
             "name": "clear",
@@ -4655,8 +4715,8 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 129,
-            "description": "Executes the given _callback_ function on each entry in this map.",
+            "line": 177,
+            "description": "Executes the given _callback_ function on each entry in this map.\n\nTo halt iteration early, return `false` from the callback.",
             "itemtype": "method",
             "name": "each",
             "params": [
@@ -4698,7 +4758,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 156,
+            "line": 206,
             "description": "Returns an array of all the entries in this map. Each entry is an array with\ntwo items, the first being a key and the second a value associated with that\nkey.",
             "itemtype": "method",
             "name": "entries",
@@ -4711,7 +4771,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 174,
+            "line": 226,
             "description": "Returns the value associated with the given _key_, or _default_ if the key\nisn't found.",
             "itemtype": "method",
             "name": "get",
@@ -4737,7 +4797,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 189,
+            "line": 241,
             "description": "Returns `true` if _key_ exists in this map, `false` otherwise.",
             "itemtype": "method",
             "name": "has",
@@ -4757,7 +4817,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 200,
+            "line": 252,
             "description": "Returns an array of all the keys in this map.",
             "itemtype": "method",
             "name": "keys",
@@ -4770,7 +4830,25 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 210,
+            "line": 262,
+            "description": "Merges the entries from one or more other maps or entry arrays into this\nmap. Entries in later (rightmost) arguments will take precedence over\nentries in earlier (leftmost) arguments if their keys are the same.\n\nThis method also accepts arrays of entries in lieu of actual Y.Map\ninstances, so the following operations have the same result:\n\n    // This...\n    map.merge(new Y.Map([['a', 'apple'], ['b', 'bear']]));\n\n    // ...has the same result as this...\n    map.merge([['a', 'apple'], ['b', 'bear']]);",
+            "itemtype": "method",
+            "name": "merge",
+            "params": [
+                {
+                    "name": "maps",
+                    "description": "One or more maps or entry arrays to merge into\n    this map.",
+                    "type": "Array[]|Map",
+                    "multiple": true
+                }
+            ],
+            "chainable": 1,
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 302,
             "description": "Deletes the entry with the given _key_.",
             "itemtype": "method",
             "name": "remove",
@@ -4790,7 +4868,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 246,
+            "line": 323,
             "description": "Sets the value of the entry with the given _key_. If the key already exists,\nits value will be overwritten; otherwise it will be created.\n\nThe _key_ may be any JavaScript value (including both primitives and\nobjects), but string keys will allow fast lookups, whereas non-string keys\nmay result in slower lookups.",
             "itemtype": "method",
             "name": "set",
@@ -4812,7 +4890,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 295,
+            "line": 352,
             "description": "Returns an array of all the values in this map.",
             "itemtype": "method",
             "name": "values",
@@ -4825,8 +4903,31 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 307,
-            "description": "Returns the numerical index of the entry with the given _key_, or `-1` if\nnot found.\n\nThis is a very efficient operation with string keys, but is slower with\nnon-string keys.",
+            "line": 364,
+            "description": "Indexes the given _key_ to enable faster lookups.",
+            "itemtype": "method",
+            "name": "_indexMapKey",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "Numerical index of the key in the internal `_mapKeys`\n    array.",
+                    "type": "Number"
+                },
+                {
+                    "name": "key",
+                    "description": "Key to index.",
+                    "type": "Mixed"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 395,
+            "description": "Returns the numerical index of the entry with the given _key_, or `-1` if\nnot found.\n\nThis is a very efficient operation with string keys, but may be slower with\nnon-string keys.",
             "itemtype": "method",
             "name": "_indexOfKey",
             "params": [
@@ -4847,7 +4948,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 360,
+            "line": 453,
             "description": "Returns `true` if the given string _key_ is safe to use in environments that\ndon't support `Object.create()`.",
             "itemtype": "method",
             "name": "_isSafeKey",
@@ -4869,7 +4970,36 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 373,
+            "line": 466,
+            "description": "Reindexes all the keys in this map.",
+            "itemtype": "method",
+            "name": "_reindexMap",
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 485,
+            "description": "Removes the entry at the given _index_ from internal arrays.\n\nThis method does not update the `size` property.",
+            "itemtype": "method",
+            "name": "_removeMapEntry",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "Index of the entry to remove.",
+                    "type": "Number"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 506,
             "description": "Returns `true` if the two given values are the same value, `false`\notherwise.\n\nThis is an implementation of the [ES6 SameValueZero][es6-svz] comparison\nalgorithm. It's more correct than `===` in that it considers `NaN` to be the\nsame as `NaN`.\n\nNote that `0` and `-0` are considered the same by this algorithm.\n\n[es6-svz]: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-9.2.4",
             "itemtype": "method",
             "name": "_sameValueZero",
@@ -4896,7 +5026,18 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 397,
+            "line": 529,
+            "description": "Updates the value of the `size` property in old browsers. In ES5 browsers\nthis is a noop, since the `size` property is a getter.",
+            "itemtype": "method",
+            "name": "_updateMapSize",
+            "access": "protected",
+            "tagname": "",
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 541,
             "description": "Alias for `remove()`.",
             "itemtype": "method",
             "name": "delete",
@@ -4908,7 +5049,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 405,
+            "line": 549,
             "description": "Alias for `each()`.",
             "itemtype": "method",
             "name": "forEach",
@@ -4920,7 +5061,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 413,
+            "line": 557,
             "description": "Returns a JSON-serializable representation of this map.\n\nThis is effectively an alias for `entries()`, but could be overridden to\nreturn a customized representation.",
             "itemtype": "method",
             "name": "toJSON",
