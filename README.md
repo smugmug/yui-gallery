@@ -18,6 +18,11 @@ menus, and context menus.
 
 A powerful, easy to use, and extremely fast TreeView widget.
 
+### [gallery-sm-dom-form-values](src/sm-dom-form-values)
+
+Adds a `Y.DOM.formToObject(identifier)` method to extract form values from the
+DOM.
+
 
 Works in Progress
 -----------------
