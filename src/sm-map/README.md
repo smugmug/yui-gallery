@@ -41,13 +41,12 @@ Useful Links
 Example
 -------
 
-_**Note:** gallery-sm-map isn't yet available on the Y! CDN, but feel free to
-grab it from this git repo!_
-
 [Run this example!](http://codepen.io/rgrove/pen/ImcsL)
 
 ```js
-YUI().use('gallery-sm-map', function (Y) {
+YUI({
+    gallery: 'gallery-2013.09.04-21-56'
+}).use('gallery-sm-map', function (Y) {
     var map = new Y.Map();
 
     // String keys are super efficient.
