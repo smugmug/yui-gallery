@@ -40,29 +40,31 @@ promise chain.
 A powerful, easy to use, and extremely fast TreeView widget.
 
 
-Works in Progress
------------------
+Experiments
+-----------
+
+These are experimental or work-in-progress modules that may not be fully stable
+yet. Feel free to try them out and send feedback though!
 
 ### [gallery-sm-dragdrop](src/sm-dragdrop)
 
-_Work in progress_. A simpler and more efficient drag and drop implementation
-than the one in YUI core. Highly optimized for delegation-based drag targets,
-remaining responsive and memory-efficient even when managing thousands of
-draggable nodes.
+A simpler and more efficient drag and drop implementation than the one in YUI
+core. Highly optimized for delegation-based drag targets, remaining responsive
+and memory-efficient even when managing thousands of draggable nodes.
 
 ### [gallery-sm-editor](src/sm-editor)
 
-_Work in progress_. A simple but powerful contentEditable-based WYSIWYG editor.
+A simple but powerful contentEditable-based WYSIWYG editor.
 
 ### [gallery-sm-focusmanager](src/sm-focusmanager)
 
-_Work in progress_. A Y.Node plugin that makes it easy to manage keyboard focus
-among the descendants of a node. This is a replacement for the
-soon-to-be-deprecated core Y.Plugin.NodeFocusManager component in YUI.
+A Y.Node plugin that makes it easy to manage keyboard focus among the
+descendants of a node. This is a replacement for the soon-to-be-deprecated core
+Y.Plugin.NodeFocusManager component in YUI.
 
 ### [gallery-sm-selection](src/sm-selection)
 
-_Work in progress_. Cross-browser Selection and Range APIs.
+Cross-browser Selection and Range APIs.
 
 
 Useful Links
