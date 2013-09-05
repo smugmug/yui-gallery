@@ -156,6 +156,42 @@ suite.add(new Y.Test.Case({
         Assert.areSame(this.map, this.map.clear());
     },
 
+    'concat() should return a copy of the map': function () {
+        var newMap = this.map.concat();
+
+        Assert.isInstanceOf(YMap, newMap, 'should be an instance of Y.Map');
+        Assert.areSame(this.map.size, newMap.size, 'sizes should be the same');
+        ArrayAssert.itemsAreSame(this.map.keys(), newMap.keys(), 'keys should be the same');
+        ArrayAssert.itemsAreSame(this.map.values(), newMap.values(), 'values should be the same');
+    },
+
+    'concat() with arguments should return a copy of the map with those args merged in': function () {
+        var oldSize = this.map.size,
+            newMap  = this.map.concat(
+                new Y.Map([['a', 'airwolf'], ['b', 'battlestar galactica'], ['c', 'columbo']]),
+                [['d', 'deadwood']],
+                [['c', 'chips']]
+            );
+
+        // New size is only +3 because two entries were replacements.
+        Assert.areSame(oldSize, this.map.size, 'old map size should not change');
+        Assert.areSame(oldSize + 3, newMap.size, 'new map size should be correct');
+        ArrayAssert.itemsAreSame(this.keys, this.map.keys(), 'old map keys should not change');
+        ArrayAssert.itemsAreSame(this.values, this.map.values(), 'old map values should not change');
+
+        Assert.areSame('airwolf', newMap.get('a'), '"a" value should be correct');
+        Assert.areSame('battlestar galactica', newMap.get('b'), '"b" value should be correct');
+        Assert.areSame('chips', newMap.get('c'), '"c" value should be correct');
+        Assert.areSame('deadwood', newMap.get('d'), '"d" value should be correct');
+    },
+
+    'concat() should return a map with the same options as this map': function () {
+        var map    = new Y.Map({objectIdName: 'pants'}),
+            newMap = map.concat();
+
+        Assert.areSame('pants', newMap._mapOptions.objectIdName);
+    },
+
     'delete() should be an alias for remove()': function () {
         Assert.areSame(this.map.remove, this.map['delete']);
     },
