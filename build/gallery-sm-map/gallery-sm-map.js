@@ -73,6 +73,11 @@ function YMap(entries, options) {
 
         for (var i = 0, len = entries.length; i < len; ++i) {
             entry = entries[i];
+
+            if (entry.length !== 2) {
+                throw new TypeError('Invalid map entry: ' + entry.toString());
+            }
+
             this.set(entry[0], entry[1]);
         }
     }
@@ -174,6 +179,31 @@ Y.mix(YMap.prototype, {
         this._updateMapSize();
 
         return this;
+    },
+
+    /**
+    Returns a new map comprised of this map's entries combined with those of the
+    maps or arrays passed as arguments. Does not alter this map or those given
+    as arguments in any way.
+
+    Entries in later (rightmost) arguments will take precedence over entries in
+    earlier (leftmost) arguments if their keys are the same.
+
+    This method also accepts arrays of entries in lieu of actual Y.Map
+    instances.
+
+    The returned map will be created using the same options and constructor as
+    this map.
+
+    @method concat
+    @param {Array[]|Map} [maps*] Zero or more maps or entry arrays to
+        concatenate into the resulting map.
+    @return {Map} New map containing the concatenated values of this map and all
+        arguments.
+    **/
+    concat: function () {
+        var map = new this.constructor(this, this._mapOptions);
+        return arguments.length ? map.merge.apply(map, arguments) : map;
     },
 
     /**
@@ -294,6 +324,11 @@ Y.mix(YMap.prototype, {
 
             for (i = 0, len = entries.length; i < len; ++i) {
                 entry = entries[i];
+
+                if (entry.length !== 2) {
+                    throw new TypeError('Invalid map entry: ' + entry.toString());
+                }
+
                 this.set(entry[0], entry[1]);
             }
         }
