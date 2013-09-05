@@ -1,0 +1,8 @@
+{
+    "gallery-sm-indexed-map": {
+        "requires": [
+            "gallery-sm-map",
+            "oop"
+        ]
+    }
+}

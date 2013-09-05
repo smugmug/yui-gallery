@@ -9,6 +9,11 @@ This repo contains open source YUI components that have been contributed to the
 Modules
 -------
 
+### [gallery-sm-indexed-map](src/sm-indexed-map)
+
+An ordered, indexed hash map data structure. Like [Map](src/sm-map) and Array
+got together and had a beautiful baby.
+
 ### [gallery-sm-map](src/sm-map)
 
 An ordered hash map data structure with an interface and behavior similar to

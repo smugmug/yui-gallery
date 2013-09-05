@@ -1,0 +1,11 @@
+{
+    "name": "gallery-sm-indexed-map",
+
+    "builds": {
+        "gallery-sm-indexed-map": {
+            "jsfiles": [
+                "js/indexed-map.js"
+            ]
+        }
+    }
+}
