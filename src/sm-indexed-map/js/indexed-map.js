@@ -19,6 +19,7 @@ The `Y.IndexedMap` class extends `Y.Map`. See that module's documentation for
 more details on Map fundamentals.
 
 @class IndexedMap
+@extends Map
 @constructor
 @param {Array[]|Map} [entries] Array or Map of entries to add to this map. If an
     array, then each entry should itself be an array in which the first item is
@@ -596,6 +597,7 @@ Y.IndexedMap = Y.extend(IndexedMap, Y.Map, {
     @param {Array} a First entry to compare.
     @param {Array} b Second entry to compare.
     @return {Number} Result of the comparison.
+    @protected
     **/
     _defaultSortFn: function (a, b) {
         var aValue = a[1].toString(),
