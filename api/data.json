@@ -883,6 +883,7 @@
             "file": "src/sm-indexed-map/js/indexed-map.js",
             "line": 10,
             "description": "An ordered, indexed hash map data structure. Like `Y.Map` and Array got together\nand had a beautiful baby.\n\nProvides constant time key-based lookups as well as numerical index-based\nlookups, splicing, and other array-like functionality. Keys may be any value,\nincluding objects.\n\nThe `Y.IndexedMap` class extends `Y.Map`. See that module's documentation for\nmore details on Map fundamentals.",
+            "extends": "Map",
             "is_constructor": 1,
             "params": [
                 {
@@ -4691,7 +4692,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 52,
+            "line": 53,
             "description": "Returns the entry at the given _index_, or `undefined` if not found.\n\nAn entry is an array with two items, the first being a key and the second a\nvalue associated with that key.",
             "example": [
                 "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.entryAt(1); // => ['b', 'battlestar galactica']\n    map.entryAt(5); // => undefined"
@@ -4714,7 +4715,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 79,
+            "line": 80,
             "description": "Returns the numerical index of the entry with the given _key_, or `-1` if\nnot found.\n\nThis is a very efficient operation with string keys, but may be slower with\nnon-string keys.",
             "example": [
                 "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.indexOfKey('b'); // => 1\n    map.indexOfKey('z'); // => -1"
@@ -4739,7 +4740,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 106,
+            "line": 107,
             "description": "Returns the key at the given _index_, or `undefined` if not found.",
             "example": [
                 "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.keyAt(0); // => 'a'\n    map.keyAt(5); // => undefined"
@@ -4762,7 +4763,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 127,
+            "line": 128,
             "description": "Removes the last entry from this map and returns it.",
             "example": [
                 "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.pop(); // => ['b', 'battlestar galactica']\n    map.pop(); // => ['a', 'airwolf']\n    map.pop(); // => undefined"
@@ -4778,7 +4779,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 161,
+            "line": 162,
             "description": "Appends the given entry or entries to the end of this map and returns the\nmap's new size.\n\nAny entries that already exist in this map with the same keys as the new\nentries will be removed to make way for the new entries, regardless of their\nposition. If this map has been sorted, you may need to re-sort it after\nappending new entries.",
             "example": [
                 "\n\n    var map = new Y.IndexedMap();\n\n    map.push(\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ); // => 2\n\n    map.get('a'); // => 'airwolf'"
@@ -4802,7 +4803,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 194,
+            "line": 195,
             "description": "Removes the first entry from this map and returns it. This will cause the\nindices of subsequent entries in the map to be adjusted.",
             "example": [
                 "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.shift(); // => ['a', 'airwolf']\n    map.shift(); // => ['b', 'battlestar galactica']\n    map.shift(); // => undefined"
@@ -4818,7 +4819,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 218,
+            "line": 219,
             "description": "Returns a new IndexedMap containing a shallow copy of a portion of this map.\n\nThe returned map will be created using the same options and constructor as\nthis map.\n\nThis method does not remove any entries or modify this map in any way.",
             "example": [
                 "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['m', 'manimal'],\n        ['s', 'space: 1999']\n    ]);\n\n    map.slice(1, 2);\n    // => new IndexedMap containing ['m', 'manimal']\n\n    map.slice(1);\n    // => new IndexedMap containing ['m', 'manimal'] and ['s', 'space: 1999']\n\n    map.slice(-1);\n    // => new IndexedMap containing ['s', 'space: 1999']\n\n    map.slice(0, -1);\n    // => new IndexedMap containing ['a', 'airwolf'] and ['m', 'manimal']\n\n    map.slice();\n    // => new IndexedMap containing all three entries (effectively a copy)"
@@ -4848,7 +4849,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 283,
+            "line": 284,
             "description": "Sorts the entries in this map.\n\nIf a _callback_ is not given, entries will be sorted by converting their\nvalues to strings and comparing the values in lexicographic order (a simple\nASCII sort).\n\nIf a _callback_ is given, entries will be sorted according to the return\nvalue of the callback. The two entries (_a_ and _b_) passed to the callback\nare sorted based on the value the callback returns.\n\nThe callback should return `-1` (or any negative number) to sort _a_ before\n_b_, `0` if _a_ and _b_ are equal, `1` (or any positive number) to sort _b_\nbefore _a_.",
             "example": [
                 "\n\n    var map = new Y.IndexedMap([\n        [0, 'manimal'],\n        [1, 'space: 1999'],\n        [2, 'airwolf']\n    ]);\n\n    // ASCII sort by string values (the default).\n    map.sort();\n\n    map.entries();\n    // => [\n    //     [2, 'airwolf'],\n    //     [0, 'manimal'],\n    //     [1, 'space: 1999']\n    // ]\n\n    // Numerical sort by key (a custom sort).\n    map.sort(function (a, b) {\n        return a[0] - b[0];\n    });\n\n    map.entries();\n    // => [\n    //     [0, 'manimal'],\n    //     [1, 'space: 1999']\n    //     [2, 'airwolf'],\n    // ]\n\n    // Reverse ASCII sort by value (a custom sort).\n    map.sort(function (a, b) {\n        var aValue = a[1].toString(),\n            bValue = b[1].toString();\n\n        if (bValue === aValue) {\n            return 0;\n        }\n\n        return bValue < aValue ? -1 : 1;\n    });\n\n    map.entries();\n    // => [\n    //     [1, 'space: 1999']\n    //     [0, 'manimal'],\n    //     [2, 'airwolf'],\n    // ]"
@@ -4881,7 +4882,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 374,
+            "line": 375,
             "description": "Changes the contents of this map, adding new entries while removing old\nentries.\n\nIf one or more new entries are specified, they will be added to this map\nstarting at _start_.\n\nAny entries that already exist in this map with the same keys as the new\nentries will be removed to make way for the new entries, regardless of their\nposition. If this map has been sorted, you may need to re-sort it after\nsplicing in new entries.",
             "example": [
                 "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['m', 'manimal'],\n        ['s', 'space: 1999']\n    ]);\n\n    // Insert 'battlestar galactica' between 'airwolf' and 'manimal'.\n    map.splice(1, 0, ['b', 'battlestar galactica']); // => []\n\n    // Remove 'manimal'.\n    map.splice(2, 1); // => [['m', 'manimal']]\n\n    // Insert 'mission: impossible' and 'star trek' after\n    // `battlestar galactica`. Since 'star trek' reuses the 's' key, the\n    // 'space: 1999' entry will be removed.\n    map.splice(2, 0, ['m', 'mission: impossible'], ['s', 'star trek']);\n    // => [['s', 'space: 1999']]\n\n    // Remove everything after 'airwolf', because who needs those shows\n    // when you've got a show about a badass helicopter?\n    map.splice(1);\n    // => [['b', 'battlestar galactica'], ['m', 'mission: impossible'],\n    //     ['s', 'star trek']]"
@@ -4916,7 +4917,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 527,
+            "line": 528,
             "description": "Prepends the given entry or entries to the beginning of this map and returns\nthe map's new size.\n\nAny entries that already exist in this map with the same keys as the new\nentries will be removed to make way for the new entries, regardless of their\nposition. If this map has been sorted, you may need to re-sort it after\nprepending new entries.",
             "example": [
                 "\n\n    var map = new Y.IndexedMap([\n        ['m', 'manimal'],\n        ['s', 'space: 1999']\n    ]);\n\n    map.unshift(\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ); // => 2\n\n    map.entries();\n    // => [\n    //     ['a', 'airwolf'],\n    //     ['b', 'battlestar galactica'],\n    //     ['m', 'manimal'],\n    //     ['s', 'space: 1999']\n    // ]"
@@ -4940,7 +4941,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 569,
+            "line": 570,
             "description": "Returns the value at the given _index_, or `undefined` if not found.",
             "example": [
                 "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.valueAt(0); // => 'airwolf'\n    map.valueAt(5); // => undefined"
@@ -4963,7 +4964,7 @@
         },
         {
             "file": "src/sm-indexed-map/js/indexed-map.js",
-            "line": 592,
+            "line": 593,
             "description": "Default sort comparator used when `sort()` is called without a callback.",
             "itemtype": "method",
             "name": "_defaultSortFn",
