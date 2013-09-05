@@ -10,6 +10,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "Editor.Queue",
         "Editor.Style",
         "Editor.Undo",
+        "IndexedMap",
         "Map",
         "Menu",
         "Menu.Base",
@@ -36,6 +37,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "gallery-sm-editor-style",
         "gallery-sm-editor-undo",
         "gallery-sm-focusmanager",
+        "gallery-sm-indexed-map",
         "gallery-sm-map",
         "gallery-sm-menu",
         "gallery-sm-menu-base",
@@ -108,6 +110,11 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "gallery-sm-focusmanager",
             "name": "gallery-sm-focusmanager",
             "description": "Provides the FocusManager Node plugin, which makes it easy to manage keyboard\nfocus among the descendants of a node."
+        },
+        {
+            "displayName": "gallery-sm-indexed-map",
+            "name": "gallery-sm-indexed-map",
+            "description": "Provides the `Y.IndexedMap` data structure."
         },
         {
             "displayName": "gallery-sm-map",

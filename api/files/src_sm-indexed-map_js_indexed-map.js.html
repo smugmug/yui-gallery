@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/sm-indexed-map/js/indexed-map.js - SmugMug YUI Gallery API docs</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="SmugMug YUI Gallery API docs"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.11.0-git</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/DragDrop.html">DragDrop</a></li>
+            
+                <li><a href="../classes/Editor.html">Editor</a></li>
+            
+                <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
+            
+                <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
+            
+                <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
+            
+                <li><a href="../classes/Editor.Queue.html">Editor.Queue</a></li>
+            
+                <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
+            
+                <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/IndexedMap.html">IndexedMap</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
+            
+                <li><a href="../classes/Menu.html">Menu</a></li>
+            
+                <li><a href="../classes/Menu.Base.html">Menu.Base</a></li>
+            
+                <li><a href="../classes/Menu.Item.html">Menu.Item</a></li>
+            
+                <li><a href="../classes/Menu.Templates.html">Menu.Templates</a></li>
+            
+                <li><a href="../classes/Plugin.DragDrop.Reorder.html">Plugin.DragDrop.Reorder</a></li>
+            
+                <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
+            
+                <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Promise.EventNotifier.html">Promise.EventNotifier</a></li>
+            
+                <li><a href="../classes/Range.html">Range</a></li>
+            
+                <li><a href="../classes/Selection.html">Selection</a></li>
+            
+                <li><a href="../classes/TreeView.html">TreeView</a></li>
+            
+                <li><a href="../classes/TreeView.Sortable.html">TreeView.Sortable</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/dom-form-values.html">dom-form-values</a></li>
+            
+                <li><a href="../modules/gallery-sm-dragdrop.html">gallery-sm-dragdrop</a></li>
+            
+                <li><a href="../modules/gallery-sm-dragdrop-reorder.html">gallery-sm-dragdrop-reorder</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor.html">gallery-sm-editor</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
+            
+                <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-indexed-map.html">gallery-sm-indexed-map</a></li>
+            
+                <li><a href="../modules/gallery-sm-map.html">gallery-sm-map</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-base.html">gallery-sm-menu-base</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-item.html">gallery-sm-menu-item</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-promise-events.html">gallery-sm-promise-events</a></li>
+            
+                <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
+            
+                <li><a href="../modules/gallery-sm-selection.html">gallery-sm-selection</a></li>
+            
+                <li><a href="../modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="../modules/gallery-sm-treeview-sortable.html">gallery-sm-treeview-sortable</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/sm-indexed-map/js/indexed-map.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/*jshint es3: true, globalstrict: true, indent: 4 */
+
+/**
+Provides the &#x60;Y.IndexedMap&#x60; data structure.
+
+@module gallery-sm-indexed-map
+@main gallery-sm-indexed-map
+**/
+
+/**
+An ordered, indexed hash map data structure. Like &#x60;Y.Map&#x60; and Array got together
+and had a beautiful baby.
+
+Provides constant time key-based lookups as well as numerical index-based
+lookups, splicing, and other array-like functionality. Keys may be any value,
+including objects.
+
+The &#x60;Y.IndexedMap&#x60; class extends &#x60;Y.Map&#x60;. See that module&#x27;s documentation for
+more details on Map fundamentals.
+
+@class IndexedMap
+@constructor
+@param {Array[]|Map} [entries] Array or Map of entries to add to this map. If an
+    array, then each entry should itself be an array in which the first item is
+    the key and the second item is the value for that entry.
+
+@param {Object} [options] Options.
+
+    @param {Boolean} [options.autoStamp=false] If &#x60;true&#x60;, objects used as keys
+        will be automatically stamped with a unique id as the value of the
+        property defined by the &#x60;objectIdName&#x60; option (&quot;_yuid&quot; by default) if
+        that property isn&#x27;t already set. This will result in much faster lookups
+        for object keys.
+
+    @param {String} [options.objectIdName=&quot;_yuid&quot;] Name of a property whose
+        string value should be used as the unique key when present on an object
+        that&#x27;s given as a key. This will significantly speed up lookups of
+        object-based keys that define this property.
+**/
+
+&quot;use strict&quot;;
+
+var protoSlice = Array.prototype.slice;
+
+function IndexedMap() {
+    Y.Map.apply(this, arguments);
+}
+
+Y.IndexedMap = Y.extend(IndexedMap, Y.Map, {
+    // -- Public Methods -------------------------------------------------------
+
+    /**
+    Returns the entry at the given _index_, or &#x60;undefined&#x60; if not found.
+
+    An entry is an array with two items, the first being a key and the second a
+    value associated with that key.
+
+    @example
+
+        var map = new Y.IndexedMap([
+            [&#x27;a&#x27;, &#x27;airwolf&#x27;],
+            [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]
+        ]);
+
+        map.entryAt(1); // =&gt; [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]
+        map.entryAt(5); // =&gt; undefined
+
+    @method entryAt
+    @param {Number} index Index to look up.
+    @return {Array|undefined} Entry at the given _index_, or &#x60;undefined&#x60; if not
+        found.
+    **/
+    entryAt: function (index) {
+        if (index in this._mapKeys) {
+            return [this._mapKeys[index], this._mapValues[index]];
+        }
+    },
+
+    /**
+    Returns the numerical index of the entry with the given _key_, or &#x60;-1&#x60; if
+    not found.
+
+    This is a very efficient operation with string keys, but may be slower with
+    non-string keys.
+
+    @example
+
+        var map = new Y.IndexedMap([
+            [&#x27;a&#x27;, &#x27;airwolf&#x27;],
+            [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]
+        ]);
+
+        map.indexOfKey(&#x27;b&#x27;); // =&gt; 1
+        map.indexOfKey(&#x27;z&#x27;); // =&gt; -1
+
+    @method indexOfKey
+    @param {Mixed} key Key to look up.
+    @return {Number} Index of the entry with the given _key_, or &#x60;-1&#x60; if not
+        found.
+    @protected
+    **/
+    indexOfKey: function (key) {
+        return Y.Map.prototype._indexOfKey.call(this, key);
+    },
+
+    /**
+    Returns the key at the given _index_, or &#x60;undefined&#x60; if not found.
+
+    @example
+
+        var map = new Y.IndexedMap([
+            [&#x27;a&#x27;, &#x27;airwolf&#x27;],
+            [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]
+        ]);
+
+        map.keyAt(0); // =&gt; &#x27;a&#x27;
+        map.keyAt(5); // =&gt; undefined
+
+    @method keyAt
+    @param {Number} index Index to look up.
+    @return {Mixed} Key at the given _index_, or &#x60;undefined&#x60; if not found.
+    **/
+    keyAt: function (index) {
+        return this._mapKeys[index];
+    },
+
+    /**
+    Removes the last entry from this map and returns it.
+
+    @example
+
+        var map = new Y.IndexedMap([
+            [&#x27;a&#x27;, &#x27;airwolf&#x27;],
+            [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]
+        ]);
+
+        map.pop(); // =&gt; [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]
+        map.pop(); // =&gt; [&#x27;a&#x27;, &#x27;airwolf&#x27;]
+        map.pop(); // =&gt; undefined
+
+    @method pop
+    @return {Array} Entry that was removed, or &#x60;undefined&#x60; if this map is empty.
+    **/
+    pop: function () {
+        var len = this._mapKeys.length,
+
+            entry,
+            i;
+
+        if (len) {
+            i     = len - 1;
+            entry = [this._mapKeys[i], this._mapValues[i]];
+
+            this._removeMapEntry(i);
+            this._updateMapSize();
+
+            return entry;
+        }
+    },
+
+    /**
+    Appends the given entry or entries to the end of this map and returns the
+    map&#x27;s new size.
+
+    Any entries that already exist in this map with the same keys as the new
+    entries will be removed to make way for the new entries, regardless of their
+    position. If this map has been sorted, you may need to re-sort it after
+    appending new entries.
+
+    @example
+
+        var map = new Y.IndexedMap();
+
+        map.push(
+            [&#x27;a&#x27;, &#x27;airwolf&#x27;],
+            [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]
+        ); // =&gt; 2
+
+        map.get(&#x27;a&#x27;); // =&gt; &#x27;airwolf&#x27;
+
+    @method push
+    @param {Array} entry* One or more entries to append to this map.
+    @return {Number} New size of this map.
+    **/
+    push: function () {
+        var args = protoSlice.call(arguments);
+
+        args.unshift(this._mapKeys.length, 0);
+        this.splice.apply(this, args);
+
+        return this.size;
+    },
+
+    /**
+    Removes the first entry from this map and returns it. This will cause the
+    indices of subsequent entries in the map to be adjusted.
+
+    @example
+
+        var map = new Y.IndexedMap([
+            [&#x27;a&#x27;, &#x27;airwolf&#x27;],
+            [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]
+        ]);
+
+        map.shift(); // =&gt; [&#x27;a&#x27;, &#x27;airwolf&#x27;]
+        map.shift(); // =&gt; [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]
+        map.shift(); // =&gt; undefined
+
+    @method shift
+    @return {Array} Entry that was removed, or &#x60;undefined&#x60; if this map is empty.
+    **/
+    shift: function () {
+        if (this._mapKeys.length) {
+            return this.splice(0, 1)[0];
+        }
+    },
+
+    /**
+    Returns a new IndexedMap containing a shallow copy of a portion of this map.
+
+    The returned map will be created using the same options and constructor as
+    this map.
+
+    This method does not remove any entries or modify this map in any way.
+
+    @example
+
+        var map = new Y.IndexedMap([
+            [&#x27;a&#x27;, &#x27;airwolf&#x27;],
+            [&#x27;m&#x27;, &#x27;manimal&#x27;],
+            [&#x27;s&#x27;, &#x27;space: 1999&#x27;]
+        ]);
+
+        map.slice(1, 2);
+        // =&gt; new IndexedMap containing [&#x27;m&#x27;, &#x27;manimal&#x27;]
+
+        map.slice(1);
+        // =&gt; new IndexedMap containing [&#x27;m&#x27;, &#x27;manimal&#x27;] and [&#x27;s&#x27;, &#x27;space: 1999&#x27;]
+
+        map.slice(-1);
+        // =&gt; new IndexedMap containing [&#x27;s&#x27;, &#x27;space: 1999&#x27;]
+
+        map.slice(0, -1);
+        // =&gt; new IndexedMap containing [&#x27;a&#x27;, &#x27;airwolf&#x27;] and [&#x27;m&#x27;, &#x27;manimal&#x27;]
+
+        map.slice();
+        // =&gt; new IndexedMap containing all three entries (effectively a copy)
+
+    @method slice
+    @param {Number} [begin] Zero-based index at which to begin extracting
+        entries. If _begin_ is negative, it will be treated as relative to the
+        end of the map. If _begin_ is omitted, it defaults to &#x60;0&#x60;.
+    @param {Number} [end] Zero-based index at which to end extraction. &#x60;slice()&#x60;
+        extracts entries up to but not including _end_. If _end is negative, it
+        will be treated as relative to the end of the map. If _end_ is omitted,
+        all elements between _begin_ and the end of the map will be extracted.
+    @return {IndexedMap} New IndexedMap containing a shallow copy of the
+        specified portion of this map.
+    **/
+    slice: function (begin, end) {
+        var entries = [],
+
+            keys,
+            values;
+
+        // Some browsers (guess which ones!) don&#x27;t like it if you pass an
+        // &#x60;undefined&#x60; end argument.
+        if (typeof end === &#x27;undefined&#x27;) {
+            keys   = this._mapKeys.slice(begin);
+            values = this._mapValues.slice(begin);
+        } else {
+            keys   = this._mapKeys.slice(begin, end);
+            values = this._mapValues.slice(begin, end);
+        }
+
+        for (var i = 0, len = keys.length; i &lt; len; ++i) {
+            entries[i] = [keys[i], values[i]];
+        }
+
+        return new this.constructor(entries, this._mapOptions);
+    },
+
+    /**
+    Sorts the entries in this map.
+
+    If a _callback_ is not given, entries will be sorted by converting their
+    values to strings and comparing the values in lexicographic order (a simple
+    ASCII sort).
+
+    If a _callback_ is given, entries will be sorted according to the return
+    value of the callback. The two entries (_a_ and _b_) passed to the callback
+    are sorted based on the value the callback returns.
+
+    The callback should return &#x60;-1&#x60; (or any negative number) to sort _a_ before
+    _b_, &#x60;0&#x60; if _a_ and _b_ are equal, &#x60;1&#x60; (or any positive number) to sort _b_
+    before _a_.
+
+    @example
+
+        var map = new Y.IndexedMap([
+            [0, &#x27;manimal&#x27;],
+            [1, &#x27;space: 1999&#x27;],
+            [2, &#x27;airwolf&#x27;]
+        ]);
+
+        // ASCII sort by string values (the default).
+        map.sort();
+
+        map.entries();
+        // =&gt; [
+        //     [2, &#x27;airwolf&#x27;],
+        //     [0, &#x27;manimal&#x27;],
+        //     [1, &#x27;space: 1999&#x27;]
+        // ]
+
+        // Numerical sort by key (a custom sort).
+        map.sort(function (a, b) {
+            return a[0] - b[0];
+        });
+
+        map.entries();
+        // =&gt; [
+        //     [0, &#x27;manimal&#x27;],
+        //     [1, &#x27;space: 1999&#x27;]
+        //     [2, &#x27;airwolf&#x27;],
+        // ]
+
+        // Reverse ASCII sort by value (a custom sort).
+        map.sort(function (a, b) {
+            var aValue = a[1].toString(),
+                bValue = b[1].toString();
+
+            if (bValue === aValue) {
+                return 0;
+            }
+
+            return bValue &lt; aValue ? -1 : 1;
+        });
+
+        map.entries();
+        // =&gt; [
+        //     [1, &#x27;space: 1999&#x27;]
+        //     [0, &#x27;manimal&#x27;],
+        //     [2, &#x27;airwolf&#x27;],
+        // ]
+
+    @method sort
+    @param {Function} [callback] Sort comparator callback. Receives two entriess
+        as arguments, and should return an integer indicating whether the first
+        is less than (&#x60;-1&#x60;), equal to (&#x60;0&#x60;), or greater than (&#x60;1&#x60;) the second.
+
+        @param {Array} callback.a First entry to compare. An entry is an array
+            in which the first element is the key and the second element is the
+            value.
+        @param {Array} callback.b Second entry to compare.
+
+    @chainable
+    **/
+    sort: function (callback) {
+        var entries = this.entries(),
+            entry;
+
+        entries.sort(callback || this._defaultSortFn);
+        this.clear();
+
+        for (var i = 0, len = entries.length; i &lt; len; ++i) {
+            entry = entries[i];
+            this.set(entry[0], entry[1]);
+        }
+
+        return this;
+    },
+
+    /**
+    Changes the contents of this map, adding new entries while removing old
+    entries.
+
+    If one or more new entries are specified, they will be added to this map
+    starting at _start_.
+
+    Any entries that already exist in this map with the same keys as the new
+    entries will be removed to make way for the new entries, regardless of their
+    position. If this map has been sorted, you may need to re-sort it after
+    splicing in new entries.
+
+    @example
+
+        var map = new Y.IndexedMap([
+            [&#x27;a&#x27;, &#x27;airwolf&#x27;],
+            [&#x27;m&#x27;, &#x27;manimal&#x27;],
+            [&#x27;s&#x27;, &#x27;space: 1999&#x27;]
+        ]);
+
+        // Insert &#x27;battlestar galactica&#x27; between &#x27;airwolf&#x27; and &#x27;manimal&#x27;.
+        map.splice(1, 0, [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]); // =&gt; []
+
+        // Remove &#x27;manimal&#x27;.
+        map.splice(2, 1); // =&gt; [[&#x27;m&#x27;, &#x27;manimal&#x27;]]
+
+        // Insert &#x27;mission: impossible&#x27; and &#x27;star trek&#x27; after
+        // &#x60;battlestar galactica&#x60;. Since &#x27;star trek&#x27; reuses the &#x27;s&#x27; key, the
+        // &#x27;space: 1999&#x27; entry will be removed.
+        map.splice(2, 0, [&#x27;m&#x27;, &#x27;mission: impossible&#x27;], [&#x27;s&#x27;, &#x27;star trek&#x27;]);
+        // =&gt; [[&#x27;s&#x27;, &#x27;space: 1999&#x27;]]
+
+        // Remove everything after &#x27;airwolf&#x27;, because who needs those shows
+        // when you&#x27;ve got a show about a badass helicopter?
+        map.splice(1);
+        // =&gt; [[&#x27;b&#x27;, &#x27;battlestar galactica&#x27;], [&#x27;m&#x27;, &#x27;mission: impossible&#x27;],
+        //     [&#x27;s&#x27;, &#x27;star trek&#x27;]]
+
+    @method splice
+    @param {Number} start Index at which to start changing this map. A negative
+        value will result in a position relative to the end of the map.
+    @param {Number} [count] Number of entries to remove, starting at _start_. If
+        _count_ is &#x60;0&#x60;, no entries will be removed. If no &#x60;count&#x60; parameter is
+        given, all entries after _start_ will be removed.
+    @param {Array} [entry*] Zero or more new entries to add to this map. Each
+        entry must be an array in which the first element is the key and the
+        second element is the value to add.
+    @return {Array[]} An array of entries that were removed, if any.
+    **/
+    splice: function (start, count) {
+        var mapKeys        = this._mapKeys,
+            mapValues      = this._mapValues,
+            removedEntries = [],
+
+            actualStart,
+            i,
+            len;
+
+        // Determine the actual start index, since &#x60;start&#x60; may be relative.
+        if (start &lt; 0) {
+            actualStart = Math.max(0, mapKeys.length + start);
+        } else {
+            actualStart = Math.min(mapKeys.length, start || 0);
+        }
+
+        // If &#x60;start&#x60; was given but &#x60;count&#x60; wasn&#x27;t given, remove all entries
+        // from &#x60;start&#x60; to the end of the map.
+        if (typeof count === &#x27;undefined&#x27; &amp;&amp; Y.Lang.isNumber(start)) {
+            count = mapKeys.length - actualStart;
+        }
+
+        start || (start = 0);
+
+        // Remove keys and values.
+        if (count) {
+            var removedKeys   = mapKeys.splice(start, count),
+                removedValues = mapValues.splice(start, count);
+
+            // Remove key-to-index mappings for keys that were removed.
+            for (i = 0, len = removedKeys.length; i &lt; len; ++i) {
+                removedEntries[i] = [removedKeys[i], removedValues[i]];
+            }
+
+            if (removedEntries.length) {
+                this._isIndexStale = true;
+            }
+        }
+
+        // Add new entries (if any).
+        var newEntries = protoSlice.call(arguments, 2);
+
+        if (newEntries.length) {
+            var keyIndex,
+                newEntry,
+                newKey,
+                newValue;
+
+            // Splice new entries in after the start index.
+            for (i = 0, len = newEntries.length; i &lt; len; ++i) {
+                newEntry = newEntries[i];
+
+                if (newEntry.length !== 2) {
+                    throw new TypeError(&#x27;Invalid map entry: &#x27; +
+                        newEntry.toString());
+                }
+
+                newKey   = newEntry[0];
+                newValue = newEntry[1];
+                keyIndex = this.indexOfKey(newKey);
+
+                if (keyIndex &gt;= 0) {
+                    // The key already exists in this map, so we have to remove
+                    // it before we can reuse it in a new spliced entry.
+                    removedEntries.push([mapKeys[keyIndex],
+                        mapValues[keyIndex]]);
+
+                    this._removeMapEntry(keyIndex);
+
+                    // If the removed key preceded &#x60;actualStart&#x60;, adjust
+                    // &#x60;actualStart&#x60; to account for the difference.
+                    if (keyIndex &lt; actualStart) {
+                        actualStart -= 1;
+                    }
+                }
+
+                // Add the new entry to the map.
+                if (actualStart === mapKeys.length) {
+                    // If &#x60;actualStart&#x60; is at the end of the map, we can append
+                    // things without needing to reindex the map.
+                    mapKeys[actualStart]   = newKey;
+                    mapValues[actualStart] = newValue;
+
+                    this._indexMapKey(actualStart, newKey);
+                } else {
+                    // &#x60;actualStart&#x60; is not at the end of the map, so we&#x27;ll need
+                    // to reindex the map.
+                    mapKeys.splice(actualStart, 0, newKey);
+                    mapValues.splice(actualStart, 0, newValue);
+
+                    this._isIndexStale = true;
+                }
+
+                // Increment &#x60;actualStart&#x60; so that subsequent new entries are
+                // added at the correct position.
+                actualStart += 1;
+            }
+        }
+
+        this._updateMapSize();
+
+        return removedEntries;
+    },
+
+    /**
+    Prepends the given entry or entries to the beginning of this map and returns
+    the map&#x27;s new size.
+
+    Any entries that already exist in this map with the same keys as the new
+    entries will be removed to make way for the new entries, regardless of their
+    position. If this map has been sorted, you may need to re-sort it after
+    prepending new entries.
+
+    @example
+
+        var map = new Y.IndexedMap([
+            [&#x27;m&#x27;, &#x27;manimal&#x27;],
+            [&#x27;s&#x27;, &#x27;space: 1999&#x27;]
+        ]);
+
+        map.unshift(
+            [&#x27;a&#x27;, &#x27;airwolf&#x27;],
+            [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]
+        ); // =&gt; 2
+
+        map.entries();
+        // =&gt; [
+        //     [&#x27;a&#x27;, &#x27;airwolf&#x27;],
+        //     [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;],
+        //     [&#x27;m&#x27;, &#x27;manimal&#x27;],
+        //     [&#x27;s&#x27;, &#x27;space: 1999&#x27;]
+        // ]
+
+    @method unshift
+    @param {Array} entry* One or more entries to append to this map.
+    @return {Number} New size of this map.
+    **/
+    unshift: function () {
+        var args = protoSlice.call(arguments);
+
+        args.unshift(0, 0);
+        this.splice.apply(this, args);
+
+        return this.size;
+    },
+
+    /**
+    Returns the value at the given _index_, or &#x60;undefined&#x60; if not found.
+
+    @example
+
+        var map = new Y.IndexedMap([
+            [&#x27;a&#x27;, &#x27;airwolf&#x27;],
+            [&#x27;b&#x27;, &#x27;battlestar galactica&#x27;]
+        ]);
+
+        map.valueAt(0); // =&gt; &#x27;airwolf&#x27;
+        map.valueAt(5); // =&gt; undefined
+
+    @method valueAt
+    @param {Number} index Index to look up.
+    @return {Mixed} Value at the given _index_, or &#x60;undefined&#x60; if not found.
+    **/
+    valueAt: function (index) {
+        return this._mapValues[index];
+    },
+
+    // -- Protected Methods ----------------------------------------------------
+
+    /**
+    Default sort comparator used when &#x60;sort()&#x60; is called without a callback.
+
+    @method _defaultSortFn
+    @param {Array} a First entry to compare.
+    @param {Array} b Second entry to compare.
+    @return {Number} Result of the comparison.
+    @protected
+    **/
+    _defaultSortFn: function (a, b) {
+        var aValue = a[1].toString(),
+            bValue = b[1].toString();
+
+        return (aValue &lt; bValue ? -1 : (aValue &gt; bValue ? 1 : 0));
+    }
+});
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

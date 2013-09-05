@@ -136,6 +136,17 @@
             "fors": {},
             "namespaces": {}
         },
+        "src/sm-indexed-map/js/indexed-map.js": {
+            "name": "src/sm-indexed-map/js/indexed-map.js",
+            "modules": {
+                "gallery-sm-indexed-map": 1
+            },
+            "classes": {
+                "IndexedMap": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
         "src/sm-map/js/map.js": {
             "name": "src/sm-map/js/map.js",
             "modules": {
@@ -462,6 +473,20 @@
             "file": "src/sm-focusmanager/js/focusmanager.js",
             "line": 11,
             "description": "Provides the FocusManager Node plugin, which makes it easy to manage keyboard\nfocus among the descendants of a node.",
+            "itemtype": "main"
+        },
+        "gallery-sm-indexed-map": {
+            "name": "gallery-sm-indexed-map",
+            "submodules": {},
+            "classes": {
+                "IndexedMap": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 10,
+            "description": "Provides the `Y.IndexedMap` data structure.",
             "itemtype": "main"
         },
         "gallery-sm-map": {
@@ -844,6 +869,51 @@
             "description": "Node plugin that makes it easy to manage keyboard focus among the descendants of\na node.\n\n### Example: Simple flat list\n\n    <ul id=\"list\">\n        <li>Item 1</li>\n        <li>Item 2</li>\n        <li>Item 3</li>\n    </ul>\n\n    <script>\n    YUI().use('gallery-sm-focusmanager', function (Y) {\n        // Make the list items in #list keyboard-focusable using the arrow keys.\n        Y.one('#list').plug(Y.Plugin.FocusManager);\n    });\n    </script>\n\n### Example: Hierarchical list\n\n    <ul id=\"list\">\n        <li>\n            Item 1\n            <ul>\n                <li>Item 1.1</li>\n                <li>\n                    Item 1.2\n                    <ul>\n                        <li>Item 1.2.1</li>\n                        <li>Item 1.2.2</li>\n                    </ul>\n                </li>\n            </ul>\n        </li>\n        <li>Item 2</li>\n        <li>Item 3</li>\n    </ul>\n\n    <script>\n    YUI().use('gallery-sm-focusmanager', function (Y) {\n        // Make the list items in #list keyboard-focusable and allow\n        // descending/ascending into and out of nested lists using the right and\n        // left arrow keys.\n        Y.one('#list').plug(Y.Plugin.FocusManager, {\n            containerSelector: 'ul'\n        });\n    });\n    </script>",
             "extends": "Plugin.Base",
             "is_constructor": 1
+        },
+        "IndexedMap": {
+            "name": "IndexedMap",
+            "shortname": "IndexedMap",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "gallery-sm-indexed-map",
+            "namespace": "",
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 10,
+            "description": "An ordered, indexed hash map data structure. Like `Y.Map` and Array got together\nand had a beautiful baby.\n\nProvides constant time key-based lookups as well as numerical index-based\nlookups, splicing, and other array-like functionality. Keys may be any value,\nincluding objects.\n\nThe `Y.IndexedMap` class extends `Y.Map`. See that module's documentation for\nmore details on Map fundamentals.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "entries",
+                    "description": "Array or Map of entries to add to this map. If an\n    array, then each entry should itself be an array in which the first item is\n    the key and the second item is the value for that entry.",
+                    "type": "Array[]|Map",
+                    "optional": true
+                },
+                {
+                    "name": "options",
+                    "description": "Options.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "autoStamp",
+                            "description": "If `true`, objects used as keys\n        will be automatically stamped with a unique id as the value of the\n        property defined by the `objectIdName` option (\"_yuid\" by default) if\n        that property isn't already set. This will result in much faster lookups\n        for object keys.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        },
+                        {
+                            "name": "objectIdName",
+                            "description": "Name of a property whose\n        string value should be used as the unique key when present on an object\n        that's given as a key. This will significantly speed up lookups of\n        object-based keys that define this property.",
+                            "type": "String",
+                            "optional": true,
+                            "optdefault": "\"_yuid\""
+                        }
+                    ]
+                }
+            ]
         },
         "Map": {
             "name": "Map",
@@ -4620,8 +4690,307 @@
             "module": "gallery-sm-focusmanager"
         },
         {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 52,
+            "description": "Returns the entry at the given _index_, or `undefined` if not found.\n\nAn entry is an array with two items, the first being a key and the second a\nvalue associated with that key.",
+            "example": [
+                "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.entryAt(1); // => ['b', 'battlestar galactica']\n    map.entryAt(5); // => undefined"
+            ],
+            "itemtype": "method",
+            "name": "entryAt",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "Index to look up.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "Entry at the given _index_, or `undefined` if not\n    found.",
+                "type": "Array|undefined"
+            },
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 79,
+            "description": "Returns the numerical index of the entry with the given _key_, or `-1` if\nnot found.\n\nThis is a very efficient operation with string keys, but may be slower with\nnon-string keys.",
+            "example": [
+                "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.indexOfKey('b'); // => 1\n    map.indexOfKey('z'); // => -1"
+            ],
+            "itemtype": "method",
+            "name": "indexOfKey",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "Key to look up.",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "Index of the entry with the given _key_, or `-1` if not\n    found.",
+                "type": "Number"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 106,
+            "description": "Returns the key at the given _index_, or `undefined` if not found.",
+            "example": [
+                "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.keyAt(0); // => 'a'\n    map.keyAt(5); // => undefined"
+            ],
+            "itemtype": "method",
+            "name": "keyAt",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "Index to look up.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "Key at the given _index_, or `undefined` if not found.",
+                "type": "Mixed"
+            },
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 127,
+            "description": "Removes the last entry from this map and returns it.",
+            "example": [
+                "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.pop(); // => ['b', 'battlestar galactica']\n    map.pop(); // => ['a', 'airwolf']\n    map.pop(); // => undefined"
+            ],
+            "itemtype": "method",
+            "name": "pop",
+            "return": {
+                "description": "Entry that was removed, or `undefined` if this map is empty.",
+                "type": "Array"
+            },
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 161,
+            "description": "Appends the given entry or entries to the end of this map and returns the\nmap's new size.\n\nAny entries that already exist in this map with the same keys as the new\nentries will be removed to make way for the new entries, regardless of their\nposition. If this map has been sorted, you may need to re-sort it after\nappending new entries.",
+            "example": [
+                "\n\n    var map = new Y.IndexedMap();\n\n    map.push(\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ); // => 2\n\n    map.get('a'); // => 'airwolf'"
+            ],
+            "itemtype": "method",
+            "name": "push",
+            "params": [
+                {
+                    "name": "entry",
+                    "description": "One or more entries to append to this map.",
+                    "type": "Array",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "New size of this map.",
+                "type": "Number"
+            },
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 194,
+            "description": "Removes the first entry from this map and returns it. This will cause the\nindices of subsequent entries in the map to be adjusted.",
+            "example": [
+                "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.shift(); // => ['a', 'airwolf']\n    map.shift(); // => ['b', 'battlestar galactica']\n    map.shift(); // => undefined"
+            ],
+            "itemtype": "method",
+            "name": "shift",
+            "return": {
+                "description": "Entry that was removed, or `undefined` if this map is empty.",
+                "type": "Array"
+            },
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 218,
+            "description": "Returns a new IndexedMap containing a shallow copy of a portion of this map.\n\nThe returned map will be created using the same options and constructor as\nthis map.\n\nThis method does not remove any entries or modify this map in any way.",
+            "example": [
+                "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['m', 'manimal'],\n        ['s', 'space: 1999']\n    ]);\n\n    map.slice(1, 2);\n    // => new IndexedMap containing ['m', 'manimal']\n\n    map.slice(1);\n    // => new IndexedMap containing ['m', 'manimal'] and ['s', 'space: 1999']\n\n    map.slice(-1);\n    // => new IndexedMap containing ['s', 'space: 1999']\n\n    map.slice(0, -1);\n    // => new IndexedMap containing ['a', 'airwolf'] and ['m', 'manimal']\n\n    map.slice();\n    // => new IndexedMap containing all three entries (effectively a copy)"
+            ],
+            "itemtype": "method",
+            "name": "slice",
+            "params": [
+                {
+                    "name": "begin",
+                    "description": "Zero-based index at which to begin extracting\n    entries. If _begin_ is negative, it will be treated as relative to the\n    end of the map. If _begin_ is omitted, it defaults to `0`.",
+                    "type": "Number",
+                    "optional": true
+                },
+                {
+                    "name": "end",
+                    "description": "Zero-based index at which to end extraction. `slice()`\n    extracts entries up to but not including _end_. If _end is negative, it\n    will be treated as relative to the end of the map. If _end_ is omitted,\n    all elements between _begin_ and the end of the map will be extracted.",
+                    "type": "Number",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "New IndexedMap containing a shallow copy of the\n    specified portion of this map.",
+                "type": "IndexedMap"
+            },
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 283,
+            "description": "Sorts the entries in this map.\n\nIf a _callback_ is not given, entries will be sorted by converting their\nvalues to strings and comparing the values in lexicographic order (a simple\nASCII sort).\n\nIf a _callback_ is given, entries will be sorted according to the return\nvalue of the callback. The two entries (_a_ and _b_) passed to the callback\nare sorted based on the value the callback returns.\n\nThe callback should return `-1` (or any negative number) to sort _a_ before\n_b_, `0` if _a_ and _b_ are equal, `1` (or any positive number) to sort _b_\nbefore _a_.",
+            "example": [
+                "\n\n    var map = new Y.IndexedMap([\n        [0, 'manimal'],\n        [1, 'space: 1999'],\n        [2, 'airwolf']\n    ]);\n\n    // ASCII sort by string values (the default).\n    map.sort();\n\n    map.entries();\n    // => [\n    //     [2, 'airwolf'],\n    //     [0, 'manimal'],\n    //     [1, 'space: 1999']\n    // ]\n\n    // Numerical sort by key (a custom sort).\n    map.sort(function (a, b) {\n        return a[0] - b[0];\n    });\n\n    map.entries();\n    // => [\n    //     [0, 'manimal'],\n    //     [1, 'space: 1999']\n    //     [2, 'airwolf'],\n    // ]\n\n    // Reverse ASCII sort by value (a custom sort).\n    map.sort(function (a, b) {\n        var aValue = a[1].toString(),\n            bValue = b[1].toString();\n\n        if (bValue === aValue) {\n            return 0;\n        }\n\n        return bValue < aValue ? -1 : 1;\n    });\n\n    map.entries();\n    // => [\n    //     [1, 'space: 1999']\n    //     [0, 'manimal'],\n    //     [2, 'airwolf'],\n    // ]"
+            ],
+            "itemtype": "method",
+            "name": "sort",
+            "params": [
+                {
+                    "name": "callback",
+                    "description": "Sort comparator callback. Receives two entriess\n    as arguments, and should return an integer indicating whether the first\n    is less than (`-1`), equal to (`0`), or greater than (`1`) the second.",
+                    "type": "Function",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "a",
+                            "description": "First entry to compare. An entry is an array\n        in which the first element is the key and the second element is the\n        value.",
+                            "type": "Array"
+                        },
+                        {
+                            "name": "b",
+                            "description": "Second entry to compare.",
+                            "type": "Array"
+                        }
+                    ]
+                }
+            ],
+            "chainable": 1,
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 374,
+            "description": "Changes the contents of this map, adding new entries while removing old\nentries.\n\nIf one or more new entries are specified, they will be added to this map\nstarting at _start_.\n\nAny entries that already exist in this map with the same keys as the new\nentries will be removed to make way for the new entries, regardless of their\nposition. If this map has been sorted, you may need to re-sort it after\nsplicing in new entries.",
+            "example": [
+                "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['m', 'manimal'],\n        ['s', 'space: 1999']\n    ]);\n\n    // Insert 'battlestar galactica' between 'airwolf' and 'manimal'.\n    map.splice(1, 0, ['b', 'battlestar galactica']); // => []\n\n    // Remove 'manimal'.\n    map.splice(2, 1); // => [['m', 'manimal']]\n\n    // Insert 'mission: impossible' and 'star trek' after\n    // `battlestar galactica`. Since 'star trek' reuses the 's' key, the\n    // 'space: 1999' entry will be removed.\n    map.splice(2, 0, ['m', 'mission: impossible'], ['s', 'star trek']);\n    // => [['s', 'space: 1999']]\n\n    // Remove everything after 'airwolf', because who needs those shows\n    // when you've got a show about a badass helicopter?\n    map.splice(1);\n    // => [['b', 'battlestar galactica'], ['m', 'mission: impossible'],\n    //     ['s', 'star trek']]"
+            ],
+            "itemtype": "method",
+            "name": "splice",
+            "params": [
+                {
+                    "name": "start",
+                    "description": "Index at which to start changing this map. A negative\n    value will result in a position relative to the end of the map.",
+                    "type": "Number"
+                },
+                {
+                    "name": "count",
+                    "description": "Number of entries to remove, starting at _start_. If\n    _count_ is `0`, no entries will be removed. If no `count` parameter is\n    given, all entries after _start_ will be removed.",
+                    "type": "Number",
+                    "optional": true
+                },
+                {
+                    "name": "entry*",
+                    "description": "Zero or more new entries to add to this map. Each\n    entry must be an array in which the first element is the key and the\n    second element is the value to add.",
+                    "type": "Array",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "An array of entries that were removed, if any.",
+                "type": "Array[]"
+            },
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 527,
+            "description": "Prepends the given entry or entries to the beginning of this map and returns\nthe map's new size.\n\nAny entries that already exist in this map with the same keys as the new\nentries will be removed to make way for the new entries, regardless of their\nposition. If this map has been sorted, you may need to re-sort it after\nprepending new entries.",
+            "example": [
+                "\n\n    var map = new Y.IndexedMap([\n        ['m', 'manimal'],\n        ['s', 'space: 1999']\n    ]);\n\n    map.unshift(\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ); // => 2\n\n    map.entries();\n    // => [\n    //     ['a', 'airwolf'],\n    //     ['b', 'battlestar galactica'],\n    //     ['m', 'manimal'],\n    //     ['s', 'space: 1999']\n    // ]"
+            ],
+            "itemtype": "method",
+            "name": "unshift",
+            "params": [
+                {
+                    "name": "entry",
+                    "description": "One or more entries to append to this map.",
+                    "type": "Array",
+                    "multiple": true
+                }
+            ],
+            "return": {
+                "description": "New size of this map.",
+                "type": "Number"
+            },
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 569,
+            "description": "Returns the value at the given _index_, or `undefined` if not found.",
+            "example": [
+                "\n\n    var map = new Y.IndexedMap([\n        ['a', 'airwolf'],\n        ['b', 'battlestar galactica']\n    ]);\n\n    map.valueAt(0); // => 'airwolf'\n    map.valueAt(5); // => undefined"
+            ],
+            "itemtype": "method",
+            "name": "valueAt",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "Index to look up.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "Value at the given _index_, or `undefined` if not found.",
+                "type": "Mixed"
+            },
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
+            "file": "src/sm-indexed-map/js/indexed-map.js",
+            "line": 592,
+            "description": "Default sort comparator used when `sort()` is called without a callback.",
+            "itemtype": "method",
+            "name": "_defaultSortFn",
+            "params": [
+                {
+                    "name": "a",
+                    "description": "First entry to compare.",
+                    "type": "Array"
+                },
+                {
+                    "name": "b",
+                    "description": "Second entry to compare.",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "Result of the comparison.",
+                "type": "Number"
+            },
+            "access": "protected",
+            "tagname": "",
+            "class": "IndexedMap",
+            "module": "gallery-sm-indexed-map"
+        },
+        {
             "file": "src/sm-map/js/map.js",
-            "line": 95,
+            "line": 100,
             "description": "The number of entries in this map.",
             "itemtype": "property",
             "name": "size",
@@ -4633,7 +5002,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 105,
+            "line": 110,
             "description": "Whether or not the internal key index is in need of reindexing.\n\nRather than reindexing immediately whenever it becomes necessary, we use\nthis flag to allow on-demand indexing the first time an up-to-date index is\nactually needed.\n\nThis makes multiple `remove()` operations significantly faster, at the\nexpense of a single reindex operation the next time a key is looked up.",
             "itemtype": "property",
             "name": "_isIndexStale",
@@ -4645,7 +5014,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 119,
+            "line": 124,
             "description": "Internal array of the keys in this map.",
             "itemtype": "property",
             "name": "_mapKeys",
@@ -4657,7 +5026,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 126,
+            "line": 131,
             "description": "Internal index mapping string keys to their indices in the `_mapKeys` array.",
             "itemtype": "property",
             "name": "_mapKeyIndices",
@@ -4669,7 +5038,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 133,
+            "line": 138,
             "description": "Internal index mapping object key ids to their indices in the `_mapKeys`\narray. This is separate from `_mapKeyIndices` in order to prevent collisions\nbetween object key ids and string keys.",
             "itemtype": "property",
             "name": "_mapObjectIndices",
@@ -4681,7 +5050,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 142,
+            "line": 147,
             "description": "Options that affect the functionality of this map.",
             "itemtype": "property",
             "name": "_mapOptions",
@@ -4693,7 +5062,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 152,
+            "line": 157,
             "description": "Internal array of the values in this map.",
             "itemtype": "property",
             "name": "_mapValues",
@@ -4705,7 +5074,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 161,
+            "line": 166,
             "description": "Deletes all entries from this map.",
             "itemtype": "method",
             "name": "clear",
@@ -4715,7 +5084,28 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 177,
+            "line": 182,
+            "description": "Returns a new map comprised of this map's entries combined with those of the\nmaps or arrays passed as arguments. Does not alter this map or those given\nas arguments in any way.\n\nEntries in later (rightmost) arguments will take precedence over entries in\nearlier (leftmost) arguments if their keys are the same.\n\nThis method also accepts arrays of entries in lieu of actual Y.Map\ninstances.\n\nThe returned map will be created using the same options and constructor as\nthis map.",
+            "itemtype": "method",
+            "name": "concat",
+            "params": [
+                {
+                    "name": "maps*",
+                    "description": "Zero or more maps or entry arrays to\n    concatenate into the resulting map.",
+                    "type": "Array[]|Map",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "New map containing the concatenated values of this map and all\n    arguments.",
+                "type": "Map"
+            },
+            "class": "Map",
+            "module": "gallery-sm-map"
+        },
+        {
+            "file": "src/sm-map/js/map.js",
+            "line": 207,
             "description": "Executes the given _callback_ function on each entry in this map.\n\nTo halt iteration early, return `false` from the callback.",
             "itemtype": "method",
             "name": "each",
@@ -4758,7 +5148,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 206,
+            "line": 236,
             "description": "Returns an array of all the entries in this map. Each entry is an array with\ntwo items, the first being a key and the second a value associated with that\nkey.",
             "itemtype": "method",
             "name": "entries",
@@ -4771,7 +5161,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 226,
+            "line": 256,
             "description": "Returns the value associated with the given _key_, or _default_ if the key\nisn't found.",
             "itemtype": "method",
             "name": "get",
@@ -4797,7 +5187,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 241,
+            "line": 271,
             "description": "Returns `true` if _key_ exists in this map, `false` otherwise.",
             "itemtype": "method",
             "name": "has",
@@ -4817,7 +5207,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 252,
+            "line": 282,
             "description": "Returns an array of all the keys in this map.",
             "itemtype": "method",
             "name": "keys",
@@ -4830,7 +5220,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 262,
+            "line": 292,
             "description": "Merges the entries from one or more other maps or entry arrays into this\nmap. Entries in later (rightmost) arguments will take precedence over\nentries in earlier (leftmost) arguments if their keys are the same.\n\nThis method also accepts arrays of entries in lieu of actual Y.Map\ninstances, so the following operations have the same result:\n\n    // This...\n    map.merge(new Y.Map([['a', 'apple'], ['b', 'bear']]));\n\n    // ...has the same result as this...\n    map.merge([['a', 'apple'], ['b', 'bear']]);",
             "itemtype": "method",
             "name": "merge",
@@ -4848,7 +5238,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 302,
+            "line": 337,
             "description": "Deletes the entry with the given _key_.",
             "itemtype": "method",
             "name": "remove",
@@ -4868,7 +5258,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 323,
+            "line": 358,
             "description": "Sets the value of the entry with the given _key_. If the key already exists,\nits value will be overwritten; otherwise it will be created.\n\nThe _key_ may be any JavaScript value (including both primitives and\nobjects), but string keys will allow fast lookups, whereas non-string keys\nmay result in slower lookups.",
             "itemtype": "method",
             "name": "set",
@@ -4890,7 +5280,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 352,
+            "line": 387,
             "description": "Returns an array of all the values in this map.",
             "itemtype": "method",
             "name": "values",
@@ -4903,7 +5293,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 364,
+            "line": 399,
             "description": "Indexes the given _key_ to enable faster lookups.",
             "itemtype": "method",
             "name": "_indexMapKey",
@@ -4926,7 +5316,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 395,
+            "line": 430,
             "description": "Returns the numerical index of the entry with the given _key_, or `-1` if\nnot found.\n\nThis is a very efficient operation with string keys, but may be slower with\nnon-string keys.",
             "itemtype": "method",
             "name": "_indexOfKey",
@@ -4948,7 +5338,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 453,
+            "line": 488,
             "description": "Returns `true` if the given string _key_ is safe to use in environments that\ndon't support `Object.create()`.",
             "itemtype": "method",
             "name": "_isSafeKey",
@@ -4970,7 +5360,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 466,
+            "line": 501,
             "description": "Reindexes all the keys in this map.",
             "itemtype": "method",
             "name": "_reindexMap",
@@ -4981,7 +5371,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 485,
+            "line": 520,
             "description": "Removes the entry at the given _index_ from internal arrays.\n\nThis method does not update the `size` property.",
             "itemtype": "method",
             "name": "_removeMapEntry",
@@ -4999,7 +5389,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 506,
+            "line": 541,
             "description": "Returns `true` if the two given values are the same value, `false`\notherwise.\n\nThis is an implementation of the [ES6 SameValueZero][es6-svz] comparison\nalgorithm. It's more correct than `===` in that it considers `NaN` to be the\nsame as `NaN`.\n\nNote that `0` and `-0` are considered the same by this algorithm.\n\n[es6-svz]: http://people.mozilla.org/~jorendorff/es6-draft.html#sec-9.2.4",
             "itemtype": "method",
             "name": "_sameValueZero",
@@ -5026,7 +5416,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 529,
+            "line": 564,
             "description": "Updates the value of the `size` property in old browsers. In ES5 browsers\nthis is a noop, since the `size` property is a getter.",
             "itemtype": "method",
             "name": "_updateMapSize",
@@ -5037,7 +5427,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 541,
+            "line": 576,
             "description": "Alias for `remove()`.",
             "itemtype": "method",
             "name": "delete",
@@ -5049,7 +5439,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 549,
+            "line": 584,
             "description": "Alias for `each()`.",
             "itemtype": "method",
             "name": "forEach",
@@ -5061,7 +5451,7 @@
         },
         {
             "file": "src/sm-map/js/map.js",
-            "line": 557,
+            "line": 592,
             "description": "Returns a JSON-serializable representation of this map.\n\nThis is effectively an alias for `entries()`, but could be overridden to\nreturn a customized representation.",
             "itemtype": "method",
             "name": "toJSON",
