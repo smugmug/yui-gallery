@@ -3,6 +3,10 @@ SmugMug TreeView History
 
 ## git
 
+* Added a `force` option to `Y.TreeView#renderChildren()` and
+  `Y.TreeView#renderNode()`. Set it to `true` to force re-rendering from scratch
+  even if things have already been rendered.
+
 * Fixed: When re-rendering the children of an already-rendered node, DOM nodes
   were removed and re-appended to the container unnecessarily. They're now
   simply updated in place.

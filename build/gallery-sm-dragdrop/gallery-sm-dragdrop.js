@@ -5,9 +5,9 @@ YUI.add('gallery-sm-dragdrop', function (Y, NAME) {
 /*
 TODO:
 
-- Touch-based dragging needs lots of work. It's really hard to disambiguate
-  between non-drag gestures and drag gestures, and to prevent undesired
-  mousedown/click events after a drag.
+- Touch-based dragging needs more work. It's really hard to prevent undesired
+  mousedown/click events after a drag. And CSS :hover states are just a world
+  of suck on iOS.
 */
 
 /**
@@ -171,13 +171,15 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         this._publishedEvents = {};
 
         // Cache frequently-used attributes.
-        this._container          = this.get('container');
-        this._distanceThreshold  = this.get('distanceThreshold');
-        this._dragHandleSelector = this.get('dragHandleSelector');
-        this._dragSelector       = this.get('dragSelector');
-        this._scrollContainer    = this.get('scrollContainer');
-        this._scrollMargin       = this.get('scrollMargin');
-        this._scrollSelector     = this.get('scrollSelector');
+        this._container           = this.get('container');
+        this._distanceThreshold   = this.get('distanceThreshold');
+        this._dragHandleSelector  = this.get('dragHandleSelector');
+        this._dragSelector        = this.get('dragSelector');
+        this._scrollContainer     = this.get('scrollContainer');
+        this._scrollMargin        = this.get('scrollMargin');
+        this._scrollSelector      = this.get('scrollSelector');
+        this._touchCancelDistance = this.get('touchCancelDistance');
+        this._touchDelay          = this.get('touchDelay');
 
         this._attachEvents();
     },
@@ -217,15 +219,14 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
                 'dragSelectorChange',
                 'scrollContainerChange',
                 'scrollMarginChange',
-                'scrollSelectorChange'
+                'scrollSelectorChange',
+                'touchCancelDistanceChange',
+                'touchDelayChange'
             ], this._cacheAttrValue),
 
             this.after([
                 'containerChange',
-                'distanceThresholdChange',
-                'dragSelectorChange',
-                'enableTouchDragChange',
-                'timeThresholdChange'
+                'dragSelectorChange'
             ], this._reinitialize),
 
             this.after([
@@ -234,11 +235,17 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
                 'scrollSelectorChange'
             ], this.sync),
 
-            container.delegate('dragstart', this._onNativeDragStart, dragSelector, this),
-            container.delegate('gesturemovestart', this._onDraggableMoveStart, dragSelector, {}, this),
+            container.delegate('dragstart', this._onNativeDragStart,
+                dragSelector, this),
 
-            docNode.on('gesturemove', this._onDocMove, {standAlone: true}, this),
-            docNode.on('gesturemoveend', this._onDocMoveEnd, {standAlone: true}, this)
+            container.delegate('gesturemovestart', this._onDraggableMoveStart,
+                dragSelector, {}, this),
+
+            docNode.on('gesturemove', this._onDocMove,
+                {standAlone: true}, this),
+
+            docNode.on('gesturemoveend', this._onDocMoveEnd,
+                {standAlone: true}, this)
         ];
 
         if (!this._containerIsBody) {
@@ -1093,13 +1100,24 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
 
             this._fireDrag();
         } else if (state.pending) {
-            // TODO: Figure out how to avoid stomping on touch-based scroll
-            // gestures and whatnot.
-            var deltaXY   = this._getDelta(),
-                threshold = this._distanceThreshold;
+            var deltaXY = this._getDelta(),
+                isTouch = state.isTouch,
+
+                threshold = isTouch ? this._touchCancelDistance :
+                    this._distanceThreshold;
 
             if (deltaXY[0] > threshold || deltaXY[1] > threshold) {
-                this._fireDragStart();
+                if (isTouch) {
+                    // This is a pending touch drag, but the touch point has
+                    // moved more than the touchCancelDistance and the
+                    // touchDelay time hasn't elapsed yet. This means the user
+                    // is probably performing a gesture (like scrolling), and
+                    // doesn't actually want to drag, so cancel the pending
+                    // drag.
+                    this._endDrag();
+                } else {
+                    this._fireDragStart();
+                }
             }
         }
     },
@@ -1184,6 +1202,7 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
 
         state.dragging = false;
         state.dragNode = e.currentTarget;
+        state.isTouch  = !!e.touches;
         state.pageXY   = [e.pageX, e.pageY];
         state.pending  = true;
         state.startXY  = [e.pageX, e.pageY];
@@ -1191,8 +1210,10 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         this._preventTouchCallout();
 
         this._pendingDragTimeout = setTimeout(function () {
-            self._fireDragStart();
-        }, this.get('timeThreshold'));
+            if (state.pending) {
+                self._fireDragStart();
+            }
+        }, state.isTouch ? this._touchDelay : this.get('timeThreshold'));
     },
 
     /**
@@ -1258,7 +1279,7 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         before the movement will be considered the beginning of a drag event.
 
         This value has no effect on touch-based interactions (see
-        `maxGestureDistance`).
+        `touchCancelDistance`).
 
         @attribute {Number} distanceThreshold
         @default 10
@@ -1367,15 +1388,48 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         For mouse-based interactions, exceeding this threshold will cause a
         drag event to start even if the `distanceThreshold` is not met.
 
-        For touch-based interactions, a drag event will only start if this
-        threshold is exceeded *and* the touch point doesn't move more than the
-        number of pixels specified by `maxGestureDistance`.
+        This attribute has no effect on touch-based interactions (see
+        `touchDelay`).
 
         @attribute {Number} timeThreshold
         @default 800
         **/
         timeThreshold: {
             value: 800
+        },
+
+        /**
+        Maximum distance in pixels from the original touch point that the
+        pointer may move during the `touchDelay` time before a pending drag is
+        canceled.
+
+        This helps avoid triggering unintended drag interactions when the user
+        is actually scrolling or performing some other touch gesture.
+
+        This attribute has no effect on mouse-based interactions.
+
+        @attribute {Number} touchCancelDistance
+        @default 10
+        **/
+        touchCancelDistance: {
+            value: 10
+        },
+
+        /**
+        Delay in milliseconds after an initial touch before a drag interaction
+        begins when using a touch-based input device.
+
+        If the touch ends before this delay is over, or if the touch point moves
+        by more than `touchCancelDistance` pixels before this delay is over, the
+        pending drag is canceled.
+
+        This attribute has no effect on mouse-based interactions.
+
+        @attribute {Number} touchDelay
+        @default 1000
+        **/
+        touchDelay: {
+            value: 1000
         }
     }
 });

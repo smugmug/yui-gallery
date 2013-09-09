@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test Page</title>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="log"></div>
+<div id="test" style="margin-top: 1em;"></div>
+
+<script src="/build/yui/yui.js"></script>
+<script>
+var Y = YUI({
+    filter: (window.location.search.match(/[?&]filter=([^&]+)/) || [])[1] || 'raw',
+
+    coverage: [
+        'gallery-sm-promise-events'
+    ],
+
+    modules: {
+        'promise-events-test': {
+            fullpath: 'assets/promise-events-test.js',
+            requires: ['gallery-sm-promise-events', 'test']
+        }
+    },
+
+    useBrowserConsole: false
+}).use('promise-events-test', 'test-console', function (Y) {
+    new Y.Test.Console().render('#log');
+
+    Y.Test.Runner.run();
+});
+</script>
+
+</body>
+</html>
