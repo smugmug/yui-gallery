@@ -492,38 +492,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     _afterDelete: function() {
         this._clearCommandQueue();
         this._updateSelection({force: true});
-    },
-
-
-    /**
-    Handles `paste` events on the editor.
-
-    @method _onPaste
-    @param {EventFacade} e
-    @protected
-    **/
-    _onPaste: function (e) {
-        var clipboard = e._event.clipboardData || win.clipboardData,
-            contents = clipboard.getData('text'),
-            range = this.selection.range();
-
-        e.preventDefault();
-
-        contents = this.get('formatFn')(contents);
-
-        if (!range.isCollapsed()) {
-            // expanding the range before deleting contents makes sure
-            // the entire node is deleted, if possible.
-            range.expand(this._inputNode);
-
-            range.deleteContents();
-        }
-
-        range.endNode(this._splitAfterRange(range, contents), 'before');
-
-        // collapse the range after the pasted text
-        this.selection.select(range.collapse());
-        this._updateSelection({force: true});
     }
 }, {
     ATTRS: {
