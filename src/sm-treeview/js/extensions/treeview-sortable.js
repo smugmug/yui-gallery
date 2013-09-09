@@ -53,6 +53,9 @@ Sortable.prototype._afterSort = function (e) {
     if (node.isRoot()) {
         this.render();
     } else {
-        this.renderNode(node, {renderChildren: true});
+        this.renderNode(node, {
+            force         : true,
+            renderChildren: true
+        });
     }
 };

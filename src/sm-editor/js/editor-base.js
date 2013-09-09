@@ -612,10 +612,43 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     Handles `paste` events on the editor.
 
     @method _onPaste
+    @param {EventFacade} e
     @protected
     **/
-    _onPaste: function () {
-        // TODO: handle paste events!
+    _onPaste: function (e) {
+        var clipboard = e._event.clipboardData || win.clipboardData,
+            contents = clipboard.getData('text'),
+            selection = this.selection,
+            range = selection.range();
+
+        e.preventDefault();
+
+        // treat pasted content as plain text, until we can do better client
+        // side sanitization.
+
+        // convert unescaped html to nodes, then extract the text into a text node.
+        //
+        // `<div>foo</div> <div>bar</div>`
+        //
+        // will result in a text node:
+        //
+        // `foo bar`
+        contents = Y.Node.create(contents); // document-fragment
+        contents = doc.createTextNode(contents.get('text'));
+
+        if (!range.isCollapsed()) {
+            // expanding the range before deleting contents makes sure
+            // the entire node is deleted, if possible.
+            range.expand(this._inputNode);
+
+            range.deleteContents();
+        }
+
+        range.insertNode(contents);
+
+        selection.select(range.collapse());
+
+        this._updateSelection({force: true});
     }
 }, {
     ATTRS: {

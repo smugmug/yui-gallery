@@ -9,39 +9,62 @@ This repo contains open source YUI components that have been contributed to the
 Modules
 -------
 
+### [gallery-sm-dom-form-values](src/sm-dom-form-values)
+
+Adds a `Y.DOM.formToObject(identifier)` method to extract form values from the
+DOM.
+
+### [gallery-sm-indexed-map](src/sm-indexed-map)
+
+An ordered, indexed hash map data structure. Like [Map](src/sm-map) and Array
+got together and had a beautiful baby.
+
+### [gallery-sm-map](src/sm-map)
+
+An ordered hash map data structure with an interface and behavior similar to
+(but not exactly the same as) ECMAScript 6 Maps.
+
 ### [gallery-sm-menu](src/sm-menu)
 
 An awesome menu widget that makes it easy to create standalone menus, dropdown
 menus, and context menus.
+
+### [gallery-sm-promise-events](src/sm-promise-events)
+
+Add an event notification interface to a `Y.Promise` and any child promises it
+spawns. Useful for cascading things like cancelation or progress through a
+promise chain.
 
 ### [gallery-sm-treeview](src/sm-treeview)
 
 A powerful, easy to use, and extremely fast TreeView widget.
 
 
-Works in Progress
------------------
+Experiments
+-----------
+
+These are experimental or work-in-progress modules that may not be fully stable
+yet. Feel free to try them out and send feedback though!
 
 ### [gallery-sm-dragdrop](src/sm-dragdrop)
 
-_Work in progress_. A simpler and more efficient drag and drop implementation
-than the one in YUI core. Highly optimized for delegation-based drag targets,
-remaining responsive and memory-efficient even when managing thousands of
-draggable nodes.
+A simpler and more efficient drag and drop implementation than the one in YUI
+core. Highly optimized for delegation-based drag targets, remaining responsive
+and memory-efficient even when managing thousands of draggable nodes.
 
 ### [gallery-sm-editor](src/sm-editor)
 
-_Work in progress_. A simple but powerful contentEditable-based WYSIWYG editor.
+A simple but powerful contentEditable-based WYSIWYG editor.
 
 ### [gallery-sm-focusmanager](src/sm-focusmanager)
 
-_Work in progress_. A Y.Node plugin that makes it easy to manage keyboard focus
-among the descendants of a node. This is a replacement for the
-soon-to-be-deprecated core Y.Plugin.NodeFocusManager component in YUI.
+A Y.Node plugin that makes it easy to manage keyboard focus among the
+descendants of a node. This is a replacement for the soon-to-be-deprecated core
+Y.Plugin.NodeFocusManager component in YUI.
 
 ### [gallery-sm-selection](src/sm-selection)
 
-_Work in progress_. Cross-browser Selection and Range APIs.
+Cross-browser Selection and Range APIs.
 
 
 Useful Links
@@ -49,6 +72,41 @@ Useful Links
 
 * [API Docs](http://smugmug.github.com/yui-gallery/api/)
 
+
+Running Benchmarks
+------------------
+
+Some components have Node.js-based performance benchmarks. Here's how to run
+them.
+
+First, install [Node.js](http://nodejs.org/) 0.10.x or higher. Then install this
+repo's dev dependencies by running the following command from the root of the
+repo:
+
+```
+$ npm i -g grunt-cli && npm i
+```
+
+Next, create a symlink that points to a local clone of the
+[YUI](https://github.com/yui/yui3) repo. Don't have a local YUI clone? Create
+one!
+
+```
+$ ln -s /path/to/yui/repo yui
+```
+
+Finally, run the benchmarks:
+
+```
+$ grunt benchmark
+```
+
+Or, to run the benchmarks for a single component, run
+`grunt benchmark:module-name`. For example:
+
+```
+$ grunt benchmark:gallery-sm-map
+```
 
 License
 -------

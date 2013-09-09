@@ -477,11 +477,13 @@ Y.namespace('Plugin.DragDrop').Reorder = Y.Base.create('dragdropReorder', Y.Plug
 
         if (item.before) {
             this._publishAndFire(EVT_REORDER_BEFORE, facade, {
-                defaultFn: this._defReorderBeforeFn
+                defaultFn  : this._defReorderBeforeFn,
+                preventedFn: this._preventedReorderBeforeFn
             });
         } else if (item.after) {
             this._publishAndFire(EVT_REORDER_AFTER, facade, {
-                defaultFn: this._defReorderAfterFn
+                defaultFn  : this._defReorderAfterFn,
+                preventedFn: this._preventedReorderAfterFn
             });
         }
     },
@@ -570,6 +572,14 @@ Y.namespace('Plugin.DragDrop').Reorder = Y.Base.create('dragdropReorder', Y.Plug
 
     _onDragStart: function (e) {
         e.state.reorder = {};
+    },
+
+    _preventedReorderAfterFn: function (e) {
+        this._fireEnd();
+    },
+
+    _preventedReorderBeforeFn: function (e) {
+        this._fireEnd();
     },
 
     _preventedReorderStartFn: function (e) {
