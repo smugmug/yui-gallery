@@ -2,9 +2,14 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>DragDrop - Body stress test - 1000 nodes</title>
+    <title>DragDrop - Body scroll test</title>
 
     <style>
+    body {
+        height: 9000px;
+        width: 9000px;
+    }
+
     .box {
         background: #cfcfcf;
         border: 1px solid #333;
@@ -12,6 +17,14 @@
         height: 100px;
         margin: 5px;
         width: 100px;
+    }
+
+    .scrollable {
+        border: 1px solid #afafaf;
+        height: 400px;
+        margin-left: 300px;
+        overflow: auto;
+        width: 400px;
     }
 
     .yui3-dragging {
@@ -25,7 +38,11 @@
 </head>
 <body>
 
-<div id="container"></div>
+<div id="container">
+    <div class="box"></div>
+</div>
+
+<div class="scrollable"><div style="height: 2000px; width: 2000px;"></div></div>
 
 <script src="http://yui.yahooapis.com/3.12.0/build/yui/yui.js"></script>
 <script src="../../../../build/gallery-sm-dragdrop/gallery-sm-dragdrop.js"></script>
@@ -33,23 +50,18 @@
 <script>
 YUI().use('node', 'gallery-sm-dragdrop', function (Y) {
 
-// -- Setup --------------------------------------------------------------------
-var container = Y.one('#container'),
-    boxes     = [];
-
-for (var i = 0; i < 1000; ++i) {
-    boxes.push('<div class="box"></div>');
-}
-
-container.setHTML(boxes.join(''));
-
 // -- DragDrop -----------------------------------------------------------------
 var dd;
+
+Y.one('body').on('mousedown', function (e) {
+    e.preventDefault();
+});
 
 dd = new Y.DragDrop({
     dragSelector   : '.box',
     dropSelector   : '.box',
-    scrollContainer: true
+    scrollContainer: true,
+    scrollSelector : '.scrollable'
 });
 
 });

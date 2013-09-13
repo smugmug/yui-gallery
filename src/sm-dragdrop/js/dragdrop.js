@@ -29,9 +29,15 @@ and memory-efficient even when managing thousands of draggable nodes.
 var DOM = Y.DOM,
 
     doc          = Y.config.doc,
+    body         = doc.body,
     getClassName = Y.ClassNameManager.getClassName,
-    isMac        = typeof navigator !== 'undefined' && /^mac/i.test(navigator.platform),
-    win          = Y.config.win;
+    win          = Y.config.win,
+
+    // Gecko browsers can only scroll the documentElement, not the body element.
+    canScrollBody = !Y.UA.gecko,
+
+    // We need to handle Ctrl-Clicks as right-clicks on Mac.
+    isMac = typeof navigator !== 'undefined' && /^mac/i.test(navigator.platform);
 
 /**
 Fired whenever the pointer moves during a drag operation.
@@ -207,7 +213,7 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
             docNode      = Y.one(doc),
             dragSelector = this._dragSelector;
 
-        this._containerIsBody = this._container._node === doc.body;
+        this._containerIsBody = this._container._node === body;
 
         this._events = [
             this.after([
@@ -371,7 +377,12 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
             return scrollRects;
         }
 
-        var el,
+        var docEl     = doc.documentElement,
+            vpOffsets = this._viewportScrollOffsets,
+
+            clientHeight,
+            clientWidth,
+            el,
             isHorizontal,
             isVertical,
             rect;
@@ -379,16 +390,34 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         for (var i = 0, len = scrollEls.length; i < len; i++) {
             el = scrollEls[i];
 
+            // In Firefox (possibly other browsers?) the clientHeight/Width and
+            // scrollHeight/Width are the same on the body, so we need to use
+            // the documentElement instead.
+            if (el === body) {
+                clientHeight = docEl.clientHeight;
+                clientWidth  = docEl.clientWidth;
+            } else {
+                clientHeight = el.clientHeight;
+                clientWidth  = el.clientWidth;
+            }
+
             // Is this element even scrollable? If not, skip it to save time
             // during drag operations.
-            isVertical   = el.scrollHeight > el.clientHeight;
-            isHorizontal = el.scrollWidth > el.clientWidth;
+            isVertical   = el.scrollHeight > clientHeight;
+            isHorizontal = el.scrollWidth > clientWidth;
 
             if (isVertical || isHorizontal) {
                 rect              = this._getAbsoluteBoundingRect(el);
                 rect.el           = el;
                 rect.isVertical   = isVertical;
                 rect.isHorizontal = isHorizontal;
+
+                if (el === body) {
+                    rect.bottom = vpOffsets[1] + clientHeight;
+                    rect.left   = vpOffsets[0];
+                    rect.right  = vpOffsets[0] + clientWidth;
+                    rect.top    = vpOffsets[1];
+                }
 
                 scrollRects.push(rect);
             }
@@ -734,8 +763,6 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
     @protected
     **/
     _getViewportScrollOffsets: function () {
-        var body = doc.body;
-
         return [
             // pageXOffset and pageYOffset work everywhere except IE <9.
             win.pageXOffset !== undefined ? win.pageXOffset :
@@ -907,13 +934,18 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
             return;
         }
 
-        var scrollData, scrollEl;
+        var scrollData,
+            scrollEl;
 
         amount || (amount = 1);
 
         for (var i = 0; i < len; i++) {
             scrollData = intersections[i];
             scrollEl   = scrollData.el;
+
+            if (!canScrollBody && scrollEl === body) {
+                scrollEl = doc.documentElement;
+            }
 
             if (scrollData.down) {
                 scrollEl.scrollTop = Math.min(
