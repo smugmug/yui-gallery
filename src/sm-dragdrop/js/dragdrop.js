@@ -33,8 +33,9 @@ var DOM = Y.DOM,
     getClassName = Y.ClassNameManager.getClassName,
     win          = Y.config.win,
 
-    // Gecko browsers can only scroll the documentElement, not the body element.
-    canScrollBody = !Y.UA.gecko,
+    // Non-WebKit/Blink browsers can only scroll the documentElement, not the
+    // body.
+    canScrollBody = !!Y.UA.webkit,
 
     // We need to handle Ctrl-Clicks as right-clicks on Mac.
     isMac = typeof navigator !== 'undefined' && /^mac/i.test(navigator.platform);
