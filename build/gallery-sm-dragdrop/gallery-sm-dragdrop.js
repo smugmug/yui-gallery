@@ -40,7 +40,11 @@ var DOM = Y.DOM,
     canScrollBody = !!Y.UA.webkit,
 
     // We need to handle Ctrl-Clicks as right-clicks on Mac.
-    isMac = typeof navigator !== 'undefined' && /^mac/i.test(navigator.platform);
+    isMac = typeof navigator !== 'undefined' && /^mac/i.test(navigator.platform),
+
+    // IE<9 doesn't support pageXOffset and pageYOffset. Other browsers do.
+    supportsPageOffset = win && win.pageXOffset !== undefined
+        && win.pageYOffset !== undefined;
 
 /**
 Fired whenever the pointer moves during a drag operation.
@@ -765,15 +769,11 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
         viewport.
     @protected
     **/
-    _getViewportScrollOffsets: function () {
-        return [
-            // pageXOffset and pageYOffset work everywhere except IE <9.
-            win.pageXOffset !== undefined ? win.pageXOffset :
-                (doc.documentElement || body.parentNode || body).scrollLeft,
-
-            win.pageYOffset !== undefined ? win.pageYOffset :
-                (doc.documentElement || body.parentNode || body).scrollTop
-        ];
+    _getViewportScrollOffsets: supportsPageOffset ? function () {
+        return [win.pageXOffset, win.pageYOffset];
+    } : function () {
+        var el = doc.documentElement || body.parentNode || body;
+        return [el.scrollLeft, el.scrollTop];
     },
 
     /**
@@ -978,7 +978,7 @@ var DragDrop = Y.Base.create('dragdrop', Y.Base, [], {
 
             this._scrollTimeout = setTimeout(function () {
                 self._scrollTimeout = null;
-                self._scroll(amount += 1); // accelerate scroll speed
+                self._scroll(amount += 2); // accelerate scroll speed
 
                 // Update the position of the drag node, since it might have
                 // moved as a result of the scroll and we need it to stick to
