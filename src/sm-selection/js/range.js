@@ -571,7 +571,7 @@ Range.prototype = {
         trailing whitespace from the endContainer.
     @chainable
     **/
-    shrink: function(options) {
+    shrink: function (options) {
         return this.shrinkStart(options).shrinkEnd(options);
     },
 
@@ -590,7 +590,7 @@ Range.prototype = {
         exclude any trailing whitespace from the shrunken endContainer.
     @chainable
     **/
-    shrinkEnd: function(options) {
+    shrinkEnd: function (options) {
         var trim = options && options.trim;
 
         if (!this.isCollapsed()) {
@@ -634,7 +634,7 @@ Range.prototype = {
             if (ELEMENT_NODE === endNode.get('nodeType')) {
                 this.endNode(endNode, endNode.get('childNodes').size());
 
-                this.traverse(function(node) {
+                this.traverse(function (node) {
                     if (TEXT_NODE === node.get('nodeType')) {
                         endNode = node;
                     }
@@ -670,7 +670,7 @@ Range.prototype = {
         exclude any leading whitespace from the shrunken startContainer.
     @chainable
     **/
-    shrinkStart: function(options) {
+    shrinkStart: function (options) {
         var trim = options && options.trim;
 
         if (!this.isCollapsed()) {
@@ -714,7 +714,7 @@ Range.prototype = {
             if (ELEMENT_NODE === startNode.get('nodeType')) {
                 this.startNode(startNode);
 
-                this.traverse(function(node) {
+                this.traverse(function (node) {
                     if (TEXT_NODE === node.get('nodeType')) {
                         startNode = node;
                         return true; // stops traversal
