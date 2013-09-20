@@ -107,6 +107,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         justifyRight: true
     },
 
+    supportedTags: 'a, br, div, p, span',
+
     // -- Protected Properties -------------------------------------------------
 
     // -- Lifecycle ------------------------------------------------------------
@@ -153,36 +155,19 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     for a list of possible commands.
 
     @method command
-    @param {String|Function} name Command name or function to execute. By
-        default functions will execute in the editor context. Use Y.bind
-        to provide a different execution context.
-    @param {*} [value*] Command value or 0..n arguments to pass
-        to the command function. Use the special value 'toggle' to toggle a
+    @param {String|Function} name Command name.
+    @param {*} [value*] Command value. Use the special value 'toggle' to toggle a
         boolean command (like 'bold') to the opposite of its current state.
-    @return {*} Value of the specified command or return value of the
-        supplied function.
+    @return {*} Value of the specified command.
     **/
     command: function (name, value) {
-        var args = Y.Array(arguments, 1, true),
-            retVal;
-
         this.focus();
 
-        if (typeof name === 'function') {
-            retVal = name.apply(this, args);
-        } else {
-            value = args.shift();
-
-            if (typeof value !== 'undefined') {
-                this._execCommand(name, value);
-            }
-
-            retVal = this._queryCommandValue(name);
-        }
+        this._execCommand(name, value);
 
         this._updateSelection({force: true});
 
-        return retVal;
+        return this._queryCommandValue(name);
     },
 
     /**
@@ -550,10 +535,12 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     _onCut: function (e) {
         var clipboard = e._event.clipboardData || window.clipboardData,
             range = this.selection.range(),
+            contents;
 
-            // note the `expand()`. this prevents any empty nodes
-            // being left after `extractContents()`
-            contents = range.expand().extractContents().getHTML();
+        // expand the range to prevent any empty nodes
+        // being left after `extractContents()`
+        range.expand({stopAt: this._inputNode});
+        contents = range.extractContents().getHTML();
 
         e.preventDefault();
 
@@ -640,7 +627,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         if (!range.isCollapsed()) {
             // expanding the range before deleting contents makes sure
             // the entire node is deleted, if possible.
-            range.expand(this._inputNode);
+            range.expand({stopAt: this._inputNode});
 
             range.deleteContents();
         }

@@ -1,6 +1,390 @@
-if (typeof __coverage__ === 'undefined') { __coverage__ = {}; }
-if (!__coverage__['build/gallery-sm-editor-link/gallery-sm-editor-link.js']) {
-   __coverage__['build/gallery-sm-editor-link/gallery-sm-editor-link.js'] = {"path":"build/gallery-sm-editor-link/gallery-sm-editor-link.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0},"fnMap":{"1":{"name":"(anonymous_1)","line":1,"loc":{"start":{"line":1,"column":34},"end":{"line":1,"column":53}}},"2":{"name":"(anonymous_2)","line":21,"loc":{"start":{"line":21,"column":1},"end":{"line":21,"column":12}}},"3":{"name":"(anonymous_3)","line":47,"loc":{"start":{"line":47,"column":17},"end":{"line":47,"column":29}}},"4":{"name":"(anonymous_4)","line":66,"loc":{"start":{"line":66,"column":10},"end":{"line":66,"column":29}}},"5":{"name":"(anonymous_5)","line":78,"loc":{"start":{"line":78,"column":12},"end":{"line":78,"column":24}}},"6":{"name":"(anonymous_6)","line":92,"loc":{"start":{"line":92,"column":12},"end":{"line":92,"column":23}}},"7":{"name":"(anonymous_7)","line":116,"loc":{"start":{"line":116,"column":20},"end":{"line":116,"column":31}}},"8":{"name":"(anonymous_8)","line":138,"loc":{"start":{"line":138,"column":11},"end":{"line":138,"column":28}}},"9":{"name":"(anonymous_9)","line":184,"loc":{"start":{"line":184,"column":17},"end":{"line":184,"column":28}}}},"statementMap":{"1":{"start":{"line":1,"column":0},"end":{"line":198,"column":83}},"2":{"start":{"line":21,"column":0},"end":{"line":195,"column":5}},"3":{"start":{"line":22,"column":0},"end":{"line":22,"column":24}},"4":{"start":{"line":24,"column":0},"end":{"line":191,"column":3}},"5":{"start":{"line":67,"column":8},"end":{"line":67,"column":49}},"6":{"start":{"line":79,"column":8},"end":{"line":79,"column":39}},"7":{"start":{"line":93,"column":8},"end":{"line":94,"column":18}},"8":{"start":{"line":96,"column":8},"end":{"line":100,"column":9}},"9":{"start":{"line":97,"column":12},"end":{"line":97,"column":44}},"10":{"start":{"line":99,"column":12},"end":{"line":99,"column":62}},"11":{"start":{"line":102,"column":8},"end":{"line":102,"column":20}},"12":{"start":{"line":117,"column":8},"end":{"line":117,"column":21}},"13":{"start":{"line":119,"column":8},"end":{"line":119,"column":70}},"14":{"start":{"line":121,"column":8},"end":{"line":121,"column":56}},"15":{"start":{"line":139,"column":8},"end":{"line":140,"column":23}},"16":{"start":{"line":142,"column":8},"end":{"line":144,"column":9}},"17":{"start":{"line":143,"column":12},"end":{"line":143,"column":19}},"18":{"start":{"line":146,"column":8},"end":{"line":148,"column":9}},"19":{"start":{"line":147,"column":12},"end":{"line":147,"column":52}},"20":{"start":{"line":150,"column":8},"end":{"line":150,"column":34}},"21":{"start":{"line":151,"column":8},"end":{"line":151,"column":53}},"22":{"start":{"line":152,"column":8},"end":{"line":152,"column":44}},"23":{"start":{"line":156,"column":8},"end":{"line":156,"column":38}},"24":{"start":{"line":158,"column":8},"end":{"line":158,"column":60}},"25":{"start":{"line":159,"column":8},"end":{"line":159,"column":44}},"26":{"start":{"line":161,"column":8},"end":{"line":170,"column":9}},"27":{"start":{"line":162,"column":12},"end":{"line":162,"column":58}},"28":{"start":{"line":164,"column":12},"end":{"line":169,"column":13}},"29":{"start":{"line":165,"column":16},"end":{"line":165,"column":53}},"30":{"start":{"line":166,"column":16},"end":{"line":166,"column":47}},"31":{"start":{"line":168,"column":16},"end":{"line":168,"column":53}},"32":{"start":{"line":172,"column":8},"end":{"line":172,"column":43}},"33":{"start":{"line":174,"column":8},"end":{"line":174,"column":48}},"34":{"start":{"line":176,"column":8},"end":{"line":176,"column":20}},"35":{"start":{"line":185,"column":8},"end":{"line":185,"column":54}},"36":{"start":{"line":187,"column":8},"end":{"line":189,"column":9}},"37":{"start":{"line":188,"column":12},"end":{"line":188,"column":36}},"38":{"start":{"line":193,"column":0},"end":{"line":193,"column":40}}},"branchMap":{"1":{"line":96,"type":"if","locations":[{"start":{"line":96,"column":8},"end":{"line":96,"column":8}},{"start":{"line":96,"column":8},"end":{"line":96,"column":8}}]},"2":{"line":142,"type":"if","locations":[{"start":{"line":142,"column":8},"end":{"line":142,"column":8}},{"start":{"line":142,"column":8},"end":{"line":142,"column":8}}]},"3":{"line":146,"type":"if","locations":[{"start":{"line":146,"column":8},"end":{"line":146,"column":8}},{"start":{"line":146,"column":8},"end":{"line":146,"column":8}}]},"4":{"line":150,"type":"binary-expr","locations":[{"start":{"line":150,"column":8},"end":{"line":150,"column":15}},{"start":{"line":150,"column":20},"end":{"line":150,"column":32}}]},"5":{"line":151,"type":"binary-expr","locations":[{"start":{"line":151,"column":8},"end":{"line":151,"column":22}},{"start":{"line":151,"column":27},"end":{"line":151,"column":51}}]},"6":{"line":152,"type":"binary-expr","locations":[{"start":{"line":152,"column":8},"end":{"line":152,"column":20}},{"start":{"line":152,"column":25},"end":{"line":152,"column":42}}]},"7":{"line":161,"type":"if","locations":[{"start":{"line":161,"column":8},"end":{"line":161,"column":8}},{"start":{"line":161,"column":8},"end":{"line":161,"column":8}}]},"8":{"line":161,"type":"binary-expr","locations":[{"start":{"line":161,"column":12},"end":{"line":161,"column":24}},{"start":{"line":161,"column":28},"end":{"line":161,"column":61}}]},"9":{"line":164,"type":"if","locations":[{"start":{"line":164,"column":12},"end":{"line":164,"column":12}},{"start":{"line":164,"column":12},"end":{"line":164,"column":12}}]},"10":{"line":187,"type":"if","locations":[{"start":{"line":187,"column":8},"end":{"line":187,"column":8}},{"start":{"line":187,"column":8},"end":{"line":187,"column":8}}]}},"code":["(function () { YUI.add('gallery-sm-editor-link', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Link` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-link","**/","","/**","Extension for `Editor.Base` that enables inserting links","","@class Editor.Link","@constructor","@extends Base","@extensionfor Editor.Base","**/","","(function() {","var EDOM = Y.Editor.DOM;","","var EditorLink = Y.Base.create('editorLink', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    /**","    Key commands related to creating hyperlinks.","","    @property {Object} linkKeyCommands","    **/","    linkKeyCommands: {","        // Create a link.","        'ctrl+h'      : {fn: '_linkPrompt', allowDefault: false}","    },","","    /**","    HTML Template for building an anchor node","","    @property {Object} linkTemplate","    **/","    linkTemplate: '<a href=\"{href}\" target=\"{target}\"></a>',","","","    // -- Lifecycle ------------------------------------------------------------","","    initializer: function () {","//        if (this.keyCommands) {","//            this.keyCommands = Y.merge(this.keyCommands, this.linkKeyCommands);","//        }","    },","","","    // -- Public Methods -------------------------------------------------------","","    /**","    Wraps the currently selected range in an anchor element","","    @method link","    @param {Object} options","        @param {String} options.href","        @param {String} [options.target=_self]","        @param {String} [options.text]","    @chainable","    **/","    link: function (options) {","        return this.command(this._link, options);","    },","","","    /**","    Returns whether or not the current range is entirely in an anchor element","","    @method isLink","    @return {boolean} `true` if the range is contained in an anchor element,","      `false` otherwise","    **/","    isLink: function () {","        return !!this._getAnchorNode();","    },","","","    /**","    Removes link by replacing the anchor element with the child nodes","    of the anchor","","    The anchor element will be removed from the DOM and destroyed.","","    @method unlink","    @chainable","    **/","    unlink: function() {","        var anchorNode = this._getAnchorNode(),","            range;","","        if (anchorNode) {","            range = EDOM.unwrap(anchorNode);","","            this.selection.select(range.shrink({trim: true}));","        }","","        return this;","    },","","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Returns the nearest ancestor anchor that entirely contains","    the current range","","    @method _getAnchorNode","    @returns {Node} The containing anchor element","    @protected","    **/","    _getAnchorNode: function() {","        this.focus();","","        var parentNode = this.selection.range().shrink().parentNode();","","        return EDOM.getAncestorElement(parentNode, 'a');","    },","","","    /**","    Implementation for the public `link` method.","","    Wraps the currently selected range in an anchor `<a>` tag","","    @method _link","    @param {Object} options","        @param {String} options.href","        @param {String} [options.target=_self]","        @param {String} [options.text]","    @chainable","    @protected","    **/","    _link: function(options){","        var range = this.selection.range(),","            anchorNode;","","        if (!range) {","            return;","        }","","        if (this.isLink()) {","            range = this.unlink().selection.range();","        }","","        options || (options = {});","        options.target || (options.target = '_self');","        options.href || (options.href = '');","","        // expanding the range before deleting contents makes sure","        // the entire node is wrapped, if possible.","        range.expand(this._inputNode);","","        anchorNode = Y.Lang.sub(this.linkTemplate, options);","        anchorNode = range.wrap(anchorNode);","","        if (options.text && options.text !== range.toString()) {","            var firstChild = anchorNode.get('firstChild');","","            if (EDOM.isInlineElement(firstChild)) {","                firstChild.set('text', options.text);","                anchorNode.setHTML(firstChild);","            } else {","                anchorNode.set('text', options.text);","            }","        }","","        range.endNode(anchorNode, 'after');","","        this.selection.select(range.collapse());","","        return this;","    },","","","    /**","    @method _linkPrompt","    @protected","    **/","    _linkPrompt: function() {","        var href = Y.config.win.prompt('Enter a url');","","        if (href) {","            this.link({href: href});","        }","    }","});","","Y.namespace('Editor').Link = EditorLink;","","}());","","","}, '@VERSION@', {\"requires\": [\"gallery-sm-editor-base\", \"gallery-sm-editor-dom\"]});","","}());"]};
+if (typeof _yuitest_coverage == "undefined"){
+    _yuitest_coverage = {};
+    _yuitest_coverline = function(src, line){
+        var coverage = _yuitest_coverage[src];
+        if (!coverage.lines[line]){
+            coverage.calledLines++;
+        }
+        coverage.lines[line]++;
+    };
+    _yuitest_coverfunc = function(src, name, line){
+        var coverage = _yuitest_coverage[src],
+            funcId = name + ":" + line;
+        if (!coverage.functions[funcId]){
+            coverage.calledFunctions++;
+        }
+        coverage.functions[funcId]++;
+    };
 }
-var __cov_URaa20$SP4SK4EP2RxuctA = __coverage__['build/gallery-sm-editor-link/gallery-sm-editor-link.js'];
-__cov_URaa20$SP4SK4EP2RxuctA.s['1']++;YUI.add('gallery-sm-editor-link',function(Y,NAME){__cov_URaa20$SP4SK4EP2RxuctA.f['1']++;__cov_URaa20$SP4SK4EP2RxuctA.s['2']++;(function(){__cov_URaa20$SP4SK4EP2RxuctA.f['2']++;__cov_URaa20$SP4SK4EP2RxuctA.s['3']++;var EDOM=Y.Editor.DOM;__cov_URaa20$SP4SK4EP2RxuctA.s['4']++;var EditorLink=Y.Base.create('editorLink',Y.Base,[],{linkKeyCommands:{'ctrl+h':{fn:'_linkPrompt',allowDefault:false}},linkTemplate:'<a href="{href}" target="{target}"></a>',initializer:function(){__cov_URaa20$SP4SK4EP2RxuctA.f['3']++;},link:function(options){__cov_URaa20$SP4SK4EP2RxuctA.f['4']++;__cov_URaa20$SP4SK4EP2RxuctA.s['5']++;return this.command(this._link,options);},isLink:function(){__cov_URaa20$SP4SK4EP2RxuctA.f['5']++;__cov_URaa20$SP4SK4EP2RxuctA.s['6']++;return!!this._getAnchorNode();},unlink:function(){__cov_URaa20$SP4SK4EP2RxuctA.f['6']++;__cov_URaa20$SP4SK4EP2RxuctA.s['7']++;var anchorNode=this._getAnchorNode(),range;__cov_URaa20$SP4SK4EP2RxuctA.s['8']++;if(anchorNode){__cov_URaa20$SP4SK4EP2RxuctA.b['1'][0]++;__cov_URaa20$SP4SK4EP2RxuctA.s['9']++;range=EDOM.unwrap(anchorNode);__cov_URaa20$SP4SK4EP2RxuctA.s['10']++;this.selection.select(range.shrink({trim:true}));}else{__cov_URaa20$SP4SK4EP2RxuctA.b['1'][1]++;}__cov_URaa20$SP4SK4EP2RxuctA.s['11']++;return this;},_getAnchorNode:function(){__cov_URaa20$SP4SK4EP2RxuctA.f['7']++;__cov_URaa20$SP4SK4EP2RxuctA.s['12']++;this.focus();__cov_URaa20$SP4SK4EP2RxuctA.s['13']++;var parentNode=this.selection.range().shrink().parentNode();__cov_URaa20$SP4SK4EP2RxuctA.s['14']++;return EDOM.getAncestorElement(parentNode,'a');},_link:function(options){__cov_URaa20$SP4SK4EP2RxuctA.f['8']++;__cov_URaa20$SP4SK4EP2RxuctA.s['15']++;var range=this.selection.range(),anchorNode;__cov_URaa20$SP4SK4EP2RxuctA.s['16']++;if(!range){__cov_URaa20$SP4SK4EP2RxuctA.b['2'][0]++;__cov_URaa20$SP4SK4EP2RxuctA.s['17']++;return;}else{__cov_URaa20$SP4SK4EP2RxuctA.b['2'][1]++;}__cov_URaa20$SP4SK4EP2RxuctA.s['18']++;if(this.isLink()){__cov_URaa20$SP4SK4EP2RxuctA.b['3'][0]++;__cov_URaa20$SP4SK4EP2RxuctA.s['19']++;range=this.unlink().selection.range();}else{__cov_URaa20$SP4SK4EP2RxuctA.b['3'][1]++;}__cov_URaa20$SP4SK4EP2RxuctA.s['20']++;(__cov_URaa20$SP4SK4EP2RxuctA.b['4'][0]++,options)||(__cov_URaa20$SP4SK4EP2RxuctA.b['4'][1]++,options={});__cov_URaa20$SP4SK4EP2RxuctA.s['21']++;(__cov_URaa20$SP4SK4EP2RxuctA.b['5'][0]++,options.target)||(__cov_URaa20$SP4SK4EP2RxuctA.b['5'][1]++,options.target='_self');__cov_URaa20$SP4SK4EP2RxuctA.s['22']++;(__cov_URaa20$SP4SK4EP2RxuctA.b['6'][0]++,options.href)||(__cov_URaa20$SP4SK4EP2RxuctA.b['6'][1]++,options.href='');__cov_URaa20$SP4SK4EP2RxuctA.s['23']++;range.expand(this._inputNode);__cov_URaa20$SP4SK4EP2RxuctA.s['24']++;anchorNode=Y.Lang.sub(this.linkTemplate,options);__cov_URaa20$SP4SK4EP2RxuctA.s['25']++;anchorNode=range.wrap(anchorNode);__cov_URaa20$SP4SK4EP2RxuctA.s['26']++;if((__cov_URaa20$SP4SK4EP2RxuctA.b['8'][0]++,options.text)&&(__cov_URaa20$SP4SK4EP2RxuctA.b['8'][1]++,options.text!==range.toString())){__cov_URaa20$SP4SK4EP2RxuctA.b['7'][0]++;__cov_URaa20$SP4SK4EP2RxuctA.s['27']++;var firstChild=anchorNode.get('firstChild');__cov_URaa20$SP4SK4EP2RxuctA.s['28']++;if(EDOM.isInlineElement(firstChild)){__cov_URaa20$SP4SK4EP2RxuctA.b['9'][0]++;__cov_URaa20$SP4SK4EP2RxuctA.s['29']++;firstChild.set('text',options.text);__cov_URaa20$SP4SK4EP2RxuctA.s['30']++;anchorNode.setHTML(firstChild);}else{__cov_URaa20$SP4SK4EP2RxuctA.b['9'][1]++;__cov_URaa20$SP4SK4EP2RxuctA.s['31']++;anchorNode.set('text',options.text);}}else{__cov_URaa20$SP4SK4EP2RxuctA.b['7'][1]++;}__cov_URaa20$SP4SK4EP2RxuctA.s['32']++;range.endNode(anchorNode,'after');__cov_URaa20$SP4SK4EP2RxuctA.s['33']++;this.selection.select(range.collapse());__cov_URaa20$SP4SK4EP2RxuctA.s['34']++;return this;},_linkPrompt:function(){__cov_URaa20$SP4SK4EP2RxuctA.f['9']++;__cov_URaa20$SP4SK4EP2RxuctA.s['35']++;var href=Y.config.win.prompt('Enter a url');__cov_URaa20$SP4SK4EP2RxuctA.s['36']++;if(href){__cov_URaa20$SP4SK4EP2RxuctA.b['10'][0]++;__cov_URaa20$SP4SK4EP2RxuctA.s['37']++;this.link({href:href});}else{__cov_URaa20$SP4SK4EP2RxuctA.b['10'][1]++;}}});__cov_URaa20$SP4SK4EP2RxuctA.s['38']++;Y.namespace('Editor').Link=EditorLink;}());},'@VERSION@',{'requires':['gallery-sm-editor-base','gallery-sm-editor-dom']});
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"] = {
+    lines: {},
+    functions: {},
+    coveredLines: 0,
+    calledLines: 0,
+    coveredFunctions: 0,
+    calledFunctions: 0,
+    path: "build/gallery-sm-editor-link/gallery-sm-editor-link.js",
+    code: []
+};
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"].code=["YUI.add('gallery-sm-editor-link', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Link` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-link","**/","","/**","Extension for `Editor.Base` that enables inserting links","","@class Editor.Link","@constructor","@extends Base","@extensionfor Editor.Base","**/","","(function() {","var EDOM = Y.Editor.DOM;","","var EditorLink = Y.Base.create('editorLink', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    linkCommands: {","        createLink: {","            fn: '_createLink'","        },","","        unlink: {","            fn: '_unlink'","        }","    },","","    /**","    Key commands related to creating hyperlinks.","","    @property {Object} linkKeyCommands","    **/","    linkKeyCommands: {","        // Create a link.","        'alt+ctrl+l'      : {fn: '_linkPrompt', allowDefault: false}","    },","","    /**","    HTML tags supported by this editor. Unsupported tags will be treated","    as text","","    @property {String} supportedTags","    **/","    linkTags: 'a',","","    /**","    HTML Template for building an anchor node","","    @property {Object} linkTemplate","    **/","    linkTemplate: '<a href=\"{href}\" target=\"{target}\"></a>',","","","    // -- Lifecycle ------------------------------------------------------------","","    initializer: function () {","        if (this.supportedTags) {","            this.supportedTags += ',' + this.linkTags;","        } else {","            this.supportedTags = this.linkTags;","        }","","        if (this.keyCommands) {","            this.keyCommands = Y.merge(this.keyCommands, this.linkKeyCommands);","        }","","        this._attachLinkEvents();","    },","","","    destructor: function () {","        this._detachLinkEvents();","    },","","","    // -- Public Methods -------------------------------------------------------","","    /**","    Returns whether or not the current range is entirely in an anchor element","","    @method isLink","    @return {boolean} `true` if the range is contained in an anchor element,","      `false` otherwise","    **/","    isLink: function () {","        return !!this._getAnchorNode();","    },","","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Attaches block events.","","    @method _attachLinkEvents","    @protected","    **/","    _attachLinkEvents: function () {","        if (this._linkEvents) {","            return;","        }","","        this._linkEvents = [","            Y.Do.before(this._linkBeforeExecCommand, this, '_execCommand', this)","        ];","    },","","","    /**","    Detaches link events.","","    @method _detachBlockEvents","    @protected","    **/","    _detachLinkEvents: function () {","        if (this._linkEvents) {","            new Y.EventHandle(this._linkEvents).detach();","            this._linkEvents = null;","        }","    },","","","    /**","    @method _execLinkCommand","    @param {String} name","    @param {Function|Number|String} value","    @protected","    **/","    _execLinkCommand: function (name, value) {","        var command = this.linkCommands[name],","            range = this.selection.range(),","            fn;","","        if (!range || !command) {","            return;","        }","","        fn = command.fn;","","        if ('string' === typeof fn) {","            fn = this[fn];","        }","","        fn && fn.call(this, value);","    },","","","    /**","    Returns the nearest ancestor anchor that entirely contains","    the current range","","    @method _getAnchorNode","    @returns {Node} The containing anchor element","    @protected","    **/","    _getAnchorNode: function() {","        this.focus();","","        var parentNode = this.selection.range().shrink().parentNode();","","        return parentNode.ancestor(this.linkTags, true);","    },","","","    /**","    Implementation for the `createLink` command","","    Wraps the currently selected range in an anchor `<a>` tag","","    @method _createLink","    @param {Object} options","        @param {String} options.href","        @param {String} [options.target=_self]","        @param {String} [options.text]","    @protected","    **/","    _createLink: function(options){","        var range = this.selection.range(),","            anchorNode, styleNodes;","","        if (!range) {","            return;","        }","","        if (this.isLink()) {","            this._unlink();","            range = this.selection.range();","        }","","        options || (options = {});","        options.target || (options.target = '_self');","        options.href || (options.href = '');","","        anchorNode = Y.Node.create(Y.Lang.sub(this.linkTemplate, options));","        styleNodes = this._getStyleNodes(range);","","        anchorNode.append(styleNodes);","","        range.insertNode(anchorNode);","","        if (options.text && options.text !== range.toString()) {","            var firstChild = anchorNode.get('firstChild');","","            if (this._isStyleNode(firstChild)) {","                firstChild.set('text', options.text);","                anchorNode.setHTML(firstChild);","            } else {","                anchorNode.set('text', options.text);","            }","        }","","        range.selectNode(anchorNode).collapse();","","        this.selection.select(range);","    },","","","    /**","    @method _linkPrompt","    @protected","    **/","    _linkPrompt: function() {","        var href = Y.config.win.prompt('Enter a url');","","        if (href) {","            this.command('createLink', {href: href});","        }","    },","","","    /**","    Removes link by replacing the anchor element with the child nodes","    of the anchor","","    The anchor element will be removed from the DOM and destroyed.","","    @method _unlink","    @protected","    **/","    _unlink: function() {","        var anchorNode = this._getAnchorNode(),","            range;","","        if (anchorNode) {","            range = EDOM.unwrap(anchorNode);","","            this.selection.select(range.shrink({trim: true}));","        }","    },","","","    // -- Protected Event Handlers ---------------------------------------------","","    /**","    AOP wrapper for `Editor.Base#_execCommand()`.","","    @method _linkBeforeExecCommand","    @param {String} name Command name.","    @param {Boolean|String} value Command value.","    @protected","    **/","    _linkBeforeExecCommand: function (name, value) {","        if (this.linkCommands[name]) {","            var ret = this._execLinkCommand(name, value);","            return new Y.Do.Halt('Editor.Link prevented _execCommand', ret);","        }","    }","});","","Y.namespace('Editor').Link = EditorLink;","","}());","","","}, '@VERSION@', {\"requires\": [\"gallery-sm-editor-base\", \"gallery-sm-editor-dom\"]});"];
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"].lines = {"1":0,"21":0,"22":0,"24":0,"66":0,"67":0,"69":0,"72":0,"73":0,"76":0,"81":0,"95":0,"108":0,"109":0,"112":0,"125":0,"126":0,"127":0,"139":0,"143":0,"144":0,"147":0,"149":0,"150":0,"153":0,"166":0,"168":0,"170":0,"187":0,"190":0,"191":0,"194":0,"195":0,"196":0,"199":0,"200":0,"201":0,"203":0,"204":0,"206":0,"208":0,"210":0,"211":0,"213":0,"214":0,"215":0,"217":0,"221":0,"223":0,"232":0,"234":0,"235":0,"250":0,"253":0,"254":0,"256":0,"272":0,"273":0,"274":0,"279":0};
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"].functions = {"initializer:65":0,"destructor:80":0,"isLink:94":0,"_attachLinkEvents:107":0,"_detachLinkEvents:124":0,"_execLinkCommand:138":0,"_getAnchorNode:165":0,"_createLink:186":0,"_linkPrompt:231":0,"_unlink:249":0,"_linkBeforeExecCommand:271":0,"(anonymous 2):21":0,"(anonymous 1):1":0};
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"].coveredLines = 60;
+_yuitest_coverage["build/gallery-sm-editor-link/gallery-sm-editor-link.js"].coveredFunctions = 13;
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 1);
+YUI.add('gallery-sm-editor-link', function (Y, NAME) {
+
+/*jshint expr:true, onevar:false */
+
+/**
+Provides the `Editor.Link` extension.
+
+@module gallery-sm-editor
+@submodule gallery-sm-editor-link
+**/
+
+/**
+Extension for `Editor.Base` that enables inserting links
+
+@class Editor.Link
+@constructor
+@extends Base
+@extensionfor Editor.Base
+**/
+
+_yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "(anonymous 1)", 1);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 21);
+(function() {
+_yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "(anonymous 2)", 21);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 22);
+var EDOM = Y.Editor.DOM;
+
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 24);
+var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
+    // -- Public Properties ----------------------------------------------------
+
+    linkCommands: {
+        createLink: {
+            fn: '_createLink'
+        },
+
+        unlink: {
+            fn: '_unlink'
+        }
+    },
+
+    /**
+    Key commands related to creating hyperlinks.
+
+    @property {Object} linkKeyCommands
+    **/
+    linkKeyCommands: {
+        // Create a link.
+        'alt+ctrl+l'      : {fn: '_linkPrompt', allowDefault: false}
+    },
+
+    /**
+    HTML tags supported by this editor. Unsupported tags will be treated
+    as text
+
+    @property {String} supportedTags
+    **/
+    linkTags: 'a',
+
+    /**
+    HTML Template for building an anchor node
+
+    @property {Object} linkTemplate
+    **/
+    linkTemplate: '<a href="{href}" target="{target}"></a>',
+
+
+    // -- Lifecycle ------------------------------------------------------------
+
+    initializer: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "initializer", 65);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 66);
+if (this.supportedTags) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 67);
+this.supportedTags += ',' + this.linkTags;
+        } else {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 69);
+this.supportedTags = this.linkTags;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 72);
+if (this.keyCommands) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 73);
+this.keyCommands = Y.merge(this.keyCommands, this.linkKeyCommands);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 76);
+this._attachLinkEvents();
+    },
+
+
+    destructor: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "destructor", 80);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 81);
+this._detachLinkEvents();
+    },
+
+
+    // -- Public Methods -------------------------------------------------------
+
+    /**
+    Returns whether or not the current range is entirely in an anchor element
+
+    @method isLink
+    @return {boolean} `true` if the range is contained in an anchor element,
+      `false` otherwise
+    **/
+    isLink: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "isLink", 94);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 95);
+return !!this._getAnchorNode();
+    },
+
+
+    // -- Protected Methods ----------------------------------------------------
+
+    /**
+    Attaches block events.
+
+    @method _attachLinkEvents
+    @protected
+    **/
+    _attachLinkEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "_attachLinkEvents", 107);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 108);
+if (this._linkEvents) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 109);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 112);
+this._linkEvents = [
+            Y.Do.before(this._linkBeforeExecCommand, this, '_execCommand', this)
+        ];
+    },
+
+
+    /**
+    Detaches link events.
+
+    @method _detachBlockEvents
+    @protected
+    **/
+    _detachLinkEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "_detachLinkEvents", 124);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 125);
+if (this._linkEvents) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 126);
+new Y.EventHandle(this._linkEvents).detach();
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 127);
+this._linkEvents = null;
+        }
+    },
+
+
+    /**
+    @method _execLinkCommand
+    @param {String} name
+    @param {Function|Number|String} value
+    @protected
+    **/
+    _execLinkCommand: function (name, value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "_execLinkCommand", 138);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 139);
+var command = this.linkCommands[name],
+            range = this.selection.range(),
+            fn;
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 143);
+if (!range || !command) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 144);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 147);
+fn = command.fn;
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 149);
+if ('string' === typeof fn) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 150);
+fn = this[fn];
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 153);
+fn && fn.call(this, value);
+    },
+
+
+    /**
+    Returns the nearest ancestor anchor that entirely contains
+    the current range
+
+    @method _getAnchorNode
+    @returns {Node} The containing anchor element
+    @protected
+    **/
+    _getAnchorNode: function() {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "_getAnchorNode", 165);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 166);
+this.focus();
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 168);
+var parentNode = this.selection.range().shrink().parentNode();
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 170);
+return parentNode.ancestor(this.linkTags, true);
+    },
+
+
+    /**
+    Implementation for the `createLink` command
+
+    Wraps the currently selected range in an anchor `<a>` tag
+
+    @method _createLink
+    @param {Object} options
+        @param {String} options.href
+        @param {String} [options.target=_self]
+        @param {String} [options.text]
+    @protected
+    **/
+    _createLink: function(options){
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "_createLink", 186);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 187);
+var range = this.selection.range(),
+            anchorNode, styleNodes;
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 190);
+if (!range) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 191);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 194);
+if (this.isLink()) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 195);
+this._unlink();
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 196);
+range = this.selection.range();
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 199);
+options || (options = {});
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 200);
+options.target || (options.target = '_self');
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 201);
+options.href || (options.href = '');
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 203);
+anchorNode = Y.Node.create(Y.Lang.sub(this.linkTemplate, options));
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 204);
+styleNodes = this._getStyleNodes(range);
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 206);
+anchorNode.append(styleNodes);
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 208);
+range.insertNode(anchorNode);
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 210);
+if (options.text && options.text !== range.toString()) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 211);
+var firstChild = anchorNode.get('firstChild');
+
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 213);
+if (this._isStyleNode(firstChild)) {
+                _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 214);
+firstChild.set('text', options.text);
+                _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 215);
+anchorNode.setHTML(firstChild);
+            } else {
+                _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 217);
+anchorNode.set('text', options.text);
+            }
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 221);
+range.selectNode(anchorNode).collapse();
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 223);
+this.selection.select(range);
+    },
+
+
+    /**
+    @method _linkPrompt
+    @protected
+    **/
+    _linkPrompt: function() {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "_linkPrompt", 231);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 232);
+var href = Y.config.win.prompt('Enter a url');
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 234);
+if (href) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 235);
+this.command('createLink', {href: href});
+        }
+    },
+
+
+    /**
+    Removes link by replacing the anchor element with the child nodes
+    of the anchor
+
+    The anchor element will be removed from the DOM and destroyed.
+
+    @method _unlink
+    @protected
+    **/
+    _unlink: function() {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "_unlink", 249);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 250);
+var anchorNode = this._getAnchorNode(),
+            range;
+
+        _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 253);
+if (anchorNode) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 254);
+range = EDOM.unwrap(anchorNode);
+
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 256);
+this.selection.select(range.shrink({trim: true}));
+        }
+    },
+
+
+    // -- Protected Event Handlers ---------------------------------------------
+
+    /**
+    AOP wrapper for `Editor.Base#_execCommand()`.
+
+    @method _linkBeforeExecCommand
+    @param {String} name Command name.
+    @param {Boolean|String} value Command value.
+    @protected
+    **/
+    _linkBeforeExecCommand: function (name, value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-link/gallery-sm-editor-link.js", "_linkBeforeExecCommand", 271);
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 272);
+if (this.linkCommands[name]) {
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 273);
+var ret = this._execLinkCommand(name, value);
+            _yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 274);
+return new Y.Do.Halt('Editor.Link prevented _execCommand', ret);
+        }
+    }
+});
+
+_yuitest_coverline("build/gallery-sm-editor-link/gallery-sm-editor-link.js", 279);
+Y.namespace('Editor').Link = EditorLink;
+
+}());
+
+
+}, '@VERSION@', {"requires": ["gallery-sm-editor-base", "gallery-sm-editor-dom"]});
