@@ -24,6 +24,7 @@ Y.Editor = Y.mix(
         Y.Editor.Keys,
         Y.Editor.Link,
         Y.Editor.Queue,
+        Y.Editor.Block,
         Y.Editor.Style
 //        Y.Editor.Undo
     ], {}),
