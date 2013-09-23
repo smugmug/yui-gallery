@@ -14,6 +14,12 @@
             ]
         },
 
+        "gallery-sm-editor-block": {
+            "jsfiles": [
+                "js/extensions/editor-block.js"
+            ]
+        },
+
         "gallery-sm-editor-dom": {
             "jsfiles": [
                 "js/extensions/editor-dom.js"

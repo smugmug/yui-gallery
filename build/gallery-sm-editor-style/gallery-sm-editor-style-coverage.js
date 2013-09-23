@@ -1,6 +1,800 @@
-if (typeof __coverage__ === 'undefined') { __coverage__ = {}; }
-if (!__coverage__['build/gallery-sm-editor-style/gallery-sm-editor-style.js']) {
-   __coverage__['build/gallery-sm-editor-style/gallery-sm-editor-style.js'] = {"path":"build/gallery-sm-editor-style/gallery-sm-editor-style.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0,"67":0,"68":0,"69":0,"70":0,"71":0,"72":0,"73":0,"74":0,"75":0,"76":0,"77":0,"78":0,"79":0,"80":0,"81":0,"82":0,"83":0,"84":0,"85":0,"86":0,"87":0,"88":0,"89":0,"90":0,"91":0,"92":0,"93":0,"94":0,"95":0,"96":0,"97":0,"98":0,"99":0,"100":0,"101":0,"102":0,"103":0,"104":0,"105":0,"106":0,"107":0,"108":0,"109":0,"110":0,"111":0,"112":0,"113":0,"114":0,"115":0,"116":0,"117":0,"118":0,"119":0,"120":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0],"12":[0,0],"13":[0,0],"14":[0,0],"15":[0,0],"16":[0,0],"17":[0,0],"18":[0,0],"19":[0,0],"20":[0,0],"21":[0,0],"22":[0,0],"23":[0,0],"24":[0,0],"25":[0,0],"26":[0,0],"27":[0,0],"28":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0},"fnMap":{"1":{"name":"(anonymous_1)","line":1,"loc":{"start":{"line":1,"column":35},"end":{"line":1,"column":54}}},"2":{"name":"(anonymous_2)","line":21,"loc":{"start":{"line":21,"column":1},"end":{"line":21,"column":12}}},"3":{"name":"(anonymous_3)","line":83,"loc":{"start":{"line":83,"column":17},"end":{"line":83,"column":29}}},"4":{"name":"(anonymous_4)","line":89,"loc":{"start":{"line":89,"column":16},"end":{"line":89,"column":28}}},"5":{"name":"(anonymous_5)","line":101,"loc":{"start":{"line":101,"column":10},"end":{"line":101,"column":22}}},"6":{"name":"(anonymous_6)","line":112,"loc":{"start":{"line":112,"column":12},"end":{"line":112,"column":24}}},"7":{"name":"(anonymous_7)","line":130,"loc":{"start":{"line":130,"column":12},"end":{"line":130,"column":30}}},"8":{"name":"(anonymous_8)","line":159,"loc":{"start":{"line":159,"column":15},"end":{"line":159,"column":27}}},"9":{"name":"(anonymous_9)","line":179,"loc":{"start":{"line":179,"column":18},"end":{"line":179,"column":40}}},"10":{"name":"(anonymous_10)","line":233,"loc":{"start":{"line":233,"column":17},"end":{"line":233,"column":32}}},"11":{"name":"flatten","line":234,"loc":{"start":{"line":234,"column":8},"end":{"line":234,"column":31}}},"12":{"name":"(anonymous_12)","line":237,"loc":{"start":{"line":237,"column":47},"end":{"line":237,"column":62}}},"13":{"name":"(anonymous_13)","line":278,"loc":{"start":{"line":278,"column":42},"end":{"line":278,"column":56}}},"14":{"name":"(anonymous_14)","line":298,"loc":{"start":{"line":298,"column":14},"end":{"line":298,"column":31}}},"15":{"name":"(anonymous_15)","line":316,"loc":{"start":{"line":316,"column":24},"end":{"line":316,"column":60}}},"16":{"name":"(anonymous_16)","line":317,"loc":{"start":{"line":317,"column":34},"end":{"line":317,"column":49}}},"17":{"name":"(anonymous_17)","line":341,"loc":{"start":{"line":341,"column":20},"end":{"line":341,"column":36}}},"18":{"name":"(anonymous_18)","line":369,"loc":{"start":{"line":369,"column":22},"end":{"line":369,"column":41}}},"19":{"name":"(anonymous_19)","line":388,"loc":{"start":{"line":388,"column":14},"end":{"line":388,"column":31}}},"20":{"name":"(anonymous_20)","line":405,"loc":{"start":{"line":405,"column":22},"end":{"line":405,"column":48}}},"21":{"name":"(anonymous_21)","line":445,"loc":{"start":{"line":445,"column":24},"end":{"line":445,"column":39}}},"22":{"name":"(anonymous_22)","line":494,"loc":{"start":{"line":494,"column":18},"end":{"line":494,"column":29}}},"23":{"name":"(anonymous_23)","line":507,"loc":{"start":{"line":507,"column":20},"end":{"line":507,"column":34}}},"24":{"name":"(anonymous_24)","line":511,"loc":{"start":{"line":511,"column":21},"end":{"line":511,"column":32}}}},"statementMap":{"1":{"start":{"line":1,"column":0},"end":{"line":531,"column":3}},"2":{"start":{"line":21,"column":0},"end":{"line":520,"column":5}},"3":{"start":{"line":23,"column":0},"end":{"line":26,"column":32}},"4":{"start":{"line":28,"column":0},"end":{"line":516,"column":3}},"5":{"start":{"line":84,"column":8},"end":{"line":86,"column":9}},"6":{"start":{"line":85,"column":12},"end":{"line":85,"column":80}},"7":{"start":{"line":102,"column":8},"end":{"line":102,"column":39}},"8":{"start":{"line":103,"column":8},"end":{"line":103,"column":20}},"9":{"start":{"line":113,"column":8},"end":{"line":113,"column":41}},"10":{"start":{"line":114,"column":8},"end":{"line":114,"column":20}},"11":{"start":{"line":131,"column":8},"end":{"line":132,"column":17}},"12":{"start":{"line":134,"column":8},"end":{"line":148,"column":9}},"13":{"start":{"line":135,"column":12},"end":{"line":139,"column":13}},"14":{"start":{"line":136,"column":16},"end":{"line":138,"column":17}},"15":{"start":{"line":137,"column":20},"end":{"line":137,"column":69}},"16":{"start":{"line":141,"column":12},"end":{"line":141,"column":46}},"17":{"start":{"line":143,"column":12},"end":{"line":147,"column":13}},"18":{"start":{"line":144,"column":16},"end":{"line":146,"column":17}},"19":{"start":{"line":145,"column":20},"end":{"line":145,"column":66}},"20":{"start":{"line":150,"column":8},"end":{"line":150,"column":23}},"21":{"start":{"line":160,"column":8},"end":{"line":160,"column":44}},"22":{"start":{"line":161,"column":8},"end":{"line":161,"column":20}},"23":{"start":{"line":180,"column":8},"end":{"line":182,"column":30}},"24":{"start":{"line":184,"column":8},"end":{"line":186,"column":9}},"25":{"start":{"line":185,"column":12},"end":{"line":185,"column":19}},"26":{"start":{"line":188,"column":8},"end":{"line":190,"column":9}},"27":{"start":{"line":189,"column":12},"end":{"line":189,"column":80}},"28":{"start":{"line":192,"column":8},"end":{"line":192,"column":48}},"29":{"start":{"line":196,"column":8},"end":{"line":196,"column":65}},"30":{"start":{"line":198,"column":8},"end":{"line":206,"column":9}},"31":{"start":{"line":199,"column":12},"end":{"line":203,"column":13}},"32":{"start":{"line":200,"column":16},"end":{"line":200,"column":27}},"33":{"start":{"line":202,"column":16},"end":{"line":202,"column":40}},"34":{"start":{"line":205,"column":12},"end":{"line":205,"column":26}},"35":{"start":{"line":208,"column":8},"end":{"line":208,"column":53}},"36":{"start":{"line":212,"column":8},"end":{"line":212,"column":55}},"37":{"start":{"line":214,"column":8},"end":{"line":214,"column":49}},"38":{"start":{"line":216,"column":8},"end":{"line":216,"column":47}},"39":{"start":{"line":217,"column":8},"end":{"line":217,"column":62}},"40":{"start":{"line":218,"column":8},"end":{"line":218,"column":57}},"41":{"start":{"line":220,"column":8},"end":{"line":220,"column":37}},"42":{"start":{"line":234,"column":8},"end":{"line":274,"column":9}},"43":{"start":{"line":235,"column":12},"end":{"line":235,"column":59}},"44":{"start":{"line":237,"column":12},"end":{"line":273,"column":15}},"45":{"start":{"line":238,"column":16},"end":{"line":238,"column":31}},"46":{"start":{"line":240,"column":16},"end":{"line":240,"column":35}},"47":{"start":{"line":241,"column":16},"end":{"line":241,"column":52}},"48":{"start":{"line":243,"column":16},"end":{"line":272,"column":17}},"49":{"start":{"line":244,"column":20},"end":{"line":248,"column":21}},"50":{"start":{"line":245,"column":24},"end":{"line":245,"column":45}},"51":{"start":{"line":246,"column":27},"end":{"line":248,"column":21}},"52":{"start":{"line":247,"column":24},"end":{"line":247,"column":53}},"53":{"start":{"line":252,"column":20},"end":{"line":263,"column":21}},"54":{"start":{"line":253,"column":24},"end":{"line":253,"column":57}},"55":{"start":{"line":255,"column":24},"end":{"line":255,"column":67}},"56":{"start":{"line":257,"column":24},"end":{"line":260,"column":27}},"57":{"start":{"line":265,"column":20},"end":{"line":265,"column":34}},"58":{"start":{"line":267,"column":20},"end":{"line":269,"column":21}},"59":{"start":{"line":268,"column":24},"end":{"line":268,"column":42}},"60":{"start":{"line":271,"column":20},"end":{"line":271,"column":47}},"61":{"start":{"line":276,"column":8},"end":{"line":276,"column":39}},"62":{"start":{"line":278,"column":8},"end":{"line":280,"column":11}},"63":{"start":{"line":279,"column":12},"end":{"line":279,"column":47}},"64":{"start":{"line":282,"column":8},"end":{"line":282,"column":65}},"65":{"start":{"line":284,"column":8},"end":{"line":284,"column":22}},"66":{"start":{"line":286,"column":8},"end":{"line":286,"column":20}},"67":{"start":{"line":299,"column":8},"end":{"line":299,"column":67}},"68":{"start":{"line":301,"column":8},"end":{"line":301,"column":53}},"69":{"start":{"line":317,"column":8},"end":{"line":326,"column":39}},"70":{"start":{"line":318,"column":12},"end":{"line":320,"column":13}},"71":{"start":{"line":319,"column":16},"end":{"line":319,"column":29}},"72":{"start":{"line":325,"column":12},"end":{"line":325,"column":48}},"73":{"start":{"line":342,"column":8},"end":{"line":342,"column":49}},"74":{"start":{"line":346,"column":8},"end":{"line":346,"column":38}},"75":{"start":{"line":349,"column":8},"end":{"line":352,"column":10}},"76":{"start":{"line":354,"column":8},"end":{"line":365,"column":9}},"77":{"start":{"line":355,"column":12},"end":{"line":358,"column":13}},"78":{"start":{"line":357,"column":16},"end":{"line":357,"column":54}},"79":{"start":{"line":362,"column":12},"end":{"line":362,"column":40}},"80":{"start":{"line":364,"column":12},"end":{"line":364,"column":52}},"81":{"start":{"line":367,"column":8},"end":{"line":367,"column":59}},"82":{"start":{"line":369,"column":8},"end":{"line":374,"column":11}},"83":{"start":{"line":370,"column":12},"end":{"line":373,"column":13}},"84":{"start":{"line":372,"column":16},"end":{"line":372,"column":83}},"85":{"start":{"line":376,"column":8},"end":{"line":376,"column":24}},"86":{"start":{"line":389,"column":8},"end":{"line":389,"column":54}},"87":{"start":{"line":391,"column":8},"end":{"line":391,"column":66}},"88":{"start":{"line":406,"column":8},"end":{"line":406,"column":31}},"89":{"start":{"line":408,"column":8},"end":{"line":408,"column":34}},"90":{"start":{"line":409,"column":8},"end":{"line":409,"column":38}},"91":{"start":{"line":411,"column":8},"end":{"line":414,"column":9}},"92":{"start":{"line":412,"column":12},"end":{"line":412,"column":49}},"93":{"start":{"line":413,"column":12},"end":{"line":413,"column":38}},"94":{"start":{"line":416,"column":8},"end":{"line":419,"column":9}},"95":{"start":{"line":417,"column":12},"end":{"line":417,"column":55}},"96":{"start":{"line":418,"column":12},"end":{"line":418,"column":50}},"97":{"start":{"line":421,"column":8},"end":{"line":423,"column":9}},"98":{"start":{"line":422,"column":12},"end":{"line":422,"column":48}},"99":{"start":{"line":425,"column":8},"end":{"line":427,"column":9}},"100":{"start":{"line":426,"column":12},"end":{"line":426,"column":66}},"101":{"start":{"line":429,"column":8},"end":{"line":429,"column":25}},"102":{"start":{"line":446,"column":8},"end":{"line":448,"column":41}},"103":{"start":{"line":450,"column":8},"end":{"line":452,"column":9}},"104":{"start":{"line":451,"column":12},"end":{"line":451,"column":79}},"105":{"start":{"line":454,"column":8},"end":{"line":475,"column":9}},"106":{"start":{"line":455,"column":12},"end":{"line":455,"column":53}},"107":{"start":{"line":463,"column":12},"end":{"line":463,"column":84}},"108":{"start":{"line":465,"column":12},"end":{"line":470,"column":13}},"109":{"start":{"line":469,"column":16},"end":{"line":469,"column":64}},"110":{"start":{"line":474,"column":12},"end":{"line":474,"column":57}},"111":{"start":{"line":477,"column":8},"end":{"line":481,"column":9}},"112":{"start":{"line":478,"column":12},"end":{"line":478,"column":48}},"113":{"start":{"line":479,"column":15},"end":{"line":481,"column":9}},"114":{"start":{"line":480,"column":12},"end":{"line":480,"column":25}},"115":{"start":{"line":483,"column":8},"end":{"line":483,"column":21}},"116":{"start":{"line":495,"column":8},"end":{"line":495,"column":34}},"117":{"start":{"line":496,"column":8},"end":{"line":496,"column":45}},"118":{"start":{"line":508,"column":16},"end":{"line":508,"column":41}},"119":{"start":{"line":512,"column":16},"end":{"line":512,"column":40}},"120":{"start":{"line":518,"column":0},"end":{"line":518,"column":42}}},"branchMap":{"1":{"line":84,"type":"if","locations":[{"start":{"line":84,"column":8},"end":{"line":84,"column":8}},{"start":{"line":84,"column":8},"end":{"line":84,"column":8}}]},"2":{"line":134,"type":"if","locations":[{"start":{"line":134,"column":8},"end":{"line":134,"column":8}},{"start":{"line":134,"column":8},"end":{"line":134,"column":8}}]},"3":{"line":136,"type":"if","locations":[{"start":{"line":136,"column":16},"end":{"line":136,"column":16}},{"start":{"line":136,"column":16},"end":{"line":136,"column":16}}]},"4":{"line":144,"type":"if","locations":[{"start":{"line":144,"column":16},"end":{"line":144,"column":16}},{"start":{"line":144,"column":16},"end":{"line":144,"column":16}}]},"5":{"line":184,"type":"if","locations":[{"start":{"line":184,"column":8},"end":{"line":184,"column":8}},{"start":{"line":184,"column":8},"end":{"line":184,"column":8}}]},"6":{"line":188,"type":"if","locations":[{"start":{"line":188,"column":8},"end":{"line":188,"column":8}},{"start":{"line":188,"column":8},"end":{"line":188,"column":8}}]},"7":{"line":198,"type":"if","locations":[{"start":{"line":198,"column":8},"end":{"line":198,"column":8}},{"start":{"line":198,"column":8},"end":{"line":198,"column":8}}]},"8":{"line":198,"type":"binary-expr","locations":[{"start":{"line":198,"column":12},"end":{"line":198,"column":35}},{"start":{"line":198,"column":39},"end":{"line":198,"column":57}}]},"9":{"line":199,"type":"if","locations":[{"start":{"line":199,"column":12},"end":{"line":199,"column":12}},{"start":{"line":199,"column":12},"end":{"line":199,"column":12}}]},"10":{"line":199,"type":"binary-expr","locations":[{"start":{"line":199,"column":16},"end":{"line":199,"column":21}},{"start":{"line":199,"column":25},"end":{"line":199,"column":37}}]},"11":{"line":243,"type":"if","locations":[{"start":{"line":243,"column":16},"end":{"line":243,"column":16}},{"start":{"line":243,"column":16},"end":{"line":243,"column":16}}]},"12":{"line":244,"type":"if","locations":[{"start":{"line":244,"column":20},"end":{"line":244,"column":20}},{"start":{"line":244,"column":20},"end":{"line":244,"column":20}}]},"13":{"line":246,"type":"if","locations":[{"start":{"line":246,"column":27},"end":{"line":246,"column":27}},{"start":{"line":246,"column":27},"end":{"line":246,"column":27}}]},"14":{"line":252,"type":"if","locations":[{"start":{"line":252,"column":20},"end":{"line":252,"column":20}},{"start":{"line":252,"column":20},"end":{"line":252,"column":20}}]},"15":{"line":267,"type":"if","locations":[{"start":{"line":267,"column":20},"end":{"line":267,"column":20}},{"start":{"line":267,"column":20},"end":{"line":267,"column":20}}]},"16":{"line":267,"type":"binary-expr","locations":[{"start":{"line":267,"column":24},"end":{"line":267,"column":47}},{"start":{"line":267,"column":51},"end":{"line":267,"column":73}}]},"17":{"line":318,"type":"if","locations":[{"start":{"line":318,"column":12},"end":{"line":318,"column":12}},{"start":{"line":318,"column":12},"end":{"line":318,"column":12}}]},"18":{"line":354,"type":"if","locations":[{"start":{"line":354,"column":8},"end":{"line":354,"column":8}},{"start":{"line":354,"column":8},"end":{"line":354,"column":8}}]},"19":{"line":355,"type":"if","locations":[{"start":{"line":355,"column":12},"end":{"line":355,"column":12}},{"start":{"line":355,"column":12},"end":{"line":355,"column":12}}]},"20":{"line":370,"type":"if","locations":[{"start":{"line":370,"column":12},"end":{"line":370,"column":12}},{"start":{"line":370,"column":12},"end":{"line":370,"column":12}}]},"21":{"line":411,"type":"binary-expr","locations":[{"start":{"line":411,"column":15},"end":{"line":411,"column":41}},{"start":{"line":411,"column":45},"end":{"line":411,"column":82}}]},"22":{"line":421,"type":"if","locations":[{"start":{"line":421,"column":8},"end":{"line":421,"column":8}},{"start":{"line":421,"column":8},"end":{"line":421,"column":8}}]},"23":{"line":425,"type":"if","locations":[{"start":{"line":425,"column":8},"end":{"line":425,"column":8}},{"start":{"line":425,"column":8},"end":{"line":425,"column":8}}]},"24":{"line":450,"type":"if","locations":[{"start":{"line":450,"column":8},"end":{"line":450,"column":8}},{"start":{"line":450,"column":8},"end":{"line":450,"column":8}}]},"25":{"line":454,"type":"if","locations":[{"start":{"line":454,"column":8},"end":{"line":454,"column":8}},{"start":{"line":454,"column":8},"end":{"line":454,"column":8}}]},"26":{"line":465,"type":"if","locations":[{"start":{"line":465,"column":12},"end":{"line":465,"column":12}},{"start":{"line":465,"column":12},"end":{"line":465,"column":12}}]},"27":{"line":477,"type":"if","locations":[{"start":{"line":477,"column":8},"end":{"line":477,"column":8}},{"start":{"line":477,"column":8},"end":{"line":477,"column":8}}]},"28":{"line":479,"type":"if","locations":[{"start":{"line":479,"column":15},"end":{"line":479,"column":15}},{"start":{"line":479,"column":15},"end":{"line":479,"column":15}}]}},"code":["(function () { YUI.add('gallery-sm-editor-style', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Style` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-style","**/","","/**","Extension for `Editor.Base` that normalizes style commands into css properties","","@class Editor.Style","@constructor","@extends Base","@extensionfor Editor.Base","**/","","(function() {","","var doc = Y.config.doc,","    win = Y.config.win,","    EDOM = Y.Editor.DOM,","    STYLENODE = '<span></span>';","","var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    /**","    Hash of style commands supported by this editor.","","    Names should correspond with valid `execCommand()` command names. Values","    are properties in the following format:","","    @property {Object} styleCommands","      @param {String} property The name of the CSS property in camelCase form","      @param {String} [valueOn] The `on` value of the property. eg. `bold`","      @param {String} [valueOff] The `off` value of the property. eg. `none`","    **/","    styleCommands: {","        bold: {","            property: 'fontWeight',","            valueOn: 'bold',","            valueOff: 'normal'","        },","","        fontName: {","            property: 'fontFamily'","        },","","        fontSize: {","            property: 'fontSize'","        },","","        italic: {","            property: 'fontStyle',","            valueOn: 'italic',","            valueOff: 'normal'","        },","","        underline: {","            property: 'textDecoration',","            valueOn: 'underline',","            valueOff: 'none'","        }","    },","","    /**","    Key commands related to style functionality.","","    @property {Object} styleKeyCommands","    **/","    styleKeyCommands: {","        'backspace': {fn: '_afterDelete', allowDefault: true, async: true},","        'delete'   : {fn: '_afterDelete', allowDefault: true, async: true}","    },","","","    // -- Lifecycle ------------------------------------------------------------","","    initializer: function () {","        if (this.keyCommands) {","            this.keyCommands = Y.merge(this.keyCommands, this.styleKeyCommands);","        }","    },","","    destructor: function () {","    },","","","    // -- Public Methods -------------------------------------------------------","","    /**","    Bolds or unbolds the current selection.","","    @method bold","    @chainable","    **/","    bold: function () {","        this.command('bold', 'toggle');","        return this;","    },","","    /**","    Italicizes or unitalicizes the current selection.","","    @method italic","    @chainable","    **/","    italic: function () {","        this.command('italic', 'toggle');","        return this;","    },","","    /**","    Gets and/or sets the values of multiple editor style commands.","","    When called without an argument, the current values of all supported style","    commands will be returned. When called with a _styles_ object, the specified","    style commands will be set to their given values, and the resulting new","    values will be returned.","","    @method styles","    @param {Object} [styles] Hash of style names and values to set.","    @return {Object} Hash of style names and values that were set, or all styles","        if no _styles_ parameter was specified.","    **/","    styles: function (styles) {","        var results = {},","            name;","","        if (styles) {","            for (name in styles) {","                if (styles.hasOwnProperty(name)) {","                    results[name] = this.command(name, styles[name]);","                }","            }","        } else {","            var commands = this.styleCommands;","","            for (name in commands) {","                if (commands.hasOwnProperty(name)) {","                    results[name] = this._queryCommandValue(name);","                }","            }","        }","","        return results;","    },","","    /**","    Toggles underline on the current selection.","","    @method underline","    @chainable","    **/","    underline: function () {","        this.command('underline', 'toggle');","        return this;","    },","","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Duckpunch Editor.Base._execCommand to build css styled nodes instead of","    relying on spotty browser compatibility of `styleWithCSS`","","    Passes through to Editor.Base for any commands not defined","    in `this.styleCommands`","","    @method _execCommand","    @param {String} name Command name.","    @param {Boolean|String} value Command value.","    @protected","    **/","    _execCommand: function(name, value) {","        var command = this.styleCommands[name],","            range = this.selection.range(),","            styleNodes, style;","","        if (!range) {","            return;","        }","","        if (!command) {","            return Y.Editor.Base.prototype._execCommand.call(this, name, value);","        }","","        styleNodes = this._getStyleNodes(range);","","        // These nodes aren't in the DOM, getStyle() won't work...at least on","        // any windows browser.  works fine on OSX. weird.","        style = styleNodes.item(0)._node.style[command.property];","","        if (this.boolCommands[name] && 'toggle' === value) {","            if (style && '' !== style) {","                style = '';","            } else {","                style = command.valueOn;","            }","        } else {","            style = value;","        }","","        styleNodes.setStyle(command.property, style);","","        // expanding the range before deleting contents makes sure","        // the entire node is deleted, if possible.","        range.expand(this._inputNode).deleteContents();","","        this._splitAfterRange(range, styleNodes);","","        range.startNode(styleNodes.item(0), 0);","        range.endNode(styleNodes.item(styleNodes.size() - 1));","        range.endOffset(EDOM.maxOffset(range.endNode()));","","        this.selection.select(range);","    },","","","    /**","    Reformats html to the proper style","","    <span>blah blah</span>","    @param {HTML} html HTML string to format","    @return {Node} Node instance containing a document fragment with the","        formatted _html_","    @protected","    **/","    _formatHTML: function(html) {","        function flatten(node) {","            var childNodes = node.get('childNodes')._nodes;","","            Y.Array.each(childNodes.reverse(), function(node) {","                var parentNode;","","                node = Y.one(node);","                parentNode = node.get('parentNode');","","                if (EDOM.isTextNode(node)) {","                    if (EDOM.isContainer(parentNode)) {","                        node.wrap(STYLENODE);","                    } else if (node.get('previousSibling')) {","                        EDOM.split(parentNode, node);","                    }","                } else {","                    // TODO: replace b, em, i, strong, u nodes with spans","","                    if (!EDOM.isContainer(parentNode)) {","                        parentNode.insert(node, 'after');","","                        node.addClass(parentNode.get('className'));","","                        EDOM.copyStyles(parentNode, node, supportedStyles, {","                            explicit: true,","                            overwrite: false","                        });","                    } else {","                        // TODO: clear styles on containers","                    }","","                    flatten(node);","","                    if (!EDOM.isContainer(node) && EDOM.isEmptyNode(node)) {","                        node.remove(true);","                    }","","                    node.removeAttribute('id');","                }","            });","        }","","        var frag, supportedStyles = [];","","        Y.Object.each(this.styleCommands, function(cmd) {","            supportedStyles.push(cmd.property);","        });","","        frag = Y.one(doc.createDocumentFragment()).setHTML(html);","","        flatten(frag);","","        return frag;","    },","","","    /**","    Getter for the `html` attribute.","","    @method _getHTML","    @param {HTML} value HTML.","    @return {HTML} HTML.","    @protected","    **/","    _getHTML: function (value) {","        value = Y.Editor.Base.prototype._getHTML.call(this, value);","","        return this.get('formatFn')(value).getHTML();","    },","","","    /**","    Walks the ancestor tree of a given node until a node that has","    the css property set is found","","    @method _getStyledAncestor","    @param {Node} startNode","    @param {String} property","    @param {Boolean} [self] Whether or not to include `startNode` in the scan","    @return {Node} The node having `property` set, or null if no node was found","    @protected","    **/","    _getStyledAncestor: function(startNode, property, self) {","        return startNode.ancestor(function(node) {","            if (!EDOM.isElementNode(node)) {","                return false;","            }","","            // don't use node.getStyle() because it will return","            // computedStyle for empty string values like `property: \"\"`","            // https://github.com/yui/yui3/blob/master/src/dom/js/dom-style.js#L106","            return !!node._node.style[property];","        }, self, this.selectors.input);","    },","","","    /**","    Parses inline elements from a given range. Partially selected nodes will","    be split and text nodes will be wrapped in `<span>` tags if necessary.","","    The range will not be modified.","","    @method _getStyleNodes","    @param {Range} range","    @return {NodeList} NodeList of inline elements within the given `range`","    @protected","    **/","    _getStyleNodes: function(range) {","        var inlineParent, styleContext, contents;","","        // expanding the range before deleting contents makes sure","        // the entire node is deleted, if possible.","        range.expand(this._inputNode);","","        // see if the range is contained in an inline element","        inlineParent = EDOM.getAncestorElement(","            range.parentNode(),","            EDOM.isInlineElement","        );","","        if (inlineParent) {","            if (range.toString() === inlineParent.get('text')) {","                // the entire node is selected, just return the node","                return new Y.NodeList([inlineParent]);","            }","","            // wrap textnodes in clones of the inline parent node","            // to maintain existing styles","            styleContext = inlineParent;","        } else {","            styleContext = Y.Node.create(STYLENODE);","        }","","        contents = range.cloneContents().get('childNodes');","","        contents.each(function(node, ix) {","            if (EDOM.isTextNode(node)) {","                // wrap any text nodes in a style context","                contents.splice(ix, 1, styleContext.cloneNode(false).append(node));","            }","        });","","        return contents;","    },","","","    /**","    Setter for the `html` attribute.","","    @method _setHTML","    @param {HTML} value HTML.","    @return {HTML} HTML.","    @protected","    **/","    _setHTML: function (value) {","        value = this.get('formatFn')(value).getHTML();","","        return Y.Editor.Base.prototype._setHTML.call(this, value);","    },","","","    /**","    Splits the node at the end of the selection","","    @method _splitAfterRange","    @param {Range} range","    @param {HTMLCollection|HTMLElement|Node|NodeList|String} [contents] Contents","        to be inserted after the split","    @return {Node} Node reference of the node created after splitting. Any","        _contents_ will have been inserted as previous siblings of this node.","    **/","    _splitAfterRange: function(range, contents) {","        var endNode, endOffset;","","        endNode = range.endNode();","        endOffset = range.endOffset();","","        while (!EDOM.isContainer(endNode) && endOffset === EDOM.maxOffset(endNode)) {","            endOffset = range.endOffset('after');","            endNode = range.endNode();","        }","","        while (!EDOM.isContainer(endNode)) {","            endOffset = EDOM.split(endNode, endOffset);","            endNode = endOffset.get('parentNode');","        }","","        if (contents) {","            endNode.insert(contents, endOffset);","        }","","        if (!endOffset._node) {","            endOffset = endNode.get('childNodes').item(endOffset);","        }","","        return endOffset;","    },","","","    /**","    Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes","    instead of relying on spotty browser compatibility of `styleWithCSS`","","    Passes through to Editor.Base for any commands not defined","    in `this.styleCommands`","","    @method _queryCommandValue","    @param {String} name Command name.","    @return {Boolean|String} Command value.","    @protected","    **/","    _queryCommandValue: function(name) {","        var command = this.styleCommands[name],","            range = this.selection.range(),","            parentNode, styleNode, value;","","        if (!command) {","            return Y.Editor.Base.prototype._queryCommandValue.call(this, name);","        }","","        if (range) {","            parentNode = range.shrink().parentNode();","","            // first attempt to get any explicitly styled ancestor for","            // the given property. Need to do this first because browsers","            // sometimes return different values for explicit style vs.","            // computed style. `font-weight: bold;` for example will return","            // `bold` in all browsers when explicitly set but `700` in","            // Firefox and Internet Explorer with computedStyle.","            styleNode = this._getStyledAncestor(parentNode, command.property, true);","","            if (!styleNode) {","                // no explicitly styled ancestor found. walk the","                // ancestor tree to find the closest element","                // node ancestor, inclusive of the parentNode","                styleNode = EDOM.getAncestorElement(parentNode);","            }","","            // getStyle will fall back to computedStyle if the","            // property isn't explicitly set","            value = styleNode.getStyle(command.property);","        }","","        if (this.boolCommands[name]) {","            value = (value === command.valueOn);","        } else if ('' === value) {","            value = null;","        }","","        return value;","    },","","    // -- Protected Event Handlers ---------------------------------------------","","    /**","    Handles `delete` events on the editor","","    @method _afterDelete","    @protected","    **/","    _afterDelete: function() {","        this._clearCommandQueue();","        this._updateSelection({force: true});","    }","}, {","    ATTRS: {","        /**","        Function for formatting editor html","","        One day allow custom formatting. Today is not that day.","        **/","        formatFn: {","            readOnly: true,","            setter: function(val) {","                return Y.bind(val, this);","            },","            validator: Y.Lang.isFunction,","            valueFn: function() {","                return this._formatHTML;","            }","        }","    }","});","","Y.namespace('Editor').Style = EditorStyle;","","}());","","","}, '@VERSION@', {","    \"requires\": [","        \"gallery-sm-editor-base\",","        \"gallery-sm-editor-dom\",","        \"gallery-sm-editor-keys\",","        \"gallery-sm-editor-queue\",","        \"node-style\"","    ]","});","","}());"]};
+if (typeof _yuitest_coverage == "undefined"){
+    _yuitest_coverage = {};
+    _yuitest_coverline = function(src, line){
+        var coverage = _yuitest_coverage[src];
+        if (!coverage.lines[line]){
+            coverage.calledLines++;
+        }
+        coverage.lines[line]++;
+    };
+    _yuitest_coverfunc = function(src, name, line){
+        var coverage = _yuitest_coverage[src],
+            funcId = name + ":" + line;
+        if (!coverage.functions[funcId]){
+            coverage.calledFunctions++;
+        }
+        coverage.functions[funcId]++;
+    };
 }
-var __cov_wmlF9lLOlWpDUCM9WemJFA = __coverage__['build/gallery-sm-editor-style/gallery-sm-editor-style.js'];
-__cov_wmlF9lLOlWpDUCM9WemJFA.s['1']++;YUI.add('gallery-sm-editor-style',function(Y,NAME){__cov_wmlF9lLOlWpDUCM9WemJFA.f['1']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['2']++;(function(){__cov_wmlF9lLOlWpDUCM9WemJFA.f['2']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['3']++;var doc=Y.config.doc,win=Y.config.win,EDOM=Y.Editor.DOM,STYLENODE='<span></span>';__cov_wmlF9lLOlWpDUCM9WemJFA.s['4']++;var EditorStyle=Y.Base.create('editorStyle',Y.Base,[],{styleCommands:{bold:{property:'fontWeight',valueOn:'bold',valueOff:'normal'},fontName:{property:'fontFamily'},fontSize:{property:'fontSize'},italic:{property:'fontStyle',valueOn:'italic',valueOff:'normal'},underline:{property:'textDecoration',valueOn:'underline',valueOff:'none'}},styleKeyCommands:{'backspace':{fn:'_afterDelete',allowDefault:true,async:true},'delete':{fn:'_afterDelete',allowDefault:true,async:true}},initializer:function(){__cov_wmlF9lLOlWpDUCM9WemJFA.f['3']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['5']++;if(this.keyCommands){__cov_wmlF9lLOlWpDUCM9WemJFA.b['1'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['6']++;this.keyCommands=Y.merge(this.keyCommands,this.styleKeyCommands);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['1'][1]++;}},destructor:function(){__cov_wmlF9lLOlWpDUCM9WemJFA.f['4']++;},bold:function(){__cov_wmlF9lLOlWpDUCM9WemJFA.f['5']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['7']++;this.command('bold','toggle');__cov_wmlF9lLOlWpDUCM9WemJFA.s['8']++;return this;},italic:function(){__cov_wmlF9lLOlWpDUCM9WemJFA.f['6']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['9']++;this.command('italic','toggle');__cov_wmlF9lLOlWpDUCM9WemJFA.s['10']++;return this;},styles:function(styles){__cov_wmlF9lLOlWpDUCM9WemJFA.f['7']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['11']++;var results={},name;__cov_wmlF9lLOlWpDUCM9WemJFA.s['12']++;if(styles){__cov_wmlF9lLOlWpDUCM9WemJFA.b['2'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['13']++;for(name in styles){__cov_wmlF9lLOlWpDUCM9WemJFA.s['14']++;if(styles.hasOwnProperty(name)){__cov_wmlF9lLOlWpDUCM9WemJFA.b['3'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['15']++;results[name]=this.command(name,styles[name]);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['3'][1]++;}}}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['2'][1]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['16']++;var commands=this.styleCommands;__cov_wmlF9lLOlWpDUCM9WemJFA.s['17']++;for(name in commands){__cov_wmlF9lLOlWpDUCM9WemJFA.s['18']++;if(commands.hasOwnProperty(name)){__cov_wmlF9lLOlWpDUCM9WemJFA.b['4'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['19']++;results[name]=this._queryCommandValue(name);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['4'][1]++;}}}__cov_wmlF9lLOlWpDUCM9WemJFA.s['20']++;return results;},underline:function(){__cov_wmlF9lLOlWpDUCM9WemJFA.f['8']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['21']++;this.command('underline','toggle');__cov_wmlF9lLOlWpDUCM9WemJFA.s['22']++;return this;},_execCommand:function(name,value){__cov_wmlF9lLOlWpDUCM9WemJFA.f['9']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['23']++;var command=this.styleCommands[name],range=this.selection.range(),styleNodes,style;__cov_wmlF9lLOlWpDUCM9WemJFA.s['24']++;if(!range){__cov_wmlF9lLOlWpDUCM9WemJFA.b['5'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['25']++;return;}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['5'][1]++;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['26']++;if(!command){__cov_wmlF9lLOlWpDUCM9WemJFA.b['6'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['27']++;return Y.Editor.Base.prototype._execCommand.call(this,name,value);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['6'][1]++;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['28']++;styleNodes=this._getStyleNodes(range);__cov_wmlF9lLOlWpDUCM9WemJFA.s['29']++;style=styleNodes.item(0)._node.style[command.property];__cov_wmlF9lLOlWpDUCM9WemJFA.s['30']++;if((__cov_wmlF9lLOlWpDUCM9WemJFA.b['8'][0]++,this.boolCommands[name])&&(__cov_wmlF9lLOlWpDUCM9WemJFA.b['8'][1]++,'toggle'===value)){__cov_wmlF9lLOlWpDUCM9WemJFA.b['7'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['31']++;if((__cov_wmlF9lLOlWpDUCM9WemJFA.b['10'][0]++,style)&&(__cov_wmlF9lLOlWpDUCM9WemJFA.b['10'][1]++,''!==style)){__cov_wmlF9lLOlWpDUCM9WemJFA.b['9'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['32']++;style='';}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['9'][1]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['33']++;style=command.valueOn;}}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['7'][1]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['34']++;style=value;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['35']++;styleNodes.setStyle(command.property,style);__cov_wmlF9lLOlWpDUCM9WemJFA.s['36']++;range.expand(this._inputNode).deleteContents();__cov_wmlF9lLOlWpDUCM9WemJFA.s['37']++;this._splitAfterRange(range,styleNodes);__cov_wmlF9lLOlWpDUCM9WemJFA.s['38']++;range.startNode(styleNodes.item(0),0);__cov_wmlF9lLOlWpDUCM9WemJFA.s['39']++;range.endNode(styleNodes.item(styleNodes.size()-1));__cov_wmlF9lLOlWpDUCM9WemJFA.s['40']++;range.endOffset(EDOM.maxOffset(range.endNode()));__cov_wmlF9lLOlWpDUCM9WemJFA.s['41']++;this.selection.select(range);},_formatHTML:function(html){__cov_wmlF9lLOlWpDUCM9WemJFA.f['10']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['42']++;function flatten(node){__cov_wmlF9lLOlWpDUCM9WemJFA.f['11']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['43']++;var childNodes=node.get('childNodes')._nodes;__cov_wmlF9lLOlWpDUCM9WemJFA.s['44']++;Y.Array.each(childNodes.reverse(),function(node){__cov_wmlF9lLOlWpDUCM9WemJFA.f['12']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['45']++;var parentNode;__cov_wmlF9lLOlWpDUCM9WemJFA.s['46']++;node=Y.one(node);__cov_wmlF9lLOlWpDUCM9WemJFA.s['47']++;parentNode=node.get('parentNode');__cov_wmlF9lLOlWpDUCM9WemJFA.s['48']++;if(EDOM.isTextNode(node)){__cov_wmlF9lLOlWpDUCM9WemJFA.b['11'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['49']++;if(EDOM.isContainer(parentNode)){__cov_wmlF9lLOlWpDUCM9WemJFA.b['12'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['50']++;node.wrap(STYLENODE);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['12'][1]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['51']++;if(node.get('previousSibling')){__cov_wmlF9lLOlWpDUCM9WemJFA.b['13'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['52']++;EDOM.split(parentNode,node);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['13'][1]++;}}}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['11'][1]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['53']++;if(!EDOM.isContainer(parentNode)){__cov_wmlF9lLOlWpDUCM9WemJFA.b['14'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['54']++;parentNode.insert(node,'after');__cov_wmlF9lLOlWpDUCM9WemJFA.s['55']++;node.addClass(parentNode.get('className'));__cov_wmlF9lLOlWpDUCM9WemJFA.s['56']++;EDOM.copyStyles(parentNode,node,supportedStyles,{explicit:true,overwrite:false});}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['14'][1]++;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['57']++;flatten(node);__cov_wmlF9lLOlWpDUCM9WemJFA.s['58']++;if((__cov_wmlF9lLOlWpDUCM9WemJFA.b['16'][0]++,!EDOM.isContainer(node))&&(__cov_wmlF9lLOlWpDUCM9WemJFA.b['16'][1]++,EDOM.isEmptyNode(node))){__cov_wmlF9lLOlWpDUCM9WemJFA.b['15'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['59']++;node.remove(true);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['15'][1]++;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['60']++;node.removeAttribute('id');}});}__cov_wmlF9lLOlWpDUCM9WemJFA.s['61']++;var frag,supportedStyles=[];__cov_wmlF9lLOlWpDUCM9WemJFA.s['62']++;Y.Object.each(this.styleCommands,function(cmd){__cov_wmlF9lLOlWpDUCM9WemJFA.f['13']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['63']++;supportedStyles.push(cmd.property);});__cov_wmlF9lLOlWpDUCM9WemJFA.s['64']++;frag=Y.one(doc.createDocumentFragment()).setHTML(html);__cov_wmlF9lLOlWpDUCM9WemJFA.s['65']++;flatten(frag);__cov_wmlF9lLOlWpDUCM9WemJFA.s['66']++;return frag;},_getHTML:function(value){__cov_wmlF9lLOlWpDUCM9WemJFA.f['14']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['67']++;value=Y.Editor.Base.prototype._getHTML.call(this,value);__cov_wmlF9lLOlWpDUCM9WemJFA.s['68']++;return this.get('formatFn')(value).getHTML();},_getStyledAncestor:function(startNode,property,self){__cov_wmlF9lLOlWpDUCM9WemJFA.f['15']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['69']++;return startNode.ancestor(function(node){__cov_wmlF9lLOlWpDUCM9WemJFA.f['16']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['70']++;if(!EDOM.isElementNode(node)){__cov_wmlF9lLOlWpDUCM9WemJFA.b['17'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['71']++;return false;}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['17'][1]++;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['72']++;return!!node._node.style[property];},self,this.selectors.input);},_getStyleNodes:function(range){__cov_wmlF9lLOlWpDUCM9WemJFA.f['17']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['73']++;var inlineParent,styleContext,contents;__cov_wmlF9lLOlWpDUCM9WemJFA.s['74']++;range.expand(this._inputNode);__cov_wmlF9lLOlWpDUCM9WemJFA.s['75']++;inlineParent=EDOM.getAncestorElement(range.parentNode(),EDOM.isInlineElement);__cov_wmlF9lLOlWpDUCM9WemJFA.s['76']++;if(inlineParent){__cov_wmlF9lLOlWpDUCM9WemJFA.b['18'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['77']++;if(range.toString()===inlineParent.get('text')){__cov_wmlF9lLOlWpDUCM9WemJFA.b['19'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['78']++;return new Y.NodeList([inlineParent]);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['19'][1]++;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['79']++;styleContext=inlineParent;}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['18'][1]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['80']++;styleContext=Y.Node.create(STYLENODE);}__cov_wmlF9lLOlWpDUCM9WemJFA.s['81']++;contents=range.cloneContents().get('childNodes');__cov_wmlF9lLOlWpDUCM9WemJFA.s['82']++;contents.each(function(node,ix){__cov_wmlF9lLOlWpDUCM9WemJFA.f['18']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['83']++;if(EDOM.isTextNode(node)){__cov_wmlF9lLOlWpDUCM9WemJFA.b['20'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['84']++;contents.splice(ix,1,styleContext.cloneNode(false).append(node));}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['20'][1]++;}});__cov_wmlF9lLOlWpDUCM9WemJFA.s['85']++;return contents;},_setHTML:function(value){__cov_wmlF9lLOlWpDUCM9WemJFA.f['19']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['86']++;value=this.get('formatFn')(value).getHTML();__cov_wmlF9lLOlWpDUCM9WemJFA.s['87']++;return Y.Editor.Base.prototype._setHTML.call(this,value);},_splitAfterRange:function(range,contents){__cov_wmlF9lLOlWpDUCM9WemJFA.f['20']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['88']++;var endNode,endOffset;__cov_wmlF9lLOlWpDUCM9WemJFA.s['89']++;endNode=range.endNode();__cov_wmlF9lLOlWpDUCM9WemJFA.s['90']++;endOffset=range.endOffset();__cov_wmlF9lLOlWpDUCM9WemJFA.s['91']++;while((__cov_wmlF9lLOlWpDUCM9WemJFA.b['21'][0]++,!EDOM.isContainer(endNode))&&(__cov_wmlF9lLOlWpDUCM9WemJFA.b['21'][1]++,endOffset===EDOM.maxOffset(endNode))){__cov_wmlF9lLOlWpDUCM9WemJFA.s['92']++;endOffset=range.endOffset('after');__cov_wmlF9lLOlWpDUCM9WemJFA.s['93']++;endNode=range.endNode();}__cov_wmlF9lLOlWpDUCM9WemJFA.s['94']++;while(!EDOM.isContainer(endNode)){__cov_wmlF9lLOlWpDUCM9WemJFA.s['95']++;endOffset=EDOM.split(endNode,endOffset);__cov_wmlF9lLOlWpDUCM9WemJFA.s['96']++;endNode=endOffset.get('parentNode');}__cov_wmlF9lLOlWpDUCM9WemJFA.s['97']++;if(contents){__cov_wmlF9lLOlWpDUCM9WemJFA.b['22'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['98']++;endNode.insert(contents,endOffset);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['22'][1]++;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['99']++;if(!endOffset._node){__cov_wmlF9lLOlWpDUCM9WemJFA.b['23'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['100']++;endOffset=endNode.get('childNodes').item(endOffset);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['23'][1]++;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['101']++;return endOffset;},_queryCommandValue:function(name){__cov_wmlF9lLOlWpDUCM9WemJFA.f['21']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['102']++;var command=this.styleCommands[name],range=this.selection.range(),parentNode,styleNode,value;__cov_wmlF9lLOlWpDUCM9WemJFA.s['103']++;if(!command){__cov_wmlF9lLOlWpDUCM9WemJFA.b['24'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['104']++;return Y.Editor.Base.prototype._queryCommandValue.call(this,name);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['24'][1]++;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['105']++;if(range){__cov_wmlF9lLOlWpDUCM9WemJFA.b['25'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['106']++;parentNode=range.shrink().parentNode();__cov_wmlF9lLOlWpDUCM9WemJFA.s['107']++;styleNode=this._getStyledAncestor(parentNode,command.property,true);__cov_wmlF9lLOlWpDUCM9WemJFA.s['108']++;if(!styleNode){__cov_wmlF9lLOlWpDUCM9WemJFA.b['26'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['109']++;styleNode=EDOM.getAncestorElement(parentNode);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['26'][1]++;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['110']++;value=styleNode.getStyle(command.property);}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['25'][1]++;}__cov_wmlF9lLOlWpDUCM9WemJFA.s['111']++;if(this.boolCommands[name]){__cov_wmlF9lLOlWpDUCM9WemJFA.b['27'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['112']++;value=value===command.valueOn;}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['27'][1]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['113']++;if(''===value){__cov_wmlF9lLOlWpDUCM9WemJFA.b['28'][0]++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['114']++;value=null;}else{__cov_wmlF9lLOlWpDUCM9WemJFA.b['28'][1]++;}}__cov_wmlF9lLOlWpDUCM9WemJFA.s['115']++;return value;},_afterDelete:function(){__cov_wmlF9lLOlWpDUCM9WemJFA.f['22']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['116']++;this._clearCommandQueue();__cov_wmlF9lLOlWpDUCM9WemJFA.s['117']++;this._updateSelection({force:true});}},{ATTRS:{formatFn:{readOnly:true,setter:function(val){__cov_wmlF9lLOlWpDUCM9WemJFA.f['23']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['118']++;return Y.bind(val,this);},validator:Y.Lang.isFunction,valueFn:function(){__cov_wmlF9lLOlWpDUCM9WemJFA.f['24']++;__cov_wmlF9lLOlWpDUCM9WemJFA.s['119']++;return this._formatHTML;}}}});__cov_wmlF9lLOlWpDUCM9WemJFA.s['120']++;Y.namespace('Editor').Style=EditorStyle;}());},'@VERSION@',{'requires':['gallery-sm-editor-base','gallery-sm-editor-dom','gallery-sm-editor-keys','gallery-sm-editor-queue','node-style']});
+_yuitest_coverage["build/gallery-sm-editor-style/gallery-sm-editor-style.js"] = {
+    lines: {},
+    functions: {},
+    coveredLines: 0,
+    calledLines: 0,
+    coveredFunctions: 0,
+    calledFunctions: 0,
+    path: "build/gallery-sm-editor-style/gallery-sm-editor-style.js",
+    code: []
+};
+_yuitest_coverage["build/gallery-sm-editor-style/gallery-sm-editor-style.js"].code=["YUI.add('gallery-sm-editor-style', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Style` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-style","**/","","/**","Extension for `Editor.Base` that normalizes style commands into css properties","","@class Editor.Style","@constructor","@extends Base","@extensionfor Editor.Base","**/","","(function () {","","var doc = Y.config.doc,","    win = Y.config.win,","    EDOM = Y.Editor.DOM,","    STYLENODE = '<span></span>';","","var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    /**","    Hash of style commands supported by this editor.","","    Names should correspond with valid `execCommand()` command names. Values","    are properties in the following format:","","    @property {Object} styleCommands","        @param {String} property The name of the CSS property in camelCase form","        @param {String} [value] For boolean commands, the `on` value of the","        property. eg. `bold`","    **/","    styleCommands: {","        bold: {","            property: 'fontWeight',","            value: 'bold'","        },","","        fontName: {","            property: 'fontFamily'","        },","","        fontSize: {","            property: 'fontSize'","        },","","        italic: {","            property: 'fontStyle',","            value: 'italic'","        },","","        underline: {","            property: 'textDecoration',","            value: 'underline'","        }","    },","","","    /**","    Key commands related to style functionality.","","    @property {Object} styleKeyCommands","    **/","    styleKeyCommands: {","//        'backspace':  {fn: '_afterDelete', allowDefault: true, async: true},","//        'delete':     {fn: '_afterDelete', allowDefault: true, async: true}","    },","","","    /**","    HTML tags supported by this editor. Unsupported tags will be treated","    as text","","    @property {String} supportedTags","    **/","    styleTags: 'span',","","","    // -- Lifecycle ------------------------------------------------------------","","    initializer: function () {","        if (this.supportedTags) {","            this.supportedTags += ',' + this.styleTags;","        } else {","            this.supportedTags = this.styleTags;","        }","","        if (this.keyCommands) {","            this.keyCommands = Y.merge(this.keyCommands, this.styleKeyCommands);","        }","","        this._attachStyleEvents();","    },","","    destructor: function () {","        this._detachStyleEvents();","    },","","","    // -- Public Methods -------------------------------------------------------","","    /**","    Bolds or unbolds the current selection.","","    @method bold","    @chainable","    **/","    bold: function () {","        this.command('bold', 'toggle');","        return this;","    },","","","    /**","    Italicizes or unitalicizes the current selection.","","    @method italic","    @chainable","    **/","    italic: function () {","        this.command('italic', 'toggle');","        return this;","    },","","","    /**","    Gets and/or sets the values of multiple editor style commands.","","    When called without an argument, the current values of all supported style","    commands will be returned. When called with a _styles_ object, the specified","    style commands will be set to their given values, and the resulting new","    values will be returned.","","    @method styles","    @param {Object} [styles] Hash of style names and values to set.","    @return {Object} Hash of style names and values that were set, or all styles","        if no _styles_ parameter was specified.","    **/","    styles: function (styles) {","        var results = {},","            name;","","        if (styles) {","            for (name in styles) {","                if (styles.hasOwnProperty(name)) {","                    results[name] = this.command(name, styles[name]);","                }","            }","        } else {","            var commands = this.styleCommands;","","            for (name in commands) {","                if (commands.hasOwnProperty(name)) {","                    results[name] = this._queryCommandValue(name);","                }","            }","        }","","        return results;","    },","","    /**","    Toggles underline on the current selection.","","    @method underline","    @chainable","    **/","    underline: function () {","        this.command('underline', 'toggle');","        return this;","    },","","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Attaches style events.","","    @method _attachStyleEvents","    @protected","    **/","    _attachStyleEvents: function () {","        if (this._styleEvents) {","            return;","        }","","        this._styleEvents = [","            Y.Do.before(this._styleBeforeExecCommand, this, '_execCommand', this),","            Y.Do.before(this._styleBeforeQueryCommand, this, '_queryCommandValue', this)","        ];","    },","","","    /**","    Detaches style events.","","    @method _detachStyleEvents","    @protected","    **/","    _detachStyleEvents: function () {","        if (this._styleEvents) {","            new Y.EventHandle(this._styleEvents).detach();","            this._styleEvents = null;","        }","    },","","","    /**","    Duckpunch Editor.Base._execCommand to build css styled nodes instead of","    relying on spotty browser compatibility of `styleWithCSS`","","    Passes through to Editor.Base for any commands not defined","    in `this.styleCommands` or `this.blockCommands`","","    @method _execStyleCommand","    @param {String} name Command name.","    @param {Boolean|String} value Command value.","    @protected","    **/","    _execStyleCommand: function (name, value) {","        var command = this.styleCommands[name],","            range = this.selection.range(),","            styleNodes, style;","","        if (!range || !command) {","            return;","        }","","        styleNodes = this._getStyleNodes(range);","","        // use the first node because blah blah","        // dont use getStyle blah blah","        style = styleNodes.item(0)._node.style[command.property];","","        if (this.boolCommands[name] && 'toggle' === value) {","            if (style && '' !== style) {","                style = '';","            } else {","                style = command.value;","            }","        } else if (value) {","            style = command.value || value;","        } else {","            style = '';","        }","","        styleNodes.setStyle(command.property, style);","    },","","","    /**","    Reformats html to the proper style","","    TODO: put this in its own extension.  doesnt belong here.","","    <span>blah blah</span>","    @param {HTML} html HTML string to format","    @return {Node} Node instance containing a document fragment with the","        formatted _html_","    @protected","    **/","    _formatHTML: function (html) {","        function flatten (node) {","            var childNodes = node.get('childNodes')._nodes;","","            Y.Array.each(childNodes.reverse(), function (node) {","                var parentNode;","","                node = Y.one(node);","                parentNode = node.get('parentNode');","","                if (EDOM.isTextNode(node)) {","                    if (this._isBlockNode(parentNode)) {","                        node.wrap(STYLENODE);","                    } else if (node.get('previousSibling')) {","                        EDOM.split(parentNode, node);","                    }","                } else {","                    // TODO: replace b, em, i, strong, u nodes with spans","                    if (!node.test(this.supportedTags)) {","                        node.replace(node.get('text'));","                    } else if (!this._isBlockNode(parentNode) && !parentNode.test('a')) {","                        parentNode.insert(node, 'after');","","                        if (!this._isBlockNode(node)) {","                            node.addClass(parentNode.get('className'));","","                            EDOM.copyStyles(parentNode, node, supportedStyles, {","                                explicit: true,","                                overwrite: false","                            });","                        }","                    } else {","                        // TODO: clear styles on containers","                    }","","                    flatten.call(this, node);","","                    if (EDOM.isEmptyNode(node)) {","                        node.remove(true);","                    }","","                    node.removeAttribute('id');","                }","            }, this);","        }","","        var frag, supportedStyles = [], supportedTags = this.supportedTags;","","        Y.Object.each(this.styleCommands, function (cmd) {","            supportedStyles.push(cmd.property);","        });","","        frag = Y.one(doc.createDocumentFragment()).setHTML(html);","","        flatten.call(this, frag);","","        return frag;","    },","","","    /**","    Getter for the `html` attribute.","","    @method _getHTML","    @param {HTML} value HTML.","    @return {HTML} HTML.","    @protected","    **/","    _getHTML: function (value) {","        value = Y.Editor.Base.prototype._getHTML.call(this, value);","","        return this.get('formatFn')(value).getHTML();","    },","","","    /**","    Walks the ancestor tree of a given node until a node that has","    the css property set is found","","    @method _getStyledAncestor","    @param {Node} startNode","    @param {String} property","    @return {Node} The node having `property` set, or null if no node was found","    @protected","    **/","    _getStyledAncestor: function (startNode, property) {","        return startNode.ancestor(function (node) {","            if (!EDOM.isElementNode(node)) {","                return false;","            }","","            // don't use node.getStyle() because it will return","            // computedStyle for empty string values like `property: \"\"`","            // https://github.com/yui/yui3/blob/master/src/dom/js/dom-style.js#L106","            return !!node._node.style[property];","        }, true, this.selectors.input);","    },","","","    /**","    Parses inline elements from a given range. Partially selected nodes will","    be split and text nodes will be wrapped in `<span>` tags if necessary.","","    @method _getStyleNodes","    @param {Range} range","    @return {NodeList} NodeList of inline elements within the given `range`","    @protected","    **/","    _getStyleNodes: function (range) {","        var styleNode, styleNodes = [];","","        range.shrink();","","        // see if the range is contained in an existing styleNode","        styleNode = range.parentNode().ancestor(this.styleTags, true, this.selectors.input);","","        if (styleNode) {","            if (range.toString() === styleNode.get('text')) {","                // the entire node is selected, just return the node","                return new Y.NodeList([styleNode]);","            }","        } else {","            styleNode = Y.Node.create(STYLENODE);","        }","","        var startNode = range.startNode(),","            startOffset = range.startOffset(),","            endNode = range.endNode(),","            endOffset = range.endOffset();","","        range.traverse(function (node) {","            if (!EDOM.isTextNode(node)) {","                return;","            }","","            if (endNode === node && endOffset !== EDOM.maxOffset(endNode)) {","                node = EDOM.split(node, endOffset).get('previousSibling');","            }","","            if (startNode === node && startOffset) {","                node = EDOM.split(node, startOffset);","            }","","            if (this._isStyleNode(node.get('parentNode'))) {","                if (node.get('nextSibling')) {","                    EDOM.split(node.get('parentNode'), node.get('nextSibling'));","                }","","                if (node.get('previousSibling')) {","                    EDOM.split(node.get('parentNode'), node);","                }","","                styleNodes.push(node.get('parentNode'));","            } else {","                styleNodes.push(node.wrap(styleNode).get('parentNode'));","            }","        }, this);","","        return new Y.NodeList(styleNodes);","    },","","","    /**","    Returns true if the given node is a container element, false otherwise","    A container element is defined as a non-inline element","","    @method _isBlockNode","    @param {HTMLNode|Node} node","    @return {Boolean} true if the given node is a container element, false otherwise","    @protected","    **/","    _isBlockNode: function (node) {","        node = Y.one(node);","","        // isElementNode() will exclude document fragments, which are valid","        // containers, use !isTextNode() instead","        return !EDOM.isTextNode(node) && (node.get('nodeName') === '#document-fragment' || node.test(this.blockTags));","    },","","","    /**","    Returns true if the given node is an inline element node, false otherwise","","    @method _isStyleNode","    @param {HTMLNode|Node} node","    @return {Boolean} true if the given node is an inline element node, false otherwise","    @protected","    **/","    _isStyleNode: function (node) {","        node = Y.one(node);","","        return node && !EDOM.isTextNode(node) && node.test(this.styleTags);","    },","","","    /**","    Setter for the `html` attribute.","","    @method _setHTML","    @param {HTML} value HTML.","    @return {HTML} HTML.","    @protected","    **/","    _setHTML: function (value) {","        value = this.get('formatFn')(value).getHTML();","","        return Y.Editor.Base.prototype._setHTML.call(this, value);","    },","","","    /**","    Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes","    instead of relying on spotty browser compatibility of `styleWithCSS`","","    Passes through to Editor.Base for any commands not defined","    in `this.styleCommands`","","    @method _queryStyleCommand","    @param {String} name Command name.","    @return {Boolean|String} Command value.","    @protected","    **/","    _queryStyleCommand: function (name) {","        var command = this.styleCommands[name],","            range = this.selection.range().clone(),","            parentNode, styleNode, value;","","        if (range) {","            parentNode = range.shrink().parentNode();","","            // first attempt to get any explicitly styled ancestor for","            // the given property. Need to do this first because browsers","            // sometimes return different values for explicit style vs.","            // computed style. `font-weight: bold;` for example will return","            // `bold` in all browsers when explicitly set but `700` in","            // Firefox and Internet Explorer with computedStyle.","            styleNode = this._getStyledAncestor(parentNode, command.property);","","            if (!styleNode) {","                // no explicitly styled ancestor found. walk the","                // ancestor tree to find the closest element","                // node ancestor, inclusive of the parentNode","                styleNode = parentNode.ancestor(EDOM.isElementNode, true);","            }","","            // getStyle will fall back to computedStyle if the","            // property isn't explicitly set","            value = styleNode.getStyle(command.property);","        }","","        if (this.boolCommands[name]) {","            value = (value === command.value);","        } else if ('' === value) {","            value = null;","        }","","        return value;","    },","","    // -- Protected Event Handlers ---------------------------------------------","","    /**","    Handles `delete` events on the editor","","    @method _afterDelete","    @protected","    **/","    _afterDelete: function () {","        this._clearCommandQueue();","        this._updateSelection({force: true});","    },","","","    /**","    AOP wrapper for `Editor.Base#_execCommand()`.","","    @method _styleBeforeExecCommand","    @param {String} name Command name.","    @param {Boolean|String} value Command value.","    @protected","    **/","    _styleBeforeExecCommand: function (name, value) {","        if (this.styleCommands[name]) {","            var ret = this._execStyleCommand(name, value);","            return new Y.Do.Halt('Editor.Style prevented _execCommand', ret);","        }","    },","","","    /**","    AOP wrapper for `Editor.Base#_queryCommand()`.","","    @method _styleBeforeQueryCommand","    @param {String} name Command name.","    @protected","    **/","    _styleBeforeQueryCommand: function (name) {","        if (this.styleCommands[name]) {","            var ret = this._queryStyleCommand(name);","            return new Y.Do.Halt('Editor.Style prevented _queryCommand', ret);","        }","    }","}, {","    ATTRS: {","        /**","        Function for formatting editor html","","        One day allow custom formatting. Today is not that day.","        **/","        formatFn: {","            readOnly: true,","            setter: function (val) {","                return Y.bind(val, this);","            },","            validator: Y.Lang.isFunction,","            valueFn: function () {","                return this._formatHTML;","            }","        }","    }","});","","Y.namespace('Editor').Style = EditorStyle;","","}());","","","}, '@VERSION@', {","    \"requires\": [","        \"gallery-sm-editor-base\",","        \"gallery-sm-editor-dom\",","        \"gallery-sm-editor-keys\",","        \"gallery-sm-editor-queue\",","        \"node-style\"","    ]","});"];
+_yuitest_coverage["build/gallery-sm-editor-style/gallery-sm-editor-style.js"].lines = {"1":0,"21":0,"23":0,"28":0,"91":0,"92":0,"94":0,"97":0,"98":0,"101":0,"105":0,"118":0,"119":0,"130":0,"131":0,"149":0,"152":0,"153":0,"154":0,"155":0,"159":0,"161":0,"162":0,"163":0,"168":0,"178":0,"179":0,"192":0,"193":0,"196":0,"210":0,"211":0,"212":0,"230":0,"234":0,"235":0,"238":0,"242":0,"244":0,"245":0,"246":0,"248":0,"250":0,"251":0,"253":0,"256":0,"272":0,"273":0,"275":0,"276":0,"278":0,"279":0,"281":0,"282":0,"283":0,"284":0,"285":0,"289":0,"290":0,"291":0,"292":0,"294":0,"295":0,"297":0,"306":0,"308":0,"309":0,"312":0,"317":0,"319":0,"320":0,"323":0,"325":0,"327":0,"340":0,"342":0,"357":0,"358":0,"359":0,"365":0,"380":0,"382":0,"385":0,"387":0,"388":0,"390":0,"393":0,"396":0,"401":0,"402":0,"403":0,"406":0,"407":0,"410":0,"411":0,"414":0,"415":0,"416":0,"419":0,"420":0,"423":0,"425":0,"429":0,"443":0,"447":0,"460":0,"462":0,"475":0,"477":0,"494":0,"498":0,"499":0,"507":0,"509":0,"513":0,"518":0,"521":0,"522":0,"523":0,"524":0,"527":0,"539":0,"540":0,"553":0,"554":0,"555":0,"568":0,"569":0,"570":0,"583":0,"587":0,"593":0};
+_yuitest_coverage["build/gallery-sm-editor-style/gallery-sm-editor-style.js"].functions = {"initializer:90":0,"destructor:104":0,"bold:117":0,"italic:129":0,"styles:148":0,"underline:177":0,"_attachStyleEvents:191":0,"_detachStyleEvents:209":0,"_execStyleCommand:229":0,"(anonymous 3):275":0,"flatten:272":0,"(anonymous 4):319":0,"_formatHTML:271":0,"_getHTML:339":0,"(anonymous 5):357":0,"_getStyledAncestor:356":0,"(anonymous 6):401":0,"_getStyleNodes:379":0,"_isBlockNode:442":0,"_isStyleNode:459":0,"_setHTML:474":0,"_queryStyleCommand:493":0,"_afterDelete:538":0,"_styleBeforeExecCommand:552":0,"_styleBeforeQueryCommand:567":0,"setter:582":0,"valueFn:586":0,"(anonymous 2):21":0,"(anonymous 1):1":0};
+_yuitest_coverage["build/gallery-sm-editor-style/gallery-sm-editor-style.js"].coveredLines = 132;
+_yuitest_coverage["build/gallery-sm-editor-style/gallery-sm-editor-style.js"].coveredFunctions = 29;
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 1);
+YUI.add('gallery-sm-editor-style', function (Y, NAME) {
+
+/*jshint expr:true, onevar:false */
+
+/**
+Provides the `Editor.Style` extension.
+
+@module gallery-sm-editor
+@submodule gallery-sm-editor-style
+**/
+
+/**
+Extension for `Editor.Base` that normalizes style commands into css properties
+
+@class Editor.Style
+@constructor
+@extends Base
+@extensionfor Editor.Base
+**/
+
+_yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "(anonymous 1)", 1);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 21);
+(function () {
+
+_yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "(anonymous 2)", 21);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 23);
+var doc = Y.config.doc,
+    win = Y.config.win,
+    EDOM = Y.Editor.DOM,
+    STYLENODE = '<span></span>';
+
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 28);
+var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
+    // -- Public Properties ----------------------------------------------------
+
+    /**
+    Hash of style commands supported by this editor.
+
+    Names should correspond with valid `execCommand()` command names. Values
+    are properties in the following format:
+
+    @property {Object} styleCommands
+        @param {String} property The name of the CSS property in camelCase form
+        @param {String} [value] For boolean commands, the `on` value of the
+        property. eg. `bold`
+    **/
+    styleCommands: {
+        bold: {
+            property: 'fontWeight',
+            value: 'bold'
+        },
+
+        fontName: {
+            property: 'fontFamily'
+        },
+
+        fontSize: {
+            property: 'fontSize'
+        },
+
+        italic: {
+            property: 'fontStyle',
+            value: 'italic'
+        },
+
+        underline: {
+            property: 'textDecoration',
+            value: 'underline'
+        }
+    },
+
+
+    /**
+    Key commands related to style functionality.
+
+    @property {Object} styleKeyCommands
+    **/
+    styleKeyCommands: {
+//        'backspace':  {fn: '_afterDelete', allowDefault: true, async: true},
+//        'delete':     {fn: '_afterDelete', allowDefault: true, async: true}
+    },
+
+
+    /**
+    HTML tags supported by this editor. Unsupported tags will be treated
+    as text
+
+    @property {String} supportedTags
+    **/
+    styleTags: 'span',
+
+
+    // -- Lifecycle ------------------------------------------------------------
+
+    initializer: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "initializer", 90);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 91);
+if (this.supportedTags) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 92);
+this.supportedTags += ',' + this.styleTags;
+        } else {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 94);
+this.supportedTags = this.styleTags;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 97);
+if (this.keyCommands) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 98);
+this.keyCommands = Y.merge(this.keyCommands, this.styleKeyCommands);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 101);
+this._attachStyleEvents();
+    },
+
+    destructor: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "destructor", 104);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 105);
+this._detachStyleEvents();
+    },
+
+
+    // -- Public Methods -------------------------------------------------------
+
+    /**
+    Bolds or unbolds the current selection.
+
+    @method bold
+    @chainable
+    **/
+    bold: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "bold", 117);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 118);
+this.command('bold', 'toggle');
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 119);
+return this;
+    },
+
+
+    /**
+    Italicizes or unitalicizes the current selection.
+
+    @method italic
+    @chainable
+    **/
+    italic: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "italic", 129);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 130);
+this.command('italic', 'toggle');
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 131);
+return this;
+    },
+
+
+    /**
+    Gets and/or sets the values of multiple editor style commands.
+
+    When called without an argument, the current values of all supported style
+    commands will be returned. When called with a _styles_ object, the specified
+    style commands will be set to their given values, and the resulting new
+    values will be returned.
+
+    @method styles
+    @param {Object} [styles] Hash of style names and values to set.
+    @return {Object} Hash of style names and values that were set, or all styles
+        if no _styles_ parameter was specified.
+    **/
+    styles: function (styles) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "styles", 148);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 149);
+var results = {},
+            name;
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 152);
+if (styles) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 153);
+for (name in styles) {
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 154);
+if (styles.hasOwnProperty(name)) {
+                    _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 155);
+results[name] = this.command(name, styles[name]);
+                }
+            }
+        } else {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 159);
+var commands = this.styleCommands;
+
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 161);
+for (name in commands) {
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 162);
+if (commands.hasOwnProperty(name)) {
+                    _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 163);
+results[name] = this._queryCommandValue(name);
+                }
+            }
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 168);
+return results;
+    },
+
+    /**
+    Toggles underline on the current selection.
+
+    @method underline
+    @chainable
+    **/
+    underline: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "underline", 177);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 178);
+this.command('underline', 'toggle');
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 179);
+return this;
+    },
+
+
+    // -- Protected Methods ----------------------------------------------------
+
+    /**
+    Attaches style events.
+
+    @method _attachStyleEvents
+    @protected
+    **/
+    _attachStyleEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_attachStyleEvents", 191);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 192);
+if (this._styleEvents) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 193);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 196);
+this._styleEvents = [
+            Y.Do.before(this._styleBeforeExecCommand, this, '_execCommand', this),
+            Y.Do.before(this._styleBeforeQueryCommand, this, '_queryCommandValue', this)
+        ];
+    },
+
+
+    /**
+    Detaches style events.
+
+    @method _detachStyleEvents
+    @protected
+    **/
+    _detachStyleEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_detachStyleEvents", 209);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 210);
+if (this._styleEvents) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 211);
+new Y.EventHandle(this._styleEvents).detach();
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 212);
+this._styleEvents = null;
+        }
+    },
+
+
+    /**
+    Duckpunch Editor.Base._execCommand to build css styled nodes instead of
+    relying on spotty browser compatibility of `styleWithCSS`
+
+    Passes through to Editor.Base for any commands not defined
+    in `this.styleCommands` or `this.blockCommands`
+
+    @method _execStyleCommand
+    @param {String} name Command name.
+    @param {Boolean|String} value Command value.
+    @protected
+    **/
+    _execStyleCommand: function (name, value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_execStyleCommand", 229);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 230);
+var command = this.styleCommands[name],
+            range = this.selection.range(),
+            styleNodes, style;
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 234);
+if (!range || !command) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 235);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 238);
+styleNodes = this._getStyleNodes(range);
+
+        // use the first node because blah blah
+        // dont use getStyle blah blah
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 242);
+style = styleNodes.item(0)._node.style[command.property];
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 244);
+if (this.boolCommands[name] && 'toggle' === value) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 245);
+if (style && '' !== style) {
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 246);
+style = '';
+            } else {
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 248);
+style = command.value;
+            }
+        } else {_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 250);
+if (value) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 251);
+style = command.value || value;
+        } else {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 253);
+style = '';
+        }}
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 256);
+styleNodes.setStyle(command.property, style);
+    },
+
+
+    /**
+    Reformats html to the proper style
+
+    TODO: put this in its own extension.  doesnt belong here.
+
+    <span>blah blah</span>
+    @param {HTML} html HTML string to format
+    @return {Node} Node instance containing a document fragment with the
+        formatted _html_
+    @protected
+    **/
+    _formatHTML: function (html) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_formatHTML", 271);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 272);
+function flatten (node) {
+            _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "flatten", 272);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 273);
+var childNodes = node.get('childNodes')._nodes;
+
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 275);
+Y.Array.each(childNodes.reverse(), function (node) {
+                _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "(anonymous 3)", 275);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 276);
+var parentNode;
+
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 278);
+node = Y.one(node);
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 279);
+parentNode = node.get('parentNode');
+
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 281);
+if (EDOM.isTextNode(node)) {
+                    _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 282);
+if (this._isBlockNode(parentNode)) {
+                        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 283);
+node.wrap(STYLENODE);
+                    } else {_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 284);
+if (node.get('previousSibling')) {
+                        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 285);
+EDOM.split(parentNode, node);
+                    }}
+                } else {
+                    // TODO: replace b, em, i, strong, u nodes with spans
+                    _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 289);
+if (!node.test(this.supportedTags)) {
+                        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 290);
+node.replace(node.get('text'));
+                    } else {_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 291);
+if (!this._isBlockNode(parentNode) && !parentNode.test('a')) {
+                        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 292);
+parentNode.insert(node, 'after');
+
+                        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 294);
+if (!this._isBlockNode(node)) {
+                            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 295);
+node.addClass(parentNode.get('className'));
+
+                            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 297);
+EDOM.copyStyles(parentNode, node, supportedStyles, {
+                                explicit: true,
+                                overwrite: false
+                            });
+                        }
+                    } else {
+                        // TODO: clear styles on containers
+                    }}
+
+                    _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 306);
+flatten.call(this, node);
+
+                    _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 308);
+if (EDOM.isEmptyNode(node)) {
+                        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 309);
+node.remove(true);
+                    }
+
+                    _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 312);
+node.removeAttribute('id');
+                }
+            }, this);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 317);
+var frag, supportedStyles = [], supportedTags = this.supportedTags;
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 319);
+Y.Object.each(this.styleCommands, function (cmd) {
+            _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "(anonymous 4)", 319);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 320);
+supportedStyles.push(cmd.property);
+        });
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 323);
+frag = Y.one(doc.createDocumentFragment()).setHTML(html);
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 325);
+flatten.call(this, frag);
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 327);
+return frag;
+    },
+
+
+    /**
+    Getter for the `html` attribute.
+
+    @method _getHTML
+    @param {HTML} value HTML.
+    @return {HTML} HTML.
+    @protected
+    **/
+    _getHTML: function (value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_getHTML", 339);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 340);
+value = Y.Editor.Base.prototype._getHTML.call(this, value);
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 342);
+return this.get('formatFn')(value).getHTML();
+    },
+
+
+    /**
+    Walks the ancestor tree of a given node until a node that has
+    the css property set is found
+
+    @method _getStyledAncestor
+    @param {Node} startNode
+    @param {String} property
+    @return {Node} The node having `property` set, or null if no node was found
+    @protected
+    **/
+    _getStyledAncestor: function (startNode, property) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_getStyledAncestor", 356);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 357);
+return startNode.ancestor(function (node) {
+            _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "(anonymous 5)", 357);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 358);
+if (!EDOM.isElementNode(node)) {
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 359);
+return false;
+            }
+
+            // don't use node.getStyle() because it will return
+            // computedStyle for empty string values like `property: ""`
+            // https://github.com/yui/yui3/blob/master/src/dom/js/dom-style.js#L106
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 365);
+return !!node._node.style[property];
+        }, true, this.selectors.input);
+    },
+
+
+    /**
+    Parses inline elements from a given range. Partially selected nodes will
+    be split and text nodes will be wrapped in `<span>` tags if necessary.
+
+    @method _getStyleNodes
+    @param {Range} range
+    @return {NodeList} NodeList of inline elements within the given `range`
+    @protected
+    **/
+    _getStyleNodes: function (range) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_getStyleNodes", 379);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 380);
+var styleNode, styleNodes = [];
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 382);
+range.shrink();
+
+        // see if the range is contained in an existing styleNode
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 385);
+styleNode = range.parentNode().ancestor(this.styleTags, true, this.selectors.input);
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 387);
+if (styleNode) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 388);
+if (range.toString() === styleNode.get('text')) {
+                // the entire node is selected, just return the node
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 390);
+return new Y.NodeList([styleNode]);
+            }
+        } else {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 393);
+styleNode = Y.Node.create(STYLENODE);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 396);
+var startNode = range.startNode(),
+            startOffset = range.startOffset(),
+            endNode = range.endNode(),
+            endOffset = range.endOffset();
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 401);
+range.traverse(function (node) {
+            _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "(anonymous 6)", 401);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 402);
+if (!EDOM.isTextNode(node)) {
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 403);
+return;
+            }
+
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 406);
+if (endNode === node && endOffset !== EDOM.maxOffset(endNode)) {
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 407);
+node = EDOM.split(node, endOffset).get('previousSibling');
+            }
+
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 410);
+if (startNode === node && startOffset) {
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 411);
+node = EDOM.split(node, startOffset);
+            }
+
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 414);
+if (this._isStyleNode(node.get('parentNode'))) {
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 415);
+if (node.get('nextSibling')) {
+                    _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 416);
+EDOM.split(node.get('parentNode'), node.get('nextSibling'));
+                }
+
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 419);
+if (node.get('previousSibling')) {
+                    _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 420);
+EDOM.split(node.get('parentNode'), node);
+                }
+
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 423);
+styleNodes.push(node.get('parentNode'));
+            } else {
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 425);
+styleNodes.push(node.wrap(styleNode).get('parentNode'));
+            }
+        }, this);
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 429);
+return new Y.NodeList(styleNodes);
+    },
+
+
+    /**
+    Returns true if the given node is a container element, false otherwise
+    A container element is defined as a non-inline element
+
+    @method _isBlockNode
+    @param {HTMLNode|Node} node
+    @return {Boolean} true if the given node is a container element, false otherwise
+    @protected
+    **/
+    _isBlockNode: function (node) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_isBlockNode", 442);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 443);
+node = Y.one(node);
+
+        // isElementNode() will exclude document fragments, which are valid
+        // containers, use !isTextNode() instead
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 447);
+return !EDOM.isTextNode(node) && (node.get('nodeName') === '#document-fragment' || node.test(this.blockTags));
+    },
+
+
+    /**
+    Returns true if the given node is an inline element node, false otherwise
+
+    @method _isStyleNode
+    @param {HTMLNode|Node} node
+    @return {Boolean} true if the given node is an inline element node, false otherwise
+    @protected
+    **/
+    _isStyleNode: function (node) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_isStyleNode", 459);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 460);
+node = Y.one(node);
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 462);
+return node && !EDOM.isTextNode(node) && node.test(this.styleTags);
+    },
+
+
+    /**
+    Setter for the `html` attribute.
+
+    @method _setHTML
+    @param {HTML} value HTML.
+    @return {HTML} HTML.
+    @protected
+    **/
+    _setHTML: function (value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_setHTML", 474);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 475);
+value = this.get('formatFn')(value).getHTML();
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 477);
+return Y.Editor.Base.prototype._setHTML.call(this, value);
+    },
+
+
+    /**
+    Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes
+    instead of relying on spotty browser compatibility of `styleWithCSS`
+
+    Passes through to Editor.Base for any commands not defined
+    in `this.styleCommands`
+
+    @method _queryStyleCommand
+    @param {String} name Command name.
+    @return {Boolean|String} Command value.
+    @protected
+    **/
+    _queryStyleCommand: function (name) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_queryStyleCommand", 493);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 494);
+var command = this.styleCommands[name],
+            range = this.selection.range().clone(),
+            parentNode, styleNode, value;
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 498);
+if (range) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 499);
+parentNode = range.shrink().parentNode();
+
+            // first attempt to get any explicitly styled ancestor for
+            // the given property. Need to do this first because browsers
+            // sometimes return different values for explicit style vs.
+            // computed style. `font-weight: bold;` for example will return
+            // `bold` in all browsers when explicitly set but `700` in
+            // Firefox and Internet Explorer with computedStyle.
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 507);
+styleNode = this._getStyledAncestor(parentNode, command.property);
+
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 509);
+if (!styleNode) {
+                // no explicitly styled ancestor found. walk the
+                // ancestor tree to find the closest element
+                // node ancestor, inclusive of the parentNode
+                _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 513);
+styleNode = parentNode.ancestor(EDOM.isElementNode, true);
+            }
+
+            // getStyle will fall back to computedStyle if the
+            // property isn't explicitly set
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 518);
+value = styleNode.getStyle(command.property);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 521);
+if (this.boolCommands[name]) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 522);
+value = (value === command.value);
+        } else {_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 523);
+if ('' === value) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 524);
+value = null;
+        }}
+
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 527);
+return value;
+    },
+
+    // -- Protected Event Handlers ---------------------------------------------
+
+    /**
+    Handles `delete` events on the editor
+
+    @method _afterDelete
+    @protected
+    **/
+    _afterDelete: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_afterDelete", 538);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 539);
+this._clearCommandQueue();
+        _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 540);
+this._updateSelection({force: true});
+    },
+
+
+    /**
+    AOP wrapper for `Editor.Base#_execCommand()`.
+
+    @method _styleBeforeExecCommand
+    @param {String} name Command name.
+    @param {Boolean|String} value Command value.
+    @protected
+    **/
+    _styleBeforeExecCommand: function (name, value) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_styleBeforeExecCommand", 552);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 553);
+if (this.styleCommands[name]) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 554);
+var ret = this._execStyleCommand(name, value);
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 555);
+return new Y.Do.Halt('Editor.Style prevented _execCommand', ret);
+        }
+    },
+
+
+    /**
+    AOP wrapper for `Editor.Base#_queryCommand()`.
+
+    @method _styleBeforeQueryCommand
+    @param {String} name Command name.
+    @protected
+    **/
+    _styleBeforeQueryCommand: function (name) {
+        _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "_styleBeforeQueryCommand", 567);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 568);
+if (this.styleCommands[name]) {
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 569);
+var ret = this._queryStyleCommand(name);
+            _yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 570);
+return new Y.Do.Halt('Editor.Style prevented _queryCommand', ret);
+        }
+    }
+}, {
+    ATTRS: {
+        /**
+        Function for formatting editor html
+
+        One day allow custom formatting. Today is not that day.
+        **/
+        formatFn: {
+            readOnly: true,
+            setter: function (val) {
+                _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "setter", 582);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 583);
+return Y.bind(val, this);
+            },
+            validator: Y.Lang.isFunction,
+            valueFn: function () {
+                _yuitest_coverfunc("build/gallery-sm-editor-style/gallery-sm-editor-style.js", "valueFn", 586);
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 587);
+return this._formatHTML;
+            }
+        }
+    }
+});
+
+_yuitest_coverline("build/gallery-sm-editor-style/gallery-sm-editor-style.js", 593);
+Y.namespace('Editor').Style = EditorStyle;
+
+}());
+
+
+}, '@VERSION@', {
+    "requires": [
+        "gallery-sm-editor-base",
+        "gallery-sm-editor-dom",
+        "gallery-sm-editor-keys",
+        "gallery-sm-editor-queue",
+        "node-style"
+    ]
+});

@@ -2,6 +2,7 @@
     "gallery-sm-editor": {
         "requires": [
             "gallery-sm-editor-base",
+            "gallery-sm-editor-block",
             "gallery-sm-editor-keys",
             "gallery-sm-editor-link",
             "gallery-sm-editor-queue",
@@ -19,6 +20,15 @@
             "event-focus",
             "gallery-sm-selection",
             "view"
+        ]
+    },
+
+    "gallery-sm-editor-block": {
+        "requires": [
+            "gallery-sm-editor-base",
+            "gallery-sm-editor-dom",
+            "gallery-sm-editor-keys",
+            "node-style"
         ]
     },
 

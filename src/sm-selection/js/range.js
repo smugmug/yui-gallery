@@ -245,19 +245,28 @@ Range.prototype = {
 
     an initial range of
 
-        <div><span>[{Lorem]}</span></div>  s0:e5
+        <div><span>[{Lorem]}</span></div>  #text s0 : #text e5
 
-    after expansion would be
+    after expansion with stopAt = `span`
 
-        [{<div><span>Lorem</span></div>}]  s0:e1
+        <div><span>[{Lorem]}</span></div>  SPAN s0 : SPAN e1
+
+    after expansion with stopAt = `div`
+
+        <div>[{<span>Lorem</span>}]</div>  DIV s0 : DIV e1
 
     @method expand
-    @param {HTMLElement|Node} [container] If provided, do not expand the range
-        past this container
+    @param {Object} [options]
+        @param {String|Function|HTMLElement|Node} [options.stopAt] If provided,
+        does not expand the range past this node.
+        Strings will be used as selectors to match ancestor nodes of the start
+        and end nodes of the range (inclusive).
+        Functions will test ancestors of the start and end nodes of the range
+        (inclusive) and will receive the node being tested as the only argument.
     @chainable
     **/
-    expand: function(container) {
-        return this.expandStart(container).expandEnd(container);
+    expand: function (options) {
+        return this.expandStart(options).expandEnd(options);
     },
 
     /**
@@ -266,22 +275,51 @@ Range.prototype = {
     guaranteed to be an element node after this method is executed.
 
     @method expandEnd
-    @param {HTMLElement|Node} [container] If provided, do not expand the range
-        past this container
+    @param {Object} [options]
+        @param {String|Function|HTMLElement|Node} [options.stopAt] If provided,
+        does not expand the range past this node.
+        Strings will be used as selectors to match ancestor nodes of the end
+        node of the range (inclusive).
+        Functions will test ancestors of the end node of the range (inclusive)
+        and will receive the node being tested as the only argument.
     @chainable
     **/
-    expandEnd: function(container) {
-        var endNode = this.endNode()._node,
-            offset = this.endOffset(),
-            nodeType = endNode.nodeType,
-            parentNode = endNode.parentNode;
+    expandEnd: function (options) {
+        var endNode = this.endNode(),
+            endOffset = this.endOffset(),
+            stopNode, parentNode;
 
-        container = Y.one(container);
+        options || (options = {});
+        options.stopAt && (stopNode = options.stopAt);
 
-        if (TEXT_NODE === nodeType && endNode.length === offset && !endNode.nextSibling
-                && (!container || container._node !== parentNode)) {
-            this.endNode(parentNode, 'after');
+        function maxOffset (node) {
+            var maxOffset;
+
+            node = node._node;
+
+            if (TEXT_NODE === node.nodeType) {
+                maxOffset = node.length;
+            } else {
+                maxOffset = node.childNodes.length;
+            }
+
+            return maxOffset;
         }
+
+        if ('string' === typeof stopNode || 'function' === typeof stopNode) {
+            stopNode = endNode.ancestor(stopNode, true);
+        } else {
+            stopNode = Y.one(stopNode);
+        }
+
+        while (endNode !== stopNode && maxOffset(endNode) === endOffset) {
+            parentNode = endNode.get('parentNode');
+
+            endOffset = parentNode.get('childNodes').indexOf(endNode) + 1;
+            endNode = parentNode;
+        }
+
+        this.endNode(endNode, endOffset);
 
         return this;
     },
@@ -292,22 +330,36 @@ Range.prototype = {
     guaranteed to be an element node after this method is executed.
 
     @method expandStart
-    @param {HTMLElement|Node} [container] If provided, do not expand the range
-        past this container
+        @param {String|Function|HTMLElement|Node} [options.stopAt] If provided,
+        does not expand the range past this node.
+        Strings will be used as selectors to match ancestor nodes of the start
+        node of the range (inclusive).
+        Functions will test ancestors of the start node of the range (inclusive)
+        and will receive the node being tested as the only argument.
     @chainable
     **/
-    expandStart: function(container) {
-        var startNode = this.startNode()._node,
-            offset = this.startOffset(),
-            nodeType = startNode.nodeType,
-            parentNode = startNode.parentNode;
+    expandStart: function (options) {
+        var startNode = this.startNode(),
+            startOffset = this.startOffset(),
+            stopNode, parentNode;
 
-        container = Y.one(container);
+        options || (options = {});
+        options.stopAt && (stopNode = options.stopAt);
 
-        if (TEXT_NODE === nodeType && 0 === offset && !startNode.previousSibling
-                && (!container || container._node !== parentNode)) {
-            this.startNode(parentNode, 'before');
+        if ('string' === typeof stopNode || 'function' === typeof stopNode) {
+            stopNode = startNode.ancestor(stopNode, true);
+        } else {
+            stopNode = Y.one(stopNode);
         }
+
+        while (startNode !== stopNode && 0 === startOffset) {
+            parentNode = startNode.get('parentNode');
+
+            startOffset = parentNode.get('childNodes').indexOf(startNode);
+            startNode = parentNode;
+        }
+
+        this.startNode(startNode, startOffset);
 
         return this;
     },
@@ -519,7 +571,7 @@ Range.prototype = {
         trailing whitespace from the endContainer.
     @chainable
     **/
-    shrink: function(options) {
+    shrink: function (options) {
         return this.shrinkStart(options).shrinkEnd(options);
     },
 
@@ -538,7 +590,7 @@ Range.prototype = {
         exclude any trailing whitespace from the shrunken endContainer.
     @chainable
     **/
-    shrinkEnd: function(options) {
+    shrinkEnd: function (options) {
         var trim = options && options.trim;
 
         if (!this.isCollapsed()) {
@@ -582,7 +634,7 @@ Range.prototype = {
             if (ELEMENT_NODE === endNode.get('nodeType')) {
                 this.endNode(endNode, endNode.get('childNodes').size());
 
-                this.traverse(function(node) {
+                this.traverse(function (node) {
                     if (TEXT_NODE === node.get('nodeType')) {
                         endNode = node;
                     }
@@ -618,7 +670,7 @@ Range.prototype = {
         exclude any leading whitespace from the shrunken startContainer.
     @chainable
     **/
-    shrinkStart: function(options) {
+    shrinkStart: function (options) {
         var trim = options && options.trim;
 
         if (!this.isCollapsed()) {
@@ -662,7 +714,7 @@ Range.prototype = {
             if (ELEMENT_NODE === startNode.get('nodeType')) {
                 this.startNode(startNode);
 
-                this.traverse(function(node) {
+                this.traverse(function (node) {
                     if (TEXT_NODE === node.get('nodeType')) {
                         startNode = node;
                         return true; // stops traversal

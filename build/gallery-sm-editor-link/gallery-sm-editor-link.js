@@ -24,6 +24,16 @@ var EDOM = Y.Editor.DOM;
 var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
 
+    linkCommands: {
+        createLink: {
+            fn: '_createLink'
+        },
+
+        unlink: {
+            fn: '_unlink'
+        }
+    },
+
     /**
     Key commands related to creating hyperlinks.
 
@@ -31,8 +41,16 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     **/
     linkKeyCommands: {
         // Create a link.
-        'ctrl+h'      : {fn: '_linkPrompt', allowDefault: false}
+        'alt+ctrl+l'      : {fn: '_linkPrompt', allowDefault: false}
     },
+
+    /**
+    HTML tags supported by this editor. Unsupported tags will be treated
+    as text
+
+    @property {String} supportedTags
+    **/
+    linkTags: 'a',
 
     /**
     HTML Template for building an anchor node
@@ -45,28 +63,26 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     // -- Lifecycle ------------------------------------------------------------
 
     initializer: function () {
-//        if (this.keyCommands) {
-//            this.keyCommands = Y.merge(this.keyCommands, this.linkKeyCommands);
-//        }
+        if (this.supportedTags) {
+            this.supportedTags += ',' + this.linkTags;
+        } else {
+            this.supportedTags = this.linkTags;
+        }
+
+        if (this.keyCommands) {
+            this.keyCommands = Y.merge(this.keyCommands, this.linkKeyCommands);
+        }
+
+        this._attachLinkEvents();
+    },
+
+
+    destructor: function () {
+        this._detachLinkEvents();
     },
 
 
     // -- Public Methods -------------------------------------------------------
-
-    /**
-    Wraps the currently selected range in an anchor element
-
-    @method link
-    @param {Object} options
-        @param {String} options.href
-        @param {String} [options.target=_self]
-        @param {String} [options.text]
-    @chainable
-    **/
-    link: function (options) {
-        return this.command(this._link, options);
-    },
-
 
     /**
     Returns whether or not the current range is entirely in an anchor element
@@ -80,30 +96,63 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     },
 
 
+    // -- Protected Methods ----------------------------------------------------
+
     /**
-    Removes link by replacing the anchor element with the child nodes
-    of the anchor
+    Attaches block events.
 
-    The anchor element will be removed from the DOM and destroyed.
-
-    @method unlink
-    @chainable
+    @method _attachLinkEvents
+    @protected
     **/
-    unlink: function() {
-        var anchorNode = this._getAnchorNode(),
-            range;
-
-        if (anchorNode) {
-            range = EDOM.unwrap(anchorNode);
-
-            this.selection.select(range.shrink({trim: true}));
+    _attachLinkEvents: function () {
+        if (this._linkEvents) {
+            return;
         }
 
-        return this;
+        this._linkEvents = [
+            Y.Do.before(this._linkBeforeExecCommand, this, '_execCommand', this)
+        ];
     },
 
 
-    // -- Protected Methods ----------------------------------------------------
+    /**
+    Detaches link events.
+
+    @method _detachBlockEvents
+    @protected
+    **/
+    _detachLinkEvents: function () {
+        if (this._linkEvents) {
+            new Y.EventHandle(this._linkEvents).detach();
+            this._linkEvents = null;
+        }
+    },
+
+
+    /**
+    @method _execLinkCommand
+    @param {String} name
+    @param {Function|Number|String} value
+    @protected
+    **/
+    _execLinkCommand: function (name, value) {
+        var command = this.linkCommands[name],
+            range = this.selection.range(),
+            fn;
+
+        if (!range || !command) {
+            return;
+        }
+
+        fn = command.fn;
+
+        if ('string' === typeof fn) {
+            fn = this[fn];
+        }
+
+        fn && fn.call(this, value);
+    },
+
 
     /**
     Returns the nearest ancestor anchor that entirely contains
@@ -118,50 +167,50 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
 
         var parentNode = this.selection.range().shrink().parentNode();
 
-        return EDOM.getAncestorElement(parentNode, 'a');
+        return parentNode.ancestor(this.linkTags, true);
     },
 
 
     /**
-    Implementation for the public `link` method.
+    Implementation for the `createLink` command
 
     Wraps the currently selected range in an anchor `<a>` tag
 
-    @method _link
+    @method _createLink
     @param {Object} options
         @param {String} options.href
         @param {String} [options.target=_self]
         @param {String} [options.text]
-    @chainable
     @protected
     **/
-    _link: function(options){
+    _createLink: function(options){
         var range = this.selection.range(),
-            anchorNode;
+            anchorNode, styleNodes;
 
         if (!range) {
             return;
         }
 
         if (this.isLink()) {
-            range = this.unlink().selection.range();
+            this._unlink();
+            range = this.selection.range();
         }
 
         options || (options = {});
         options.target || (options.target = '_self');
         options.href || (options.href = '');
 
-        // expanding the range before deleting contents makes sure
-        // the entire node is wrapped, if possible.
-        range.expand(this._inputNode);
+        anchorNode = Y.Node.create(Y.Lang.sub(this.linkTemplate, options));
+        styleNodes = this._getStyleNodes(range);
 
-        anchorNode = Y.Lang.sub(this.linkTemplate, options);
-        anchorNode = range.wrap(anchorNode);
+        anchorNode.append(styleNodes);
+
+        range.insertNode(anchorNode);
 
         if (options.text && options.text !== range.toString()) {
             var firstChild = anchorNode.get('firstChild');
 
-            if (EDOM.isInlineElement(firstChild)) {
+            if (this._isStyleNode(firstChild)) {
                 firstChild.set('text', options.text);
                 anchorNode.setHTML(firstChild);
             } else {
@@ -169,11 +218,9 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
             }
         }
 
-        range.endNode(anchorNode, 'after');
+        range.selectNode(anchorNode).collapse();
 
-        this.selection.select(range.collapse());
-
-        return this;
+        this.selection.select(range);
     },
 
 
@@ -185,7 +232,46 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
         var href = Y.config.win.prompt('Enter a url');
 
         if (href) {
-            this.link({href: href});
+            this.command('createLink', {href: href});
+        }
+    },
+
+
+    /**
+    Removes link by replacing the anchor element with the child nodes
+    of the anchor
+
+    The anchor element will be removed from the DOM and destroyed.
+
+    @method _unlink
+    @protected
+    **/
+    _unlink: function() {
+        var anchorNode = this._getAnchorNode(),
+            range;
+
+        if (anchorNode) {
+            range = EDOM.unwrap(anchorNode);
+
+            this.selection.select(range.shrink({trim: true}));
+        }
+    },
+
+
+    // -- Protected Event Handlers ---------------------------------------------
+
+    /**
+    AOP wrapper for `Editor.Base#_execCommand()`.
+
+    @method _linkBeforeExecCommand
+    @param {String} name Command name.
+    @param {Boolean|String} value Command value.
+    @protected
+    **/
+    _linkBeforeExecCommand: function (name, value) {
+        if (this.linkCommands[name]) {
+            var ret = this._execLinkCommand(name, value);
+            return new Y.Do.Halt('Editor.Link prevented _execCommand', ret);
         }
     }
 });
