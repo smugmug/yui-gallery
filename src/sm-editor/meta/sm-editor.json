@@ -18,6 +18,7 @@
             "base-build",
             "classnamemanager",
             "event-focus",
+            "gallery-sm-editor-dom",
             "gallery-sm-selection",
             "view"
         ]

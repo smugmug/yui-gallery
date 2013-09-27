@@ -80,10 +80,7 @@ var EditorKeys = Y.Base.create('editorKeys', Y.Base, [], {
         // Formatting.
         'ctrl+-': 'decreaseFontSize',
         'ctrl+=': 'increaseFontSize', // unshifted + key
-        'ctrl+b': 'bold',
         // TODO: 'ctrl+d': 'selectWord',
-        'ctrl+i': 'italic',
-        'ctrl+u': 'underline',
 
         // Special cases.
         'tab': '_insertTab'
@@ -162,9 +159,14 @@ var EditorKeys = Y.Base.create('editorKeys', Y.Base, [], {
 
         if (handler) {
             var fn   = handler.fn || handler,
-                self = this;
+                args = [e, combo];
 
             if (typeof fn === 'string') {
+                if (this.commands[fn]) {
+                    args.unshift(fn);
+                    fn = 'command';
+                }
+
                 fn = this[fn];
             }
 
@@ -173,11 +175,9 @@ var EditorKeys = Y.Base.create('editorKeys', Y.Base, [], {
             }
 
             if (handler.async) {
-                setTimeout(function () {
-                    fn.call(self, e, combo);
-                }, 0);
+                Y.later(0, this, fn, args);
             } else {
-                fn.call(this, e, combo);
+                fn.apply(this, args);
             }
         }
     }

@@ -22,24 +22,26 @@ var EDOM = Y.Editor.DOM;
 var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
 
+    /**
+    Hash of link commands supported by this editor.
+
+    Names should correspond with valid `execCommand()` command names. Values
+    are properties in the following format:
+
+    @property {Object} linkCommands
+        @param {Function|String} commandFn
+        @param {Function|String} [queryFn]
+    **/
     linkCommands: {
         createLink: {
-            fn: '_createLink'
+            commandFn: '_createLink',
+            queryFn:   'isLink'
         },
 
         unlink: {
-            fn: '_unlink'
+            commandFn: '_unlink',
+            queryFn:   'isLink'
         }
-    },
-
-    /**
-    Key commands related to creating hyperlinks.
-
-    @property {Object} linkKeyCommands
-    **/
-    linkKeyCommands: {
-        // Create a link.
-        'alt+ctrl+l'      : {fn: '_linkPrompt', allowDefault: false}
     },
 
     /**
@@ -61,6 +63,8 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     // -- Lifecycle ------------------------------------------------------------
 
     initializer: function () {
+        this.commands = Y.merge(this.commands, this.linkCommands);
+
         if (this.supportedTags) {
             this.supportedTags += ',' + this.linkTags;
         } else {
@@ -70,13 +74,6 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
         if (this.keyCommands) {
             this.keyCommands = Y.merge(this.keyCommands, this.linkKeyCommands);
         }
-
-        this._attachLinkEvents();
-    },
-
-
-    destructor: function () {
-        this._detachLinkEvents();
     },
 
 
@@ -95,62 +92,6 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
 
 
     // -- Protected Methods ----------------------------------------------------
-
-    /**
-    Attaches block events.
-
-    @method _attachLinkEvents
-    @protected
-    **/
-    _attachLinkEvents: function () {
-        if (this._linkEvents) {
-            return;
-        }
-
-        this._linkEvents = [
-            Y.Do.before(this._linkBeforeExecCommand, this, '_execCommand', this)
-        ];
-    },
-
-
-    /**
-    Detaches link events.
-
-    @method _detachBlockEvents
-    @protected
-    **/
-    _detachLinkEvents: function () {
-        if (this._linkEvents) {
-            new Y.EventHandle(this._linkEvents).detach();
-            this._linkEvents = null;
-        }
-    },
-
-
-    /**
-    @method _execLinkCommand
-    @param {String} name
-    @param {Function|Number|String} value
-    @protected
-    **/
-    _execLinkCommand: function (name, value) {
-        var command = this.linkCommands[name],
-            range = this.selection.range(),
-            fn;
-
-        if (!range || !command) {
-            return;
-        }
-
-        fn = command.fn;
-
-        if ('string' === typeof fn) {
-            fn = this[fn];
-        }
-
-        fn && fn.call(this, value);
-    },
-
 
     /**
     Returns the nearest ancestor anchor that entirely contains
@@ -223,19 +164,6 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
 
 
     /**
-    @method _linkPrompt
-    @protected
-    **/
-    _linkPrompt: function() {
-        var href = Y.config.win.prompt('Enter a url');
-
-        if (href) {
-            this.command('createLink', {href: href});
-        }
-    },
-
-
-    /**
     Removes link by replacing the anchor element with the child nodes
     of the anchor
 
@@ -245,31 +173,27 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     @protected
     **/
     _unlink: function() {
-        var anchorNode = this._getAnchorNode(),
-            range;
+        var selection = this.selection,
+            anchorNode;
 
-        if (anchorNode) {
-            range = EDOM.unwrap(anchorNode);
+        // we can use the native unlink command once we have bookmarking
+        // in place, but firefox selects adjacent text nodes after unlink
 
-            this.selection.select(range.shrink({trim: true}));
-        }
-    },
+        if (anchorNode = this._getAnchorNode()) {
+            var firstChild = anchorNode.get('firstChild'),
+                lastChild = anchorNode.get('lastChild'),
+                range = selection.range();
 
+            // only need to unwrap one of the children to unwrap the
+            // whole anchorNode
+            firstChild.unwrap();
 
-    // -- Protected Event Handlers ---------------------------------------------
+            anchorNode.destroy();
 
-    /**
-    AOP wrapper for `Editor.Base#_execCommand()`.
+            range.startNode(firstChild, 0);
+            range.endNode(lastChild, 'after');
 
-    @method _linkBeforeExecCommand
-    @param {String} name Command name.
-    @param {Boolean|String} value Command value.
-    @protected
-    **/
-    _linkBeforeExecCommand: function (name, value) {
-        if (this.linkCommands[name]) {
-            var ret = this._execLinkCommand(name, value);
-            return new Y.Do.Halt('Editor.Link prevented _execCommand', ret);
+            selection.select(range.shrink({trim: true}));
         }
     }
 });

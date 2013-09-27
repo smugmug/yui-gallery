@@ -161,28 +161,4 @@ EditorDOM.split = function(node, offset) {
 };
 
 
-/**
-Unwraps a node
-
-@method unwrap
-@param {Node} node
-@return {Range} Range containing the unwrapped child nodes
-@static
-**/
-EditorDOM.unwrap = function (node) {
-    var range, startNode, endNode;
-
-    startNode = node.get('firstChild') || node;
-    endNode = node.get('lastChild') || node;
-
-    startNode.unwrap();
-
-    range = new Y.Range();
-    range.startNode(startNode);
-    range.endNode(endNode, EditorDOM.maxOffset(endNode));
-
-    return range;
-};
-
-
 Y.namespace('Editor').DOM = EditorDOM;

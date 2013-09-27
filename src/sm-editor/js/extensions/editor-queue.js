@@ -18,8 +18,6 @@ Extension for `Editor.Base` that queues commands
 
 (function() {
 
-var STYLENODE = '<span></span>';
-
 var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
 
@@ -29,11 +27,8 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     @property {Object} queueKeyCommands
     **/
     queueKeyCommands: {
-//        'backspace': {fn: '_clearCommandQueue', allowDefault: true},
-//        'delete'   : {fn: '_clearCommandQueue', allowDefault: true},
         'down'     : {fn: '_clearCommandQueue', allowDefault: true},
         'end'      : {fn: '_clearCommandQueue', allowDefault: true},
-//        'enter'    : {fn: '_clearCommandQueue', allowDefault: true},
         'esc'      : {fn: '_clearCommandQueue', allowDefault: true},
         'home'     : {fn: '_clearCommandQueue', allowDefault: true},
         'left'     : {fn: '_clearCommandQueue', allowDefault: true},
@@ -90,8 +85,8 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
 
         this._queueEvents = [
             container.delegate('keypress', this._onKeyPress, this.selectors.input, this),
-            Y.Do.before(this._queueBeforeExecStyleCommand, this, '_execStyleCommand', this),
-            Y.Do.before(this._queueBeforeQueryCommandValue, this, '_queryCommandValue', this)
+            Y.Do.before(this._queueDoBeforeCommand, this, 'command', this),
+            Y.Do.before(this._queueDoBeforeQuery, this, 'query', this)
         ];
     },
 
@@ -132,8 +127,11 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
             return;
         }
 
-        Y.Object.each(this._commandQueue, function(value, cmd) {
-            delete this._commandQueue[cmd];
+        // need to create a copy because the commandQueue
+        // will be flushed after the first command is executed
+        var queue = Y.merge(this._commandQueue);
+
+        Y.Object.each(queue, function(value, cmd) {
             this.command(cmd, value);
         }, this);
 
@@ -148,25 +146,19 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     @protected
     **/
     _queueCommand: function(name, value) {
+        var command = this.commands[name];
+
         if (!this._commandQueue) {
             this._commandQueue = {};
-
-            // seed the command queue with existing styles
-            Y.Object.each(this.styles(), function(val, name) {
-                if (this.boolCommands[name]) {
-                    // convert boolean commands to their literal value
-                    val = val ? this.styleCommands[name].value : '';
-                }
-
-                this._commandQueue[name] = val;
-            }, this);
         }
 
-        if (this.boolCommands[name] && 'toggle' === value) {
-            value = this._commandQueue[name] ? '' : this.styleCommands[name].value;
+        if (command.boolean) {
+            value = this._commandQueue[name] ? '' : command.style.value;
         }
 
         this._commandQueue[name] = value;
+
+        return value;
     },
 
 
@@ -179,24 +171,20 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     @protected
     **/
     _onKeyPress: function(e) {
-        var range = this.selection.range(),
-            wrapperNode;
+        var selection = this.selection,
+            range = selection.range(),
+            node;
 
         if (range.shrink().isCollapsed() && this._commandQueue) {
             e.preventDefault();
 
-            wrapperNode = range.insertNode(Y.Node.create(STYLENODE));
-            wrapperNode.set('text', String.fromCharCode(e.charCode));
+            node = range.insertNode(Y.Node.create(String.fromCharCode(e.charCode)));
 
-            range.selectNode(wrapperNode);
-
-            this.selection.select(range);
+            selection.select(range.selectNode(node));
 
             this._flushCommandQueue();
 
-            range = this.selection.range().shrink().collapse();
-
-            this.selection.select(range);
+            selection.select(range.selectNode(node).shrink().collapse());
         } else {
             this._clearCommandQueue();
         }
@@ -211,12 +199,20 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     @param {Boolean|String} value Command value.
     @protected
     **/
-    _queueBeforeExecStyleCommand: function (name, value) {
-        var range = this.selection.range();
+    _queueDoBeforeCommand: function (name, value) {
+        var styleCmd = this.styleCommands[name],
+            range, ret;
 
-        if (range && range.isCollapsed()) {
-            this._queueCommand(name, value);
-            return new Y.Do.Halt('Editor.queue prevented _execStyleCommand');
+        if (styleCmd && 'block' !== styleCmd.type) {
+            range = this.selection.range();
+
+            if (range && range.isCollapsed()) {
+                ret = this._queueCommand(name, value);
+                this._updateSelection({force: true});
+                return new Y.Do.Halt('Editor.Queue prevented command', ret);
+            }
+        } else {
+            this._clearCommandQueue();
         }
     },
 
@@ -224,19 +220,20 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     /**
     Wrapper for `Editor.Base#_queryCommandValue()`.
 
-    @method _queueBeforeQueryCommandValue
+    @method _queueDoBeforeQueryCommandValue
     @param {String} name Command name.
     @protected
     **/
-    _queueBeforeQueryCommandValue: function (name) {
-        var cmd = this._commandQueue && this._commandQueue[name];
+    _queueDoBeforeQuery: function (name) {
+        var qCmd = this._commandQueue && this._commandQueue[name],
+            styleCmd = this.styleCommands[name];
 
-        if (Y.Lang.isValue(cmd)) { // because cmd could be ''
-            if (this.boolCommands[name]) {
-                cmd = cmd === this.styleCommands[name].value;
+        if (styleCmd && Y.Lang.isValue(qCmd)) { // because qCmd could be ''
+            if (styleCmd.boolean) {
+                qCmd = qCmd === styleCmd.style.value;
             }
 
-            return new Y.Do.Halt('Editor.Queue prevented _queryCommandValue', cmd);
+            return new Y.Do.Halt('Editor.Queue prevented query', qCmd);
         }
     }
 });
