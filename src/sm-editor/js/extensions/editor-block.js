@@ -34,7 +34,7 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
         @param {Function|String} [queryFn]
     **/
     blockCommands: {
-        delete: {
+        'delete': {
             commandFn: '_delete'
         },
 
