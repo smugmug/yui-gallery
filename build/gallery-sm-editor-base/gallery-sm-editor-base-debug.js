@@ -21,7 +21,8 @@ but no undo stack, keyboard shortcuts, etc.
 **/
 
 var doc          = Y.config.doc,
-    getClassName = Y.ClassNameManager.getClassName;
+    getClassName = Y.ClassNameManager.getClassName,
+    EDOM = Y.Editor.DOM;
 
 /**
 Fired after this editor loses focus.
@@ -89,23 +90,17 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     **/
 
     /**
-    Hash of boolean commands supported by this editor. A boolean command is
-    one that does not require a value. Executing this command will toggle
-    the currently set value.
+    Hash of commands supported by this editor.
 
-    Names should correspond with valid `execCommand()` command names.
+    Names should correspond with valid `execCommand()` command names. Values
+    are properties in the following format:
 
-    @property {Object} boolCommands
+    @property {Object} commands
+        @param {Function|String} commandFn
+        @param {Function|String} [queryFn]
     **/
-    boolCommands: {
-        bold     : true,
-        italic   : true,
-        underline: true,
-        justifyCenter: true,
-        justifyFull: true,
-        justifyLeft: true,
-        justifyRight: true
-    },
+    commands: {},
+
 
     supportedTags: 'a, br, div, p, span',
 
@@ -156,34 +151,37 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
     @method command
     @param {String|Function} name Command name.
-    @param {*} [value*] Command value. Use the special value 'toggle' to toggle a
-        boolean command (like 'bold') to the opposite of its current state.
+    @param {*} [value*]
     @return {*} Value of the specified command.
     **/
-    command: function (name, value) {
-        this.focus();
+    command: function (name) {
+        var command, ret,
+            fn = name,
+            args = Y.Array(arguments, 1, true);
 
-        this._execCommand(name, value);
+        if ('string' === typeof fn) {
+            command = this.commands[fn];
 
-        this._updateSelection({force: true});
+            if (command) {
+                fn = command.commandFn;
 
-        return this._queryCommandValue(name);
-    },
+                if (command.style) {
+                    args.unshift(name);
+                }
+            }
 
-    /**
-    Decreases the font size of the current selection (if possible).
-
-    @method decreaseFontSize
-    @chainable
-    **/
-    decreaseFontSize: function () {
-        var newSize = parseInt(this.command('fontSize'), 10) - 1;
-
-        if (newSize > 0) {
-            this.command('fontSize', '' + newSize);
+            fn = this[fn];
         }
 
-        return this;
+        this.focus();
+
+        if ('function' === typeof fn) {
+            ret = fn.apply(this, args);
+
+            this._updateSelection({force: true});
+        }
+
+        return ret || this.query(name);
     },
 
     /**
@@ -195,24 +193,6 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     focus: function () {
         if (this._inputNode) {
             this._inputNode.focus();
-        }
-
-        return this;
-    },
-
-    /**
-    Increases the font size of the current selection (if possible).
-
-    @method increaseFontSize
-    @chainable
-    **/
-    increaseFontSize: function () {
-        var newSize = parseInt(this.command('fontSize'), 10) + 1;
-
-        // currently only webkit supports size 7 (xxx-large), so keep
-        // it under 7 for compatibility
-        if (newSize < 7) {
-            this.command('fontSize', '' + newSize);
         }
 
         return this;
@@ -254,6 +234,40 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     **/
     insertText: function (text) {
         return this.insertHTML(doc.createTextNode(text));
+    },
+
+    /**
+    Gets and/or sets the value of the specified editor command.
+
+    See <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>
+    for a list of possible commands.
+
+    @method query
+    @param {String|Function} name Command name.
+    @return {*} Value of the specified command.
+    **/
+    query: function (name) {
+        var command, ret,
+            fn = name,
+            args = Y.Array(arguments, 0, true);
+
+        if ('string' === typeof fn) {
+            command = this.commands[fn];
+
+            if (command) {
+                fn = command.queryFn;
+            }
+
+            fn = this[fn];
+        }
+
+        this.focus();
+
+        if ('function' === typeof fn) {
+            ret = fn.apply(this, args);
+        }
+
+        return ret;
     },
 
     /**
@@ -336,7 +350,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
     /**
     Wrapper for native the native `execCommand()` that verifies that the command
-    is valid in the current state and normalizes boolean/toggleable values.
+    is valid in the current state
 
     @method _execCommand
     @param {String} name Command name.
@@ -349,16 +363,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
             return;
         }
 
-        if (this.boolCommands[name]) {
-            // Only execute the command if the desired state differs from the
-            // current state, or the desired state is 'toggle', indicating that
-            // the command should be toggled regardless of its current state.
-            if (value === 'toggle' || value !== this._queryCommandValue(name)) {
-                doc.execCommand(name, false, null);
-            }
-        } else {
-            doc.execCommand(name, false, value);
-        }
+        doc.execCommand(name, false, value);
     },
 
     /**
@@ -371,6 +376,53 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     **/
     _getHTML: function (value) {
         return this._rendered ? this._inputNode.getHTML() : value;
+    },
+
+    /**
+    Returns nodes containing any part of the given `range` matching the
+    given `selector`
+
+    @method _getNodes
+    @param {Range} range
+    @param {String} selector
+    @return {NodeList}
+    @protected
+    **/
+    _getNodes: function (range, selector) {
+        var testNode, nodes = [];
+
+        range = range.clone().shrink();
+
+        testNode = range.startNode();
+
+        if (range.isCollapsed()) {
+            if (!EDOM.isTextNode(testNode)) {
+                // the range is collapsed so it will never get traversed. grab
+                // the exact node referenced by startNode/startOffset and work
+                // backwards from there
+                testNode = testNode.get('childNodes').item(range.startOffset());
+            }
+        } else {
+            // traversal will include the startNode, so start off with the
+            // startNodes parent
+            testNode = testNode.get('parentNode');
+        }
+
+        while (testNode && testNode !== this._inputNode && this._inputNode.contains(testNode)) {
+            if (testNode.test(selector)) {
+                nodes.push(testNode);
+            }
+
+            testNode = testNode.get('parentNode');
+        }
+
+        range.traverse(function (node) {
+           if (node.test(selector)) {
+               nodes.push(node);
+           }
+        });
+
+        return Y.all(nodes);
     },
 
     /**
@@ -406,8 +458,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _queryCommandValue: function (name) {
-        return this.boolCommands[name] ?
-            !!doc.queryCommandState(name) : doc.queryCommandValue(name);
+        return doc.queryCommandValue(name);
     },
 
     /**
@@ -688,4 +739,13 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 Y.namespace('Editor').Base = EditorBase;
 
 
-}, '@VERSION@', {"requires": ["base-build", "classnamemanager", "event-focus", "gallery-sm-selection", "view"]});
+}, '@VERSION@', {
+    "requires": [
+        "base-build",
+        "classnamemanager",
+        "event-focus",
+        "gallery-sm-editor-dom",
+        "gallery-sm-selection",
+        "view"
+    ]
+});

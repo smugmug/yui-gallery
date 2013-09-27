@@ -32,32 +32,31 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
     are properties in the following format:
 
     @property {Object} blockCommands
-        @param {String} property The name of the CSS property in camelCase form
-        @param {String} [value] The `on` value of the property. eg. `bold`
+        @param {Function|String} commandFn
+        @param {Function|String} [queryFn]
     **/
     blockCommands: {
+        delete: {
+            commandFn: '_delete'
+        },
+
+        forwardDelete: {
+            commandFn: '_forwardDelete'
+        },
+
         formatBlock: {
-            fn: '_formatBlock'
+            commandFn: '_formatBlock',
+            queryFn: '_queryBlockCommand'
         },
 
         heading: {
-            fn: '_formatBlock'
+            commandFn: '_formatBlock',
+            queryFn: '_queryBlockCommand'
         },
 
-        justify: {
-            property: 'textAlign'
-        },
-
-        justifyCenter: {
-            fn: 'justifyCenter'
-        },
-
-        justifyLeft: {
-            fn: 'justifyLeft'
-        },
-
-        justifyRight: {
-            fn: 'justifyRight'
+        insertParagraph: {
+            commandFn: '_insertReturn',
+            queryFn: '_queryBlockCommand'
         }
     },
 
@@ -68,14 +67,14 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
     @property {Object} styleKeyCommands
     **/
     blockKeyCommands: {
-        'alt+c':       {fn: 'justifyCenter', allowDefault: false, async: false},
-        'alt+l':       {fn: 'justifyLeft', allowDefault: false, async: false},
-        'alt+r':       {fn: 'justifyRight', allowDefault: false, async: false},
-        'alt+h':       {fn: '_heading', allowDefault: false, async: false},
-        'backspace':   {fn: '_delete', allowDefault: true},
-        'delete':      {fn: '_delete', allowDefault: true},
-        'enter':       {fn: '_insertReturn', allowDefault: false, async: false},
-        'shift+enter': {fn: '_insertBreak', allowDefault: false, async: false}
+        'alt+c':       'justifyCenter',
+        'alt+f':       'justifyFull',
+        'alt+l':       'justifyLeft',
+        'alt+r':       'justifyRight',
+        'backspace':   'delete',
+        'delete':      'forwardDelete',
+        'enter':       'insertParagraph',
+        'shift+enter': 'insertBreak'
     },
 
 
@@ -91,6 +90,8 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
     // -- Lifecycle ------------------------------------------------------------
 
     initializer: function () {
+        this.commands = Y.merge(this.commands, this.blockCommands);
+
         if (this.supportedTags) {
             this.supportedTags += ',' + this.blockTags;
         } else {
@@ -110,26 +111,6 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
     },
 
 
-    // -- Public Methods -------------------------------------------------------
-
-    justifyCenter: function () {
-        this.command('justify', 'center');
-        return this;
-    },
-
-
-    justifyLeft: function () {
-        this.command('justify', 'left');
-        return this;
-    },
-
-
-    justifyRight: function () {
-        this.command('justify', 'right');
-        return this;
-    },
-
-
     // -- Protected Methods ----------------------------------------------------
 
     /**
@@ -144,7 +125,6 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
         }
 
         this._blockEvents = [
-            Y.Do.before(this._blockBeforeExecCommand, this, '_execCommand', this),
             this.on('selectionChange', this._blockOnSelectionChange, this)
         ];
     },
@@ -174,17 +154,16 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
         <h1>foobar</h1>
 
     @method _delete
-    @param {EventFacade} e
-    @param {array} combo
+    @param {String} [direction=back] `forward` for a forward delete,
+    `back` for a backspace
     @protected
     **/
-    _delete: function (e, combo) {
+    _delete: function (direction) {
         var selection = this.selection,
             range = selection.range(),
-            direction = 'backspace' === combo[0] ? 'start' : 'end',
             block, compRange;
 
-        this._clearCommandQueue();
+        direction = 'forward' === direction ? 'end' : 'start';
 
         range.deleteContents();
 
@@ -210,7 +189,6 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
             if (0 === range.compare(compRange, {myPoint: direction, otherPoint: direction})) {
                 // at the start or end of a block and we are deleting across
                 // blocks.  prevent the default delete action and do our magic
-                e && e.preventDefault();
 
                 var fromNode, toNode, childNodes, startNode;
 
@@ -231,6 +209,12 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
 
                     range.startNode(startNode, 0);
                 }
+            } else {
+                if ('start' === direction) {
+                    this._execCommand('delete');
+                } else {
+                    this._execCommand('forwardDelete');
+                }
             }
 
             // very important to collapse the range here. Firefox freaks out a
@@ -240,10 +224,6 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
         }
 
         selection.select(range);
-
-        // Y.later so the default delete action can run if we didn't
-        // end up preventing it
-        Y.later(0, this, this._updateSelection, {force: true});
     },
 
 
@@ -262,43 +242,11 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
 
 
     /**
-    @method _execBlockCommand
-    @param {String} name
-    @param {Function|Number|String} value
-    @protected
-    **/
-    _execBlockCommand: function (name, value) {
-        var command = this.blockCommands[name],
-            range = this.selection.range(),
-            blocks, fn;
+    Replaces block elements containing the current selection with elements
+    of the given `tag`
 
-        if (!range || !command) {
-            return;
-        }
-
-        blocks = this._getNodes(range, this.blockTags);
-
-        if (0 === blocks.size()) {
-            return;
-        }
-
-        fn = command.fn;
-
-        if ('string' === typeof fn) {
-            fn = this[fn];
-        }
-
-        fn && fn.call(this, value);
-
-        if (command.property) {
-            blocks.setStyle(command.property, value);
-        }
-    },
-
-
-    /**
     @method _formatBlock
-    @param {String} tag
+    @param {String} tag The new block element tag
     @protected
     **/
     _formatBlock: function (tag) {
@@ -315,6 +263,12 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
                 var newNode = Y.Node.create(tag);
 
                 newNode.insert(node.get('childNodes'));
+
+                EDOM.copyStyles(node, newNode, this.supportedStyles, {
+                    explicit: true,
+                    overwrite: false
+                });
+
                 node.replace(newNode).remove(true);
 
                 nodes.push(newNode);
@@ -332,50 +286,13 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
 
 
     /**
-    Returns nodes containing any part of the given `range` matching the
-    given `selector`
+    Performs a forward delete from the current cursor position
 
-    @method _getNodes
-    @param {Range} range
-    @param {String} selector
-    @return {NodeList}
+    @method _forwardDelete
     @protected
     **/
-    _getNodes: function (range, selector) {
-        var testNode, blockNodes = [];
-
-        range = range.clone().shrink();
-
-        testNode = range.startNode();
-
-        if (range.isCollapsed()) {
-            if (!EDOM.isTextNode(testNode)) {
-                // the range is collapsed so it will never get traversed. grab
-                // the exact node referenced by startNode/startOffset and work
-                // backwards from there
-                testNode = testNode.get('childNodes').item(range.startOffset());
-            }
-        } else {
-            // traversal will include the startNode, so start off with the
-            // startNodes parent
-            testNode = testNode.get('parentNode');
-        }
-
-        while (testNode && testNode !== this._inputNode && this._inputNode.contains(testNode)) {
-            if (testNode.test(selector)) {
-                blockNodes.push(testNode);
-            }
-
-            testNode = testNode.get('parentNode');
-        }
-
-        range.traverse(function (node) {
-           if (node.test(selector)) {
-               blockNodes.push(node);
-           }
-        });
-
-        return Y.all(blockNodes);
+    _forwardDelete: function() {
+        return this._delete('forward');
     },
 
 
@@ -385,7 +302,7 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
     @method _insertBreak
     @protected
     **/
-    _insertBreak: function () {
+    insertBreak: function () {
         var br = this.insertHTML('<br>');
 
         if (!br.get('nextSibling') || '' === br.get('nextSibling').get('text')) {
@@ -395,8 +312,21 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
 
 
     /**
-    Inserts a `return` at the current selection point. Depending on the
-    current selection, the `return` may split block nodes
+    Inserts a `return` at the current selection point.
+
+    Any content contained by the range is deleted, resulting in a collapsed range.
+
+    If the range is at the start of a block, a duplicate, empty block is
+    inserted as the previous sibling of current block. The range is positioned
+    at the beginning of the new block
+
+    If the range is at the end of a block, a new `<p>` element is created as
+    the next sibling of the current block. The range is positioned at the start
+    of the new block.
+
+    If the range is in the middle of a block, the block will be split at the
+    current position. The range will be positioned at the beginning of the new
+    block.
 
     @method _insertReturn
     @protected
@@ -448,6 +378,28 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
     },
 
 
+    /**
+    Default query function for block elements
+
+    @method _queryBlockCommand
+    @return {NodeList} A nodelist of the block nodes containing the range
+    @protected
+     */
+    _queryBlockCommand: function() {
+        return this._getNodes(this.selection.range(), this.blockTags);
+    },
+
+
+    /**
+    Splits elements after the given range until a node matching the
+    given `selector` is reached.
+
+    @method _splitRange
+    @param {Range} range
+    @param {String} selector
+    @return {Node} The node created after splitting
+    @protected
+    **/
     _splitRange: function (range, selector) {
         var endNode, endOffset;
 
@@ -471,26 +423,13 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
         return endOffset;
     },
 
+
     // -- Protected Event Handlers ---------------------------------------------
 
     /**
-    AOP wrapper for `Editor.Base#_execCommand()`.
-
-    @method _blockBeforeExecCommand
-    @param {String} name Command name.
-    @param {Boolean|String} value Command value.
-    @protected
-    **/
-    _blockBeforeExecCommand: function (name, value) {
-        if (this.blockCommands[name]) {
-            var ret = this._execBlockCommand(name, value);
-            return new Y.Do.Halt('Editor.Block prevented _execCommand', ret);
-        }
-    },
-
-
-    /**
     Event handler for the selection `change` event
+
+    Creates a default `block` if none exists for the current selection
 
     @method _blockOnSelectionChange
     @param {EventFacade} e
