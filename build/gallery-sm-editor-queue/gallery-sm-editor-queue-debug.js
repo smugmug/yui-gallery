@@ -154,7 +154,7 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
             this._commandQueue = {};
         }
 
-        if (command.boolean) {
+        if (command.style && Y.Lang.isValue(command.style.value)) {
             value = this._commandQueue[name] ? '' : command.style.value;
         }
 
@@ -231,7 +231,7 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
             styleCmd = this.styleCommands[name];
 
         if (styleCmd && Y.Lang.isValue(qCmd)) { // because qCmd could be ''
-            if (styleCmd.boolean) {
+            if (Y.Lang.isValue(styleCmd.style.value)) {
                 qCmd = qCmd === styleCmd.style.value;
             }
 

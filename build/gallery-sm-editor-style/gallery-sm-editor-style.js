@@ -34,7 +34,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     are properties in the following format:
 
     @property {Object} styleCommands
-        @param {Boolean} [boolean=false]
         @param {Function|String} commandFn
         @param {Function|String} [queryFn]
         @param {Object} style
@@ -45,7 +44,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     **/
     styleCommands: {
         bold: {
-            boolean: true,
             commandFn: '_execStyleCommand',
             queryFn: '_queryStyleCommand',
             style: {
@@ -71,7 +69,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         },
 
         italic: {
-            boolean: true,
             commandFn: '_execStyleCommand',
             queryFn: '_queryStyleCommand',
             style: {
@@ -81,7 +78,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         },
 
         justifyCenter: {
-            boolean: true,
             commandFn: '_execStyleCommand',
             queryFn: '_queryStyleCommand',
             style: {
@@ -92,7 +88,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         },
 
         justifyFull: {
-            boolean: true,
             commandFn: '_execStyleCommand',
             queryFn: '_queryStyleCommand',
             style: {
@@ -103,7 +98,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         },
 
         justifyLeft: {
-            boolean: true,
             commandFn: '_execStyleCommand',
             queryFn: '_queryStyleCommand',
             style: {
@@ -114,7 +108,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         },
 
         justifyRight: {
-            boolean: true,
             commandFn: '_execStyleCommand',
             queryFn: '_queryStyleCommand',
             style: {
@@ -125,7 +118,6 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         },
 
         strikeThrough: {
-            boolean: true,
             commandFn: '_execStyleCommand',
             queryFn: '_queryStyleCommand',
             style: {
@@ -135,9 +127,8 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         },
 
         underline: {
-            boolean: true,
-            command: '_execStyleCommand',
-            query: '_queryStyleCommand',
+            commandFn: '_execStyleCommand',
+            queryFn: '_queryStyleCommand',
             style: {
                 property: 'textDecoration',
                 value: 'underline'
@@ -258,7 +249,7 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         // dont use getStyle blah blah
         style = styleNodes.item(0)._node.style[command.style.property];
 
-        if (command.boolean) {
+        if (Y.Lang.isValue(command.style.value)) {
             if (style && style === command.style.value) {
                 style = '';
             } else {
@@ -509,7 +500,7 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
                 value = values[0];
             }
 
-            if (command.boolean) {
+            if (Y.Lang.isValue(command.style.value)) {
                 value = (value == command.style.value);
             } else if ('' === value) {
                 value = null;
