@@ -624,16 +624,21 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _onFocus: function () {
-        var self = this;
+        var self = this,
+            selection = this.selection,
+            range;
 
         if (!this._rendered) {
             return;
         }
 
         // restore the previously selected range
-        if (this._selectedRange) {
-            this.selection.select(this._selectedRange);
+        if (!(range = this._selectedRange)) {
+            range = new Y.Range();
+            range.selectNode(this._inputNode).collapse({toStart: true});
         }
+
+        selection.select(range);
 
         this._updateSelection();
 
