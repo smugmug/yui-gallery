@@ -439,7 +439,7 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
         var range = e.range,
             startNode;
 
-        if (!range.isCollapsed()) {
+        if (!range || !range.isCollapsed()) {
             return;
         }
 
