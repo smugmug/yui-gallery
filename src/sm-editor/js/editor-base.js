@@ -300,8 +300,6 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         this._inputNode = inputNode;
         this._rendered  = true;
 
-        this._updateSelection({silent: true});
-
         this.fire(EVT_RENDER);
 
         return this;
@@ -632,7 +630,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
             return;
         }
 
-        // restore the previously selected range
+        // restore the previously selected range, or create a new range
         if (!(range = this._selectedRange)) {
             range = new Y.Range();
             range.selectNode(this._inputNode).collapse({toStart: true});
