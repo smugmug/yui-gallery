@@ -26,6 +26,12 @@
             ]
         },
 
+        "gallery-sm-editor-format": {
+            "jsfiles": [
+                "js/extensions/editor-format.js"
+            ]
+        },
+
         "gallery-sm-editor-keys": {
             "jsfiles": [
                 "js/extensions/editor-keys.js"

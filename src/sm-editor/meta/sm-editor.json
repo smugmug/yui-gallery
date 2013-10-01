@@ -3,6 +3,7 @@
         "requires": [
             "gallery-sm-editor-base",
             "gallery-sm-editor-block",
+            "gallery-sm-editor-format",
             "gallery-sm-editor-keys",
             "gallery-sm-editor-link",
             "gallery-sm-editor-queue",
@@ -41,6 +42,12 @@
     },
 
     "gallery-sm-editor-keys": {
+        "requires": [
+            "gallery-sm-editor-base"
+        ]
+    },
+
+    "gallery-sm-editor-format": {
         "requires": [
             "gallery-sm-editor-base"
         ]
