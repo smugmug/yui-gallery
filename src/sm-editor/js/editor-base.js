@@ -97,7 +97,15 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         @param {Function|String} commandFn
         @param {Function|String} [queryFn]
     **/
-    commands: {},
+    commands: {
+        insertHTML: {
+            commandFn: '_insertHTML'
+        },
+
+        insertText: {
+            commandFn: '_insertText'
+        }
+    },
 
 
     supportedTags: 'a, br, div, p, span',
@@ -134,7 +142,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @chainable
     **/
     blur: function () {
-        if (this._inputNode) {
+        if (this._rendered) {
             this._inputNode.blur();
         }
 
@@ -189,49 +197,11 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @chainable
     **/
     focus: function () {
-        if (this._inputNode) {
+        if (this._rendered) {
             this._inputNode.focus();
         }
 
         return this;
-    },
-
-    /**
-    Inserts the specified _html_ at the current selection point, deleting the
-    current selection if there is one.
-
-    @method insertHTML
-    @param {HTML|HTMLElement|Node} html HTML to insert, in the form of an HTML
-        string, HTMLElement, or Node instance.
-    @return {Node} Node instance representing the inserted HTML.
-    **/
-    insertHTML: function (html) {
-        var node      = typeof html === 'string' ? Y.Node.create(html) : html,
-            selection = this.selection,
-            range     = selection.range();
-
-        if (!range) {
-            return;
-        }
-
-        node = range.deleteContents().insertNode(node);
-        range.collapse();
-
-        selection.select(range);
-
-        return node;
-    },
-
-    /**
-    Inserts the specified plain _text_ at the current selection point, deleting
-    the current selection if there is one.
-
-    @method insertText
-    @param {String} text Text to insert.
-    @return {Node} Node instance representing the inserted text node.
-    **/
-    insertText: function (text) {
-        return this.insertHTML(doc.createTextNode(text));
     },
 
     /**
@@ -434,6 +404,37 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     },
 
     /**
+    Inserts the specified _html_ at the current selection point, deleting the
+    current selection if there is one.
+
+    @method _insertHTML
+    @param {HTML|HTMLElement|Node} html HTML to insert, in the form of an HTML
+        string, HTMLElement, or Node instance.
+    @return {Node} Node instance representing the inserted HTML.
+    **/
+    _insertHTML: function (html) {
+        var node      = typeof html === 'string' ? Y.Node.create(html) : html,
+            selection = this.selection,
+            range     = selection.range();
+
+        if (!range) {
+            return;
+        }
+
+        // expanding the range before deleting contents makes sure
+        // the entire node is deleted, if possible.
+        range.expand({stopAt: this._inputNode});
+
+        node = range.deleteContents().insertNode(node);
+
+        range.collapse();
+
+        selection.select(range);
+
+        return node;
+    },
+
+    /**
     Inserts a `<span>` at the current selection point containing a preformatted
     tab character.
 
@@ -441,7 +442,19 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _insertTab: function () {
-        this.insertHTML('<span style="white-space:pre;">\t</span>');
+        this._insertHTML('<span style="white-space:pre;">\t</span>');
+    },
+
+    /**
+    Inserts the specified plain _text_ at the current selection point, deleting
+    the current selection if there is one.
+
+    @method insertText
+    @param {String} text Text to insert.
+    @return {Node} Node instance representing the inserted text node.
+    **/
+    _insertText: function (text) {
+        return this._insertHTML(doc.createTextNode(text));
     },
 
     /**
@@ -658,38 +671,11 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     **/
     _onPaste: function (e) {
         var clipboard = e._event.clipboardData || win.clipboardData,
-            contents = clipboard.getData('text'),
-            selection = this.selection,
-            range = selection.range();
+            contents = clipboard.getData('text');
 
         e.preventDefault();
 
-        // treat pasted content as plain text, until we can do better client
-        // side sanitization.
-
-        // convert unescaped html to nodes, then extract the text into a text node.
-        //
-        // `<div>foo</div> <div>bar</div>`
-        //
-        // will result in a text node:
-        //
-        // `foo bar`
-        contents = Y.Node.create(contents); // document-fragment
-        contents = doc.createTextNode(contents.get('text'));
-
-        if (!range.isCollapsed()) {
-            // expanding the range before deleting contents makes sure
-            // the entire node is deleted, if possible.
-            range.expand({stopAt: this._inputNode});
-
-            range.deleteContents();
-        }
-
-        range.insertNode(contents);
-
-        selection.select(range.collapse());
-
-        this._updateSelection({force: true});
+        this.command('insertText', contents);
     }
 }, {
     ATTRS: {
