@@ -27,7 +27,8 @@ Y.Editor = Y.mix(
         Y.Editor.Link,
         Y.Editor.Queue,
         Y.Editor.Block,
-        Y.Editor.Style
+        Y.Editor.Style,
+        Y.Editor.Format
 //        Y.Editor.Undo
     ], {}),
     Y.Editor
@@ -38,6 +39,7 @@ Y.Editor = Y.mix(
     "requires": [
         "gallery-sm-editor-base",
         "gallery-sm-editor-block",
+        "gallery-sm-editor-format",
         "gallery-sm-editor-keys",
         "gallery-sm-editor-link",
         "gallery-sm-editor-queue",

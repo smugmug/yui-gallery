@@ -54,6 +54,10 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
             queryFn: '_queryBlockCommand'
         },
 
+        insertBreak: {
+            commandFn: '_insertBreak'
+        },
+
         insertParagraph: {
             commandFn: '_insertReturn',
             queryFn: '_queryBlockCommand'
@@ -302,11 +306,11 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
     @method _insertBreak
     @protected
     **/
-    insertBreak: function () {
-        var br = this.insertHTML('<br>');
+    _insertBreak: function () {
+        var br = this._insertHTML('<br>');
 
         if (!br.get('nextSibling') || '' === br.get('nextSibling').get('text')) {
-            this.insertHTML('<br>');
+            this._insertHTML('<br>');
         }
     },
 

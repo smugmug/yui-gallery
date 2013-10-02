@@ -1,6 +1,622 @@
-if (typeof __coverage__ === 'undefined') { __coverage__ = {}; }
-if (!__coverage__['build/gallery-sm-editor-block/gallery-sm-editor-block.js']) {
-   __coverage__['build/gallery-sm-editor-block/gallery-sm-editor-block.js'] = {"path":"build/gallery-sm-editor-block/gallery-sm-editor-block.js","s":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0,"57":0,"58":0,"59":0,"60":0,"61":0,"62":0,"63":0,"64":0,"65":0,"66":0,"67":0,"68":0,"69":0,"70":0,"71":0,"72":0,"73":0,"74":0,"75":0,"76":0,"77":0,"78":0,"79":0,"80":0,"81":0,"82":0,"83":0,"84":0,"85":0,"86":0,"87":0,"88":0,"89":0,"90":0,"91":0,"92":0,"93":0,"94":0,"95":0,"96":0,"97":0,"98":0,"99":0,"100":0,"101":0,"102":0,"103":0,"104":0},"b":{"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0],"12":[0,0],"13":[0,0],"14":[0,0],"15":[0,0],"16":[0,0],"17":[0,0],"18":[0,0],"19":[0,0],"20":[0,0],"21":[0,0],"22":[0,0],"23":[0,0],"24":[0,0],"25":[0,0],"26":[0,0],"27":[0,0]},"f":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0},"fnMap":{"1":{"name":"(anonymous_1)","line":1,"loc":{"start":{"line":1,"column":35},"end":{"line":1,"column":54}}},"2":{"name":"(anonymous_2)","line":21,"loc":{"start":{"line":21,"column":1},"end":{"line":21,"column":13}}},"3":{"name":"(anonymous_3)","line":92,"loc":{"start":{"line":92,"column":17},"end":{"line":92,"column":29}}},"4":{"name":"(anonymous_4)","line":109,"loc":{"start":{"line":109,"column":16},"end":{"line":109,"column":28}}},"5":{"name":"(anonymous_5)","line":122,"loc":{"start":{"line":122,"column":24},"end":{"line":122,"column":36}}},"6":{"name":"(anonymous_6)","line":161,"loc":{"start":{"line":161,"column":13},"end":{"line":161,"column":34}}},"7":{"name":"(anonymous_7)","line":236,"loc":{"start":{"line":236,"column":24},"end":{"line":236,"column":36}}},"8":{"name":"(anonymous_8)","line":252,"loc":{"start":{"line":252,"column":18},"end":{"line":252,"column":33}}},"9":{"name":"(anonymous_9)","line":262,"loc":{"start":{"line":262,"column":55},"end":{"line":262,"column":71}}},"10":{"name":"(anonymous_10)","line":294,"loc":{"start":{"line":294,"column":20},"end":{"line":294,"column":31}}},"11":{"name":"(anonymous_11)","line":305,"loc":{"start":{"line":305,"column":17},"end":{"line":305,"column":29}}},"12":{"name":"(anonymous_12)","line":334,"loc":{"start":{"line":334,"column":19},"end":{"line":334,"column":31}}},"13":{"name":"(anonymous_13)","line":388,"loc":{"start":{"line":388,"column":24},"end":{"line":388,"column":35}}},"14":{"name":"(anonymous_14)","line":403,"loc":{"start":{"line":403,"column":17},"end":{"line":403,"column":44}}},"15":{"name":"(anonymous_15)","line":438,"loc":{"start":{"line":438,"column":29},"end":{"line":438,"column":42}}}},"statementMap":{"1":{"start":{"line":1,"column":0},"end":{"line":466,"column":3}},"2":{"start":{"line":21,"column":0},"end":{"line":456,"column":5}},"3":{"start":{"line":23,"column":0},"end":{"line":23,"column":24}},"4":{"start":{"line":25,"column":0},"end":{"line":452,"column":3}},"5":{"start":{"line":93,"column":8},"end":{"line":93,"column":67}},"6":{"start":{"line":95,"column":8},"end":{"line":99,"column":9}},"7":{"start":{"line":96,"column":12},"end":{"line":96,"column":55}},"8":{"start":{"line":98,"column":12},"end":{"line":98,"column":48}},"9":{"start":{"line":101,"column":8},"end":{"line":103,"column":9}},"10":{"start":{"line":102,"column":12},"end":{"line":102,"column":80}},"11":{"start":{"line":105,"column":8},"end":{"line":105,"column":34}},"12":{"start":{"line":110,"column":8},"end":{"line":110,"column":34}},"13":{"start":{"line":123,"column":8},"end":{"line":125,"column":9}},"14":{"start":{"line":124,"column":12},"end":{"line":124,"column":19}},"15":{"start":{"line":127,"column":8},"end":{"line":129,"column":10}},"16":{"start":{"line":162,"column":8},"end":{"line":164,"column":29}},"17":{"start":{"line":166,"column":8},"end":{"line":166,"column":62}},"18":{"start":{"line":168,"column":8},"end":{"line":168,"column":31}},"19":{"start":{"line":170,"column":8},"end":{"line":183,"column":9}},"20":{"start":{"line":172,"column":12},"end":{"line":172,"column":80}},"21":{"start":{"line":174,"column":12},"end":{"line":176,"column":13}},"22":{"start":{"line":175,"column":16},"end":{"line":175,"column":50}},"23":{"start":{"line":178,"column":12},"end":{"line":178,"column":98}},"24":{"start":{"line":182,"column":12},"end":{"line":182,"column":66}},"25":{"start":{"line":185,"column":8},"end":{"line":224,"column":9}},"26":{"start":{"line":186,"column":12},"end":{"line":186,"column":42}},"27":{"start":{"line":187,"column":12},"end":{"line":187,"column":109}},"28":{"start":{"line":189,"column":12},"end":{"line":218,"column":13}},"29":{"start":{"line":193,"column":16},"end":{"line":193,"column":60}},"30":{"start":{"line":195,"column":16},"end":{"line":201,"column":17}},"31":{"start":{"line":196,"column":20},"end":{"line":196,"column":37}},"32":{"start":{"line":197,"column":20},"end":{"line":197,"column":46}},"33":{"start":{"line":199,"column":20},"end":{"line":199,"column":44}},"34":{"start":{"line":200,"column":20},"end":{"line":200,"column":35}},"35":{"start":{"line":203,"column":16},"end":{"line":211,"column":17}},"36":{"start":{"line":204,"column":20},"end":{"line":204,"column":60}},"37":{"start":{"line":205,"column":20},"end":{"line":205,"column":51}},"38":{"start":{"line":207,"column":20},"end":{"line":207,"column":46}},"39":{"start":{"line":208,"column":20},"end":{"line":208,"column":42}},"40":{"start":{"line":210,"column":20},"end":{"line":210,"column":50}},"41":{"start":{"line":213,"column":16},"end":{"line":217,"column":17}},"42":{"start":{"line":214,"column":20},"end":{"line":214,"column":48}},"43":{"start":{"line":216,"column":20},"end":{"line":216,"column":55}},"44":{"start":{"line":223,"column":12},"end":{"line":223,"column":44}},"45":{"start":{"line":226,"column":8},"end":{"line":226,"column":32}},"46":{"start":{"line":237,"column":8},"end":{"line":240,"column":9}},"47":{"start":{"line":238,"column":12},"end":{"line":238,"column":58}},"48":{"start":{"line":239,"column":12},"end":{"line":239,"column":37}},"49":{"start":{"line":253,"column":8},"end":{"line":253,"column":39}},"50":{"start":{"line":255,"column":8},"end":{"line":284,"column":9}},"51":{"start":{"line":256,"column":12},"end":{"line":256,"column":34}},"52":{"start":{"line":258,"column":12},"end":{"line":260,"column":27}},"53":{"start":{"line":262,"column":12},"end":{"line":275,"column":21}},"54":{"start":{"line":263,"column":16},"end":{"line":263,"column":49}},"55":{"start":{"line":265,"column":16},"end":{"line":265,"column":55}},"56":{"start":{"line":267,"column":16},"end":{"line":270,"column":19}},"57":{"start":{"line":272,"column":16},"end":{"line":272,"column":51}},"58":{"start":{"line":274,"column":16},"end":{"line":274,"column":36}},"59":{"start":{"line":278,"column":12},"end":{"line":278,"column":38}},"60":{"start":{"line":279,"column":12},"end":{"line":279,"column":47}},"61":{"start":{"line":280,"column":12},"end":{"line":280,"column":49}},"62":{"start":{"line":281,"column":12},"end":{"line":281,"column":53}},"63":{"start":{"line":283,"column":12},"end":{"line":283,"column":36}},"64":{"start":{"line":295,"column":8},"end":{"line":295,"column":39}},"65":{"start":{"line":306,"column":8},"end":{"line":306,"column":41}},"66":{"start":{"line":308,"column":8},"end":{"line":310,"column":9}},"67":{"start":{"line":309,"column":12},"end":{"line":309,"column":36}},"68":{"start":{"line":335,"column":8},"end":{"line":337,"column":40}},"69":{"start":{"line":339,"column":8},"end":{"line":339,"column":31}},"70":{"start":{"line":343,"column":8},"end":{"line":343,"column":62}},"71":{"start":{"line":348,"column":8},"end":{"line":350,"column":9}},"72":{"start":{"line":349,"column":12},"end":{"line":349,"column":55}},"73":{"start":{"line":352,"column":8},"end":{"line":352,"column":38}},"74":{"start":{"line":353,"column":8},"end":{"line":353,"column":87}},"75":{"start":{"line":354,"column":8},"end":{"line":354,"column":70}},"76":{"start":{"line":356,"column":8},"end":{"line":367,"column":9}},"77":{"start":{"line":359,"column":12},"end":{"line":359,"column":73}},"78":{"start":{"line":360,"column":15},"end":{"line":367,"column":9}},"79":{"start":{"line":363,"column":12},"end":{"line":363,"column":60}},"80":{"start":{"line":366,"column":12},"end":{"line":366,"column":60}},"81":{"start":{"line":371,"column":8},"end":{"line":373,"column":9}},"82":{"start":{"line":372,"column":12},"end":{"line":372,"column":34}},"83":{"start":{"line":375,"column":8},"end":{"line":375,"column":66}},"84":{"start":{"line":377,"column":8},"end":{"line":377,"column":32}},"85":{"start":{"line":389,"column":8},"end":{"line":389,"column":70}},"86":{"start":{"line":404,"column":8},"end":{"line":404,"column":31}},"87":{"start":{"line":406,"column":8},"end":{"line":406,"column":34}},"88":{"start":{"line":407,"column":8},"end":{"line":407,"column":38}},"89":{"start":{"line":409,"column":8},"end":{"line":412,"column":9}},"90":{"start":{"line":410,"column":12},"end":{"line":410,"column":55}},"91":{"start":{"line":411,"column":12},"end":{"line":411,"column":50}},"92":{"start":{"line":414,"column":8},"end":{"line":417,"column":9}},"93":{"start":{"line":415,"column":12},"end":{"line":415,"column":55}},"94":{"start":{"line":416,"column":12},"end":{"line":416,"column":50}},"95":{"start":{"line":419,"column":8},"end":{"line":421,"column":9}},"96":{"start":{"line":420,"column":12},"end":{"line":420,"column":66}},"97":{"start":{"line":423,"column":8},"end":{"line":423,"column":25}},"98":{"start":{"line":439,"column":8},"end":{"line":440,"column":22}},"99":{"start":{"line":442,"column":8},"end":{"line":444,"column":9}},"100":{"start":{"line":443,"column":12},"end":{"line":443,"column":19}},"101":{"start":{"line":446,"column":8},"end":{"line":446,"column":38}},"102":{"start":{"line":448,"column":8},"end":{"line":450,"column":9}},"103":{"start":{"line":449,"column":12},"end":{"line":449,"column":82}},"104":{"start":{"line":454,"column":0},"end":{"line":454,"column":42}}},"branchMap":{"1":{"line":95,"type":"if","locations":[{"start":{"line":95,"column":8},"end":{"line":95,"column":8}},{"start":{"line":95,"column":8},"end":{"line":95,"column":8}}]},"2":{"line":101,"type":"if","locations":[{"start":{"line":101,"column":8},"end":{"line":101,"column":8}},{"start":{"line":101,"column":8},"end":{"line":101,"column":8}}]},"3":{"line":123,"type":"if","locations":[{"start":{"line":123,"column":8},"end":{"line":123,"column":8}},{"start":{"line":123,"column":8},"end":{"line":123,"column":8}}]},"4":{"line":166,"type":"cond-expr","locations":[{"start":{"line":166,"column":46},"end":{"line":166,"column":51}},{"start":{"line":166,"column":54},"end":{"line":166,"column":61}}]},"5":{"line":170,"type":"if","locations":[{"start":{"line":170,"column":8},"end":{"line":170,"column":8}},{"start":{"line":170,"column":8},"end":{"line":170,"column":8}}]},"6":{"line":174,"type":"if","locations":[{"start":{"line":174,"column":12},"end":{"line":174,"column":12}},{"start":{"line":174,"column":12},"end":{"line":174,"column":12}}]},"7":{"line":175,"type":"binary-expr","locations":[{"start":{"line":175,"column":24},"end":{"line":175,"column":29}},{"start":{"line":175,"column":33},"end":{"line":175,"column":49}}]},"8":{"line":178,"type":"binary-expr","locations":[{"start":{"line":178,"column":12},"end":{"line":178,"column":17}},{"start":{"line":178,"column":21},"end":{"line":178,"column":97}}]},"9":{"line":185,"type":"if","locations":[{"start":{"line":185,"column":8},"end":{"line":185,"column":8}},{"start":{"line":185,"column":8},"end":{"line":185,"column":8}}]},"10":{"line":189,"type":"if","locations":[{"start":{"line":189,"column":12},"end":{"line":189,"column":12}},{"start":{"line":189,"column":12},"end":{"line":189,"column":12}}]},"11":{"line":195,"type":"if","locations":[{"start":{"line":195,"column":16},"end":{"line":195,"column":16}},{"start":{"line":195,"column":16},"end":{"line":195,"column":16}}]},"12":{"line":203,"type":"if","locations":[{"start":{"line":203,"column":16},"end":{"line":203,"column":16}},{"start":{"line":203,"column":16},"end":{"line":203,"column":16}}]},"13":{"line":203,"type":"binary-expr","locations":[{"start":{"line":203,"column":20},"end":{"line":203,"column":28}},{"start":{"line":203,"column":32},"end":{"line":203,"column":38}}]},"14":{"line":213,"type":"if","locations":[{"start":{"line":213,"column":16},"end":{"line":213,"column":16}},{"start":{"line":213,"column":16},"end":{"line":213,"column":16}}]},"15":{"line":237,"type":"if","locations":[{"start":{"line":237,"column":8},"end":{"line":237,"column":8}},{"start":{"line":237,"column":8},"end":{"line":237,"column":8}}]},"16":{"line":255,"type":"if","locations":[{"start":{"line":255,"column":8},"end":{"line":255,"column":8}},{"start":{"line":255,"column":8},"end":{"line":255,"column":8}}]},"17":{"line":308,"type":"if","locations":[{"start":{"line":308,"column":8},"end":{"line":308,"column":8}},{"start":{"line":308,"column":8},"end":{"line":308,"column":8}}]},"18":{"line":308,"type":"binary-expr","locations":[{"start":{"line":308,"column":12},"end":{"line":308,"column":34}},{"start":{"line":308,"column":38},"end":{"line":308,"column":78}}]},"19":{"line":348,"type":"if","locations":[{"start":{"line":348,"column":8},"end":{"line":348,"column":8}},{"start":{"line":348,"column":8},"end":{"line":348,"column":8}}]},"20":{"line":356,"type":"if","locations":[{"start":{"line":356,"column":8},"end":{"line":356,"column":8}},{"start":{"line":356,"column":8},"end":{"line":356,"column":8}}]},"21":{"line":360,"type":"if","locations":[{"start":{"line":360,"column":15},"end":{"line":360,"column":15}},{"start":{"line":360,"column":15},"end":{"line":360,"column":15}}]},"22":{"line":371,"type":"if","locations":[{"start":{"line":371,"column":8},"end":{"line":371,"column":8}},{"start":{"line":371,"column":8},"end":{"line":371,"column":8}}]},"23":{"line":414,"type":"if","locations":[{"start":{"line":414,"column":8},"end":{"line":414,"column":8}},{"start":{"line":414,"column":8},"end":{"line":414,"column":8}}]},"24":{"line":419,"type":"if","locations":[{"start":{"line":419,"column":8},"end":{"line":419,"column":8}},{"start":{"line":419,"column":8},"end":{"line":419,"column":8}}]},"25":{"line":442,"type":"if","locations":[{"start":{"line":442,"column":8},"end":{"line":442,"column":8}},{"start":{"line":442,"column":8},"end":{"line":442,"column":8}}]},"26":{"line":442,"type":"binary-expr","locations":[{"start":{"line":442,"column":12},"end":{"line":442,"column":18}},{"start":{"line":442,"column":22},"end":{"line":442,"column":42}}]},"27":{"line":448,"type":"if","locations":[{"start":{"line":448,"column":8},"end":{"line":448,"column":8}},{"start":{"line":448,"column":8},"end":{"line":448,"column":8}}]}},"code":["(function () { YUI.add('gallery-sm-editor-block', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Block` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-block","**/","","/**","Extension for `Editor.Base` that handles block element formatting","","@class Editor.Block","@constructor","@extends Base","@extensionfor Editor.Base","**/","","(function () {","","var EDOM = Y.Editor.DOM;","","var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    /**","    Hash of block commands supported by this editor.","","    Names should correspond with valid `execCommand()` command names. Values","    are properties in the following format:","","    @property {Object} blockCommands","        @param {Function|String} commandFn","        @param {Function|String} [queryFn]","    **/","    blockCommands: {","        'delete': {","            commandFn: '_delete'","        },","","        forwardDelete: {","            commandFn: '_forwardDelete'","        },","","        formatBlock: {","            commandFn: '_formatBlock',","            queryFn: '_queryBlockCommand'","        },","","        heading: {","            commandFn: '_formatBlock',","            queryFn: '_queryBlockCommand'","        },","","        insertParagraph: {","            commandFn: '_insertReturn',","            queryFn: '_queryBlockCommand'","        }","    },","","","    /**","    Key commands related to block functionality.","","    @property {Object} styleKeyCommands","    **/","    blockKeyCommands: {","        'alt+c':       'justifyCenter',","        'alt+f':       'justifyFull',","        'alt+l':       'justifyLeft',","        'alt+r':       'justifyRight',","        'backspace':   'delete',","        'delete':      'forwardDelete',","        'enter':       'insertParagraph',","        'shift+enter': 'insertBreak'","    },","","","    /**","    HTML tags supported by this editor. Unsupported tags will be treated","    as text","","    @property {String} blockTags","    **/","    blockTags: 'div, p, h1, h2, h3, h4, h5',","","","    // -- Lifecycle ------------------------------------------------------------","","    initializer: function () {","        this.commands = Y.merge(this.commands, this.blockCommands);","","        if (this.supportedTags) {","            this.supportedTags += ',' + this.blockTags;","        } else {","            this.supportedTags = this.blockTags;","        }","","        if (this.keyCommands) {","            this.keyCommands = Y.merge(this.keyCommands, this.blockKeyCommands);","        }","","        this._attachBlockEvents();","    },","","","    destructor: function () {","        this._detachBlockEvents();","    },","","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Attaches block events.","","    @method _attachBlockEvents","    @protected","    **/","    _attachBlockEvents: function () {","        if (this._blockEvents) {","            return;","        }","","        this._blockEvents = [","            this.on('selectionChange', this._blockOnSelectionChange, this)","        ];","    },","","","    /**","    Handles backspace and delete because chrome is an idiot and will copy","    computed styles like `line-height`, `color` and `font-size` when merging","    blocks of different types.","","    For example given the following HTML:","","        <h1>foo</h1>","        <p>bar</p>","","    Hitting backspace with the cursor at the beginning of the `<p>` element will","    create a `<span>` in the `<h1>` after the text `foo` with the computed styles","    of the `<p>` element. The brilliant result is:","","        <h1>foo<span style=\"line-height: 1.2; font-size:12px; color:xxx;\">bar</span></h1>","","    Its so stupid and none of the other browsers (even Safari) behave this way.","","    This method normalizes the behavior when deleting across blocks to *not*","    copy styles. The result from the previous example is now:","","        <h1>foobar</h1>","","    @method _delete","    @param {String} [direction=back] `forward` for a forward delete,","    `back` for a backspace","    @protected","    **/","    _delete: function (direction) {","        var selection = this.selection,","            range = selection.range(),","            block, compRange;","","        direction = 'forward' === direction ? 'end' : 'start';","","        range.deleteContents();","","        if (range.parentNode() === this._inputNode) {","            // we deleted across blocks","            block = this._inputNode.get('childNodes').item(range.startOffset());","","            if ('end' === direction) {","                block = block && block.previous();","            }","","            block && range.selectNodeContents(block).collapse({toStart: ('start' === direction)});","        } else {","            // the range will be collapsed after deleteContents, so","            // there will only ever be one 'block'","            block = this._getNodes(range, this.blockTags).item(0);","        }","","        if (this._inputNode.contains(block)) {","            range.expand({stopAt: block});","            compRange = range.clone().selectNodeContents(block).collapse({toStart: ('start' === direction)});","","            if (0 === range.compare(compRange, {myPoint: direction, otherPoint: direction})) {","                // at the start or end of a block and we are deleting across","                // blocks.  prevent the default delete action and do our magic","","                var fromNode, toNode, childNodes, startNode;","","                if (direction === 'start') {","                    fromNode = block;","                    toNode = block.previous();","                } else {","                    fromNode = block.next();","                    toNode = block;","                }","","                if (fromNode && toNode) {","                    childNodes = fromNode.get('childNodes');","                    startNode = childNodes.item(0);","","                    toNode.append(childNodes);","                    fromNode.remove(true);","","                    range.startNode(startNode, 0);","                }","            } else {","                if ('start' === direction) {","                    this._execCommand('delete');","                } else {","                    this._execCommand('forwardDelete');","                }","            }","","            // very important to collapse the range here. Firefox freaks out a","            // bit if the range is still in its expanded state and will require","            // multiple presses of the delete key unless the range is collapsed.","            range.collapse({toStart: true});","        }","","        selection.select(range);","    },","","","    /**","    Detaches block events.","","    @method _detachBlockEvents","    @protected","    **/","    _detachBlockEvents: function () {","        if (this._blockEvents) {","            new Y.EventHandle(this._blockEvents).detach();","            this._blockEvents = null;","        }","    },","","","    /**","    Replaces block elements containing the current selection with elements","    of the given `tag`","","    @method _formatBlock","    @param {String} tag The new block element tag","    @protected","    **/","    _formatBlock: function (tag) {","        tag = tag.replace(/[<>]/g, '');","","        if (-1 < this.blockTags.indexOf(tag)) {","            tag = '<' + tag + '>';","","            var selection = this.selection,","                range = selection.range(),","                nodes = [];","","            this._getNodes(range, this.blockTags).each(function (node) {","                var newNode = Y.Node.create(tag);","","                newNode.insert(node.get('childNodes'));","","                EDOM.copyStyles(node, newNode, this.supportedStyles, {","                    explicit: true,","                    overwrite: false","                });","","                node.replace(newNode).remove(true);","","                nodes.push(newNode);","            }, this);","","            // hack until bookmarks are implemented to preserve range","            range.startNode(nodes[0]);","            range.endNode(nodes[nodes.length]);","            console.log('shrink in formatblock');","            range.shrink().collapse({toStart: true});","","            selection.select(range);","        }","    },","","","    /**","    Performs a forward delete from the current cursor position","","    @method _forwardDelete","    @protected","    **/","    _forwardDelete: function() {","        return this._delete('forward');","    },","","","    /**","    Inserts a `<br>` at the current selection point","","    @method _insertBreak","    @protected","    **/","    insertBreak: function () {","        var br = this.insertHTML('<br>');","","        if (!br.get('nextSibling') || '' === br.get('nextSibling').get('text')) {","            this.insertHTML('<br>');","        }","    },","","","    /**","    Inserts a `return` at the current selection point.","","    Any content contained by the range is deleted, resulting in a collapsed range.","","    If the range is at the start of a block, a duplicate, empty block is","    inserted as the previous sibling of current block. The range is positioned","    at the beginning of the new block","","    If the range is at the end of a block, a new `<p>` element is created as","    the next sibling of the current block. The range is positioned at the start","    of the new block.","","    If the range is in the middle of a block, the block will be split at the","    current position. The range will be positioned at the beginning of the new","    block.","","    @method _insertReturn","    @protected","    **/","    _insertReturn: function () {","        var selection = this.selection,","            range = selection.range().shrink(),","            block, startRange, endRange;","","        range.deleteContents();","","        // the range will be collapsed after deleteContents, so","        // there will only ever be one 'block'","        block = this._getNodes(range, this.blockTags).item(0);","","        // when hitting enter in an `empty` block, collapse the","        // the range to the end of the block to force the new block","        // to be inserted after","        if ('' === block.get('text')) {","            range.selectNodeContents(block).collapse();","        }","","        range.expand({stopAt: block});","        startRange = range.clone().selectNodeContents(block).collapse({toStart: true});","        endRange = range.clone().selectNodeContents(block).collapse();","","        if (0 === range.compare(startRange, {myPoint: 'start', otherPoint: 'start'})) {","            // the range is collapsed at the start of the block, insert","            // a clone of the block before the current block","            block = block.insert(block.cloneNode(), 'before').previous();","        } else if (0 === range.compare(endRange, {myPoint: 'end', otherPoint: 'end'})) {","            // the range is collapsed at the end of the block, start a new","            // paragraph after the current block","            block = block.insert('<p></p>', 'after').next();","        } else {","            // somewhere in the middle of a block node, split it","            block = this._splitRange(range, this.blockTags);","        }","","        // in order to be able to place the cursor inside an element","        // in webkit we need to insert a br","        if (EDOM.isEmptyNode(block)) {","            block.setHTML('<br>');","        }","","        range.selectNodeContents(block).collapse({toStart: true});","","        selection.select(range);","    },","","","    /**","    Default query function for block elements","","    @method _queryBlockCommand","    @return {NodeList} A nodelist of the block nodes containing the range","    @protected","     */","    _queryBlockCommand: function() {","        return this._getNodes(this.selection.range(), this.blockTags);","    },","","","    /**","    Splits elements after the given range until a node matching the","    given `selector` is reached.","","    @method _splitRange","    @param {Range} range","    @param {String} selector","    @return {Node} The node created after splitting","    @protected","    **/","    _splitRange: function (range, selector) {","        var endNode, endOffset;","","        endNode = range.endNode();","        endOffset = range.endOffset();","","        while (!endNode.test(selector)) {","            endOffset = EDOM.split(endNode, endOffset);","            endNode = endOffset.get('parentNode');","        }","","        if (this._inputNode !== endNode) {","            endOffset = EDOM.split(endNode, endOffset);","            endNode = endOffset.get('parentNode');","        }","","        if (!endOffset._node) {","            endOffset = endNode.get('childNodes').item(endOffset);","        }","","        return endOffset;","    },","","","    // -- Protected Event Handlers ---------------------------------------------","","    /**","    Event handler for the selection `change` event","","    Creates a default `block` if none exists for the current selection","","    @method _blockOnSelectionChange","    @param {EventFacade} e","    @protected","    **/","    _blockOnSelectionChange: function (e) {","        var range = e.range,","            startNode;","","        if (!range || !range.isCollapsed()) {","            return;","        }","","        startNode = range.startNode();","","        if (this._inputNode === startNode.ancestor(this.blockTags, true)) {","            Y.Editor.Base.prototype._execCommand.call(this, 'formatBlock', '<p>');","        }","    }","});","","Y.namespace('Editor').Block = EditorBlock;","","}());","","","}, '@VERSION@', {","    \"requires\": [","        \"gallery-sm-editor-base\",","        \"gallery-sm-editor-dom\",","        \"gallery-sm-editor-keys\",","        \"node-style\"","    ]","});","","}());"]};
+if (typeof _yuitest_coverage == "undefined"){
+    _yuitest_coverage = {};
+    _yuitest_coverline = function(src, line){
+        var coverage = _yuitest_coverage[src];
+        if (!coverage.lines[line]){
+            coverage.calledLines++;
+        }
+        coverage.lines[line]++;
+    };
+    _yuitest_coverfunc = function(src, name, line){
+        var coverage = _yuitest_coverage[src],
+            funcId = name + ":" + line;
+        if (!coverage.functions[funcId]){
+            coverage.calledFunctions++;
+        }
+        coverage.functions[funcId]++;
+    };
 }
-var __cov_hiGSkMR8XG_1h8inT2jOxA = __coverage__['build/gallery-sm-editor-block/gallery-sm-editor-block.js'];
-__cov_hiGSkMR8XG_1h8inT2jOxA.s['1']++;YUI.add('gallery-sm-editor-block',function(Y,NAME){__cov_hiGSkMR8XG_1h8inT2jOxA.f['1']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['2']++;(function(){__cov_hiGSkMR8XG_1h8inT2jOxA.f['2']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['3']++;var EDOM=Y.Editor.DOM;__cov_hiGSkMR8XG_1h8inT2jOxA.s['4']++;var EditorBlock=Y.Base.create('editorBlock',Y.Base,[],{blockCommands:{'delete':{commandFn:'_delete'},forwardDelete:{commandFn:'_forwardDelete'},formatBlock:{commandFn:'_formatBlock',queryFn:'_queryBlockCommand'},heading:{commandFn:'_formatBlock',queryFn:'_queryBlockCommand'},insertParagraph:{commandFn:'_insertReturn',queryFn:'_queryBlockCommand'}},blockKeyCommands:{'alt+c':'justifyCenter','alt+f':'justifyFull','alt+l':'justifyLeft','alt+r':'justifyRight','backspace':'delete','delete':'forwardDelete','enter':'insertParagraph','shift+enter':'insertBreak'},blockTags:'div, p, h1, h2, h3, h4, h5',initializer:function(){__cov_hiGSkMR8XG_1h8inT2jOxA.f['3']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['5']++;this.commands=Y.merge(this.commands,this.blockCommands);__cov_hiGSkMR8XG_1h8inT2jOxA.s['6']++;if(this.supportedTags){__cov_hiGSkMR8XG_1h8inT2jOxA.b['1'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['7']++;this.supportedTags+=','+this.blockTags;}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['1'][1]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['8']++;this.supportedTags=this.blockTags;}__cov_hiGSkMR8XG_1h8inT2jOxA.s['9']++;if(this.keyCommands){__cov_hiGSkMR8XG_1h8inT2jOxA.b['2'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['10']++;this.keyCommands=Y.merge(this.keyCommands,this.blockKeyCommands);}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['2'][1]++;}__cov_hiGSkMR8XG_1h8inT2jOxA.s['11']++;this._attachBlockEvents();},destructor:function(){__cov_hiGSkMR8XG_1h8inT2jOxA.f['4']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['12']++;this._detachBlockEvents();},_attachBlockEvents:function(){__cov_hiGSkMR8XG_1h8inT2jOxA.f['5']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['13']++;if(this._blockEvents){__cov_hiGSkMR8XG_1h8inT2jOxA.b['3'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['14']++;return;}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['3'][1]++;}__cov_hiGSkMR8XG_1h8inT2jOxA.s['15']++;this._blockEvents=[this.on('selectionChange',this._blockOnSelectionChange,this)];},_delete:function(direction){__cov_hiGSkMR8XG_1h8inT2jOxA.f['6']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['16']++;var selection=this.selection,range=selection.range(),block,compRange;__cov_hiGSkMR8XG_1h8inT2jOxA.s['17']++;direction='forward'===direction?(__cov_hiGSkMR8XG_1h8inT2jOxA.b['4'][0]++,'end'):(__cov_hiGSkMR8XG_1h8inT2jOxA.b['4'][1]++,'start');__cov_hiGSkMR8XG_1h8inT2jOxA.s['18']++;range.deleteContents();__cov_hiGSkMR8XG_1h8inT2jOxA.s['19']++;if(range.parentNode()===this._inputNode){__cov_hiGSkMR8XG_1h8inT2jOxA.b['5'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['20']++;block=this._inputNode.get('childNodes').item(range.startOffset());__cov_hiGSkMR8XG_1h8inT2jOxA.s['21']++;if('end'===direction){__cov_hiGSkMR8XG_1h8inT2jOxA.b['6'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['22']++;block=(__cov_hiGSkMR8XG_1h8inT2jOxA.b['7'][0]++,block)&&(__cov_hiGSkMR8XG_1h8inT2jOxA.b['7'][1]++,block.previous());}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['6'][1]++;}__cov_hiGSkMR8XG_1h8inT2jOxA.s['23']++;(__cov_hiGSkMR8XG_1h8inT2jOxA.b['8'][0]++,block)&&(__cov_hiGSkMR8XG_1h8inT2jOxA.b['8'][1]++,range.selectNodeContents(block).collapse({toStart:'start'===direction}));}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['5'][1]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['24']++;block=this._getNodes(range,this.blockTags).item(0);}__cov_hiGSkMR8XG_1h8inT2jOxA.s['25']++;if(this._inputNode.contains(block)){__cov_hiGSkMR8XG_1h8inT2jOxA.b['9'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['26']++;range.expand({stopAt:block});__cov_hiGSkMR8XG_1h8inT2jOxA.s['27']++;compRange=range.clone().selectNodeContents(block).collapse({toStart:'start'===direction});__cov_hiGSkMR8XG_1h8inT2jOxA.s['28']++;if(0===range.compare(compRange,{myPoint:direction,otherPoint:direction})){__cov_hiGSkMR8XG_1h8inT2jOxA.b['10'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['29']++;var fromNode,toNode,childNodes,startNode;__cov_hiGSkMR8XG_1h8inT2jOxA.s['30']++;if(direction==='start'){__cov_hiGSkMR8XG_1h8inT2jOxA.b['11'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['31']++;fromNode=block;__cov_hiGSkMR8XG_1h8inT2jOxA.s['32']++;toNode=block.previous();}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['11'][1]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['33']++;fromNode=block.next();__cov_hiGSkMR8XG_1h8inT2jOxA.s['34']++;toNode=block;}__cov_hiGSkMR8XG_1h8inT2jOxA.s['35']++;if((__cov_hiGSkMR8XG_1h8inT2jOxA.b['13'][0]++,fromNode)&&(__cov_hiGSkMR8XG_1h8inT2jOxA.b['13'][1]++,toNode)){__cov_hiGSkMR8XG_1h8inT2jOxA.b['12'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['36']++;childNodes=fromNode.get('childNodes');__cov_hiGSkMR8XG_1h8inT2jOxA.s['37']++;startNode=childNodes.item(0);__cov_hiGSkMR8XG_1h8inT2jOxA.s['38']++;toNode.append(childNodes);__cov_hiGSkMR8XG_1h8inT2jOxA.s['39']++;fromNode.remove(true);__cov_hiGSkMR8XG_1h8inT2jOxA.s['40']++;range.startNode(startNode,0);}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['12'][1]++;}}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['10'][1]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['41']++;if('start'===direction){__cov_hiGSkMR8XG_1h8inT2jOxA.b['14'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['42']++;this._execCommand('delete');}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['14'][1]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['43']++;this._execCommand('forwardDelete');}}__cov_hiGSkMR8XG_1h8inT2jOxA.s['44']++;range.collapse({toStart:true});}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['9'][1]++;}__cov_hiGSkMR8XG_1h8inT2jOxA.s['45']++;selection.select(range);},_detachBlockEvents:function(){__cov_hiGSkMR8XG_1h8inT2jOxA.f['7']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['46']++;if(this._blockEvents){__cov_hiGSkMR8XG_1h8inT2jOxA.b['15'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['47']++;new Y.EventHandle(this._blockEvents).detach();__cov_hiGSkMR8XG_1h8inT2jOxA.s['48']++;this._blockEvents=null;}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['15'][1]++;}},_formatBlock:function(tag){__cov_hiGSkMR8XG_1h8inT2jOxA.f['8']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['49']++;tag=tag.replace(/[<>]/g,'');__cov_hiGSkMR8XG_1h8inT2jOxA.s['50']++;if(-1<this.blockTags.indexOf(tag)){__cov_hiGSkMR8XG_1h8inT2jOxA.b['16'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['51']++;tag='<'+tag+'>';__cov_hiGSkMR8XG_1h8inT2jOxA.s['52']++;var selection=this.selection,range=selection.range(),nodes=[];__cov_hiGSkMR8XG_1h8inT2jOxA.s['53']++;this._getNodes(range,this.blockTags).each(function(node){__cov_hiGSkMR8XG_1h8inT2jOxA.f['9']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['54']++;var newNode=Y.Node.create(tag);__cov_hiGSkMR8XG_1h8inT2jOxA.s['55']++;newNode.insert(node.get('childNodes'));__cov_hiGSkMR8XG_1h8inT2jOxA.s['56']++;EDOM.copyStyles(node,newNode,this.supportedStyles,{explicit:true,overwrite:false});__cov_hiGSkMR8XG_1h8inT2jOxA.s['57']++;node.replace(newNode).remove(true);__cov_hiGSkMR8XG_1h8inT2jOxA.s['58']++;nodes.push(newNode);},this);__cov_hiGSkMR8XG_1h8inT2jOxA.s['59']++;range.startNode(nodes[0]);__cov_hiGSkMR8XG_1h8inT2jOxA.s['60']++;range.endNode(nodes[nodes.length]);__cov_hiGSkMR8XG_1h8inT2jOxA.s['61']++;console.log('shrink in formatblock');__cov_hiGSkMR8XG_1h8inT2jOxA.s['62']++;range.shrink().collapse({toStart:true});__cov_hiGSkMR8XG_1h8inT2jOxA.s['63']++;selection.select(range);}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['16'][1]++;}},_forwardDelete:function(){__cov_hiGSkMR8XG_1h8inT2jOxA.f['10']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['64']++;return this._delete('forward');},insertBreak:function(){__cov_hiGSkMR8XG_1h8inT2jOxA.f['11']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['65']++;var br=this.insertHTML('<br>');__cov_hiGSkMR8XG_1h8inT2jOxA.s['66']++;if((__cov_hiGSkMR8XG_1h8inT2jOxA.b['18'][0]++,!br.get('nextSibling'))||(__cov_hiGSkMR8XG_1h8inT2jOxA.b['18'][1]++,''===br.get('nextSibling').get('text'))){__cov_hiGSkMR8XG_1h8inT2jOxA.b['17'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['67']++;this.insertHTML('<br>');}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['17'][1]++;}},_insertReturn:function(){__cov_hiGSkMR8XG_1h8inT2jOxA.f['12']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['68']++;var selection=this.selection,range=selection.range().shrink(),block,startRange,endRange;__cov_hiGSkMR8XG_1h8inT2jOxA.s['69']++;range.deleteContents();__cov_hiGSkMR8XG_1h8inT2jOxA.s['70']++;block=this._getNodes(range,this.blockTags).item(0);__cov_hiGSkMR8XG_1h8inT2jOxA.s['71']++;if(''===block.get('text')){__cov_hiGSkMR8XG_1h8inT2jOxA.b['19'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['72']++;range.selectNodeContents(block).collapse();}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['19'][1]++;}__cov_hiGSkMR8XG_1h8inT2jOxA.s['73']++;range.expand({stopAt:block});__cov_hiGSkMR8XG_1h8inT2jOxA.s['74']++;startRange=range.clone().selectNodeContents(block).collapse({toStart:true});__cov_hiGSkMR8XG_1h8inT2jOxA.s['75']++;endRange=range.clone().selectNodeContents(block).collapse();__cov_hiGSkMR8XG_1h8inT2jOxA.s['76']++;if(0===range.compare(startRange,{myPoint:'start',otherPoint:'start'})){__cov_hiGSkMR8XG_1h8inT2jOxA.b['20'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['77']++;block=block.insert(block.cloneNode(),'before').previous();}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['20'][1]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['78']++;if(0===range.compare(endRange,{myPoint:'end',otherPoint:'end'})){__cov_hiGSkMR8XG_1h8inT2jOxA.b['21'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['79']++;block=block.insert('<p></p>','after').next();}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['21'][1]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['80']++;block=this._splitRange(range,this.blockTags);}}__cov_hiGSkMR8XG_1h8inT2jOxA.s['81']++;if(EDOM.isEmptyNode(block)){__cov_hiGSkMR8XG_1h8inT2jOxA.b['22'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['82']++;block.setHTML('<br>');}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['22'][1]++;}__cov_hiGSkMR8XG_1h8inT2jOxA.s['83']++;range.selectNodeContents(block).collapse({toStart:true});__cov_hiGSkMR8XG_1h8inT2jOxA.s['84']++;selection.select(range);},_queryBlockCommand:function(){__cov_hiGSkMR8XG_1h8inT2jOxA.f['13']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['85']++;return this._getNodes(this.selection.range(),this.blockTags);},_splitRange:function(range,selector){__cov_hiGSkMR8XG_1h8inT2jOxA.f['14']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['86']++;var endNode,endOffset;__cov_hiGSkMR8XG_1h8inT2jOxA.s['87']++;endNode=range.endNode();__cov_hiGSkMR8XG_1h8inT2jOxA.s['88']++;endOffset=range.endOffset();__cov_hiGSkMR8XG_1h8inT2jOxA.s['89']++;while(!endNode.test(selector)){__cov_hiGSkMR8XG_1h8inT2jOxA.s['90']++;endOffset=EDOM.split(endNode,endOffset);__cov_hiGSkMR8XG_1h8inT2jOxA.s['91']++;endNode=endOffset.get('parentNode');}__cov_hiGSkMR8XG_1h8inT2jOxA.s['92']++;if(this._inputNode!==endNode){__cov_hiGSkMR8XG_1h8inT2jOxA.b['23'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['93']++;endOffset=EDOM.split(endNode,endOffset);__cov_hiGSkMR8XG_1h8inT2jOxA.s['94']++;endNode=endOffset.get('parentNode');}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['23'][1]++;}__cov_hiGSkMR8XG_1h8inT2jOxA.s['95']++;if(!endOffset._node){__cov_hiGSkMR8XG_1h8inT2jOxA.b['24'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['96']++;endOffset=endNode.get('childNodes').item(endOffset);}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['24'][1]++;}__cov_hiGSkMR8XG_1h8inT2jOxA.s['97']++;return endOffset;},_blockOnSelectionChange:function(e){__cov_hiGSkMR8XG_1h8inT2jOxA.f['15']++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['98']++;var range=e.range,startNode;__cov_hiGSkMR8XG_1h8inT2jOxA.s['99']++;if((__cov_hiGSkMR8XG_1h8inT2jOxA.b['26'][0]++,!range)||(__cov_hiGSkMR8XG_1h8inT2jOxA.b['26'][1]++,!range.isCollapsed())){__cov_hiGSkMR8XG_1h8inT2jOxA.b['25'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['100']++;return;}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['25'][1]++;}__cov_hiGSkMR8XG_1h8inT2jOxA.s['101']++;startNode=range.startNode();__cov_hiGSkMR8XG_1h8inT2jOxA.s['102']++;if(this._inputNode===startNode.ancestor(this.blockTags,true)){__cov_hiGSkMR8XG_1h8inT2jOxA.b['27'][0]++;__cov_hiGSkMR8XG_1h8inT2jOxA.s['103']++;Y.Editor.Base.prototype._execCommand.call(this,'formatBlock','<p>');}else{__cov_hiGSkMR8XG_1h8inT2jOxA.b['27'][1]++;}}});__cov_hiGSkMR8XG_1h8inT2jOxA.s['104']++;Y.namespace('Editor').Block=EditorBlock;}());},'@VERSION@',{'requires':['gallery-sm-editor-base','gallery-sm-editor-dom','gallery-sm-editor-keys','node-style']});
+_yuitest_coverage["build/gallery-sm-editor-block/gallery-sm-editor-block.js"] = {
+    lines: {},
+    functions: {},
+    coveredLines: 0,
+    calledLines: 0,
+    coveredFunctions: 0,
+    calledFunctions: 0,
+    path: "build/gallery-sm-editor-block/gallery-sm-editor-block.js",
+    code: []
+};
+_yuitest_coverage["build/gallery-sm-editor-block/gallery-sm-editor-block.js"].code=["YUI.add('gallery-sm-editor-block', function (Y, NAME) {","","/*jshint expr:true, onevar:false */","","/**","Provides the `Editor.Block` extension.","","@module gallery-sm-editor","@submodule gallery-sm-editor-block","**/","","/**","Extension for `Editor.Base` that handles block element formatting","","@class Editor.Block","@constructor","@extends Base","@extensionfor Editor.Base","**/","","(function () {","","var EDOM = Y.Editor.DOM;","","var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {","    // -- Public Properties ----------------------------------------------------","","    /**","    Hash of block commands supported by this editor.","","    Names should correspond with valid `execCommand()` command names. Values","    are properties in the following format:","","    @property {Object} blockCommands","        @param {Function|String} commandFn","        @param {Function|String} [queryFn]","    **/","    blockCommands: {","        'delete': {","            commandFn: '_delete'","        },","","        forwardDelete: {","            commandFn: '_forwardDelete'","        },","","        formatBlock: {","            commandFn: '_formatBlock',","            queryFn: '_queryBlockCommand'","        },","","        heading: {","            commandFn: '_formatBlock',","            queryFn: '_queryBlockCommand'","        },","","        insertBreak: {","            commandFn: '_insertBreak'","        },","","        insertParagraph: {","            commandFn: '_insertReturn',","            queryFn: '_queryBlockCommand'","        }","    },","","","    /**","    Key commands related to block functionality.","","    @property {Object} styleKeyCommands","    **/","    blockKeyCommands: {","        'alt+c':       'justifyCenter',","        'alt+f':       'justifyFull',","        'alt+l':       'justifyLeft',","        'alt+r':       'justifyRight',","        'backspace':   'delete',","        'delete':      'forwardDelete',","        'enter':       'insertParagraph',","        'shift+enter': 'insertBreak'","    },","","","    /**","    HTML tags supported by this editor. Unsupported tags will be treated","    as text","","    @property {String} blockTags","    **/","    blockTags: 'div, p, h1, h2, h3, h4, h5',","","","    // -- Lifecycle ------------------------------------------------------------","","    initializer: function () {","        this.commands = Y.merge(this.commands, this.blockCommands);","","        if (this.supportedTags) {","            this.supportedTags += ',' + this.blockTags;","        } else {","            this.supportedTags = this.blockTags;","        }","","        if (this.keyCommands) {","            this.keyCommands = Y.merge(this.keyCommands, this.blockKeyCommands);","        }","","        this._attachBlockEvents();","    },","","","    destructor: function () {","        this._detachBlockEvents();","    },","","","    // -- Protected Methods ----------------------------------------------------","","    /**","    Attaches block events.","","    @method _attachBlockEvents","    @protected","    **/","    _attachBlockEvents: function () {","        if (this._blockEvents) {","            return;","        }","","        this._blockEvents = [","            this.on('selectionChange', this._blockOnSelectionChange, this)","        ];","    },","","","    /**","    Handles backspace and delete because chrome is an idiot and will copy","    computed styles like `line-height`, `color` and `font-size` when merging","    blocks of different types.","","    For example given the following HTML:","","        <h1>foo</h1>","        <p>bar</p>","","    Hitting backspace with the cursor at the beginning of the `<p>` element will","    create a `<span>` in the `<h1>` after the text `foo` with the computed styles","    of the `<p>` element. The brilliant result is:","","        <h1>foo<span style=\"line-height: 1.2; font-size:12px; color:xxx;\">bar</span></h1>","","    Its so stupid and none of the other browsers (even Safari) behave this way.","","    This method normalizes the behavior when deleting across blocks to *not*","    copy styles. The result from the previous example is now:","","        <h1>foobar</h1>","","    @method _delete","    @param {String} [direction=back] `forward` for a forward delete,","    `back` for a backspace","    @protected","    **/","    _delete: function (direction) {","        var selection = this.selection,","            range = selection.range(),","            block, compRange;","","        direction = 'forward' === direction ? 'end' : 'start';","","        range.deleteContents();","","        if (range.parentNode() === this._inputNode) {","            // we deleted across blocks","            block = this._inputNode.get('childNodes').item(range.startOffset());","","            if ('end' === direction) {","                block = block && block.previous();","            }","","            block && range.selectNodeContents(block).collapse({toStart: ('start' === direction)});","        } else {","            // the range will be collapsed after deleteContents, so","            // there will only ever be one 'block'","            block = this._getNodes(range, this.blockTags).item(0);","        }","","        if (this._inputNode.contains(block)) {","            range.expand({stopAt: block});","            compRange = range.clone().selectNodeContents(block).collapse({toStart: ('start' === direction)});","","            if (0 === range.compare(compRange, {myPoint: direction, otherPoint: direction})) {","                // at the start or end of a block and we are deleting across","                // blocks.  prevent the default delete action and do our magic","","                var fromNode, toNode, childNodes, startNode;","","                if (direction === 'start') {","                    fromNode = block;","                    toNode = block.previous();","                } else {","                    fromNode = block.next();","                    toNode = block;","                }","","                if (fromNode && toNode) {","                    childNodes = fromNode.get('childNodes');","                    startNode = childNodes.item(0);","","                    toNode.append(childNodes);","                    fromNode.remove(true);","","                    range.startNode(startNode, 0);","                }","            } else {","                if ('start' === direction) {","                    this._execCommand('delete');","                } else {","                    this._execCommand('forwardDelete');","                }","            }","","            // very important to collapse the range here. Firefox freaks out a","            // bit if the range is still in its expanded state and will require","            // multiple presses of the delete key unless the range is collapsed.","            range.collapse({toStart: true});","        }","","        selection.select(range);","    },","","","    /**","    Detaches block events.","","    @method _detachBlockEvents","    @protected","    **/","    _detachBlockEvents: function () {","        if (this._blockEvents) {","            new Y.EventHandle(this._blockEvents).detach();","            this._blockEvents = null;","        }","    },","","","    /**","    Replaces block elements containing the current selection with elements","    of the given `tag`","","    @method _formatBlock","    @param {String} tag The new block element tag","    @protected","    **/","    _formatBlock: function (tag) {","        tag = tag.replace(/[<>]/g, '');","","        if (-1 < this.blockTags.indexOf(tag)) {","            tag = '<' + tag + '>';","","            var selection = this.selection,","                range = selection.range(),","                nodes = [];","","            this._getNodes(range, this.blockTags).each(function (node) {","                var newNode = Y.Node.create(tag);","","                newNode.insert(node.get('childNodes'));","","                EDOM.copyStyles(node, newNode, this.supportedStyles, {","                    explicit: true,","                    overwrite: false","                });","","                node.replace(newNode).remove(true);","","                nodes.push(newNode);","            }, this);","","            // hack until bookmarks are implemented to preserve range","            range.startNode(nodes[0]);","            range.endNode(nodes[nodes.length]);","            console.log('shrink in formatblock');","            range.shrink().collapse({toStart: true});","","            selection.select(range);","        }","    },","","","    /**","    Performs a forward delete from the current cursor position","","    @method _forwardDelete","    @protected","    **/","    _forwardDelete: function() {","        return this._delete('forward');","    },","","","    /**","    Inserts a `<br>` at the current selection point","","    @method _insertBreak","    @protected","    **/","    _insertBreak: function () {","        var br = this._insertHTML('<br>');","","        if (!br.get('nextSibling') || '' === br.get('nextSibling').get('text')) {","            this._insertHTML('<br>');","        }","    },","","","    /**","    Inserts a `return` at the current selection point.","","    Any content contained by the range is deleted, resulting in a collapsed range.","","    If the range is at the start of a block, a duplicate, empty block is","    inserted as the previous sibling of current block. The range is positioned","    at the beginning of the new block","","    If the range is at the end of a block, a new `<p>` element is created as","    the next sibling of the current block. The range is positioned at the start","    of the new block.","","    If the range is in the middle of a block, the block will be split at the","    current position. The range will be positioned at the beginning of the new","    block.","","    @method _insertReturn","    @protected","    **/","    _insertReturn: function () {","        var selection = this.selection,","            range = selection.range().shrink(),","            block, startRange, endRange;","","        range.deleteContents();","","        // the range will be collapsed after deleteContents, so","        // there will only ever be one 'block'","        block = this._getNodes(range, this.blockTags).item(0);","","        // when hitting enter in an `empty` block, collapse the","        // the range to the end of the block to force the new block","        // to be inserted after","        if ('' === block.get('text')) {","            range.selectNodeContents(block).collapse();","        }","","        range.expand({stopAt: block});","        startRange = range.clone().selectNodeContents(block).collapse({toStart: true});","        endRange = range.clone().selectNodeContents(block).collapse();","","        if (0 === range.compare(startRange, {myPoint: 'start', otherPoint: 'start'})) {","            // the range is collapsed at the start of the block, insert","            // a clone of the block before the current block","            block = block.insert(block.cloneNode(), 'before').previous();","        } else if (0 === range.compare(endRange, {myPoint: 'end', otherPoint: 'end'})) {","            // the range is collapsed at the end of the block, start a new","            // paragraph after the current block","            block = block.insert('<p></p>', 'after').next();","        } else {","            // somewhere in the middle of a block node, split it","            block = this._splitRange(range, this.blockTags);","        }","","        // in order to be able to place the cursor inside an element","        // in webkit we need to insert a br","        if (EDOM.isEmptyNode(block)) {","            block.setHTML('<br>');","        }","","        range.selectNodeContents(block).collapse({toStart: true});","","        selection.select(range);","    },","","","    /**","    Default query function for block elements","","    @method _queryBlockCommand","    @return {NodeList} A nodelist of the block nodes containing the range","    @protected","     */","    _queryBlockCommand: function() {","        return this._getNodes(this.selection.range(), this.blockTags);","    },","","","    /**","    Splits elements after the given range until a node matching the","    given `selector` is reached.","","    @method _splitRange","    @param {Range} range","    @param {String} selector","    @return {Node} The node created after splitting","    @protected","    **/","    _splitRange: function (range, selector) {","        var endNode, endOffset;","","        endNode = range.endNode();","        endOffset = range.endOffset();","","        while (!endNode.test(selector)) {","            endOffset = EDOM.split(endNode, endOffset);","            endNode = endOffset.get('parentNode');","        }","","        if (this._inputNode !== endNode) {","            endOffset = EDOM.split(endNode, endOffset);","            endNode = endOffset.get('parentNode');","        }","","        if (!endOffset._node) {","            endOffset = endNode.get('childNodes').item(endOffset);","        }","","        return endOffset;","    },","","","    // -- Protected Event Handlers ---------------------------------------------","","    /**","    Event handler for the selection `change` event","","    Creates a default `block` if none exists for the current selection","","    @method _blockOnSelectionChange","    @param {EventFacade} e","    @protected","    **/","    _blockOnSelectionChange: function (e) {","        var range = e.range,","            startNode;","","        if (!range || !range.isCollapsed()) {","            return;","        }","","        startNode = range.startNode();","","        if (this._inputNode === startNode.ancestor(this.blockTags, true)) {","            Y.Editor.Base.prototype._execCommand.call(this, 'formatBlock', '<p>');","        }","    }","});","","Y.namespace('Editor').Block = EditorBlock;","","}());","","","}, '@VERSION@', {","    \"requires\": [","        \"gallery-sm-editor-base\",","        \"gallery-sm-editor-dom\",","        \"gallery-sm-editor-keys\",","        \"node-style\"","    ]","});"];
+_yuitest_coverage["build/gallery-sm-editor-block/gallery-sm-editor-block.js"].lines = {"1":0,"21":0,"23":0,"25":0,"97":0,"99":0,"100":0,"102":0,"105":0,"106":0,"109":0,"114":0,"127":0,"128":0,"131":0,"166":0,"170":0,"172":0,"174":0,"176":0,"178":0,"179":0,"182":0,"186":0,"189":0,"190":0,"191":0,"193":0,"197":0,"199":0,"200":0,"201":0,"203":0,"204":0,"207":0,"208":0,"209":0,"211":0,"212":0,"214":0,"217":0,"218":0,"220":0,"227":0,"230":0,"241":0,"242":0,"243":0,"257":0,"259":0,"260":0,"262":0,"266":0,"267":0,"269":0,"271":0,"276":0,"278":0,"282":0,"283":0,"284":0,"285":0,"287":0,"299":0,"310":0,"312":0,"313":0,"339":0,"343":0,"347":0,"352":0,"353":0,"356":0,"357":0,"358":0,"360":0,"363":0,"364":0,"367":0,"370":0,"375":0,"376":0,"379":0,"381":0,"393":0,"408":0,"410":0,"411":0,"413":0,"414":0,"415":0,"418":0,"419":0,"420":0,"423":0,"424":0,"427":0,"443":0,"446":0,"447":0,"450":0,"452":0,"453":0,"458":0};
+_yuitest_coverage["build/gallery-sm-editor-block/gallery-sm-editor-block.js"].functions = {"initializer:96":0,"destructor:113":0,"_attachBlockEvents:126":0,"_delete:165":0,"_detachBlockEvents:240":0,"(anonymous 3):266":0,"_formatBlock:256":0,"_forwardDelete:298":0,"_insertBreak:309":0,"_insertReturn:338":0,"_queryBlockCommand:392":0,"_splitRange:407":0,"_blockOnSelectionChange:442":0,"(anonymous 2):21":0,"(anonymous 1):1":0};
+_yuitest_coverage["build/gallery-sm-editor-block/gallery-sm-editor-block.js"].coveredLines = 104;
+_yuitest_coverage["build/gallery-sm-editor-block/gallery-sm-editor-block.js"].coveredFunctions = 15;
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 1);
+YUI.add('gallery-sm-editor-block', function (Y, NAME) {
+
+/*jshint expr:true, onevar:false */
+
+/**
+Provides the `Editor.Block` extension.
+
+@module gallery-sm-editor
+@submodule gallery-sm-editor-block
+**/
+
+/**
+Extension for `Editor.Base` that handles block element formatting
+
+@class Editor.Block
+@constructor
+@extends Base
+@extensionfor Editor.Base
+**/
+
+_yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "(anonymous 1)", 1);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 21);
+(function () {
+
+_yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "(anonymous 2)", 21);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 23);
+var EDOM = Y.Editor.DOM;
+
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 25);
+var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
+    // -- Public Properties ----------------------------------------------------
+
+    /**
+    Hash of block commands supported by this editor.
+
+    Names should correspond with valid `execCommand()` command names. Values
+    are properties in the following format:
+
+    @property {Object} blockCommands
+        @param {Function|String} commandFn
+        @param {Function|String} [queryFn]
+    **/
+    blockCommands: {
+        'delete': {
+            commandFn: '_delete'
+        },
+
+        forwardDelete: {
+            commandFn: '_forwardDelete'
+        },
+
+        formatBlock: {
+            commandFn: '_formatBlock',
+            queryFn: '_queryBlockCommand'
+        },
+
+        heading: {
+            commandFn: '_formatBlock',
+            queryFn: '_queryBlockCommand'
+        },
+
+        insertBreak: {
+            commandFn: '_insertBreak'
+        },
+
+        insertParagraph: {
+            commandFn: '_insertReturn',
+            queryFn: '_queryBlockCommand'
+        }
+    },
+
+
+    /**
+    Key commands related to block functionality.
+
+    @property {Object} styleKeyCommands
+    **/
+    blockKeyCommands: {
+        'alt+c':       'justifyCenter',
+        'alt+f':       'justifyFull',
+        'alt+l':       'justifyLeft',
+        'alt+r':       'justifyRight',
+        'backspace':   'delete',
+        'delete':      'forwardDelete',
+        'enter':       'insertParagraph',
+        'shift+enter': 'insertBreak'
+    },
+
+
+    /**
+    HTML tags supported by this editor. Unsupported tags will be treated
+    as text
+
+    @property {String} blockTags
+    **/
+    blockTags: 'div, p, h1, h2, h3, h4, h5',
+
+
+    // -- Lifecycle ------------------------------------------------------------
+
+    initializer: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "initializer", 96);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 97);
+this.commands = Y.merge(this.commands, this.blockCommands);
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 99);
+if (this.supportedTags) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 100);
+this.supportedTags += ',' + this.blockTags;
+        } else {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 102);
+this.supportedTags = this.blockTags;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 105);
+if (this.keyCommands) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 106);
+this.keyCommands = Y.merge(this.keyCommands, this.blockKeyCommands);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 109);
+this._attachBlockEvents();
+    },
+
+
+    destructor: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "destructor", 113);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 114);
+this._detachBlockEvents();
+    },
+
+
+    // -- Protected Methods ----------------------------------------------------
+
+    /**
+    Attaches block events.
+
+    @method _attachBlockEvents
+    @protected
+    **/
+    _attachBlockEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "_attachBlockEvents", 126);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 127);
+if (this._blockEvents) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 128);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 131);
+this._blockEvents = [
+            this.on('selectionChange', this._blockOnSelectionChange, this)
+        ];
+    },
+
+
+    /**
+    Handles backspace and delete because chrome is an idiot and will copy
+    computed styles like `line-height`, `color` and `font-size` when merging
+    blocks of different types.
+
+    For example given the following HTML:
+
+        <h1>foo</h1>
+        <p>bar</p>
+
+    Hitting backspace with the cursor at the beginning of the `<p>` element will
+    create a `<span>` in the `<h1>` after the text `foo` with the computed styles
+    of the `<p>` element. The brilliant result is:
+
+        <h1>foo<span style="line-height: 1.2; font-size:12px; color:xxx;">bar</span></h1>
+
+    Its so stupid and none of the other browsers (even Safari) behave this way.
+
+    This method normalizes the behavior when deleting across blocks to *not*
+    copy styles. The result from the previous example is now:
+
+        <h1>foobar</h1>
+
+    @method _delete
+    @param {String} [direction=back] `forward` for a forward delete,
+    `back` for a backspace
+    @protected
+    **/
+    _delete: function (direction) {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "_delete", 165);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 166);
+var selection = this.selection,
+            range = selection.range(),
+            block, compRange;
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 170);
+direction = 'forward' === direction ? 'end' : 'start';
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 172);
+range.deleteContents();
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 174);
+if (range.parentNode() === this._inputNode) {
+            // we deleted across blocks
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 176);
+block = this._inputNode.get('childNodes').item(range.startOffset());
+
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 178);
+if ('end' === direction) {
+                _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 179);
+block = block && block.previous();
+            }
+
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 182);
+block && range.selectNodeContents(block).collapse({toStart: ('start' === direction)});
+        } else {
+            // the range will be collapsed after deleteContents, so
+            // there will only ever be one 'block'
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 186);
+block = this._getNodes(range, this.blockTags).item(0);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 189);
+if (this._inputNode.contains(block)) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 190);
+range.expand({stopAt: block});
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 191);
+compRange = range.clone().selectNodeContents(block).collapse({toStart: ('start' === direction)});
+
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 193);
+if (0 === range.compare(compRange, {myPoint: direction, otherPoint: direction})) {
+                // at the start or end of a block and we are deleting across
+                // blocks.  prevent the default delete action and do our magic
+
+                _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 197);
+var fromNode, toNode, childNodes, startNode;
+
+                _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 199);
+if (direction === 'start') {
+                    _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 200);
+fromNode = block;
+                    _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 201);
+toNode = block.previous();
+                } else {
+                    _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 203);
+fromNode = block.next();
+                    _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 204);
+toNode = block;
+                }
+
+                _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 207);
+if (fromNode && toNode) {
+                    _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 208);
+childNodes = fromNode.get('childNodes');
+                    _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 209);
+startNode = childNodes.item(0);
+
+                    _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 211);
+toNode.append(childNodes);
+                    _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 212);
+fromNode.remove(true);
+
+                    _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 214);
+range.startNode(startNode, 0);
+                }
+            } else {
+                _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 217);
+if ('start' === direction) {
+                    _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 218);
+this._execCommand('delete');
+                } else {
+                    _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 220);
+this._execCommand('forwardDelete');
+                }
+            }
+
+            // very important to collapse the range here. Firefox freaks out a
+            // bit if the range is still in its expanded state and will require
+            // multiple presses of the delete key unless the range is collapsed.
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 227);
+range.collapse({toStart: true});
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 230);
+selection.select(range);
+    },
+
+
+    /**
+    Detaches block events.
+
+    @method _detachBlockEvents
+    @protected
+    **/
+    _detachBlockEvents: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "_detachBlockEvents", 240);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 241);
+if (this._blockEvents) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 242);
+new Y.EventHandle(this._blockEvents).detach();
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 243);
+this._blockEvents = null;
+        }
+    },
+
+
+    /**
+    Replaces block elements containing the current selection with elements
+    of the given `tag`
+
+    @method _formatBlock
+    @param {String} tag The new block element tag
+    @protected
+    **/
+    _formatBlock: function (tag) {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "_formatBlock", 256);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 257);
+tag = tag.replace(/[<>]/g, '');
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 259);
+if (-1 < this.blockTags.indexOf(tag)) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 260);
+tag = '<' + tag + '>';
+
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 262);
+var selection = this.selection,
+                range = selection.range(),
+                nodes = [];
+
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 266);
+this._getNodes(range, this.blockTags).each(function (node) {
+                _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "(anonymous 3)", 266);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 267);
+var newNode = Y.Node.create(tag);
+
+                _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 269);
+newNode.insert(node.get('childNodes'));
+
+                _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 271);
+EDOM.copyStyles(node, newNode, this.supportedStyles, {
+                    explicit: true,
+                    overwrite: false
+                });
+
+                _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 276);
+node.replace(newNode).remove(true);
+
+                _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 278);
+nodes.push(newNode);
+            }, this);
+
+            // hack until bookmarks are implemented to preserve range
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 282);
+range.startNode(nodes[0]);
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 283);
+range.endNode(nodes[nodes.length]);
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 284);
+console.log('shrink in formatblock');
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 285);
+range.shrink().collapse({toStart: true});
+
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 287);
+selection.select(range);
+        }
+    },
+
+
+    /**
+    Performs a forward delete from the current cursor position
+
+    @method _forwardDelete
+    @protected
+    **/
+    _forwardDelete: function() {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "_forwardDelete", 298);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 299);
+return this._delete('forward');
+    },
+
+
+    /**
+    Inserts a `<br>` at the current selection point
+
+    @method _insertBreak
+    @protected
+    **/
+    _insertBreak: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "_insertBreak", 309);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 310);
+var br = this._insertHTML('<br>');
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 312);
+if (!br.get('nextSibling') || '' === br.get('nextSibling').get('text')) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 313);
+this._insertHTML('<br>');
+        }
+    },
+
+
+    /**
+    Inserts a `return` at the current selection point.
+
+    Any content contained by the range is deleted, resulting in a collapsed range.
+
+    If the range is at the start of a block, a duplicate, empty block is
+    inserted as the previous sibling of current block. The range is positioned
+    at the beginning of the new block
+
+    If the range is at the end of a block, a new `<p>` element is created as
+    the next sibling of the current block. The range is positioned at the start
+    of the new block.
+
+    If the range is in the middle of a block, the block will be split at the
+    current position. The range will be positioned at the beginning of the new
+    block.
+
+    @method _insertReturn
+    @protected
+    **/
+    _insertReturn: function () {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "_insertReturn", 338);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 339);
+var selection = this.selection,
+            range = selection.range().shrink(),
+            block, startRange, endRange;
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 343);
+range.deleteContents();
+
+        // the range will be collapsed after deleteContents, so
+        // there will only ever be one 'block'
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 347);
+block = this._getNodes(range, this.blockTags).item(0);
+
+        // when hitting enter in an `empty` block, collapse the
+        // the range to the end of the block to force the new block
+        // to be inserted after
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 352);
+if ('' === block.get('text')) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 353);
+range.selectNodeContents(block).collapse();
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 356);
+range.expand({stopAt: block});
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 357);
+startRange = range.clone().selectNodeContents(block).collapse({toStart: true});
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 358);
+endRange = range.clone().selectNodeContents(block).collapse();
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 360);
+if (0 === range.compare(startRange, {myPoint: 'start', otherPoint: 'start'})) {
+            // the range is collapsed at the start of the block, insert
+            // a clone of the block before the current block
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 363);
+block = block.insert(block.cloneNode(), 'before').previous();
+        } else {_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 364);
+if (0 === range.compare(endRange, {myPoint: 'end', otherPoint: 'end'})) {
+            // the range is collapsed at the end of the block, start a new
+            // paragraph after the current block
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 367);
+block = block.insert('<p></p>', 'after').next();
+        } else {
+            // somewhere in the middle of a block node, split it
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 370);
+block = this._splitRange(range, this.blockTags);
+        }}
+
+        // in order to be able to place the cursor inside an element
+        // in webkit we need to insert a br
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 375);
+if (EDOM.isEmptyNode(block)) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 376);
+block.setHTML('<br>');
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 379);
+range.selectNodeContents(block).collapse({toStart: true});
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 381);
+selection.select(range);
+    },
+
+
+    /**
+    Default query function for block elements
+
+    @method _queryBlockCommand
+    @return {NodeList} A nodelist of the block nodes containing the range
+    @protected
+     */
+    _queryBlockCommand: function() {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "_queryBlockCommand", 392);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 393);
+return this._getNodes(this.selection.range(), this.blockTags);
+    },
+
+
+    /**
+    Splits elements after the given range until a node matching the
+    given `selector` is reached.
+
+    @method _splitRange
+    @param {Range} range
+    @param {String} selector
+    @return {Node} The node created after splitting
+    @protected
+    **/
+    _splitRange: function (range, selector) {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "_splitRange", 407);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 408);
+var endNode, endOffset;
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 410);
+endNode = range.endNode();
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 411);
+endOffset = range.endOffset();
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 413);
+while (!endNode.test(selector)) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 414);
+endOffset = EDOM.split(endNode, endOffset);
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 415);
+endNode = endOffset.get('parentNode');
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 418);
+if (this._inputNode !== endNode) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 419);
+endOffset = EDOM.split(endNode, endOffset);
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 420);
+endNode = endOffset.get('parentNode');
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 423);
+if (!endOffset._node) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 424);
+endOffset = endNode.get('childNodes').item(endOffset);
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 427);
+return endOffset;
+    },
+
+
+    // -- Protected Event Handlers ---------------------------------------------
+
+    /**
+    Event handler for the selection `change` event
+
+    Creates a default `block` if none exists for the current selection
+
+    @method _blockOnSelectionChange
+    @param {EventFacade} e
+    @protected
+    **/
+    _blockOnSelectionChange: function (e) {
+        _yuitest_coverfunc("build/gallery-sm-editor-block/gallery-sm-editor-block.js", "_blockOnSelectionChange", 442);
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 443);
+var range = e.range,
+            startNode;
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 446);
+if (!range || !range.isCollapsed()) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 447);
+return;
+        }
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 450);
+startNode = range.startNode();
+
+        _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 452);
+if (this._inputNode === startNode.ancestor(this.blockTags, true)) {
+            _yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 453);
+Y.Editor.Base.prototype._execCommand.call(this, 'formatBlock', '<p>');
+        }
+    }
+});
+
+_yuitest_coverline("build/gallery-sm-editor-block/gallery-sm-editor-block.js", 458);
+Y.namespace('Editor').Block = EditorBlock;
+
+}());
+
+
+}, '@VERSION@', {
+    "requires": [
+        "gallery-sm-editor-base",
+        "gallery-sm-editor-dom",
+        "gallery-sm-editor-keys",
+        "node-style"
+    ]
+});
