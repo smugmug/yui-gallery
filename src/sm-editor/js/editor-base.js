@@ -357,23 +357,29 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _getNodes: function (range, selector) {
-        var testNode, nodes = [];
+        var startNode, startOffset,
+            testNode, nodes = [];
 
         range = range.clone().shrink();
 
-        testNode = range.startNode();
+        startNode = range.startNode();
+        startOffset = range.startOffset();
 
         if (range.isCollapsed()) {
-            if (!EDOM.isTextNode(testNode)) {
+            var childNodes = startNode.get('childNodes');
+
+            if (!EDOM.isTextNode(startNode) && childNodes.item(startOffset - 1)) {
                 // the range is collapsed so it will never get traversed. grab
                 // the exact node referenced by startNode/startOffset and work
                 // backwards from there
-                testNode = testNode.get('childNodes').item(range.startOffset());
+                testNode = childNodes.item(startOffset - 1);
+            } else {
+                testNode = startNode;
             }
         } else {
             // traversal will include the startNode, so start off with the
             // startNodes parent
-            testNode = testNode.get('parentNode');
+            testNode = startNode.get('parentNode');
         }
 
         while (testNode && testNode !== this._inputNode && this._inputNode.contains(testNode)) {
