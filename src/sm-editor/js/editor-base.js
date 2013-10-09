@@ -263,6 +263,8 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
             inputNode.setHTML(html);
         } else if (text) {
             inputNode.set('text', text);
+        } else {
+            inputNode.setHTML('<p><br></p>')
         }
 
         inputNode.set('contentEditable', true);
@@ -645,8 +647,11 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         // restore the previously selected range, or create a new range
         if (!(range = this._selectedRange)) {
+            var node = this._inputNode.get('firstChild') || this._inputNode;
+
             range = new Y.Range();
-            range.selectNode(this._inputNode).collapse({toStart: true});
+            range.selectNodeContents(node);
+            range.collapse({toStart: true});
         }
 
         selection.select(range);
