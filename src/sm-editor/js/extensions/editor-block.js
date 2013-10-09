@@ -163,66 +163,71 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
     _delete: function (direction) {
         var selection = this.selection,
             range = selection.range(),
-            block, compRange;
+            startBlock = range.startNode().ancestor(this.blockTags, true),
+            endBlock = range.endNode().ancestor(this.blockTags, true);
 
-        direction = 'forward' === direction ? 'end' : 'start';
+        // With a collapsed range, a backspace will delete across blocks when
+        // the range is a the start of a block and a fwd delete will delete
+        // across blocks when the range is at the end of a block. Check to see
+        // if the range is positioned at the start or end of the range and
+        // assign startBlock/endBlock according to the direction of the delete.
+        if (range.isCollapsed()) {
+            // collapsed, so startBlock === endBlock.
+            range.expand({stopAt: startBlock});
 
-        range.deleteContents();
+            var compRange = range.clone().selectNodeContents(startBlock),
+                compPoint = 'forward' === direction ? 'end' : 'start',
+                compValue = range.compare(compRange, {
+                    myPoint: compPoint,
+                    otherPoint: compPoint
+                });
 
-        if (range.parentNode() === this._inputNode) {
-            // we deleted across blocks
-            block = this._inputNode.get('childNodes').item(range.startOffset());
-
-            if ('end' === direction) {
-                block = block && block.previous();
+            if (0 === compValue) {
+                if ('forward' === direction) {
+                    endBlock = startBlock.next();
+                } else {
+                    endBlock = startBlock;
+                    startBlock = endBlock.previous();
+                }
             }
 
-            block && range.selectNodeContents(block).collapse({toStart: ('start' === direction)});
-        } else {
-            // the range will be collapsed after deleteContents, so
-            // there will only ever be one 'block'
-            block = this._getNodes(range, this.blockTags).item(0);
+            range.collapse();
         }
 
-        if (this._inputNode.contains(block)) {
-            range.expand({stopAt: block});
-            compRange = range.clone().selectNodeContents(block).collapse({toStart: ('start' === direction)});
+        // The startBlock/endBlock will be different if deleting
+        // across blocks.
+        if (startBlock && endBlock && startBlock !== endBlock) {
+            range.deleteContents();
+            range.endNode(startBlock.get('lastChild'), 'after');
+            range.collapse();
 
-            if (0 === range.compare(compRange, {myPoint: direction, otherPoint: direction})) {
-                // at the start or end of a block and we are deleting across
-                // blocks.  prevent the default delete action and do our magic
-
-                var fromNode, toNode, childNodes, startNode;
-
-                if (direction === 'start') {
-                    fromNode = block;
-                    toNode = block.previous();
-                } else {
-                    fromNode = block.next();
-                    toNode = block;
-                }
-
-                if (fromNode && toNode) {
-                    childNodes = fromNode.get('childNodes');
-                    startNode = childNodes.item(0);
-
-                    toNode.append(childNodes);
-                    fromNode.remove(true);
-
-                    range.startNode(startNode, 0);
-                }
-            } else {
-                if ('start' === direction) {
-                    this._execCommand('delete');
-                } else {
-                    this._execCommand('forwardDelete');
-                }
+            // only copy nodes from elements that have text content
+            if (endBlock.get('text').length) {
+                startBlock.append(endBlock.get('childNodes'));
             }
 
-            // very important to collapse the range here. Firefox freaks out a
-            // bit if the range is still in its expanded state and will require
-            // multiple presses of the delete key unless the range is collapsed.
-            range.collapse({toStart: true});
+            endBlock.remove(true);
+        } else {
+            // Not deleting across blocks, safe to use the native
+            // browser delete methods
+            if ('forward' === direction) {
+                this._execCommand('forwardDelete');
+            } else {
+                this._execCommand('delete');
+            }
+
+            // although sometimes firefox will delete a node and leave the
+            // range in the editor input node which messes up the auto-block
+            // generation. If startOffset references a valid node, select it.
+            if (this._inputNode === range.parentNode()) {
+                startBlock = this._inputNode.get('childNodes')
+                                .item(range.startOffset() - 1);
+
+                if (startBlock) {
+                    range.selectNodeContents(startBlock);
+                    range.collapse();
+                }
+            }
         }
 
         selection.select(range);
