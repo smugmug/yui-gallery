@@ -17,8 +17,6 @@ Extension for `Editor.Base` that enables inserting links
 **/
 
 (function() {
-var EDOM = Y.Editor.DOM;
-
 var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
 
