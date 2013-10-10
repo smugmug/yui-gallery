@@ -26,6 +26,12 @@
             ]
         },
 
+        "gallery-sm-editor-delete": {
+            "jsfiles": [
+                "js/extensions/editor-delete.js"
+            ]
+        },
+
         "gallery-sm-editor-format": {
             "jsfiles": [
                 "js/extensions/editor-format.js"

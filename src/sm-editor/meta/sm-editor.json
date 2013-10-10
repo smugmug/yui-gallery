@@ -3,6 +3,7 @@
         "requires": [
             "gallery-sm-editor-base",
             "gallery-sm-editor-block",
+            "gallery-sm-editor-delete",
             "gallery-sm-editor-format",
             "gallery-sm-editor-keys",
             "gallery-sm-editor-link",
@@ -31,6 +32,15 @@
             "gallery-sm-editor-dom",
             "gallery-sm-editor-keys",
             "node-style"
+        ]
+    },
+
+    "gallery-sm-editor-delete": {
+        "requires": [
+            "gallery-sm-editor-base",
+            "gallery-sm-editor-block",
+            "gallery-sm-editor-keys",
+            "node"
         ]
     },
 

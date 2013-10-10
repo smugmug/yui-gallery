@@ -18,9 +18,8 @@ A simple but powerful WYSIWYG editor.
 @uses Editor.Style
 @uses Editor.Undo
 **/
-
-Y.Editor = Y.mix(
-    Y.Base.create('editor', Y.Editor.Base, [
+(function () {
+    var extensions = [
         Y.Editor.Keys,
         Y.Editor.Link,
         Y.Editor.Queue,
@@ -28,6 +27,14 @@ Y.Editor = Y.mix(
         Y.Editor.Style,
         Y.Editor.Format
 //        Y.Editor.Undo
-    ], {}),
-    Y.Editor
-);
+    ];
+
+    if (Y.UA.chrome) {
+        extensions.push(Y.Editor.Delete);
+    }
+
+    Y.Editor = Y.mix(
+        Y.Base.create('editor', Y.Editor.Base, extensions, {}),
+        Y.Editor
+    );
+}());
