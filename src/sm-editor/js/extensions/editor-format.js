@@ -189,6 +189,6 @@ var EditorFormat = Y.Base.create('editorFormat', Y.Base, [], {
     }
 });
 
-Y.namespace('Editor').Format = EditorFormat
+Y.namespace('Editor').Format = EditorFormat;
 
 }());

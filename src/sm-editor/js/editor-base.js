@@ -264,7 +264,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
         } else if (text) {
             inputNode.set('text', text);
         } else {
-            inputNode.setHTML('<p><br></p>')
+            inputNode.setHTML('<p><br></p>');
         }
 
         inputNode.set('contentEditable', true);
@@ -326,7 +326,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _execCommand: function (name, value) {
-        if (!doc.queryCommandEnabled(name)) {
+        if (!doc.queryCommandSupported(name) || !doc.queryCommandEnabled(name)) {
             Y.log('Command is not currently allowed: ' + name, 'warn', 'sm-editor');
             return;
         }
@@ -466,8 +466,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     },
 
     /**
-    Wrapper for the native `queryCommandState()` and `queryCommandValue()`
-    methods that uses the appropriate method for the given command type.
+    Wrapper for the native `queryCommandValue()` method
 
     @method _queryCommandValue
     @param {String} name Command name.
@@ -475,7 +474,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _queryCommandValue: function (name) {
-        return doc.queryCommandValue(name);
+        return doc.queryCommandSupported(name) ? doc.queryCommandValue(name) : null;
     },
 
     /**
