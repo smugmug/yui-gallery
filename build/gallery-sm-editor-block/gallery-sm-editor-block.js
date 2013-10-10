@@ -36,14 +36,6 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
         @param {Function|String} [queryFn]
     **/
     blockCommands: {
-        'delete': {
-            commandFn: '_delete'
-        },
-
-        forwardDelete: {
-            commandFn: '_forwardDelete'
-        },
-
         formatBlock: {
             commandFn: '_formatBlock',
             queryFn: '_queryBlockCommand'
@@ -52,10 +44,6 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
         heading: {
             commandFn: '_formatBlock',
             queryFn: '_queryBlockCommand'
-        },
-
-        insertBreak: {
-            commandFn: '_insertBreak'
         },
 
         insertParagraph: {
@@ -75,10 +63,7 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
         'alt+f':       'justifyFull',
         'alt+l':       'justifyLeft',
         'alt+r':       'justifyRight',
-        'backspace':   'delete',
-        'delete':      'forwardDelete',
-        'enter':       'insertParagraph',
-        'shift+enter': 'insertBreak'
+        'enter':       'insertParagraph'
     },
 
 
@@ -131,103 +116,6 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
         this._blockEvents = [
             this.on('selectionChange', this._blockOnSelectionChange, this)
         ];
-    },
-
-
-    /**
-    Handles backspace and delete because chrome is an idiot and will copy
-    computed styles like `line-height`, `color` and `font-size` when merging
-    blocks of different types.
-
-    For example given the following HTML:
-
-        <h1>foo</h1>
-        <p>bar</p>
-
-    Hitting backspace with the cursor at the beginning of the `<p>` element will
-    create a `<span>` in the `<h1>` after the text `foo` with the computed styles
-    of the `<p>` element. The brilliant result is:
-
-        <h1>foo<span style="line-height: 1.2; font-size:12px; color:xxx;">bar</span></h1>
-
-    Its so stupid and none of the other browsers (even Safari) behave this way.
-
-    This method normalizes the behavior when deleting across blocks to *not*
-    copy styles. The result from the previous example is now:
-
-        <h1>foobar</h1>
-
-    @method _delete
-    @param {String} [direction=back] `forward` for a forward delete,
-    `back` for a backspace
-    @protected
-    **/
-    _delete: function (direction) {
-        var selection = this.selection,
-            range = selection.range(),
-            block, compRange;
-
-        direction = 'forward' === direction ? 'end' : 'start';
-
-        range.deleteContents();
-
-        if (range.parentNode() === this._inputNode) {
-            // we deleted across blocks
-            block = this._inputNode.get('childNodes').item(range.startOffset());
-
-            if ('end' === direction) {
-                block = block && block.previous();
-            }
-
-            block && range.selectNodeContents(block).collapse({toStart: ('start' === direction)});
-        } else {
-            // the range will be collapsed after deleteContents, so
-            // there will only ever be one 'block'
-            block = this._getNodes(range, this.blockTags).item(0);
-        }
-
-        if (this._inputNode.contains(block)) {
-            range.expand({stopAt: block});
-            compRange = range.clone().selectNodeContents(block).collapse({toStart: ('start' === direction)});
-
-            if (0 === range.compare(compRange, {myPoint: direction, otherPoint: direction})) {
-                // at the start or end of a block and we are deleting across
-                // blocks.  prevent the default delete action and do our magic
-
-                var fromNode, toNode, childNodes, startNode;
-
-                if (direction === 'start') {
-                    fromNode = block;
-                    toNode = block.previous();
-                } else {
-                    fromNode = block.next();
-                    toNode = block;
-                }
-
-                if (fromNode && toNode) {
-                    childNodes = fromNode.get('childNodes');
-                    startNode = childNodes.item(0);
-
-                    toNode.append(childNodes);
-                    fromNode.remove(true);
-
-                    range.startNode(startNode, 0);
-                }
-            } else {
-                if ('start' === direction) {
-                    this._execCommand('delete');
-                } else {
-                    this._execCommand('forwardDelete');
-                }
-            }
-
-            // very important to collapse the range here. Firefox freaks out a
-            // bit if the range is still in its expanded state and will require
-            // multiple presses of the delete key unless the range is collapsed.
-            range.collapse({toStart: true});
-        }
-
-        selection.select(range);
     },
 
 
@@ -285,32 +173,6 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
             range.shrink().collapse({toStart: true});
 
             selection.select(range);
-        }
-    },
-
-
-    /**
-    Performs a forward delete from the current cursor position
-
-    @method _forwardDelete
-    @protected
-    **/
-    _forwardDelete: function() {
-        return this._delete('forward');
-    },
-
-
-    /**
-    Inserts a `<br>` at the current selection point
-
-    @method _insertBreak
-    @protected
-    **/
-    _insertBreak: function () {
-        var br = this._insertHTML('<br>');
-
-        if (!br.get('nextSibling') || '' === br.get('nextSibling').get('text')) {
-            this._insertHTML('<br>');
         }
     },
 
