@@ -15,13 +15,18 @@ A simple but powerful WYSIWYG editor.
 @class Editor
 @constructor
 @extends Editor.Base
+@uses Editor.Delete
 @uses Editor.Keys
 @uses Editor.Link
+@uses Editor.Queue
+@uses Editor.Block
 @uses Editor.Style
+@uses Editor.Format
 @uses Editor.Undo
 **/
-(function () {
-    var extensions = [
+Y.Editor = Y.mix(
+    Y.Base.create('editor', Y.Editor.Base, [
+        Y.Editor.Delete,
         Y.Editor.Keys,
         Y.Editor.Link,
         Y.Editor.Queue,
@@ -29,17 +34,9 @@ A simple but powerful WYSIWYG editor.
         Y.Editor.Style,
         Y.Editor.Format
 //        Y.Editor.Undo
-    ];
-
-    if (Y.UA.chrome) {
-        extensions.push(Y.Editor.Delete);
-    }
-
-    Y.Editor = Y.mix(
-        Y.Base.create('editor', Y.Editor.Base, extensions, {}),
-        Y.Editor
-    );
-}());
+    ], {}),
+    Y.Editor
+);
 
 
 }, '@VERSION@', {

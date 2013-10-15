@@ -178,7 +178,9 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
                 }
             }
 
-            fn = this[fn];
+            if ('string' === typeof fn) {
+                fn = this[fn];
+            }
         }
 
         this.focus();
