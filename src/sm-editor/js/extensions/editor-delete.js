@@ -19,6 +19,8 @@ Extension for `Editor.Base` that handles deletion
 
 (function () {
 
+var isChrome = !!(Y.UA.chrome);
+
 var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
 
@@ -48,9 +50,12 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
 
     @property {Object} styleKeyCommands
     **/
-    deleteKeyCommands: {
-        'backspace':   'delete',
-        'delete':      'forwardDelete'
+    deleteKeyCommands: isChrome ? {
+        'backspace':   {fn: 'delete',        allowDefault: false, async: false},
+        'delete':      {fn: 'forwardDelete', allowDefault: false, async: false}
+    } : {
+        'backspace':   {fn: 'delete',        allowDefault: true, async: true},
+        'delete':      {fn: 'forwardDelete', allowDefault: true, async: true}
     },
 
 
@@ -95,7 +100,7 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
     `back` for a backspace
     @protected
     **/
-    _delete: function (direction) {
+    _delete: isChrome ? function (direction) {
         var selection = this.selection,
             range = selection.range(),
             startBlock = range.startNode().ancestor(this.blockTags, true),
@@ -166,6 +171,8 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
         }
 
         selection.select(range);
+    } : function () {
+        // no-op
     },
 
 
@@ -175,8 +182,10 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
     @method _forwardDelete
     @protected
     **/
-    _forwardDelete: function() {
+    _forwardDelete: isChrome ? function() {
         return this._delete('forward');
+    } : function () {
+        // no-op
     }
 });
 
