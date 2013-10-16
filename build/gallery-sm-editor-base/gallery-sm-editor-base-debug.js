@@ -689,6 +689,11 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         e.preventDefault();
 
+        // create a document-fragment with the pasted contents
+        // then get the text content of the fragment. effectively
+        // strips tags.
+        contents = Y.Node.create(contents).get('text');
+
         this.command('insertText', contents);
     }
 }, {
