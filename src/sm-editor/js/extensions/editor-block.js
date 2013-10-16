@@ -167,7 +167,7 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
             // hack until bookmarks are implemented to preserve range
             range.startNode(nodes[0]);
             range.endNode(nodes[nodes.length]);
-            console.log('shrink in formatblock');
+
             range.shrink().collapse({toStart: true});
 
             selection.select(range);
