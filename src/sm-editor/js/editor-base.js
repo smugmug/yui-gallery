@@ -19,8 +19,9 @@ but no undo stack, keyboard shortcuts, etc.
 **/
 
 var doc          = Y.config.doc,
+    win          = Y.config.win,
     getClassName = Y.ClassNameManager.getClassName,
-    EDOM = Y.Editor.DOM;
+    EDOM         = Y.Editor.DOM;
 
 /**
 Fired after this editor loses focus.
@@ -580,7 +581,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _onCopy: function (e) {
-        var clipboard = e._event.clipboardData || window.clipboardData,
+        var clipboard = e._event.clipboardData || win.clipboardData,
             range = this.selection.range(),
             contents = range.cloneContents().getHTML();
 
@@ -603,7 +604,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _onCut: function (e) {
-        var clipboard = e._event.clipboardData || window.clipboardData,
+        var clipboard = e._event.clipboardData || win.clipboardData,
             range = this.selection.range(),
             contents;
 
