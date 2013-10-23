@@ -623,9 +623,15 @@ Range.prototype = {
                     // have the correct textNode and not trimming it
                     return this;
                 }
-            } else if (endOffset) {
-                // the endOffset references a childNode
-                endNode = endNode.get('childNodes').item(endOffset - 1);
+            } else {
+                // the endOffset references a point *after* a childNode
+                // so grab the node preceding the offset
+                var childNodes = endNode.get('childNodes'),
+                    node = childNodes.item(endOffset - 1);
+
+                if (node) {
+                    endNode = node;
+                }
             }
 
             // at this point endNode could be an element node or a text node
@@ -703,9 +709,16 @@ Range.prototype = {
                     // have the correct textNode and not trimming it
                     return this;
                 }
-            } else if (startOffset) {
-                // the startOffset references a childNode
-                startNode = startNode.get('childNodes').item(startOffset - 1);
+            } else {
+                // the startOffset references a point *before* a childNode
+                // so grab the node following the offset (which is
+                // indexed by the offset, unlike the endOffset)
+                var childNodes = startNode.get('childNodes'),
+                    node = childNodes.item(startOffset);
+
+                if (node) {
+                    startNode = node;
+                }
             }
 
             // at this point startNode could be an element node or a text node
