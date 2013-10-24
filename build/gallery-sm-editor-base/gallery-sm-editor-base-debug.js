@@ -467,6 +467,12 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @return {Node} Node instance representing the inserted text node.
     **/
     _insertText: function (text) {
+        // replace any newlines with spaces. browsers will convert
+        // back to back newlines into paragraphs in the `formatBlock` command
+        // which could cause nesting issues depending on where the text is
+        // being inserted
+        text = text.replace(/\n+/g, ' ');
+
         return this._insertHTML(doc.createTextNode(text));
     },
 

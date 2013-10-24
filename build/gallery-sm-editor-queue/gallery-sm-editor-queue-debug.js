@@ -173,6 +173,10 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     @protected
     **/
     _onKeyPress: function(e) {
+        if (e.metaKey) {
+            return;
+        }
+
         var selection = this.selection,
             range = selection.range(),
             node;
