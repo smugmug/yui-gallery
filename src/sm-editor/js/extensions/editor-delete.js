@@ -19,7 +19,7 @@ Extension for `Editor.Base` that handles deletion
 
 (function () {
 
-var isChrome = !!(Y.UA.chrome);
+var isWebkit = !!(Y.UA.webkit);
 
 var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
@@ -50,7 +50,7 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
 
     @property {Object} styleKeyCommands
     **/
-    deleteKeyCommands: isChrome ? {
+    deleteKeyCommands: isWebkit ? {
         'backspace':   {fn: 'delete',        allowDefault: false, async: false},
         'delete':      {fn: 'forwardDelete', allowDefault: false, async: false}
     } : {
@@ -100,7 +100,7 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
     `back` for a backspace
     @protected
     **/
-    _delete: isChrome ? function (direction) {
+    _delete: isWebkit ? function (direction) {
         var selection = this.selection,
             range = selection.range(),
             startBlock = range.startNode().ancestor(this.blockTags, true),
@@ -182,7 +182,7 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
     @method _forwardDelete
     @protected
     **/
-    _forwardDelete: isChrome ? function() {
+    _forwardDelete: isWebkit ? function() {
         return this._delete('forward');
     } : function () {
         // no-op
