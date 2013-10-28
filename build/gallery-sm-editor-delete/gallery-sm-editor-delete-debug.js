@@ -75,7 +75,7 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
     // -- Protected Methods ----------------------------------------------------
 
     /**
-    Handles backspace and delete because chrome is an idiot and will copy
+    Handles backspace and delete because webkit is an idiot and will copy
     computed styles like `line-height`, `color` and `font-size` when merging
     blocks of different types.
 
@@ -90,7 +90,7 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
 
         <h1>foo<span style="line-height: 1.2; font-size:12px; color:xxx;">bar</span></h1>
 
-    Its so stupid and none of the other browsers (even Safari) behave this way.
+    Its so stupid and IE/Firefox do not behave this way.
 
     This method normalizes the behavior when deleting across blocks to *not*
     copy styles. The result from the previous example is now:
@@ -107,6 +107,10 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
             range = selection.range(),
             startBlock = range.startNode().ancestor(this.blockTags, true),
             endBlock = range.endNode().ancestor(this.blockTags, true);
+
+        if ('forward' !== direction) {
+            direction = 'back';
+        }
 
         // With a collapsed range, a backspace will delete across blocks when
         // the range is a the start of a block and a fwd delete will delete
@@ -132,8 +136,6 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
                     startBlock = endBlock.previous();
                 }
             }
-
-            range.collapse();
         }
 
         // The startBlock/endBlock will be different if deleting
@@ -141,7 +143,6 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
         if (startBlock && endBlock && startBlock !== endBlock) {
             range.deleteContents();
             range.endNode(startBlock.get('lastChild'), 'after');
-            range.collapse();
 
             // only copy nodes from elements that have text content
             if (endBlock.get('text').length) {
@@ -157,20 +158,9 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
             } else {
                 this._execCommand('delete');
             }
-
-            // although sometimes firefox will delete a node and leave the
-            // range in the editor input node which messes up the auto-block
-            // generation. If startOffset references a valid node, select it.
-            if (this._inputNode === range.parentNode()) {
-                startBlock = this._inputNode.get('childNodes')
-                                .item(range.startOffset() - 1);
-
-                if (startBlock) {
-                    range.selectNodeContents(startBlock);
-                    range.collapse();
-                }
-            }
         }
+
+        range.collapse({toStart: ('back' === direction)});
 
         selection.select(range);
     } : function () {
