@@ -134,8 +134,8 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
         }
 
         options || (options = {});
-        options.target || (options.target = '_self');
-        options.href || (options.href = '');
+        options.href = encodeURI(options.href || '');
+        options.target = encodeURIComponent(options.target || '_self');
 
         anchorNode = Y.Node.create(Y.Lang.sub(this.linkTemplate, options));
         styleNodes = this._getStyleNodes(range);
