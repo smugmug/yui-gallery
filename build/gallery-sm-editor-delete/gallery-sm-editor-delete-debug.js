@@ -21,7 +21,7 @@ Extension for `Editor.Base` that handles deletion
 
 (function () {
 
-var isWebkit = !!(Y.UA.webkit);
+var isIE = !!(Y.UA.ie);
 
 var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
@@ -52,12 +52,12 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
 
     @property {Object} styleKeyCommands
     **/
-    deleteKeyCommands: isWebkit ? {
-        'backspace':   {fn: 'delete',        allowDefault: false, async: false},
-        'delete':      {fn: 'forwardDelete', allowDefault: false, async: false}
-    } : {
+    deleteKeyCommands: isIE ? {
         'backspace':   {fn: 'delete',        allowDefault: true, async: true},
         'delete':      {fn: 'forwardDelete', allowDefault: true, async: true}
+    } : {
+        'backspace':   {fn: 'delete',        allowDefault: false, async: false},
+        'delete':      {fn: 'forwardDelete', allowDefault: false, async: false}
     },
 
 
@@ -92,6 +92,10 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
 
     Its so stupid and IE/Firefox do not behave this way.
 
+    Related, when deleting across blocks with different `text-alignment`,
+    Firefox will copy `text-alignment` from the later block, which is opposite
+    of what the other browsers do.
+
     This method normalizes the behavior when deleting across blocks to *not*
     copy styles. The result from the previous example is now:
 
@@ -102,7 +106,9 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
     `back` for a backspace
     @protected
     **/
-    _delete: isWebkit ? function (direction) {
+    _delete: isIE ? function (direction) {
+        // no-op
+    } : function (direction) {
         var selection = this.selection,
             range = selection.range(),
             startBlock = range.startNode().ancestor(this.blockTags, true),
@@ -136,6 +142,8 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
                     startBlock = endBlock.previous();
                 }
             }
+
+            range.collapse();
         }
 
         // The startBlock/endBlock will be different if deleting
@@ -143,7 +151,8 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
         if (startBlock && endBlock && startBlock !== endBlock) {
             range.deleteContents();
             range.endNode(startBlock.get('lastChild'), 'after');
-
+            range.collapse();
+            
             // only copy nodes from elements that have text content
             if (endBlock.get('text').length) {
                 startBlock.append(endBlock.get('childNodes'));
@@ -158,13 +167,23 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
             } else {
                 this._execCommand('delete');
             }
+
+            // although sometimes firefox will delete a node and leave the
+            // range in the editor input node which messes up the auto-block
+            // generation. If startOffset references a valid node, select it.
+            if (this._inputNode === range.parentNode()) {
+                startBlock = this._inputNode.get('childNodes')
+                                .item(range.startOffset() - 1);
+
+                if (startBlock) {
+                    range.selectNodeContents(startBlock);
+                }
+            }
         }
 
         range.collapse({toStart: ('back' === direction)});
 
         selection.select(range);
-    } : function () {
-        // no-op
     },
 
 
@@ -174,10 +193,10 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
     @method _forwardDelete
     @protected
     **/
-    _forwardDelete: isWebkit ? function() {
-        return this._delete('forward');
-    } : function () {
+    _forwardDelete: isIE ? function () {
         // no-op
+    } : function () {
+        return this._delete('forward');
     }
 });
 
