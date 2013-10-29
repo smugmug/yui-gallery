@@ -1,6 +1,11 @@
 .sm-editor-input {
     overflow: auto;
-    white-space: pre-wrap;
+    /*
+    force white-space: normal; because any other setting will
+    make chrome insert a newline instead of a linebreak (<br>)
+    when hitting shift+return
+    */
+    white-space: normal;
 }
 
 .sm-editor-output { display: none; }
