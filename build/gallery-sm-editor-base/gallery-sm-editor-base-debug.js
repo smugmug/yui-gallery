@@ -462,7 +462,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     Inserts the specified plain _text_ at the current selection point, deleting
     the current selection if there is one.
 
-    @method insertText
+    @method _insertText
     @param {String} text Text to insert.
     @return {Node} Node instance representing the inserted text node.
     **/
@@ -475,6 +475,22 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
         return this._insertHTML(doc.createTextNode(text));
     },
+
+
+    /**
+    No-op function for allowing default browser implementations.
+
+    Use as the `commandFn` in a command config when the default browser
+    behavior is desired. Allows for the command stack to execute and
+    selection to be updated
+
+    @method _noCommand
+    @protected
+    **/
+    _noCommand: function () {
+        // no-op
+    },
+
 
     /**
     Wrapper for the native `queryCommandValue()` method

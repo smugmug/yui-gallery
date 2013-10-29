@@ -46,6 +46,10 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
             queryFn: '_queryBlockCommand'
         },
 
+        insertBreak: {
+            commandFn: '_noCommand'
+        },
+
         insertParagraph: {
             commandFn: '_insertReturn',
             queryFn: '_queryBlockCommand'
@@ -63,7 +67,11 @@ var EditorBlock = Y.Base.create('editorBlock', Y.Base, [], {
         'alt+f':       'justifyFull',
         'alt+l':       'justifyLeft',
         'alt+r':       'justifyRight',
-        'enter':       'insertParagraph'
+        'enter':       'insertParagraph',
+        // ctrl+enter for safari, shift+enter for sane browsers. safe to have
+        // both declarations here because they pass through to default behavior
+        'ctrl+enter':  {fn: 'insertBreak', allowDefault: true, async: true},
+        'shift+enter': {fn: 'insertBreak', allowDefault: true, async: true}
     },
 
 
