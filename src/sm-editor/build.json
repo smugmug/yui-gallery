@@ -22,7 +22,7 @@
 
         "gallery-sm-editor-dom": {
             "jsfiles": [
-                "js/extensions/editor-dom.js"
+                "js/editor-dom.js"
             ]
         },
 
