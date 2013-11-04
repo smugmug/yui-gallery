@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.Block.html">Editor.Block</a></li>
+            
+                <li><a href="../classes/Editor.Delete.html">Editor.Delete</a></li>
+            
                 <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Format.html">Editor.Format</a></li>
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
@@ -101,7 +107,13 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-block.html">gallery-sm-editor-block</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-delete.html">gallery-sm-editor-delete</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-format.html">gallery-sm-editor-format</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
             
@@ -110,8 +122,6 @@
                 <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
-            
-                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
             
@@ -1305,7 +1315,7 @@ get the new end node, call <code>endNode()</code>.</p>
             
                 <li class="arg">
                     
-                        <code class="optional">[container]</code>
+                        <code class="optional">[options]</code>
                     
                 </li>
             
@@ -1359,9 +1369,11 @@ are not guaranteed to be element nodes after this method is executed.</p>
 <p>given the HTML</p>
 <pre class="code prettyprint"><code>&lt;div&gt;&lt;span&gt;Lorem&lt;/span&gt;&lt;/div&gt;</code></pre>
 <p>an initial range of</p>
-<pre class="code prettyprint"><code>&lt;div&gt;&lt;span&gt;[{Lorem]}&lt;/span&gt;&lt;/div&gt;  s0:e5</code></pre>
-<p>after expansion would be</p>
-<pre class="code prettyprint"><code>[{&lt;div&gt;&lt;span&gt;Lorem&lt;/span&gt;&lt;/div&gt;}]  s0:e1</code></pre>
+<pre class="code prettyprint"><code>&lt;div&gt;&lt;span&gt;[{Lorem]}&lt;/span&gt;&lt;/div&gt;  #text s0 : #text e5</code></pre>
+<p>after expansion with stopAt = <code>span</code></p>
+<pre class="code prettyprint"><code>&lt;div&gt;&lt;span&gt;[{Lorem]}&lt;/span&gt;&lt;/div&gt;  SPAN s0 : SPAN e1</code></pre>
+<p>after expansion with stopAt = <code>div</code></p>
+<pre class="code prettyprint"><code>&lt;div&gt;[{&lt;span&gt;Lorem&lt;/span&gt;}]&lt;/div&gt;  DIV s0 : DIV e1</code></pre>
 
     </div>
 
@@ -1373,19 +1385,41 @@ are not guaranteed to be element nodes after this method is executed.</p>
             
                 <li class="param">
                     
-                        <code class="param-name optional">[container]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>If provided, do not expand the range
-    past this container</p>
-
+                         
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[stopAt]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If provided,
+    does not expand the range past this node.
+    Strings will be used as selectors to match ancestor nodes of the start
+    and end nodes of the range (inclusive).
+    Functions will test ancestors of the start and end nodes of the range
+    (inclusive) and will receive the node being tested as the only argument.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -1408,7 +1442,7 @@ are not guaranteed to be element nodes after this method is executed.</p>
             
                 <li class="arg">
                     
-                        <code class="optional">[container]</code>
+                        <code class="optional">[options]</code>
                     
                 </li>
             
@@ -1443,7 +1477,7 @@ are not guaranteed to be element nodes after this method is executed.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l263"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:263</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l272"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:272</code></a>
         
         </p>
 
@@ -1468,19 +1502,41 @@ guaranteed to be an element node after this method is executed.</p>
             
                 <li class="param">
                     
-                        <code class="param-name optional">[container]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>If provided, do not expand the range
-    past this container</p>
-
+                         
                     </div>
 
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[stopAt]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>If provided,
+    does not expand the range past this node.
+    Strings will be used as selectors to match ancestor nodes of the end
+    node of the range (inclusive).
+    Functions will test ancestors of the end node of the range (inclusive)
+    and will receive the node being tested as the only argument.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -1503,7 +1559,7 @@ guaranteed to be an element node after this method is executed.</p>
             
                 <li class="arg">
                     
-                        <code class="optional">[container]</code>
+                        <code class="optional">[options.stopAt]</code>
                     
                 </li>
             
@@ -1538,7 +1594,7 @@ guaranteed to be an element node after this method is executed.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l289"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:289</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l327"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:327</code></a>
         
         </p>
 
@@ -1563,16 +1619,20 @@ guaranteed to be an element node after this method is executed.</p>
             
                 <li class="param">
                     
-                        <code class="param-name optional">[container]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                        <code class="param-name optional">[options.stopAt]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>If provided, do not expand the range
-    past this container</p>
+                        <p>If provided,
+    does not expand the range past this node.
+    Strings will be used as selectors to match ancestor nodes of the start
+    node of the range (inclusive).
+    Functions will test ancestors of the start node of the range (inclusive)
+    and will receive the node being tested as the only argument.</p>
 
                     </div>
 
@@ -1625,7 +1685,7 @@ guaranteed to be an element node after this method is executed.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l315"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:315</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l367"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:367</code></a>
         
         </p>
 
@@ -1714,7 +1774,7 @@ to duplicate ids, so be careful.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l335"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:335</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l387"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:387</code></a>
         
         </p>
 
@@ -1812,7 +1872,7 @@ to duplicate ids, so be careful.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l351"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:351</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l403"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:403</code></a>
         
         </p>
 
@@ -1898,7 +1958,7 @@ are different and the range is not empty.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l367"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:367</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l419"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:419</code></a>
         
         </p>
 
@@ -2007,7 +2067,7 @@ are different and the range is not empty.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l381"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:381</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l433"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:433</code></a>
         
         </p>
 
@@ -2106,7 +2166,7 @@ are different and the range is not empty.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l407"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:407</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l459"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:459</code></a>
         
         </p>
 
@@ -2189,7 +2249,7 @@ within this range.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l421"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:421</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l473"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:473</code></a>
         
         </p>
 
@@ -2282,7 +2342,7 @@ parent of the given node.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l438"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:438</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l490"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:490</code></a>
         
         </p>
 
@@ -2376,7 +2436,7 @@ number of characters contained in the reference node.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l456"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:456</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l508"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:508</code></a>
         
         </p>
 
@@ -2532,7 +2592,7 @@ offset to <em>include all</em> trailing whitespace.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l526"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:526</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l578"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:578</code></a>
         
         </p>
 
@@ -2648,7 +2708,7 @@ containing the selected text.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l606"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:606</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l664"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:664</code></a>
         
         </p>
 
@@ -2772,7 +2832,7 @@ containing the selected text.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l687"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:687</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l752"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:752</code></a>
         
         </p>
 
@@ -2913,7 +2973,7 @@ before <em>node</em> (not inside it).</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l735"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:735</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l800"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:800</code></a>
         
         </p>
 
@@ -3028,7 +3088,7 @@ To get the new start node, call <code>startNode()</code>.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l774"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:774</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l839"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:839</code></a>
         
         </p>
 
@@ -3101,7 +3161,7 @@ To get the new start node, call <code>startNode()</code>.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l789"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:789</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l854"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:854</code></a>
         
         </p>
 
@@ -3188,7 +3248,7 @@ To get the new start node, call <code>startNode()</code>.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l801"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:801</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l866"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:866</code></a>
         
         </p>
 
@@ -3341,7 +3401,7 @@ methods to determine where the precise boundaries are if necessary.</p>
             
         
         
-        <a href="../files/src_sm-selection_js_range.js.html#l885"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:885</code></a>
+        <a href="../files/src_sm-selection_js_range.js.html#l950"><code>src&#x2F;sm-selection&#x2F;js&#x2F;range.js:950</code></a>
         
         </p>
 

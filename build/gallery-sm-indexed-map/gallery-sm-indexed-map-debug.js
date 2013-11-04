@@ -21,6 +21,7 @@ The `Y.IndexedMap` class extends `Y.Map`. See that module's documentation for
 more details on Map fundamentals.
 
 @class IndexedMap
+@extends Map
 @constructor
 @param {Array[]|Map} [entries] Array or Map of entries to add to this map. If an
     array, then each entry should itself be an array in which the first item is

@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.Block.html">Editor.Block</a></li>
+            
+                <li><a href="../classes/Editor.Delete.html">Editor.Delete</a></li>
+            
                 <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Format.html">Editor.Format</a></li>
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
@@ -101,7 +107,13 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-block.html">gallery-sm-editor-block</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-delete.html">gallery-sm-editor-delete</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-format.html">gallery-sm-editor-format</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
             
@@ -110,8 +122,6 @@
                 <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
-            
-                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
             
@@ -181,13 +191,19 @@
             Uses
             <ul class="inline commas">
                 
+                    <li><a href="Editor.Delete.html">Editor.Delete</a></li>
+                
                     <li><a href="Editor.Keys.html">Editor.Keys</a></li>
                 
                     <li><a href="Editor.Link.html">Editor.Link</a></li>
                 
+                    <li><a href="Editor.Queue.html">Editor.Queue</a></li>
+                
+                    <li><a href="Editor.Block.html">Editor.Block</a></li>
+                
                     <li><a href="Editor.Style.html">Editor.Style</a></li>
                 
-                    <li><a href="Editor.Undo.html">Editor.Undo</a></li>
+                    <li><a href="Editor.Format.html">Editor.Format</a></li>
                 
             </ul>
         </div>
@@ -330,35 +346,7 @@
                             </li>
                         
                             <li class="index-item method protected inherited">
-                                <a href="#method__addRedo">_addRedo</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method protected inherited">
-                                <a href="#method__addUndo">_addUndo</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method protected inherited">
                                 <a href="#method__afterContainerChange">_afterContainerChange</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method protected inherited">
-                                <a href="#method__afterDelete">_afterDelete</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method protected inherited">
-                                <a href="#method__afterRender">_afterRender</a>
 
                                 
                                 
@@ -366,6 +354,13 @@
                         
                             <li class="index-item method private inherited">
                                 <a href="#method__aggregateAttrs">_aggregateAttrs</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__attachBlockEvents">_attachBlockEvents</a>
 
                                 
                                 
@@ -386,7 +381,7 @@
                             </li>
                         
                             <li class="index-item method protected inherited">
-                                <a href="#method__attachUndoEvents">_attachUndoEvents</a>
+                                <a href="#method__attachQueueEvents">_attachQueueEvents</a>
 
                                 
                                 
@@ -414,7 +409,14 @@
                             </li>
                         
                             <li class="index-item method protected inherited">
-                                <a href="#method__beforeExecCommand">_beforeExecCommand</a>
+                                <a href="#method__blockOnSelectionChange">_blockOnSelectionChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__clearCommandQueue">_clearCommandQueue</a>
 
                                 
                                 
@@ -422,6 +424,13 @@
                         
                             <li class="index-item method private inherited">
                                 <a href="#method__cloneDefaultValue">_cloneDefaultValue</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__createLink">_createLink</a>
 
                                 
                                 
@@ -449,6 +458,13 @@
                             </li>
                         
                             <li class="index-item method protected inherited">
+                                <a href="#method__delete">_delete</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
                                 <a href="#method__destroyContainer">_destroyContainer</a>
 
                                 
@@ -457,6 +473,13 @@
                         
                             <li class="index-item method private inherited">
                                 <a href="#method__destroyHierarchy">_destroyHierarchy</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__detachBlockEvents">_detachBlockEvents</a>
 
                                 
                                 
@@ -477,14 +500,21 @@
                             </li>
                         
                             <li class="index-item method protected inherited">
-                                <a href="#method__detachUndoEvents">_detachUndoEvents</a>
+                                <a href="#method__detachQueueEvents">_detachQueueEvents</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method protected inherited inherited">
+                            <li class="index-item method protected inherited">
                                 <a href="#method__execCommand">_execCommand</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__execStyleCommand">_execStyleCommand</a>
 
                                 
                                 
@@ -499,6 +529,34 @@
                         
                             <li class="index-item method private inherited">
                                 <a href="#method__fireAttrChange">_fireAttrChange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__flushCommandQueue">_flushCommandQueue</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__formatBlock">_formatBlock</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__formatHTML">_formatHTML</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__forwardDelete">_forwardDelete</a>
 
                                 
                                 
@@ -581,15 +639,15 @@
                                 
                             </li>
                         
-                            <li class="index-item method private inherited">
-                                <a href="#method__getStateVal">_getStateVal</a>
+                            <li class="index-item method protected inherited">
+                                <a href="#method__getNodes">_getNodes</a>
 
                                 
                                 
                             </li>
                         
-                            <li class="index-item method protected inherited">
-                                <a href="#method__getStyledAncestor">_getStyledAncestor</a>
+                            <li class="index-item method private inherited">
+                                <a href="#method__getStateVal">_getStateVal</a>
 
                                 
                                 
@@ -666,7 +724,35 @@
                             </li>
                         
                             <li class="index-item method protected inherited">
+                                <a href="#method__insertHTML">_insertHTML</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__insertReturn">_insertReturn</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
                                 <a href="#method__insertTab">_insertTab</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__insertText">_insertText</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__isBlockNode">_isBlockNode</a>
 
                                 
                                 
@@ -680,14 +766,7 @@
                             </li>
                         
                             <li class="index-item method protected inherited">
-                                <a href="#method__link">_link</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method protected inherited">
-                                <a href="#method__linkPrompt">_linkPrompt</a>
+                                <a href="#method__isStyleNode">_isStyleNode</a>
 
                                 
                                 
@@ -695,6 +774,13 @@
                         
                             <li class="index-item method private inherited">
                                 <a href="#method__monitor">_monitor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__noCommand">_noCommand</a>
 
                                 
                                 
@@ -749,7 +835,14 @@
                                 
                             </li>
                         
-                            <li class="index-item method protected inherited inherited">
+                            <li class="index-item method protected inherited">
+                                <a href="#method__onKeyPress">_onKeyPress</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
                                 <a href="#method__onPaste">_onPaste</a>
 
                                 
@@ -786,8 +879,43 @@
                                 
                             </li>
                         
-                            <li class="index-item method protected inherited inherited">
+                            <li class="index-item method protected inherited">
+                                <a href="#method__queryBlockCommand">_queryBlockCommand</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
                                 <a href="#method__queryCommandValue">_queryCommandValue</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__queryStyleCommand">_queryStyleCommand</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__queueBeforeExecStyleCommand">_queueBeforeExecStyleCommand</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__queueCommand">_queueCommand</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__queueDoBeforeQueryCommandValue">_queueDoBeforeQueryCommandValue</a>
 
                                 
                                 
@@ -842,8 +970,15 @@
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method__splitAfterRange">_splitAfterRange</a>
+                            <li class="index-item method protected inherited">
+                                <a href="#method__splitRange">_splitRange</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected inherited">
+                                <a href="#method__unlink">_unlink</a>
 
                                 
                                 
@@ -913,13 +1048,6 @@
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_bold">bold</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
                                 <a href="#method_bubble">bubble</a>
 
                                 
@@ -935,13 +1063,6 @@
                         
                             <li class="index-item method inherited">
                                 <a href="#method_create">create</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_decreaseFontSize">decreaseFontSize</a>
 
                                 
                                 
@@ -1017,13 +1138,6 @@
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method_increaseFontSize">increaseFontSize</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method inherited inherited">
                                 <a href="#method_init">init</a>
 
@@ -1032,35 +1146,7 @@
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_insertHTML">insertHTML</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_insertText">insertText</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
                                 <a href="#method_isLink">isLink</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_italic">italic</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_link">link</a>
 
                                 
                                 
@@ -1109,7 +1195,7 @@
                             </li>
                         
                             <li class="index-item method inherited">
-                                <a href="#method_redo">redo</a>
+                                <a href="#method_query">query</a>
 
                                 
                                 
@@ -1187,27 +1273,6 @@
                                 
                             </li>
                         
-                            <li class="index-item method inherited">
-                                <a href="#method_underline">underline</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_undo">undo</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method inherited">
-                                <a href="#method_unlink">unlink</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method deprecated inherited">
                                 <a href="#method_unsubscribe">unsubscribe</a>
 
@@ -1243,22 +1308,22 @@
                                 
                             </li>
                         
-                            <li class="index-item property protected inherited">
-                                <a href="#property__redoStack">_redoStack</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property protected inherited">
-                                <a href="#property__undoStack">_undoStack</a>
+                            <li class="index-item property inherited">
+                                <a href="#property__commandQueue">_commandQueue</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property inherited">
-                                <a href="#property_boolCommands">boolCommands</a>
+                                <a href="#property_blockCommands">blockCommands</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property inherited">
+                                <a href="#property_blockTags">blockTags</a>
 
                                 
                                 
@@ -1272,7 +1337,28 @@
                             </li>
                         
                             <li class="index-item property inherited">
+                                <a href="#property_commands">commands</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property inherited">
                                 <a href="#property_containerTemplate">containerTemplate</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property inherited">
+                                <a href="#property_deleteCommands">deleteCommands</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property inherited">
+                                <a href="#property_deleteKeyCommands">deleteKeyCommands</a>
 
                                 
                                 
@@ -1307,7 +1393,7 @@
                             </li>
                         
                             <li class="index-item property inherited">
-                                <a href="#property_linkKeyCommands">linkKeyCommands</a>
+                                <a href="#property_linkCommands">linkCommands</a>
 
                                 
                                 
@@ -1330,6 +1416,13 @@
                             </li>
                         
                             <li class="index-item property inherited">
+                                <a href="#property_queueKeyCommands">queueKeyCommands</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property inherited">
                                 <a href="#property_selection">selection</a>
 
                                 
@@ -1344,7 +1437,21 @@
                             </li>
                         
                             <li class="index-item property inherited">
+                                <a href="#property_styleCommands.bold">styleCommands.bold</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property inherited inherited">
                                 <a href="#property_styleKeyCommands">styleKeyCommands</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property inherited inherited">
+                                <a href="#property_supportedTags">supportedTags</a>
 
                                 
                                 
@@ -1352,13 +1459,6 @@
                         
                             <li class="index-item property inherited">
                                 <a href="#property_template">template</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item property inherited">
-                                <a href="#property_undoKeyCommands">undoKeyCommands</a>
 
                                 
                                 
@@ -1373,6 +1473,10 @@
                     <h3>Attributes</h3>
 
                     <ul class="index-list attrs extends">
+                        
+                            <li class="index-item attr inherited">
+                                <a href="#attr_"></a>
+                            </li>
                         
                             <li class="index-item attr inherited">
                                 <a href="#attr_container">container</a>
@@ -1396,10 +1500,6 @@
                         
                             <li class="index-item attr inherited">
                                 <a href="#attr_text">text</a>
-                            </li>
-                        
-                            <li class="index-item attr inherited">
-                                <a href="#attr_undoLevels">undoLevels</a>
                             </li>
                         
                     </ul>
@@ -1838,116 +1938,6 @@ encountered out of order when calling addAttrs().</p>
 </div>
 
                 
-                    <div id="method__addRedo" class="method item protected inherited">
-    <h3 class="name"><code>_addRedo</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Undo.html#method__addRedo">Editor.Undo</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l192"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:192</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Adds an entry to the redo stack representing the current state of the
-editor.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method__addUndo" class="method item protected inherited">
-    <h3 class="name"><code>_addUndo</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Undo.html#method__addUndo">Editor.Undo</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l162"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:162</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Adds an entry to the undo stack representing the current state of the
-editor.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="method__afterContainerChange" class="method item protected inherited">
     <h3 class="name"><code>_afterContainerChange</code></h3>
 
@@ -1997,114 +1987,6 @@ container (if any) and attaches them to the new container.</p>
 <p>Right now the <code>container</code> attr is initOnly so this event should only ever
 fire the first time the container is created, but in the future (once Y.App
 can handle it) we may allow runtime container changes.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method__afterDelete" class="method item protected inherited">
-    <h3 class="name"><code>_afterDelete</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Style.html#method__afterDelete">Editor.Style</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l486"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:486</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Handles <code>delete</code> events on the editor</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method__afterRender" class="method item protected inherited">
-    <h3 class="name"><code>_afterRender</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Undo.html#method__afterRender">Editor.Undo</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l266"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:266</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Handles editor <code>render</code> events.</p>
 
     </div>
 
@@ -2227,6 +2109,60 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
 </div>
 
                 
+                    <div id="method__attachBlockEvents" class="method item protected inherited">
+    <h3 class="name"><code>_attachBlockEvents</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Block.html#method__attachBlockEvents">Editor.Block</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-block.js.html#l116"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-block.js:116</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Attaches block events.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method__attachEvents" class="method item protected inherited">
     <h3 class="name"><code>_attachEvents</code></h3>
 
@@ -2258,7 +2194,7 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l313"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:313</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l294"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:294</code></a>
         
         </p>
 
@@ -2312,7 +2248,7 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l103"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:103</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l99"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:99</code></a>
         
         </p>
 
@@ -2335,8 +2271,8 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
 </div>
 
                 
-                    <div id="method__attachUndoEvents" class="method item protected inherited">
-    <h3 class="name"><code>_attachUndoEvents</code></h3>
+                    <div id="method__attachQueueEvents" class="method item protected inherited">
+    <h3 class="name"><code>_attachQueueEvents</code></h3>
 
     
         <span class="paren">()</span>
@@ -2362,11 +2298,11 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
         
             
                 <p>Inherited from
-                <a href="../classes/Editor.Undo.html#method__attachUndoEvents">Editor.Undo</a>:
+                <a href="../classes/Editor.Queue.html#method__attachQueueEvents">Editor.Queue</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l222"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:222</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-queue.js.html#l72"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-queue.js:72</code></a>
         
         </p>
 
@@ -2377,7 +2313,7 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
     </div>
 
     <div class="description">
-        <p>Attaches undo events.</p>
+        <p>Attaches queue events.</p>
 
     </div>
 
@@ -2552,8 +2488,8 @@ this class for iteration performance reasons.</p>
 </div>
 
                 
-                    <div id="method__beforeExecCommand" class="method item protected inherited">
-    <h3 class="name"><code>_beforeExecCommand</code></h3>
+                    <div id="method__blockOnSelectionChange" class="method item protected inherited">
+    <h3 class="name"><code>_blockOnSelectionChange</code></h3>
 
     
         <div class="args">
@@ -2561,7 +2497,7 @@ this class for iteration performance reasons.</p>
             
                 <li class="arg">
                     
-                        <code>name</code>
+                        <code>e</code>
                     
                 </li>
             
@@ -2589,11 +2525,11 @@ this class for iteration performance reasons.</p>
         
             
                 <p>Inherited from
-                <a href="../classes/Editor.Undo.html#method__beforeExecCommand">Editor.Undo</a>:
+                <a href="../classes/Editor.Block.html#method__blockOnSelectionChange">Editor.Block</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l238"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:238</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-block.js.html#l306"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-block.js:306</code></a>
         
         </p>
 
@@ -2604,7 +2540,8 @@ this class for iteration performance reasons.</p>
     </div>
 
     <div class="description">
-        <p>Wrapper for <code>Editor.Base#_execCommand()</code>.</p>
+        <p>Event handler for the selection <code>change</code> event</p>
+<p>Creates a default <code>block</code> if none exists for the current selection</p>
 
     </div>
 
@@ -2616,15 +2553,14 @@ this class for iteration performance reasons.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">name</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        <code class="param-name">e</code>
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventFacade.html" class="crosslink external" target="_blank">EventFacade</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Command name.</p>
-
+                        
                     </div>
 
                     
@@ -2632,6 +2568,60 @@ this class for iteration performance reasons.</p>
             
             </ul>
         </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__clearCommandQueue" class="method item protected inherited">
+    <h3 class="name"><code>_clearCommandQueue</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Queue.html#method__clearCommandQueue">Editor.Queue</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-queue.js.html#l93"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-queue.js:93</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Clears the command queue</p>
+
+    </div>
+
     
 
     
@@ -2712,9 +2702,142 @@ Since it&#39;s on a critical path, we don&#39;t want to re-do the check.</p>
                     
 
                     <div class="param-description">
-                         
+                        
                     </div>
 
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__createLink" class="method item protected inherited">
+    <h3 class="name"><code>_createLink</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>options</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Link.html#method__createLink">Editor.Link</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l111"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:111</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Implementation for the <code>createLink</code> command</p>
+<p>Wraps the currently selected range in an anchor <code>&lt;a&gt;</code> tag</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">options</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">href</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                
+
+                                <div class="param-description">
+                                    
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[target=_self]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[text]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -3015,6 +3138,112 @@ refers to the configuration object passed to the constructor.</p>
 </div>
 
                 
+                    <div id="method__delete" class="method item protected inherited">
+    <h3 class="name"><code>_delete</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code class="optional">[direction=back]</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Delete.html#method__delete">Editor.Delete</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-delete.js.html#l78"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-delete.js:78</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p><p>Handles backspace and delete because webkit is an idiot and will copy
+computed styles like <code>line-height</code>, <code>color</code> and <code>font-size</code> when merging
+blocks of different types.</p></p>
+<p><p>For example given the following HTML:</p></p>
+<pre class="code prettyprint"><code>&lt;h1&gt;foo&lt;/h1&gt;
+&lt;p&gt;bar&lt;/p&gt;</code></pre>
+<p>Hitting backspace with the cursor at the beginning of the <code>&lt;p&gt;</code> element will
+create a <code>&lt;span&gt;</code> in the <code>&lt;h1&gt;</code> after the text <code>foo</code> with the computed styles
+of the <code>&lt;p&gt;</code> element. The brilliant result is:</p>
+<pre class="code prettyprint"><code>&lt;h1&gt;foo&lt;span style=&quot;line-height: 1.2; font-size:12px; color:xxx;&quot;&gt;bar&lt;/span&gt;&lt;/h1&gt;</code></pre>
+<p>Its so stupid and IE/Firefox do not behave this way.</p>
+<p>Related, when deleting across blocks with different <code>text-alignment</code>,
+Firefox will copy <code>text-alignment</code> from the later block, which is opposite
+of what the other browsers do.</p>
+<p>This method normalizes the behavior when deleting across blocks to <em>not</em>
+copy styles. The result from the previous example is now:</p>
+<pre class="code prettyprint"><code>&lt;h1&gt;foobar&lt;/h1&gt;</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[direction=back]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p><code>forward</code> for a forward delete,
+<code>back</code> for a backspace</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method__destroyContainer" class="method item protected inherited">
     <h3 class="name"><code>_destroyContainer</code></h3>
 
@@ -3124,6 +3353,60 @@ the destructor method on the prototype of each class in the hierarchy.</p>
 </div>
 
                 
+                    <div id="method__detachBlockEvents" class="method item protected inherited">
+    <h3 class="name"><code>_detachBlockEvents</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Block.html#method__detachBlockEvents">Editor.Block</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-block.js.html#l133"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-block.js:133</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Detaches block events.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method__detachEvents" class="method item protected inherited">
     <h3 class="name"><code>_detachEvents</code></h3>
 
@@ -3155,7 +3438,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l337"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:337</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l318"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:318</code></a>
         
         </p>
 
@@ -3209,7 +3492,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l121"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:121</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l117"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:117</code></a>
         
         </p>
 
@@ -3232,8 +3515,8 @@ the destructor method on the prototype of each class in the hierarchy.</p>
 </div>
 
                 
-                    <div id="method__detachUndoEvents" class="method item protected inherited">
-    <h3 class="name"><code>_detachUndoEvents</code></h3>
+                    <div id="method__detachQueueEvents" class="method item protected inherited">
+    <h3 class="name"><code>_detachQueueEvents</code></h3>
 
     
         <span class="paren">()</span>
@@ -3259,11 +3542,11 @@ the destructor method on the prototype of each class in the hierarchy.</p>
         
             
                 <p>Inherited from
-                <a href="../classes/Editor.Undo.html#method__detachUndoEvents">Editor.Undo</a>:
+                <a href="../classes/Editor.Queue.html#method__detachQueueEvents">Editor.Queue</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l251"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:251</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-queue.js.html#l104"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-queue.js:104</code></a>
         
         </p>
 
@@ -3274,7 +3557,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
     </div>
 
     <div class="description">
-        <p>Detaches undo events.</p>
+        <p>Detaches queue events.</p>
 
     </div>
 
@@ -3327,16 +3610,13 @@ the destructor method on the prototype of each class in the hierarchy.</p>
 
     <div class="meta">
         
-            <p>Inherited from
-            <a href="../classes/Editor.Base.html#method__execCommand">
-                Editor.Base
-            </a>
             
-            but overwritten in
+                <p>Inherited from
+                <a href="../classes/Editor.Base.html#method__execCommand">Editor.Base</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l165"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:165</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l331"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:331</code></a>
         
         </p>
 
@@ -3347,10 +3627,118 @@ the destructor method on the prototype of each class in the hierarchy.</p>
     </div>
 
     <div class="description">
-        <p>Duckpunch Editor.Base._execCommand to build css styled nodes instead of
-relying on spotty browser compatibility of <code>styleWithCSS</code></p>
-<p>Passes through to Editor.Base for any commands not defined
-in <code>this.styleCommands</code></p>
+        <p>Wrapper for native the native <code>execCommand()</code> that verifies that the command
+is valid in the current state</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Command name.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">value</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Command value.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__execStyleCommand" class="method item protected inherited">
+    <h3 class="name"><code>_execStyleCommand</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Style.html#method__execStyleCommand">Editor.Style</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l231"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:231</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Executes a <code>style</code> command by adding/removing css properties</p>
 
     </div>
 
@@ -3732,6 +4120,311 @@ if this is a sub-attribute value being change. Otherwise null.</p>
 </div>
 
                 
+                    <div id="method__flushCommandQueue" class="method item protected inherited">
+    <h3 class="name"><code>_flushCommandQueue</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Queue.html#method__flushCommandQueue">Editor.Queue</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-queue.js.html#l118"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-queue.js:118</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Executes all commands on the command queue</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__formatBlock" class="method item protected inherited">
+    <h3 class="name"><code>_formatBlock</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>tag</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Block.html#method__formatBlock">Editor.Block</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-block.js.html#l147"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-block.js:147</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Replaces block elements containing the current selection with elements
+of the given <code>tag</code></p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">tag</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The new block element tag</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__formatHTML" class="method item protected inherited">
+    <h3 class="name"><code>_formatHTML</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>html</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Format.html#method__formatHTML">Editor.Format</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-format.js.html#l41"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-format.js:41</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Reformats html to the proper style</p>
+<p>TODO: put this in its own extension.  doesn&#39;t belong here.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">html</code>
+                        <span class="type">HTML</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>HTML string to format</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
+                    
+                    <p>Node instance containing a document fragment with the
+    formatted <em>html</em></p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__forwardDelete" class="method item protected inherited">
+    <h3 class="name"><code>_forwardDelete</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Delete.html#method__forwardDelete">Editor.Delete</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-delete.js.html#l191"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-delete.js:191</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Performs a forward delete from the current cursor position</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method__getAnchorNode" class="method item protected inherited">
     <h3 class="name"><code>_getAnchorNode</code></h3>
 
@@ -3767,7 +4460,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l106"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:106</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l94"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:94</code></a>
         
         </p>
 
@@ -4698,7 +5391,7 @@ implementations which need to fast-track publish for performance reasons.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l288"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:288</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-format.js.html#l106"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-format.js:106</code></a>
         
         </p>
 
@@ -4869,6 +5562,131 @@ for passing through to <code>addAttrs</code>.</p>
 </div>
 
                 
+                    <div id="method__getNodes" class="method item protected inherited">
+    <h3 class="name"><code>_getNodes</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>range</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/NodeList.html" class="crosslink external" target="_blank">NodeList</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Base.html#method__getNodes">Editor.Base</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l361"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:361</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns nodes containing any part of the given <code>range</code> matching the
+given <code>selector</code></p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">range</code>
+                        <span class="type"><a href="../classes/Range.html" class="crosslink">Range</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/NodeList.html" class="crosslink external" target="_blank">NodeList</a></span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method__getStateVal" class="method item private inherited">
     <h3 class="name"><code>_getStateVal</code></h3>
 
@@ -5000,156 +5818,6 @@ where the calling method has already obtained the config from state.</p>
 </div>
 
                 
-                    <div id="method__getStyledAncestor" class="method item protected inherited">
-    <h3 class="name"><code>_getStyledAncestor</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>startNode</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>property</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[self]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Style.html#method__getStyledAncestor">Editor.Style</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l303"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:303</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Walks the ancestor tree of a given node until a node that has
-the css property set is found</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">startNode</code>
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">property</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[self]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Whether or not to include <code>startNode</code> in the scan</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
-                    
-                    <p>The node having <code>property</code> set, or null if no node was found</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
                     <div id="method__getStyleNodes" class="method item protected inherited">
     <h3 class="name"><code>_getStyleNodes</code></h3>
 
@@ -5195,7 +5863,7 @@ the css property set is found</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l328"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:328</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l281"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:281</code></a>
         
         </p>
 
@@ -5208,7 +5876,6 @@ the css property set is found</p>
     <div class="description">
         <p>Parses inline elements from a given range. Partially selected nodes will
 be split and text nodes will be wrapped in <code>&lt;span&gt;</code> tags if necessary.</p>
-<p>The range will not be modified.</p>
 
     </div>
 
@@ -5302,7 +5969,7 @@ be split and text nodes will be wrapped in <code>&lt;span&gt;</code> tags if nec
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l389"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:389</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l414"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:414</code></a>
         
         </p>
 
@@ -5464,7 +6131,7 @@ applied to the supplied type.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l637"><code>event-custom&#x2F;js&#x2F;event-facade.js:637</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l643"><code>event-custom&#x2F;js&#x2F;event-facade.js:643</code></a>
         
         </p>
 
@@ -6086,6 +6753,178 @@ across the class hierarchy for the instance.</p>
 </div>
 
                 
+                    <div id="method__insertHTML" class="method item protected inherited">
+    <h3 class="name"><code>_insertHTML</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>html</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Base.html#method__insertHTML">Editor.Base</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l426"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:426</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Inserts the specified <em>html</em> at the current selection point, deleting the
+current selection if there is one.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">html</code>
+                        <span class="type">HTML | <a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>HTML to insert, in the form of an HTML
+    string, HTMLElement, or Node instance.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
+                    
+                    <p>Node instance representing the inserted HTML.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__insertReturn" class="method item protected inherited">
+    <h3 class="name"><code>_insertReturn</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Block.html#method__insertReturn">Editor.Block</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-block.js.html#l191"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-block.js:191</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Inserts a <code>return</code> at the current selection point.</p>
+<p>Any content contained by the range is deleted, resulting in a collapsed range.</p>
+<p>If the range is at the start of a block, a duplicate, empty block is
+inserted as the previous sibling of current block. The range is positioned
+at the beginning of the new block</p>
+<p>If the range is at the end of a block, a new <code>&lt;p&gt;</code> element is created as
+the next sibling of the current block. The range is positioned at the start
+of the new block.</p>
+<p>If the range is in the middle of a block, the block will be split at the
+current position. The range will be positioned at the beginning of the new
+block.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method__insertTab" class="method item protected inherited">
     <h3 class="name"><code>_insertTab</code></h3>
 
@@ -6117,7 +6956,7 @@ across the class hierarchy for the instance.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l401"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:401</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l458"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:458</code></a>
         
         </p>
 
@@ -6135,6 +6974,219 @@ tab character.</p>
 
     
 
+    
+
+    
+</div>
+
+                
+                    <div id="method__insertText" class="method item protected inherited">
+    <h3 class="name"><code>_insertText</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>text</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Base.html#method__insertText">Editor.Base</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l469"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:469</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Inserts the specified plain <em>text</em> at the current selection point, deleting
+the current selection if there is one.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">text</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Text to insert.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
+                    
+                    <p>Node instance representing the inserted text node.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__isBlockNode" class="method item protected inherited">
+    <h3 class="name"><code>_isBlockNode</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>node</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Format.html#method__isBlockNode">Editor.Format</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-format.js.html#l121"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-format.js:121</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns true if the given node is a container element, false otherwise
+A container element is defined as a non-inline element</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">node</code>
+                        <span class="type">HTMLNode | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <p>true if the given node is a container element, false otherwise</p>
+
+                
+            </div>
+        </div>
     
 
     
@@ -6248,8 +7300,8 @@ added lazily and still requires initialization.</p>
 </div>
 
                 
-                    <div id="method__link" class="method item protected inherited">
-    <h3 class="name"><code>_link</code></h3>
+                    <div id="method__isStyleNode" class="method item protected inherited">
+    <h3 class="name"><code>_isStyleNode</code></h3>
 
     
         <div class="args">
@@ -6257,7 +7309,7 @@ added lazily and still requires initialization.</p>
             
                 <li class="arg">
                     
-                        <code>options</code>
+                        <code>node</code>
                     
                 </li>
             
@@ -6265,6 +7317,10 @@ added lazily and still requires initialization.</p>
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
     
 
     
@@ -6278,8 +7334,6 @@ added lazily and still requires initialization.</p>
     
 
     
-        <span class="flag chainable">chainable</span>
-    
 
     
 
@@ -6287,11 +7341,11 @@ added lazily and still requires initialization.</p>
         
             
                 <p>Inherited from
-                <a href="../classes/Editor.Link.html#method__link">Editor.Link</a>:
+                <a href="../classes/Editor.Format.html#method__isStyleNode">Editor.Format</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l123"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:123</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-format.js.html#l139"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-format.js:139</code></a>
         
         </p>
 
@@ -6302,8 +7356,7 @@ added lazily and still requires initialization.</p>
     </div>
 
     <div class="description">
-        <p>Implementation for the public <code>link</code> method.</p>
-<p>Wraps the currently selected range in an anchor <code>&lt;a&gt;</code> tag</p>
+        <p>Returns true if the given node is an inline element node, false otherwise</p>
 
     </div>
 
@@ -6315,8 +7368,8 @@ added lazily and still requires initialization.</p>
             
                 <li class="param">
                     
-                        <code class="param-name">options</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+                        <code class="param-name">node</code>
+                        <span class="type">HTMLNode | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
                     
 
                     
@@ -6326,51 +7379,6 @@ added lazily and still requires initialization.</p>
                     </div>
 
                     
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">href</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[target=_self]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[text]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
                 </li>
             
             </ul>
@@ -6378,58 +7386,19 @@ added lazily and still requires initialization.</p>
     
 
     
+        <div class="returns">
+            <h4>Returns:</h4>
 
-    
-</div>
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <p>true if the given node is an inline element node, false otherwise</p>
 
                 
-                    <div id="method__linkPrompt" class="method item protected inherited">
-    <h3 class="name"><code>_linkPrompt</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Link.html#method__linkPrompt">Editor.Link</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l178"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:178</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
+            </div>
+        </div>
     
 
     
@@ -6568,6 +7537,63 @@ it published) by setting the events &#39;monitor&#39; config.</p>
             
             </ul>
         </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__noCommand" class="method item protected inherited">
+    <h3 class="name"><code>_noCommand</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Base.html#method__noCommand">Editor.Base</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l489"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:489</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>No-op function for allowing default browser implementations.</p>
+<p>Use as the <code>commandFn</code> in a command config when the default browser
+behavior is desired. Allows for the command stack to execute and
+selection to be updated</p>
+
+    </div>
+
     
 
     
@@ -6716,7 +7742,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l503"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:503</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l593"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:593</code></a>
         
         </p>
 
@@ -6780,7 +7806,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l519"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:519</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l609"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:609</code></a>
         
         </p>
 
@@ -6867,7 +7893,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l542"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:542</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l632"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:632</code></a>
         
         </p>
 
@@ -6944,7 +7970,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l570"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:570</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l662"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:662</code></a>
         
         </p>
 
@@ -6998,7 +8024,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l582"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:582</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l674"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:674</code></a>
         
         </p>
 
@@ -7062,7 +8088,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l136"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:136</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l132"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:132</code></a>
         
         </p>
 
@@ -7074,6 +8100,93 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
 
     <div class="description">
         <p>Handles <code>keydown</code> events on this editor.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">e</code>
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventFacade.html" class="crosslink external" target="_blank">EventFacade</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__onKeyPress" class="method item protected inherited">
+    <h3 class="name"><code>_onKeyPress</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Queue.html#method__onKeyPress">Editor.Queue</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-queue.js.html#l166"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-queue.js:166</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Handles <code>keypress</code> events on the editor</p>
 
     </div>
 
@@ -7143,16 +8256,13 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
 
     <div class="meta">
         
-            <p>Inherited from
-            <a href="../classes/Editor.Base.html#method__onPaste">
-                Editor.Base
-            </a>
             
-            but overwritten in
+                <p>Inherited from
+                <a href="../classes/Editor.Base.html#method__onPaste">Editor.Base</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l498"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:498</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l711"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:711</code></a>
         
         </p>
 
@@ -7611,6 +8721,78 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
 </div>
 
                 
+                    <div id="method__queryBlockCommand" class="method item protected inherited">
+    <h3 class="name"><code>_queryBlockCommand</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/NodeList.html" class="crosslink external" target="_blank">NodeList</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Block.html#method__queryBlockCommand">Editor.Block</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-block.js.html#l258"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-block.js:258</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Default query function for block elements</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/NodeList.html" class="crosslink external" target="_blank">NodeList</a></span>:
+                    
+                    <p>A nodelist of the block nodes containing the range</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method__queryCommandValue" class="method item protected inherited">
     <h3 class="name"><code>_queryCommandValue</code></h3>
 
@@ -7650,16 +8832,13 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
 
     <div class="meta">
         
-            <p>Inherited from
-            <a href="../classes/Editor.Base.html#method__queryCommandValue">
-                Editor.Base
-            </a>
             
-            but overwritten in
+                <p>Inherited from
+                <a href="../classes/Editor.Base.html#method__queryCommandValue">Editor.Base</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l431"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:431</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l504"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:504</code></a>
         
         </p>
 
@@ -7670,10 +8849,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
     </div>
 
     <div class="description">
-        <p>Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes
-instead of relying on spotty browser compatibility of <code>styleWithCSS</code></p>
-<p>Passes through to Editor.Base for any commands not defined
-in <code>this.styleCommands</code></p>
+        <p>Wrapper for the native <code>queryCommandValue()</code> method</p>
 
     </div>
 
@@ -7717,6 +8893,365 @@ in <code>this.styleCommands</code></p>
                 
             </div>
         </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__queryStyleCommand" class="method item protected inherited">
+    <h3 class="name"><code>_queryStyleCommand</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Style.html#method__queryStyleCommand">Editor.Style</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l344"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:344</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the value of a <code>style</code> command by querying css properties</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Command name.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                    <p>Boolean style commands will return true/false, other commands will
+return the property value, or null if the property doesn&#39;t exist.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__queueBeforeExecStyleCommand" class="method item protected inherited">
+    <h3 class="name"><code>_queueBeforeExecStyleCommand</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Queue.html#method__queueBeforeExecStyleCommand">Editor.Queue</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-queue.js.html#l198"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-queue.js:198</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Wrapper for <code>Editor.Base#_execCommand()</code>.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Command name.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">value</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Command value.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__queueCommand" class="method item protected inherited">
+    <h3 class="name"><code>_queueCommand</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Queue.html#method__queueCommand">Editor.Queue</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-queue.js.html#l141"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-queue.js:141</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Adds a command to the queue</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__queueDoBeforeQueryCommandValue" class="method item protected inherited">
+    <h3 class="name"><code>_queueDoBeforeQueryCommandValue</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Queue.html#method__queueDoBeforeQueryCommandValue">Editor.Queue</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-queue.js.html#l224"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-queue.js:224</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Wrapper for <code>Editor.Base#_queryCommandValue()</code>.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Command name.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
     
 
     
@@ -8458,7 +9993,7 @@ where the calling method has already obtained the config from state.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l378"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:378</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-format.js.html#l154"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-format.js:154</code></a>
         
         </p>
 
@@ -8675,7 +10210,7 @@ internal state object, or the state proxy if it exits</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l442"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:442</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l532"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:532</code></a>
         
         </p>
 
@@ -8736,8 +10271,8 @@ internal state object, or the state proxy if it exits</p>
 </div>
 
                 
-                    <div id="method__splitAfterRange" class="method item inherited">
-    <h3 class="name"><code>_splitAfterRange</code></h3>
+                    <div id="method__splitRange" class="method item protected inherited">
+    <h3 class="name"><code>_splitRange</code></h3>
 
     
         <div class="args">
@@ -8751,7 +10286,7 @@ internal state object, or the state proxy if it exits</p>
             
                 <li class="arg">
                     
-                        <code class="optional">[contents]</code>
+                        <code>selector</code>
                     
                 </li>
             
@@ -8768,6 +10303,8 @@ internal state object, or the state proxy if it exits</p>
     
 
     
+        <span class="flag protected">protected</span>
+    
 
     
 
@@ -8781,11 +10318,11 @@ internal state object, or the state proxy if it exits</p>
         
             
                 <p>Inherited from
-                <a href="../classes/Editor.Style.html#method__splitAfterRange">Editor.Style</a>:
+                <a href="../classes/Editor.Block.html#method__splitRange">Editor.Block</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l393"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:393</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-block.js.html#l270"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-block.js:270</code></a>
         
         </p>
 
@@ -8796,7 +10333,8 @@ internal state object, or the state proxy if it exits</p>
     </div>
 
     <div class="description">
-        <p>Splits the node at the end of the selection</p>
+        <p>Splits elements after the given range until a node matching the
+given <code>selector</code> is reached.</p>
 
     </div>
 
@@ -8823,17 +10361,14 @@ internal state object, or the state proxy if it exits</p>
             
                 <li class="param">
                     
-                        <code class="param-name optional">[contents]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLCollection" class="crosslink external" target="_blank">HTMLCollection</a> | <a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/NodeList.html" class="crosslink external" target="_blank">NodeList</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
+                        <code class="param-name">selector</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Contents
-    to be inserted after the split</p>
-
+                        
                     </div>
 
                     
@@ -8852,12 +10387,67 @@ internal state object, or the state proxy if it exits</p>
                     
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
                     
-                    <p>Node reference of the node created after splitting. Any
-    <em>contents</em> will have been inserted as previous siblings of this node.</p>
+                    <p>The node created after splitting</p>
 
                 
             </div>
         </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__unlink" class="method item protected inherited">
+    <h3 class="name"><code>_unlink</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Link.html#method__unlink">Editor.Link</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l164"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:164</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Removes link by replacing the anchor element with the child nodes
+of the anchor</p>
+<p>The anchor element will be removed from the DOM and destroyed.</p>
+
+    </div>
+
+    
+
     
 
     
@@ -8905,7 +10495,7 @@ internal state object, or the state proxy if it exits</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l458"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:458</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l548"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:548</code></a>
         
         </p>
 
@@ -9405,6 +10995,8 @@ See <a href="#method_addAttr">addAttr</a>.</p>
 
     
 
+    
+        <span class="flag chainable">chainable</span>
     
 
     
@@ -9949,7 +11541,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l133"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:133</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l144"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:144</code></a>
         
         </p>
 
@@ -9961,60 +11553,6 @@ callback, object (method host), methodName, context, 0-n arguments</p>
 
     <div class="description">
         <p>Removes focus from this editor.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_bold" class="method item inherited">
-    <h3 class="name"><code>bold</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Style.html#method_bold">Editor.Style</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l93"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:93</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Bolds or unbolds the current selection.</p>
 
     </div>
 
@@ -10069,7 +11607,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l548"><code>event-custom&#x2F;js&#x2F;event-facade.js:548</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l554"><code>event-custom&#x2F;js&#x2F;event-facade.js:554</code></a>
         
         </p>
 
@@ -10145,7 +11683,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
                 <li class="arg">
                     
-                        <code class="optional">[value*]</code>
+                        <code class="optional">[args]</code>
                     
                 </li>
             
@@ -10155,7 +11693,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
 
     
         <span class="returns-inline">
-            <span class="type"></span>
+            <span class="type">Any</span>
         </span>
     
 
@@ -10179,7 +11717,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l147"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:147</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l158"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:158</code></a>
         
         </p>
 
@@ -10190,9 +11728,13 @@ callback, object (method host), methodName, context, 0-n arguments</p>
     </div>
 
     <div class="description">
-        <p>Gets and/or sets the value of the specified editor command.</p>
-<p>See <a href="https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla"><a href="https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla">https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla</a></a>
-for a list of possible commands.</p>
+        <p>Executes a given editor command.</p>
+<p>By default, the only supported commands are:</p>
+<ul>
+<li>insertHTML</li>
+<li>insertText</li>
+</ul>
+<p>See individual editor extensions for additionally supported commands</p>
 
     </div>
 
@@ -10211,9 +11753,7 @@ for a list of possible commands.</p>
                     
 
                     <div class="param-description">
-                        <p>Command name or function to execute. By
-    default functions will execute in the editor context. Use Y.bind
-    to provide a different execution context.</p>
+                        <p>Command name or function to execute.</p>
 
                     </div>
 
@@ -10222,17 +11762,17 @@ for a list of possible commands.</p>
             
                 <li class="param">
                     
-                        <code class="param-name optional">[value*]</code>
-                        <span class="type"></span>
+                        <code class="param-name optional">[args]</code>
+                        <span class="type">Any</span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
+                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                    
 
                     <div class="param-description">
-                        <p>Command value or 0..n arguments to pass
-    to the command function. Use the special value &#39;toggle&#39; to toggle a
-    boolean command (like &#39;bold&#39;) to the opposite of its current state.</p>
+                        <p>0..n arguments to pass to the command</p>
 
                     </div>
 
@@ -10250,10 +11790,9 @@ for a list of possible commands.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"></span>:
+                        <span class="type">Any</span>:
                     
-                    <p>Value of the specified command or return value of the
-    supplied function.</p>
+                    <p>Value of the specified command.</p>
 
                 
             </div>
@@ -10369,60 +11908,6 @@ return a <code>Y.Node</code> instance.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_decreaseFontSize" class="method item inherited">
-    <h3 class="name"><code>decreaseFontSize</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Base.html#method_decreaseFontSize">Editor.Base</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l186"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:186</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Decreases the font size of the current selection (if possible).</p>
-
-    </div>
-
-    
-
     
 
     
@@ -11018,7 +12503,7 @@ false if at any point the event propagation was halted.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l202"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:202</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l205"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:205</code></a>
         
         </p>
 
@@ -11413,7 +12898,7 @@ falsy value otherwise</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l520"><code>event-custom&#x2F;js&#x2F;event-facade.js:520</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l523"><code>event-custom&#x2F;js&#x2F;event-facade.js:523</code></a>
         
         </p>
 
@@ -11442,60 +12927,6 @@ falsy value otherwise</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_increaseFontSize" class="method item inherited">
-    <h3 class="name"><code>increaseFontSize</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Base.html#method_increaseFontSize">Editor.Base</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l216"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:216</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Increases the font size of the current selection (if possible).</p>
-
-    </div>
-
-    
-
     
 
     
@@ -11612,217 +13043,6 @@ and invokes initializers for the class hierarchy.</p>
 </div>
 
                 
-                    <div id="method_insertHTML" class="method item inherited">
-    <h3 class="name"><code>insertHTML</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>html</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Base.html#method_insertHTML">Editor.Base</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l234"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:234</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Inserts the specified <em>html</em> at the current selection point, deleting the
-current selection if there is one.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">html</code>
-                        <span class="type">HTML | <a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>HTML to insert, in the form of an HTML
-    string, HTMLElement, or Node instance.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
-                    
-                    <p>Node instance representing the inserted HTML.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_insertText" class="method item inherited">
-    <h3 class="name"><code>insertText</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>text</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Base.html#method_insertText">Editor.Base</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l260"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:260</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Inserts the specified plain <em>text</em> at the current selection point, deleting
-the current selection if there is one.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">text</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Text to insert.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
-                    
-                    <p>Node instance representing the inserted text node.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
                     <div id="method_isLink" class="method item inherited">
     <h3 class="name"><code>isLink</code></h3>
 
@@ -11856,7 +13076,7 @@ the current selection if there is one.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l69"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:69</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l80"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:80</code></a>
         
         </p>
 
@@ -11888,192 +13108,6 @@ the current selection if there is one.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_italic" class="method item inherited">
-    <h3 class="name"><code>italic</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Style.html#method_italic">Editor.Style</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l104"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:104</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Italicizes or unitalicizes the current selection.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_link" class="method item inherited">
-    <h3 class="name"><code>link</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>options</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Link.html#method_link">Editor.Link</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l54"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:54</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Wraps the currently selected range in an anchor element</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">options</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">href</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[target=_self]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[text]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
     
 
     
@@ -13047,11 +14081,27 @@ case the custom event is returned.</p>
 </div>
 
                 
-                    <div id="method_redo" class="method item inherited">
-    <h3 class="name"><code>redo</code></h3>
+                    <div id="method_query" class="method item inherited">
+    <h3 class="name"><code>query</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
     
 
     
@@ -13062,10 +14112,6 @@ case the custom event is returned.</p>
 
     
 
-    
-
-    
-        <span class="flag chainable">chainable</span>
     
 
     
@@ -13074,11 +14120,11 @@ case the custom event is returned.</p>
         
             
                 <p>Inherited from
-                <a href="../classes/Editor.Undo.html#method_redo">Editor.Undo</a>:
+                <a href="../classes/Editor.Base.html#method_query">Editor.Base</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l86"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:86</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l219"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:219</code></a>
         
         </p>
 
@@ -13089,12 +14135,52 @@ case the custom event is returned.</p>
     </div>
 
     <div class="description">
-        <p>Redoes the last change that was undone in this editor.</p>
+        <p>Gets the value of a specified editor command.</p>
+<p>See <a href="https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla"><a href="https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla">https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla</a></a>
+for a list of possible commands.</p>
 
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
 
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Command name.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                    <p>Value of the specified command.</p>
+
+                
+            </div>
+        </div>
     
 
     
@@ -13270,6 +14356,8 @@ but doesn&#39;t destroy it or any event listeners attached to it.</p>
     
 
     
+        <span class="flag chainable">chainable</span>
+    
 
     
 
@@ -13281,7 +14369,7 @@ but doesn&#39;t destroy it or any event listeners attached to it.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l530"><code>event-custom&#x2F;js&#x2F;event-facade.js:530</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l533"><code>event-custom&#x2F;js&#x2F;event-facade.js:533</code></a>
         
         </p>
 
@@ -13362,7 +14450,7 @@ but doesn&#39;t destroy it or any event listeners attached to it.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l272"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:272</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l253"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:253</code></a>
         
         </p>
 
@@ -13824,7 +14912,7 @@ to set the value of a property within the object (e.g. <code>set(&quot;x.y.z&quo
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l115"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:115</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l192"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:192</code></a>
         
         </p>
 
@@ -14012,170 +15100,6 @@ and the instance guid, if set.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_underline" class="method item inherited">
-    <h3 class="name"><code>underline</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Style.html#method_underline">Editor.Style</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l151"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:151</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Toggles underline on the current selection.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_undo" class="method item inherited">
-    <h3 class="name"><code>undo</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Undo.html#method_undo">Editor.Undo</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l123"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:123</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Undoes the last change made in this editor.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method_unlink" class="method item inherited">
-    <h3 class="name"><code>unlink</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Link.html#method_unlink">Editor.Link</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l81"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:81</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Removes link by replacing the anchor element with the child nodes
-of the anchor</p>
-<p>The anchor element will be removed from the DOM and destroyed.</p>
-
-    </div>
-
-    
-
     
 
     
@@ -14392,96 +15316,8 @@ instantiate a view and set a bunch of attributes without having to subclass
 </div>
 
                 
-                    <div id="property__redoStack" class="property item protected inherited">
-    <h3 class="name"><code>_redoStack</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external external" target="_blank">Array</a></span>
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Undo.html#property__redoStack">Editor.Undo</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l48"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:48</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Array of redoable changes that have previously been undone.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property__undoStack" class="property item protected inherited">
-    <h3 class="name"><code>_undoStack</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external external" target="_blank">Array</a></span>
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Undo.html#property__undoStack">Editor.Undo</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l55"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:55</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Array of undoable changes that have been made to this editor.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_boolCommands" class="property item inherited">
-    <h3 class="name"><code>boolCommands</code></h3>
+                    <div id="property__commandQueue" class="property item inherited">
+    <h3 class="name"><code>_commandQueue</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
 
     
@@ -14496,11 +15332,11 @@ instantiate a view and set a bunch of attributes without having to subclass
         
             
                 <p>Inherited from
-                <a href="../classes/Editor.Base.html#property_boolCommands">Editor.Base</a>:
+                <a href="../classes/Editor.Queue.html#property__commandQueue">Editor.Queue</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l89"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:89</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-queue.js.html#l44"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-queue.js:44</code></a>
         
         </p>
 
@@ -14510,10 +15346,129 @@ instantiate a view and set a bunch of attributes without having to subclass
     </div>
 
     <div class="description">
-        <p>Hash of boolean commands supported by this editor. A boolean command is
-one that does not require a value. Executing this command will toggle
-the currently set value.</p>
-<p>Names should correspond with valid <code>execCommand()</code> command names.</p>
+        <p>Hash of commands queued for execution on the next keypress.</p>
+<p>Workaround for webkit bug where it wont place a caret in an empty node
+or between nodes.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_blockCommands" class="property item inherited">
+    <h3 class="name"><code>blockCommands</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Block.html#property_blockCommands">Editor.Block</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-block.js.html#l31"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-block.js:31</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Hash of block commands supported by this editor.</p>
+<p>Names should correspond with valid <code>execCommand()</code> command names. Values
+are properties in the following format:</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <h4>Sub-properties:</h4>
+
+        <ul class="params-list">
+            
+            <li class="param">
+                
+                    <code class="param-name">commandFn</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                
+
+                <div class="param-description">
+                    
+                </div>
+
+                
+            </li>
+            
+            <li class="param">
+                
+                    <code class="param-name optional">[queryFn]</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    <span class="flag optional" title="This property is optional.">optional</span>
+                
+
+                <div class="param-description">
+                    
+                </div>
+
+                
+            </li>
+            
+        </ul>
+    
+</div>
+
+                
+                    <div id="property_blockTags" class="property item inherited">
+    <h3 class="name"><code>blockTags</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Block.html#property_blockTags">Editor.Block</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-block.js.html#l81"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-block.js:81</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>HTML tags supported by this editor. Unsupported tags will be treated
+as text</p>
 
     </div>
 
@@ -14545,7 +15500,7 @@ the currently set value.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l60"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:60</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l67"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:67</code></a>
         
         </p>
 
@@ -14617,6 +15572,83 @@ the currently set value.</p>
 </div>
 
                 
+                    <div id="property_commands" class="property item inherited">
+    <h3 class="name"><code>commands</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Base.html#property_commands">Editor.Base</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l96"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:96</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Hash of commands supported by this editor.</p>
+<p>Names should correspond with valid <code>execCommand()</code> command names. Values
+are properties in the following format:</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <h4>Sub-properties:</h4>
+
+        <ul class="params-list">
+            
+            <li class="param">
+                
+                    <code class="param-name">commandFn</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                
+
+                <div class="param-description">
+                    
+                </div>
+
+                
+            </li>
+            
+            <li class="param">
+                
+                    <code class="param-name optional">[queryFn]</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    <span class="flag optional" title="This property is optional.">optional</span>
+                
+
+                <div class="param-description">
+                    
+                </div>
+
+                
+            </li>
+            
+        </ul>
+    
+</div>
+
+                
                     <div id="property_containerTemplate" class="property item inherited">
     <h3 class="name"><code>containerTemplate</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
@@ -14655,6 +15687,125 @@ the currently set value.</p>
 
     
         <p><strong>Default:</strong> &quot;&lt;div/&gt;&quot;</p>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_deleteCommands" class="property item inherited">
+    <h3 class="name"><code>deleteCommands</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Delete.html#property_deleteCommands">Editor.Delete</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-delete.js.html#l30"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-delete.js:30</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Hash of delete commands supported by this editor.</p>
+<p>Names should correspond with valid <code>execCommand()</code> command names. Values
+are properties in the following format:</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <h4>Sub-properties:</h4>
+
+        <ul class="params-list">
+            
+            <li class="param">
+                
+                    <code class="param-name">commandFn</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                
+
+                <div class="param-description">
+                    
+                </div>
+
+                
+            </li>
+            
+            <li class="param">
+                
+                    <code class="param-name optional">[queryFn]</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    <span class="flag optional" title="This property is optional.">optional</span>
+                
+
+                <div class="param-description">
+                    
+                </div>
+
+                
+            </li>
+            
+        </ul>
+    
+</div>
+
+                
+                    <div id="property_deleteKeyCommands" class="property item inherited">
+    <h3 class="name"><code>deleteKeyCommands</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Delete.html#property_deleteKeyCommands">Editor.Delete</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-delete.js.html#l51"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-delete.js:51</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Key commands related to delete functionality.</p>
+
+    </div>
+
     
 
     
@@ -14761,7 +15912,7 @@ you&#39;d prefer <code>this</code> to be something else, use <code>Y.bind()</cod
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l23"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:23</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l22"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:22</code></a>
         
         </p>
 
@@ -14806,7 +15957,7 @@ properties are used to detect whether modifier keys are pressed.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l41"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:41</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l40"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:40</code></a>
         
         </p>
 
@@ -14848,7 +15999,7 @@ properties are used to detect whether modifier keys are pressed.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l72"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:72</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-keys.js.html#l71"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-keys.js:71</code></a>
         
         </p>
 
@@ -14870,8 +16021,8 @@ properties are used to detect whether modifier keys are pressed.</p>
 </div>
 
                 
-                    <div id="property_linkKeyCommands" class="property item inherited">
-    <h3 class="name"><code>linkKeyCommands</code></h3>
+                    <div id="property_linkCommands" class="property item inherited">
+    <h3 class="name"><code>linkCommands</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
 
     
@@ -14886,11 +16037,11 @@ properties are used to detect whether modifier keys are pressed.</p>
         
             
                 <p>Inherited from
-                <a href="../classes/Editor.Link.html#property_linkKeyCommands">Editor.Link</a>:
+                <a href="../classes/Editor.Link.html#property_linkCommands">Editor.Link</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l25"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:25</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l27"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:27</code></a>
         
         </p>
 
@@ -14900,7 +16051,9 @@ properties are used to detect whether modifier keys are pressed.</p>
     </div>
 
     <div class="description">
-        <p>Key commands related to creating hyperlinks.</p>
+        <p>Hash of link commands supported by this editor.</p>
+<p>Names should correspond with valid <code>execCommand()</code> command names. Values
+are properties in the following format:</p>
 
     </div>
 
@@ -14908,6 +16061,39 @@ properties are used to detect whether modifier keys are pressed.</p>
 
     
 
+    
+        <h4>Sub-properties:</h4>
+
+        <ul class="params-list">
+            
+            <li class="param">
+                
+                    <code class="param-name">commandFn</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                
+
+                <div class="param-description">
+                    
+                </div>
+
+                
+            </li>
+            
+            <li class="param">
+                
+                    <code class="param-name optional">[queryFn]</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    <span class="flag optional" title="This property is optional.">optional</span>
+                
+
+                <div class="param-description">
+                    
+                </div>
+
+                
+            </li>
+            
+        </ul>
     
 </div>
 
@@ -14932,7 +16118,7 @@ properties are used to detect whether modifier keys are pressed.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l35"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:35</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l57"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:57</code></a>
         
         </p>
 
@@ -15000,6 +16186,48 @@ properties are used to detect whether modifier keys are pressed.</p>
 </div>
 
                 
+                    <div id="property_queueKeyCommands" class="property item inherited">
+    <h3 class="name"><code>queueKeyCommands</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Queue.html#property_queueKeyCommands">Editor.Queue</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-queue.js.html#l23"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-queue.js:23</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Key commands related to queue functionality.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="property_selection" class="property item inherited">
     <h3 class="name"><code>selection</code></h3>
     <span class="type"><a href="../classes/Selection.html" class="crosslink">Selection</a></span>
@@ -15020,7 +16248,7 @@ properties are used to detect whether modifier keys are pressed.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l76"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:76</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l83"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:83</code></a>
         
         </p>
 
@@ -15067,7 +16295,7 @@ entire browser document, not just within this editor.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l29"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:29</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l39"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:39</code></a>
         
         </p>
 
@@ -15094,13 +16322,12 @@ are properties in the following format:</p>
             
             <li class="param">
                 
-                    <code class="param-name">property</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    <code class="param-name">commandFn</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                 
 
                 <div class="param-description">
-                    <p>The name of the CSS property in camelCase form</p>
-
+                    
                 </div>
 
                 
@@ -15108,14 +16335,13 @@ are properties in the following format:</p>
             
             <li class="param">
                 
-                    <code class="param-name optional">[valueOn]</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    <code class="param-name optional">[queryFn]</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                     <span class="flag optional" title="This property is optional.">optional</span>
                 
 
                 <div class="param-description">
-                    <p>The <code>on</code> value of the property. eg. <code>bold</code></p>
-
+                    
                 </div>
 
                 
@@ -15123,20 +16349,59 @@ are properties in the following format:</p>
             
             <li class="param">
                 
-                    <code class="param-name optional">[valueOff]</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    <span class="flag optional" title="This property is optional.">optional</span>
+                    <code class="param-name">style</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
                 
 
                 <div class="param-description">
-                    <p>The <code>off</code> value of the property. eg. <code>none</code></p>
-
+                    
                 </div>
 
                 
             </li>
             
         </ul>
+    
+</div>
+
+                
+                    <div id="property_styleCommands.bold" class="property item inherited">
+    <h3 class="name"><code>styleCommands.bold</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                <p>Inherited from
+                <a href="../classes/Editor.Style.html#property_styleCommands.bold">Editor.Style</a>:
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l55"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:55</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
     
 </div>
 
@@ -15155,13 +16420,16 @@ are properties in the following format:</p>
 
     <div class="meta">
         
+            <p>Inherited from
+            <a href="../classes/Editor.Style.html#property_styleKeyCommands">
+                Editor.Style
+            </a>
             
-                <p>Inherited from
-                <a href="../classes/Editor.Style.html#property_styleKeyCommands">Editor.Style</a>:
+            but overwritten in
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l68"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:68</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-block.js.html#l63"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-block.js:63</code></a>
         
         </p>
 
@@ -15171,7 +16439,53 @@ are properties in the following format:</p>
     </div>
 
     <div class="description">
-        <p>Key commands related to style functionality.</p>
+        <p>Key commands related to block functionality.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_supportedTags" class="property item inherited">
+    <h3 class="name"><code>supportedTags</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            <p>Inherited from
+            <a href="../classes/Editor.Style.html#property_supportedTags">
+                Editor.Style
+            </a>
+            
+            but overwritten in
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l49"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:49</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>HTML tags supported by this editor. Unsupported tags will be treated
+as text</p>
 
     </div>
 
@@ -15234,9 +16548,18 @@ desires.</p>
 </div>
 
                 
-                    <div id="property_undoKeyCommands" class="property item inherited">
-    <h3 class="name"><code>undoKeyCommands</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+            </div>
+        
+
+        
+            <div id="attrs" class="api-class-tabpanel">
+                <h2 class="off-left">Attributes</h2>
+
+                
+                    <div id="attr_" class="attr item inherited">
+    <a name="config_"></a> 
+    <h3 class="name"><code></code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
 
     
 
@@ -15244,17 +16567,25 @@ desires.</p>
 
     
 
+    
+
+    
+
+    
+
+    
+        <span class="flag readonly">readonly</span>
     
 
     <div class="meta">
         
             
                 <p>Inherited from
-                <a href="../classes/Editor.Undo.html#property_undoKeyCommands">Editor.Undo</a>:
+                <a href="../classes/Editor.Format.html#attr_">Editor.Format</a>:
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l25"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:25</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-format.js.html#l169"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-format.js:169</code></a>
         
         </p>
 
@@ -15264,24 +16595,68 @@ desires.</p>
     </div>
 
     <div class="description">
-        <p>Key commands related to undo/redo functionality.</p>
+        <p>Function for formatting editor html</p>
+<p>One day allow custom formatting. Today is not that day.</p>
 
     </div>
 
     
 
     
+        <div class="emits box">
+            <h4>Fires event <code>Change</code></h4>
+
+            <p>
+            Fires when the value for the configuration attribute `` is
+            changed. You can listen for the event using the <code>on</code> method if you
+            wish to be notified before the attribute's value has changed, or
+            using the <code>after</code> method if you wish to be notified after the
+            attribute's value has changed.
+            </p>
+
+            <div class="params">
+                <h4>Parameters:</h4>
+
+                <ul class="params-list">
+                    <li class="param">
+                        <code class="param-name">e</code>
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventFacade.html" class="crosslink external" target="_blank">EventFacade</a></span>
+
+                        <div class="param-description">
+                            An Event Facade object with the following
+                            attribute-specific properties added:
+                        </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                <code class="param-name">prevVal</code>
+                                <span class="type">Any</span>
+                                <div class="param-description">The value of the attribute, prior to it being set.</div>
+                            </li>
+                            <li class="param">
+                                <code class="param-name">newVal</code>
+                                <span class="type">Any</span>
+                                <div class="param-description">The value the attribute is to be set to.</div>
+                            </li>
+                            <li class="param">
+                                <code class="param-name">attrName</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                <div class="param-description">The name of the attribute being set.</div>
+                            </li>
+                            <li class="param">
+                                <code class="param-name">subAttrName</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                <div class="param-description">If setting a property within the attribute's value, the name of the sub-attribute property being set.</div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
 
     
 </div>
-
-                
-            </div>
-        
-
-        
-            <div id="attrs" class="api-class-tabpanel">
-                <h2 class="off-left">Attributes</h2>
 
                 
                     <div id="attr_container" class="attr item inherited">
@@ -15536,7 +16911,7 @@ has been through the destroy lifecycle phase.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l622"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:622</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l733"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:733</code></a>
         
         </p>
 
@@ -15743,7 +17118,7 @@ has been through the init lifecycle phase.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l634"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:634</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l745"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:745</code></a>
         
         </p>
 
@@ -15850,7 +17225,7 @@ that will be submitted to a server.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l652"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:652</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l763"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:763</code></a>
         
         </p>
 
@@ -15874,109 +17249,6 @@ that will be submitted to a server.</p>
 
             <p>
             Fires when the value for the configuration attribute <code>text</code> is
-            changed. You can listen for the event using the <code>on</code> method if you
-            wish to be notified before the attribute's value has changed, or
-            using the <code>after</code> method if you wish to be notified after the
-            attribute's value has changed.
-            </p>
-
-            <div class="params">
-                <h4>Parameters:</h4>
-
-                <ul class="params-list">
-                    <li class="param">
-                        <code class="param-name">e</code>
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventFacade.html" class="crosslink external" target="_blank">EventFacade</a></span>
-
-                        <div class="param-description">
-                            An Event Facade object with the following
-                            attribute-specific properties added:
-                        </div>
-
-                        <ul class="params-list">
-                            <li class="param">
-                                <code class="param-name">prevVal</code>
-                                <span class="type">Any</span>
-                                <div class="param-description">The value of the attribute, prior to it being set.</div>
-                            </li>
-                            <li class="param">
-                                <code class="param-name">newVal</code>
-                                <span class="type">Any</span>
-                                <div class="param-description">The value the attribute is to be set to.</div>
-                            </li>
-                            <li class="param">
-                                <code class="param-name">attrName</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                <div class="param-description">The name of the attribute being set.</div>
-                            </li>
-                            <li class="param">
-                                <code class="param-name">subAttrName</code>
-                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                <div class="param-description">If setting a property within the attribute's value, the name of the sub-attribute property being set.</div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="attr_undoLevels" class="attr item inherited">
-    <a name="config_undoLevels"></a> 
-    <h3 class="name"><code>undoLevels</code></h3>
-    <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Number.html" class="crosslink external" target="_blank">Number</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                <p>Inherited from
-                <a href="../classes/Editor.Undo.html#attr_undoLevels">Editor.Undo</a>:
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-undo.js.html#l277"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-undo.js:277</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Number of undo/redo levels to maintain. Lowering this number may reduce
-memory usage, especially when editing very large documents.</p>
-
-    </div>
-
-    
-        <p><strong>Default:</strong> 20</p>
-    
-
-    
-        <div class="emits box">
-            <h4>Fires event <code>undoLevelsChange</code></h4>
-
-            <p>
-            Fires when the value for the configuration attribute <code>undoLevels</code> is
             changed. You can listen for the event using the <code>on</code> method if you
             wish to be notified before the attribute's value has changed, or
             using the <code>after</code> method if you wish to be notified after the
@@ -16056,7 +17328,7 @@ memory usage, especially when editing very large documents.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l24"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:24</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l31"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:31</code></a>
         
         </p>
 
@@ -16171,7 +17443,7 @@ destruction).
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l31"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:31</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l38"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:38</code></a>
         
         </p>
 
@@ -16286,7 +17558,7 @@ refers to the configuration object passed to the constructor.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l38"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:38</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l45"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:45</code></a>
         
         </p>
 
@@ -16327,7 +17599,7 @@ refers to the configuration object passed to the constructor.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l45"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:45</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l52"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:52</code></a>
         
         </p>
 

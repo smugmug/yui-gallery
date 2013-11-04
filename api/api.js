@@ -4,7 +4,10 @@ YUI.add("yuidoc-meta", function(Y) {
         "DragDrop",
         "Editor",
         "Editor.Base",
+        "Editor.Block",
         "Editor.DOM",
+        "Editor.Delete",
+        "Editor.Format",
         "Editor.Keys",
         "Editor.Link",
         "Editor.Queue",
@@ -30,12 +33,14 @@ YUI.add("yuidoc-meta", function(Y) {
         "gallery-sm-dragdrop-reorder",
         "gallery-sm-editor",
         "gallery-sm-editor-base",
+        "gallery-sm-editor-block",
+        "gallery-sm-editor-delete",
         "gallery-sm-editor-dom",
+        "gallery-sm-editor-format",
         "gallery-sm-editor-keys",
         "gallery-sm-editor-link",
         "gallery-sm-editor-queue",
         "gallery-sm-editor-style",
-        "gallery-sm-editor-undo",
         "gallery-sm-focusmanager",
         "gallery-sm-indexed-map",
         "gallery-sm-map",
@@ -77,9 +82,24 @@ YUI.add("yuidoc-meta", function(Y) {
             "description": "Provides `Y.Editor.Base`, the core implementation of the SmugMug editor."
         },
         {
+            "displayName": "gallery-sm-editor-block",
+            "name": "gallery-sm-editor-block",
+            "description": "Provides the `Editor.Block` extension."
+        },
+        {
+            "displayName": "gallery-sm-editor-delete",
+            "name": "gallery-sm-editor-delete",
+            "description": "Provides the `Editor.Delete` extension."
+        },
+        {
             "displayName": "gallery-sm-editor-dom",
             "name": "gallery-sm-editor-dom",
             "description": "Provides the `Editor.DOM` utility class."
+        },
+        {
+            "displayName": "gallery-sm-editor-format",
+            "name": "gallery-sm-editor-format",
+            "description": "Provides the `Editor.Format` extension."
         },
         {
             "displayName": "gallery-sm-editor-keys",
@@ -100,11 +120,6 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "gallery-sm-editor-style",
             "name": "gallery-sm-editor-style",
             "description": "Provides the `Editor.Style` extension."
-        },
-        {
-            "displayName": "gallery-sm-editor-undo",
-            "name": "gallery-sm-editor-undo",
-            "description": "Provides the `Editor.Undo` extension."
         },
         {
             "displayName": "gallery-sm-focusmanager",

@@ -1,0 +1,211 @@
+{
+  "gallery-sm-dom-form-values": {
+    "requires": [
+      "dom-base"
+    ],
+    "path": "gallery-sm-dom-form-values/7f4d/gallery-sm-dom-form-values-min.js"
+  },
+  "gallery-sm-dragdrop": {
+    "requires": [
+      "base",
+      "classnamemanager",
+      "event-move",
+      "node-event-delegate",
+      "node-screen"
+    ],
+    "path": "gallery-sm-dragdrop/952c/gallery-sm-dragdrop-min.js"
+  },
+  "gallery-sm-dragdrop-proxy": {
+    "requires": [
+      "base-pluginhost",
+      "gallery-sm-dragdrop",
+      "plugin"
+    ],
+    "path": "gallery-sm-dragdrop-proxy/ad73/gallery-sm-dragdrop-proxy-min.js"
+  },
+  "gallery-sm-dragdrop-reorder": {
+    "requires": [
+      "base-pluginhost",
+      "gallery-sm-dragdrop",
+      "plugin"
+    ],
+    "path": "gallery-sm-dragdrop-reorder/9d27/gallery-sm-dragdrop-reorder-min.js"
+  },
+  "gallery-sm-editor": {
+    "requires": [
+      "gallery-sm-editor-base",
+      "gallery-sm-editor-block",
+      "gallery-sm-editor-keys",
+      "gallery-sm-editor-link",
+      "gallery-sm-editor-queue",
+      "gallery-sm-editor-style",
+      "gallery-sm-editor-undo"
+    ],
+    "skinnable": true,
+    "path": "gallery-sm-editor/c24d/gallery-sm-editor-min.js"
+  },
+  "gallery-sm-editor-base": {
+    "requires": [
+      "base-build",
+      "classnamemanager",
+      "event-focus",
+      "gallery-sm-selection",
+      "view"
+    ],
+    "path": "gallery-sm-editor-base/dd70/gallery-sm-editor-base-min.js"
+  },
+  "gallery-sm-editor-block": {
+    "requires": [
+      "gallery-sm-editor-base",
+      "gallery-sm-editor-dom",
+      "gallery-sm-editor-keys",
+      "node-style"
+    ],
+    "path": "gallery-sm-editor-block/e8e1/gallery-sm-editor-block-min.js"
+  },
+  "gallery-sm-editor-dom": {
+    "requires": [
+      "gallery-sm-range",
+      "node"
+    ],
+    "path": "gallery-sm-editor-dom/d813/gallery-sm-editor-dom-min.js"
+  },
+  "gallery-sm-editor-keys": {
+    "requires": [
+      "gallery-sm-editor-base"
+    ],
+    "path": "gallery-sm-editor-keys/0b9e/gallery-sm-editor-keys-min.js"
+  },
+  "gallery-sm-editor-link": {
+    "requires": [
+      "gallery-sm-editor-base",
+      "gallery-sm-editor-dom"
+    ],
+    "path": "gallery-sm-editor-link/e802/gallery-sm-editor-link-min.js"
+  },
+  "gallery-sm-editor-queue": {
+    "requires": [
+      "gallery-sm-editor-base",
+      "gallery-sm-editor-keys"
+    ],
+    "path": "gallery-sm-editor-queue/1698/gallery-sm-editor-queue-min.js"
+  },
+  "gallery-sm-editor-style": {
+    "requires": [
+      "gallery-sm-editor-base",
+      "gallery-sm-editor-dom",
+      "gallery-sm-editor-keys",
+      "gallery-sm-editor-queue",
+      "node-style"
+    ],
+    "path": "gallery-sm-editor-style/7b7b/gallery-sm-editor-style-min.js"
+  },
+  "gallery-sm-editor-undo": {
+    "requires": [
+      "gallery-sm-editor-base"
+    ],
+    "path": "gallery-sm-editor-undo/cd7b/gallery-sm-editor-undo-min.js"
+  },
+  "gallery-sm-focusmanager": {
+    "requires": [
+      "event-focus",
+      "node-pluginhost",
+      "plugin",
+      "selector-css3"
+    ],
+    "path": "gallery-sm-focusmanager/dc79/gallery-sm-focusmanager-min.js"
+  },
+  "gallery-sm-indexed-map": {
+    "requires": [
+      "gallery-sm-map",
+      "oop"
+    ],
+    "path": "gallery-sm-indexed-map/532e/gallery-sm-indexed-map-min.js"
+  },
+  "gallery-sm-map": {
+    "requires": [],
+    "path": "gallery-sm-map/d13a/gallery-sm-map-min.js"
+  },
+  "gallery-sm-menu": {
+    "requires": [
+      "classnamemanager",
+      "escape",
+      "event-hover",
+      "gallery-sm-menu-base",
+      "gallery-sm-menu-templates",
+      "node-screen",
+      "view"
+    ],
+    "skinnable": true,
+    "path": "gallery-sm-menu/d4f4/gallery-sm-menu-min.js"
+  },
+  "gallery-sm-menu-base": {
+    "requires": [
+      "gallery-sm-menu-item",
+      "tree-labelable",
+      "tree-openable"
+    ],
+    "path": "gallery-sm-menu-base/9c6a/gallery-sm-menu-base-min.js"
+  },
+  "gallery-sm-menu-item": {
+    "requires": [
+      "tree-node",
+      "oop"
+    ],
+    "path": "gallery-sm-menu-item/5503/gallery-sm-menu-item-min.js"
+  },
+  "gallery-sm-menu-plugin": {
+    "requires": [
+      "event-focus",
+      "gallery-sm-menu",
+      "node-pluginhost",
+      "plugin"
+    ],
+    "path": "gallery-sm-menu-plugin/cd08/gallery-sm-menu-plugin-min.js"
+  },
+  "gallery-sm-menu-templates": {
+    "requires": [
+      "template-micro"
+    ],
+    "path": "gallery-sm-menu-templates/0b19/gallery-sm-menu-templates-min.js"
+  },
+  "gallery-sm-promise-events": {
+    "requires": [
+      "promise"
+    ],
+    "path": "gallery-sm-promise-events/fa95/gallery-sm-promise-events-min.js"
+  },
+  "gallery-sm-range": {
+    "requires": [
+      "node-base"
+    ],
+    "path": "gallery-sm-range/5a26/gallery-sm-range-min.js"
+  },
+  "gallery-sm-selection": {
+    "requires": [
+      "gallery-sm-range"
+    ],
+    "path": "gallery-sm-selection/ffdb/gallery-sm-selection-min.js"
+  },
+  "gallery-sm-treeview": {
+    "requires": [
+      "base-build",
+      "classnamemanager",
+      "template-micro",
+      "tree",
+      "tree-labelable",
+      "tree-openable",
+      "tree-selectable",
+      "view"
+    ],
+    "skinnable": true,
+    "path": "gallery-sm-treeview/af2d/gallery-sm-treeview-min.js"
+  },
+  "gallery-sm-treeview-sortable": {
+    "requires": [
+      "gallery-sm-treeview",
+      "tree-sortable"
+    ],
+    "path": "gallery-sm-treeview-sortable/6f70/gallery-sm-treeview-sortable-min.js"
+  }
+}

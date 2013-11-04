@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.Block.html">Editor.Block</a></li>
+            
+                <li><a href="../classes/Editor.Delete.html">Editor.Delete</a></li>
+            
                 <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Format.html">Editor.Format</a></li>
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
@@ -101,7 +107,13 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-block.html">gallery-sm-editor-block</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-delete.html">gallery-sm-editor-delete</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-format.html">gallery-sm-editor-format</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
             
@@ -110,8 +122,6 @@
                 <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
-            
-                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
             
@@ -193,18 +203,23 @@ A simple but powerful WYSIWYG editor.
 @class Editor
 @constructor
 @extends Editor.Base
+@uses Editor.Delete
 @uses Editor.Keys
 @uses Editor.Link
+@uses Editor.Queue
+@uses Editor.Block
 @uses Editor.Style
-@uses Editor.Undo
+@uses Editor.Format
 **/
-
 Y.Editor = Y.mix(
     Y.Base.create(&#x27;editor&#x27;, Y.Editor.Base, [
+        Y.Editor.Delete,
         Y.Editor.Keys,
         Y.Editor.Link,
         Y.Editor.Queue,
-        Y.Editor.Style
+        Y.Editor.Block,
+        Y.Editor.Style,
+        Y.Editor.Format
 //        Y.Editor.Undo
     ], {}),
     Y.Editor

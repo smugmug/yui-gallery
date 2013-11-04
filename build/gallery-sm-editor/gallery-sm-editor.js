@@ -15,18 +15,23 @@ A simple but powerful WYSIWYG editor.
 @class Editor
 @constructor
 @extends Editor.Base
+@uses Editor.Delete
 @uses Editor.Keys
 @uses Editor.Link
+@uses Editor.Queue
+@uses Editor.Block
 @uses Editor.Style
-@uses Editor.Undo
+@uses Editor.Format
 **/
-
 Y.Editor = Y.mix(
     Y.Base.create('editor', Y.Editor.Base, [
+        Y.Editor.Delete,
         Y.Editor.Keys,
         Y.Editor.Link,
         Y.Editor.Queue,
-        Y.Editor.Style
+        Y.Editor.Block,
+        Y.Editor.Style,
+        Y.Editor.Format
 //        Y.Editor.Undo
     ], {}),
     Y.Editor
@@ -34,8 +39,11 @@ Y.Editor = Y.mix(
 
 
 }, '@VERSION@', {
-    "requires": [
+    "use": [
         "gallery-sm-editor-base",
+        "gallery-sm-editor-block",
+        "gallery-sm-editor-delete",
+        "gallery-sm-editor-format",
         "gallery-sm-editor-keys",
         "gallery-sm-editor-link",
         "gallery-sm-editor-queue",

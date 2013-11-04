@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src/sm-editor/js/extensions/editor-dom.js - SmugMug YUI Gallery API docs</title>
+    <title>src/sm-editor/js/editor-dom.js - SmugMug YUI Gallery API docs</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.Block.html">Editor.Block</a></li>
+            
+                <li><a href="../classes/Editor.Delete.html">Editor.Delete</a></li>
+            
                 <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Format.html">Editor.Format</a></li>
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
@@ -101,7 +107,13 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-block.html">gallery-sm-editor-block</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-delete.html">gallery-sm-editor-delete</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-format.html">gallery-sm-editor-format</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
             
@@ -110,8 +122,6 @@
                 <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
-            
-                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
             
@@ -174,7 +184,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: src/sm-editor/js/extensions/editor-dom.js</h1>
+                        <h1 class="file-heading">File: src/sm-editor/js/editor-dom.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -195,10 +205,10 @@ DOM utility methods for &#x60;Editor.Base&#x60;
 
 var EditorDOM = {};
 
-EditorDOM.inlineElements = &#x27;b, em, i, span, strong, u&#x27;;
-
 /**
 Copies styles from a node to another node
+
+@method copyStyles
 @param {HTMLElement|Node} from
 @param {HTMLElement|Node} to
 @param {Array} styles
@@ -235,80 +245,6 @@ EditorDOM.copyStyles = function(from, to, styles, options) {
 
 
 /**
-Finds the nearest ancestor element node.
-
-@param {Node} node
-@param {Function|String} [tagName] Optional tagName or function. If a tagName
-  is provided, the nearest ancestor with that tag will be returned. If a
-  function is provided, it will be used for the comparision. It will receive
-  a node as its only argument and should return a boolean. If nothing is
-  provided, the nearest ancestor element node will be returned
-@return {Node}
-@static
-**/
-EditorDOM.getAncestorElement = function(node, tagName) {
-    var fn;
-
-    function tagFn(node) {
-        var nodeTag = node.get(&#x27;tagName&#x27;);
-        return nodeTag &amp;&amp; tagName === nodeTag.toUpperCase();
-    }
-
-    if (&#x27;function&#x27; === typeof tagName) {
-        fn = tagName;
-    } else if (&#x27;string&#x27; === typeof tagName) {
-        tagName = tagName.toUpperCase();
-        fn = tagFn;
-    }
-
-    return node.ancestor(fn || EditorDOM.isElementNode, true);
-};
-
-
-/**
-Walks the ancestor tree of a given node until a node that has
-the css property set is found
-
-@method getStyledAncestor
-@param {Node} startNode
-@param {String} property
-@param {Boolean} [self] Whether or not to include &#x60;startNode&#x60; in the scan
-@return {Node} The node having &#x60;property&#x60; set, or null if no node was found
-@static
-**/
-EditorDOM.getStyledAncestor = function(startNode, property, self) {
-    return startNode.ancestor(function(node) {
-        if (!EDOM.isElementNode(node)) {
-            return false;
-        }
-
-        // don&#x27;t use node.getStyle() because it will return
-        // computedStyle for empty string values like &#x60;property: &quot;&quot;&#x60;
-        // https://github.com/yui/yui3/blob/master/src/dom/js/dom-style.js#L106
-        return !!node._node.style[property];
-    }, self, this.selectors.input);
-};
-
-
-/**
-Returns true if the given node is a container element, false otherwise
-A container element is defined as a non-inline element
-
-@method isContainer
-@param {HTMLNode|Node} node
-@return {Boolean} true if the given node is a container element, false otherwise
-@static
-**/
-EditorDOM.isContainer = function(node) {
-    node = Y.one(node);
-
-    // isElementNode() will exclude document fragments, which are valid
-    // containers, use !isTextNode() instead
-    return !EditorDOM.isTextNode(node) &amp;&amp; !EditorDOM.isInlineElement(node);
-};
-
-
-/**
 Returns true if the given node is an element node, false otherwise
 
 @method isElementNode
@@ -327,7 +263,7 @@ EditorDOM.isElementNode = function(node) {
 Returns true if the given node is empty
 
 Nodes containing only returns, tabs or linefeeds are considered empty
-Nodes containing only whitespace are not considered empty
+Nodes containing only whitespace or breaks (br) are not considered empty
 
 @method isEmptyNode
 @param {HTMLNode|Node} node
@@ -337,24 +273,11 @@ Nodes containing only whitespace are not considered empty
 EditorDOM.isEmptyNode = function(node) {
     node = Y.one(node);
 
-    var text = node ? node.get(&#x27;text&#x27;) : &#x27;&#x27;;
-
-    return (/^[^\S ]*$/).test(text);
-};
-
-
-/**
-Returns true if the given node is an inline element node, false otherwise
-
-@method isInlineElement
-@param {HTMLNode|Node} node
-@return {Boolean} true if the given node is an inline element node, false otherwise
-@static
-**/
-EditorDOM.isInlineElement = function(node) {
-    node = Y.one(node);
-
-    return node &amp;&amp; node.test(EditorDOM.inlineElements);
+    if (node &amp;&amp; node.test(&#x27;br&#x27;)) {
+        return false;
+    } else {
+        return (/^[^\S ]*$/).test(node ? node.get(&#x27;text&#x27;) : &#x27;&#x27;) &amp;&amp; !node.one(&#x27;br&#x27;);
+    }
 };
 
 
@@ -392,24 +315,6 @@ EditorDOM.maxOffset = function(node) {
 
 
 /**
-Replace spaces in text with a replacement string.
-
-Primarily to workaround a webkit issue where it won&#x27;t put the caret after
-trailing whitespace at the end of a node
-
-@param {String} text The source text that will have spaces replaced
-@param {String} [replacement=\u00a0] The string to use as the replacement for
-    spaces in _text_. Defaults to a nonblank space
-@returns {String} _text_ with spaces replaced
-**/
-EditorDOM.replaceSpaces = function(text, replacement) {
-    replacement || (replacement = &#x27;\u00a0&#x27;);
-
-    return text.replace(/ /g, replacement);
-};
-
-
-/**
 Splits the given node at the specified offset
 
 @method split
@@ -417,7 +322,7 @@ Splits the given node at the specified offset
 @param {Number|Node} offset Position to split the node.
     For text nodes this is numerical offset, for element nodes can be a
     a number referencing a childNode of &#x60;node&#x60; or a childNode reference.
-@returns {Node} Node reference to the node created after splitting. It will
+@return {Node} Node reference to the node created after splitting. It will
     be the nextSibling of &#x60;node&#x60;. If offset is not valid, the original &#x60;node&#x60;
     is returned.
 **/
@@ -445,30 +350,6 @@ EditorDOM.split = function(node, offset) {
 
         return splitNode;
     }
-};
-
-
-/**
-Unwraps a node
-
-@method unwrap
-@param {Node} node
-@return {Range} Range containing the unwrapped child nodes
-@static
-**/
-EditorDOM.unwrap = function (node) {
-    var range, startNode, endNode;
-
-    startNode = node.get(&#x27;firstChild&#x27;) || node;
-    endNode = node.get(&#x27;lastChild&#x27;) || node;
-
-    startNode.unwrap();
-
-    range = new Y.Range();
-    range.startNode(startNode);
-    range.endNode(endNode, EditorDOM.maxOffset(endNode));
-
-    return range;
 };
 
 

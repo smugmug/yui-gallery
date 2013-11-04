@@ -15,13 +15,20 @@ Provides `Y.Editor.Base`, the core implementation of the SmugMug editor.
 Base implementation of the SmugMug editor. Provides core editor functionality,
 but no undo stack, keyboard shortcuts, etc.
 
+Provides support for the following commands:
+
+- insertHTML
+- insertText
+
 @class Editor.Base
 @constructor
 @extends View
 **/
 
 var doc          = Y.config.doc,
-    getClassName = Y.ClassNameManager.getClassName;
+    win          = Y.config.win,
+    getClassName = Y.ClassNameManager.getClassName,
+    EDOM         = Y.Editor.DOM;
 
 /**
 Fired after this editor loses focus.
@@ -89,23 +96,27 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     **/
 
     /**
-    Hash of boolean commands supported by this editor. A boolean command is
-    one that does not require a value. Executing this command will toggle
-    the currently set value.
+    Hash of commands supported by this editor.
 
-    Names should correspond with valid `execCommand()` command names.
+    Names should correspond with valid `execCommand()` command names. Values
+    are properties in the following format:
 
-    @property {Object} boolCommands
+    @property {Object} commands
+        @param {Function|String} commandFn
+        @param {Function|String} [queryFn]
     **/
-    boolCommands: {
-        bold     : true,
-        italic   : true,
-        underline: true,
-        justifyCenter: true,
-        justifyFull: true,
-        justifyLeft: true,
-        justifyRight: true
+    commands: {
+        insertHTML: {
+            commandFn: '_insertHTML'
+        },
+
+        insertText: {
+            commandFn: '_insertText'
+        }
     },
+
+
+    supportedTags: 'a, br, div, p, span',
 
     // -- Protected Properties -------------------------------------------------
 
@@ -139,7 +150,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @chainable
     **/
     blur: function () {
-        if (this._inputNode) {
+        if (this._rendered) {
             this._inputNode.blur();
         }
 
@@ -147,58 +158,50 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     },
 
     /**
-    Gets and/or sets the value of the specified editor command.
+    Executes a given editor command.
 
-    See <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>
-    for a list of possible commands.
+    By default, the only supported commands are:
+
+    - insertHTML
+    - insertText
+
+    See individual editor extensions for additionally supported commands
 
     @method command
-    @param {String|Function} name Command name or function to execute. By
-        default functions will execute in the editor context. Use Y.bind
-        to provide a different execution context.
-    @param {*} [value*] Command value or 0..n arguments to pass
-        to the command function. Use the special value 'toggle' to toggle a
-        boolean command (like 'bold') to the opposite of its current state.
-    @return {*} Value of the specified command or return value of the
-        supplied function.
+    @param {String|Function} name Command name or function to execute.
+    @param {Any} [args]* 0..n arguments to pass to the command
+    @return {Any} Value of the specified command.
     **/
-    command: function (name, value) {
-        var args = Y.Array(arguments, 1, true),
-            retVal;
+    command: function (name) {
+        var command, ret,
+            fn = name,
+            args = Y.Array(arguments, 1, true);
+
+        if ('string' === typeof fn) {
+            command = this.commands[fn];
+
+            if (command) {
+                fn = command.commandFn;
+
+                if (command.style) {
+                    args.unshift(name);
+                }
+            }
+
+            if ('string' === typeof fn) {
+                fn = this[fn];
+            }
+        }
 
         this.focus();
 
-        if (typeof name === 'function') {
-            retVal = name.apply(this, args);
-        } else {
-            value = args.shift();
+        if ('function' === typeof fn) {
+            ret = fn.apply(this, args);
 
-            if (typeof value !== 'undefined') {
-                this._execCommand(name, value);
-            }
-
-            retVal = this._queryCommandValue(name);
+            this._updateSelection({force: true});
         }
 
-        this._updateSelection({force: true});
-
-        return retVal;
-    },
-
-    /**
-    Decreases the font size of the current selection (if possible).
-
-    @method decreaseFontSize
-    @chainable
-    **/
-    decreaseFontSize: function () {
-        var newSize = parseInt(this.command('fontSize'), 10) - 1;
-
-        if (newSize > 0) {
-            this.command('fontSize', '' + newSize);
-        }
-
-        return this;
+        return ret || this.query(name);
     },
 
     /**
@@ -208,7 +211,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @chainable
     **/
     focus: function () {
-        if (this._inputNode) {
+        if (this._rendered) {
             this._inputNode.focus();
         }
 
@@ -216,59 +219,37 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     },
 
     /**
-    Increases the font size of the current selection (if possible).
+    Gets the value of a specified editor command.
 
-    @method increaseFontSize
-    @chainable
+    See <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>
+    for a list of possible commands.
+
+    @method query
+    @param {String} name Command name.
+    @return {Boolean|String} Value of the specified command.
     **/
-    increaseFontSize: function () {
-        var newSize = parseInt(this.command('fontSize'), 10) + 1;
+    query: function (name) {
+        var command, ret,
+            fn = name,
+            args = Y.Array(arguments, 0, true);
 
-        // currently only webkit supports size 7 (xxx-large), so keep
-        // it under 7 for compatibility
-        if (newSize < 7) {
-            this.command('fontSize', '' + newSize);
+        if ('string' === typeof fn) {
+            command = this.commands[fn];
+
+            if (command) {
+                fn = command.queryFn;
+            }
+
+            fn = this[fn];
         }
 
-        return this;
-    },
+        this.focus();
 
-    /**
-    Inserts the specified _html_ at the current selection point, deleting the
-    current selection if there is one.
-
-    @method insertHTML
-    @param {HTML|HTMLElement|Node} html HTML to insert, in the form of an HTML
-        string, HTMLElement, or Node instance.
-    @return {Node} Node instance representing the inserted HTML.
-    **/
-    insertHTML: function (html) {
-        var node      = typeof html === 'string' ? Y.Node.create(html) : html,
-            selection = this.selection,
-            range     = selection.range();
-
-        if (!range) {
-            return;
+        if ('function' === typeof fn) {
+            ret = fn.apply(this, args);
         }
 
-        node = range.deleteContents().insertNode(node);
-        range.collapse();
-
-        selection.select(range);
-
-        return node;
-    },
-
-    /**
-    Inserts the specified plain _text_ at the current selection point, deleting
-    the current selection if there is one.
-
-    @method insertText
-    @param {String} text Text to insert.
-    @return {Node} Node instance representing the inserted text node.
-    **/
-    insertText: function (text) {
-        return this.insertHTML(doc.createTextNode(text));
+        return ret;
     },
 
     /**
@@ -296,14 +277,14 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
             inputNode.setHTML(html);
         } else if (text) {
             inputNode.set('text', text);
+        } else {
+            inputNode.setHTML('<p><br></p>');
         }
 
         inputNode.set('contentEditable', true);
 
         this._inputNode = inputNode;
         this._rendered  = true;
-
-        this._updateSelection({silent: true});
 
         this.fire(EVT_RENDER);
 
@@ -351,7 +332,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 
     /**
     Wrapper for native the native `execCommand()` that verifies that the command
-    is valid in the current state and normalizes boolean/toggleable values.
+    is valid in the current state
 
     @method _execCommand
     @param {String} name Command name.
@@ -359,21 +340,12 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _execCommand: function (name, value) {
-        if (!doc.queryCommandEnabled(name)) {
+        if (!doc.queryCommandSupported(name) || !doc.queryCommandEnabled(name)) {
             Y.log('Command is not currently allowed: ' + name, 'warn', 'sm-editor');
             return;
         }
 
-        if (this.boolCommands[name]) {
-            // Only execute the command if the desired state differs from the
-            // current state, or the desired state is 'toggle', indicating that
-            // the command should be toggled regardless of its current state.
-            if (value === 'toggle' || value !== this._queryCommandValue(name)) {
-                doc.execCommand(name, false, null);
-            }
-        } else {
-            doc.execCommand(name, false, value);
-        }
+        doc.execCommand(name, false, value);
     },
 
     /**
@@ -389,6 +361,59 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     },
 
     /**
+    Returns nodes containing any part of the given `range` matching the
+    given `selector`
+
+    @method _getNodes
+    @param {Range} range
+    @param {String} selector
+    @return {NodeList}
+    @protected
+    **/
+    _getNodes: function (range, selector) {
+        var startNode, startOffset,
+            testNode, nodes = [];
+
+        range = range.clone().shrink();
+
+        startNode = range.startNode();
+        startOffset = range.startOffset();
+
+        if (range.isCollapsed()) {
+            var childNodes = startNode.get('childNodes');
+
+            if (!EDOM.isTextNode(startNode) && childNodes.item(startOffset - 1)) {
+                // the range is collapsed so it will never get traversed. grab
+                // the exact node referenced by startNode/startOffset and work
+                // backwards from there
+                testNode = childNodes.item(startOffset - 1);
+            } else {
+                testNode = startNode;
+            }
+        } else {
+            // traversal will include the startNode, so start off with the
+            // startNodes parent
+            testNode = startNode.get('parentNode');
+        }
+
+        while (testNode && testNode !== this._inputNode && this._inputNode.contains(testNode)) {
+            if (testNode.test(selector)) {
+                nodes.push(testNode);
+            }
+
+            testNode = testNode.get('parentNode');
+        }
+
+        range.traverse(function (node) {
+           if (node.test(selector)) {
+               nodes.push(node);
+           }
+        });
+
+        return Y.all(nodes);
+    },
+
+    /**
     Getter for the `text` attribute.
 
     @method _getText
@@ -401,6 +426,38 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     },
 
     /**
+    Inserts the specified _html_ at the current selection point, deleting the
+    current selection if there is one.
+
+    @method _insertHTML
+    @param {HTML|HTMLElement|Node} html HTML to insert, in the form of an HTML
+        string, HTMLElement, or Node instance.
+    @return {Node} Node instance representing the inserted HTML.
+    @protected
+    **/
+    _insertHTML: function (html) {
+        var node      = typeof html === 'string' ? Y.Node.create(html) : html,
+            selection = this.selection,
+            range     = selection.range();
+
+        if (!range) {
+            return;
+        }
+
+        // expanding the range before deleting contents makes sure
+        // the entire node is deleted, if possible.
+        range.expand({stopAt: this._inputNode});
+
+        node = range.deleteContents().insertNode(node);
+
+        range.collapse();
+
+        selection.select(range);
+
+        return node;
+    },
+
+    /**
     Inserts a `<span>` at the current selection point containing a preformatted
     tab character.
 
@@ -408,12 +465,46 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _insertTab: function () {
-        this.insertHTML('<span style="white-space:pre;">\t</span>');
+        this._insertHTML('<span style="white-space:pre;">\t</span>');
     },
 
     /**
-    Wrapper for the native `queryCommandState()` and `queryCommandValue()`
-    methods that uses the appropriate method for the given command type.
+    Inserts the specified plain _text_ at the current selection point, deleting
+    the current selection if there is one.
+
+    @method _insertText
+    @param {String} text Text to insert.
+    @return {Node} Node instance representing the inserted text node.
+    @protected
+    **/
+    _insertText: function (text) {
+        // replace any newlines with spaces. browsers will convert
+        // back to back newlines into paragraphs in the `formatBlock` command
+        // which could cause nesting issues depending on where the text is
+        // being inserted
+        text = text.replace(/\n+/g, ' ');
+
+        return this._insertHTML(doc.createTextNode(text));
+    },
+
+
+    /**
+    No-op function for allowing default browser implementations.
+
+    Use as the `commandFn` in a command config when the default browser
+    behavior is desired. Allows for the command stack to execute and
+    selection to be updated
+
+    @method _noCommand
+    @protected
+    **/
+    _noCommand: function () {
+        // no-op
+    },
+
+
+    /**
+    Wrapper for the native `queryCommandValue()` method
 
     @method _queryCommandValue
     @param {String} name Command name.
@@ -421,8 +512,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _queryCommandValue: function (name) {
-        return this.boolCommands[name] ?
-            !!doc.queryCommandState(name) : doc.queryCommandValue(name);
+        return doc.queryCommandSupported(name) ? doc.queryCommandValue(name) : null;
     },
 
     /**
@@ -526,7 +616,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _onCopy: function (e) {
-        var clipboard = e._event.clipboardData || window.clipboardData,
+        var clipboard = e._event.clipboardData || win.clipboardData,
             range = this.selection.range(),
             contents = range.cloneContents().getHTML();
 
@@ -549,12 +639,14 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _onCut: function (e) {
-        var clipboard = e._event.clipboardData || window.clipboardData,
+        var clipboard = e._event.clipboardData || win.clipboardData,
             range = this.selection.range(),
+            contents;
 
-            // note the `expand()`. this prevents any empty nodes
-            // being left after `extractContents()`
-            contents = range.expand().extractContents().getHTML();
+        // expand the range to prevent any empty nodes
+        // being left after `extractContents()`
+        range.expand({stopAt: this._inputNode});
+        contents = range.extractContents().getHTML();
 
         e.preventDefault();
 
@@ -588,16 +680,24 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @protected
     **/
     _onFocus: function () {
-        var self = this;
+        var self = this,
+            selection = this.selection,
+            range;
 
         if (!this._rendered) {
             return;
         }
 
-        // restore the previously selected range
-        if (this._selectedRange) {
-            this.selection.select(this._selectedRange);
+        // restore the previously selected range, or create a new range
+        if (!(range = this._selectedRange)) {
+            var node = this._inputNode.get('firstChild') || this._inputNode;
+
+            range = new Y.Range();
+            range.selectNodeContents(node);
+            range.collapse({toStart: true});
         }
+
+        selection.select(range);
 
         this._updateSelection();
 
@@ -614,10 +714,21 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     Handles `paste` events on the editor.
 
     @method _onPaste
+    @param {EventFacade} e
     @protected
     **/
-    _onPaste: function () {
-        // TODO: handle paste events!
+    _onPaste: function (e) {
+        var clipboard = e._event.clipboardData || win.clipboardData,
+            contents = clipboard.getData('text');
+
+        e.preventDefault();
+
+        // create a document-fragment with the pasted contents
+        // then get the text content of the fragment. effectively
+        // strips tags.
+        contents = Y.Node.create(contents).get('text');
+
+        this.command('insertText', contents);
     }
 }, {
     ATTRS: {
@@ -668,4 +779,16 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
 Y.namespace('Editor').Base = EditorBase;
 
 
-}, '@VERSION@', {"requires": ["base-build", "classnamemanager", "event-focus", "gallery-sm-selection", "view"]});
+}, '@VERSION@', {
+    "requires": [
+        "base-build",
+        "classnamemanager",
+        "event-custom",
+        "event-focus",
+        "gallery-sm-editor-dom",
+        "gallery-sm-selection",
+        "node-base",
+        "node-event-delegate",
+        "view"
+    ]
+});

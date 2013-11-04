@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.Block.html">Editor.Block</a></li>
+            
+                <li><a href="../classes/Editor.Delete.html">Editor.Delete</a></li>
+            
                 <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Format.html">Editor.Format</a></li>
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
@@ -101,7 +107,13 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-block.html">gallery-sm-editor-block</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-delete.html">gallery-sm-editor-delete</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-format.html">gallery-sm-editor-format</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
             
@@ -110,8 +122,6 @@
                 <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
-            
-                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
             
@@ -192,7 +202,6 @@ Extension for &#x60;Editor.Base&#x60; that adds support for configurable keyboar
 shortcuts, including a set of default shortcuts.
 
 @class Editor.Keys
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/
@@ -260,10 +269,7 @@ var EditorKeys = Y.Base.create(&#x27;editorKeys&#x27;, Y.Base, [], {
         // Formatting.
         &#x27;ctrl+-&#x27;: &#x27;decreaseFontSize&#x27;,
         &#x27;ctrl+=&#x27;: &#x27;increaseFontSize&#x27;, // unshifted + key
-        &#x27;ctrl+b&#x27;: &#x27;bold&#x27;,
         // TODO: &#x27;ctrl+d&#x27;: &#x27;selectWord&#x27;,
-        &#x27;ctrl+i&#x27;: &#x27;italic&#x27;,
-        &#x27;ctrl+u&#x27;: &#x27;underline&#x27;,
 
         // Special cases.
         &#x27;tab&#x27;: &#x27;_insertTab&#x27;
@@ -342,9 +348,14 @@ var EditorKeys = Y.Base.create(&#x27;editorKeys&#x27;, Y.Base, [], {
 
         if (handler) {
             var fn   = handler.fn || handler,
-                self = this;
+                args = [e, combo];
 
             if (typeof fn === &#x27;string&#x27;) {
+                if (this.commands[fn]) {
+                    args.unshift(fn);
+                    fn = &#x27;command&#x27;;
+                }
+
                 fn = this[fn];
             }
 
@@ -353,11 +364,9 @@ var EditorKeys = Y.Base.create(&#x27;editorKeys&#x27;, Y.Base, [], {
             }
 
             if (handler.async) {
-                setTimeout(function () {
-                    fn.call(self, e, combo);
-                }, 0);
+                Y.later(0, this, fn, args);
             } else {
-                fn.call(this, e, combo);
+                fn.apply(this, args);
             }
         }
     }

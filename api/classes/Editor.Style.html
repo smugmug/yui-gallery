@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.Block.html">Editor.Block</a></li>
+            
+                <li><a href="../classes/Editor.Delete.html">Editor.Delete</a></li>
+            
                 <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Format.html">Editor.Format</a></li>
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
@@ -101,7 +107,13 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-block.html">gallery-sm-editor-block</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-delete.html">gallery-sm-editor-delete</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-format.html">gallery-sm-editor-format</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
             
@@ -110,8 +122,6 @@
                 <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
-            
-                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
             
@@ -204,66 +214,22 @@
 
 <div class="box intro">
     <p>Extension for <code>Editor.Base</code> that normalizes style commands into css properties</p>
+<p>Provides support for the following commands:</p>
+<ul>
+<li>bold</li>
+<li>fontName</li>
+<li>fontSize</li>
+<li>italic</li>
+<li>justifyCenter</li>
+<li>justifyFull</li>
+<li>justifyLeft</li>
+<li>justifyRight</li>
+<li>strikeThrough</li>
+<li>underline</li>
+</ul>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Editor.Style" class="method item">
-    <h3 class="name"><code>Editor.Style</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l10"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:10</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -310,13 +276,6 @@
                         
                             <li class="index-item method private inherited">
                                 <a href="#method__addOutOfOrder">_addOutOfOrder</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method protected">
-                                <a href="#method__afterDelete">_afterDelete</a>
 
                                 
                                 
@@ -386,7 +345,7 @@
                             </li>
                         
                             <li class="index-item method protected">
-                                <a href="#method__execCommand">_execCommand</a>
+                                <a href="#method__execStyleCommand">_execStyleCommand</a>
 
                                 
                                 
@@ -455,13 +414,6 @@
                                 
                             </li>
                         
-                            <li class="index-item method protected">
-                                <a href="#method__getHTML">_getHTML</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method private inherited">
                                 <a href="#method__getInstanceAttrCfgs">_getInstanceAttrCfgs</a>
 
@@ -471,13 +423,6 @@
                         
                             <li class="index-item method private inherited">
                                 <a href="#method__getStateVal">_getStateVal</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method protected">
-                                <a href="#method__getStyledAncestor">_getStyledAncestor</a>
 
                                 
                                 
@@ -567,13 +512,6 @@
                                 
                             </li>
                         
-                            <li class="index-item method protected">
-                                <a href="#method__onPaste">_onPaste</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method private inherited">
                                 <a href="#method__parseType">_parseType</a>
 
@@ -605,7 +543,7 @@
                             </li>
                         
                             <li class="index-item method protected">
-                                <a href="#method__queryCommandValue">_queryCommandValue</a>
+                                <a href="#method__queryStyleCommand">_queryStyleCommand</a>
 
                                 
                                 
@@ -639,22 +577,8 @@
                                 
                             </li>
                         
-                            <li class="index-item method protected">
-                                <a href="#method__setHTML">_setHTML</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method private inherited">
                                 <a href="#method__setStateVal">_setStateVal</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method__splitAfterRange">_splitAfterRange</a>
 
                                 
                                 
@@ -697,13 +621,6 @@
                         
                             <li class="index-item method inherited">
                                 <a href="#method_before">before</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_bold">bold</a>
 
                                 
                                 
@@ -774,13 +691,6 @@
                         
                             <li class="index-item method inherited inherited">
                                 <a href="#method_init">init</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_italic">italic</a>
 
                                 
                                 
@@ -886,13 +796,6 @@
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_underline">underline</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method deprecated inherited">
                                 <a href="#method_unsubscribe">unsubscribe</a>
 
@@ -945,7 +848,21 @@
                             </li>
                         
                             <li class="index-item property">
+                                <a href="#property_styleCommands.bold">styleCommands.bold</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
                                 <a href="#property_styleKeyCommands">styleKeyCommands</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_supportedTags">supportedTags</a>
 
                                 
                                 
@@ -1377,63 +1294,6 @@ encountered out of order when calling addAttrs().</p>
 </div>
 
                 
-                    <div id="method__afterDelete" class="method item protected">
-    <h3 class="name"><code>_afterDelete</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l486"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:486</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Handles <code>delete</code> events on the editor</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="method__aggregateAttrs" class="method item private inherited">
     <h3 class="name"><code>_aggregateAttrs</code></h3>
 
@@ -1780,7 +1640,7 @@ Since it&#39;s on a critical path, we don&#39;t want to re-do the check.</p>
                     
 
                     <div class="param-description">
-                        
+                         
                     </div>
 
                     
@@ -2138,8 +1998,8 @@ the destructor method on the prototype of each class in the hierarchy.</p>
 </div>
 
                 
-                    <div id="method__execCommand" class="method item protected">
-    <h3 class="name"><code>_execCommand</code></h3>
+                    <div id="method__execStyleCommand" class="method item protected">
+    <h3 class="name"><code>_execStyleCommand</code></h3>
 
     
         <div class="args">
@@ -2188,7 +2048,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l165"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:165</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l231"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:231</code></a>
         
         </p>
 
@@ -2199,10 +2059,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
     </div>
 
     <div class="description">
-        <p>Duckpunch Editor.Base._execCommand to build css styled nodes instead of
-relying on spotty browser compatibility of <code>styleWithCSS</code></p>
-<p>Passes through to Editor.Base for any commands not defined
-in <code>this.styleCommands</code></p>
+        <p>Executes a <code>style</code> command by adding/removing css properties</p>
 
     </div>
 
@@ -3321,115 +3178,6 @@ implementations which need to fast-track publish for performance reasons.</p>
 </div>
 
                 
-                    <div id="method__getHTML" class="method item protected">
-    <h3 class="name"><code>_getHTML</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>value</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">HTML</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l288"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:288</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Getter for the <code>html</code> attribute.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">value</code>
-                        <span class="type">HTML</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>HTML.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">HTML</span>:
-                    
-                    <p>HTML.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
                     <div id="method__getInstanceAttrCfgs" class="method item private inherited">
     <h3 class="name"><code>_getInstanceAttrCfgs</code></h3>
 
@@ -3671,159 +3419,6 @@ where the calling method has already obtained the config from state.</p>
 </div>
 
                 
-                    <div id="method__getStyledAncestor" class="method item protected">
-    <h3 class="name"><code>_getStyledAncestor</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>startNode</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>property</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[self]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l303"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:303</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Walks the ancestor tree of a given node until a node that has
-the css property set is found</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">startNode</code>
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">property</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[self]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Whether or not to include <code>startNode</code> in the scan</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
-                    
-                    <p>The node having <code>property</code> set, or null if no node was found</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
                     <div id="method__getStyleNodes" class="method item protected">
     <h3 class="name"><code>_getStyleNodes</code></h3>
 
@@ -3872,7 +3467,7 @@ the css property set is found</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l328"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:328</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l281"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:281</code></a>
         
         </p>
 
@@ -3885,7 +3480,6 @@ the css property set is found</p>
     <div class="description">
         <p>Parses inline elements from a given range. Partially selected nodes will
 be split and text nodes will be wrapped in <code>&lt;span&gt;</code> tags if necessary.</p>
-<p>The range will not be modified.</p>
 
     </div>
 
@@ -4035,7 +3629,7 @@ applied to the supplied type.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l637"><code>event-custom&#x2F;js&#x2F;event-facade.js:637</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l643"><code>event-custom&#x2F;js&#x2F;event-facade.js:643</code></a>
         
         </p>
 
@@ -5013,96 +4607,6 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
 </div>
 
                 
-                    <div id="method__onPaste" class="method item protected">
-    <h3 class="name"><code>_onPaste</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>e</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l498"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:498</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Handles <code>paste</code> events on the editor.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">e</code>
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventFacade.html" class="crosslink external" target="_blank">EventFacade</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="method__parseType" class="method item private inherited">
     <h3 class="name"><code>_parseType</code></h3>
 
@@ -5516,8 +5020,8 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
 </div>
 
                 
-                    <div id="method__queryCommandValue" class="method item protected">
-    <h3 class="name"><code>_queryCommandValue</code></h3>
+                    <div id="method__queryStyleCommand" class="method item protected">
+    <h3 class="name"><code>_queryStyleCommand</code></h3>
 
     
         <div class="args">
@@ -5564,7 +5068,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l431"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:431</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l344"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:344</code></a>
         
         </p>
 
@@ -5575,10 +5079,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
     </div>
 
     <div class="description">
-        <p>Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes
-instead of relying on spotty browser compatibility of <code>styleWithCSS</code></p>
-<p>Passes through to Editor.Base for any commands not defined
-in <code>this.styleCommands</code></p>
+        <p>Returns the value of a <code>style</code> command by querying css properties</p>
 
     </div>
 
@@ -5617,7 +5118,8 @@ in <code>this.styleCommands</code></p>
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
                     
-                    <p>Command value.</p>
+                    <p>Boolean style commands will return true/false, other commands will
+return the property value, or null if the property doesn&#39;t exist.</p>
 
                 
             </div>
@@ -6315,115 +5817,6 @@ where the calling method has already obtained the config from state.</p>
 </div>
 
                 
-                    <div id="method__setHTML" class="method item protected">
-    <h3 class="name"><code>_setHTML</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>value</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">HTML</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l378"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:378</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Setter for the <code>html</code> attribute.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">value</code>
-                        <span class="type">HTML</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>HTML.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">HTML</span>:
-                    
-                    <p>HTML.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
                     <div id="method__setStateVal" class="method item private inherited">
     <h3 class="name"><code>_setStateVal</code></h3>
 
@@ -6529,137 +5922,6 @@ internal state object, or the state proxy if it exits</p>
         </div>
     
 
-    
-
-    
-</div>
-
-                
-                    <div id="method__splitAfterRange" class="method item">
-    <h3 class="name"><code>_splitAfterRange</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>range</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code class="optional">[contents]</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l393"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:393</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Splits the node at the end of the selection</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">range</code>
-                        <span class="type"><a href="../classes/Range.html" class="crosslink">Range</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name optional">[contents]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLCollection" class="crosslink external" target="_blank">HTMLCollection</a> | <a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/NodeList.html" class="crosslink external" target="_blank">NodeList</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                        <span class="flag optional" title="This parameter is optional.">optional</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Contents
-    to be inserted after the split</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
-                    
-                    <p>Node reference of the node created after splitting. Any
-    <em>contents</em> will have been inserted as previous siblings of this node.</p>
-
-                
-            </div>
-        </div>
     
 
     
@@ -7081,6 +6343,8 @@ See <a href="#method_addAttr">addAttr</a>.</p>
     
 
     
+        <span class="flag chainable">chainable</span>
+    
 
     
 
@@ -7499,63 +6763,6 @@ callback, object (method host), methodName, context, 0-n arguments</p>
 </div>
 
                 
-                    <div id="method_bold" class="method item">
-    <h3 class="name"><code>bold</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l93"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:93</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Bolds or unbolds the current selection.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="method_bubble" class="method item inherited">
     <h3 class="name"><code>bubble</code></h3>
 
@@ -7599,7 +6806,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l548"><code>event-custom&#x2F;js&#x2F;event-facade.js:548</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l554"><code>event-custom&#x2F;js&#x2F;event-facade.js:554</code></a>
         
         </p>
 
@@ -8495,7 +7702,7 @@ falsy value otherwise</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l520"><code>event-custom&#x2F;js&#x2F;event-facade.js:520</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l523"><code>event-custom&#x2F;js&#x2F;event-facade.js:523</code></a>
         
         </p>
 
@@ -8634,63 +7841,6 @@ and invokes initializers for the class hierarchy.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_italic" class="method item">
-    <h3 class="name"><code>italic</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l104"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:104</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Italicizes or unitalicizes the current selection.</p>
-
-    </div>
-
-    
-
     
 
     
@@ -9778,6 +8928,8 @@ case the custom event is returned.</p>
     
 
     
+        <span class="flag chainable">chainable</span>
+    
 
     
 
@@ -9789,7 +8941,7 @@ case the custom event is returned.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l530"><code>event-custom&#x2F;js&#x2F;event-facade.js:530</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l533"><code>event-custom&#x2F;js&#x2F;event-facade.js:533</code></a>
         
         </p>
 
@@ -10277,7 +9429,7 @@ to set the value of a property within the object (e.g. <code>set(&quot;x.y.z&quo
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l115"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:115</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l192"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:192</code></a>
         
         </p>
 
@@ -10465,63 +9617,6 @@ and the instance guid, if set.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_underline" class="method item">
-    <h3 class="name"><code>underline</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l151"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:151</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Toggles underline on the current selection.</p>
-
-    </div>
-
-    
-
     
 
     
@@ -10803,7 +9898,7 @@ not handled by the MyClass._NON_ATTRS_CFG</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l29"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:29</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l39"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:39</code></a>
         
         </p>
 
@@ -10830,13 +9925,12 @@ are properties in the following format:</p>
             
             <li class="param">
                 
-                    <code class="param-name">property</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    <code class="param-name">commandFn</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                 
 
                 <div class="param-description">
-                    <p>The name of the CSS property in camelCase form</p>
-
+                     
                 </div>
 
                 
@@ -10844,14 +9938,13 @@ are properties in the following format:</p>
             
             <li class="param">
                 
-                    <code class="param-name optional">[valueOn]</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    <code class="param-name optional">[queryFn]</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
                     <span class="flag optional" title="This property is optional.">optional</span>
                 
 
                 <div class="param-description">
-                    <p>The <code>on</code> value of the property. eg. <code>bold</code></p>
-
+                     
                 </div>
 
                 
@@ -10859,20 +9952,62 @@ are properties in the following format:</p>
             
             <li class="param">
                 
-                    <code class="param-name optional">[valueOff]</code>
-                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    <span class="flag optional" title="This property is optional.">optional</span>
+                    <code class="param-name">style</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
                 
 
                 <div class="param-description">
-                    <p>The <code>off</code> value of the property. eg. <code>none</code></p>
-
+                     
                 </div>
 
                 
             </li>
             
         </ul>
+    
+</div>
+
+                
+                    <div id="property_styleCommands.bold" class="property item">
+    <h3 class="name"><code>styleCommands.bold</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l55"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:55</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+
     
 </div>
 
@@ -10900,7 +10035,7 @@ are properties in the following format:</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l68"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:68</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l152"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:152</code></a>
         
         </p>
 
@@ -10911,6 +10046,52 @@ are properties in the following format:</p>
 
     <div class="description">
         <p>Key commands related to style functionality.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_supportedTags" class="property item">
+    <h3 class="name"><code>supportedTags</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-style.js.html#l164"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-style.js:164</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>HTML tags supported by this editor. Unsupported tags will be treated
+as text</p>
 
     </div>
 

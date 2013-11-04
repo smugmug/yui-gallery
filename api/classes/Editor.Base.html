@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.Block.html">Editor.Block</a></li>
+            
+                <li><a href="../classes/Editor.Delete.html">Editor.Delete</a></li>
+            
                 <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Format.html">Editor.Format</a></li>
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
@@ -101,7 +107,13 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-block.html">gallery-sm-editor-block</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-delete.html">gallery-sm-editor-delete</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-format.html">gallery-sm-editor-format</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
             
@@ -110,8 +122,6 @@
                 <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
-            
-                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
             
@@ -205,6 +215,11 @@
 <div class="box intro">
     <p>Base implementation of the SmugMug editor. Provides core editor functionality,
 but no undo stack, keyboard shortcuts, etc.</p>
+<p>Provides support for the following commands:</p>
+<ul>
+<li>insertHTML</li>
+<li>insertText</li>
+</ul>
 
 </div>
 
@@ -498,6 +513,13 @@ but no undo stack, keyboard shortcuts, etc.</p>
                                 
                             </li>
                         
+                            <li class="index-item method protected">
+                                <a href="#method__getNodes">_getNodes</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method private inherited">
                                 <a href="#method__getStateVal">_getStateVal</a>
 
@@ -569,7 +591,21 @@ but no undo stack, keyboard shortcuts, etc.</p>
                             </li>
                         
                             <li class="index-item method protected">
+                                <a href="#method__insertHTML">_insertHTML</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected">
                                 <a href="#method__insertTab">_insertTab</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected">
+                                <a href="#method__insertText">_insertText</a>
 
                                 
                                 
@@ -584,6 +620,13 @@ but no undo stack, keyboard shortcuts, etc.</p>
                         
                             <li class="index-item method private inherited">
                                 <a href="#method__monitor">_monitor</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected">
+                                <a href="#method__noCommand">_noCommand</a>
 
                                 
                                 
@@ -808,13 +851,6 @@ but no undo stack, keyboard shortcuts, etc.</p>
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_decreaseFontSize">decreaseFontSize</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method inherited inherited">
                                 <a href="#method_destroy">destroy</a>
 
@@ -885,29 +921,8 @@ but no undo stack, keyboard shortcuts, etc.</p>
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_increaseFontSize">increaseFontSize</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method inherited inherited">
                                 <a href="#method_init">init</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_insertHTML">insertHTML</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_insertText">insertText</a>
 
                                 
                                 
@@ -950,6 +965,13 @@ but no undo stack, keyboard shortcuts, etc.</p>
                         
                             <li class="index-item method inherited">
                                 <a href="#method_publish">publish</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_query">query</a>
 
                                 
                                 
@@ -1056,14 +1078,14 @@ but no undo stack, keyboard shortcuts, etc.</p>
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_boolCommands">boolCommands</a>
+                                <a href="#property_classNames">classNames</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_classNames">classNames</a>
+                                <a href="#property_commands">commands</a>
 
                                 
                                 
@@ -1781,7 +1803,7 @@ attribute configuration has cloneDefaultValue set to shallow or deep).</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l313"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:313</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l294"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:294</code></a>
         
         </p>
 
@@ -2039,7 +2061,7 @@ Since it&#39;s on a critical path, we don&#39;t want to re-do the check.</p>
                     
 
                     <div class="param-description">
-                        
+                         
                     </div>
 
                     
@@ -2485,7 +2507,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l337"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:337</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l318"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:318</code></a>
         
         </p>
 
@@ -2558,7 +2580,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l350"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:350</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l331"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:331</code></a>
         
         </p>
 
@@ -2570,7 +2592,7 @@ the destructor method on the prototype of each class in the hierarchy.</p>
 
     <div class="description">
         <p>Wrapper for native the native <code>execCommand()</code> that verifies that the command
-is valid in the current state and normalizes boolean/toggleable values.</p>
+is valid in the current state</p>
 
     </div>
 
@@ -3845,7 +3867,7 @@ implementations which need to fast-track publish for performance reasons.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l377"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:377</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l349"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:349</code></a>
         
         </p>
 
@@ -4007,6 +4029,134 @@ that by the time all classes are processed, allCfgs will be empty.</p>
                     <p>The set of attributes to be added for this instance, suitable
 for passing through to <code>addAttrs</code>.</p>
 
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method__getNodes" class="method item protected">
+    <h3 class="name"><code>_getNodes</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>range</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>selector</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/NodeList.html" class="crosslink external" target="_blank">NodeList</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l361"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:361</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns nodes containing any part of the given <code>range</code> matching the
+given <code>selector</code></p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">range</code>
+                        <span class="type"><a href="../classes/Range.html" class="crosslink">Range</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">selector</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/NodeList.html" class="crosslink external" target="_blank">NodeList</a></span>:
+                    
                 
             </div>
         </div>
@@ -4195,7 +4345,7 @@ where the calling method has already obtained the config from state.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l389"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:389</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l414"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:414</code></a>
         
         </p>
 
@@ -4357,7 +4507,7 @@ applied to the supplied type.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l637"><code>event-custom&#x2F;js&#x2F;event-facade.js:637</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l643"><code>event-custom&#x2F;js&#x2F;event-facade.js:643</code></a>
         
         </p>
 
@@ -4979,6 +5129,117 @@ across the class hierarchy for the instance.</p>
 </div>
 
                 
+                    <div id="method__insertHTML" class="method item protected">
+    <h3 class="name"><code>_insertHTML</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>html</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l426"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:426</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Inserts the specified <em>html</em> at the current selection point, deleting the
+current selection if there is one.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">html</code>
+                        <span class="type">HTML | <a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>HTML to insert, in the form of an HTML
+    string, HTMLElement, or Node instance.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
+                    
+                    <p>Node instance representing the inserted HTML.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method__insertTab" class="method item protected">
     <h3 class="name"><code>_insertTab</code></h3>
 
@@ -5013,7 +5274,7 @@ across the class hierarchy for the instance.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l401"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:401</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l458"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:458</code></a>
         
         </p>
 
@@ -5031,6 +5292,116 @@ tab character.</p>
 
     
 
+    
+
+    
+</div>
+
+                
+                    <div id="method__insertText" class="method item protected">
+    <h3 class="name"><code>_insertText</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>text</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l469"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:469</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Inserts the specified plain <em>text</em> at the current selection point, deleting
+the current selection if there is one.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">text</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Text to insert.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
+                    
+                    <p>Node instance representing the inserted text node.</p>
+
+                
+            </div>
+        </div>
     
 
     
@@ -5284,6 +5655,66 @@ it published) by setting the events &#39;monitor&#39; config.</p>
 </div>
 
                 
+                    <div id="method__noCommand" class="method item protected">
+    <h3 class="name"><code>_noCommand</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l489"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:489</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>No-op function for allowing default browser implementations.</p>
+<p>Use as the <code>commandFn</code> in a command config when the default browser
+behavior is desired. Allows for the command stack to execute and
+selection to be updated</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method__normAttrVals" class="method item private inherited">
     <h3 class="name"><code>_normAttrVals</code></h3>
 
@@ -5427,7 +5858,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l503"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:503</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l593"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:593</code></a>
         
         </p>
 
@@ -5494,7 +5925,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l519"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:519</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l609"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:609</code></a>
         
         </p>
 
@@ -5584,7 +6015,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l542"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:542</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l632"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:632</code></a>
         
         </p>
 
@@ -5664,7 +6095,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l570"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:570</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l662"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:662</code></a>
         
         </p>
 
@@ -5721,7 +6152,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l582"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:582</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l674"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:674</code></a>
         
         </p>
 
@@ -5748,7 +6179,17 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
     <h3 class="name"><code>_onPaste</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>e</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -5778,7 +6219,7 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l611"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:611</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l711"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:711</code></a>
         
         </p>
 
@@ -5793,6 +6234,29 @@ by the top level attribute name, or null, if valueHash is falsey.</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">e</code>
+                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/EventFacade.html" class="crosslink external" target="_blank">EventFacade</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -6262,7 +6726,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l412"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:412</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l504"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:504</code></a>
         
         </p>
 
@@ -6273,8 +6737,7 @@ be the default <code>CustomEvent</code> instance, and can be configured independ
     </div>
 
     <div class="description">
-        <p>Wrapper for the native <code>queryCommandState()</code> and <code>queryCommandValue()</code>
-methods that uses the appropriate method for the given command type.</p>
+        <p>Wrapper for the native <code>queryCommandValue()</code> method</p>
 
     </div>
 
@@ -7059,7 +7522,7 @@ where the calling method has already obtained the config from state.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l426"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:426</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l516"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:516</code></a>
         
         </p>
 
@@ -7279,7 +7742,7 @@ internal state object, or the state proxy if it exits</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l442"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:442</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l532"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:532</code></a>
         
         </p>
 
@@ -7384,7 +7847,7 @@ internal state object, or the state proxy if it exits</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l458"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:458</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l548"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:548</code></a>
         
         </p>
 
@@ -7884,6 +8347,8 @@ See <a href="#method_addAttr">addAttr</a>.</p>
 
     
 
+    
+        <span class="flag chainable">chainable</span>
     
 
     
@@ -8431,7 +8896,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l133"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:133</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l144"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:144</code></a>
         
         </p>
 
@@ -8497,7 +8962,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l548"><code>event-custom&#x2F;js&#x2F;event-facade.js:548</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l554"><code>event-custom&#x2F;js&#x2F;event-facade.js:554</code></a>
         
         </p>
 
@@ -8573,7 +9038,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
                 <li class="arg">
                     
-                        <code class="optional">[value*]</code>
+                        <code class="optional">[args]</code>
                     
                 </li>
             
@@ -8583,7 +9048,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
 
     
         <span class="returns-inline">
-            <span class="type"></span>
+            <span class="type">Any</span>
         </span>
     
 
@@ -8610,7 +9075,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l147"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:147</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l158"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:158</code></a>
         
         </p>
 
@@ -8621,9 +9086,13 @@ callback, object (method host), methodName, context, 0-n arguments</p>
     </div>
 
     <div class="description">
-        <p>Gets and/or sets the value of the specified editor command.</p>
-<p>See <a href="https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla">https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla</a>
-for a list of possible commands.</p>
+        <p>Executes a given editor command.</p>
+<p>By default, the only supported commands are:</p>
+<ul>
+<li>insertHTML</li>
+<li>insertText</li>
+</ul>
+<p>See individual editor extensions for additionally supported commands</p>
 
     </div>
 
@@ -8642,9 +9111,7 @@ for a list of possible commands.</p>
                     
 
                     <div class="param-description">
-                        <p>Command name or function to execute. By
-    default functions will execute in the editor context. Use Y.bind
-    to provide a different execution context.</p>
+                        <p>Command name or function to execute.</p>
 
                     </div>
 
@@ -8653,17 +9120,17 @@ for a list of possible commands.</p>
             
                 <li class="param">
                     
-                        <code class="param-name optional">[value*]</code>
-                        <span class="type"></span>
+                        <code class="param-name optional">[args]</code>
+                        <span class="type">Any</span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
+                        <span class="flag multiple" title="This argument may occur one or more times.">multiple</span>
+                    
 
                     <div class="param-description">
-                        <p>Command value or 0..n arguments to pass
-    to the command function. Use the special value &#39;toggle&#39; to toggle a
-    boolean command (like &#39;bold&#39;) to the opposite of its current state.</p>
+                        <p>0..n arguments to pass to the command</p>
 
                     </div>
 
@@ -8681,10 +9148,9 @@ for a list of possible commands.</p>
             <div class="returns-description">
                 
                     
-                        <span class="type"></span>:
+                        <span class="type">Any</span>:
                     
-                    <p>Value of the specified command or return value of the
-    supplied function.</p>
+                    <p>Value of the specified command.</p>
 
                 
             </div>
@@ -8800,63 +9266,6 @@ return a <code>Y.Node</code> instance.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_decreaseFontSize" class="method item">
-    <h3 class="name"><code>decreaseFontSize</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l186"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:186</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Decreases the font size of the current selection (if possible).</p>
-
-    </div>
-
-    
-
     
 
     
@@ -9455,7 +9864,7 @@ false if at any point the event propagation was halted.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l202"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:202</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l205"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:205</code></a>
         
         </p>
 
@@ -9850,7 +10259,7 @@ falsy value otherwise</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l520"><code>event-custom&#x2F;js&#x2F;event-facade.js:520</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l523"><code>event-custom&#x2F;js&#x2F;event-facade.js:523</code></a>
         
         </p>
 
@@ -9879,63 +10288,6 @@ falsy value otherwise</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_increaseFontSize" class="method item">
-    <h3 class="name"><code>increaseFontSize</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l216"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:216</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Increases the font size of the current selection (if possible).</p>
-
-    </div>
-
-    
-
     
 
     
@@ -10042,223 +10394,6 @@ and invokes initializers for the class hierarchy.</p>
                         <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/BaseCore.html" class="crosslink external" target="_blank">BaseCore</a></span>:
                     
                     <p>A reference to this object</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_insertHTML" class="method item">
-    <h3 class="name"><code>insertHTML</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>html</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l234"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:234</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Inserts the specified <em>html</em> at the current selection point, deleting the
-current selection if there is one.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">html</code>
-                        <span class="type">HTML | <a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>HTML to insert, in the form of an HTML
-    string, HTMLElement, or Node instance.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
-                    
-                    <p>Node instance representing the inserted HTML.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_insertText" class="method item">
-    <h3 class="name"><code>insertText</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>text</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l260"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:260</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Inserts the specified plain <em>text</em> at the current selection point, deleting
-the current selection if there is one.</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">text</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>Text to insert.</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
-                    
-                    <p>Node instance representing the inserted text node.</p>
 
                 
             </div>
@@ -11236,6 +11371,115 @@ case the custom event is returned.</p>
 </div>
 
                 
+                    <div id="method_query" class="method item">
+    <h3 class="name"><code>query</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>name</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l219"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:219</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the value of a specified editor command.</p>
+<p>See <a href="https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla">https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla</a>
+for a list of possible commands.</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Command name.</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+                    
+                    <p>Value of the specified command.</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_remove" class="method item inherited">
     <h3 class="name"><code>remove</code></h3>
 
@@ -11405,6 +11649,8 @@ but doesn&#39;t destroy it or any event listeners attached to it.</p>
     
 
     
+        <span class="flag chainable">chainable</span>
+    
 
     
 
@@ -11416,7 +11662,7 @@ but doesn&#39;t destroy it or any event listeners attached to it.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l530"><code>event-custom&#x2F;js&#x2F;event-facade.js:530</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l533"><code>event-custom&#x2F;js&#x2F;event-facade.js:533</code></a>
         
         </p>
 
@@ -11497,7 +11743,7 @@ but doesn&#39;t destroy it or any event listeners attached to it.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l272"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:272</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l253"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:253</code></a>
         
         </p>
 
@@ -12253,54 +12499,6 @@ instantiate a view and set a bunch of attributes without having to subclass
 </div>
 
                 
-                    <div id="property_boolCommands" class="property item">
-    <h3 class="name"><code>boolCommands</code></h3>
-    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l89"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:89</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Hash of boolean commands supported by this editor. A boolean command is
-one that does not require a value. Executing this command will toggle
-the currently set value.</p>
-<p>Names should correspond with valid <code>execCommand()</code> command names.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="property_classNames" class="property item">
     <h3 class="name"><code>classNames</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
@@ -12324,7 +12522,7 @@ the currently set value.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l60"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:60</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l67"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:67</code></a>
         
         </p>
 
@@ -12386,6 +12584,86 @@ the currently set value.</p>
                     <p>Class name used for the WYSIWYG YUI Editor frame that
     will receive user input.</p>
 
+                </div>
+
+                
+            </li>
+            
+        </ul>
+    
+</div>
+
+                
+                    <div id="property_commands" class="property item">
+    <h3 class="name"><code>commands</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l96"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:96</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Hash of commands supported by this editor.</p>
+<p>Names should correspond with valid <code>execCommand()</code> command names. Values
+are properties in the following format:</p>
+
+    </div>
+
+    
+
+    
+
+    
+        <h4>Sub-properties:</h4>
+
+        <ul class="params-list">
+            
+            <li class="param">
+                
+                    <code class="param-name">commandFn</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                
+
+                <div class="param-description">
+                     
+                </div>
+
+                
+            </li>
+            
+            <li class="param">
+                
+                    <code class="param-name optional">[queryFn]</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    <span class="flag optional" title="This property is optional.">optional</span>
+                
+
+                <div class="param-description">
+                     
                 </div>
 
                 
@@ -12589,7 +12867,7 @@ you&#39;d prefer <code>this</code> to be something else, use <code>Y.bind()</cod
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l76"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:76</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l83"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:83</code></a>
         
         </p>
 
@@ -12930,7 +13208,7 @@ has been through the destroy lifecycle phase.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l622"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:622</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l733"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:733</code></a>
         
         </p>
 
@@ -13140,7 +13418,7 @@ has been through the init lifecycle phase.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l634"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:634</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l745"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:745</code></a>
         
         </p>
 
@@ -13250,7 +13528,7 @@ that will be submitted to a server.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l652"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:652</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l763"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:763</code></a>
         
         </p>
 
@@ -13356,7 +13634,7 @@ that will be submitted to a server.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l24"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:24</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l31"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:31</code></a>
         
         </p>
 
@@ -13474,7 +13752,7 @@ destruction).
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l31"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:31</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l38"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:38</code></a>
         
         </p>
 
@@ -13592,7 +13870,7 @@ refers to the configuration object passed to the constructor.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l38"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:38</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l45"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:45</code></a>
         
         </p>
 
@@ -13636,7 +13914,7 @@ refers to the configuration object passed to the constructor.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_editor-base.js.html#l45"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:45</code></a>
+        <a href="../files/src_sm-editor_js_editor-base.js.html#l52"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-base.js:52</code></a>
         
         </p>
 

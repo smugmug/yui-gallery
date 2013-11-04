@@ -12,27 +12,49 @@ Provides the `Editor.Link` extension.
 /**
 Extension for `Editor.Base` that enables inserting links
 
+Provides support for the following commands:
+
+- createLink
+- unlink
+
 @class Editor.Link
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/
 
 (function() {
-var EDOM = Y.Editor.DOM;
-
 var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     // -- Public Properties ----------------------------------------------------
 
     /**
-    Key commands related to creating hyperlinks.
+    Hash of link commands supported by this editor.
 
-    @property {Object} linkKeyCommands
+    Names should correspond with valid `execCommand()` command names. Values
+    are properties in the following format:
+
+    @property {Object} linkCommands
+        @param {Function|String} commandFn
+        @param {Function|String} [queryFn]
     **/
-    linkKeyCommands: {
-        // Create a link.
-        'ctrl+h'      : {fn: '_linkPrompt', allowDefault: false}
+    linkCommands: {
+        createLink: {
+            commandFn: '_createLink',
+            queryFn:   'isLink'
+        },
+
+        unlink: {
+            commandFn: '_unlink',
+            queryFn:   'isLink'
+        }
     },
+
+    /**
+    HTML tags supported by this editor. Unsupported tags will be treated
+    as text
+
+    @property {String} supportedTags
+    **/
+    linkTags: 'a',
 
     /**
     HTML Template for building an anchor node
@@ -45,28 +67,17 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     // -- Lifecycle ------------------------------------------------------------
 
     initializer: function () {
-//        if (this.keyCommands) {
-//            this.keyCommands = Y.merge(this.keyCommands, this.linkKeyCommands);
-//        }
+        this.commands = Y.merge(this.commands, this.linkCommands);
+
+        if (this.supportedTags) {
+            this.supportedTags += ',' + this.linkTags;
+        } else {
+            this.supportedTags = this.linkTags;
+        }
     },
 
 
     // -- Public Methods -------------------------------------------------------
-
-    /**
-    Wraps the currently selected range in an anchor element
-
-    @method link
-    @param {Object} options
-        @param {String} options.href
-        @param {String} [options.target=_self]
-        @param {String} [options.text]
-    @chainable
-    **/
-    link: function (options) {
-        return this.command(this._link, options);
-    },
-
 
     /**
     Returns whether or not the current range is entirely in an anchor element
@@ -80,29 +91,6 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     },
 
 
-    /**
-    Removes link by replacing the anchor element with the child nodes
-    of the anchor
-
-    The anchor element will be removed from the DOM and destroyed.
-
-    @method unlink
-    @chainable
-    **/
-    unlink: function() {
-        var anchorNode = this._getAnchorNode(),
-            range;
-
-        if (anchorNode) {
-            range = EDOM.unwrap(anchorNode);
-
-            this.selection.select(range.shrink({trim: true}));
-        }
-
-        return this;
-    },
-
-
     // -- Protected Methods ----------------------------------------------------
 
     /**
@@ -110,7 +98,7 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     the current range
 
     @method _getAnchorNode
-    @returns {Node} The containing anchor element
+    @return {Node} The containing anchor element
     @protected
     **/
     _getAnchorNode: function() {
@@ -118,50 +106,50 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
 
         var parentNode = this.selection.range().shrink().parentNode();
 
-        return EDOM.getAncestorElement(parentNode, 'a');
+        return parentNode.ancestor(this.linkTags, true);
     },
 
 
     /**
-    Implementation for the public `link` method.
+    Implementation for the `createLink` command
 
     Wraps the currently selected range in an anchor `<a>` tag
 
-    @method _link
+    @method _createLink
     @param {Object} options
         @param {String} options.href
         @param {String} [options.target=_self]
         @param {String} [options.text]
-    @chainable
     @protected
     **/
-    _link: function(options){
+    _createLink: function(options){
         var range = this.selection.range(),
-            anchorNode;
+            anchorNode, styleNodes;
 
         if (!range) {
             return;
         }
 
         if (this.isLink()) {
-            range = this.unlink().selection.range();
+            this._unlink();
+            range = this.selection.range();
         }
 
         options || (options = {});
-        options.target || (options.target = '_self');
-        options.href || (options.href = '');
+        options.href = encodeURI(options.href || '');
+        options.target = encodeURIComponent(options.target || '_self');
 
-        // expanding the range before deleting contents makes sure
-        // the entire node is wrapped, if possible.
-        range.expand(this._inputNode);
+        anchorNode = Y.Node.create(Y.Lang.sub(this.linkTemplate, options));
+        styleNodes = this._getStyleNodes(range);
 
-        anchorNode = Y.Lang.sub(this.linkTemplate, options);
-        anchorNode = range.wrap(anchorNode);
+        anchorNode.append(styleNodes);
+
+        range.insertNode(anchorNode);
 
         if (options.text && options.text !== range.toString()) {
             var firstChild = anchorNode.get('firstChild');
 
-            if (EDOM.isInlineElement(firstChild)) {
+            if (this._isStyleNode(firstChild)) {
                 firstChild.set('text', options.text);
                 anchorNode.setHTML(firstChild);
             } else {
@@ -169,23 +157,43 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
             }
         }
 
-        range.endNode(anchorNode, 'after');
+        range.selectNode(anchorNode).collapse();
 
-        this.selection.select(range.collapse());
-
-        return this;
+        this.selection.select(range);
     },
 
 
     /**
-    @method _linkPrompt
+    Removes link by replacing the anchor element with the child nodes
+    of the anchor
+
+    The anchor element will be removed from the DOM and destroyed.
+
+    @method _unlink
     @protected
     **/
-    _linkPrompt: function() {
-        var href = Y.config.win.prompt('Enter a url');
+    _unlink: function() {
+        var selection = this.selection,
+            anchorNode;
 
-        if (href) {
-            this.link({href: href});
+        // we can use the native unlink command once we have bookmarking
+        // in place, but firefox selects adjacent text nodes after unlink
+
+        if (anchorNode = this._getAnchorNode()) {
+            var firstChild = anchorNode.get('firstChild'),
+                lastChild = anchorNode.get('lastChild'),
+                range = selection.range();
+
+            // only need to unwrap one of the children to unwrap the
+            // whole anchorNode
+            firstChild.unwrap();
+
+            anchorNode.destroy();
+
+            range.startNode(firstChild, 0);
+            range.endNode(lastChild, 'after');
+
+            selection.select(range.shrink({trim: true}));
         }
     }
 });
@@ -195,4 +203,4 @@ Y.namespace('Editor').Link = EditorLink;
 }());
 
 
-}, '@VERSION@', {"requires": ["gallery-sm-editor-base", "gallery-sm-editor-dom"]});
+}, '@VERSION@', {"requires": ["base-build", "gallery-sm-editor-base", "node-base"]});

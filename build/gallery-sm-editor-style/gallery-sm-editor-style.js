@@ -12,17 +12,27 @@ Provides the `Editor.Style` extension.
 /**
 Extension for `Editor.Base` that normalizes style commands into css properties
 
+Provides support for the following commands:
+
+- bold
+- fontName
+- fontSize
+- italic
+- justifyCenter
+- justifyFull
+- justifyLeft
+- justifyRight
+- strikeThrough
+- underline
+
 @class Editor.Style
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/
 
-(function() {
+(function () {
 
-var doc = Y.config.doc,
-    win = Y.config.win,
-    EDOM = Y.Editor.DOM,
+var EDOM = Y.Editor.DOM,
     STYLENODE = '<span></span>';
 
 var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
@@ -35,37 +45,111 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     are properties in the following format:
 
     @property {Object} styleCommands
-      @param {String} property The name of the CSS property in camelCase form
-      @param {String} [valueOn] The `on` value of the property. eg. `bold`
-      @param {String} [valueOff] The `off` value of the property. eg. `none`
+        @param {Function|String} commandFn
+        @param {Function|String} [queryFn]
+        @param {Object} style
+            @param {String} style.property The name of the CSS property in
+            camelCase form
+            @param {String} [style.value] For boolean commands, the `on` value
+            of the property. eg. `bold`
     **/
     styleCommands: {
+        /**
+        @property {Object} styleCommands.bold
+         */
         bold: {
-            property: 'fontWeight',
-            valueOn: 'bold',
-            valueOff: 'normal'
+            commandFn: '_execStyleCommand',
+            queryFn: '_queryStyleCommand',
+            style: {
+                property: 'fontWeight',
+                value: 'bold'
+            }
         },
 
         fontName: {
-            property: 'fontFamily'
+            commandFn: '_execStyleCommand',
+            queryFn: '_queryStyleCommand',
+            style: {
+                property: 'fontFamily'
+            }
         },
 
         fontSize: {
-            property: 'fontSize'
+            commandFn: '_execStyleCommand',
+            queryFn: '_queryStyleCommand',
+            style: {
+                property: 'fontSize'
+            }
         },
 
         italic: {
-            property: 'fontStyle',
-            valueOn: 'italic',
-            valueOff: 'normal'
+            commandFn: '_execStyleCommand',
+            queryFn: '_queryStyleCommand',
+            style: {
+                property: 'fontStyle',
+                value: 'italic'
+            }
+        },
+
+        justifyCenter: {
+            commandFn: '_execStyleCommand',
+            queryFn: '_queryStyleCommand',
+            style: {
+                property: 'textAlign',
+                value: 'center'
+            },
+            type: 'block'
+        },
+
+        justifyFull: {
+            commandFn: '_execStyleCommand',
+            queryFn: '_queryStyleCommand',
+            style: {
+                property: 'textAlign',
+                value: 'justify'
+            },
+            type: 'block'
+        },
+
+        justifyLeft: {
+            commandFn: '_execStyleCommand',
+            queryFn: '_queryStyleCommand',
+            style: {
+                property: 'textAlign',
+                value: ''
+            },
+            type: 'block'
+        },
+
+        justifyRight: {
+            commandFn: '_execStyleCommand',
+            queryFn: '_queryStyleCommand',
+            style: {
+                property: 'textAlign',
+                value: 'right'
+            },
+            type: 'block'
+        },
+
+        strikeThrough: {
+            commandFn: '_execStyleCommand',
+            queryFn: '_queryStyleCommand',
+            style: {
+                property: 'textDecoration',
+                value: 'line-through'
+            }
         },
 
         underline: {
-            property: 'textDecoration',
-            valueOn: 'underline',
-            valueOff: 'none'
+            commandFn: '_execStyleCommand',
+            queryFn: '_queryStyleCommand',
+            style: {
+                property: 'textDecoration',
+                value: 'underline'
+            }
         }
     },
+
 
     /**
     Key commands related to style functionality.
@@ -73,46 +157,39 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     @property {Object} styleKeyCommands
     **/
     styleKeyCommands: {
-        'backspace': {fn: '_afterDelete', allowDefault: true, async: true},
-        'delete'   : {fn: '_afterDelete', allowDefault: true, async: true}
+        'ctrl+b': 'bold',
+        'ctrl+i': 'italic',
+        'ctrl+u': 'underline'
     },
+
+
+    /**
+    HTML tags supported by this editor. Unsupported tags will be treated
+    as text
+
+    @property {String} supportedTags
+    **/
+    styleTags: 'span',
 
 
     // -- Lifecycle ------------------------------------------------------------
 
     initializer: function () {
+        this.commands = Y.merge(this.commands, this.styleCommands);
+
+        if (this.supportedTags) {
+            this.supportedTags += ',' + this.styleTags;
+        } else {
+            this.supportedTags = this.styleTags;
+        }
+
         if (this.keyCommands) {
             this.keyCommands = Y.merge(this.keyCommands, this.styleKeyCommands);
         }
     },
 
-    destructor: function () {
-    },
-
 
     // -- Public Methods -------------------------------------------------------
-
-    /**
-    Bolds or unbolds the current selection.
-
-    @method bold
-    @chainable
-    **/
-    bold: function () {
-        this.command('bold', 'toggle');
-        return this;
-    },
-
-    /**
-    Italicizes or unitalicizes the current selection.
-
-    @method italic
-    @chainable
-    **/
-    italic: function () {
-        this.command('italic', 'toggle');
-        return this;
-    },
 
     /**
     Gets and/or sets the values of multiple editor style commands.
@@ -142,7 +219,7 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
 
             for (name in commands) {
                 if (commands.hasOwnProperty(name)) {
-                    results[name] = this._queryCommandValue(name);
+                    results[name] = this.query(name);
                 }
             }
         }
@@ -150,180 +227,56 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
         return results;
     },
 
-    /**
-    Toggles underline on the current selection.
-
-    @method underline
-    @chainable
-    **/
-    underline: function () {
-        this.command('underline', 'toggle');
-        return this;
-    },
-
 
     // -- Protected Methods ----------------------------------------------------
 
     /**
-    Duckpunch Editor.Base._execCommand to build css styled nodes instead of
-    relying on spotty browser compatibility of `styleWithCSS`
+    Executes a `style` command by adding/removing css properties
 
-    Passes through to Editor.Base for any commands not defined
-    in `this.styleCommands`
-
-    @method _execCommand
+    @method _execStyleCommand
     @param {String} name Command name.
     @param {Boolean|String} value Command value.
     @protected
     **/
-    _execCommand: function(name, value) {
-        var command = this.styleCommands[name],
+    _execStyleCommand: function (name, value) {
+        var command = this.commands[name],
             range = this.selection.range(),
             styleNodes, style;
 
-        if (!range) {
+        if (!range || !command || !command.style) {
             return;
         }
 
-        if (!command) {
-            return Y.Editor.Base.prototype._execCommand.call(this, name, value);
+        if ('block' === command.type) {
+            styleNodes = this._getNodes(range, this.blockTags);
+        } else {
+            styleNodes = this._getStyleNodes(range);
         }
 
-        styleNodes = this._getStyleNodes(range);
+        // use the first node because blah blah
+        // dont use getStyle blah blah
+        style = styleNodes.item(0)._node.style[command.style.property];
 
-        // These nodes aren't in the DOM, getStyle() won't work...at least on
-        // any windows browser.  works fine on OSX. weird.
-        style = styleNodes.item(0)._node.style[command.property];
-
-        if (this.boolCommands[name] && 'toggle' === value) {
-            if (style && '' !== style) {
+        if (Y.Lang.isValue(command.style.value)) {
+            if (style && style === command.style.value) {
                 style = '';
             } else {
-                style = command.valueOn;
+                style = command.style.value;
             }
+        } else if (value) {
+            style = command.style.value || value;
         } else {
-            style = value;
+            style = '';
         }
 
-        styleNodes.setStyle(command.property, style);
+        styleNodes.setStyle(command.style.property, style);
 
-        // expanding the range before deleting contents makes sure
-        // the entire node is deleted, if possible.
-        range.expand(this._inputNode).deleteContents();
+        if ('block' !== command.type) {
+            range.startNode(styleNodes.item(0));
+            range.endNode(styleNodes.item(styleNodes.size() - 1), 'after');
 
-        this._splitAfterRange(range, styleNodes);
-
-        range.startNode(styleNodes.item(0), 0);
-        range.endNode(styleNodes.item(styleNodes.size() - 1));
-        range.endOffset(EDOM.maxOffset(range.endNode()));
-
-        this.selection.select(range);
-    },
-
-
-    /**
-    Reformats html to the proper style
-
-    <span>blah blah</span>
-    @param {HTML} html HTML string to format
-    @return {Node} Node instance containing a document fragment with the
-        formatted _html_
-    @protected
-    **/
-    _formatHTML: function(html) {
-        function flatten(node) {
-            var childNodes = node.get('childNodes')._nodes;
-
-            Y.Array.each(childNodes.reverse(), function(node) {
-                var parentNode;
-
-                node = Y.one(node);
-                parentNode = node.get('parentNode');
-
-                if (EDOM.isTextNode(node)) {
-                    if (EDOM.isContainer(parentNode)) {
-                        node.wrap(STYLENODE);
-                    } else if (node.get('previousSibling')) {
-                        EDOM.split(parentNode, node);
-                    }
-                } else {
-                    // TODO: replace b, em, i, strong, u nodes with spans
-
-                    if (!EDOM.isContainer(parentNode)) {
-                        parentNode.insert(node, 'after');
-
-                        node.addClass(parentNode.get('className'));
-
-                        EDOM.copyStyles(parentNode, node, supportedStyles, {
-                            explicit: true,
-                            overwrite: false
-                        });
-                    } else {
-                        // TODO: clear styles on containers
-                    }
-
-                    flatten(node);
-
-                    if (!EDOM.isContainer(node) && EDOM.isEmptyNode(node)) {
-                        node.remove(true);
-                    }
-
-                    node.removeAttribute('id');
-                }
-            });
+            this.selection.select(range.shrink());
         }
-
-        var frag, supportedStyles = [];
-
-        Y.Object.each(this.styleCommands, function(cmd) {
-            supportedStyles.push(cmd.property);
-        });
-
-        frag = Y.one(doc.createDocumentFragment()).setHTML(html);
-
-        flatten(frag);
-
-        return frag;
-    },
-
-
-    /**
-    Getter for the `html` attribute.
-
-    @method _getHTML
-    @param {HTML} value HTML.
-    @return {HTML} HTML.
-    @protected
-    **/
-    _getHTML: function (value) {
-        value = Y.Editor.Base.prototype._getHTML.call(this, value);
-
-        return this.get('formatFn')(value).getHTML();
-    },
-
-
-    /**
-    Walks the ancestor tree of a given node until a node that has
-    the css property set is found
-
-    @method _getStyledAncestor
-    @param {Node} startNode
-    @param {String} property
-    @param {Boolean} [self] Whether or not to include `startNode` in the scan
-    @return {Node} The node having `property` set, or null if no node was found
-    @protected
-    **/
-    _getStyledAncestor: function(startNode, property, self) {
-        return startNode.ancestor(function(node) {
-            if (!EDOM.isElementNode(node)) {
-                return false;
-            }
-
-            // don't use node.getStyle() because it will return
-            // computedStyle for empty string values like `property: ""`
-            // https://github.com/yui/yui3/blob/master/src/dom/js/dom-style.js#L106
-            return !!node._node.style[property];
-        }, self, this.selectors.input);
     },
 
 
@@ -331,219 +284,110 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     Parses inline elements from a given range. Partially selected nodes will
     be split and text nodes will be wrapped in `<span>` tags if necessary.
 
-    The range will not be modified.
-
     @method _getStyleNodes
     @param {Range} range
     @return {NodeList} NodeList of inline elements within the given `range`
     @protected
     **/
-    _getStyleNodes: function(range) {
-        var inlineParent, styleContext, contents;
+    _getStyleNodes: function (range) {
+        var styleNode, styleNodes = [];
 
-        // expanding the range before deleting contents makes sure
-        // the entire node is deleted, if possible.
-        range.expand(this._inputNode);
+        range.shrink();
 
-        // see if the range is contained in an inline element
-        inlineParent = EDOM.getAncestorElement(
-            range.parentNode(),
-            EDOM.isInlineElement
-        );
+        // see if the range is contained in an existing styleNode
+        styleNode = range.parentNode().ancestor(this.styleTags, true, this.selectors.input);
 
-        if (inlineParent) {
-            if (range.toString() === inlineParent.get('text')) {
+        if (styleNode) {
+            if (range.toString() === styleNode.get('text')) {
                 // the entire node is selected, just return the node
-                return new Y.NodeList([inlineParent]);
+                return new Y.NodeList([styleNode]);
             }
-
-            // wrap textnodes in clones of the inline parent node
-            // to maintain existing styles
-            styleContext = inlineParent;
         } else {
-            styleContext = Y.Node.create(STYLENODE);
+            styleNode = Y.Node.create(STYLENODE);
         }
 
-        contents = range.cloneContents().get('childNodes');
+        var startNode = range.startNode(),
+            startOffset = range.startOffset(),
+            endNode = range.endNode(),
+            endOffset = range.endOffset();
 
-        contents.each(function(node, ix) {
-            if (EDOM.isTextNode(node)) {
-                // wrap any text nodes in a style context
-                contents.splice(ix, 1, styleContext.cloneNode(false).append(node));
+        range.traverse(function (node) {
+            if (!EDOM.isTextNode(node)) {
+                return;
             }
-        });
 
-        return contents;
+            if (endNode === node && endOffset !== EDOM.maxOffset(endNode)) {
+                node = EDOM.split(node, endOffset).get('previousSibling');
+            }
+
+            if (startNode === node && startOffset) {
+                node = EDOM.split(node, startOffset);
+            }
+
+            if (this._isStyleNode(node.get('parentNode'))) {
+                if (node.get('nextSibling')) {
+                    EDOM.split(node.get('parentNode'), node.get('nextSibling'));
+                }
+
+                if (node.get('previousSibling')) {
+                    EDOM.split(node.get('parentNode'), node);
+                }
+
+                styleNodes.push(node.get('parentNode'));
+            } else {
+                styleNodes.push(node.wrap(styleNode).get('parentNode'));
+            }
+        }, this);
+
+        return new Y.NodeList(styleNodes);
     },
 
 
     /**
-    Setter for the `html` attribute.
+    Returns the value of a `style` command by querying css properties
 
-    @method _setHTML
-    @param {HTML} value HTML.
-    @return {HTML} HTML.
-    @protected
-    **/
-    _setHTML: function (value) {
-        value = this.get('formatFn')(value).getHTML();
-
-        return Y.Editor.Base.prototype._setHTML.call(this, value);
-    },
-
-
-    /**
-    Splits the node at the end of the selection
-
-    @method _splitAfterRange
-    @param {Range} range
-    @param {HTMLCollection|HTMLElement|Node|NodeList|String} [contents] Contents
-        to be inserted after the split
-    @return {Node} Node reference of the node created after splitting. Any
-        _contents_ will have been inserted as previous siblings of this node.
-    **/
-    _splitAfterRange: function(range, contents) {
-        var endNode, endOffset;
-
-        endNode = range.endNode();
-        endOffset = range.endOffset();
-
-        while (!EDOM.isContainer(endNode) && endOffset === EDOM.maxOffset(endNode)) {
-            endOffset = range.endOffset('after');
-            endNode = range.endNode();
-        }
-
-        while (!EDOM.isContainer(endNode)) {
-            endOffset = EDOM.split(endNode, endOffset);
-            endNode = endOffset.get('parentNode');
-        }
-
-        if (contents) {
-            endNode.insert(contents, endOffset);
-        }
-
-        if (!endOffset._node) {
-            endOffset = endNode.get('childNodes').item(endOffset);
-        }
-
-        return endOffset;
-    },
-
-
-    /**
-    Duckpunch Editor.Base _queryCommandValue to query the css properties of nodes
-    instead of relying on spotty browser compatibility of `styleWithCSS`
-
-    Passes through to Editor.Base for any commands not defined
-    in `this.styleCommands`
-
-    @method _queryCommandValue
+    @method _queryStyleCommand
     @param {String} name Command name.
-    @return {Boolean|String} Command value.
+    @return {Boolean|String} Boolean style commands will return true/false, other commands will
+    return the property value, or null if the property doesn't exist.
     @protected
     **/
-    _queryCommandValue: function(name) {
-        var command = this.styleCommands[name],
-            range = this.selection.range(),
-            parentNode, styleNode, value;
+    _queryStyleCommand: function (name) {
+        var command = this.commands[name],
+            range = this.selection.range().clone(),
+            selector = 'span', values = [], value;
 
-        if (!command) {
-            return Y.Editor.Base.prototype._queryCommandValue.call(this, name);
-        }
-
-        if (range) {
-            parentNode = range.shrink().parentNode();
-
-            // first attempt to get any explicitly styled ancestor for
-            // the given property. Need to do this first because browsers
-            // sometimes return different values for explicit style vs.
-            // computed style. `font-weight: bold;` for example will return
-            // `bold` in all browsers when explicitly set but `700` in
-            // Firefox and Internet Explorer with computedStyle.
-            styleNode = this._getStyledAncestor(parentNode, command.property, true);
-
-            if (!styleNode) {
-                // no explicitly styled ancestor found. walk the
-                // ancestor tree to find the closest element
-                // node ancestor, inclusive of the parentNode
-                styleNode = EDOM.getAncestorElement(parentNode);
+        if (range && command.style) {
+            if ('block' === command.type) {
+                selector = this.blockTags;
             }
 
-            // getStyle will fall back to computedStyle if the
-            // property isn't explicitly set
-            value = styleNode.getStyle(command.property);
-        }
+            this._getNodes(range, selector).each(function (node) {
+                var value;
 
-        if (this.boolCommands[name]) {
-            value = (value === command.valueOn);
-        } else if ('' === value) {
-            value = null;
+                if (command.style.computed) {
+                    value = node.getStyle(command.style.property);
+                } else {
+                    value = node._node.style[command.style.property];
+                }
+
+                values.push(value || '');
+            });
+
+            values = Y.Array.dedupe(values);
+
+            if (1 === values.length) {
+                value = values[0];
+            }
+
+            if (Y.Lang.isValue(command.style.value)) {
+                value = (value == command.style.value);
+            } else if ('' === value) {
+                value = null;
+            }
         }
 
         return value;
-    },
-
-    // -- Protected Event Handlers ---------------------------------------------
-
-    /**
-    Handles `delete` events on the editor
-
-    @method _afterDelete
-    @protected
-    **/
-    _afterDelete: function() {
-        this._clearCommandQueue();
-        this._updateSelection({force: true});
-    },
-
-
-    /**
-    Handles `paste` events on the editor.
-
-    @method _onPaste
-    @param {EventFacade} e
-    @protected
-    **/
-    _onPaste: function (e) {
-        var clipboard = e._event.clipboardData || win.clipboardData,
-            contents = clipboard.getData('text'),
-            range = this.selection.range();
-
-        e.preventDefault();
-
-        contents = this.get('formatFn')(contents);
-
-        if (!range.isCollapsed()) {
-            // expanding the range before deleting contents makes sure
-            // the entire node is deleted, if possible.
-            range.expand(this._inputNode);
-
-            range.deleteContents();
-        }
-
-        range.endNode(this._splitAfterRange(range, contents), 'before');
-
-        // collapse the range after the pasted text
-        this.selection.select(range.collapse());
-        this._updateSelection({force: true});
-    }
-}, {
-    ATTRS: {
-        /**
-        Function for formatting editor html
-
-        One day allow custom formatting. Today is not that day.
-        **/
-        formatFn: {
-            readOnly: true,
-            setter: function(val) {
-                return Y.bind(val, this);
-            },
-            validator: Y.Lang.isFunction,
-            valueFn: function() {
-                return this._formatHTML;
-            }
-        }
     }
 });
 
@@ -554,10 +398,11 @@ Y.namespace('Editor').Style = EditorStyle;
 
 }, '@VERSION@', {
     "requires": [
+        "base-build",
         "gallery-sm-editor-base",
         "gallery-sm-editor-dom",
         "gallery-sm-editor-keys",
-        "gallery-sm-editor-queue",
+        "node-base",
         "node-style"
     ]
 });

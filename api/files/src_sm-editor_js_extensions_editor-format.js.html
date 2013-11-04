@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/sm-editor/js/extensions/editor-format.js - SmugMug YUI Gallery API docs</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="SmugMug YUI Gallery API docs"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 3.11.0-git</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/DragDrop.html">DragDrop</a></li>
+            
+                <li><a href="../classes/Editor.html">Editor</a></li>
+            
+                <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
+            
+                <li><a href="../classes/Editor.Block.html">Editor.Block</a></li>
+            
+                <li><a href="../classes/Editor.Delete.html">Editor.Delete</a></li>
+            
+                <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Format.html">Editor.Format</a></li>
+            
+                <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
+            
+                <li><a href="../classes/Editor.Link.html">Editor.Link</a></li>
+            
+                <li><a href="../classes/Editor.Queue.html">Editor.Queue</a></li>
+            
+                <li><a href="../classes/Editor.Style.html">Editor.Style</a></li>
+            
+                <li><a href="../classes/Editor.Undo.html">Editor.Undo</a></li>
+            
+                <li><a href="../classes/IndexedMap.html">IndexedMap</a></li>
+            
+                <li><a href="../classes/Map.html">Map</a></li>
+            
+                <li><a href="../classes/Menu.html">Menu</a></li>
+            
+                <li><a href="../classes/Menu.Base.html">Menu.Base</a></li>
+            
+                <li><a href="../classes/Menu.Item.html">Menu.Item</a></li>
+            
+                <li><a href="../classes/Menu.Templates.html">Menu.Templates</a></li>
+            
+                <li><a href="../classes/Plugin.DragDrop.Reorder.html">Plugin.DragDrop.Reorder</a></li>
+            
+                <li><a href="../classes/Plugin.FocusManager.html">Plugin.FocusManager</a></li>
+            
+                <li><a href="../classes/Plugin.Menu.html">Plugin.Menu</a></li>
+            
+                <li><a href="../classes/Promise.EventNotifier.html">Promise.EventNotifier</a></li>
+            
+                <li><a href="../classes/Range.html">Range</a></li>
+            
+                <li><a href="../classes/Selection.html">Selection</a></li>
+            
+                <li><a href="../classes/TreeView.html">TreeView</a></li>
+            
+                <li><a href="../classes/TreeView.Sortable.html">TreeView.Sortable</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/dom-form-values.html">dom-form-values</a></li>
+            
+                <li><a href="../modules/gallery-sm-dragdrop.html">gallery-sm-dragdrop</a></li>
+            
+                <li><a href="../modules/gallery-sm-dragdrop-reorder.html">gallery-sm-dragdrop-reorder</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor.html">gallery-sm-editor</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-block.html">gallery-sm-editor-block</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-delete.html">gallery-sm-editor-delete</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-format.html">gallery-sm-editor-format</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-link.html">gallery-sm-editor-link</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
+            
+                <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
+            
+                <li><a href="../modules/gallery-sm-indexed-map.html">gallery-sm-indexed-map</a></li>
+            
+                <li><a href="../modules/gallery-sm-map.html">gallery-sm-map</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu.html">gallery-sm-menu</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-base.html">gallery-sm-menu-base</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-item.html">gallery-sm-menu-item</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-plugin.html">gallery-sm-menu-plugin</a></li>
+            
+                <li><a href="../modules/gallery-sm-menu-templates.html">gallery-sm-menu-templates</a></li>
+            
+                <li><a href="../modules/gallery-sm-promise-events.html">gallery-sm-promise-events</a></li>
+            
+                <li><a href="../modules/gallery-sm-range.html">gallery-sm-range</a></li>
+            
+                <li><a href="../modules/gallery-sm-selection.html">gallery-sm-selection</a></li>
+            
+                <li><a href="../modules/gallery-sm-treeview.html">gallery-sm-treeview</a></li>
+            
+                <li><a href="../modules/gallery-sm-treeview-sortable.html">gallery-sm-treeview-sortable</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: src/sm-editor/js/extensions/editor-format.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+/*jshint expr:true, onevar:false */
+
+/**
+Provides the &#x60;Editor.Format&#x60; extension.
+
+@module gallery-sm-editor
+@submodule gallery-sm-editor-format
+**/
+
+/**
+Extension for &#x60;Editor.Base&#x60; that provides formatting support for editor output
+
+@class Editor.Format
+@extends Base
+@extensionfor Editor.Base
+**/
+
+(function () {
+
+var doc = Y.config.doc,
+    EDOM = Y.Editor.DOM,
+    STYLENODE = &#x27;&lt;span&gt;&lt;/span&gt;&#x27;;
+
+var EditorFormat = Y.Base.create(&#x27;editorFormat&#x27;, Y.Base, [], {
+    // -- Public Properties ----------------------------------------------------
+
+
+    // -- Lifecycle ------------------------------------------------------------
+
+    initializer: function () {
+        this.supportedStyles = [];
+
+        Y.Object.each(this.styleCommands, function (cmd) {
+            this.supportedStyles.push(cmd.style.property);
+        }, this);
+    },
+
+
+    // -- Protected Methods ----------------------------------------------------
+
+    /**
+    Reformats html to the proper style
+
+    TODO: put this in its own extension.  doesn&#x27;t belong here.
+
+    @method _formatHTML
+    @param {HTML} html HTML string to format
+    @return {Node} Node instance containing a document fragment with the
+        formatted _html_
+    @protected
+    **/
+    _formatHTML: function (html) {
+        function flatten (node) {
+            var childNodes = node.get(&#x27;childNodes&#x27;)._nodes;
+
+            Y.Array.each(childNodes.reverse(), function (node) {
+                var parentNode;
+
+                node = Y.one(node);
+                parentNode = node.get(&#x27;parentNode&#x27;);
+
+                if (EDOM.isTextNode(node)) {
+                    if (this._isBlockNode(parentNode)) {
+                        node.wrap(STYLENODE);
+                    } else if (node.get(&#x27;previousSibling&#x27;)) {
+                        EDOM.split(parentNode, node);
+                    }
+                } else {
+                    // TODO: replace b, em, i, strong, u nodes with spans
+                    if (!node.test(this.supportedTags)) {
+                        node.replace(node.get(&#x27;text&#x27;));
+                    } else if (!this._isBlockNode(parentNode) &amp;&amp; !parentNode.test(&#x27;a&#x27;)) {
+                        parentNode.insert(node, &#x27;after&#x27;);
+
+                        if (!this._isBlockNode(node)) {
+                            node.addClass(parentNode.get(&#x27;className&#x27;));
+
+                            EDOM.copyStyles(parentNode, node, this.supportedStyles, {
+                                explicit: true,
+                                overwrite: false
+                            });
+                        }
+                    } else {
+                        // TODO: clear styles on containers
+                    }
+
+                    flatten.call(this, node);
+
+                    if (EDOM.isEmptyNode(node)) {
+                        node.remove(true);
+                    }
+
+                    node.removeAttribute(&#x27;id&#x27;);
+                }
+            }, this);
+        }
+
+        var frag = Y.one(doc.createDocumentFragment()).setHTML(html);
+
+        flatten.call(this, frag);
+
+        return frag;
+    },
+
+
+    /**
+    Getter for the &#x60;html&#x60; attribute.
+
+    @method _getHTML
+    @param {HTML} value HTML.
+    @return {HTML} HTML.
+    @protected
+    **/
+    _getHTML: function (value) {
+        value = Y.Editor.Base.prototype._getHTML.call(this, value);
+
+        return this.get(&#x27;formatFn&#x27;)(value).getHTML();
+    },
+
+
+    /**
+    Returns true if the given node is a container element, false otherwise
+    A container element is defined as a non-inline element
+
+    @method _isBlockNode
+    @param {HTMLNode|Node} node
+    @return {Boolean} true if the given node is a container element, false otherwise
+    @protected
+    **/
+    _isBlockNode: function (node) {
+        node = Y.one(node);
+
+        // isElementNode() will exclude document fragments, which are valid
+        // containers, use !isTextNode() instead
+        return !EDOM.isTextNode(node) &amp;&amp; (node.get(&#x27;nodeName&#x27;) === &#x27;#document-fragment&#x27; || node.test(this.blockTags));
+    },
+
+
+    /**
+    Returns true if the given node is an inline element node, false otherwise
+
+    @method _isStyleNode
+    @param {HTMLNode|Node} node
+    @return {Boolean} true if the given node is an inline element node, false otherwise
+    @protected
+    **/
+    _isStyleNode: function (node) {
+        node = Y.one(node);
+
+        return node &amp;&amp; !EDOM.isTextNode(node) &amp;&amp; node.test(this.styleTags);
+    },
+
+
+    /**
+    Setter for the &#x60;html&#x60; attribute.
+
+    @method _setHTML
+    @param {HTML} value HTML.
+    @return {HTML} HTML.
+    @protected
+    **/
+    _setHTML: function (value) {
+        value = this.get(&#x27;formatFn&#x27;)(value).getHTML();
+
+        return Y.Editor.Base.prototype._setHTML.call(this, value);
+    }
+}, {
+    ATTRS: {
+        /**
+        Function for formatting editor html
+
+        One day allow custom formatting. Today is not that day.
+
+        @attribute {Function}
+        @readOnly
+        **/
+        formatFn: {
+            readOnly: true,
+            setter: function (val) {
+                return Y.bind(val, this);
+            },
+            validator: Y.Lang.isFunction,
+            valueFn: function () {
+                return this._formatHTML;
+            }
+        }
+    }
+});
+
+Y.namespace(&#x27;Editor&#x27;).Format = EditorFormat;
+
+}());
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

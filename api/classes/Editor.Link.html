@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.Block.html">Editor.Block</a></li>
+            
+                <li><a href="../classes/Editor.Delete.html">Editor.Delete</a></li>
+            
                 <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Format.html">Editor.Format</a></li>
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
@@ -101,7 +107,13 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-block.html">gallery-sm-editor-block</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-delete.html">gallery-sm-editor-delete</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-format.html">gallery-sm-editor-format</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
             
@@ -110,8 +122,6 @@
                 <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
-            
-                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
             
@@ -204,66 +214,14 @@
 
 <div class="box intro">
     <p>Extension for <code>Editor.Base</code> that enables inserting links</p>
+<p>Provides support for the following commands:</p>
+<ul>
+<li>createLink</li>
+<li>unlink</li>
+</ul>
 
 </div>
 
-
-    <div class="constructor">
-        <h2>Constructor</h2>
-        <div id="method_Editor.Link" class="method item">
-    <h3 class="name"><code>Editor.Link</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l10"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:10</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-    </div>
 
 
 <div id="classdocs" class="tabview">
@@ -345,6 +303,13 @@
                         
                             <li class="index-item method private inherited">
                                 <a href="#method__cloneDefaultValue">_cloneDefaultValue</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected">
+                                <a href="#method__createLink">_createLink</a>
 
                                 
                                 
@@ -525,20 +490,6 @@
                                 
                             </li>
                         
-                            <li class="index-item method protected">
-                                <a href="#method__link">_link</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method protected">
-                                <a href="#method__linkPrompt">_linkPrompt</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method private inherited">
                                 <a href="#method__monitor">_monitor</a>
 
@@ -613,6 +564,13 @@
                         
                             <li class="index-item method private inherited">
                                 <a href="#method__setStateVal">_setStateVal</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method protected">
+                                <a href="#method__unlink">_unlink</a>
 
                                 
                                 
@@ -737,13 +695,6 @@
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_link">link</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method inherited">
                                 <a href="#method_modifyAttr">modifyAttr</a>
 
@@ -837,13 +788,6 @@
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_unlink">unlink</a>
-
-                                
-                                
-                            </li>
-                        
                             <li class="index-item method deprecated inherited">
                                 <a href="#method_unsubscribe">unsubscribe</a>
 
@@ -880,7 +824,7 @@
                             </li>
                         
                             <li class="index-item property">
-                                <a href="#property_linkKeyCommands">linkKeyCommands</a>
+                                <a href="#property_linkCommands">linkCommands</a>
 
                                 
                                 
@@ -899,6 +843,13 @@
                                 
                                 
                                     <span class="flag deprecated">deprecated</span>
+                                
+                            </li>
+                        
+                            <li class="index-item property">
+                                <a href="#property_supportedTags">supportedTags</a>
+
+                                
                                 
                             </li>
                         
@@ -1674,9 +1625,145 @@ Since it&#39;s on a critical path, we don&#39;t want to re-do the check.</p>
                     
 
                     <div class="param-description">
-                        
+                         
                     </div>
 
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method__createLink" class="method item protected">
+    <h3 class="name"><code>_createLink</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>options</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l111"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:111</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Implementation for the <code>createLink</code> command</p>
+<p>Wraps the currently selected range in an anchor <code>&lt;a&gt;</code> tag</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">options</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name">href</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                
+
+                                <div class="param-description">
+                                    
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[target=_self]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[text]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
                     
                 </li>
             
@@ -2400,7 +2487,7 @@ if this is a sub-attribute value being change. Otherwise null.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l106"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:106</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l94"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:94</code></a>
         
         </p>
 
@@ -3517,7 +3604,7 @@ applied to the supplied type.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l637"><code>event-custom&#x2F;js&#x2F;event-facade.js:637</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l643"><code>event-custom&#x2F;js&#x2F;event-facade.js:643</code></a>
         
         </p>
 
@@ -4240,200 +4327,6 @@ added lazily and still requires initialization.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method__link" class="method item protected">
-    <h3 class="name"><code>_link</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>options</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l123"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:123</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Implementation for the public <code>link</code> method.</p>
-<p>Wraps the currently selected range in an anchor <code>&lt;a&gt;</code> tag</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">options</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">href</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[target=_self]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[text]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="method__linkPrompt" class="method item protected">
-    <h3 class="name"><code>_linkPrompt</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-        <span class="flag protected">protected</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l178"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:178</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        
-    </div>
-
-    
-
     
 
     
@@ -5900,6 +5793,65 @@ internal state object, or the state proxy if it exits</p>
 </div>
 
                 
+                    <div id="method__unlink" class="method item protected">
+    <h3 class="name"><code>_unlink</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+
+    
+
+    
+        <span class="flag protected">protected</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l164"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:164</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Removes link by replacing the anchor element with the child nodes
+of the anchor</p>
+<p>The anchor element will be removed from the DOM and destroyed.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
                     <div id="method_addAttr" class="method item inherited">
     <h3 class="name"><code>addAttr</code></h3>
 
@@ -6314,6 +6266,8 @@ See <a href="#method_addAttr">addAttr</a>.</p>
 
     
 
+    
+        <span class="flag chainable">chainable</span>
     
 
     
@@ -6776,7 +6730,7 @@ callback, object (method host), methodName, context, 0-n arguments</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l548"><code>event-custom&#x2F;js&#x2F;event-facade.js:548</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l554"><code>event-custom&#x2F;js&#x2F;event-facade.js:554</code></a>
         
         </p>
 
@@ -7672,7 +7626,7 @@ falsy value otherwise</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l520"><code>event-custom&#x2F;js&#x2F;event-facade.js:520</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l523"><code>event-custom&#x2F;js&#x2F;event-facade.js:523</code></a>
         
         </p>
 
@@ -7853,7 +7807,7 @@ and invokes initializers for the class hierarchy.</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l69"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:69</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l80"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:80</code></a>
         
         </p>
 
@@ -7885,141 +7839,6 @@ and invokes initializers for the class hierarchy.</p>
                 
             </div>
         </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_link" class="method item">
-    <h3 class="name"><code>link</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>options</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l54"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:54</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Wraps the currently selected range in an anchor element</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">options</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                        <ul class="params-list">
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name">href</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[target=_self]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                            <li class="param">
-                                
-                                    <code class="param-name optional">[text]</code>
-                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                    <span class="flag optional" title="This parameter is optional.">optional</span>
-                                
-
-                                <div class="param-description">
-                                    
-                                </div>
-
-                                
-                            </li>
-                            
-                        </ul>
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
     
 
     
@@ -9107,6 +8926,8 @@ case the custom event is returned.</p>
     
 
     
+        <span class="flag chainable">chainable</span>
+    
 
     
 
@@ -9118,7 +8939,7 @@ case the custom event is returned.</p>
             
         
         
-        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l530"><code>event-custom&#x2F;js&#x2F;event-facade.js:530</code></a>
+        <a href="http://yuilibrary.com/yui/docs/api/files/event-custom_js_event-facade.js.html#l533"><code>event-custom&#x2F;js&#x2F;event-facade.js:533</code></a>
         
         </p>
 
@@ -9687,65 +9508,6 @@ and the instance guid, if set.</p>
 </div>
 
                 
-                    <div id="method_unlink" class="method item">
-    <h3 class="name"><code>unlink</code></h3>
-
-    
-        <span class="paren">()</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag chainable">chainable</span>
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l81"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:81</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Removes link by replacing the anchor element with the child nodes
-of the anchor</p>
-<p>The anchor element will be removed from the DOM and destroyed.</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
                     <div id="method_unsubscribe" class="method item deprecated inherited">
     <h3 class="name"><code>unsubscribe</code></h3>
 
@@ -9952,8 +9714,8 @@ not handled by the MyClass._NON_ATTRS_CFG</p>
 </div>
 
                 
-                    <div id="property_linkKeyCommands" class="property item">
-    <h3 class="name"><code>linkKeyCommands</code></h3>
+                    <div id="property_linkCommands" class="property item">
+    <h3 class="name"><code>linkCommands</code></h3>
     <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
 
     
@@ -9975,7 +9737,7 @@ not handled by the MyClass._NON_ATTRS_CFG</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l25"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:25</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l27"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:27</code></a>
         
         </p>
 
@@ -9985,7 +9747,9 @@ not handled by the MyClass._NON_ATTRS_CFG</p>
     </div>
 
     <div class="description">
-        <p>Key commands related to creating hyperlinks.</p>
+        <p>Hash of link commands supported by this editor.</p>
+<p>Names should correspond with valid <code>execCommand()</code> command names. Values
+are properties in the following format:</p>
 
     </div>
 
@@ -9993,6 +9757,39 @@ not handled by the MyClass._NON_ATTRS_CFG</p>
 
     
 
+    
+        <h4>Sub-properties:</h4>
+
+        <ul class="params-list">
+            
+            <li class="param">
+                
+                    <code class="param-name">commandFn</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                
+
+                <div class="param-description">
+                     
+                </div>
+
+                
+            </li>
+            
+            <li class="param">
+                
+                    <code class="param-name optional">[queryFn]</code>
+                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    <span class="flag optional" title="This property is optional.">optional</span>
+                
+
+                <div class="param-description">
+                     
+                </div>
+
+                
+            </li>
+            
+        </ul>
     
 </div>
 
@@ -10020,7 +9817,7 @@ not handled by the MyClass._NON_ATTRS_CFG</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l35"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:35</code></a>
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l57"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:57</code></a>
         
         </p>
 
@@ -10077,6 +9874,52 @@ not handled by the MyClass._NON_ATTRS_CFG</p>
 
     <div class="description">
         <p>The string used to identify the class of this object.</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="property_supportedTags" class="property item">
+    <h3 class="name"><code>supportedTags</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_sm-editor_js_extensions_editor-link.js.html#l49"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-link.js:49</code></a>
+        
+        </p>
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>HTML tags supported by this editor. Unsupported tags will be treated
+as text</p>
 
     </div>
 

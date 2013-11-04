@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.Block.html">Editor.Block</a></li>
+            
+                <li><a href="../classes/Editor.Delete.html">Editor.Delete</a></li>
+            
                 <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Format.html">Editor.Format</a></li>
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
@@ -101,7 +107,13 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-block.html">gallery-sm-editor-block</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-delete.html">gallery-sm-editor-delete</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-format.html">gallery-sm-editor-format</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
             
@@ -110,8 +122,6 @@
                 <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
-            
-                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
             
@@ -425,19 +435,28 @@ Range.prototype = {
 
     an initial range of
 
-        &lt;div&gt;&lt;span&gt;[{Lorem]}&lt;/span&gt;&lt;/div&gt;  s0:e5
+        &lt;div&gt;&lt;span&gt;[{Lorem]}&lt;/span&gt;&lt;/div&gt;  #text s0 : #text e5
 
-    after expansion would be
+    after expansion with stopAt = &#x60;span&#x60;
 
-        [{&lt;div&gt;&lt;span&gt;Lorem&lt;/span&gt;&lt;/div&gt;}]  s0:e1
+        &lt;div&gt;&lt;span&gt;[{Lorem]}&lt;/span&gt;&lt;/div&gt;  SPAN s0 : SPAN e1
+
+    after expansion with stopAt = &#x60;div&#x60;
+
+        &lt;div&gt;[{&lt;span&gt;Lorem&lt;/span&gt;}]&lt;/div&gt;  DIV s0 : DIV e1
 
     @method expand
-    @param {HTMLElement|Node} [container] If provided, do not expand the range
-        past this container
+    @param {Object} [options]
+        @param {String|Function|HTMLElement|Node} [options.stopAt] If provided,
+        does not expand the range past this node.
+        Strings will be used as selectors to match ancestor nodes of the start
+        and end nodes of the range (inclusive).
+        Functions will test ancestors of the start and end nodes of the range
+        (inclusive) and will receive the node being tested as the only argument.
     @chainable
     **/
-    expand: function(container) {
-        return this.expandStart(container).expandEnd(container);
+    expand: function (options) {
+        return this.expandStart(options).expandEnd(options);
     },
 
     /**
@@ -446,22 +465,51 @@ Range.prototype = {
     guaranteed to be an element node after this method is executed.
 
     @method expandEnd
-    @param {HTMLElement|Node} [container] If provided, do not expand the range
-        past this container
+    @param {Object} [options]
+        @param {String|Function|HTMLElement|Node} [options.stopAt] If provided,
+        does not expand the range past this node.
+        Strings will be used as selectors to match ancestor nodes of the end
+        node of the range (inclusive).
+        Functions will test ancestors of the end node of the range (inclusive)
+        and will receive the node being tested as the only argument.
     @chainable
     **/
-    expandEnd: function(container) {
-        var endNode = this.endNode()._node,
-            offset = this.endOffset(),
-            nodeType = endNode.nodeType,
-            parentNode = endNode.parentNode;
+    expandEnd: function (options) {
+        var endNode = this.endNode(),
+            endOffset = this.endOffset(),
+            stopNode, parentNode;
 
-        container = Y.one(container);
+        options || (options = {});
+        options.stopAt &amp;&amp; (stopNode = options.stopAt);
 
-        if (TEXT_NODE === nodeType &amp;&amp; endNode.length === offset &amp;&amp; !endNode.nextSibling
-                &amp;&amp; (!container || container._node !== parentNode)) {
-            this.endNode(parentNode, &#x27;after&#x27;);
+        function maxOffset (node) {
+            var maxOffset;
+
+            node = node._node;
+
+            if (TEXT_NODE === node.nodeType) {
+                maxOffset = node.length;
+            } else {
+                maxOffset = node.childNodes.length;
+            }
+
+            return maxOffset;
         }
+
+        if (&#x27;string&#x27; === typeof stopNode || &#x27;function&#x27; === typeof stopNode) {
+            stopNode = endNode.ancestor(stopNode, true);
+        } else {
+            stopNode = Y.one(stopNode);
+        }
+
+        while (endNode !== stopNode &amp;&amp; maxOffset(endNode) === endOffset) {
+            parentNode = endNode.get(&#x27;parentNode&#x27;);
+
+            endOffset = parentNode.get(&#x27;childNodes&#x27;).indexOf(endNode) + 1;
+            endNode = parentNode;
+        }
+
+        this.endNode(endNode, endOffset);
 
         return this;
     },
@@ -472,22 +520,36 @@ Range.prototype = {
     guaranteed to be an element node after this method is executed.
 
     @method expandStart
-    @param {HTMLElement|Node} [container] If provided, do not expand the range
-        past this container
+        @param {String|Function|HTMLElement|Node} [options.stopAt] If provided,
+        does not expand the range past this node.
+        Strings will be used as selectors to match ancestor nodes of the start
+        node of the range (inclusive).
+        Functions will test ancestors of the start node of the range (inclusive)
+        and will receive the node being tested as the only argument.
     @chainable
     **/
-    expandStart: function(container) {
-        var startNode = this.startNode()._node,
-            offset = this.startOffset(),
-            nodeType = startNode.nodeType,
-            parentNode = startNode.parentNode;
+    expandStart: function (options) {
+        var startNode = this.startNode(),
+            startOffset = this.startOffset(),
+            stopNode, parentNode;
 
-        container = Y.one(container);
+        options || (options = {});
+        options.stopAt &amp;&amp; (stopNode = options.stopAt);
 
-        if (TEXT_NODE === nodeType &amp;&amp; 0 === offset &amp;&amp; !startNode.previousSibling
-                &amp;&amp; (!container || container._node !== parentNode)) {
-            this.startNode(parentNode, &#x27;before&#x27;);
+        if (&#x27;string&#x27; === typeof stopNode || &#x27;function&#x27; === typeof stopNode) {
+            stopNode = startNode.ancestor(stopNode, true);
+        } else {
+            stopNode = Y.one(stopNode);
         }
+
+        while (startNode !== stopNode &amp;&amp; 0 === startOffset) {
+            parentNode = startNode.get(&#x27;parentNode&#x27;);
+
+            startOffset = parentNode.get(&#x27;childNodes&#x27;).indexOf(startNode);
+            startNode = parentNode;
+        }
+
+        this.startNode(startNode, startOffset);
 
         return this;
     },
@@ -699,7 +761,7 @@ Range.prototype = {
         trailing whitespace from the endContainer.
     @chainable
     **/
-    shrink: function(options) {
+    shrink: function (options) {
         return this.shrinkStart(options).shrinkEnd(options);
     },
 
@@ -718,7 +780,7 @@ Range.prototype = {
         exclude any trailing whitespace from the shrunken endContainer.
     @chainable
     **/
-    shrinkEnd: function(options) {
+    shrinkEnd: function (options) {
         var trim = options &amp;&amp; options.trim;
 
         if (!this.isCollapsed()) {
@@ -751,9 +813,15 @@ Range.prototype = {
                     // have the correct textNode and not trimming it
                     return this;
                 }
-            } else if (endOffset) {
-                // the endOffset references a childNode
-                endNode = endNode.get(&#x27;childNodes&#x27;).item(endOffset - 1);
+            } else {
+                // the endOffset references a point *after* a childNode
+                // so grab the node preceding the offset
+                var childNodes = endNode.get(&#x27;childNodes&#x27;),
+                    node = childNodes.item(endOffset - 1);
+
+                if (node) {
+                    endNode = node;
+                }
             }
 
             // at this point endNode could be an element node or a text node
@@ -762,7 +830,7 @@ Range.prototype = {
             if (ELEMENT_NODE === endNode.get(&#x27;nodeType&#x27;)) {
                 this.endNode(endNode, endNode.get(&#x27;childNodes&#x27;).size());
 
-                this.traverse(function(node) {
+                this.traverse(function (node) {
                     if (TEXT_NODE === node.get(&#x27;nodeType&#x27;)) {
                         endNode = node;
                     }
@@ -798,7 +866,7 @@ Range.prototype = {
         exclude any leading whitespace from the shrunken startContainer.
     @chainable
     **/
-    shrinkStart: function(options) {
+    shrinkStart: function (options) {
         var trim = options &amp;&amp; options.trim;
 
         if (!this.isCollapsed()) {
@@ -831,9 +899,16 @@ Range.prototype = {
                     // have the correct textNode and not trimming it
                     return this;
                 }
-            } else if (startOffset) {
-                // the startOffset references a childNode
-                startNode = startNode.get(&#x27;childNodes&#x27;).item(startOffset - 1);
+            } else {
+                // the startOffset references a point *before* a childNode
+                // so grab the node following the offset (which is
+                // indexed by the offset, unlike the endOffset)
+                var childNodes = startNode.get(&#x27;childNodes&#x27;),
+                    node = childNodes.item(startOffset);
+
+                if (node) {
+                    startNode = node;
+                }
             }
 
             // at this point startNode could be an element node or a text node
@@ -842,7 +917,7 @@ Range.prototype = {
             if (ELEMENT_NODE === startNode.get(&#x27;nodeType&#x27;)) {
                 this.startNode(startNode);
 
-                this.traverse(function(node) {
+                this.traverse(function (node) {
                     if (TEXT_NODE === node.get(&#x27;nodeType&#x27;)) {
                         startNode = node;
                         return true; // stops traversal

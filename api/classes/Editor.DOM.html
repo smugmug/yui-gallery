@@ -47,7 +47,13 @@
             
                 <li><a href="../classes/Editor.Base.html">Editor.Base</a></li>
             
+                <li><a href="../classes/Editor.Block.html">Editor.Block</a></li>
+            
+                <li><a href="../classes/Editor.Delete.html">Editor.Delete</a></li>
+            
                 <li><a href="../classes/Editor.DOM.html">Editor.DOM</a></li>
+            
+                <li><a href="../classes/Editor.Format.html">Editor.Format</a></li>
             
                 <li><a href="../classes/Editor.Keys.html">Editor.Keys</a></li>
             
@@ -101,7 +107,13 @@
             
                 <li><a href="../modules/gallery-sm-editor-base.html">gallery-sm-editor-base</a></li>
             
+                <li><a href="../modules/gallery-sm-editor-block.html">gallery-sm-editor-block</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-delete.html">gallery-sm-editor-delete</a></li>
+            
                 <li><a href="../modules/gallery-sm-editor-dom.html">gallery-sm-editor-dom</a></li>
+            
+                <li><a href="../modules/gallery-sm-editor-format.html">gallery-sm-editor-format</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-keys.html">gallery-sm-editor-keys</a></li>
             
@@ -110,8 +122,6 @@
                 <li><a href="../modules/gallery-sm-editor-queue.html">gallery-sm-editor-queue</a></li>
             
                 <li><a href="../modules/gallery-sm-editor-style.html">gallery-sm-editor-style</a></li>
-            
-                <li><a href="../modules/gallery-sm-editor-undo.html">gallery-sm-editor-undo</a></li>
             
                 <li><a href="../modules/gallery-sm-focusmanager.html">gallery-sm-focusmanager</a></li>
             
@@ -182,7 +192,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_sm-editor_js_extensions_editor-dom.js.html#l10"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-dom.js:10</code></a>
+            Defined in: <a href="../files/src_sm-editor_js_editor-dom.js.html#l10"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-dom.js:10</code></a>
         </div>
     
 
@@ -228,19 +238,8 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method">
-                                <a href="#method_getStyledAncestor">getStyledAncestor</a>
+                                <a href="#method_copyStyles">copyStyles</a>
 
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isContainer">isContainer</a>
-
-                                
-                                    <span class="flag static">static</span>
                                 
                                 
                             </li>
@@ -256,15 +255,6 @@
                         
                             <li class="index-item method">
                                 <a href="#method_isEmptyNode">isEmptyNode</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method">
-                                <a href="#method_isInlineElement">isInlineElement</a>
 
                                 
                                     <span class="flag static">static</span>
@@ -297,15 +287,6 @@
                                 
                             </li>
                         
-                            <li class="index-item method">
-                                <a href="#method_unwrap">unwrap</a>
-
-                                
-                                    <span class="flag static">static</span>
-                                
-                                
-                            </li>
-                        
                     </ul>
                 </div>
             
@@ -322,8 +303,8 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_getStyledAncestor" class="method item">
-    <h3 class="name"><code>getStyledAncestor</code></h3>
+                    <div id="method_copyStyles" class="method item">
+    <h3 class="name"><code>copyStyles</code></h3>
 
     
         <div class="args">
@@ -331,19 +312,25 @@
             
                 <li class="arg">
                     
-                        <code>startNode</code>
+                        <code>from</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>property</code>
+                        <code>to</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code class="optional">[self]</code>
+                        <code>styles</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code class="optional">[options]</code>
                     
                 </li>
             
@@ -352,10 +339,6 @@
     
 
     
-        <span class="returns-inline">
-            <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-        </span>
-    
 
     
 
@@ -363,8 +346,6 @@
 
     
 
-    
-        <span class="flag static">static</span>
     
 
     
@@ -382,7 +363,7 @@
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-dom.js.html#l88"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-dom.js:88</code></a>
+        <a href="../files/src_sm-editor_js_editor-dom.js.html#l18"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-dom.js:18</code></a>
         
         </p>
 
@@ -393,8 +374,7 @@
     </div>
 
     <div class="description">
-        <p>Walks the ancestor tree of a given node until a node that has
-the css property set is found</p>
+        <p>Copies styles from a node to another node</p>
 
     </div>
 
@@ -406,8 +386,8 @@ the css property set is found</p>
             
                 <li class="param">
                     
-                        <code class="param-name">startNode</code>
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
+                        <code class="param-name">from</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
                     
 
                     
@@ -421,8 +401,8 @@ the css property set is found</p>
             
                 <li class="param">
                     
-                        <code class="param-name">property</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        <code class="param-name">to</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/Document_Object_Model_(DOM)/HTMLElement" class="crosslink external" target="_blank">HTMLElement</a> | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
                     
 
                     
@@ -436,148 +416,77 @@ the css property set is found</p>
             
                 <li class="param">
                     
-                        <code class="param-name optional">[self]</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                        <code class="param-name">styles</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external external" target="_blank">Array</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name optional">[options]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external external" target="_blank">Object</a></span>
                         <span class="flag optional" title="This parameter is optional.">optional</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>Whether or not to include <code>startNode</code> in the scan</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>:
-                    
-                    <p>The node having <code>property</code> set, or null if no node was found</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_isContainer" class="method item">
-    <h3 class="name"><code>isContainer</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>node</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-dom.js.html#l113"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-dom.js:113</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns true if the given node is a container element, false otherwise
-A container element is defined as a non-inline element</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">node</code>
-                        <span class="type">HTMLNode | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
                          
                     </div>
 
                     
+                        <ul class="params-list">
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[explicit=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>When set to <code>true</code> copy only
+        explicitly set properties from the source node. IOW, don&#39;t use
+        computedStyle.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                            <li class="param">
+                                
+                                    <code class="param-name optional">[overwrite=false]</code>
+                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+                                
+
+                                <div class="param-description">
+                                    <p>When set to <code>true</code>
+        properties from the source node will overwrite the same property
+        set on the destination node.</p>
+
+                                </div>
+
+                                
+                            </li>
+                            
+                        </ul>
+                    
                 </li>
             
             </ul>
         </div>
     
 
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
-                    
-                    <p>true if the given node is a container element, false otherwise</p>
-
-                
-            </div>
-        </div>
     
 
     
@@ -632,7 +541,7 @@ A container element is defined as a non-inline element</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-dom.js.html#l131"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-dom.js:131</code></a>
+        <a href="../files/src_sm-editor_js_editor-dom.js.html#l57"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-dom.js:57</code></a>
         
         </p>
 
@@ -740,7 +649,7 @@ A container element is defined as a non-inline element</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-dom.js.html#l146"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-dom.js:146</code></a>
+        <a href="../files/src_sm-editor_js_editor-dom.js.html#l72"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-dom.js:72</code></a>
         
         </p>
 
@@ -753,7 +662,7 @@ A container element is defined as a non-inline element</p>
     <div class="description">
         <p>Returns true if the given node is empty</p>
 <p>Nodes containing only returns, tabs or linefeeds are considered empty
-Nodes containing only whitespace are not considered empty</p>
+Nodes containing only whitespace or breaks (br) are not considered empty</p>
 
     </div>
 
@@ -792,114 +701,6 @@ Nodes containing only whitespace are not considered empty</p>
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
                     
                     <p>true if the given node is a empty, false otherwise</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_isInlineElement" class="method item">
-    <h3 class="name"><code>isInlineElement</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>node</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-dom.js.html#l166"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-dom.js:166</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Returns true if the given node is an inline element node, false otherwise</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">node</code>
-                        <span class="type">HTMLNode | <a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
-                    
-                    <p>true if the given node is an inline element node, false otherwise</p>
 
                 
             </div>
@@ -958,7 +759,7 @@ Nodes containing only whitespace are not considered empty</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-dom.js.html#l181"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-dom.js:181</code></a>
+        <a href="../files/src_sm-editor_js_editor-dom.js.html#l94"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-dom.js:94</code></a>
         
         </p>
 
@@ -1066,7 +867,7 @@ Nodes containing only whitespace are not considered empty</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-dom.js.html#l196"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-dom.js:196</code></a>
+        <a href="../files/src_sm-editor_js_editor-dom.js.html#l109"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-dom.js:109</code></a>
         
         </p>
 
@@ -1180,7 +981,7 @@ Text nodes will return the length of the text</p>
             
         
         
-        <a href="../files/src_sm-editor_js_extensions_editor-dom.js.html#l232"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-dom.js:232</code></a>
+        <a href="../files/src_sm-editor_js_editor-dom.js.html#l127"><code>src&#x2F;sm-editor&#x2F;js&#x2F;editor-dom.js:127</code></a>
         
         </p>
 
@@ -1251,114 +1052,6 @@ Text nodes will return the length of the text</p>
                     <p>Node reference to the node created after splitting. It will
     be the nextSibling of <code>node</code>. If offset is not valid, the original <code>node</code>
     is returned.</p>
-
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_unwrap" class="method item">
-    <h3 class="name"><code>unwrap</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>node</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="../classes/Range.html" class="crosslink">Range</a></span>
-        </span>
-    
-
-    
-
-    
-
-    
-
-    
-        <span class="flag static">static</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/src_sm-editor_js_extensions_editor-dom.js.html#l271"><code>src&#x2F;sm-editor&#x2F;js&#x2F;extensions&#x2F;editor-dom.js:271</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Unwraps a node</p>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">node</code>
-                        <span class="type"><a href="http://yuilibrary.com/yui/docs/api/classes/Node.html" class="crosslink external" target="_blank">Node</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                         
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="../classes/Range.html" class="crosslink">Range</a></span>:
-                    
-                    <p>Range containing the unwrapped child nodes</p>
 
                 
             </div>
