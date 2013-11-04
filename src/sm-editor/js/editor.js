@@ -20,7 +20,6 @@ A simple but powerful WYSIWYG editor.
 @uses Editor.Block
 @uses Editor.Style
 @uses Editor.Format
-@uses Editor.Undo
 **/
 Y.Editor = Y.mix(
     Y.Base.create('editor', Y.Editor.Base, [

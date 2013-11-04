@@ -10,9 +10,12 @@ Provides the `Editor.Delete` extension.
 /**
 Extension for `Editor.Base` that handles deletion
 
+Provides support for the following commands:
+
+- delete
+- forwardDelete
 
 @class Editor.Delete
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/
@@ -48,7 +51,7 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
     /**
     Key commands related to delete functionality.
 
-    @property {Object} styleKeyCommands
+    @property {Object} deleteKeyCommands
     **/
     deleteKeyCommands: isIE ? {
         'backspace':   {fn: 'delete',        allowDefault: true, async: true},
@@ -150,7 +153,7 @@ var EditorDelete = Y.Base.create('editorDelete', Y.Base, [], {
             range.deleteContents();
             range.endNode(startBlock.get('lastChild'), 'after');
             range.collapse();
-            
+
             // only copy nodes from elements that have text content
             if (endBlock.get('text').length) {
                 startBlock.append(endBlock.get('childNodes'));

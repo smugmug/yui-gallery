@@ -10,8 +10,13 @@ Provides the `Editor.Block` extension.
 /**
 Extension for `Editor.Base` that handles block element formatting
 
+Provides support for the following commands:
+
+- formatBlock
+- heading
+- insertParagraph
+
 @class Editor.Block
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/

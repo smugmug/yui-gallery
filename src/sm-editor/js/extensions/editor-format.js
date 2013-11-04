@@ -1,23 +1,18 @@
-/**
- * User: lee
- * Date: 9/30/13
- */
 /*jshint expr:true, onevar:false */
 
 /**
-Provides the `Editor.Style` extension.
+Provides the `Editor.Format` extension.
 
 @module gallery-sm-editor
-@submodule gallery-sm-editor-style
+@submodule gallery-sm-editor-format
 **/
 
 /**
-Extension for `Editor.Base` that formats html
+Extension for `Editor.Base` that provides formatting support for editor output
 
 @class Editor.Format
-@constructor
 @extends Base
-@extensionfor Editor.Format
+@extensionfor Editor.Base
 **/
 
 (function () {
@@ -46,9 +41,9 @@ var EditorFormat = Y.Base.create('editorFormat', Y.Base, [], {
     /**
     Reformats html to the proper style
 
-    TODO: put this in its own extension.  doesnt belong here.
+    TODO: put this in its own extension.  doesn't belong here.
 
-    <span>blah blah</span>
+    @method _formatHTML
     @param {HTML} html HTML string to format
     @return {Node} Node instance containing a document fragment with the
         formatted _html_
@@ -175,6 +170,9 @@ var EditorFormat = Y.Base.create('editorFormat', Y.Base, [], {
         Function for formatting editor html
 
         One day allow custom formatting. Today is not that day.
+
+        @attribute {Function}
+        @readOnly
         **/
         formatFn: {
             readOnly: true,

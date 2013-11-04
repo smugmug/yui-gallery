@@ -13,6 +13,11 @@ Provides `Y.Editor.Base`, the core implementation of the SmugMug editor.
 Base implementation of the SmugMug editor. Provides core editor functionality,
 but no undo stack, keyboard shortcuts, etc.
 
+Provides support for the following commands:
+
+- insertHTML
+- insertText
+
 @class Editor.Base
 @constructor
 @extends View
@@ -151,15 +156,19 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     },
 
     /**
-    Gets and/or sets the value of the specified editor command.
+    Executes a given editor command.
 
-    See <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>
-    for a list of possible commands.
+    By default, the only supported commands are:
+
+    - insertHTML
+    - insertText
+
+    See individual editor extensions for additionally supported commands
 
     @method command
-    @param {String|Function} name Command name.
-    @param {*} [value*]
-    @return {*} Value of the specified command.
+    @param {String|Function} name Command name or function to execute.
+    @param {Any} [args]* 0..n arguments to pass to the command
+    @return {Any} Value of the specified command.
     **/
     command: function (name) {
         var command, ret,
@@ -208,14 +217,14 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     },
 
     /**
-    Gets and/or sets the value of the specified editor command.
+    Gets the value of a specified editor command.
 
     See <https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla>
     for a list of possible commands.
 
     @method query
-    @param {String|Function} name Command name.
-    @return {*} Value of the specified command.
+    @param {String} name Command name.
+    @return {Boolean|String} Value of the specified command.
     **/
     query: function (name) {
         var command, ret,
@@ -422,6 +431,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @param {HTML|HTMLElement|Node} html HTML to insert, in the form of an HTML
         string, HTMLElement, or Node instance.
     @return {Node} Node instance representing the inserted HTML.
+    @protected
     **/
     _insertHTML: function (html) {
         var node      = typeof html === 'string' ? Y.Node.create(html) : html,
@@ -463,6 +473,7 @@ var EditorBase = Y.Base.create('editorBase', Y.View, [], {
     @method _insertText
     @param {String} text Text to insert.
     @return {Node} Node instance representing the inserted text node.
+    @protected
     **/
     _insertText: function (text) {
         // replace any newlines with spaces. browsers will convert

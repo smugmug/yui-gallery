@@ -10,8 +10,20 @@ Provides the `Editor.Style` extension.
 /**
 Extension for `Editor.Base` that normalizes style commands into css properties
 
+Provides support for the following commands:
+
+- bold
+- fontName
+- fontSize
+- italic
+- justifyCenter
+- justifyFull
+- justifyLeft
+- justifyRight
+- strikeThrough
+- underline
+
 @class Editor.Style
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/
@@ -40,6 +52,9 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
             of the property. eg. `bold`
     **/
     styleCommands: {
+        /**
+        @property {Object} styleCommands.bold
+         */
         bold: {
             commandFn: '_execStyleCommand',
             queryFn: '_queryStyleCommand',
@@ -332,7 +347,7 @@ var EditorStyle = Y.Base.create('editorStyle', Y.Base, [], {
     @method _queryStyleCommand
     @param {String} name Command name.
     @return {Boolean|String} Boolean style commands will return true/false, other commands will
-    return the property value, or null if the property doesnt exist.
+    return the property value, or null if the property doesn't exist.
     @protected
     **/
     _queryStyleCommand: function (name) {

@@ -12,7 +12,6 @@ Extension for `Editor.Base` that adds support for configurable keyboard
 shortcuts, including a set of default shortcuts.
 
 @class Editor.Keys
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/

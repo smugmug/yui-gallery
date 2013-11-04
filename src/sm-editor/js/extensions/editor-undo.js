@@ -4,7 +4,6 @@
 Provides the `Editor.Undo` extension.
 
 @module gallery-sm-editor
-@submodule gallery-sm-editor-undo
 **/
 
 /**
@@ -14,7 +13,6 @@ When mixed into an editor that also mixes in the `Editor.Keys` extension, handy
 undo/redo keyboard shortcuts and triggers will be added as well.
 
 @class Editor.Undo
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/
