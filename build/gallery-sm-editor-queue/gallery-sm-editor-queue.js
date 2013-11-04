@@ -13,7 +13,6 @@ Provides the `Editor.Queue` extension.
 Extension for `Editor.Base` that queues commands
 
 @class Editor.Queue
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/
@@ -169,6 +168,7 @@ var EditorQueue = Y.Base.create('editorStyle', Y.Base, [], {
     /**
     Handles `keypress` events on the editor
 
+    @method _onKeyPress
     @param {EventFacade} e
     @protected
     **/
@@ -249,4 +249,12 @@ Y.namespace('Editor').Queue = EditorQueue;
 }());
 
 
-}, '@VERSION@', {"requires": ["gallery-sm-editor-base", "gallery-sm-editor-keys"]});
+}, '@VERSION@', {
+    "requires": [
+        "base-build",
+        "event-custom",
+        "gallery-sm-editor-base",
+        "gallery-sm-editor-keys",
+        "node-event-delegate"
+    ]
+});

@@ -22,7 +22,6 @@ A simple but powerful WYSIWYG editor.
 @uses Editor.Block
 @uses Editor.Style
 @uses Editor.Format
-@uses Editor.Undo
 **/
 Y.Editor = Y.mix(
     Y.Base.create('editor', Y.Editor.Base, [
@@ -40,7 +39,7 @@ Y.Editor = Y.mix(
 
 
 }, '@VERSION@', {
-    "requires": [
+    "use": [
         "gallery-sm-editor-base",
         "gallery-sm-editor-block",
         "gallery-sm-editor-delete",

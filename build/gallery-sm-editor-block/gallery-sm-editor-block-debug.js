@@ -12,8 +12,13 @@ Provides the `Editor.Block` extension.
 /**
 Extension for `Editor.Base` that handles block element formatting
 
+Provides support for the following commands:
+
+- formatBlock
+- heading
+- insertParagraph
+
 @class Editor.Block
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/
@@ -332,9 +337,11 @@ Y.namespace('Editor').Block = EditorBlock;
 
 }, '@VERSION@', {
     "requires": [
+        "base-build",
+        "event-custom",
         "gallery-sm-editor-base",
         "gallery-sm-editor-dom",
         "gallery-sm-editor-keys",
-        "node-style"
+        "node-base"
     ]
 });

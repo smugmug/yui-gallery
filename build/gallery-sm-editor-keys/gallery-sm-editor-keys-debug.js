@@ -14,7 +14,6 @@ Extension for `Editor.Base` that adds support for configurable keyboard
 shortcuts, including a set of default shortcuts.
 
 @class Editor.Keys
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/
@@ -188,4 +187,4 @@ var EditorKeys = Y.Base.create('editorKeys', Y.Base, [], {
 Y.namespace('Editor').Keys = EditorKeys;
 
 
-}, '@VERSION@', {"requires": ["gallery-sm-editor-base"]});
+}, '@VERSION@', {"requires": ["base-build", "event-custom", "gallery-sm-editor-base", "node-event-delegate"]});

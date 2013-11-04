@@ -19,6 +19,8 @@ var EditorDOM = {};
 
 /**
 Copies styles from a node to another node
+
+@method copyStyles
 @param {HTMLElement|Node} from
 @param {HTMLElement|Node} to
 @param {Array} styles
@@ -132,7 +134,7 @@ Splits the given node at the specified offset
 @param {Number|Node} offset Position to split the node.
     For text nodes this is numerical offset, for element nodes can be a
     a number referencing a childNode of `node` or a childNode reference.
-@returns {Node} Node reference to the node created after splitting. It will
+@return {Node} Node reference to the node created after splitting. It will
     be the nextSibling of `node`. If offset is not valid, the original `node`
     is returned.
 **/
@@ -166,4 +168,4 @@ EditorDOM.split = function(node, offset) {
 Y.namespace('Editor').DOM = EditorDOM;
 
 
-}, '@VERSION@', {"requires": ["gallery-sm-range", "node"]});
+}, '@VERSION@', {"requires": ["node-base", "node-style"]});

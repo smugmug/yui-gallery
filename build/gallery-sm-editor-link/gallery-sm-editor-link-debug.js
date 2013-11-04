@@ -12,8 +12,12 @@ Provides the `Editor.Link` extension.
 /**
 Extension for `Editor.Base` that enables inserting links
 
+Provides support for the following commands:
+
+- createLink
+- unlink
+
 @class Editor.Link
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/
@@ -70,10 +74,6 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
         } else {
             this.supportedTags = this.linkTags;
         }
-
-        if (this.keyCommands) {
-            this.keyCommands = Y.merge(this.keyCommands, this.linkKeyCommands);
-        }
     },
 
 
@@ -98,7 +98,7 @@ var EditorLink = Y.Base.create('editorLink', Y.Base, [], {
     the current range
 
     @method _getAnchorNode
-    @returns {Node} The containing anchor element
+    @return {Node} The containing anchor element
     @protected
     **/
     _getAnchorNode: function() {
@@ -203,4 +203,4 @@ Y.namespace('Editor').Link = EditorLink;
 }());
 
 
-}, '@VERSION@', {"requires": ["gallery-sm-editor-base", "gallery-sm-editor-dom"]});
+}, '@VERSION@', {"requires": ["base-build", "gallery-sm-editor-base", "node-base"]});

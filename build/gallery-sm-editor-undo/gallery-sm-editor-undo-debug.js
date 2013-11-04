@@ -6,7 +6,6 @@ YUI.add('gallery-sm-editor-undo', function (Y, NAME) {
 Provides the `Editor.Undo` extension.
 
 @module gallery-sm-editor
-@submodule gallery-sm-editor-undo
 **/
 
 /**
@@ -16,7 +15,6 @@ When mixed into an editor that also mixes in the `Editor.Keys` extension, handy
 undo/redo keyboard shortcuts and triggers will be added as well.
 
 @class Editor.Undo
-@constructor
 @extends Base
 @extensionfor Editor.Base
 **/
@@ -292,4 +290,12 @@ var EditorUndo = Y.Base.create('editorUndo', Y.Base, [], {
 Y.namespace('Editor').Undo = EditorUndo;
 
 
-}, '@VERSION@', {"requires": ["gallery-sm-editor-base"]});
+}, '@VERSION@', {
+    "requires": [
+        "base-build",
+        "event-custom",
+        "gallery-sm-editor-base",
+        "gallery-sm-editor-keys",
+        "gallery-sm-range"
+    ]
+});
