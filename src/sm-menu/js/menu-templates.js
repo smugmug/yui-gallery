@@ -29,6 +29,7 @@ Y.namespace('Menu').Templates = {
                     '> </a>' +
                 '</li>' +
                 '<% break; %>' +
+
             '<% case "heading": %>' +
                 '<li class="<%= data.classNames.heading %>">' +
                     '<span class="<%= data.classNames.label %>"></span>' +
