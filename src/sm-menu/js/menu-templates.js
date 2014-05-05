@@ -26,7 +26,7 @@ Y.namespace('Menu').Templates = {
                         '<% if (data.item.title) { %>' +
                             ' title="<%= data.item.title %>"' +
                         '<% } %>' +
-                    '> </a>' +
+                    '></a>' +
                 '</li>' +
                 '<% break; %>' +
 
