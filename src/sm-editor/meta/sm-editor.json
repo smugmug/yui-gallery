@@ -1,6 +1,6 @@
 {
     "gallery-sm-editor": {
-        "use": [
+        "requires": [
             "gallery-sm-editor-base",
             "gallery-sm-editor-block",
             "gallery-sm-editor-delete",
