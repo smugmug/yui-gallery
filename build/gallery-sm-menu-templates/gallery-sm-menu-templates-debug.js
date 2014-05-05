@@ -24,7 +24,11 @@ Y.namespace('Menu').Templates = {
         '<% switch (data.item.type) { %>' +
             '<% case "item": %>' +
                 '<li id="<%= data.item.id %>" class="<%= data.classNames.item %>">' +
-                    '<a href="<%= data.item.url %>" class="<%= data.classNames.label %>" data-item-id="<%= data.item.id %>"></a>' +
+                    '<a href="<%= data.item.url %>" class="<%= data.classNames.label %>" data-item-id="<%= data.item.id %>"' +
+                        '<% if (data.item.title) { %>' +
+                            ' title="<%= data.item.title %>"' +
+                        '<% } %>' +
+                    '></a>' +
                 '</li>' +
                 '<% break; %>' +
 
