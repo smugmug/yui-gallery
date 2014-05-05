@@ -12,107 +12,105 @@
             "gallery-sm-editor-undo"
         ],
 
-        "skinnable": true,
+        "skinnable": true
+    },
 
-        "submodules": {
-            "gallery-sm-editor-base": {
-                "requires": [
-                    "base-build",
-                    "classnamemanager",
-                    "event-custom",
-                    "event-focus",
-                    "gallery-sm-editor-dom",
-                    "gallery-sm-selection",
-                    "node-base",
-                    "node-event-delegate",
-                    "view"
-                ]
-            },
+    "gallery-sm-editor-base": {
+        "requires": [
+            "base-build",
+            "classnamemanager",
+            "event-custom",
+            "event-focus",
+            "gallery-sm-editor-dom",
+            "gallery-sm-selection",
+            "node-base",
+            "node-event-delegate",
+            "view"
+        ]
+    },
 
-            "gallery-sm-editor-block": {
-                "requires": [
-                    "base-build",
-                    "event-custom",
-                    "gallery-sm-editor-base",
-                    "gallery-sm-editor-dom",
-                    "gallery-sm-editor-keys",
-                    "node-base"
-                ]
-            },
+    "gallery-sm-editor-block": {
+        "requires": [
+            "base-build",
+            "event-custom",
+            "gallery-sm-editor-base",
+            "gallery-sm-editor-dom",
+            "gallery-sm-editor-keys",
+            "node-base"
+        ]
+    },
 
-            "gallery-sm-editor-delete": {
-                "requires": [
-                    "base-build",
-                    "gallery-sm-editor-base",
-                    "gallery-sm-editor-block",
-                    "gallery-sm-editor-keys",
-                    "node-base"
-                ]
-            },
+    "gallery-sm-editor-delete": {
+        "requires": [
+            "base-build",
+            "gallery-sm-editor-base",
+            "gallery-sm-editor-block",
+            "gallery-sm-editor-keys",
+            "node-base"
+        ]
+    },
 
-            "gallery-sm-editor-dom": {
-                "requires": [
-                    "node-base",
-                    "node-style"
-                ]
-            },
+    "gallery-sm-editor-dom": {
+        "requires": [
+            "node-base",
+            "node-style"
+        ]
+    },
 
-            "gallery-sm-editor-format": {
-                "requires": [
-                    "base-build",
-                    "gallery-sm-editor-base",
-                    "gallery-sm-editor-dom",
-                    "node-base"
-                ]
-            },
+    "gallery-sm-editor-format": {
+        "requires": [
+            "base-build",
+            "gallery-sm-editor-base",
+            "gallery-sm-editor-dom",
+            "node-base"
+        ]
+    },
 
-            "gallery-sm-editor-keys": {
-                "requires": [
-                    "base-build",
-                    "event-custom",
-                    "gallery-sm-editor-base",
-                    "node-event-delegate"
-                ]
-            },
+    "gallery-sm-editor-keys": {
+        "requires": [
+            "base-build",
+            "event-custom",
+            "gallery-sm-editor-base",
+            "node-event-delegate"
+        ]
+    },
 
-            "gallery-sm-editor-link": {
-                "requires": [
-                    "base-build",
-                    "gallery-sm-editor-base",
-                    "node-base"
-                ]
-            },
+    "gallery-sm-editor-link": {
+        "requires": [
+            "base-build",
+            "gallery-sm-editor-base",
+            "node-base"
+        ]
+    },
 
-            "gallery-sm-editor-queue": {
-                "requires": [
-                    "base-build",
-                    "event-custom",
-                    "gallery-sm-editor-base",
-                    "gallery-sm-editor-keys",
-                    "node-event-delegate"
-                ]
-            },
+    "gallery-sm-editor-queue": {
+        "requires": [
+            "base-build",
+            "event-custom",
+            "gallery-sm-editor-base",
+            "gallery-sm-editor-keys",
+            "node-event-delegate"
+        ]
+    },
 
-            "gallery-sm-editor-style": {
-                "requires": [
-                    "base-build",
-                    "gallery-sm-editor-base",
-                    "gallery-sm-editor-dom",
-                    "gallery-sm-editor-keys",
-                    "node-base",
-                    "node-style"
-                ]
-            },
+    "gallery-sm-editor-style": {
+        "requires": [
+            "base-build",
+            "gallery-sm-editor-base",
+            "gallery-sm-editor-dom",
+            "gallery-sm-editor-keys",
+            "node-base",
+            "node-style"
+        ]
+    },
 
-            "gallery-sm-editor-undo": {
-                "requires": [
-                    "base-build",
-                    "event-custom",
-                    "gallery-sm-editor-base",
-                    "gallery-sm-editor-keys",
-                    "gallery-sm-range"
-                ]
-            }
-        }
+    "gallery-sm-editor-undo": {
+        "requires": [
+            "base-build",
+            "event-custom",
+            "gallery-sm-editor-base",
+            "gallery-sm-editor-keys",
+            "gallery-sm-range"
+        ]
     }
 }
