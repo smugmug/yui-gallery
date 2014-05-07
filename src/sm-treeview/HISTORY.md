@@ -11,6 +11,11 @@ SmugMug TreeView History
   were removed and re-appended to the container unnecessarily. They're now
   simply updated in place.
 
+* Fixed: The `aria-labelledby` HTML attribute was misspelled as
+  `aria-labelled-by`. [[@skylargivens][#34]]
+
+[#34]: https://github.com/smugmug/yui-gallery/pull/34
+
 ## 2013-06-20
 
 * Nodes are no longer automatically focused when selected in single-select mode.
